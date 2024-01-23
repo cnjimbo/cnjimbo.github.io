@@ -35,12 +35,12 @@
     "build": "npx tsup src/index.ts --dts --format esm,cjs --external vitepress"
   },
   "dependencies": {
-    "fast-glob": "^3.2.12",
+    "fast-glob": "^3.3.2",
     "feed": "^4.2.2",
     "gray-matter": "^4.0.3"
   },
   "devDependencies": {
-    "vite": "^4.3.3",
-    "vitepress": "1.0.0-rc.36"
+    "vite": "^5.0.12",
+    "vitepress": "1.0.0-rc.40"
   }
 }

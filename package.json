@@ -16,16 +16,16 @@
   },
   "keywords": [],
   "scripts": {
-    "dev": "pnpm --filter 'blogpress' dev",
-    "dev:theme": "pnpm --filter '@sugarat/theme' dev",
-    "build": "pnpm --filter 'blogpress' build",
-    "buildTheme": "pnpm --filter '@sugarat/theme' build",
-    "buildlib": "pnpm run '/^build:.*/'",
-    "build:pagefind": "pnpm --filter 'vitepress-plugin-pagefind' build",
-    "build:rss": "pnpm --filter 'vitepress-plugin-rss' build",
-    "build:create": "pnpm --filter '@sugarat/create-theme' build",
-    "build:theme-only": "wait-on packages/vitepress-plugin-rss/dist packages/vitepress-plugin-pagefind/dist && pnpm --filter '@sugarat/theme' build:node",
-    "serve": "pnpm --filter 'blogpress' serve",
+    "dev": "pnpm run --filter \"blogpress\" dev",
+    "dev:theme": "pnpm --filter \"@sugarat/theme\" dev",
+    "build": "pnpm --filter \"blogpress\" build",
+    "buildTheme": "pnpm --filter \"@sugarat/theme\" build",
+    "buildlib": "pnpm run \"/^build:.*/\"",
+    "build:pagefind": "pnpm --filter \"vitepress-plugin-pagefind\" build",
+    "build:rss": "pnpm --filter \"vitepress-plugin-rss\" build",
+    "build:create": "pnpm --filter \"@sugarat/create-theme\" build",
+    "build:theme-only": "wait-on packages/vitepress-plugin-rss/dist packages/vitepress-plugin-pagefind/dist && pnpm --filter \"@sugarat/theme\" build:node",
+    "serve": "pnpm --filter \"blogpress\" serve",
     "lint": "eslint .",
     "deploy": "zx deploy.mjs",
     "deploy:theme": "zx deploy-theme.mjs",
@@ -39,21 +39,22 @@
     "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
-    "pagefind": "^1.0.3"
+    "pagefind": "^1.0.4"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "1.0.0-beta.3",
-    "@changesets/cli": "^2.26.2",
-    "@types/node": "^20.6.3",
-    "eslint": "^8.50.0",
+    "@antfu/eslint-config": "2.6.3",
+    "@changesets/cli": "^2.27.1",
+    "@types/node": "^20.11.5",
+    "eslint": "^8.56.0",
+    "eslint-plugin-antfu": "^2.1.2",
     "eslint-plugin-todo-ddl": "^1.1.1",
-    "lint-staged": "^14.0.1",
-    "prettier": "^3.0.3",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.2.4",
     "simple-git-hooks": "^2.9.0",
-    "tsup": " ^7.2.0",
-    "typescript": "5.1.6",
-    "wait-on": "^7.0.1",
-    "zx": "^5.3.0"
+    "tsup": "^8.0.1",
+    "typescript": "5.3.3",
+    "wait-on": "^7.2.0",
+    "zx": "^7.2.3"
   },
   "pnpm": {
     "peerDependencyRules": {

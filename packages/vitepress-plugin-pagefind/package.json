@@ -37,18 +37,18 @@
     "build": "npx tsup src/index.ts --dts --format esm,cjs"
   },
   "dependencies": {
-    "@vue/shared": "^3.2.45",
-    "@vueuse/core": "^9.6.0",
-    "fast-glob": "^3.2.12",
+    "@vue/shared": "^3.4.15",
+    "@vueuse/core": "^10.7.2",
+    "fast-glob": "^3.3.2",
     "gray-matter": "^4.0.3",
-    "highlight.js": "^11.7.0",
+    "highlight.js": "^11.9.0",
     "javascript-stringify": "^2.1.0",
-    "vue": "^3",
-    "vue-command-palette": "^0.1.4"
+    "vue": "^3.4.15",
+    "vue-command-palette": "^0.2.3"
   },
   "devDependencies": {
-    "@types/node": "^16.18.4",
-    "vite": "^4.3.3",
-    "vitepress": "1.0.0-rc.20"
+    "@types/node": "^20.11.5",
+    "vite": "^5.0.12",
+    "vitepress": "1.0.0-rc.40"
   }
 }
