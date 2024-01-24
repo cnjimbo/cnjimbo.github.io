@@ -57,8 +57,10 @@ jobs:
       - name: Install dependencies
         run: pnpm -r i --frozen-lockfile
       # 6、打包
+      - name: Buildlib
+        run: pnpm buildlib
       - name: Build
-        run: pnpm buildlib | pnpm build
+        run: pnpm build
       # 7、部署 GitHub Pages
       - name: Deploy GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
