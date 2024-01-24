@@ -4,7 +4,7 @@ import type { Theme } from '@sugarat/theme'
 import type { RSSOptions } from 'vitepress-plugin-rss'
 import { RssPlugin } from 'vitepress-plugin-rss'
 
-const baseUrl = 'https://blog.dmsrs.org'
+const baseUrl = 'http://blog.dmsrs.org'
 const weekly = `${baseUrl}/weekly`
 const RSSWeekly: RSSOptions = {
   title: '视野修炼 - 技术周刊',
@@ -17,7 +17,7 @@ const RSSWeekly: RSSOptions = {
     return value.url.startsWith('/weekly/') && !value.url.endsWith('/weekly/')
   },
   image: 'https://img.cdn.blog.dmsrs.org/mdImg/MTcwNTIwMDEzNjM5Mw==705200136393',
-  favicon: 'https://blog.dmsrs.org/favicon.ico',
+  favicon: 'http://blog.dmsrs.org/favicon.ico',
   copyright: 'Copyright (c) 2018-present, 粥里有勺糖',
   url: `${baseUrl}/weekly.rss`,
   icon: false,
@@ -31,7 +31,7 @@ const RSS: Theme.RSSOptions = {
   link: baseUrl,
   language: 'zh-cn',
   image: 'https://img.cdn.blog.dmsrs.org/mdImg/MTY3NDk5NTE2NzAzMA==674995167030',
-  favicon: 'https://blog.dmsrs.org/favicon.ico',
+  favicon: 'http://blog.dmsrs.org/favicon.ico',
   copyright: 'Copyright (c) 2018-present, 粥里有勺糖',
   url: `${baseUrl}/feed.rss`,
   /**
@@ -163,7 +163,7 @@ const blogTheme = getThemeConfig({
   authorList: [
     {
       nickname: '粥里有勺糖',
-      url: 'https://blog.dmsrs.org/aboutme.html',
+      url: 'http://blog.dmsrs.org/aboutme.html',
       des: '你的指尖,拥有改变世界的力量',
     },
   ],
@@ -202,7 +202,7 @@ export default defineConfig({
   extends: blogTheme,
   ignoreDeadLinks: true,
   sitemap: {
-    hostname: 'https://blog.dmsrs.org',
+    hostname: 'http://blog.dmsrs.org',
   },
   lang: 'zh-cn',
   title: '粥里有勺糖',
