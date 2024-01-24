@@ -4,7 +4,7 @@ import type { Theme } from '@sugarat/theme'
 import type { RSSOptions } from 'vitepress-plugin-rss'
 import { RssPlugin } from 'vitepress-plugin-rss'
 
-const baseUrl = 'http://blog.dmsrs.org'
+const baseUrl = 'https://sugarat.top'
 const weekly = `${baseUrl}/weekly`
 const RSSWeekly: RSSOptions = {
   title: '视野修炼 - 技术周刊',
@@ -16,8 +16,8 @@ const RSSWeekly: RSSOptions = {
   filter(value) {
     return value.url.startsWith('/weekly/') && !value.url.endsWith('/weekly/')
   },
-  image: 'https://img.cdn.blog.dmsrs.org/mdImg/MTcwNTIwMDEzNjM5Mw==705200136393',
-  favicon: 'http://blog.dmsrs.org/favicon.ico',
+  image: 'https://img.cdn.sugarat.top/mdImg/MTcwNTIwMDEzNjM5Mw==705200136393',
+  favicon: 'https://sugarat.top/favicon.ico',
   copyright: 'Copyright (c) 2018-present, 粥里有勺糖',
   url: `${baseUrl}/weekly.rss`,
   icon: false,
@@ -30,8 +30,8 @@ const RSS: Theme.RSSOptions = {
   id: baseUrl,
   link: baseUrl,
   language: 'zh-cn',
-  image: 'https://img.cdn.blog.dmsrs.org/mdImg/MTY3NDk5NTE2NzAzMA==674995167030',
-  favicon: 'http://blog.dmsrs.org/favicon.ico',
+  image: 'https://img.cdn.sugarat.top/mdImg/MTY3NDk5NTE2NzAzMA==674995167030',
+  favicon: 'https://sugarat.top/favicon.ico',
   copyright: 'Copyright (c) 2018-present, 粥里有勺糖',
   url: `${baseUrl}/feed.rss`,
   /**
@@ -57,7 +57,7 @@ const blogTheme = getThemeConfig({
       { type: 'text', content: '👇公众号👇---👇 微信 👇' },
       {
         type: 'image',
-        src: 'https://img.cdn.blog.dmsrs.org/mdImg/MTYxNTAxODc2NTIxMA==615018765210',
+        src: 'https://img.cdn.sugarat.top/mdImg/MTYxNTAxODc2NTIxMA==615018765210',
       },
       {
         type: 'text',
@@ -85,7 +85,7 @@ const blogTheme = getThemeConfig({
         nickname: '冴羽',
         des: '冴羽的JavaScript博客',
         avatar:
-          'https://img.cdn.blog.dmsrs.org/mdImg/MTYyNjQ4MzkxMzIxMA==626483913210',
+          'https://img.cdn.sugarat.top/mdImg/MTYyNjQ4MzkxMzIxMA==626483913210',
         url: 'https://github.com/mqyqingfeng/Blog',
       },
       {
@@ -163,7 +163,7 @@ const blogTheme = getThemeConfig({
   authorList: [
     {
       nickname: '粥里有勺糖',
-      url: 'http://blog.dmsrs.org/aboutme.html',
+      url: 'https://sugarat.top/aboutme.html',
       des: '你的指尖,拥有改变世界的力量',
     },
   ],
@@ -202,7 +202,7 @@ export default defineConfig({
   extends: blogTheme,
   ignoreDeadLinks: true,
   sitemap: {
-    hostname: 'http://blog.dmsrs.org',
+    hostname: 'https://sugarat.top',
   },
   lang: 'zh-cn',
   title: '粥里有勺糖',
@@ -374,23 +374,23 @@ export default defineConfig({
         items: [
           {
             text: '轻取(文件收集)',
-            link: 'https://ep2.blog.dmsrs.org',
+            link: 'https://ep2.sugarat.top',
           },
           {
             text: '个人图床',
-            link: 'https://imgbed.blog.dmsrs.org',
+            link: 'https://imgbed.sugarat.top',
           },
           {
             text: '考勤小程序',
-            link: 'https://hdkq.blog.dmsrs.org/',
+            link: 'https://hdkq.sugarat.top/',
           },
           {
             text: '时光恋人',
-            link: 'https://lover.blog.dmsrs.org',
+            link: 'https://lover.sugarat.top',
           },
           {
             text: '在线简历生成',
-            link: 'https://resume.blog.dmsrs.org/',
+            link: 'https://resume.sugarat.top/',
           },
         ],
       },
