@@ -85,8 +85,8 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }} # Gitee私钥
           SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
         with:
-          source-repo: https://github.com/cnjimbo/cnjimbo.github.io.git # GitHub 源仓库地址
-          destination-repo: git@gitee.com:cnjimbo/cnjimbo.git # Gitee 目标仓库地址
+          source-repo: git@github.com:cnjimbo/cnjimbo.github.io.git # GitHub 源仓库地址
+          destination-repo:git@gitee.com:cnjimbo/cnjimbo.git # Gitee 目标仓库地址
 
       # 2、部署 Gitee Pages
       - name: Deploy Gitee Pages
