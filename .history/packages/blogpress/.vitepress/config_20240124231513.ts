@@ -4,7 +4,7 @@ import type { Theme } from '@sugarat/theme'
 import type { RSSOptions } from 'vitepress-plugin-rss'
 import { RssPlugin } from 'vitepress-plugin-rss'
 
-const baseUrl = ''
+const baseUrl = 'https://sugarat.top'
 const weekly = `${baseUrl}/weekly`
 const RSSWeekly: RSSOptions = {
   title: '视野修炼 - 技术周刊',
@@ -17,7 +17,7 @@ const RSSWeekly: RSSOptions = {
     return value.url.startsWith('/weekly/') && !value.url.endsWith('/weekly/')
   },
   image: 'https://img.cdn.sugarat.top/mdImg/MTcwNTIwMDEzNjM5Mw==705200136393',
-  favicon: '/favicon.ico',
+  favicon: 'https://sugarat.top/favicon.ico',
   copyright: 'Copyright (c) 2018-present, 粥里有勺糖',
   url: `${baseUrl}/weekly.rss`,
   icon: false,
@@ -31,7 +31,7 @@ const RSS: Theme.RSSOptions = {
   link: baseUrl,
   language: 'zh-cn',
   image: 'https://img.cdn.sugarat.top/mdImg/MTY3NDk5NTE2NzAzMA==674995167030',
-  favicon: '/favicon.ico',
+  favicon: 'https://sugarat.top/favicon.ico',
   copyright: 'Copyright (c) 2018-present, 粥里有勺糖',
   url: `${baseUrl}/feed.rss`,
   /**
@@ -163,7 +163,7 @@ const blogTheme = getThemeConfig({
   authorList: [
     {
       nickname: '粥里有勺糖',
-      url: '/aboutme.html',
+      url: 'https://sugarat.top/aboutme.html',
       des: '你的指尖,拥有改变世界的力量',
     },
   ],
@@ -202,7 +202,7 @@ export default defineConfig({
   extends: blogTheme,
   ignoreDeadLinks: true,
   sitemap: {
-    hostname: '',
+    hostname: 'https://sugarat.top',
   },
   lang: 'zh-cn',
   title: '粥里有勺糖',
