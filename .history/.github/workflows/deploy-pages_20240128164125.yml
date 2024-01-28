@@ -65,6 +65,8 @@ jobs:
       # 7、部署 GitHub Pages
       - name: Deploy GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.5.0
+
+
         with:
           BRANCH: pages
           FOLDER: packages/blogpress/.vitepress/dist

@@ -44,9 +44,9 @@ jobs:
           git config --global core.ignorecase false
       # 3、安装 PNPM
       - name: Setup PNPM
-        uses: pnpm/action-setup@v2.4.0
+        uses: pnpm/action-setup@v2
         with:
-          version: 8
+          version: latest
       # 4、安装 Node 环境
       - name: Setup Node
         uses: actions/setup-node@v4.0.1
@@ -64,7 +64,7 @@ jobs:
         run: pnpm build
       # 7、部署 GitHub Pages
       - name: Deploy GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4.5.0
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           BRANCH: pages
           FOLDER: packages/blogpress/.vitepress/dist
