@@ -9,7 +9,8 @@ const weekly = `${baseUrl}/weekly`
 const RSSWeekly: RSSOptions = {
   title: '视野修炼 - 技术周刊',
   baseUrl,
-  description: '每周会精选出一些 优质&有趣 的内容做推送（大前端为主），包含但不限于 优质文章，开源库，工具网站，有意思的知识',
+  description:
+    '每周会精选出一些 优质&有趣 的内容做推送（大前端为主），包含但不限于 优质文章，开源库，工具网站，有意思的知识',
   id: weekly,
   link: weekly,
   language: 'zh-cn',
@@ -84,15 +85,13 @@ const blogTheme = getThemeConfig({
       {
         nickname: '冴羽',
         des: '冴羽的JavaScript博客',
-        avatar:
-          'https://img.cdn.sugarat.top/mdImg/MTYyNjQ4MzkxMzIxMA==626483913210',
+        avatar: 'https://img.cdn.sugarat.top/mdImg/MTYyNjQ4MzkxMzIxMA==626483913210',
         url: 'https://github.com/mqyqingfeng/Blog',
       },
       {
         nickname: 'Linbudu',
         des: '未来的不可知，是前进的原动力',
-        avatar:
-          'https://linbudu-img-store.oss-cn-shenzhen.aliyuncs.com/img/48507806.jfif',
+        avatar: 'https://linbudu-img-store.oss-cn-shenzhen.aliyuncs.com/img/48507806.jfif',
         url: 'https://linbudu.top/',
       },
       {
@@ -190,11 +189,7 @@ const extraHead: any
             src: '//sdk.51.la/js-sdk-pro.min.js',
           },
         ],
-        [
-          'script',
-          {},
-          'LA.init({id: "Jgmg5avjAUvoyePS",ck: "Jgmg5avjAUvoyePS",hashMode: true})',
-        ],
+        ['script', {}, 'LA.init({id: "Jgmg5avjAUvoyePS",ck: "Jgmg5avjAUvoyePS",hashMode: true})'],
       ]
     : []
 
@@ -206,8 +201,7 @@ export default defineConfig({
   },
   lang: 'zh-cn',
   title: '粥里有勺糖',
-  description:
-    '粥里有勺糖的个人博客，记录随笔与学习笔记，大前端相关的知识，高频面试题，个人面经等',
+  description: '粥里有勺糖的个人博客，记录随笔与学习笔记，大前端相关的知识，高频面试题，个人面经等',
   head: [
     // <meta name="baidu-site-verification" content="codeva-b08avp82Uj" />
     ['meta', { name: 'baidu-site-verification', content: 'codeva-b08avp82Uj' }],
@@ -224,10 +218,7 @@ export default defineConfig({
     ],
     ['meta', { name: 'author', content: '粥里有勺糖' }],
     ['link', { rel: 'mask-icon', href: '/favicon.ico', color: '#ffffff' }],
-    [
-      'link',
-      { rel: 'apple-touch-icon', href: '/favicon.ico', sizes: '180x180' },
-    ],
+    ['link', { rel: 'apple-touch-icon', href: '/favicon.ico', sizes: '180x180' }],
     ...extraHead,
   ],
   vite: {
@@ -235,9 +226,7 @@ export default defineConfig({
       port: 4000,
       host: '0.0.0.0',
     },
-    plugins: [
-      RssPlugin(RSSWeekly),
-    ],
+    plugins: [RssPlugin(RSSWeekly)],
     optimizeDeps: {
       include: ['element-plus'],
       exclude: ['@sugarat/theme'],
@@ -260,8 +249,7 @@ export default defineConfig({
     lastUpdatedText: '上次更新于',
     logo: '/logo.png',
     editLink: {
-      pattern:
-        'https://github.com/ATQQ/sugar-blog/tree/master/packages/blogpress/:path',
+      pattern: 'https://github.com/ATQQ/sugar-blog/tree/master/packages/blogpress/:path',
       text: '去 GitHub 上编辑内容',
     },
     nav: [

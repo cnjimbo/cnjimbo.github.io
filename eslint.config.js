@@ -3,13 +3,11 @@ import antfu from '@antfu/eslint-config'
 
 // TODO DDL 迭代
 export default antfu({
-},
-{
+}, {
   ignores: [
-    'packages/theme/*.js'
-  ]
-},
-{
+    'packages/theme/*.js',
+  ],
+}, {
   rules: {
     '@typescript-eslint/ban-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
@@ -51,6 +49,6 @@ export default antfu({
     'ts/no-var-requires': 'off',
     'ts/no-require-imports': 'off',
     'ts/ban-ts-comment': 'off',
-    'vue/prefer-import-from-vue': 'off'
+    'vue/prefer-import-from-vue': 'off',
   },
 })
