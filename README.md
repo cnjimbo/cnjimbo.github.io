@@ -1,4 +1,4 @@
-<h1 align="center"> 粥里有勺糖 </h1>
+<h1 align="center"> 测试 </h1>
 <p align="center">你的指尖,拥有改变世界的力量</p>
 <p align="center">博客主题：<a href="https://theme.sugarat.top/" target="_blank">@sugarat/theme</a></p>
 
@@ -7,6 +7,7 @@
 ## 仓库介绍
 
 这是一个 monorepo 仓库，目前有如下四个部分
+
 * [blogpress](./packages/blogpress/)：博客内容本身
 * [@sugarat/theme](./packages/theme/)：博客分离出的通用VitePress主题
 * [创建主题模板项目CLI](./packages/create-theme/)：用于快速创建和作者一样风格的博客
@@ -14,7 +15,9 @@
 * [vitepress-plugin-rss](./packages/vitepress-plugin-rss/)：基于 feed 实现的 VitePress RSS 支持插件
 
 ## 快速创建博客模板
+
 支持多种包管理工具
+
 ```sh
 # With PNPM:
 pnpm create @sugarat/theme
@@ -28,10 +31,13 @@ yarn create @sugarat/theme
 # With Bun
 bun create @sugarat/theme
 ```
+
 ## 运行本项目
+
 这是一个 monorepo 仓库，博客基于[vitepress](https://vitepress.dev/)搭建，运行前需先安装依赖，构建主题包
 
 ① 先安装 `pnpm`
+
 ```sh
 npm i -g pnpm
 # 安装依赖
@@ -39,11 +45,13 @@ pnpm install
 ```
 
 ② 构建依赖包的npm包
+
 ```sh
 pnpm buildlib
 ```
 
 ③ 运行
+
 ```sh
 # 运行博客
 pnpm dev
@@ -53,11 +61,13 @@ pnpm dev:theme
 ```
 
 ## :pencil:关于内容
+
 大前端开发相关知识，包含但不限于前端
 
 记录面试中所遇的问题，并整理相关知识点，分模块进行了梳理
 
 ## :speak_no_evil:[关于笔者](./docs/aboutme.md)
+
 21年毕业，目前就职于美团，热爱大前端开发技术
 
 热爱开源，乐于分享
@@ -73,6 +83,7 @@ pnpm dev:theme
 * [掘金](https://juejin.im/user/1028798615918983)
 
 ## :phone:联系我
+
 如对博客内容，知识，排版等有疑问或者建议，欢迎邮件和我联系
 
 **邮箱:engineerzjl@foxmail.com**
@@ -84,6 +95,7 @@ pnpm dev:theme
 [![Star History Chart](https://api.star-history.com/svg?repos=atqq/sugar-blog&type=Date)](https://star-history.com/#atqq/sugar-blog&Date)
 
 ## Stargazers over time
+
 [![Stargazers over time](https://starchart.cc/ATQQ/sugar-blog.svg?variant=adaptive)](https://starchart.cc/ATQQ/sugar-blog)
 
 ## Project Status
