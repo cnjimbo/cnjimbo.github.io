@@ -1,4 +1,3 @@
-/* eslint-disable global-require */
 import { tabsMarkdownPlugin } from 'vitepress-plugin-tabs'
 import type { UserConfig } from 'vitepress'
 import type { Theme } from '../../composables/config/index'
@@ -43,7 +42,7 @@ export function registerMdPlugins(vpCfg: any, plugins: any[]) {
         plugins.forEach((plugin) => {
           plugin?.(...rest)
         })
-      }
+      },
     }
   }
 }
@@ -70,9 +69,9 @@ export function assignMermaid(config: any) {
     ...aliasObjectToArray({
       ...config.vite.resolve.alias,
       'cytoscape/dist/cytoscape.umd.js': 'cytoscape/dist/cytoscape.esm.js',
-      'mermaid': 'mermaid/dist/mermaid.esm.mjs'
+      'mermaid': 'mermaid/dist/mermaid.esm.mjs',
     }),
-    { find: /^dayjs\/(.*).js/, replacement: 'dayjs/esm/$1' }
+    { find: /^dayjs\/(.*).js/, replacement: 'dayjs/esm/$1' },
   ]
 }
 
@@ -86,9 +85,9 @@ export function patchMermaidPluginCfg(config: any) {
     ...aliasObjectToArray({
       ...config.vite.resolve.alias,
       'cytoscape/dist/cytoscape.umd.js': 'cytoscape/dist/cytoscape.esm.js',
-      'mermaid': 'mermaid/dist/mermaid.esm.mjs'
+      'mermaid': 'mermaid/dist/mermaid.esm.mjs',
     }),
-    { find: /^dayjs\/(.*).js/, replacement: 'dayjs/esm/$1' }
+    { find: /^dayjs\/(.*).js/, replacement: 'dayjs/esm/$1' },
   ]
 }
 
@@ -112,7 +111,7 @@ export function wrapperCfgWithMermaid(config: UserConfig<Theme.Config>): any {
       : {
           ...config,
           mermaid:
-            extendThemeConfig.mermaid === true ? {} : extendThemeConfig.mermaid
+          extendThemeConfig.mermaid === true ? {} : extendThemeConfig.mermaid,
         }
   assignMermaid(resultConfig)
   return resultConfig

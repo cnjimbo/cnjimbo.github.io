@@ -6,5 +6,5 @@ export default defineConfig({
   outDir: path.resolve(__dirname, './'),
   dts: true,
   external: ['vitepress'],
-  noExternal: ['vitepress-plugin-tabs']
+  noExternal: ['vitepress-plugin-tabs'],
 })

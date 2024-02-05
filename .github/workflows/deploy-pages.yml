@@ -34,40 +34,40 @@ jobs:
         with:
           # 默认只拉取分支最近一次的 commit，可能会导致一些文章的 GitInfo 变量无法获取，设为 0 代表拉取所有分支所有提交
           fetch-depth: 0
-      # 2、配置 Git
       # 主要是 quotePath，默认情况下，文件名包含中文时，git 会使用引号把文件名括起来，这会导致 action 中无法读取 :GitInfo 变量
       - name: Git Configuration
+        # 2、配置 Git
         run: |
           git config --global core.quotePath false
           git config --global core.autocrlf false
           git config --global core.safecrlf true
           git config --global core.ignorecase false
-      # 3、安装 PNPM
       - name: Setup PNPM
+        # 3、安装 PNPM
         uses: pnpm/action-setup@v2.4.0
         with:
           version: 8
-      # 4、安装 Node 环境
       - name: Setup Node
+        # 4、安装 Node 环境
         uses: actions/setup-node@v4.0.1
         with:
           node-version: 20
           registry-url: https://registry.npmjs.org
           cache: pnpm
-      # 5、安装依赖
       - name: Install dependencies
+        # 5、安装依赖
         run: pnpm -r i --frozen-lockfile
-      # 6、打包
       - name: Buildlib
+        # 6、打包
         run: pnpm buildlib
       - name: Build
         run: pnpm build
-      # 7、部署 GitHub Pages
       - name: Deploy GitHub Pages
+        # 7、部署 GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.5.0
         with:
-          BRANCH: pages
-          FOLDER: packages/blogpress/.vitepress/dist
+          branch: pages
+          folder: packages/blogpress/.vitepress/dist
 
   # 任务2: 部署 Gitee Pages
   deploy-gitee-pages:

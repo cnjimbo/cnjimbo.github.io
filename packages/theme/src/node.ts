@@ -1,11 +1,6 @@
 import type { UserConfig } from 'vitepress'
 import type { Theme } from './composables/config/index'
-import {
-  getMarkdownPlugins,
-  patchMermaidPluginCfg,
-  patchOptimizeDeps,
-  registerMdPlugins,
-} from './utils/node/mdPlugins'
+import { getMarkdownPlugins, patchMermaidPluginCfg, patchOptimizeDeps, registerMdPlugins } from './utils/node/mdPlugins'
 import { getArticles, patchVPThemeConfig } from './utils/node/theme'
 import { getVitePlugins, registerVitePlugins } from './utils/node/vitePlugins'
 
@@ -35,12 +30,12 @@ export function getThemeConfig(cfg?: Partial<Theme.BlogConfig>) {
     themeConfig: {
       blog: {
         pagesData,
-        ...cfg
+        ...cfg,
       },
       // 补充一些额外的配置用于继承
-      ...patchVPThemeConfig(cfg)
+      ...patchVPThemeConfig(cfg),
     },
-    ...extraVPConfig
+    ...extraVPConfig,
   }
 }
 
