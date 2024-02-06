@@ -62,11 +62,14 @@
     "@documate/vue": "^0.3.1",
     "@element-plus/icons-vue": "^2.3.1",
     "element-plus": "^2.5.3",
+    "esbuild-plugin-vue-next": "^0.1.4",
+    "esbuild-sass-plugin": "^3.0.0",
+    "eslint-plugin-vue": "^9.21.1",
     "javascript-stringify": "^2.1.0",
     "pagefind": "1.0.4",
     "sass": "^1.70.0",
     "typescript": "^5.3.3",
-    "vitepress": "1.0.0-rc.40",
+    "vitepress": "1.0.0-rc.41",
     "vue": "^3.4.15"
   }
 }
