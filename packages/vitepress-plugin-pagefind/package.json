@@ -47,7 +47,7 @@
     "vue-command-palette": "^0.2.3"
   },
   "devDependencies": {
-    "@types/node": "^20.11.5",
+    "@types/node": "^20.11.16",
     "vite": "^5.0.12",
     "vitepress": "1.0.0-rc.40"
   }

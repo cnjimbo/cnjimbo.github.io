@@ -25,5 +25,9 @@
 			"path": "packages/vitepress-plugin-rss"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"conventionalCommits.scopes": [
+			"tsup"
+		]
+	}
 }

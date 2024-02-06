@@ -11,8 +11,8 @@
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",
     "@sugarat/theme": "workspace:*",
-    "axios": "^1.6.5",
-    "element-plus": "^2.5.3",
+    "axios": "^1.6.7",
+    "element-plus": "^2.5.5",
     "vitepress": "1.0.0-rc.40",
     "vitepress-plugin-rss": "workspace:*",
     "vue": "^3.4.15"

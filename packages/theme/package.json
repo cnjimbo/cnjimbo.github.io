@@ -19,13 +19,20 @@
   ],
   "exports": {
     "./node": {
-      "types": "./node.d.ts",
-      "default": "./node.js"
+      "types": "./dist/node.d.ts",
+      "import": "./dist/node.mjs",
+      "require": "./dist/node.js"
     },
     "./package.json": "./package.json",
-    ".": "./src/index.ts"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
   },
-  "main": "src/index.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "files": [
     "node.d.ts",
     "node.js",
@@ -51,7 +58,7 @@
     "fast-glob": "^3.3.2",
     "gray-matter": "^4.0.3",
     "markdown-it-task-checkbox": "^1.0.6",
-    "mermaid": "^10.7.0",
+    "mermaid": "^10.8.0",
     "vitepress-plugin-mermaid": "2.0.13",
     "vitepress-plugin-pagefind": "workspace:*",
     "vitepress-plugin-rss": "workspace:*",
@@ -61,7 +68,7 @@
     "@documate/documate": "^0.2.1",
     "@documate/vue": "^0.3.1",
     "@element-plus/icons-vue": "^2.3.1",
-    "element-plus": "^2.5.3",
+    "element-plus": "^2.5.5",
     "esbuild-plugin-vue-next": "^0.1.4",
     "esbuild-sass-plugin": "^3.0.0",
     "eslint-plugin-vue": "^9.21.1",
