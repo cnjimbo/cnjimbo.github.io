@@ -12,7 +12,7 @@ import type { PagefindOption } from './type'
 export function getPagesData(
   srcDir: string,
   config: SiteConfig,
-  pluginSiteConfig?: any
+  pluginSiteConfig?: any,
 ) {
   const files = glob.sync(`${srcDir}/**/*.md`, { ignore: ['node_modules'] })
 
@@ -28,13 +28,13 @@ export function getPagesData(
       const fileContent = fs.readFileSync(file, 'utf-8')
 
       const { data: frontmatter, excerpt } = matter(fileContent, {
-        excerpt: true
+        excerpt: true,
       })
 
       // frontmatter
       const meta: Record<string, string | undefined> = {
         description: excerpt,
-        ...frontmatter
+        ...frontmatter,
       }
       if (!meta.title) {
         meta.title = getDefaultTitle(fileContent)
@@ -46,12 +46,12 @@ export function getPagesData(
       else {
         const timeZone = pluginSiteConfig?.timeZone ?? 8
         meta.date = formatDate(
-          new Date(`${new Date(meta.date).toUTCString()}+${timeZone}`)
+          new Date(`${new Date(meta.date).toUTCString()}+${timeZone}`),
         )
       }
       return {
         route,
-        meta
+        meta,
       }
     })
     .filter(v => v.meta.layout !== 'home')
@@ -172,7 +172,7 @@ const ignoreSelectors: string[] = [
   // 侧边栏内容
   'div.aside',
   // 标题锚点
-  'a.header-anchor'
+  'a.header-anchor',
 ]
 
 export const EXTERNAL_URL_RE = /^[a-z]+:/i
@@ -198,16 +198,16 @@ export const pluginSiteConfig: Partial<SiteConfig> = {
   buildEnd(ctx) {
     const pagefindOps: PagefindOption = (ctx as any).PagefindOption
     const ignore = [
-      ...new Set(ignoreSelectors.concat(pagefindOps?.excludeSelector || []))
+      ...new Set(ignoreSelectors.concat(pagefindOps?.excludeSelector || [])),
     ]
     const { log } = console
     log()
     log('=== pagefind: https://pagefind.app/ ===')
     const siteDir = path.join(
       process.argv.slice(2)?.[1] || '.',
-      '.vitepress/dist'
+      '.vitepress/dist',
     )
-    let command = `npx pagefind --site ${siteDir}`
+    let command = `pnpm pnpx pagefind --site ${siteDir}`
 
     if (ignore.length) {
       command += ` --exclude-selectors "${ignore.join(', ')}"`
@@ -223,7 +223,7 @@ export const pluginSiteConfig: Partial<SiteConfig> = {
     log(command)
     log()
     execSync(command, {
-      stdio: 'inherit'
+      stdio: 'inherit',
     })
   },
   transformHead(ctx) {
@@ -238,10 +238,10 @@ export const pluginSiteConfig: Partial<SiteConfig> = {
     })
     .catch(() => {
       // console.log('not load /pagefind/pagefind.js')
-    })`
-      ]
+    })`,
+      ],
     ]
-  }
+  },
 }
 
 export function chineseSearchOptimize(input: string) {

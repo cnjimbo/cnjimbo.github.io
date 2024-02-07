@@ -35,14 +35,14 @@
     "pc:version": "pnpm changeset version",
     "pcpe": "changeset pre enter beta",
     "pcpe:exit": "changeset pre enter exit",
-    "postinstall": "npx simple-git-hooks",
-    "preinstall": "npx only-allow pnpm"
+    "postinstall": "pnpm pnpx simple-git-hooks",
+    "preinstall": "pnpm pnpx only-allow pnpm"
   },
   "dependencies": {
     "pagefind": "^1.0.4"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "2.6.3",
+    "@antfu/eslint-config": "^2.6.4",
     "@changesets/cli": "^2.27.1",
     "@types/node": "^20.11.16",
     "eslint": "^8.56.0",

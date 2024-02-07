@@ -33,8 +33,8 @@
     "src"
   ],
   "scripts": {
-    "dev": "npx tsup src/index.ts --dts --watch --format esm,cjs",
-    "build": "npx tsup src/index.ts --dts --format esm,cjs"
+    "dev": "pnpm pnpx tsup src/index.ts --dts --watch --format esm,cjs",
+    "build": "pnpm pnpx tsup src/index.ts --dts --format esm,cjs"
   },
   "dependencies": {
     "@vue/shared": "^3.4.15",
@@ -49,6 +49,6 @@
   "devDependencies": {
     "@types/node": "^20.11.16",
     "vite": "^5.0.12",
-    "vitepress": "1.0.0-rc.40"
+    "vitepress": "1.0.0-rc.42"
   }
 }

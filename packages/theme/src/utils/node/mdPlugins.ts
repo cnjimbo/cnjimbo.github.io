@@ -1,5 +1,7 @@
 import { tabsMarkdownPlugin } from 'vitepress-plugin-tabs'
 import type { UserConfig } from 'vitepress'
+import { MermaidMarkdown, MermaidPlugin } from 'vitepress-plugin-mermaid'
+import taskCheckbox from 'markdown-it-task-checkbox'
 import type { Theme } from '../../composables/config/index'
 import { aliasObjectToArray } from './index'
 
@@ -14,7 +16,6 @@ export function getMarkdownPlugins(cfg?: Partial<Theme.BlogConfig>) {
   if (cfg) {
     cfg.mermaid = cfg?.mermaid ?? true
     if (cfg?.mermaid !== false) {
-      const { MermaidMarkdown } = require('vitepress-plugin-mermaid')
       markdownPlugin.push(MermaidMarkdown)
     }
   }
@@ -31,7 +32,7 @@ export function getMarkdownPlugins(cfg?: Partial<Theme.BlogConfig>) {
 
 export function taskCheckboxPlugin(ops: Theme.TaskCheckbox | boolean) {
   return (md: any) => {
-    md.use(require('markdown-it-task-checkbox'), ops)
+    md.use(taskCheckbox, ops)
   }
 }
 
@@ -58,7 +59,7 @@ export function assignMermaid(config: any) {
     config.vite = {}
   if (!config.vite.plugins)
     config.vite.plugins = []
-  const { MermaidPlugin } = require('vitepress-plugin-mermaid')
+
   config.vite.plugins.push(MermaidPlugin(config.mermaid))
   if (!config.vite.resolve)
     config.vite.resolve = {}

@@ -31,8 +31,8 @@
     "dist"
   ],
   "scripts": {
-    "dev": "npx tsup src/index.ts --dts --watch --format esm,cjs --external vitepress",
-    "build": "npx tsup src/index.ts --dts --format esm,cjs --external vitepress"
+    "dev": "pnpm pnpx tsup src/index.ts --dts --watch --format esm,cjs --external vitepress",
+    "build": "pnpm pnpx tsup src/index.ts --dts --format esm,cjs --external vitepress"
   },
   "dependencies": {
     "fast-glob": "^3.3.2",
@@ -41,6 +41,6 @@
   },
   "devDependencies": {
     "vite": "^5.0.12",
-    "vitepress": "1.0.0-rc.40"
+    "vitepress": "1.0.0-rc.42"
   }
 }

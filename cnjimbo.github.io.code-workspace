@@ -28,6 +28,7 @@
 	"settings": {
 		"conventionalCommits.scopes": [
 			"tsup"
-		]
+		],
+		"typescript.tsdk": "node_modules/typescript/lib"
 	}
 }

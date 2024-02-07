@@ -19,6 +19,11 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true
   },
-  "include": ["src", "types", "docs/.vitepress/*.ts", "docs/.vitepress/config.mts"],
+  "include": [
+    "src",
+    "types",
+    "docs/.vitepress/*.ts",
+    "docs/.vitepress/config.mts"
+  ],
   "exclude": ["node_modules", "dist", "node.d.ts"]
 }
