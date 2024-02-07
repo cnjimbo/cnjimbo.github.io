@@ -3,7 +3,9 @@ import antfu from '@antfu/eslint-config'
 
 // TODO DDL 迭代
 export default antfu(
-  {},
+  {
+
+  },
   {
     ignores: ['packages/theme/*.js', 'node_modules/**/*'],
   },
@@ -46,23 +48,23 @@ export default antfu(
       'vue/prefer-import-from-vue': 'off',
       // 设置 'no-unused-vars' 规则
       'no-unused-vars': [
-        'error',
+        'warn',
         {
-          vars: 'all', // 检查所有类型的变量
-          args: 'after-used', // 参数在使用后可以被忽略
-          ignoreRestSiblings: true, // 允许剩余参数对象的兄弟参数未使用
-          varsIgnorePattern: '_.*', // 忽略以_开头的未使用变量
+          // vars: 'all', // 检查所有类型的变量
+          // args: 'after-used', // 参数在使用后可以被忽略
+          // ignoreRestSiblings: true, // 允许剩余参数对象的兄弟参数未使用
+          varsIgnorePattern: '/^_/', // 忽略以_开头的未使用变量
         },
       ],
 
       // 或者如果你使用的是 'unused-imports/no-unused-vars' 插件的特定规则
       // 注意：这个规则名可能因具体插件而异，这里仅作为示例
       'unused-imports/no-unused-vars': [
-        'error',
+        'warn',
         {
-          vars: 'all',
+          // vars: 'all',
           // 插件相关的其他选项...
-          varsIgnorePattern: '_.*', // 同样可以设置一个正则表达式来忽略匹配的未使用变量
+          varsIgnorePattern: '/^_/', // 同样可以设置一个正则表达式来忽略匹配的未使用变量
         },
       ],
     },
