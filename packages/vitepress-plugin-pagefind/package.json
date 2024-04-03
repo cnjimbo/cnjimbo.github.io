@@ -48,7 +48,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.11.5",
-    "vite": "^5.0.12",
+    "vite": "^5.0.13",
     "vitepress": "1.0.0-rc.40"
   }
 }
