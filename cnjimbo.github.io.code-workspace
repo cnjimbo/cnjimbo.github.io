@@ -21,12 +21,7 @@
 		"conventionalCommits.scopes": [
 			"workspace"
 		],
-		"workbench.colorCustomizations": {
-			"statusBar.background": "#17d3e1",
-			"statusBar.foreground": "#000000",
-			"tab.activeBorder": "#17d3e1",
-			"sideBarTitle.foreground": "#17d3e1"
-		},
+		"workbench.colorCustomizations": {},
 		"ColorfulMonorepo.workspaces.collection": [
 			{
 				"path": "c:\\AppData\\code-vPress\\cnjimbo.github.io",
@@ -67,6 +62,10 @@
 			"**/node_modules": true,
 			"**/.history": true
 		},
-		"explorerExclude.backup": {}
+		"explorerExclude.backup": {},
+		"editor.tokenColorCustomizations": {
+			"comments": "",
+			"textMateRules": []
+		}
 	}
 }
