@@ -78,7 +78,6 @@ function simpleConst2Var(code: string) {
 ```
 ![图片](https://img.cdn.sugarat.top/mdImg/MTY2NjQzNTk5MjcyMg==666435992722)
 
-
 利用`replace`方法，几行代码就能搞定
 ```ts
 function traverseScript(htmlCode: string, transformFn: (v: string) => string) {
@@ -108,7 +107,7 @@ const htmlAST = $(htmlCode, { parseOptions: { language: 'html' } })
 遍历`<script>`节点，其中`$scriptNode`节点结构如下，可以直接使用`attr`方法进行值的`存取操作`
 
 ```ts
-htmlAST.find(`<script>$_$</script>`).each(($scriptNode) => {
+htmlAST.find('<script>$_$</script>').each(($scriptNode) => {
   const origin = $scriptNode.attr('content.value.content')
   $scriptNode.attr('content.value.content', transformFn(origin.toString()))
 })
@@ -119,7 +118,7 @@ htmlAST.find(`<script>$_$</script>`).each(($scriptNode) => {
 ```ts
 function traverseScript(htmlCode: string, transformFn: (v: string) => string) {
   const htmlAST = $(htmlCode, { parseOptions: { language: 'html' } })
-  htmlAST.find(`<script>$_$</script>`).each(($scriptNode) => {
+  htmlAST.find('<script>$_$</script>').each(($scriptNode) => {
     const origin = $scriptNode.attr('content.value.content')
     $scriptNode.attr('content.value.content', transformFn(origin.toString()))
   })
@@ -152,7 +151,6 @@ const htmlAST = AST.html
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTY2NjUxMjc4MTc4MQ==666512781781)
 
-
 同时提供了一个预处理方法`preprocess`，可以实现`script`,`style`与其他标签内容的遍历与修改，最后返回处理后的结果
 
 使用示例如下，其返回值是`promise`
@@ -179,7 +177,7 @@ function traverseScript(htmlCode: string, transformFn: (v: string) => string) {
         }
       }
     })
-    .then((v) => v.code)
+    .then(v => v.code)
 }
 ```
 
@@ -201,8 +199,8 @@ function traverseScript(htmlCode: string, transformFn: (v: string) => string) {
 import posthtml, { Node } from 'posthtml'
 
 const result = posthtml()
-    .use(posthtmlPlugin)
-    .process(htmlCode, { sync: true }).html
+  .use(posthtmlPlugin)
+  .process(htmlCode, { sync: true }).html
 ```
 
 这里就简单实现一下`posthtmlScriptContentTransform`
@@ -277,7 +275,7 @@ export function transformCode(
 ```ts
 const hello = 'hello'
 // 开启混淆后结果是
-var l="hello";
+const l = 'hello'
 ```
 ```ts
 import { minifySync } from '@swc/core'
@@ -331,12 +329,12 @@ export function posthtmlSWCMinify(ops?: JsMinifyOptions) {
 import posthtml from 'posthtml'
 
 posthtml()
-      .use(posthtmlSWCTransform())
-      .process(htmlCode, { sync: true })
+  .use(posthtmlSWCTransform())
+  .process(htmlCode, { sync: true })
 
 posthtml()
-      .use(posthtmlSWCMinify())
-      .process(htmlCode, { sync: true })
+  .use(posthtmlSWCMinify())
+  .process(htmlCode, { sync: true })
 ```
 
 至此对`HTML`中inlineJS的提取与使用`SWC`处理的方法进行了较为详细的阐述，下面就是通过CLI组合能力，然后对外提供使用。
@@ -427,4 +425,3 @@ ijs transform __test__/test.html --minify
 文章中涉及示例代码以及工具完整源码见 [GitHub](https://github.com/ATQQ/tools/tree/main/packages/cli/inlinejs-transform)
 
 如内容有误还请评论区斧正，读者有其它💡想法可评论&私信交流探讨。
-

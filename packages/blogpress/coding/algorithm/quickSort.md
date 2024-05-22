@@ -32,77 +32,76 @@ categories:
  * @param {number[]} nums
  * @return {number[]}
  */
-var sortArray = function (nums) {
-    const swap = (arr, i, j) => {
-        [arr[i], arr[j]] = [arr[j], arr[i]]
-    }
+const sortArray = function (nums) {
+  const swap = (arr, i, j) => {
+    [arr[i], arr[j]] = [arr[j], arr[i]]
+  }
 
-    const _quickSort = (arr, left, right) => {
-        if (left >= right) {
-            return
-        }
-        let o = left
-        let i = left, j = right
-        while (left !== right) {
-            // 先从右往左动
-            while (arr[right] >= arr[o] && left < right) {
-                right--
-            }
-            while (arr[left] <= arr[o] && left < right) {
-                left++
-            }
-            if (left < right) {
-                swap(arr, left, right)
-            }
-        }
-        swap(arr, o, left)
-        _quickSort(arr, i, left - 1)
-        _quickSort(arr, left + 1, j)
+  const _quickSort = (arr, left, right) => {
+    if (left >= right) {
+      return
     }
-    _quickSort(nums, 0, nums.length - 1)
-    return nums
-};
+    const o = left
+    const i = left; const j = right
+    while (left !== right) {
+      // 先从右往左动
+      while (arr[right] >= arr[o] && left < right) {
+        right--
+      }
+      while (arr[left] <= arr[o] && left < right) {
+        left++
+      }
+      if (left < right) {
+        swap(arr, left, right)
+      }
+    }
+    swap(arr, o, left)
+    _quickSort(arr, i, left - 1)
+    _quickSort(arr, left + 1, j)
+  }
+  _quickSort(nums, 0, nums.length - 1)
+  return nums
+}
 ```
 ## 填坑法
 原理参考-[漫画：什么是快速排序？（完整版）](https://www.cxyxiaowu.com/5262.html)
 ```js
 function quickSort(data) {
-    const _quickSort = (arr, left, right) => {
-        if (left >= right) {
-            return
-        }
-        let o = arr[left] // 选择的基数
-        let oIndex = left // 当前的坑位置
-        const i = left
-        const j = right
-        while (left < right) {
-            while (left < right) {
-                if (arr[right] < o) {
-                    arr[oIndex] = arr[right] // 填坑
-                    oIndex = right // 新坑
-                    left++
-                    break
-                }
-                right--
-            }
-            while (left < right) {
-                if (arr[left] > o) {
-                    arr[oIndex] = arr[left] // 填坑
-                    oIndex = left // 新坑
-                    right--
-                    break
-                }
-                left++
-            }
-        }
-
-        arr[oIndex] = o // 基数入坑
-        // 开始下一轮
-        _quickSort(arr, i, oIndex - 1)
-        _quickSort(arr, oIndex + 1, j)
+  const _quickSort = (arr, left, right) => {
+    if (left >= right) {
+      return
     }
-    _quickSort(data, 0, data.length - 1)
-    return data
+    const o = arr[left] // 选择的基数
+    let oIndex = left // 当前的坑位置
+    const i = left
+    const j = right
+    while (left < right) {
+      while (left < right) {
+        if (arr[right] < o) {
+          arr[oIndex] = arr[right] // 填坑
+          oIndex = right // 新坑
+          left++
+          break
+        }
+        right--
+      }
+      while (left < right) {
+        if (arr[left] > o) {
+          arr[oIndex] = arr[left] // 填坑
+          oIndex = left // 新坑
+          right--
+          break
+        }
+        left++
+      }
+    }
+
+    arr[oIndex] = o // 基数入坑
+    // 开始下一轮
+    _quickSort(arr, i, oIndex - 1)
+    _quickSort(arr, oIndex + 1, j)
+  }
+  _quickSort(data, 0, data.length - 1)
+  return data
 }
 ```
-

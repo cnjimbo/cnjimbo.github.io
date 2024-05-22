@@ -47,16 +47,16 @@ const { day } = cmdObj
   * 这样其余几个可选参数指令也可直接复用
 
 ```js
-const output = (s, e) => {
+function output(s, e) {
   const outPutPath = getFilePath(cwd, `report-${outFileName}.md`)
   const json = getJSONByRange(content, s, e)
   if (json.length === 0) {
-      console.log('没有符合条件的数据');
-      return
+    console.log('没有符合条件的数据')
+    return
   }
   const data = outPutReport(json)
   createFile(outPutPath, data, false)
-  console.log(`导出成功`);
+  console.log('导出成功')
 }
 ```
 
@@ -65,7 +65,7 @@ const output = (s, e) => {
 
 ```js
 if (day) {
-    return output(day, day)
+  return output(day, day)
 }
 ```
 #### 具体到月
@@ -82,22 +82,22 @@ if (day) {
 2. 其中月是`从0开始计算`："1-12"分别对应"0-11"
 3. 当日部分的参数传入0时，表示上月最后一天的日期
 4. 此时再调用`getDate`方法获取日期，则获取到目标月份的天数
-  
+
 例如：2021-08月的天数：
 * `new Date(2021,8,0)`
 * 标识`2021年9月`开始的前一天日期，即`2021年8月31日`
 * `getDate`返回结果即为`31`
 
 ```js
-const days = new Date(year,month,0).getDate()
+const days = new Date(year, month, 0).getDate()
 ```
 
 导出逻辑如下：
 * 今年的年份通过`new Date().getFullYear()`获取
 ```js
 if (month) {
-    const year = new Date().getFullYear()
-    return output(`${year}-${month}-01`, `${year}-${month}-${new Date(year, month, 0).getDate()}`)
+  const year = new Date().getFullYear()
+  return output(`${year}-${month}-01`, `${year}-${month}-${new Date(year, month, 0).getDate()}`)
 }
 ```
 
@@ -120,7 +120,7 @@ if (year) {
 只需要将上述两种导出方式的逻辑做一个合并即可，逻辑简单
 ```js
 if (year && month) {
-    return output(`${year}-${month}-01`, `${year}-${month}-${new Date(year, month, 0).getDate()}`)
+  return output(`${year}-${month}-01`, `${year}-${month}-${new Date(year, month, 0).getDate()}`)
 }
 ```
 
@@ -153,15 +153,15 @@ timec task [name]
 配置文件结构如下：
 ```json
 {
-    "recordFilepath": "",
-    "tasks": [],
-    "defaultTaskIdx": -1,
-    "thing": {
-        "name": "",
-        "startTime": "2021-01-01",
-        "endTime": "2021-12-31",
-        "pauseTime": "2021-12-26"
-    }
+  "recordFilepath": "",
+  "tasks": [],
+  "defaultTaskIdx": -1,
+  "thing": {
+    "name": "",
+    "startTime": "2021-01-01",
+    "endTime": "2021-12-31",
+    "pauseTime": "2021-12-26"
+  }
 }
 ```
 
@@ -174,12 +174,12 @@ timec task [name]
 /**
  * 创建任务、切换任务、查看任务列表
  */
-commander.command("task [name]")
-    .alias('t')
-    .description('check tasks/add task/checkout task')
-    .action((name) => {
-        // ...code 后文介绍
-    })
+commander.command('task [name]')
+  .alias('t')
+  .description('check tasks/add task/checkout task')
+  .action((name) => {
+    // ...code 后文介绍
+  })
 ```
 
 配置文件的路径
@@ -205,32 +205,33 @@ const config = require(configPath)
 ```js
 const { tasks, defaultTaskIdx } = config
 const idx = tasks.findIndex(v => v === name)
-if(!name){
-    if(tasks.length===0){
-        console.log('no tasks, you can use command add task');
-        console.log('timec task [name]');
-        return 
-    }
-    tasks.forEach((v,i)=>{
-        let mark = '[ ]'
-        if(i===+defaultTaskIdx){
-            mark = '[*]'
-        }
-        console.log(mark,v);
-    })
+if (!name) {
+  if (tasks.length === 0) {
+    console.log('no tasks, you can use command add task')
+    console.log('timec task [name]')
     return
+  }
+  tasks.forEach((v, i) => {
+    let mark = '[ ]'
+    if (i === +defaultTaskIdx) {
+      mark = '[*]'
+    }
+    console.log(mark, v)
+  })
+  return
 }
 if (idx === -1) {
-    tasks.push(name)
-    if(tasks.length===1){
-        config.defaultTaskIdx = 0
-    }
-    console.log('add task success');
-}else{
-    config.defaultTaskIdx = idx
-    console.log('now use task：',tasks[idx]);
+  tasks.push(name)
+  if (tasks.length === 1) {
+    config.defaultTaskIdx = 0
+  }
+  console.log('add task success')
 }
-writeFileSync(configPath,JSON.stringify(config))
+else {
+  config.defaultTaskIdx = idx
+  console.log('now use task：', tasks[idx])
+}
+writeFileSync(configPath, JSON.stringify(config))
 ```
 这个指令就开发完了，时间仓促，代码质量可能不会太高
 
@@ -253,4 +254,3 @@ TODO：后续优化
 本系列会不断的更新迭代，直至产品初代完成
 
 * [仓库地址](https://github.com/ATQQ/time-control)
-

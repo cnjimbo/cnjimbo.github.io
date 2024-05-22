@@ -7,7 +7,7 @@ sticky: 5
 ---
 
 # 文章配置
-介绍常用的一些 官方默认主题 提供的能力: 
+介绍常用的一些 官方默认主题 提供的能力:
 * https://vitepress.dev/guide/markdown
 * https://vitepress.dev/reference/site-config
 

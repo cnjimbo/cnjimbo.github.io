@@ -43,7 +43,7 @@ sticky: 1
 
 * [reco](https://vuepress-theme-reco.recoluan.com/)
 * [掘金](https://juejin.cn/)
-* [surmon](https://surmon.me/) 
+* [surmon](https://surmon.me/)
 * [@vue/theme](https://github.com/vuejs/theme)
 * [vitest](https://vitest.dev/)
 * [element-plus](https://element-plus.gitee.io/zh-CN/)
@@ -57,7 +57,6 @@ sticky: 1
 * 主题包：[@sugarat/theme](https://www.npmjs.com/package/@sugarat/theme)
 * 项目地址：https://github.com/ATQQ/sugar-blog/tree/master/packages/theme
 * 作者博客地址：https://sugarat.top
-
 
 ## 最后
 如果你有建议的 功能&想法 欢迎 私信&评论区 交流

@@ -52,14 +52,12 @@ emm...，检索了一圈记忆中除了 `VsCode` 好像还真没有这种东西�
 
 不过在使用之前先看了一下最近阿里开源的[OpenSumi](https://opensumi.com/zh)，看之前以为是个可直接用的`NPM`包，文档翻了半天，只给了个demo，emm 拉下来，果然如官方预料 卡在了 `yarn install`，感觉有一定上手成本，先不看了
 
-
 ### 后端部分
 思考了一下都是简单的`CRUD`场景，存储和鉴权`MongoDB`与`Redis`感觉就够了（也没有配置成本，安装即用）
 
 服务端框架部分就直接拿自己的之前写的玩具[flash-wolves](https://github.com/ATQQ/flash-wolves)开整
 
 接下来就是组装了
-
 
 ## 实现
 ### 项目搭建
@@ -70,7 +68,7 @@ emm...，检索了一圈记忆中除了 `VsCode` 好像还真没有这种东西�
 布局也比较简单
 ```html
 <header>工具条...</header>
-<!-- 主体内容 --> 
+<!-- 主体内容 -->
 <main>
     <Note />
     <Code />
@@ -84,56 +82,56 @@ emm...，检索了一圈记忆中除了 `VsCode` 好像还真没有这种东西�
 
 直接[参照官方文档](https://editorjs.io/configuration)，CV起来就能运行，这里仅仅贴几个关键部分（避免代码占用太大篇幅，降低文章可读性）
 ```ts
- const editor = new EditorJS({
-    holder: 'note-editor',
-    placeholder: '在这里开始记录你的笔记',
-    onReady: () => {
-      console.log('Editor.js is ready to work!')
-      // 内容初始化
-      // 下方拿到的outputData直接塞进来就行
-      // 可以在页面加载的时候从数据库取历史数据进行展示
-      editor.render(xxx)
-    },
-    onChange: (api, e) => {
-      editor
-        .save()
-        .then((outputData) => {
-            // 取得编写的内容
-            // 可以将这个内存存起来
-            // 在合适的时机调接口存入数据库即可
-        })
-        .catch((error) => {
-          console.log('Saving failed: ', error)
-        })
-    },
-    tools: {
-      // 图片处理
-      image: {
-        class: Image,
-        config: {
-          uploader: {
-            uploadByFile(file: File) {
-              // 需要自己处理图片上传逻辑 
-              // 按结构进行返回即可
-              return {
-                success: 1,
-                file: {
-                  url: 'https://img.cdn.sugarat.top/online-editor/6302403434e52962875fbf3e/1661169105550/pupza3m486'
-                }
+const editor = new EditorJS({
+  holder: 'note-editor',
+  placeholder: '在这里开始记录你的笔记',
+  onReady: () => {
+    console.log('Editor.js is ready to work!')
+    // 内容初始化
+    // 下方拿到的outputData直接塞进来就行
+    // 可以在页面加载的时候从数据库取历史数据进行展示
+    editor.render(xxx)
+  },
+  onChange: (api, e) => {
+    editor
+      .save()
+      .then((outputData) => {
+        // 取得编写的内容
+        // 可以将这个内存存起来
+        // 在合适的时机调接口存入数据库即可
+      })
+      .catch((error) => {
+        console.log('Saving failed: ', error)
+      })
+  },
+  tools: {
+    // 图片处理
+    image: {
+      class: Image,
+      config: {
+        uploader: {
+          uploadByFile(file: File) {
+            // 需要自己处理图片上传逻辑
+            // 按结构进行返回即可
+            return {
+              success: 1,
+              file: {
+                url: 'https://img.cdn.sugarat.top/online-editor/6302403434e52962875fbf3e/1661169105550/pupza3m486'
               }
             }
           }
         }
-      },
-    // 一系列官方插件
-      header: Header,
-      list: List,
-    //   ...
+      }
     },
-    i18n: {
-      // 国际化相关配置
-    }
-  })
+    // 一系列官方插件
+    header: Header,
+    list: List,
+    //   ...
+  },
+  i18n: {
+    // 国际化相关配置
+  }
+})
 ```
 
 ### 代码编辑
@@ -155,7 +153,7 @@ const htmlEditor = monaco.editor.create(
 // 如果数据是异步从接口拿，那么可以调用setValue方法，设置内容
 setTimeout(() => {
   htmlEditor.setValue('<h2>hello world</h2>')
-}, 2000);
+}, 2000)
 
 // 在这个方法监听编辑器的内容变动
 htmlEditor.onDidChangeModelContent(() => {
@@ -166,7 +164,7 @@ htmlEditor.onDidChangeModelContent(() => {
 
 当然笔者这里用的Vite + Vue3，**这里还有几个坑**
 
-导入worker，参考[尤大给的示例](https://github.com/vitejs/vite/discussions/1791#discussioncomment-321046) 
+导入worker，参考[尤大给的示例](https://github.com/vitejs/vite/discussions/1791#discussioncomment-321046)
 >
 ```ts
 // main.ts
@@ -202,14 +200,13 @@ watchEffect(() => {
     toRaw(htmlEditor.value).setValue(props.html)
   }
 })
-onMounted(()=>{
+onMounted(() => {
   // 初始化实例
-  htmlEditor.value = monaco.editor.create({...ops})
-    toRaw(htmlEditor.value).onDidChangeModelContent(() => {
+  htmlEditor.value = monaco.editor.create({ ...ops })
+  toRaw(htmlEditor.value).onDidChangeModelContent(() => {
     console.log(toRaw(htmlEditor.value).getValue())
   })
 })
-
 ```
 ### 代码渲染
 这里使用`iframe`承载内容，期望iframe里页面最终结构如下
@@ -268,44 +265,44 @@ iframe {
 // 一系列用户编写的代码
 const cssCode = `h1{
     color:red;
-}`;
-const htmlCode = `<h1>hello world</h1>`;
-const jsCode = `console.log("hello world")`;
+}`
+const htmlCode = '<h1>hello world</h1>'
+const jsCode = 'console.log("hello world")'
 
 // 3个dom
-const $style = document.createElement("style");
-$style.innerHTML = cssCode;
+const $style = document.createElement('style')
+$style.innerHTML = cssCode
 
-const $html = document.createElement("div");
-$html.innerHTML = htmlCode;
+const $html = document.createElement('div')
+$html.innerHTML = htmlCode
 
-const $userScript = document.createElement("script");
-$userScript.textContent = jsCode;
+const $userScript = document.createElement('script')
+$userScript.textContent = jsCode
 ```
 
 紧接着创建`iframe`将其装进去 就okk了
 ```ts
-const $iframe = document.createElement("iframe");
-$iframe.addEventListener("load", () => {
-  $iframe.contentDocument?.head.append($style);
-  $iframe.contentDocument.body.append($html, $userScript);
-});
+const $iframe = document.createElement('iframe')
+$iframe.addEventListener('load', () => {
+  $iframe.contentDocument?.head.append($style)
+  $iframe.contentDocument.body.append($html, $userScript)
+})
 
-document.body.append($iframe);
+document.body.append($iframe)
 ```
 
 如果要引入eruda，咱们需要先等eruda加载完再插入咱们得`script`，不然捕获不到代码`console`
 
 详细如下
 ```ts
-$iframe.addEventListener("load", () => {
-  $iframe.contentDocument.head.append($style);
+$iframe.addEventListener('load', () => {
+  $iframe.contentDocument.head.append($style)
 
   // eruda cdn资源
-  const $eruda = document.createElement("script");
-  $eruda.src = "//cdn.jsdelivr.net/npm/eruda";
+  const $eruda = document.createElement('script')
+  $eruda.src = '//cdn.jsdelivr.net/npm/eruda'
   // 打开面板的代码
-  const debugExec = document.createElement("script");
+  const debugExec = document.createElement('script')
   debugExec.textContent = `window.eruda.init({
       defaults: {
         displaySize: 25,
@@ -313,14 +310,14 @@ $iframe.addEventListener("load", () => {
       }
     })
     eruda.show()
-    `;
-  $iframe.contentDocument?.body.append($eruda);
+    `
+  $iframe.contentDocument?.body.append($eruda)
 
   // eruda 加载完再加载HTML与用户脚本
   $eruda.onload = function () {
-    $iframe.contentDocument?.body.append(debugExec, $html, $userScript);
-  };
-});
+    $iframe.contentDocument?.body.append(debugExec, $html, $userScript)
+  }
+})
 ```
 
 ### 代码格式化
@@ -379,5 +376,3 @@ export function formatCSS(css: string) {
 成签约作者了，后面几个月输出可能会稍微频繁一点了，到时候就打扰了，大家不要吝啬3连
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTY2MjE3MTI4OTg5OA==662171289898)
-
-

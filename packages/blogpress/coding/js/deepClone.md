@@ -38,36 +38,39 @@ categories:
 
 ```js
 function deepClone(obj) {
-    if (!isObject(obj)) return obj
-    if (Array.isArray(obj)) {
-        const newObj = []
-        for (const v of obj) {
-            newObj.push(isObject(v) ? deepClone(v) : v)
-        }
-        return newObj
+  if (!isObject(obj))
+    return obj
+  if (Array.isArray(obj)) {
+    const newObj = []
+    for (const v of obj) {
+      newObj.push(isObject(v) ? deepClone(v) : v)
     }
-    if (isObject(obj)) {
-        const newObj = {}
-        Object.keys(obj).forEach(k => {
-            const v = obj[k]
-            newObj[k] = isObject(v) ? deepClone(v) : v
-        })
-        return newObj
-    }
+    return newObj
+  }
+  if (isObject(obj)) {
+    const newObj = {}
+    Object.keys(obj).forEach((k) => {
+      const v = obj[k]
+      newObj[k] = isObject(v) ? deepClone(v) : v
+    })
+    return newObj
+  }
 }
 
 const a = {
-    name: 'xiaoming', id: 123131, info: {
-        bd: '2020-01-01',
-        cards: [{
-            q: 'q',
-            w: [1, 2, 3],
-            e: { c: 'c' }
-        }]
-    }
+  name: 'xiaoming',
+  id: 123131,
+  info: {
+    bd: '2020-01-01',
+    cards: [{
+      q: 'q',
+      w: [1, 2, 3],
+      e: { c: 'c' }
+    }]
+  }
 }
 
-console.log(JSON.stringify(deepClone(a)));
+console.log(JSON.stringify(deepClone(a)))
 ```
 
 ## 2. 解决循环引用
@@ -79,81 +82,85 @@ console.log(JSON.stringify(deepClone(a)));
 
 ```js
 function deepClone(obj) {
-    const map = new WeakMap()
+  const map = new WeakMap()
 
-    const dp = (obj) => {
-        if (!isObject(obj)) return obj
-        // 解决循环引用
-        if (map.has(obj)) return map.get(obj)
-        map.set(obj, Array.isArray(obj) ? [] : {})
+  const dp = (obj) => {
+    if (!isObject(obj))
+      return obj
+    // 解决循环引用
+    if (map.has(obj))
+      return map.get(obj)
+    map.set(obj, Array.isArray(obj) ? [] : {})
 
-        if (Array.isArray(obj)) {
-            const newObj = []
-            for (const v of obj) {
-                newObj.push(isObject(v) ? dp(v) : v)
-            }
-            return newObj
-        }
-        if (isObject(obj)) {
-            const newObj = {}
-            Object.keys(obj).forEach(k => {
-                const v = obj[k]
-                newObj[k] = isObject(v) ? dp(v) : v
-            })
-            return newObj
-        }
+    if (Array.isArray(obj)) {
+      const newObj = []
+      for (const v of obj) {
+        newObj.push(isObject(v) ? dp(v) : v)
+      }
+      return newObj
     }
-    return dp(obj)
+    if (isObject(obj)) {
+      const newObj = {}
+      Object.keys(obj).forEach((k) => {
+        const v = obj[k]
+        newObj[k] = isObject(v) ? dp(v) : v
+      })
+      return newObj
+    }
+  }
+  return dp(obj)
 }
 
-const b = {}, c = {}
+const b = {}; const c = {}
 b.next = c
 c.next = b
 
-console.log(deepClone(b)); // { next: { next: {} } }
+console.log(deepClone(b)) // { next: { next: {} } }
 ```
 
 ## 3. 保持原对象的引用的特性
 ```js
 function deepClone(obj) {
-    const map = new WeakMap()
+  const map = new WeakMap()
 
-    const dp = (obj) => {
-        if (!isObject(obj)) return obj
-        // 已经clone过的对象直接返回
-        if (map.has(obj)) return map.get(obj)
-        // 解决循环引用
-        map.set(obj, Array.isArray(obj) ? [] : {})
+  const dp = (obj) => {
+    if (!isObject(obj))
+      return obj
+    // 已经clone过的对象直接返回
+    if (map.has(obj))
+      return map.get(obj)
+    // 解决循环引用
+    map.set(obj, Array.isArray(obj) ? [] : {})
 
-        if (Array.isArray(obj)) {
-            const newObj = []
-            for (const v of obj) {
-                newObj.push(isObject(v) ? dp(v) : v)
-            }
-            // 将已拷贝后的对象存储起来
-            map.set(obj, newObj)
-            return newObj
-        }
-        if (isObject(obj)) {
-            const newObj = {}
-            Object.keys(obj).forEach(k => {
-                const v = obj[k]
-                newObj[k] = isObject(v) ? dp(v) : v
-            })
-            // 将已拷贝后的对象存储起来
-            map.set(obj, newObj)
-            return newObj
-        }
+    if (Array.isArray(obj)) {
+      const newObj = []
+      for (const v of obj) {
+        newObj.push(isObject(v) ? dp(v) : v)
+      }
+      // 将已拷贝后的对象存储起来
+      map.set(obj, newObj)
+      return newObj
     }
-    return dp(obj)
+    if (isObject(obj)) {
+      const newObj = {}
+      Object.keys(obj).forEach((k) => {
+        const v = obj[k]
+        newObj[k] = isObject(v) ? dp(v) : v
+      })
+      // 将已拷贝后的对象存储起来
+      map.set(obj, newObj)
+      return newObj
+    }
+  }
+  return dp(obj)
 }
 
 const obj = { a: 1 }
 const t3 = { a: obj, d: obj, f: { g: obj } }
 const tt3 = deepClone(t3)
-console.log(tt3); // { a: { a: 1 }, d: { a: 1 }, f: { g: { a: 1 } } }
-console.log(tt3.a === tt3.d); // true
-console.log(tt3.a === tt3.f.g); // true
+console.log(tt3) // { a: { a: 1 }, d: { a: 1 }, f: { g: { a: 1 } } }
+console.log(tt3.a === tt3.d) // true
+console.log(tt3.a === tt3.f.g) // true
 ```
 
 ## 4. 拷贝Symbol
@@ -168,7 +175,7 @@ console.log(tt3.a === tt3.f.g); // true
 综上
 
 ```js
-Reflect.ownKeys(target) 
+Reflect.ownKeys(target)
 // 等价于
 Object.getOwnPropertyNames(target).concat(Object.getOwnPropertySymbols(target))
 ```
@@ -177,55 +184,56 @@ Object.getOwnPropertyNames(target).concat(Object.getOwnPropertySymbols(target))
 
 ```js
 function deepClone(obj) {
-    const map = new WeakMap()
+  const map = new WeakMap()
 
-    const dp = (obj) => {
-        if (!isObject(obj)) return obj
-        // 已经clone过的对象直接返回
-        if (map.has(obj)) return map.get(obj)
-        // 解决循环引用
-        map.set(obj, Array.isArray(obj) ? [] : {})
+  const dp = (obj) => {
+    if (!isObject(obj))
+      return obj
+    // 已经clone过的对象直接返回
+    if (map.has(obj))
+      return map.get(obj)
+    // 解决循环引用
+    map.set(obj, Array.isArray(obj) ? [] : {})
 
-        if (Array.isArray(obj)) {
-            const newObj = []
-            for (const v of obj) {
-                newObj.push(isObject(v) ? dp(v) : v)
-            }
-            // 将已拷贝后的对象存储起来
-            map.set(obj, newObj)
-            return newObj
-        }
-        if (isObject(obj)) {
-            const newObj = {}
-            // 使用Reflect.ownKeys替换
-            Reflect.ownKeys(obj).forEach(k => {
-                const v = obj[k]
-                newObj[k] = isObject(v) ? dp(v) : v
-            })
-            // 将已拷贝后的对象存储起来
-            map.set(obj, newObj)
-            return newObj
-        }
+    if (Array.isArray(obj)) {
+      const newObj = []
+      for (const v of obj) {
+        newObj.push(isObject(v) ? dp(v) : v)
+      }
+      // 将已拷贝后的对象存储起来
+      map.set(obj, newObj)
+      return newObj
     }
-    return dp(obj)
+    if (isObject(obj)) {
+      const newObj = {}
+      // 使用Reflect.ownKeys替换
+      Reflect.ownKeys(obj).forEach((k) => {
+        const v = obj[k]
+        newObj[k] = isObject(v) ? dp(v) : v
+      })
+      // 将已拷贝后的对象存储起来
+      map.set(obj, newObj)
+      return newObj
+    }
+  }
+  return dp(obj)
 }
 const s1 = Symbol.for('s1')
 const s2 = Symbol.for('s2')
 
 const data = {
-    [s1]: {
-        name: 's1',
-        age: 19
-    },
-    [s2]: [1, 2, 'string', {
-        title: s1
-    }]
+  [s1]: {
+    name: 's1',
+    age: 19
+  },
+  [s2]: [1, 2, 'string', {
+    title: s1
+  }]
 }
-console.log(deepClone(data));
+console.log(deepClone(data))
 // { [Symbol(s1)]: { name: 's1', age: 19 },
 //   [Symbol(s2)]: [ 1, 2, 'string', { title: Symbol(s1) } ] }
 ```
-
 
 ## 5. 拷贝特殊对象Date/RegExp
 
@@ -239,56 +247,57 @@ console.log(deepClone(data));
 我们修改上面的clone方法
 
 ```js
-
 function deepClone(obj) {
-    const map = new WeakMap()
+  const map = new WeakMap()
 
-    const dp = (obj) => {
-        if (!isObject(obj)) return obj
-        // 已经clone过的对象直接返回
-        if (map.has(obj)) return map.get(obj)
-        // 解决循环引用
-        map.set(obj, Array.isArray(obj) ? [] : {})
-        // 获取对象的构造函数
-        const fn = obj.constructor
-        // 如果是正则
-        if (fn === RegExp) {
-            return new RegExp(obj)
-        }
-        // 如果是日期
-        if (fn === Date) {
-            return new Date(obj.getTime())
-        }
-
-        if (Array.isArray(obj)) {
-            const newObj = []
-            for (const v of obj) {
-                newObj.push(isObject(v) ? dp(v) : v)
-            }
-            // 将已拷贝后的对象存储起来
-            map.set(obj, newObj)
-            return newObj
-        }
-        if (isObject(obj)) {
-            const newObj = {}
-            // 使用Reflect.ownKeys替换
-            Reflect.ownKeys(obj).forEach(k => {
-                const v = obj[k]
-                newObj[k] = isObject(v) ? dp(v) : v
-            })
-            // 将已拷贝后的对象存储起来
-            map.set(obj, newObj)
-            return newObj
-        }
+  const dp = (obj) => {
+    if (!isObject(obj))
+      return obj
+    // 已经clone过的对象直接返回
+    if (map.has(obj))
+      return map.get(obj)
+    // 解决循环引用
+    map.set(obj, Array.isArray(obj) ? [] : {})
+    // 获取对象的构造函数
+    const fn = obj.constructor
+    // 如果是正则
+    if (fn === RegExp) {
+      return new RegExp(obj)
     }
-    return dp(obj)
+    // 如果是日期
+    if (fn === Date) {
+      return new Date(obj.getTime())
+    }
+
+    if (Array.isArray(obj)) {
+      const newObj = []
+      for (const v of obj) {
+        newObj.push(isObject(v) ? dp(v) : v)
+      }
+      // 将已拷贝后的对象存储起来
+      map.set(obj, newObj)
+      return newObj
+    }
+    if (isObject(obj)) {
+      const newObj = {}
+      // 使用Reflect.ownKeys替换
+      Reflect.ownKeys(obj).forEach((k) => {
+        const v = obj[k]
+        newObj[k] = isObject(v) ? dp(v) : v
+      })
+      // 将已拷贝后的对象存储起来
+      map.set(obj, newObj)
+      return newObj
+    }
+  }
+  return dp(obj)
 }
 
 const data = {
-    today: new Date(),
-    reg: /^abc$/ig
+  today: new Date(),
+  reg: /^abc$/gi
 }
-console.log(deepClone(data)); // { today: 2020-09-01T08:45:26.907Z, reg: /^abc$/gi }
+console.log(deepClone(data)) // { today: 2020-09-01T08:45:26.907Z, reg: /^abc$/gi }
 ```
 
 ## 拷贝函数
@@ -304,63 +313,65 @@ console.log(deepClone(data)); // { today: 2020-09-01T08:45:26.907Z, reg: /^abc$/
 // 我这里就简单的使用.bind
 
 function deepClone(obj) {
-    const map = new WeakMap()
+  const map = new WeakMap()
 
-    const dp = (obj) => {
-        if (!isObject(obj)) return obj
-        // 已经clone过的对象直接返回
-        if (map.has(obj)) return map.get(obj)
-        // 解决循环引用
-        map.set(obj, Array.isArray(obj) ? [] : {})
-        // 获取对象的构造函数
-        const fn = obj.constructor
-        // 如果是正则
-        if (fn === RegExp) {
-            return new RegExp(obj)
-        }
-        // 如果是日期
-        if (fn === Date) {
-            return new Date(obj.getTime())
-        }
-        // 如果是函数
-        if (fn === Function) {
-            return obj.bind({})
-        }
-        if (Array.isArray(obj)) {
-            const newObj = []
-            for (const v of obj) {
-                newObj.push(isObject(v) ? dp(v) : v)
-            }
-            // 将已拷贝后的对象存储起来
-            map.set(obj, newObj)
-            return newObj
-        }
-        if (isObject(obj)) {
-            const newObj = {}
-            // 使用Reflect.ownKeys替换
-            Reflect.ownKeys(obj).forEach(k => {
-                const v = obj[k]
-                newObj[k] = isObject(v) ? dp(v) : v
-            })
-            // 将已拷贝后的对象存储起来
-            map.set(obj, newObj)
-            return newObj
-        }
+  const dp = (obj) => {
+    if (!isObject(obj))
+      return obj
+    // 已经clone过的对象直接返回
+    if (map.has(obj))
+      return map.get(obj)
+    // 解决循环引用
+    map.set(obj, Array.isArray(obj) ? [] : {})
+    // 获取对象的构造函数
+    const fn = obj.constructor
+    // 如果是正则
+    if (fn === RegExp) {
+      return new RegExp(obj)
     }
-    return dp(obj)
+    // 如果是日期
+    if (fn === Date) {
+      return new Date(obj.getTime())
+    }
+    // 如果是函数
+    if (fn === Function) {
+      return obj.bind({})
+    }
+    if (Array.isArray(obj)) {
+      const newObj = []
+      for (const v of obj) {
+        newObj.push(isObject(v) ? dp(v) : v)
+      }
+      // 将已拷贝后的对象存储起来
+      map.set(obj, newObj)
+      return newObj
+    }
+    if (isObject(obj)) {
+      const newObj = {}
+      // 使用Reflect.ownKeys替换
+      Reflect.ownKeys(obj).forEach((k) => {
+        const v = obj[k]
+        newObj[k] = isObject(v) ? dp(v) : v
+      })
+      // 将已拷贝后的对象存储起来
+      map.set(obj, newObj)
+      return newObj
+    }
+  }
+  return dp(obj)
 }
 
 const data = {
-    today: new Date(),
-    reg: /^abc$/ig,
-    fn1: (a, b) => {
-        console.log(this.today);
-        console.log(a + b);
-    },
-    fn2: function (a, b) {
-        console.log(this.reg);
-        console.log(a + b);
-    }
+  today: new Date(),
+  reg: /^abc$/gi,
+  fn1: (a, b) => {
+    console.log(this.today)
+    console.log(a + b)
+  },
+  fn2(a, b) {
+    console.log(this.reg)
+    console.log(a + b)
+  }
 }
 
 const newData = deepClone(data)
@@ -377,4 +388,3 @@ fn3(2, 3) // string 5
 更详细的内容大家可以细品一下这篇[文章](https://stackoverflow.com/questions/1833588/javascript-clone-a-function)
 
 关于深拷贝完整实现 可以研究一下 [lodash.cloneDeep](https://www.lodashjs.com/docs/lodash.cloneDeep)，[源码](https://github.com/lodash/lodash/blob/master/.internal/baseClone.js)
-

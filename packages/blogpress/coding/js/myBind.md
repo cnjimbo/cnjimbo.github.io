@@ -25,7 +25,7 @@ categories:
 ## 使用
 ```js
 function print() {
-    console.log(this.name);
+  console.log(this.name)
 }
 print() // undefined
 
@@ -40,16 +40,16 @@ print2() // print2
 不考各种边界情况
 ```js
 Function.prototype.mybind = function (thisArg) {
-    thisArg = thisArg || window
-    thisArg.fn = this
-    const args = [...arguments].slice(1)
-    return function F() {
-        const bindArgs = args.concat(...arguments)
-        if (this instanceof F) {
-            return new thisArg.fn(...bindArgs)
-        }
-        return thisArg.fn(...bindArgs)
+  thisArg = thisArg || window
+  thisArg.fn = this
+  const args = [...arguments].slice(1)
+  return function F() {
+    const bindArgs = args.concat(...arguments)
+    if (this instanceof F) {
+      return new thisArg.fn(...bindArgs)
     }
+    return thisArg.fn(...bindArgs)
+  }
 }
 
 const print1 = print.mybind({ name: 'print1' })
@@ -57,4 +57,3 @@ print1() // print1
 const print2 = print.mybind({ name: 'print2' }).mybind({ name: 'print22' })
 print2() // print2
 ```
-

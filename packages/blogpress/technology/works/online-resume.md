@@ -58,7 +58,6 @@ categories:
 
 既然是只做展示，那么无论什么前端魔法都可以做这个工作，于是为了方便各种魔法师施法，就把这一块独立了出来，简历模板贡献者也只需要关心自己如何复原一个静态页面就行，其余的交互逻辑都交给父页面统一处理
 
-
 ### 技术选型
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYxNDUwODgzNzIxMA==614508837210)
@@ -68,7 +67,6 @@ categories:
 整个应用的主体部分采用原生js实现
 
 简历展示部分理论上可以采用任意前端技术栈实现，与父页面低耦合
-
 
 ### 通信
 
@@ -105,7 +103,6 @@ categories:
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYxNDUxODIzOTU1OQ==614518239559)
 
-
 下面就介绍项目实现的关键部分内容
 
 ## 实现
@@ -118,7 +115,7 @@ categories:
 ├── webpack.config.js           -- 引用的配置文件
 │
 ./public            公共静态资源
-├── css   
+├── css
 │   └── print.css  打印时用的样式
 │
 ./src       核心代码
@@ -126,7 +123,7 @@ categories:
 ├── constants       常量
 │   ├── index.js    存放导航的名称映射信息
 │   ├── schema      存放每个简历模板的默认JSON数据,与pages中的模板一一对应
-│   └────── demo1.js   
+│   └────── demo1.js
 ├── pages           简历模板目录
 │   └── demo1       -- 其中的一个模板
 │
@@ -145,7 +142,7 @@ categories:
 例如
 ```
 ./src
-├── pages          
+├── pages
 │   └── xxx
 │   └───── index.html
 │   └───── index.scss
@@ -194,46 +191,46 @@ categories:
 
 ```js
 const navTitle = {
-    'demo1': '模板1',
-    'react1': '模板2',
-    'vue1': '模板3',
-    'introduce': '使用文档',
-    'abc': '开发示例'
+  demo1: '模板1',
+  react1: '模板2',
+  vue1: '模板3',
+  introduce: '使用文档',
+  abc: '开发示例'
 }
 
 function createLink(text, href, newTab = false) {
-    const a = document.createElement('a')
-    a.href = href
-    a.text = text
-    a.target = newTab ? '_blank' : 'page'
-    return a
+  const a = document.createElement('a')
+  a.href = href
+  a.text = text
+  a.target = newTab ? '_blank' : 'page'
+  return a
 }
 
 /**
  * 初始化导航栏
  */
 function initNav(defaultPage = 'react1') {
-    const $nav = document.querySelector('header nav')
-    // 获取所有模板的链接---处理原始内容
-    const links = $nav.innerText.split(',').map(pageName => {
-        const link = createLink(navTitle[pageName] || pageName, `./pages/${pageName}`)
-        // iframe中打开
-        return link
-    })
+  const $nav = document.querySelector('header nav')
+  // 获取所有模板的链接---处理原始内容
+  const links = $nav.innerText.split(',').map((pageName) => {
+    const link = createLink(navTitle[pageName] || pageName, `./pages/${pageName}`)
+    // iframe中打开
+    return link
+  })
 
-    // 加入自定义的链接
-    links.push(createLink('Github', 'https://github.com/ATQQ/resume', true))
-    links.push(createLink('贡献模板', 'https://github.com/ATQQ/resume/blob/main/README.md', true))
-    links.push(createLink('如何书写一份好的互联网校招简历', 'https://juejin.cn/post/6928390537946857479', true))
-    links.push(createLink('建议/反馈', 'https://www.wenjuan.com/s/MBryA3gI/', true))
+  // 加入自定义的链接
+  links.push(createLink('Github', 'https://github.com/ATQQ/resume', true))
+  links.push(createLink('贡献模板', 'https://github.com/ATQQ/resume/blob/main/README.md', true))
+  links.push(createLink('如何书写一份好的互联网校招简历', 'https://juejin.cn/post/6928390537946857479', true))
+  links.push(createLink('建议/反馈', 'https://www.wenjuan.com/s/MBryA3gI/', true))
 
-    // 渲染到页面中
-    const t = document.createDocumentFragment()
-    links.forEach(link => {
-        t.appendChild(link)
-    })
-    $nav.innerHTML = ''
-    $nav.append(t)
+  // 渲染到页面中
+  const t = document.createDocumentFragment()
+  links.forEach((link) => {
+    t.appendChild(link)
+  })
+  $nav.innerHTML = ''
+  $nav.append(t)
 }
 
 initNav()
@@ -245,12 +242,12 @@ initNav()
 **目录**
 ```
 ./src
-├── constants      
+├── constants
 │   ├── index.js
 │   ├── schema.js
-│   ├── schema    
-│   ├────── demo1.js  
-│   ├────── react1.js  
+│   ├── schema
+│   ├────── demo1.js
+│   ├────── react1.js
 │   └────── vue1.js
 ```
 
@@ -261,13 +258,15 @@ import demo1 from './schema/demo1'
 import react1 from './schema/react1'
 import vue1 from './schema/vue1'
 
-export default{
-    abc,demo1,react1,vue1
+export default {
+  abc,
+  demo1,
+  react1,
+  vue1
 }
 ```
 
 而每个模板的描述内容分布在 schema目录下，如果让每个开发者手动往schema.js添加自己模板，容易造成冲突，所以干脆自动生成
-
 
 工具方法移步至[这里](https://github.com/ATQQ/resume/blob/2c5e75f8b7b824b2436d3f02c5e304390d05d83c/config/fileUtil.js#L30-L32)查看
 ```js
@@ -275,18 +274,18 @@ export default{
  * 自动创建src/constants/schema.js 文件
  */
 function writeSchemaJS() {
-    const files = getDirFilesWithFullPath('src/constants/schema')
-    const { dir } = path.parse(files[0])
-    const targetFilePath = path.resolve(dir, '../', 'schema.js')
-    const names = files.map(file => path.parse(file).name)
-    const res = `${names.map(n => {
+  const files = getDirFilesWithFullPath('src/constants/schema')
+  const { dir } = path.parse(files[0])
+  const targetFilePath = path.resolve(dir, '../', 'schema.js')
+  const names = files.map(file => path.parse(file).name)
+  const res = `${names.map((n) => {
         return `import ${n} from './schema/${n}'`
     }).join('\n')}
 
 export default{
     ${names.join(',')}
 }`
-    fs.writeFileSync(targetFilePath, res)
+  fs.writeFileSync(targetFilePath, res)
 }
 ```
 
@@ -300,36 +299,36 @@ export default{
 import defaultSchema from '../constants/schema'
 
 export function getSchema(key = '') {
-    if (!key) {
-        // 默认key为路由 如 origin.com/pages/react1
-        // key就为 pages/react1
-        key = window.location.pathname.replace(/\/$/, '')
-    }
-    // 先从本地取
-    let data = localStorage.getItem(key)
-    // 如果没有就设置一个默认的再取
-    if (!data) {
-        setSchema(getDefaultSchema(key), key)
-        return getSchema()
-    }
-    // 如果默认是空对象的则再取一次默认值
-    if (data === '{}') {
-        setSchema(getDefaultSchema(key), key)
-        data = localStorage.getItem(key)
-    }
-    return JSON.parse(data)
+  if (!key) {
+    // 默认key为路由 如 origin.com/pages/react1
+    // key就为 pages/react1
+    key = window.location.pathname.replace(/\/$/, '')
+  }
+  // 先从本地取
+  let data = localStorage.getItem(key)
+  // 如果没有就设置一个默认的再取
+  if (!data) {
+    setSchema(getDefaultSchema(key), key)
+    return getSchema()
+  }
+  // 如果默认是空对象的则再取一次默认值
+  if (data === '{}') {
+    setSchema(getDefaultSchema(key), key)
+    data = localStorage.getItem(key)
+  }
+  return JSON.parse(data)
 }
 
 export function getDefaultSchema(key) {
-    const _key = key.slice(key.lastIndexOf('/') + 1)
-    return defaultSchema[_key] || {}
+  const _key = key.slice(key.lastIndexOf('/') + 1)
+  return defaultSchema[_key] || {}
 }
 
 export function setSchema(data, key = '') {
-    if (!key) {
-        key = window.location.pathname.replace(/\/$/, '')
-    }
-    localStorage.setItem(key, JSON.stringify(data))
+  if (!key) {
+    key = window.location.pathname.replace(/\/$/, '')
+  }
+  localStorage.setItem(key, JSON.stringify(data))
 }
 ```
 
@@ -349,22 +348,22 @@ export function setSchema(data, key = '') {
 ```js
 /**
  * 初始化JSON编辑器
- * @param {string} id 
+ * @param {string} id
  */
 function initEditor(id) {
-    let timer = null
-    // 这里做了一个简单的防抖
-    const editor = new JSONEditor(document.getElementById(id), {
-        // json内容改动时触发
-        onChangeJSON(data) {
-            if (timer) {
-                clearTimeout(timer)
-            }
-            // updatePage方法用于通知子页面更新
-            setTimeout(updatePage, 200, data)
-        }
-    })
-    return editor
+  const timer = null
+  // 这里做了一个简单的防抖
+  const editor = new JSONEditor(document.getElementById(id), {
+    // json内容改动时触发
+    onChangeJSON(data) {
+      if (timer) {
+        clearTimeout(timer)
+      }
+      // updatePage方法用于通知子页面更新
+      setTimeout(updatePage, 200, data)
+    }
+  })
+  return editor
 }
 
 const editor = initEditor('jsonEditor')
@@ -380,16 +379,14 @@ json数据展示/更新时机
 
 ```js
 function getPageKey() {
-    return document.getElementById('page').contentWindow.location.pathname.replace(/\/$/, '')
+  return document.getElementById('page').contentWindow.location.pathname.replace(/\/$/, '')
 }
 
 document.getElementById('page').onload = function (e) {
-    // 更新editor中显示的内容
-    editor.set(getSchema(getPageKey()))
+  // 更新editor中显示的内容
+  editor.set(getSchema(getPageKey()))
 }
 ```
-
-
 
 ### 编写模板页面
 
@@ -406,19 +403,19 @@ document.getElementById('page').onload = function (e) {
 ./src
 ├── constants
 │   └── schema
-│   └────── abc.js  
+│   └────── abc.js
 ```
 
 abc.js
 ```js
 export default {
-    name: '王五',
-    position: '求职目标： Web前端工程师',
-    infos: [
-        '1:很多文字',
-        '2:很多文字',
-        '3:很多文字',
-    ]
+  name: '王五',
+  position: '求职目标： Web前端工程师',
+  infos: [
+    '1:很多文字',
+    '2:很多文字',
+    '3:很多文字',
+  ]
 }
 ```
 
@@ -445,12 +442,12 @@ export default {
 
 **原生js**
 ```js
-import { getSchema } from "../../utils"
+import { getSchema } from '../../utils'
 
 window.refresh = function () {
-    const schema = getSchema()
-    const { name, position, infos } = schema
-    // ... render逻辑
+  const schema = getSchema()
+  const { name, position, infos } = schema
+  // ... render逻辑
 }
 ```
 
@@ -482,18 +479,18 @@ import React, { useEffect, useState } from 'react'
 import { getSchema } from '../../utils'
 
 export default function App() {
-    const [schema, updateSchema] = useState(getSchema())
-    const { name, position, infos = [] } = schema
-    useEffect(() => {
-        window.refresh = function () {
-            updateSchema(getSchema())
-        }
-    }, [])
-    return (
-        <div>
-            { /* 渲染dom的逻辑 */ }
-        </div>
-    )
+  const [schema, updateSchema] = useState(getSchema())
+  const { name, position, infos = [] } = schema
+  useEffect(() => {
+    window.refresh = function () {
+      updateSchema(getSchema())
+    }
+  }, [])
+  return (
+    <div>
+      { /* 渲染dom的逻辑 */ }
+    </div>
+  )
 }
 ```
 
@@ -578,7 +575,7 @@ header {
 
 ```
 ./src
-├── pages          
+├── pages
 │   └── abc
 │   └───── index.html
 │   └───── index.scss
@@ -587,49 +584,48 @@ header {
 
 **index.js**
 ```js
-import { getSchema } from "../../utils"
+import { getSchema } from '../../utils'
 import './index.scss'
 
 window.refresh = function () {
-    const schema = getSchema()
-    const { name, position, infos } = schema
+  const schema = getSchema()
+  const { name, position, infos } = schema
 
-    clearPage()
-    renderHeader(name, position)
-    renderInfos(infos)
+  clearPage()
+  renderHeader(name, position)
+  renderInfos(infos)
 }
 
 function clearPage() {
-    document.getElementById('app').innerHTML = ''
+  document.getElementById('app').innerHTML = ''
 }
 
 function renderHeader(name, position) {
-    const html = `
+  const html = `
     <header>
         <h1>${name}</h1>
         <h2>${position}</h2>
     </header>`
-    document.getElementById('app').innerHTML += html
+  document.getElementById('app').innerHTML += html
 }
 
 function renderInfos(infos = []) {
-    if (infos?.length === 0) {
-        return
-    }
-    const html = `
+  if (infos?.length === 0) {
+    return
+  }
+  const html = `
     <ul class="infos">
-    ${infos.map(info => {
+    ${infos.map((info) => {
         return `<li>${info}</li>`
     }).join('')}
     </ul>`
-    document.getElementById('app').innerHTML += html
+  document.getElementById('app').innerHTML += html
 }
 
 window.onload = function () {
-    refresh()
+  refresh()
 }
 ```
-
 
 </details>
 
@@ -639,7 +635,7 @@ window.onload = function () {
 **目录结构**
 ```
 ./src
-├── pages          
+├── pages
 │   └── abc
 │   └───── index.html
 │   └───── index.scss
@@ -657,7 +653,7 @@ import './index.scss'
 Vue.config.productionTip = process.env.NODE_ENV === 'development'
 
 new Vue({
-    render: h => h(App)
+  render: h => h(App)
 }).$mount('#app')
 ```
 
@@ -709,7 +705,7 @@ export default {
 **目录结构**
 ```
 ./src
-├── pages          
+├── pages
 │   └── abc
 │   └───── index.html
 │   └───── index.scss
@@ -720,15 +716,15 @@ export default {
 **index.js**
 ```js
 import React from 'react'
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom'
 import App from './App.jsx'
 import './index.scss'
 
 ReactDOM.render(
-    <React.StrictMode>
-        <App />
-    </React.StrictMode>,
-    document.getElementById('app')
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('app')
 )
 ```
 
@@ -738,28 +734,28 @@ import React, { useEffect, useState } from 'react'
 import { getSchema } from '../../utils'
 
 export default function App() {
-    const [schema, updateSchema] = useState(getSchema())
-    const { name, position, infos = [] } = schema
-    useEffect(() => {
-        window.refresh = function () {
-            updateSchema(getSchema())
-        }
-    }, [])
-    return (
-        <div>
-            <header>
-                <h1>{name}</h1>
-                <h2>{position}</h2>
-            </header>
-            <div className="infos">
-                {
+  const [schema, updateSchema] = useState(getSchema())
+  const { name, position, infos = [] } = schema
+  useEffect(() => {
+    window.refresh = function () {
+      updateSchema(getSchema())
+    }
+  }, [])
+  return (
+    <div>
+      <header>
+        <h1>{name}</h1>
+        <h2>{position}</h2>
+      </header>
+      <div className="infos">
+        {
                     infos.map((info, i) => {
-                        return <p key={i}>{info}</p>
+                      return <p key={i}>{info}</p>
                     })
                 }
-            </div>
-        </div>
-    )
+      </div>
+    </div>
+  )
 }
 ```
 
@@ -771,7 +767,7 @@ export default function App() {
 **目录结构**
 ```
 ./src
-├── pages          
+├── pages
 │   └── abc
 │   └───── index.html
 │   └───── index.scss
@@ -780,46 +776,46 @@ export default function App() {
 
 **index.js**
 ```js
-import { getSchema } from "../../utils"
+import { getSchema } from '../../utils'
 import './index.scss'
 
 window.refresh = function () {
-    const schema = getSchema()
-    const { name, position, infos } = schema
+  const schema = getSchema()
+  const { name, position, infos } = schema
 
-    clearPage()
-    renderHeader(name, position)
-    renderInfos(infos)
+  clearPage()
+  renderHeader(name, position)
+  renderInfos(infos)
 }
 
 function clearPage() {
-    $('#app').empty()
+  $('#app').empty()
 }
 
 function renderHeader(name, position) {
-    const html = `
+  const html = `
     <header>
         <h1>${name}</h1>
         <h2>${position}</h2>
     </header>`
-    $('#app').append(html)
+  $('#app').append(html)
 }
 
 function renderInfos(infos = []) {
-    if (infos?.length === 0) {
-        return
-    }
-    const html = `
+  if (infos?.length === 0) {
+    return
+  }
+  const html = `
     <ul class="infos">
-    ${infos.map(info => {
+    ${infos.map((info) => {
         return `<li>${info}</li>`
     }).join('')}
     </ul>`
-    $('#app').append(html)
+  $('#app').append(html)
 }
 
 window.onload = function () {
-    refresh()
+  refresh()
 }
 ```
 
@@ -829,14 +825,14 @@ window.onload = function () {
 
 ```
 ./src
-├── constants    
+├── constants
 │   ├── index.js    存放路径与中文title的映射
 ```
 
 **./src/constants/index.js** 中加入别名
 ```js
 export const navTitle = {
-    'abc': '开发示例'
+  abc: '开发示例'
 }
 ```
 
@@ -851,41 +847,41 @@ export const navTitle = {
 
 ```js
 function refreshIframePage(isReload = false) {
-    const page = document.getElementById('page')
-    if (isReload) {
-        page.contentWindow.location.reload()
-        return
-    }
-    if (page.contentWindow.refresh) {
-        page.contentWindow.refresh()
-        return
-    }
+  const page = document.getElementById('page')
+  if (isReload) {
     page.contentWindow.location.reload()
+    return
+  }
+  if (page.contentWindow.refresh) {
+    page.contentWindow.refresh()
+    return
+  }
+  page.contentWindow.location.reload()
 }
 
 function updatePage(data) {
-    setSchema(data, getPageKey())
-    refreshIframePage()
+  setSchema(data, getPageKey())
+  refreshIframePage()
 }
 
 /**
  * 初始化JSON编辑器
- * @param {string} id 
+ * @param {string} id
  */
 function initEditor(id) {
-    let timer = null
-    // 这里做了一个简单的防抖
-    const editor = new JSONEditor(document.getElementById(id), {
-        // json内容改动时触发
-        onChangeJSON(data) {
-            if (timer) {
-                clearTimeout(timer)
-            }
-            // updatePage方法用于通知子页面更新
-            setTimeout(updatePage, 200, data)
-        }
-    })
-    return editor
+  const timer = null
+  // 这里做了一个简单的防抖
+  const editor = new JSONEditor(document.getElementById(id), {
+    // json内容改动时触发
+    onChangeJSON(data) {
+      if (timer) {
+        clearTimeout(timer)
+      }
+      // updatePage方法用于通知子页面更新
+      setTimeout(updatePage, 200, data)
+    }
+  })
+  return editor
 }
 
 const editor = initEditor('jsonEditor')
@@ -934,26 +930,26 @@ const editor = initEditor('jsonEditor')
 
 ```js
 function getBase64Image(img) {
-    var canvas = document.createElement("canvas");
-    canvas.width = img.width;
-    canvas.height = img.height;
-    var ctx = canvas.getContext("2d");
-    ctx.drawImage(img, 0, 0, img.width, img.height);
-    var dataURL = canvas.toDataURL("image/png");
-    return dataURL;
+  const canvas = document.createElement('canvas')
+  canvas.width = img.width
+  canvas.height = img.height
+  const ctx = canvas.getContext('2d')
+  ctx.drawImage(img, 0, 0, img.width, img.height)
+  const dataURL = canvas.toDataURL('image/png')
+  return dataURL
 }
 // 导出pdf
 // 当然这里确保图片资源被转为了base64，否则导出的简历无法展示图片
-html2canvas(document.getElementById('page').contentDocument.body).then(canvas => {
-    //返回图片dataURL，参数：图片格式和清晰度(0-1)
-    var pageData = canvas.toDataURL('image/jpeg', 1.0);
-    //方向默认竖直，尺寸ponits，格式a4[595.28,841.89]
-    var doc = new jsPDF('', 'pt', 'a4');
-    //addImage后两个参数控制添加图片的尺寸，此处将页面高度按照a4纸宽高比列进行压缩
-    // doc.addImage(pageData, 'JPEG', 0, 0, 595.28, 592.28 / canvas.width * canvas.height);
-    doc.addImage(pageData, 'JPEG', 0, 0, 595.28, 841.89);
-    doc.save(`${Date.now()}.pdf`);
-});
+html2canvas(document.getElementById('page').contentDocument.body).then((canvas) => {
+  // 返回图片dataURL，参数：图片格式和清晰度(0-1)
+  const pageData = canvas.toDataURL('image/jpeg', 1.0)
+  // 方向默认竖直，尺寸ponits，格式a4[595.28,841.89]
+  const doc = new jsPDF('', 'pt', 'a4')
+  // addImage后两个参数控制添加图片的尺寸，此处将页面高度按照a4纸宽高比列进行压缩
+  // doc.addImage(pageData, 'JPEG', 0, 0, 595.28, 592.28 / canvas.width * canvas.height);
+  doc.addImage(pageData, 'JPEG', 0, 0, 595.28, 841.89)
+  doc.save(`${Date.now()}.pdf`)
+})
 ```
 
 但目前此种导出方式还存在一些问题尚未解决，后续换用其它方案进行处理
@@ -984,43 +980,44 @@ html2canvas(document.getElementById('page').contentDocument.body).then(canvas =>
  * 高亮变化的Dom
  */
 function initObserver() {
-    // 包含子孙节点
-    // 将监视范围扩展至目标节点整个节点树中的所有节点
-    // 监视指定目标节点或子节点树中节点所包含的字符数据的变化
-    const config = { childList: true, subtree: true, characterData: true };
+  // 包含子孙节点
+  // 将监视范围扩展至目标节点整个节点树中的所有节点
+  // 监视指定目标节点或子节点树中节点所包含的字符数据的变化
+  const config = { childList: true, subtree: true, characterData: true }
 
-    // 实例化监听器对象
-    const observer = new MutationObserver(debounce(function (mutationsList, observer) {
-        for (const e of mutationsList) {
-            let target = e.target
-            if (e.type === 'characterData') {
-                target = e.target.parentElement
-            }
-            // 高亮
-            highLightDom(target)
-        }
-    }, 100))
-    // 监听子页面的body
-    observer.observe(document.getElementById('page').contentDocument.body, config);
-    // 因为 MutationObserver 是微任务，微任务后面紧接着就是页面渲染
-    
-    // 停止观察变动
-    // 这里使用宏任务，确保此轮Event loop结束
-    setTimeout(() => {
-        observer.disconnect()
-    }, 0)
+  // 实例化监听器对象
+  const observer = new MutationObserver(debounce((mutationsList, observer) => {
+    for (const e of mutationsList) {
+      let target = e.target
+      if (e.type === 'characterData') {
+        target = e.target.parentElement
+      }
+      // 高亮
+      highLightDom(target)
+    }
+  }, 100))
+  // 监听子页面的body
+  observer.observe(document.getElementById('page').contentDocument.body, config)
+  // 因为 MutationObserver 是微任务，微任务后面紧接着就是页面渲染
+
+  // 停止观察变动
+  // 这里使用宏任务，确保此轮Event loop结束
+  setTimeout(() => {
+    observer.disconnect()
+  }, 0)
 }
 
 function highLightDom(dom, time = 500, color = '#fff566') {
-    if (!dom?.style) return
-    if (time === 0) {
-        dom.style.backgroundColor = ''
-        return
-    }
-    dom.style.backgroundColor = '#fff566'
-    setTimeout(() => {
-        dom.style.backgroundColor = ''
-    }, time)
+  if (!dom?.style)
+    return
+  if (time === 0) {
+    dom.style.backgroundColor = ''
+    return
+  }
+  dom.style.backgroundColor = '#fff566'
+  setTimeout(() => {
+    dom.style.backgroundColor = ''
+  }, time)
 }
 ```
 
@@ -1029,12 +1026,12 @@ function highLightDom(dom, time = 500, color = '#fff566') {
 当然是在更新页面之前的时候注册事件，页面完成变动渲染后停止监听
 ```js
 function updatePage(data) {
-    // 异步的微任务，本轮event loop结束停止观察
-    initObserver()
-    // 同步
-    setSchema(data, getPageKey())
-    // 同步 + 渲染页面
-    refreshIframePage()
+  // 异步的微任务，本轮event loop结束停止观察
+  initObserver()
+  // 同步
+  setSchema(data, getPageKey())
+  // 同步 + 渲染页面
+  refreshIframePage()
 }
 ```
 
@@ -1055,8 +1052,8 @@ function updatePage(data) {
 
 **1. 获取点击的Dom**
 ```js
-document.getElementById('page').contentDocument.body.addEventListener('click', function (e) {
-    const $target = e.target
+document.getElementById('page').contentDocument.body.addEventListener('click', (e) => {
+  const $target = e.target
 })
 ```
 
@@ -1069,32 +1066,33 @@ document.getElementById('page').contentDocument.body.addEventListener('click', f
  * 遍历目标Dom树，找出文本内容与目标一致的dom组
  */
 function traverseDomTreeMatchStr(dom, str, res = []) {
-    // 如果有子节点则继续遍历子节点
-    if (dom?.children?.length > 0) {
-        for (const d of dom.children) {
-            traverseDomTreeMatchStr(d, str, res)
-        }
-        // 相等则记录下来
-    } else if (dom?.textContent?.trim() === str) {
-        res.push(dom)
+  // 如果有子节点则继续遍历子节点
+  if (dom?.children?.length > 0) {
+    for (const d of dom.children) {
+      traverseDomTreeMatchStr(d, str, res)
     }
+    // 相等则记录下来
+  }
+  else if (dom?.textContent?.trim() === str) {
+    res.push(dom)
+  }
 
-    return res
+  return res
 }
 
 // 监听简历页的点击事件
-document.getElementById('page').contentDocument.body.addEventListener('click', function (e) {
-    const $target = e.target
-    // 点击的内容
-    const clickText = $target.textContent.trim()
-    // 只包含点击内容的节点
-    const matchDoms = traverseDomTreeMatchStr(document.getElementById('page').contentDocument.body, clickText)
-    // 点击的节点在 匹配的 节点中的相对位置
-    const mathIndex = matchDoms.findIndex(v => v === $target)
-    // 不包含则不做处理
-    if (mathIndex < 0) {
-        return
-    }
+document.getElementById('page').contentDocument.body.addEventListener('click', (e) => {
+  const $target = e.target
+  // 点击的内容
+  const clickText = $target.textContent.trim()
+  // 只包含点击内容的节点
+  const matchDoms = traverseDomTreeMatchStr(document.getElementById('page').contentDocument.body, clickText)
+  // 点击的节点在 匹配的 节点中的相对位置
+  const mathIndex = matchDoms.findIndex(v => v === $target)
+  // 不包含则不做处理
+  if (mathIndex < 0) {
+
+  }
 })
 ```
 
@@ -1105,53 +1103,52 @@ document.getElementById('page').contentDocument.body.addEventListener('click', f
 
 ```js
 // 监听简历页的点击事件
-document.getElementById('page').contentDocument.body.addEventListener('click', function (e) {
-    // ...省略上述列出的代码
+document.getElementById('page').contentDocument.body.addEventListener('click', (e) => {
+  // ...省略上述列出的代码
 
-    // 解除上次点击的dom高亮
-    highLightDom($textarea.clickDom, 0)
-    // 高亮这次的10s
-    highLightDom($target, 10000)
+  // 解除上次点击的dom高亮
+  highLightDom($textarea.clickDom, 0)
+  // 高亮这次的10s
+  highLightDom($target, 10000)
 
+  // 更新jsoneditor中的search内容
+  editor.searchBox.dom.search.value = clickText
+  // 主动触发搜索
+  editor.searchBox.dom.search.dispatchEvent(new Event('change'))
 
-    // 更新jsoneditor中的search内容
-    editor.searchBox.dom.search.value = clickText
-    // 主动触发搜索
-    editor.searchBox.dom.search.dispatchEvent(new Event('change'))
+  // 将点击内容显示在textarea中
+  $textarea.value = clickText
 
-    // 将点击内容显示在textarea中
-    $textarea.value = clickText
-    
-    // 自动聚焦输入框
-    if (document.getElementById('focus').checked) {
-        $textarea.focus()
+  // 自动聚焦输入框
+  if (document.getElementById('focus').checked) {
+    $textarea.focus()
+  }
+
+  // 记录点击的dom,挂载$textarea上
+  $textarea.clickDom = e.target
+
+  // jsoneditor 搜索过滤的内容为模糊匹配,比如搜索 a 会匹配 ba,baba,a,aa,aaa
+  // 根据上面得到的matchIndex,进行精确匹配全等的json节点
+  let i = -1
+  for (const r of editor.searchBox.results) {
+    // 全等得时候下标才变动
+    if (r.node.value === clickText) {
+      i++
+      // 匹配到json中的节点
+      if (i === mathIndex) {
+        // 高亮一下$textarea
+        $textarea.style.boxShadow = '0 0 1rem yellow'
+        setTimeout(() => {
+          $textarea.style.boxShadow = ''
+        }, 200)
+        return
+      }
     }
-
-    // 记录点击的dom,挂载$textarea上
-    $textarea.clickDom = e.target
-
-    // jsoneditor 搜索过滤的内容为模糊匹配,比如搜索 a 会匹配 ba,baba,a,aa,aaa
-    // 根据上面得到的matchIndex,进行精确匹配全等的json节点
-    let i = -1
-    for (const r of editor.searchBox.results) {
-        // 全等得时候下标才变动
-        if (r.node.value === clickText) {
-            i++
-            // 匹配到json中的节点
-            if (i === mathIndex) {
-                // 高亮一下$textarea
-                $textarea.style.boxShadow = '0 0 1rem yellow'
-                setTimeout(() => {
-                    $textarea.style.boxShadow = ''
-                }, 200)
-                return
-            }
-        }
-        // 手动触发jsoneditor的next search match  按钮, 切换jsoneditor中active的节点
-        editor.searchBox.dom.input.querySelector('.jsoneditor-next').dispatchEvent(new Event('click'))
-        // active的节点可以通过下面方式获取
-        // editor.searchBox.activeResult.node
-    }
+    // 手动触发jsoneditor的next search match  按钮, 切换jsoneditor中active的节点
+    editor.searchBox.dom.input.querySelector('.jsoneditor-next').dispatchEvent(new Event('click'))
+    // active的节点可以通过下面方式获取
+    // editor.searchBox.activeResult.node
+  }
 })
 ```
 
@@ -1162,28 +1159,26 @@ document.getElementById('page').contentDocument.body.addEventListener('click', f
 
 ```js
 // 监听输入事件,并做一个简单的防抖
- $textarea.addEventListener('input', debounce(function () {
-    if (!editor.searchBox?.activeResult?.node) {
-        return
-    }
-    // 激活dom变动事件
-    initObserver()
+$textarea.addEventListener('input', debounce(function () {
+  if (!editor.searchBox?.activeResult?.node) {
+    return
+  }
+  // 激活dom变动事件
+  initObserver()
 
-    // 更新点击dom
-    $textarea.clickDom.textContent = this.value
+  // 更新点击dom
+  $textarea.clickDom.textContent = this.value
 
-    // 更新editor的dom
-    editor.searchBox.activeResult.node.value = this.value
-    editor.refresh()
+  // 更新editor的dom
+  editor.searchBox.activeResult.node.value = this.value
+  editor.refresh()
 
-    // 更新到本地
-    setSchema(editor.get(), getPageKey())
-
+  // 更新到本地
+  setSchema(editor.get(), getPageKey())
 }, 100))
 ```
 
 这样就完成了两侧(简历/jsoneditor)数据的更新
-
 
 ## 后续规划
 1. 接入更多的框架支持
@@ -1196,4 +1191,3 @@ document.getElementById('page').contentDocument.body.addEventListener('click', f
    3. 美化界面
 4. 加入自动生成代码模板指令
 5. 接入更多的模板
-

@@ -33,24 +33,24 @@ categories:
 
 **题目1**
 ```js
-var a = 1
-var obj = {
-    fun:function(){
-        console.log(a)
-    },
-    a:2
+const a = 1
+const obj = {
+  fun() {
+    console.log(a)
+  },
+  a: 2
 }
 obj.fun() // ?
 ```
 
 ```js
-var a = 1
-function foo(){
-    console.log(a) 
+const a = 1
+function foo() {
+  console.log(a)
 }
-function bar(){
-    var a = 2
-    foo()
+function bar() {
+  const a = 2
+  foo()
 }
 bar() // ?
 ```
@@ -98,7 +98,6 @@ html结构
 1. node了解吗,学过哪些相关的
 2. 了解node的多进程吗,如何实现
 
-
 ## 二面
 ### 综合
 1. 一个复杂的web工程，内部有很多的静态资源代码，js，css，html，image，用哪种数据结构可以准确描述所有静态资源之间的依赖关系
@@ -107,7 +106,7 @@ html结构
 ### 手撕代码
 1. 问题1
 ```js
-斐波那契数列示例： 
+斐波那契数列示例：
 1，1，2，3，5，8，13，21，34 。。。。
 实现这样一个函数，得到指定位置上数列的值。
 函数签名：function fib(index: number): number;
@@ -158,8 +157,7 @@ getFibIndex(21) => 8
     <p> 1 </p>
         <script>
             ...code,执行了10s
-        </script> 
+        </script>
     <p> 2 </p>
 </body>
 ```
-

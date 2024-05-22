@@ -22,11 +22,9 @@ categories:
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYxNTgxMTk1MjM4MA==615811952380)
 
-
 因为在工作中临时会插入许多其它的事,或者有些代码,接口是有时效性的需要手动下线
 
 插件功能简单讲就是为不完善的代码**做标记**,提醒自己如期修改完善bug
-
 
 想亲自尝试一下的同学戳[这里](https://github.com/ATQQ/eslint-plugin-todo-ddl)---顺手Star
 
@@ -47,7 +45,6 @@ coder为了图方便,直接把实效性活动业务组件拿着复用,想着到�
 第一反应是不是昨晚提交了什么代码,把入口**吓掉了**,然后就开始翻发布记录,发现并没有发版,就奇怪了,好好地怎么就不见了
 
 然后同事们就开始排查代码了,不一会儿就发现了问题所在,然后快速的改掉上线,避免影响扩大
-
 
 ## 事后复盘
 * Leader: 咱能不能用啥工具避免此类问题发生
@@ -87,7 +84,6 @@ coder为了图方便,直接把实效性活动业务组件拿着复用,想着到�
 | vs code插件 | 只需要用户为编辑器安装一个插件,即可在打开的时候进行提示 |  魔法师们可能用sublime/webStorm  ,需要重复开发插件  |   ❤❤❤❤   |
 | eslint规则  | 只需要在项目的配置文件中加入一行规则代码,即可实时的提示 |            需要安装依赖,首次需要手动引入            |    ❤❤    |
 
-
 ### 最终选择
 基于eslint编写一个eslint-plugin来实现自定义校验规则
 
@@ -97,7 +93,6 @@ coder为了图方便,直接把实效性活动业务组件拿着复用,想着到�
 * 理论上不限制前端开发常用的语言/框架的检测
 * 标准化团队统一了所有仓库的lint规则,只需在标准化规则中加入即可
   * 其余仓库,只要执行依赖安装(yarn/npm i) 就会将最新的规则引入项目,使用者能0配置接入
-
 
 ## 实现过程
 下面会展开介绍插件的实现原理,会涉及到一些代码的展示
@@ -115,32 +110,32 @@ create(context) {
 注释节点有两种
 ```js
 // 注释
-/** 
+/**
  * Block
- **/
+ */
 ```
 
 从注释节点中过滤出以flag关键字开始的注释节点
 ```js
 // 过滤出包含关键词的注释节点
-comments = comments.filter(comment => {
-    let { value, type } = comment
-    // 展平块状注释
-    if (type === 'Block') {
-        value = value.replace(/\*|\n/g, '')
+comments = comments.filter((comment) => {
+  let { value, type } = comment
+  // 展平块状注释
+  if (type === 'Block') {
+    value = value.replace(/\*|\n/g, '')
+  }
+  value = value.toLowerCase().trim()
+  // 保存格式化后的字符串
+  comment.newValue = value
+  for (const flag of dFlag) {
+    // 检测是否一关键字开头
+    if (value.startsWith(flag)) {
+      // 保存上flag
+      comment.flag = flag
+      return true
     }
-    value = value.toLowerCase().trim()
-    // 保存格式化后的字符串
-    comment.newValue = value
-    for (const flag of dFlag) {
-        // 检测是否一关键字开头
-        if (value.startsWith(flag)) {
-            // 保存上flag
-            comment.flag = flag
-            return true
-        }
-    }
-    return false
+  }
+  return false
 })
 ```
 
@@ -167,66 +162,65 @@ comments = comments.filter(comment => {
 ```js
 // 匹配日期的正则
 const rDate = [{
-    reg: /((\d{4})|(\d{2}))(-((0\d)|(\d{2})|(\d{1}))){2}/,
-    flag: '-' // yyyy-mm-dd|yy-mm-dd
-},
-{
-    reg: /((\d{4})|(\d{2}))(\/((0\d)|(\d{2})|(\d{1}))){2}/,
-    flag: '/'// yyyy/mm/dd|yy/mm/dd
-},
-{
-    reg: /(\d{8})|(\d{6})/,
-    flag: 'number'// yyyymmdd|yymmdd
+  reg: /((\d{4})|(\d{2}))(-((0\d)|(\d{2})|(\d))){2}/,
+  flag: '-' // yyyy-mm-dd|yy-mm-dd
+}, {
+  reg: /((\d{4})|(\d{2}))(\/((0\d)|(\d{2})|(\d))){2}/,
+  flag: '/'// yyyy/mm/dd|yy/mm/dd
+}, {
+  reg: /(\d{8})|(\d{6})/,
+  flag: 'number'// yyyymmdd|yymmdd
 }]
 /**
  * 获取TODO注释中的DDL,是则返回日期值及其todo内容
- * @param {String} value 待操作字符串
- * @param {String[]} ddlSymbol 截止时间标识符
- * @param {STring} todoSymbol
- * @return {Object} 
+ * @param {string} value 待操作字符串
+ * @param {string[]} ddlSymbol 截止时间标识符
+ * @param {string} todoSymbol
+ * @return {object}
  */
 function getDDLAndText(value, ddlSymbol, todoSymbol) {
-    let text = value.slice(value.indexOf(ddlSymbol) + ddlSymbol.length),
-        date = ''
-    for (const rdate of rDate) {
-        const { reg, flag } = rdate
-        const res = text.match(reg)
-        if (res) {
-            const [dateStr] = res
-            // 再次校验匹配的日期日期是否合法
-            if (reg.test(dateStr)) {
-                let year, month, day
-                if (flag !== 'number') {
-                    let ymd = dateStr.split(flag)
-                    ymd = ymd.map(v => {
-                        return v.length === 1 ? `0${v}` : v
-                    })
-                    year = ymd[0]
-                    month = ymd[1]
-                    day = ymd[2]
-                } else {
-                    const { length } = dateStr
-                    day = dateStr.slice(length - 2)
-                    month = dateStr.slice(length - 4, length - 2)
-                    year = dateStr.slice(0, length - 4)
-                }
-                if (year.length === 2) {
-                    year = new Date().getFullYear().toString().slice(0, 2) + year
-                }
-                text = text.slice(text.indexOf(dateStr) + dateStr.length)
-                date = `${year}-${month}-${day}`
-                // 日期不合格也pass掉
-                if (month > 12 || day > 31) {
-                    date = ''
-                }
-                break
-            }
+  let text = value.slice(value.indexOf(ddlSymbol) + ddlSymbol.length)
+  let date = ''
+  for (const rdate of rDate) {
+    const { reg, flag } = rdate
+    const res = text.match(reg)
+    if (res) {
+      const [dateStr] = res
+      // 再次校验匹配的日期日期是否合法
+      if (reg.test(dateStr)) {
+        let year, month, day
+        if (flag !== 'number') {
+          let ymd = dateStr.split(flag)
+          ymd = ymd.map((v) => {
+            return v.length === 1 ? `0${v}` : v
+          })
+          year = ymd[0]
+          month = ymd[1]
+          day = ymd[2]
         }
+        else {
+          const { length } = dateStr
+          day = dateStr.slice(length - 2)
+          month = dateStr.slice(length - 4, length - 2)
+          year = dateStr.slice(0, length - 4)
+        }
+        if (year.length === 2) {
+          year = new Date().getFullYear().toString().slice(0, 2) + year
+        }
+        text = text.slice(text.indexOf(dateStr) + dateStr.length)
+        date = `${year}-${month}-${day}`
+        // 日期不合格也pass掉
+        if (month > 12 || day > 31) {
+          date = ''
+        }
+        break
+      }
     }
-    return {
-        text,
-        date
-    }
+  }
+  return {
+    text,
+    date
+  }
 }
 ```
 
@@ -237,24 +231,26 @@ function getDDLAndText(value, ddlSymbol, todoSymbol) {
 ```js
 // 未设置DDL或者DDL不合法情况
 if (!date) {
-    errMsg = '没有设置有效的Deadline,设置方法(https://github.com/ATQQ/eslint-plugin-todo-ddl)'
-} else {
-    const TODODate = new Date(date).getTime()
-    const interval = TODODate - Date.now()
-    // 如果已经到期
-    if (interval < 0 || interval < oneDay) {
-        errMsg = '已经过截止日期，请立即修改'
-    } else {
-        // 剩余天数(向下取整)
-        const theRestDays = ~~(interval / oneDay)
-        errMsg = theRestDays <= dWarnLine ? `还有${theRestDays}天截止，请尽快修改` : ''
-    }
+  errMsg = '没有设置有效的Deadline,设置方法(https://github.com/ATQQ/eslint-plugin-todo-ddl)'
+}
+else {
+  const TODODate = new Date(date).getTime()
+  const interval = TODODate - Date.now()
+  // 如果已经到期
+  if (interval < 0 || interval < oneDay) {
+    errMsg = '已经过截止日期，请立即修改'
+  }
+  else {
+    // 剩余天数(向下取整)
+    const theRestDays = ~~(interval / oneDay)
+    errMsg = theRestDays <= dWarnLine ? `还有${theRestDays}天截止，请尽快修改` : ''
+  }
 }
 if (errMsg) {
-    context.report({
-        node: comment,
-        message: `TODO WARN: ${errMsg} --> ${text}`
-    })
+  context.report({
+    node: comment,
+    message: `TODO WARN: ${errMsg} --> ${text}`
+  })
 }
 ```
 
@@ -273,10 +269,8 @@ if (errMsg) {
 ### 未来
 1. 找时间根据反馈,迭代一下插件,提高其可玩性
 
-
 ## 其它
 * [eslint插件开发教程文档](./../learn/eslint-plugin.md)
 * [vs code插件 todo-tree](https://github.com/Gruntfuggly/todo-tree)也很棒哟
 
 >[本文](https://juejin.cn/post/6939877553582637069)正在参与「掘金 2021 春招闯关活动」, 点击查看 [活动详情](https://juejin.cn/post/6939329638506168334)
-

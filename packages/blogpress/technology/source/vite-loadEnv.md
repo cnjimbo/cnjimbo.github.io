@@ -19,13 +19,13 @@ categories:
 ## 方法的定义
 ```ts
 type Record<K extends keyof any, T> = {
-    [P in K]: T;
-};
+  [P in K]: T;
+}
 
 export function loadEnv(
-    mode: string,
-    envDir: string,
-    prefix = 'VITE_'
+  mode: string,
+  envDir: string,
+  prefix = 'VITE_'
 ): Record<string, string> {
 
 }
@@ -48,7 +48,7 @@ export function loadEnv(
 
 ```ts
 // defaultMode = ‘development’
-let mode = inlineConfig.mode || defaultMode
+const mode = inlineConfig.mode || defaultMode
 
 // 。。。more code
 
@@ -91,12 +91,12 @@ export function loadEnv(
   envDir: string,
   prefix = 'VITE_'
 ): Record<string, string> {
-  // 如果设置的模式是 local 就抛出错误 
+  // 如果设置的模式是 local 就抛出错误
   // 即避免与.loacl 后缀文件冲突
   if (mode === 'local') {
     throw new Error(
-      `"local" cannot be used as a mode name because it conflicts with ` +
-        `the .local postfix for .env files.`
+      '"local" cannot be used as a mode name because it conflicts with '
+      + 'the .local postfix for .env files.'
     )
   }
 
@@ -112,8 +112,8 @@ export function loadEnv(
   const envFiles = [
     /** mode local file */ `.env.${mode}.local`,
     /** mode file */ `.env.${mode}`,
-    /** local file */ `.env.local`,
-    /** default file */ `.env`
+    /** local file */ '.env.local',
+    /** default file */ '.env'
   ]
 
   // 检查是否已经有以VITE_开头的环境变量
@@ -124,10 +124,10 @@ export function loadEnv(
       env[key] = process.env[key] as string
     }
   }
-  
+
   // 遍历环境遍历配置文件
   for (const file of envFiles) {
-    // 判断配置文件是否存在，lookupFile源码后文贴出  
+    // 判断配置文件是否存在，lookupFile源码后文贴出
     const path = lookupFile(envDir, [file], true)
     // 如果文件存在
     if (path) {
@@ -151,8 +151,9 @@ export function loadEnv(
         if (key.startsWith(prefix) && env[key] === undefined) {
           // 暴露到env变量上
           env[key] = value
-        } else if (key === 'NODE_ENV') {
-          //机翻：使用配置文件中的NODE_ENV覆盖现有的NODE_ENV
+        }
+        else if (key === 'NODE_ENV') {
+          // 机翻：使用配置文件中的NODE_ENV覆盖现有的NODE_ENV
           process.env.VITE_USER_NODE_ENV = value
         }
       }
@@ -192,14 +193,14 @@ export function lookupFile(
 ## 独立迁移
 ### TS版
 ```ts
-import dotenv from 'dotenv'
-import dotenvExpand from 'dotenv-expand'
 import nodepath from 'path'
 import fs from 'fs'
+import dotenv from 'dotenv'
+import dotenvExpand from 'dotenv-expand'
 
 type Record<K extends keyof any, T> = {
   [P in K]: T;
-};
+}
 
 interface Options {
   // 模式
@@ -220,14 +221,14 @@ const defaultOptions: Options = {
 }
 export function loadEnv(options?: Options): Record<string, string> {
   // 设置默认值
-  options = Boolean(options) ? options : {}
+  options = options || {}
   Object.assign(options, defaultOptions, options)
   const { mode, envDir, prefix, ignoreProcessEnv } = options
 
   if (mode === 'local') {
     throw new Error(
-      `"local" cannot be used as a mode name because it conflicts with ` +
-      `the .local postfix for .env files.`
+      '"local" cannot be used as a mode name because it conflicts with '
+      + 'the .local postfix for .env files.'
     )
   }
 
@@ -236,8 +237,8 @@ export function loadEnv(options?: Options): Record<string, string> {
   const envFiles = [
     /** mode local file */ `.env.${mode}.local`,
     /** mode file */ `.env.${mode}`,
-    /** local file */ `.env.local`,
-    /** default file */ `.env`
+    /** local file */ '.env.local',
+    /** default file */ '.env'
   ]
 
   for (const key in process.env) {
@@ -263,7 +264,8 @@ export function loadEnv(options?: Options): Record<string, string> {
       for (const [key, value] of Object.entries(parsed)) {
         if (key.startsWith(prefix) && env[key] === undefined) {
           env[key] = value
-        } else if (key === 'NODE_ENV') {
+        }
+        else if (key === 'NODE_ENV') {
           process.env.NODE_ENV = value
         }
       }
@@ -276,20 +278,20 @@ export function loadEnv(options?: Options): Record<string, string> {
 
 ### JS版
 ```js
-const dotenv = require('dotenv')
-const dotenvExpand = require('dotenv-expand')
 const nodepath = require('path')
 const fs = require('fs')
+const dotenv = require('dotenv')
+const dotenvExpand = require('dotenv-expand')
 
-function loadEnv(options){
+function loadEnv(options) {
   // 设置默认值
-  options = Boolean(options) ? options : {}
+  options = options || {}
   Object.assign(options, defaultOptions, options)
   const { mode, envDir, prefix, ignoreProcessEnv } = options
   if (mode === 'local') {
     throw new Error(
-      `"local" cannot be used as a mode name because it conflicts with ` +
-      `the .local postfix for .env files.`
+      '"local" cannot be used as a mode name because it conflicts with '
+      + 'the .local postfix for .env files.'
     )
   }
 
@@ -298,8 +300,8 @@ function loadEnv(options){
   const envFiles = [
     /** mode local file */ `.env.${mode}.local`,
     /** mode file */ `.env.${mode}`,
-    /** local file */ `.env.local`,
-    /** default file */ `.env`
+    /** local file */ '.env.local',
+    /** default file */ '.env'
   ]
 
   for (const key in process.env) {
@@ -325,7 +327,8 @@ function loadEnv(options){
       for (const [key, value] of Object.entries(parsed)) {
         if (key.startsWith(prefix) && env[key] === undefined) {
           env[key] = value
-        } else if (key === 'NODE_ENV') {
+        }
+        else if (key === 'NODE_ENV') {
           process.env.NODE_ENV = value
         }
       }
@@ -334,11 +337,10 @@ function loadEnv(options){
   return env
 }
 module.exports = {
-    loadEnv
+  loadEnv
 }
 ```
 
 ## 最后
 * 这部分源码还是不复杂，有很多可借鉴的写法
 * 如果自己的node项目需要读取环境变量文件，可以根据此配置做迁移
-

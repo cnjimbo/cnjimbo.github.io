@@ -17,24 +17,24 @@ JavaScript 引擎并非一行一行地分析和执行程序，而是一段一段
 **变量提升**
 ```js
 var foo = function () {
-    console.log('foo1');
+  console.log('foo1')
 }
-foo();  // foo1
+foo() // foo1
 var foo = function () {
-    console.log('foo2');
+  console.log('foo2')
 }
-foo(); // foo2
+foo() // foo2
 ```
 **函数提升**
 ```js
 function foo() {
-    console.log('foo1');
+  console.log('foo1')
 }
-foo();  // foo2
+foo() // foo2
 function foo() {
-    console.log('foo2');
+  console.log('foo2')
 }
-foo(); // foo2
+foo() // foo2
 ```
 
 ## 可执行代码
@@ -44,19 +44,18 @@ foo(); // foo2
 
 ## [执行上下文栈?](./eventloop.md#什么是执行栈)
 
-
 ## 例子
 ### 例子1
 ```js
-var scope = "global scope";
-function checkscope(){
-    var scope = "local scope";
-    function f(){
-        return scope;
-    }
-    return f();
+const scope = 'global scope'
+function checkscope() {
+  const scope = 'local scope'
+  function f() {
+    return scope
+  }
+  return f()
 }
-checkscope();
+checkscope()
 ```
 **模拟结果**
 ```js
@@ -68,15 +67,15 @@ stack.pop() // checkscope()
 
 ### 例子2
 ```js
-var scope = "global scope";
-function checkscope(){
-    var scope = "local scope";
-    function f(){
-        return scope;
-    }
-    return f;
+const scope = 'global scope'
+function checkscope() {
+  const scope = 'local scope'
+  function f() {
+    return scope
+  }
+  return f
 }
-checkscope()();
+checkscope()()
 ```
 **模拟结果**
 ```js
@@ -88,4 +87,3 @@ stack.pop() // f()
 :::tip 参考
 [JavaScript深入之执行上下文栈](https://github.com/mqyqingfeng/Blog/issues/4)
 :::
-

@@ -103,11 +103,11 @@ js开始执行代码的时候会首先创建一个``main``函数,然后根据执
 
 示例
 ```js
-function a(v){
-    return v*4
+function a(v) {
+  return v * 4
 }
-function b(v){
-    return a(v*3)
+function b(v) {
+  return a(v * 3)
 }
 console.log(b(2))
 ```
@@ -129,7 +129,6 @@ console.log(b(2))
 使用递归的时候，因为栈可存放的函数是有限制的，一旦存放了过多的函数且没有得到释放的话，就会出现爆栈(如下图所示)
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYxMTA2ODQxNTc5OQ==611068415799)
-
 
 ## 浏览器中的 Event Loop
 通过上面的阐述，大概也是知道了js是如何执行的，了解了如何以单线程同步执行的方式处理异步任务的机制，下面开始详细描述一下执行的过程
@@ -203,18 +202,18 @@ async function async2() {
 
 async1()
 
-setTimeout(function() {
+setTimeout(() => {
   console.log('setTimeout')
 }, 0)
 
-new Promise(resolve => {
+new Promise((resolve) => {
   console.log('Promise')
   resolve()
 })
-  .then(function() {
+  .then(() => {
     console.log('promise1')
   })
-  .then(function() {
+  .then(() => {
     console.log('promise2')
   })
 
@@ -257,10 +256,10 @@ console.log('script end')
 
 **async1** 其等价的v8**优化前**的旧版代码为
 ```js
-function async1(){
-  new Promise((resolve)=>{
-    const p = new Promise(res=>res(async2()))
-    p.then(()=>{
+function async1() {
+  new Promise((resolve) => {
+    const p = new Promise(res => res(async2()))
+    p.then(() => {
       console.log('async1 end')
       resolve()
     })
@@ -271,17 +270,17 @@ function async1(){
 #### 新版浏览器的结果为
 
 ```js
-// script start --> async2 end --> Promise --> script end --> async1 end 
+// script start --> async2 end --> Promise --> script end --> async1 end
 //  promise1 --> promise2 --> setTimeout
 ```
 在本例中上述的 **P2**包裹**P1** 合并成了一个，即await后面如果是Promise将不会再进行一次Promise包装
 
 **async1** 其等价的v8**优化后**的代码为
 ```js
-function async1(){
-  new Promise((resolve)=>{
+function async1() {
+  new Promise((resolve) => {
     const p = Promise.resolve(async2())
-    p.then(()=>{
+    p.then(() => {
       console.log('async1 end')
       resolve()
     })
@@ -302,24 +301,24 @@ function async1(){
 ### 自测
 自测试1
 ```js
-console.log(1);
+console.log(1)
 
 setTimeout(() => {
-  console.log(2);
+  console.log(2)
   Promise.resolve().then(() => {
     console.log(3)
-  });
-});
+  })
+})
 
 new Promise((resolve, reject) => {
   console.log(4)
   resolve(5)
 }).then((data) => {
-  console.log(data);
+  console.log(data)
 })
 
 setTimeout(() => {
-  console.log(6);
+  console.log(6)
 })
 
 console.log(7)
@@ -328,55 +327,53 @@ console.log(7)
 <details>
   <summary><mark><font color=darkred>点击查看答案</font></mark></summary>
   <p> 输出结果</p>
-  <pre><code>  
+  <pre><code>
   // 1 4 7 5 2 3 6
   </code></pre>
 </details>
 
 自测2
 ```js
-console.log(1);
+console.log(1)
 
 setTimeout(() => {
-  console.log(2);
+  console.log(2)
   Promise.resolve().then(() => {
     console.log(3)
-  });
-});
+  })
+})
 
 new Promise((resolve, reject) => {
   console.log(4)
   resolve(5)
 }).then((data) => {
-  console.log(data);
-  
+  console.log(data)
+
   Promise.resolve().then(() => {
     console.log(6)
   }).then(() => {
     console.log(7)
-    
+
     setTimeout(() => {
       console.log(8)
-    }, 0);
-  });
+    }, 0)
+  })
 })
 
 setTimeout(() => {
-  console.log(9);
+  console.log(9)
 })
 
-console.log(10);
+console.log(10)
 ```
 <details>
   <summary><mark><font color=darkred>点击查看答案</font></mark></summary>
   <p> 输出结果</p>
-  <pre><code>  
+  <pre><code>
   // 1 4 10 5 6 7 2 3 9 8
   </code></pre>
 </details>
 
-
 ## 参考
 * [阮一峰：JavaScript 运行机制详解：再谈Event Loop](http://www.ruanyifeng.com/blog/2014/10/event-loop.html)
 * [MDN：并发模型与事件循环 ](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/EventLoop)
-

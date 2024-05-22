@@ -51,11 +51,11 @@ if([] == ![])
 </summary>
 
 ```js
-console.log(!!undefined);
-console.log(!!null);
-console.log(!!NaN);
-console.log(Boolean(''));
-console.log(Boolean(0)); 
+console.log(!!undefined)
+console.log(!!null)
+console.log(!!Number.NaN)
+console.log(Boolean(''))
+console.log(Boolean(0))
 ```
 </details>
 
@@ -68,11 +68,11 @@ console.log(Boolean(0));
 </summary>
 
 ```js
-console.log(!!{});
-console.log(!![]);
-console.log(!!new Date());
-console.log(Boolean(1));
-console.log(Boolean('123'));
+console.log(!!{})
+console.log(!![])
+console.log(!!new Date())
+console.log(Boolean(1))
+console.log(Boolean('123'))
 ```
 </details>
 
@@ -82,11 +82,10 @@ console.log(Boolean('123'));
 * `+value`：以`+`开头
 * `Number(value)`：用Number包裹
 
-
 #### 数组转数字
 Array => Number
-* 空数组转为0: `[]` --> <font color="#3eaf7c">0</font>  
-* 含有一个元素且为`数字`或`数字字符串`则转换为数字：`[1]`或`['1']` --> <font color="#3eaf7c">1</font> 
+* 空数组转为0: `[]` --> <font color="#3eaf7c">0</font>
+* 含有一个元素且为`数字`或`数字字符串`则转换为数字：`[1]`或`['1']` --> <font color="#3eaf7c">1</font>
 * 其余情况转为`NaN`
 
 <details>
@@ -95,11 +94,11 @@ Array => Number
 </summary>
 
 ```js
-console.log(+[]); // 0
-console.log(+[1]); // 1
-console.log(Number(['1.23'])); // 1.23
-console.log(Number([1,2])); // NaN
-console.log(Number(['1',2])); // NaN
+console.log(+[]) // 0
+console.log(+[1]) // 1
+console.log(Number(['1.23'])) // 1.23
+console.log(Number([1, 2])) // NaN
+console.log(Number(['1', 2])) // NaN
 ```
 </details>
 
@@ -108,9 +107,9 @@ console.log(Number(['1',2])); // NaN
 * `'123'` --> <font color="#3eaf7c">123</font>: 纯数字构成的字符串直接转换为应的数字
 * `true` --> <font color="#3eaf7c">1</font>
 * `false` --> <font color="#3eaf7c">0</font>
-* `'124a'` --> <font color="red">NaN</font> 
-* `undefined` --> <font color="red">NaN</font> 
-* `Symbol` --> <font color="orange">**抛出错误**</font> 
+* `'124a'` --> <font color="red">NaN</font>
+* `undefined` --> <font color="red">NaN</font>
+* `Symbol` --> <font color="orange">**抛出错误**</font>
 
 <details>
 <summary>
@@ -118,12 +117,12 @@ console.log(Number(['1',2])); // NaN
 </summary>
 
 ```js
-console.log(+null); // 0
-console.log(+undefined); // NaN
-console.log(+'123'); // 123
-console.log(+'true'); // NaN
-console.log(+true); // 1
-console.log(+false);// 0
+console.log(+null) // 0
+console.log(+undefined) // NaN
+console.log(+'123') // 123
+console.log(+'true') // NaN
+console.log(+true) // 1
+console.log(+false)// 0
 ```
 </details>
 
@@ -136,10 +135,10 @@ console.log(+false);// 0
 </summary>
 
 ```js
-console.log(+ new Date()); // 1623597270652
-console.log(+ [1]); // 1
-console.log(+ {}); // NaN
-console.log(+ /\d/); // NaN
+console.log(+new Date()) // 1623597270652
+console.log(+[1]) // 1
+console.log(+{}) // NaN
+console.log(+/\d/) // NaN
 ```
 </details>
 
@@ -150,10 +149,10 @@ console.log(+ /\d/); // NaN
 
 #### 值类型转字符串
 * 数字直接转
-  * `666` --> <font color="#3eaf7c">'666'</font>: 
+  * `666` --> <font color="#3eaf7c">'666'</font>:
 * 布尔值直接转换
-  * `true` --> <font color="#3eaf7c">'true'</font> 
-  * `false` --> <font color="#3eaf7c">'false'</font> 
+  * `true` --> <font color="#3eaf7c">'true'</font>
+  * `false` --> <font color="#3eaf7c">'false'</font>
 
 <details>
 <summary>
@@ -161,9 +160,9 @@ console.log(+ /\d/); // NaN
 </summary>
 
 ```js
-console.log(''+true); // 'true'
-console.log(''+false); // 'false'
-console.log(String(666)); // '666'
+console.log(`${true}`) // 'true'
+console.log(`${false}`) // 'false'
+console.log(String(666)) // '666'
 ```
 </details>
 
@@ -172,8 +171,8 @@ console.log(String(666)); // '666'
   * `[]` --> <font color="#3eaf7c">''</font> ：空数组转为空串
   * `[2,'3']` --> <font color="#3eaf7c">'2,3'</font> ：非空数组的每一项转为字符串再用`,`分割
 * 对象:
-  * {} --> <font color="red">[object Object]</font> 
-  * {a:1} --> <font color="red">[object Object]</font> 
+  * {} --> <font color="red">[object Object]</font>
+  * {a:1} --> <font color="red">[object Object]</font>
 
 <details>
 <summary>
@@ -181,10 +180,10 @@ console.log(String(666)); // '666'
 </summary>
 
 ```js
-console.log(String([])); // ''
-console.log(String([1,2,'3'])); // '1,2,3'
-console.log(String({})); // '[object Object]'
-console.log(String({a:1})); // '[object Object]'
+console.log(String([])) // ''
+console.log(String([1, 2, '3'])) // '1,2,3'
+console.log(String({})) // '[object Object]'
+console.log(String({ a: 1 })) // '[object Object]'
 ```
 </details>
 
@@ -208,48 +207,48 @@ console.log(String({a:1})); // '[object Object]'
 
 ```js
 const demo1 = {
-    [Symbol.toPrimitive]: function () {
-        return 2
-    }
+  [Symbol.toPrimitive]() {
+    return 2
+  }
 }
 // 情况1
-console.log(demo1 + 1); // 3
+console.log(demo1 + 1) // 3
 
 const demo2 = {
-    toString() {
-        return 'demo2'
-    },
-    valueOf() {
-        return 20
-    }
+  toString() {
+    return 'demo2'
+  },
+  valueOf() {
+    return 20
+  }
 }
 // 情况2
 console.log(String(demo2)) // demo2
 
 // 情况3-1
-console.log(demo2 - 3); // 17
+console.log(demo2 - 3) // 17
 
 const demo3 = {
-    toString() {
-        return 30
-    },
-    valueOf() {
-        return {}
-    }
+  toString() {
+    return 30
+  },
+  valueOf() {
+    return {}
+  }
 }
 // 情况3-2
-console.log(demo3 - 4); // 26
+console.log(demo3 - 4) // 26
 
 const demo4 = {
-    toString() {
-        return {}
-    },
-    valueOf() {
-        return {}
-    }
+  toString() {
+    return {}
+  },
+  valueOf() {
+    return {}
+  }
 }
 // 情况4
-console.log(demo4 + 1); // 报错
+console.log(demo4 + 1) // 报错
 ```
 
 </details>
@@ -267,7 +266,7 @@ console.log(demo4 + 1); // 报错
 </summary>
 
 ```js
-'123' + 4 // '1234'
+`123${4}` // '1234'
 
 123 + true // 124
 123 + undefined // NaN
@@ -287,8 +286,8 @@ console.log(demo4 + 1); // 报错
 1. `NaN`不等于任何其它类型
 2. `Boolean` 与其它类型进行比较,`Boolean`转换为`Number`
 3. `String` 与 `Number`进行比较,`String` 转化为`Number`
-4. `null` 与 `undefined`进行比较结果为<font color="#3eaf7c">true</font> 
-5. `null`,`undefined`与其它任何类型进行比较结果都为<font color="red">false</font> 
+4. `null` 与 `undefined`进行比较结果为<font color="#3eaf7c">true</font>
+5. `null`,`undefined`与其它任何类型进行比较结果都为<font color="red">false</font>
 6. `引用类型`与`值类型`进行比较,引用类型先转换为`值类型`(调用[ToPrimitive])
 7. `引用类型`与`引用类型`，直接判断是否指向同一对象
 
@@ -302,7 +301,7 @@ console.log(demo4 + 1); // 报错
 </summary>
 
 ```js
-[]==![] // true
+[] == ![] // true
 // [] == false  1. 根据运算符优先级 ![] --> false
 // [] == 0      2. 上面规则2
 // '' == 0      3. 上面规则6
@@ -318,52 +317,66 @@ console.log(demo4 + 1); // 报错
 </summary>
 
 ```js
-if ([]) console.log(1);             
-if ({}) console.log(2);             
-if ([] == false) console.log(3);    
-if ({} == false) console.log(4);    
-if ([] == ![]) console.log(5);      
-if ({} == !{}) console.log(6);      
-if ('' == false) console.log(7);    
-if (false == 0) console.log(8);     
-if (1 == true) console.log(9);      
-if ('' == 0) console.log(10);       
-if (NaN == NaN) console.log(11);    
-if ([] == !true) console.log(12);   
-if ([] == false) console.log(13);   
-if ([] == 0) console.log(14);       
-if (+0 == -0) console.log(15);      
-if (NaN == false) console.log(16);  
+if ([])
+  console.log(1)
+if ({})
+  console.log(2)
+if ([] == false)
+  console.log(3)
+if ({} == false)
+  console.log(4)
+if ([] == ![])
+  console.log(5)
+if ({} == !{})
+  console.log(6)
+if ('' == false)
+  console.log(7)
+if (false == 0)
+  console.log(8)
+if (1 == true)
+  console.log(9)
+if ('' == 0)
+  console.log(10)
+if (Number.NaN == Number.NaN)
+  console.log(11)
+if ([] == !true)
+  console.log(12)
+if ([] == false)
+  console.log(13)
+if ([] == 0)
+  console.log(14)
+if (+0 == -0)
+  console.log(15)
+if (Number.NaN == false)
+  console.log(16)
 ```
 
 ```js
-{ } +1              
-1 + {}              
-[] + 1              
-1 + []              
-[1, 2, 3] + 0       
-[1, 2, 3] + '0'     
-1 + '0'             
-1 + 0               
-1 + true            
-1 + false           
-'1' + true          
-'1' + false         
-![] + []            
-1 - true            
-'0' - 0             
-0 - '1'             
-false - true        
-{ } -[]             
-[] - {}             
-false - []          
+{ } +1
+1 + {}
+[] + 1
+1 + []
+[1, 2, 3] + 0
+[1, 2, 3] + '0'
+1 + '0'
+1 + 0
+1 + true
+1 + false
+'1' + true
+'1' + false
+![] + []
+1 - true
+'0' - 0
+0 - '1'
+false - true
+{ } -[]
+[] - {}
+false - []
 ```
 </details>
 
-
 ## TODO
 * 补图：用图概括文章内容
-
 
 :::tip 参考
 
@@ -371,4 +384,3 @@ false - []
 
 [freeCodeCamp-Javascript 隐式类型转换，一篇就够了](https://chinese.freecodecamp.org/news/javascript-implicit-type-conversion/)
 :::
-

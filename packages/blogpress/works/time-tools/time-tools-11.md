@@ -13,7 +13,6 @@ tags:
 
 由于之前时间很紧，代码质量堪忧，这篇主要来做一下代码的优化工作介绍
 
-
 ## 代码优化
 ### 目录结构
 当前的目录结构如下，所有的ccommand注册逻辑，业务逻辑均在`./bin/index.js`文件中
@@ -46,7 +45,7 @@ tags:
 
 `src/command/command1.js`
 ```js
-module.exports = function (param1,param2) {
+module.exports = function (param1, param2) {
 
 }
 ```
@@ -56,7 +55,7 @@ module.exports = function (param1,param2) {
 const command1 = require('./command1')
 
 module.exports = {
-    command1,
+  command1,
 }
 ```
 这样在`bin/index,js`文件中直接引入即可，例如初始化项目指令
@@ -67,10 +66,10 @@ const { initCommand } = require('./../src/command')
 /**
  * 初始化项目
  */
-commander.command("init <projectName>")
-    .alias('i')
-    .description('init project')
-    .action(initCommand)
+commander.command('init <projectName>')
+  .alias('i')
+  .description('init project')
+  .action(initCommand)
 ```
 
 ### 重复代码
@@ -80,18 +79,18 @@ commander.command("init <projectName>")
 * 例如下面几个简单，而使用地方又很多的
 ```js
 // 获取命令执行路径
-function getCWD(){
-    return process.cwd()
+function getCWD() {
+  return process.cwd()
 }
 
 // 获取配置文件
-function getConfig(){
-    return require(path.join(__dirname,'../../.config/record.json'))
+function getConfig() {
+  return require(path.join(__dirname, '../../.config/record.json'))
 }
 
 // 获取输出文件的默认文件名
-function getOutFilename(){
-    return 'timec-res'
+function getOutFilename() {
+  return 'timec-res'
 }
 ```
 
@@ -99,19 +98,19 @@ function getOutFilename(){
 毫秒转时分秒，这个方法主要是格式化时间展示，旧的逻辑如下，非常的朴实无华，可读性也不是太高
 ```js
 function mmsToNormal(mms) {
-    let str = ''
-    mms = (mms / 1000) >> 0
-    const day = (mms / (24 * 60 * 60)) >> 0
-    day && (str += `${day}天 `)
-    mms -= day * 24 * 60 * 60
-    const hour = (mms / (60 * 60)) >> 0
-    hour && (str += `${hour}时 `)
-    mms -= hour * 60 * 60
-    const minute = (mms / 60) >> 0
-    minute && (str += `${minute}分 `)
-    mms -= minute * 60
-    str += `${mms}秒`
-    return str
+  let str = ''
+  mms = (mms / 1000) >> 0
+  const day = (mms / (24 * 60 * 60)) >> 0
+  day && (str += `${day}天 `)
+  mms -= day * 24 * 60 * 60
+  const hour = (mms / (60 * 60)) >> 0
+  hour && (str += `${hour}时 `)
+  mms -= hour * 60 * 60
+  const minute = (mms / 60) >> 0
+  minute && (str += `${minute}分 `)
+  mms -= minute * 60
+  str += `${mms}秒`
+  return str
 }
 ```
 如果只是展示时分秒的，可以直接调用已注册的format方法:
@@ -119,13 +118,12 @@ function mmsToNormal(mms) {
 * 然后减去1即可得到过去的天数
 * 时分秒就直接格式化即可
 ```js
-function fn(mms){
-  let str = `${+date.format('dd')-1}天${date.format('hh时mm分ss秒')}`
+function fn(mms) {
+  const str = `${+date.format('dd') - 1}天${date.format('hh时mm分ss秒')}`
   return str
 }
 ```
 这样代码可以说优化到了一行的样子（除开format方法的具体实现）
-
 
 ## 小结
 代码还在完善中，明天再大大优化一遍和大家分享
@@ -143,4 +141,3 @@ function fn(mms){
 本系列会不断的更新迭代，直至产品初代完成
 
 * [仓库地址](https://github.com/ATQQ/time-control)
-

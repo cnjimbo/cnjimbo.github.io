@@ -13,32 +13,32 @@ categories:
 ## mySetTimeout
 ```js
 function mySetTimeout(callback, delay) {
-    let timer, start = Date.now()
-    const loop = () => {
-        if (start + delay > Date.now()) {
-            timer = requestAnimationFrame(loop)
-        } else {
-            callback(timer)
-        }
+  let timer; const start = Date.now()
+  const loop = () => {
+    if (start + delay > Date.now()) {
+      timer = requestAnimationFrame(loop)
     }
-    loop()
-    return timer
+    else {
+      callback(timer)
+    }
+  }
+  loop()
+  return timer
 }
 ```
 
 ## mySetInterval
 ```js
 function mySetInterval(callback, delay) {
-    let timer, start = Date.now()
-    const loop = () => {
-        if (start + delay <= Date.now()) {
-            callback(timer)
-            start = Date.now()
-        }
-        timer = requestAnimationFrame(loop)
+  let timer; let start = Date.now()
+  const loop = () => {
+    if (start + delay <= Date.now()) {
+      callback(timer)
+      start = Date.now()
     }
-    loop()
-    return timer
+    timer = requestAnimationFrame(loop)
+  }
+  loop()
+  return timer
 }
 ```
-

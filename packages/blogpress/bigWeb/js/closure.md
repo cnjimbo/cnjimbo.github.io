@@ -25,22 +25,22 @@ categories:
 >
 ```js
 function A() {
-    let a = 1
-    windos.B = function() {
-        console.log(a)
-    }
+  const a = 1
+  windos.B = function () {
+    console.log(a)
+  }
 }
 A()
 B() // 1
 ```
 ```js
 function a() {
-    let i = 0;
-    return function b(){
-        console.log(++i)
-    }
+  let i = 0
+  return function b() {
+    console.log(++i)
+  }
 }
-let fn = a()
+const fn = a()
 fn() // 1
 fn() // 2
 fn() // 3
@@ -77,7 +77,7 @@ fn() // 3
 ```js
 // 本意输出1 2 3 4 5
 for (var i = 1; i <= 5; i++) {
-  setTimeout(function timer() {
+  setTimeout(() => {
     console.log(i)
   }, i * 1000)
 }
@@ -86,53 +86,53 @@ for (var i = 1; i <= 5; i++) {
 
 * 1. 闭包解决----IIFE(立即执行函数)
 ```js
-for (var i = 1; i <= 5; i++) {
-    (function (j) {
-        setTimeout(function timer() {
-            console.log(j)
-        }, j * 1000)
-    })(i)
+for (let i = 1; i <= 5; i++) {
+  (function (j) {
+    setTimeout(() => {
+      console.log(j)
+    }, j * 1000)
+  })(i)
 }
 ```
 * 1. 闭包解决----函数嵌套
 ```js
-for (var i = 1; i <= 5; i++) {
-    function b(j){
-        setTimeout(function timer() {
-            console.log(j)
-        }, j * 1000)
-    }
-    b(i)
+for (let i = 1; i <= 5; i++) {
+  function b(j) {
+    setTimeout(() => {
+      console.log(j)
+    }, j * 1000)
+  }
+  b(i)
 }
 ```
 * 2. setTimeout的第三个参数
 ```js
-for (var i = 1; i <= 5; i++) {
-    setTimeout(function timer(j) {
-        console.log(j)
-    }, i * 1000, i)
+for (let i = 1; i <= 5; i++) {
+  setTimeout((j) => {
+    console.log(j)
+  }, i * 1000, i)
 }
 ```
 * 3. 使用let定义i
 ```js
 for (let i = 1; i <= 5; i++) {
-    setTimeout(function timer() {
-        console.log(i)
-    }, i * 1000)
+  setTimeout(() => {
+    console.log(i)
+  }, i * 1000)
 }
 ```
 
 ## 结合[作用域链](./scopeLink.md)
 ```js
-var data = [];
+const data = []
 for (var i = 0; i < 3; i++) {
   data[i] = function () {
-    console.log(i);
-  };
+    console.log(i)
+  }
 }
-data[0](); // 3
-data[1](); // 3
-data[2](); // 3
+data[0]() // 3
+data[1]() // 3
+data[2]() // 3
 ```
 1. 执行到 ``data[0]`` 时
 ```js
@@ -159,17 +159,17 @@ data[0]Context = {
 
 **使用匿名函数包裹形成闭包**
 ```js
-var data = [];
-for (var i = 0; i < 3; i++) {
+const data = []
+for (let i = 0; i < 3; i++) {
   data[i] = (function (i) {
-        return function(){
-            console.log(i);
-        }
-  })(i);
+    return function () {
+      console.log(i)
+    }
+  })(i)
 }
-data[0](); // 0
-data[1](); // 1
-data[2](); // 2
+data[0]() // 0
+data[1]() // 1
+data[2]() // 2
 ```
 1. 在执行到 ``data[0]``时
 ```js
@@ -203,8 +203,6 @@ data[0]Context = {
 3. data[0]沿着作用域链找到了匿名函数Context.AO上的``i``,此时就不会再继续查找了
 4. data[1],data[2] 同理
 
-
 :::tip 参考
 [JavaScript深入之闭包](https://github.com/mqyqingfeng/Blog/issues/9)
 :::
-

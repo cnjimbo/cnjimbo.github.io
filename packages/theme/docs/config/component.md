@@ -51,8 +51,6 @@ interface TaskCheckbox {
 ```
 :::
 
-
-
 ## tabs
 * Type: `boolean`
 
@@ -119,7 +117,6 @@ b content 2
 :::
 ```
 
-
 :::=tabs=ab
 ::a
 a content
@@ -162,7 +159,6 @@ flowchart TD
   Start --> Stop
 ```
 </pre>
-
 
 效果如下
 
@@ -215,7 +211,6 @@ gantt
     Parallel 4   :         des6, after des4, 1d
 ```
 
-
 ## UserWorksPage
 * Type: `UserWorks`
 
@@ -226,7 +221,7 @@ gantt
 ![](https://img.cdn.sugarat.top/mdImg/MTY4NzA4ODczMzkwNg==687088733906)
 
 新建一个`works.md`文件，放入以下内容
-  
+
 ```md
 ---
 layout: page
@@ -291,32 +286,32 @@ interface UserWork {
   title: string
   description: string
   time:
-  | string
-  | {
-    start: string
-    end?: string
-    lastupdate?: string
-  }
+    | string
+    | {
+      start: string
+      end?: string
+      lastupdate?: string
+    }
   status?: {
     text: string
     type?: 'tip' | 'warning' | 'danger'
   }
   url?: string
   github?:
-  | string
-  | {
-    owner: string
-    repo: string
-    branch?: string
-    path?: string
-  }
+    | string
+    | {
+      owner: string
+      repo: string
+      branch?: string
+      path?: string
+    }
   cover?:
-  | string
-  | string[]
-  | {
-    urls: string[]
-    layout?: 'swiper' | 'list'
-  }
+    | string
+    | string[]
+    | {
+      urls: string[]
+      layout?: 'swiper' | 'list'
+    }
   links?: {
     title: string
     url: string

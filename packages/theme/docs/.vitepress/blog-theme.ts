@@ -11,16 +11,16 @@ export const workConfig: Theme.UserWorks = {
       title: '博客主题 @sugarat/theme',
       description: '基于 vitepress 实现的博客主题',
       time: {
-        start: '2023/01/29'
+        start: '2023/01/29',
       },
       github: {
         owner: 'ATQQ',
         repo: 'sugar-blog',
         branch: 'master',
-        path: 'packages/theme'
+        path: 'packages/theme',
       },
       status: {
-        text: '积级维护'
+        text: '积级维护',
       },
       url: 'https://theme.sugarat.top',
       cover:
@@ -29,24 +29,24 @@ export const workConfig: Theme.UserWorks = {
       links: [
         {
           title: '一个简约风的VitePress博客主题',
-          url: 'https://juejin.cn/post/7196517835380293693'
-        }
-      ]
+          url: 'https://juejin.cn/post/7196517835380293693',
+        },
+      ],
     },
     {
       title: 'EasyPicker(轻取)',
       description:
         '在线文件收集系统，支持各种文件的收集，一站式存储，提交者无需注册',
       time: {
-        start: '2019/03/27'
+        start: '2019/03/27',
       },
       github: {
         owner: 'ATQQ',
         repo: 'easypicker2-client',
-        branch: 'main'
+        branch: 'main',
       },
       status: {
-        text: '积级维护'
+        text: '积级维护',
       },
       url: 'https://docs.ep.sugarat.top',
       cover:
@@ -55,16 +55,16 @@ export const workConfig: Theme.UserWorks = {
       links: [
         {
           title: '提交示例',
-          url: 'https://ep2.sugarat.top/task/627bd3b18a567f1b47bcdace'
+          url: 'https://ep2.sugarat.top/task/627bd3b18a567f1b47bcdace',
         },
-        { title: '私有化部署', url: 'https://docs.ep.sugarat.top/deploy/' }
-      ]
+        { title: '私有化部署', url: 'https://docs.ep.sugarat.top/deploy/' },
+      ],
     },
     {
       title: '个人博客',
       description: '✍️📚我写博客的地方🤪🤪🤪，记录随笔与学习笔记',
       time: {
-        start: '2020/02/18'
+        start: '2020/02/18',
       },
       github: 'https://github.com/ATQQ/sugar-blog',
       url: 'https://sugarat.top',
@@ -73,18 +73,18 @@ export const workConfig: Theme.UserWorks = {
         'https://img.cdn.sugarat.top/mdImg/MTY3MzE3MDUxOTMwMw==673170519303',
       links: [
         { title: '掘金', url: 'https://juejin.cn/user/1028798615918983' },
-        { title: 'GitHub主页', url: 'https://github.com/ATQQ' }
-      ]
+        { title: 'GitHub主页', url: 'https://github.com/ATQQ' },
+      ],
     },
     {
       title: '示例1',
       description: `项目介绍${'阿巴'.repeat(50)}`,
       time: {
-        start: '2022/03/27'
+        start: '2022/03/27',
       },
       status: {
         text: '内置badge',
-        type: 'danger'
+        type: 'danger',
       },
       top: 1,
       github: 'https://github.com/ATQQ/sugar-blog',
@@ -97,22 +97,22 @@ export const workConfig: Theme.UserWorks = {
         'https://fuss10.elemecdn.com/9/bb/e27858e973f5d7d3904835f46abbdjpeg.jpeg',
         'https://fuss10.elemecdn.com/d/e6/c4d93a3805b3ce3f323f7974e6f78jpeg.jpeg',
         'https://fuss10.elemecdn.com/3/28/bbf893f792f03a54408b3b7a7ebf0jpeg.jpeg',
-        'https://fuss10.elemecdn.com/2/11/6535bcfb26e4c79b48ddde44f4b6fjpeg.jpeg'
+        'https://fuss10.elemecdn.com/2/11/6535bcfb26e4c79b48ddde44f4b6fjpeg.jpeg',
       ],
       links: [
         { title: '掘金', url: 'https://juejin.cn/user/1028798615918983' },
-        { title: 'GitHub主页', url: 'https://github.com/ATQQ' }
-      ]
+        { title: 'GitHub主页', url: 'https://github.com/ATQQ' },
+      ],
     },
     {
       title: '示例2',
       description: `项目介绍${'哈哈'.repeat(50)}`,
       time: {
-        start: '2022/03/27'
+        start: '2022/03/27',
       },
       status: {
         text: '内置badge',
-        type: 'tip'
+        type: 'tip',
       },
       top: 2,
       github: 'https://github.com/ATQQ/sugar-blog',
@@ -125,15 +125,15 @@ export const workConfig: Theme.UserWorks = {
           'https://fuss10.elemecdn.com/9/bb/e27858e973f5d7d3904835f46abbdjpeg.jpeg',
           'https://fuss10.elemecdn.com/d/e6/c4d93a3805b3ce3f323f7974e6f78jpeg.jpeg',
           'https://fuss10.elemecdn.com/3/28/bbf893f792f03a54408b3b7a7ebf0jpeg.jpeg',
-          'https://fuss10.elemecdn.com/2/11/6535bcfb26e4c79b48ddde44f4b6fjpeg.jpeg'
+          'https://fuss10.elemecdn.com/2/11/6535bcfb26e4c79b48ddde44f4b6fjpeg.jpeg',
         ],
-        layout: 'list'
+        layout: 'list',
       },
       links: [
-        { title: '自定义链接', url: 'https://juejin.cn/user/1028798615918983' }
-      ]
-    }
-  ]
+        { title: '自定义链接', url: 'https://juejin.cn/user/1028798615918983' },
+      ],
+    },
+  ],
 }
 
 const baseUrl = 'https://theme.sugarat.top'
@@ -141,7 +141,7 @@ const RSS: Theme.RSSOptions = {
   title: '@sugarat/theme',
   baseUrl,
   copyright: 'Copyright (c) 2023-present, 粥里有勺糖',
-  description: '基于 vitepress 实现的简约博客主题'
+  description: '基于 vitepress 实现的简约博客主题',
 }
 
 export const blogTheme = getThemeConfig({
@@ -158,14 +158,14 @@ export const blogTheme = getThemeConfig({
       des: '你的指尖,拥有改变世界的力量',
       avatar:
         'https://img.cdn.sugarat.top/mdImg/MTY3NDk5NTE2NzAzMA==674995167030',
-      url: 'https://sugarat.top'
+      url: 'https://sugarat.top',
     },
     {
       nickname: 'Vitepress',
       des: 'Vite & Vue Powered Static Site Generator',
       avatar: 'https://vitepress.dev/vitepress-logo-large.webp',
-      url: 'https://vitepress.dev/'
-    }
+      url: 'https://vitepress.dev/',
+    },
   ],
   // 文章默认作者
   author: '粥里有勺糖',
@@ -175,7 +175,7 @@ export const blogTheme = getThemeConfig({
     repoId: 'MDEwOlJlcG9zaXRvcnkyNDEyNDUyOTk',
     category: 'Announcements',
     categoryId: 'DIC_kwDODmEcc84COVc6',
-    inputPosition: 'top'
+    inputPosition: 'top',
   },
   popover: {
     title: '公告',
@@ -183,37 +183,37 @@ export const blogTheme = getThemeConfig({
       { type: 'text', content: '👇公众号👇---👇 微信 👇' },
       {
         type: 'image',
-        src: 'https://img.cdn.sugarat.top/mdImg/MTYxNTAxODc2NTIxMA==615018765210'
+        src: 'https://img.cdn.sugarat.top/mdImg/MTYxNTAxODc2NTIxMA==615018765210',
       },
       {
         type: 'text',
-        content: '欢迎大家加群&私信交流'
+        content: '欢迎大家加群&私信交流',
       },
       {
         type: 'text',
         content: '文章首/文尾有群二维码',
-        style: 'padding-top:0'
+        style: 'padding-top:0',
       },
       {
         type: 'button',
         content: '作者博客',
-        link: 'https://sugarat.top'
+        link: 'https://sugarat.top',
       },
       {
         type: 'button',
         content: '加群交流',
         props: {
-          type: 'success'
+          type: 'success',
         },
         link: '/group.html',
-      }
+      },
     ],
-    duration: 0
+    duration: 0,
   },
   works: workConfig,
   footer: {
     copyright: 'MIT License | 粥里有勺糖',
-  }
+  },
 })
 
 export const extraHead: any
@@ -224,13 +224,13 @@ export const extraHead: any
           {
             charset: 'UTF-8',
             id: 'LA_COLLECT',
-            src: '//sdk.51.la/js-sdk-pro.min.js'
-          }
+            src: '//sdk.51.la/js-sdk-pro.min.js',
+          },
         ],
         [
           'script',
           {},
-          'LA.init({id:"Jyzk2AcXA3JsYbrG",ck:"Jyzk2AcXA3JsYbrG",hashMode:true})'
-        ]
+          'LA.init({id:"Jyzk2AcXA3JsYbrG",ck:"Jyzk2AcXA3JsYbrG",hashMode:true})',
+        ],
       ]
     : []

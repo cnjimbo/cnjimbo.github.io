@@ -21,7 +21,7 @@ author: wzj
 * 原型与原型链
 * ES6新特性
 * `Array.prototype.map`应用场景
-* 
+*
 
 ## CSS
 * 盒模型
@@ -31,4 +31,3 @@ author: wzj
 * 使用`Array.prototype.map`进行渲染时，`key`的作用是什么
 * 用`useState`声明一个**函数**后，如果不用`setState`，而是调用数组方法来改变这个数组，会发生什么
 * 组件件传递数据的方式
-

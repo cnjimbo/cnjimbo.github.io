@@ -200,22 +200,21 @@ const blogTheme = getThemeConfig({
 ```
 ```ts [type]
 type SearchConfig =
-    | boolean
-    | 'pagefind'
-    | {
-      btnPlaceholder?: string
-      placeholder?: string
-      emptyText?: string
-      /**
-       * @example
-       * 'Total: {{searchResult}} search results.'
-       */
-      heading?: string
-      mode?: boolean | 'pagefind'
-    }
+  | boolean
+  | 'pagefind'
+  | {
+    btnPlaceholder?: string
+    placeholder?: string
+    emptyText?: string
+    /**
+     * @example
+     * 'Total: {{searchResult}} search results.'
+     */
+    heading?: string
+    mode?: boolean | 'pagefind'
+  }
 ```
 :::
-
 
 ![](https://img.cdn.sugarat.top/mdImg/MTY3OTEyMjg5Nzc1Mg==679122897752)
 
@@ -276,7 +275,6 @@ const blogTheme = getThemeConfig({
 :::
 
 ![](https://img.cdn.sugarat.top/mdImg/MTY3OTEyMzQ0NDAwOA==679123444008)
-
 
 如果需要自定义更多的内容可以使用独立的插件 [vitepress-plugin-pagefind](https://github.com/ATQQ/sugar-blog/blob/master/packages/vitepress-plugin-pagefind/README-zh.md)
 
@@ -538,7 +536,7 @@ interface ArticleConfig {
 
 相对于项目根目录，文章所在位置，同 [App Configs #srcdir](https://vitepress.dev/config/app-configs#srcdir)
 
-**通常情况下无需设置**，默认从 CLI 指令取值 
+**通常情况下无需设置**，默认从 CLI 指令取值
 
 例如 `vitepress dev docs`，取值即为`docs`
 
@@ -606,7 +604,6 @@ interface Alert {
 设置一个全局的公告弹窗，支持设置图片，文字，按钮（[el-button](https://element-plus.gitee.io/zh-CN/component/button.html)）跳链
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTY3NDk5NDY3Nzc5NQ==674994677795)
-
 
 ::: code-group
 
@@ -699,7 +696,6 @@ export namespace BlogPopover {
 
 ![](https://img.cdn.sugarat.top/mdImg/MTY5MzMxODIxNDY0Mg==693318214642)
 
-
 ::: code-group
 
 ```ts [example]
@@ -726,8 +722,8 @@ const blogTheme = getThemeConfig({
 ```ts [type]
 type ThemeableImage =
   | string
-  | { src: string; alt?: string }
-  | { light: string; dark: string; alt?: string }
+  | { src: string, alt?: string }
+  | { light: string, dark: string, alt?: string }
 
 interface FriendLink {
   nickname: string
@@ -836,7 +832,6 @@ interface AuthorInfo {
 }
 ```
 :::
-
 
 ## blog
 * Type: `boolean`
@@ -1170,7 +1165,7 @@ const blogTheme = getThemeConfig({
 
 ## docMetaInsert
 
-主要是指 
+主要是指
 * `docMetaInsertSelector`：可配配置 CSS 选择器 (`querySelector` 可解析即可)
   * type: `string`
   * default: `'h1'`

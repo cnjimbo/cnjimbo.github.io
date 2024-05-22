@@ -26,9 +26,9 @@ categories:
 ### 例子
 ```js
 function foo() {
-    function bar() {
-        // ...code
-    }
+  function bar() {
+    // ...code
+  }
 }
 ```
 函数创建时各自的``[[scope]]``
@@ -47,18 +47,18 @@ bar.[[scope]] = [
 
 这时候执行上下文的作用域链,命名为 Scope
 ```js
-Scope = [AO].concat([[Scope]]);
+Scope = [AO].concat([[Scope]])
 ```
 然后,作用域链创建完毕了。
 
 ## 用于总结的例子
 ```js
-var scope = "global scope";
-function checkscope(){
-    var scope2 = 'local scope';
-    return scope2;
+const scope = 'global scope'
+function checkscope() {
+  const scope2 = 'local scope'
+  return scope2
 }
-checkscope();
+checkscope()
 ```
 **执行过程**
 1. 创建checkscope函数,保存作用域链到内部属性``[[scope]]``
@@ -70,8 +70,8 @@ checkscope.[[scope]] = {
 2. 执行checkscope函数,创建checkscope函数的执行上下文
 ```js
 ECstack = [
-    checkscopeContext,
-    globalcontext
+  checkscopeContext,
+  globalcontext
 ]
 ```
 3. 准备 checkscopeContext ,复制``[[scope]]``属性创建作用域链
@@ -95,31 +95,30 @@ checkscopeContext = {
 5. 将活动对象压入作用域链顶端
 ```js
 checkscopeContext = {
-    AO:{
-        arguments:{
-            length:0
-        },
-        scope2:undefined
+  AO: {
+    arguments: {
+      length: 0
     },
-    Scope:[AO,[[scope]]]
+    scope2: undefined
+  },
+  Scope: [AO, [[scope]]]
 }
 ```
 6. 完成准备,执行函数,修改AO的值
 ```js
 checkscopeContext = {
-    AO:{
-        arguments:{
-            length:0
-        },
-        scope2:'local scope'
+  AO: {
+    arguments: {
+      length: 0
     },
-    Scope:[AO,[[scope]]]
+    scope2: 'local scope'
+  },
+  Scope: [AO, [[scope]]]
 }
 ```
 7. 返回查找到scope2的值,函数执行完毕,弹出执行上下文栈
 ```js
 ECstack = [
-    globalcontext
+  globalcontext
 ]
 ```
-

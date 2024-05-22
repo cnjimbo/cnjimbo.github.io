@@ -15,7 +15,7 @@ categories:
 1. 链表的插入，删除，长度计算
 2. 求解最长公共子串
 ```js
-let list = ['acccs', 'acaaa', 'ac']
+const list = ['acccs', 'acaaa', 'ac']
 // ac
 ```
 1. [实现一个promise.All](./../../../coding/js/promiseAll.md)
@@ -23,7 +23,7 @@ let list = ['acccs', 'acaaa', 'ac']
 // 要求：必须等全部都resolved或这reject才返回
 // 有一个reject就走catch
 // 返回数组:（包括每一个resolved/reject的内容）
-function waitAll(promises){
+function waitAll(promises) {
 
 }
 ```
@@ -100,37 +100,37 @@ if({}==false)
 ### 代码
 1. 实现一个深拷贝考虑对象原有的特性
 ```js
-let a = {age:18}
-let old = {p1:a,p2:a,p3:{p:a}}
-function deepclone(){}
-let b = deepclone(old)
+const a = { age: 18 }
+const old = { p1: a, p2: a, p3: { p: a } }
+function deepclone() {}
+const b = deepclone(old)
 // 这里原有的特性指拷贝出来的b
 // 他的p1,p2,p3.p指向的是同一个对象
 // 即效果
-b.p1.age=10
+b.p1.age = 10
 console.log(b.p2.age) // 10
 ```
 2. 代码阅读
 ```js
-function a(){
-    this.b = 3
+function a() {
+  this.b = 3
 }
-var b = 5
-var c = new a()
+const b = 5
+const c = new a()
 a.prototype.b = 4
 console.log(c.b) // ?
 ```
 
 3. 代码阅读
 ```js
-for(var i = 0;i<2;i++){
-    setTimeout(()=>{
-        for(var j = 0;j<3;j++){
-            setTimeout(()=>{
-                console.log(i*j)
-            },0)
-        }        
-    },0)
+for (var i = 0; i < 2; i++) {
+  setTimeout(() => {
+    for (var j = 0; j < 3; j++) {
+      setTimeout(() => {
+        console.log(i * j)
+      }, 0)
+    }
+  }, 0)
 }
 // 输出结果是多少？为什么
 // var 变为 let 结果又是多少？为什么
@@ -185,4 +185,3 @@ for(var i = 0;i<2;i++){
 实现：一个select下拉框选择不同的选项，在其下方展示不同的内容(单个组件，组件嵌套组件等)
 1. 可能有很多选项，每个选项对应的渲染内容又不一致
 2. 选项与展示内容的关联关系，很可能发生变动，如何避免硬编码
-

@@ -24,16 +24,17 @@ categories:
 ```js
 /**
  * 浅拷贝
- * @param {object} obj 
+ * @param {object} obj
  */
 function shallowCopy(obj) {
-    // ...省略实现
+  // ...省略实现
 }
 
 const a = {
-    name: 'xm', info: {
-        age: 18
-    }
+  name: 'xm',
+  info: {
+    age: 18
+  }
 }
 
 const a1 = shallowCopy(a)
@@ -52,15 +53,15 @@ console.log(a1.info.age === a.info.age) // true
 ### 实现浅拷贝的方案
 #### 1. Object.assign
 ```js
-let a = { name:'xm' }
-let a1 = Object.assign({},a)
+const a = { name: 'xm' }
+const a1 = Object.assign({}, a)
 a.name = 'a1'
 console.log(a1.name === a.name) // false
 ```
 #### 2. 展开运算符
 ```js
-let a = { name: 'xm' }
-let a1 = {...a}
+const a = { name: 'xm' }
+const a1 = { ...a }
 a.name = 'a1'
 console.log(a1.name === a.name) // false
 ```
@@ -68,13 +69,13 @@ console.log(a1.name === a.name) // false
 **针对数组还有**
 #### 3. Array.prototype.slice
 ```js
-let arr = [1, 2, { name: 'xm' }]
-let arr1 = Array.prototype.slice.call(arr)
+const arr = [1, 2, { name: 'xm' }]
+const arr1 = Array.prototype.slice.call(arr)
 ```
 #### 4. Array.prototype.concat
 ```js
-let arr = [1, 2, { name: 'xm' }]
-let arr1 = Array.prototype.concat.call(arr)
+const arr = [1, 2, { name: 'xm' }]
+const arr1 = Array.prototype.concat.call(arr)
 ```
 
 ## 什么是深拷贝
@@ -100,24 +101,23 @@ let arr1 = Array.prototype.concat.call(arr)
 
 ```js
 function deepClone1(obj) {
-    return new Promise(resolve => {
-        let { port1, port2 } = new MessageChannel()
-        port2.onmessage = ev => {
-            resolve(ev.data)
-        }
-        port1.postMessage(obj)
-    })
+  return new Promise((resolve) => {
+    const { port1, port2 } = new MessageChannel()
+    port2.onmessage = (ev) => {
+      resolve(ev.data)
+    }
+    port1.postMessage(obj)
+  })
 }
 (async function () {
-    let a = { a: 1, b: undefined, c: { d: 1 } }
-    // 添加循环引用
-    a.c.d = a.c
-    let b = await deepClone1(a)
-    console.log(b)
+  const a = { a: 1, b: undefined, c: { d: 1 } }
+  // 添加循环引用
+  a.c.d = a.c
+  const b = await deepClone1(a)
+  console.log(b)
 })()
 ```
 
 #### 3. 手动实现一个较完整的深拷贝
 
 戳→ [实现深拷贝](./../../coding/js/deepClone.md) ←文章
-

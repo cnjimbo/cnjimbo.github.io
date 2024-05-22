@@ -26,7 +26,7 @@ export const BlogTheme: Theme = {
     DefaultTheme.enhanceApp(ctx)
     ctx.app.component('TimelinePage', TimelinePage)
     ctx.app.component('UserWorksPage', UserWorksPage)
-  }
+  },
 }
 
 export * from './composables/config/index'

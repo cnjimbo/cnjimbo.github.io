@@ -23,7 +23,7 @@ categories:
 ## 使用
 ```js
 function print(a, b) {
-    console.log(this.name, a + b);
+  console.log(this.name, a + b)
 }
 print(1, 2) // undefined 3
 
@@ -34,16 +34,16 @@ print.call({ name: 'print' }, 6, 5) // print 11
 不考虑各种边界情况
 ```js
 Function.prototype.mycall = function (thisArg) {
-    thisArg = thisArg || window
-    thisArg.fn = this
-    const argvs = [...arguments].slice(1)
-    const res = thisArg.fn(...argvs)
-    delete thisArg.fn
-    return res
+  thisArg = thisArg || window
+  thisArg.fn = this
+  const argvs = [...arguments].slice(1)
+  const res = thisArg.fn(...argvs)
+  delete thisArg.fn
+  return res
 }
 
 function print(a, b) {
-    console.log(this.name, a + b);
+  console.log(this.name, a + b)
 }
 print(1, 2) // undefined 3
 

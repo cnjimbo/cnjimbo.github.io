@@ -25,27 +25,27 @@ categories:
 
 示例
 ```js
-function a(name){
-    this.name = name
+function a(name) {
+  this.name = name
 }
 const d1 = new a('xm') // { name : "xm" }
 d1 instanceof a // true
 
-function b(name){
-    this.name = name
-    return {
-        name:'abc'
-    }
+function b(name) {
+  this.name = name
+  return {
+    name: 'abc'
+  }
 }
 const d2 = new b('xm') // { name : "abc" }
 d2 instanceof b // false
 
-function c(){
-    return 'hello world'
+function c() {
+  return 'hello world'
 }
 
 const d3 = new c() // { }
-d3 instanceof c    // true
+d3 instanceof c // true
 ```
 
 **按照上面的思路实现**
@@ -53,54 +53,54 @@ d3 instanceof c    // true
 ## myNew
 ```js
 function myNew() {
-    // 获得构造函数
-    var constructor = [].shift.call(arguments)
-    // 创建一个空对象，并继承构造函数的 prototype 属性
-    var context = Object.create(constructor.prototype);
-    // 绑定this
-    var res = constructor.apply(context, arguments);
-    // 如果返回结果是对象，就直接返回
-    // 否则返回 context 对象
-    return res instanceof Object ? res : context;
+  // 获得构造函数
+  const constructor = [].shift.call(arguments)
+  // 创建一个空对象，并继承构造函数的 prototype 属性
+  const context = Object.create(constructor.prototype)
+  // 绑定this
+  const res = constructor.apply(context, arguments)
+  // 如果返回结果是对象，就直接返回
+  // 否则返回 context 对象
+  return res instanceof Object ? res : context
 }
 ```
 测试，得到一致的结果
 ```js
 function a(name) {
-    this.name = name
+  this.name = name
 }
 const d1 = myNew(a, 'xm') // { name : "xm" }
 d1 instanceof a // true
 
 function b(name) {
-    this.name = name
-    return {
-        name: 'abc'
-    }
+  this.name = name
+  return {
+    name: 'abc'
+  }
 }
 const d2 = myNew(b, 'xm') // { name : "abc" }
 d2 instanceof b // false
 
 function c() {
-    return 'hello world'
+  return 'hello world'
 }
 
 const d3 = myNew(c) // { }
-d3 instanceof c    // true
+d3 instanceof c // true
 ```
 
 其余写法的实现方案
 ```js
 function myNew() {
-    // 创建空对象
-    let o = {}
-    // 获取构造函数
-    let fn = [].shift.call(arguments)
-    // 连接原型
-    o.__proto__ = fn.prototype
-    // 绑定this
-    let res = fn.apply(o, arguments)
-    return res instanceof Object ? res : o
+  // 创建空对象
+  const o = {}
+  // 获取构造函数
+  const fn = [].shift.call(arguments)
+  // 连接原型
+  o.__proto__ = fn.prototype
+  // 绑定this
+  const res = fn.apply(o, arguments)
+  return res instanceof Object ? res : o
 }
 ```
 
@@ -117,7 +117,7 @@ function myNew() {
 于是可以得出下面的结论
 ```js
 // 构造函数
-function fn(){
+function fn() {
 
 }
 const a1 = Object.create(fn.prototype)

@@ -18,18 +18,18 @@ categories:
 
 **例子**
 ```js
-var value = 1;
+const value = 1
 
 function foo() {
-    console.log(value);
+  console.log(value)
 }
 
 function bar() {
-    var value = 2;
-    foo();
+  const value = 2
+  foo()
 }
 
-bar();
+bar()
 ```
 ## 静态作用域
 函数的作用域在函数定义的时候决定
@@ -55,40 +55,40 @@ bar();
 ## 例子
 ### 例1
 ```js
-var scope = "global scope";
+const scope = 'global scope'
 function checkscope() {
-    var scope = "local scope";
-    function f() {
-        return scope;
-    }
-    return f();
+  const scope = 'local scope'
+  function f() {
+    return scope
+  }
+  return f()
 }
-console.log(checkscope());
+console.log(checkscope())
 ```
 <details>
   <summary><mark><font color=darkred>点击查看答案</font></mark></summary>
   <p>结果</p>
-  <pre><code>  
+  <pre><code>
     local scope
   </code></pre>
 </details>
 
 ### 例2
 ```js
-var scope = "global scope";
-function checkscope(){
-    var scope = "local scope";
-    function f(){
-        return scope;
-    }
-    return f;
+const scope = 'global scope'
+function checkscope() {
+  const scope = 'local scope'
+  function f() {
+    return scope
+  }
+  return f
 }
-checkscope()();
+checkscope()()
 ```
 <details>
   <summary><mark><font color=darkred>点击查看答案</font></mark></summary>
   <p>结果</p>
-  <pre><code>  
+  <pre><code>
     local scope
   </code></pre>
 </details>
@@ -98,4 +98,3 @@ checkscope()();
 :::tip 参考
 [JavaScript深入之词法作用域和动态作用域](https://github.com/mqyqingfeng/Blog/issues/3)
 :::
-

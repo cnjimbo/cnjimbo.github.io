@@ -37,7 +37,7 @@ npm i -g whistle
 ```sh
 w2 start
 ```
-访问 `http://localhost:8899/#network` 即可看到 
+访问 `http://localhost:8899/#network` 即可看到
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTY2MzU2NjE2NzMwMg==663566167302)
 
@@ -61,7 +61,7 @@ w2 start
 
 先配置模拟器网络，添加代理，IP就是咱们前面获取的本机ip
 
-长按Wifi名  => 修改网络 => 代理（手动） 
+长按Wifi名  => 修改网络 => 代理（手动）
 
 输入本机ip，端口`8899`，whistle使用
 
@@ -69,7 +69,7 @@ w2 start
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTY2MzU2NjU0MzE4OQ==663566543189)
 
-使用浏览器访问 `rootca.pro` 安装CA证书 
+使用浏览器访问 `rootca.pro` 安装CA证书
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTY2MzU4NjA4MjIzNQ==663586082235)
 
@@ -131,9 +131,7 @@ w2 start
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTY2MzU4NjIyMjcyNQ==663586222725)
 
-
 ## 最后
 Whistle 这个工具真的很好用，再次安利一下
 
 如果上述方法有问题，欢迎评论区交流
-

@@ -18,5 +18,5 @@ export default {
   enhanceApp(ctx: any) {
     BlogTheme?.enhanceApp?.(ctx)
     ctx.app.component('ChangeThemeDemo', ChangeThemeDemo)
-  }
+  },
 }

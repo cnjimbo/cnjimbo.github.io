@@ -7,9 +7,7 @@ export default antfu(
 
   },
   {
-    ignores: ['packages/theme/*.js', 'node_modules/**/*'],
-  },
-  {
+    ignores: ['**/node_modules/', '.git/', 'packages/theme/*.js', '/**/node_modules/**/*', '**/node_modules/**', '!.gitignore'],
     rules: {
       '@typescript-eslint/ban-types': 'off',
       '@typescript-eslint/no-explicit-any': 'off',

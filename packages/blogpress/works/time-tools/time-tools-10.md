@@ -41,17 +41,18 @@ const config = require(configPath)
 const { recordFilepath } = config
 
 if (filenames.length === 0 && !existsSync(recordFilepath)) {
-    console.log(`${recordFilepath} is not exist`);
-    console.log('you can use "timec upPath <recordFilepath>" set it');
-    return
+  console.log(`${recordFilepath} is not exist`)
+  console.log('you can use "timec upPath <recordFilepath>" set it')
 }
 ```
 
 如果没有输入文件，就读取配置的文件中的内容
 ```js
-const content = getFilesContent(filenames.length === 0 ? [recordFilepath] : filenames.map(filename => {
+const content = getFilesContent(filenames.length === 0
+  ? [recordFilepath]
+  : filenames.map((filename) => {
     return getFilePath(cwd, filename)
-}))
+  }))
 ```
 
 后续的逻辑不变，跟原来的一致，这里额外添加了一个兜底逻辑
@@ -60,12 +61,12 @@ const content = getFilesContent(filenames.length === 0 ? [recordFilepath] : file
 ```js
 // ...more code
 if (month) {
-    const year = new Date().getFullYear()
-    return output(`${year}-${month}-01`, `${year}-${month}-${new Date(year, month, 0).getDate()}`)
+  const year = new Date().getFullYear()
+  return output(`${year}-${month}-01`, `${year}-${month}-${new Date(year, month, 0).getDate()}`)
 }
 
 // 兜底(上下1000年,希望代码还在)
-output('1970-01-01','2970-01-01')
+output('1970-01-01', '2970-01-01')
 ```
 
 #### 使用
@@ -76,7 +77,6 @@ timec report
 ```
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYyODY4ODMwNjgyNg==628688306826)
-
 
 导出某天
 ```sh
@@ -105,12 +105,12 @@ timec report -R 2021-08-01_2021-08-11
 逻辑跟上述相同，默认会以配置中的`defaultFilepath`作为输入文件
 ```js
 commander.Command('output [filenames...]')
-    .option('-j, --json', 'Export result as json description file')
-    .option('-m, --markdown', 'Export the result as a markdown file')
-    .option('-t, --time', 'Export the result with time')
-    .action((filenames, cmdObj) => {
-        // ...code 添加跟上述一样的逻辑
-    })
+  .option('-j, --json', 'Export result as json description file')
+  .option('-m, --markdown', 'Export the result as a markdown file')
+  .option('-t, --time', 'Export the result with time')
+  .action((filenames, cmdObj) => {
+    // ...code 添加跟上述一样的逻辑
+  })
 ```
 后续逻辑基本一致
 1. 判断是否有输入文件
@@ -120,7 +120,7 @@ commander.Command('output [filenames...]')
 5. 调用对应的逻辑
 ```js
 // 1.
-if (filenames.length === 0 && !existsSync(recordFilepath)){
+if (filenames.length === 0 && !existsSync(recordFilepath)) {
   // code
 }
 
@@ -130,7 +130,7 @@ if (filenames.length === 0 && !existsSync(recordFilepath)){
 // 3.
 // 判断输入的option
 const { json, markdown, time } = cmdObj
-if(json){
+if (json) {
 
 }
 // ...
@@ -179,4 +179,3 @@ timec output -mj ./file1 ./file2
 本系列会不断的更新迭代，直至产品初代完成
 
 * [仓库地址](https://github.com/ATQQ/time-control)
-

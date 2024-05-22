@@ -94,7 +94,7 @@ yarn add commander
     "timec": "./bin/index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -116,7 +116,7 @@ yarn add commander
 创建`./bin/index.js`文件,键入demo内容
 ```js
 #!/usr/bin/env node
-console.log('hello world');
+console.log('hello world')
 ```
 
 运行demo
@@ -130,7 +130,6 @@ timec
 输出结果
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYyNzkxMTcyMTM0Mg==627911721342)
-
 
 ### 初步路径
 将内容组织成MD文档的形式
@@ -324,7 +323,7 @@ yarn add commander
     "timec": "./bin/index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -346,7 +345,7 @@ yarn add commander
 创建`./bin/index.js`文件,键入demo内容
 ```js
 #!/usr/bin/env node
-console.log('hello world');
+console.log('hello world')
 ```
 
 运行demo
@@ -360,7 +359,6 @@ timec
 输出结果
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYyNzkxMTcyMTM0Mg==627911721342)
-
 
 ### 初步路径
 将内容组织成MD文档的形式
@@ -465,4 +463,3 @@ timec
 本系列会不断的更新迭代，直至产品初代完成
 
 * [仓库地址](https://github.com/ATQQ/time-control)
-

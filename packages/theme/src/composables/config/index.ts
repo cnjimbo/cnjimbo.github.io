@@ -1,4 +1,3 @@
-/* eslint-disable ts/no-namespace */
 import type { ElButton } from 'element-plus'
 import type { DefaultTheme } from 'vitepress'
 import type { RSSOptions } from 'vitepress-plugin-rss'
@@ -39,8 +38,8 @@ export declare namespace BlogPopover {
 
 export type ThemeableImage =
   | string
-  | { src: string; alt?: string }
-  | { light: string; dark: string; alt?: string }
+  | { src: string, alt?: string }
+  | { light: string, dark: string, alt?: string }
 
 export namespace Theme {
   export interface PageMeta {
@@ -225,32 +224,32 @@ export namespace Theme {
     title: string
     description: string
     time:
-    | string
-    | {
-      start: string
-      end?: string
-      lastupdate?: string
-    }
+      | string
+      | {
+        start: string
+        end?: string
+        lastupdate?: string
+      }
     status?: {
       text: string
       type?: 'tip' | 'warning' | 'danger'
     }
     url?: string
     github?:
-    | string
-    | {
-      owner: string
-      repo: string
-      branch?: string
-      path?: string
-    }
+      | string
+      | {
+        owner: string
+        repo: string
+        branch?: string
+        path?: string
+      }
     cover?:
-    | string
-    | string[]
-    | {
-      urls: string[]
-      layout?: 'swiper' | 'list'
-    }
+      | string
+      | string[]
+      | {
+        urls: string[]
+        layout?: 'swiper' | 'list'
+      }
     links?: {
       title: string
       url: string

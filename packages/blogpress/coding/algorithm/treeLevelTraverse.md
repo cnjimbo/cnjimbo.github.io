@@ -29,54 +29,55 @@ TreeNode
 ```
 ## 借助队列迭代
 ```js
-var levelOrder = function (root) {
-    if (!root) {
-        return []
+const levelOrder = function (root) {
+  if (!root) {
+    return []
+  }
+  const res = []
+  const queue = [root]
+  while (queue.length > 0) {
+    // 当前层的节点个数
+    let nowSize = queue.length
+    const nowLevelRes = []
+    while (nowSize > 0) {
+      // 取出第一个元素
+      const p = queue.shift()
+      nowLevelRes.push(p.val)
+      if (p.left) {
+        queue.push(p.left)
+      }
+      if (p.right) {
+        queue.push(p.right)
+      }
+      nowSize--
     }
-    let res = []
-    let queue = [root]
-    while (queue.length > 0) {
-        // 当前层的节点个数
-        let nowSize = queue.length
-        let nowLevelRes = []
-        while (nowSize > 0) {
-            // 取出第一个元素
-            let p = queue.shift()
-            nowLevelRes.push(p.val)
-            if (p.left) {
-                queue.push(p.left)
-            }
-            if (p.right) {
-                queue.push(p.right)
-            }
-            nowSize--
-        }
-        // 放入当前层的结果
-        res.push(nowLevelRes)
-    }
-    return res
-};
+    // 放入当前层的结果
+    res.push(nowLevelRes)
+  }
+  return res
+}
 ```
 
 ## DFS递归
 ![](https://pic.leetcode-cn.com/aeed09e12573ec00d83663bb4f77562e8904ac58cdb2cbe6e995f2ac33b12934-0203_1.gif)
 ```js
-var levelOrder = function (root) {
-    if (!root) {
-        return []
+const levelOrder = function (root) {
+  if (!root) {
+    return []
+  }
+  const res = []
+  const dfs = (deep, node, res) => {
+    // 如果结果的深度小于当前深度,放入空数组
+    if (res.length < deep) {
+      res.push([])
     }
-    let res = []
-    const dfs = (deep, node, res) => {
-        // 如果结果的深度小于当前深度,放入空数组
-        if (res.length < deep) {
-            res.push([])
-        }
-        res[deep - 1].push(node.val)
-        if (node.left) dfs(deep + 1, node.left, res)
-        if (node.right) dfs(deep + 1, node.right, res)
-    }
-    dfs(1, root, res)
-    return res
-};
+    res[deep - 1].push(node.val)
+    if (node.left)
+      dfs(deep + 1, node.left, res)
+    if (node.right)
+      dfs(deep + 1, node.right, res)
+  }
+  dfs(1, root, res)
+  return res
+}
 ```
-

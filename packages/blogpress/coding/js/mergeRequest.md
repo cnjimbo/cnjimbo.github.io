@@ -47,19 +47,19 @@ categories:
 `request` 方法示例
 ```js
 request({
-    url:'/path',
-    query:{
-        id: '0'
-    }
+  url: '/path',
+  query: {
+    id: '0'
+  }
 })
 ```
 ### 要求
 实现一个 `getArticle` 方法,每个方法回调最终拿到的是自己需要的内容,且**短时间内**只发出了一次请求
 ```js
-getArticle(3).then(res=>{})
-getArticle(4).then(res=>{})
-getArticle(5).then(res=>{})
-getArticle(6).then(res=>{})
+getArticle(3).then((res) => {})
+getArticle(4).then((res) => {})
+getArticle(5).then((res) => {})
+getArticle(6).then((res) => {})
 
 // request({
 //     url:'/path',
@@ -90,88 +90,87 @@ getArticle(6).then(res=>{})
    * 并且这两个请求的方法都需要得到响应
 2. 如果这个请求没有被按时响应,不能影响下一次发送
 
-
 ## 代码实现
 ```js
-var getArticle = (function () {
-    let timer = null;
-    let resolveMap = new Map();
-    return function (id) {
-        return new Promise((resolve) => {
-            // 这里用string类型作为key
-            const key = `${id}`;
-            const resolves = resolveMap.get(key);
+const getArticle = (function () {
+  let timer = null
+  let resolveMap = new Map()
+  return function (id) {
+    return new Promise((resolve) => {
+      // 这里用string类型作为key
+      const key = `${id}`
+      const resolves = resolveMap.get(key)
 
-            // 不存在则创建,因为可能有重复的id,所以这里value为数组
-            if (!resolves) {
-                resolveMap.set(key, [resolve]);
-            } else {
-                // 存在则加入,因为是对象,map里存的引用,所以这里不需要重新执行set
-                resolves.push(resolve)
-            }
+      // 不存在则创建,因为可能有重复的id,所以这里value为数组
+      if (!resolves) {
+        resolveMap.set(key, [resolve])
+      }
+      else {
+        // 存在则加入,因为是对象,map里存的引用,所以这里不需要重新执行set
+        resolves.push(resolve)
+      }
 
-            if (timer) {
-                clearTimeout(timer)
-            }
-            timer = setTimeout(() => {
-                // 这里将把请求发出去,需要重置状态
-                // 所以将现有的保存下来
-                const _resolvesMap = resolveMap
+      if (timer) {
+        clearTimeout(timer)
+      }
+      timer = setTimeout(() => {
+        // 这里将把请求发出去,需要重置状态
+        // 所以将现有的保存下来
+        const _resolvesMap = resolveMap
 
-                const keys = [..._resolvesMap.keys()]
-                request({
-                    url: '/path',
-                    query: keys.join(',')
-                }).then(res => {
-                    const { data } = res
-                    // 执行resolve
-                    for (const key of keys) {
-                        const resolves = _resolvesMap.get(key)
-                        const v = data[key]
-                        resolves.forEach(r => r(v))
-                    }
-                })
+        const keys = [..._resolvesMap.keys()]
+        request({
+          url: '/path',
+          query: keys.join(',')
+        }).then((res) => {
+          const { data } = res
+          // 执行resolve
+          for (const key of keys) {
+            const resolves = _resolvesMap.get(key)
+            const v = data[key]
+            resolves.forEach(r => r(v))
+          }
+        })
 
-
-                // 请求发出后就初始化,以便用于下次请求
-                timer = null;
-                resolveMap = new Map();
-            })
-        });
-    };
-})();
+        // 请求发出后就初始化,以便用于下次请求
+        timer = null
+        resolveMap = new Map()
+      })
+    })
+  }
+})()
 ```
 
 ## 测试
 模拟实现一个`request`
 ```js
 function request(options = {}) {
-    console.log(new Date(), '发起一次请求', '-------参数为:', options.query)
-    return new Promise(res => {
-        const { query } = options
-        if (!query) {
-            res({ data: {} })
-            return
-        }
+  console.log(new Date(), '发起一次请求', '-------参数为:', options.query)
+  return new Promise((res) => {
+    const { query } = options
+    if (!query) {
+      res({ data: {} })
+      return
+    }
 
-        const ids = query.split(',')
-        const testData = ids.reduce((pre, id) => {
-            pre[id] = {
-                id,
-                rand: Math.random()
-            }
-            return pre
-        }, {})
+    const ids = query.split(',')
+    const testData = ids.reduce((pre, id) => {
+      pre[id] = {
+        id,
+        rand: Math.random()
+      }
+      return pre
+    }, {})
 
-        // 模拟响应延迟
-        setTimeout(() => {
-            res({
-                code: 0,
-                data: testData,
-                errMsg: 'ok'
-            })
-        }, 500)
-    })
+    // 模拟响应延迟
+    setTimeout(() => {
+      res({
+        code: 0,
+        data: testData,
+        errMsg: 'ok'
+      })
+    }, 500)
+  })
 }
 ```
 
@@ -184,16 +183,16 @@ getArticle(2).then(console.log)
 getArticle(1).then(console.log)
 
 new Promise((res) => {
-    getArticle(4).then(console.log)
-    res()
+  getArticle(4).then(console.log)
+  res()
 })
 
 setTimeout(() => {
-    getArticle(1).then(console.log)
-    getArticle(3).then(console.log)
-    getArticle(2).then(console.log)
-    getArticle(2).then(console.log)
-    getArticle(1).then(console.log)
+  getArticle(1).then(console.log)
+  getArticle(3).then(console.log)
+  getArticle(2).then(console.log)
+  getArticle(2).then(console.log)
+  getArticle(1).then(console.log)
 }, 400)
 ```
 
@@ -206,5 +205,3 @@ setTimeout(() => {
 2. 这是一个很常见的业务问题,考察面试者的动手实践能力
 
 >代码仅供参考,如有考虑不周之处,还请斧正
-
-

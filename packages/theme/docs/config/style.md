@@ -85,7 +85,6 @@ export default BlogTheme
 ```
 ![](https://img.cdn.sugarat.top/mdImg/MTY3NzA3OTIwODAzNg==677079208036)
 
-
 ## 主题色
 vitepress 最新的默认主题色偏紫色，看着感觉有点不习惯
 

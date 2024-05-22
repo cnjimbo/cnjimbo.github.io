@@ -23,27 +23,28 @@ categories:
 ## 使用
 ```js
 function print(a, b) {
-    console.log(this.name, a + b);
+  console.log(this.name, a + b)
 }
 print(1, 2) // undefined 3
 
-print.apply({ name: 'print' }, [ 6, 5]) // print 11
+print.apply({ name: 'print' }, [6, 5]) // print 11
 ```
 
 ## 简单实现
 不考虑各种边界情况
 ```js
-Function.prototype.myapply = function (thisArg){
-    thisArg = thisArg || global
-    thisArg.fn = this
-    let res = undefined
-    if (arguments[1]) {
-        res = thisArg.fn(...arguments[1])
-    } else {
-        res = thisArg.fn()
-    }
-    delete thisArg.fn
-    return res
+Function.prototype.myapply = function (thisArg) {
+  thisArg = thisArg || global
+  thisArg.fn = this
+  let res
+  if (arguments[1]) {
+    res = thisArg.fn(...arguments[1])
+  }
+  else {
+    res = thisArg.fn()
+  }
+  delete thisArg.fn
+  return res
 }
 print.myapply(null, [1, 2]) // undefined 3
 print.myapply({ name: 'test' }, [1, 2]) // test 3

@@ -24,51 +24,50 @@ categories:
 ```js
 /**
  * Promise.All
- * @param {Array<promise>} promises 
+ * @param {Array<promise>} promises
  */
 function PromiseAll(promises) {
-    const data = []
-    let count = 0
-    return new Promise((res, rej) => {
-        for (let i = 0; i < promises.length; i++) {
-            const p = promises[i]
-            p.then(r => {
-                data[i] = r
-                count++
-                if (count === promises.length) {
-                    res(data)
-                }
-            }).catch(err => {
-                data[i] = err
-                count++
-                if (count === promises.length) {
-                    rej(data)
-                }
-            })
+  const data = []
+  let count = 0
+  return new Promise((res, rej) => {
+    for (let i = 0; i < promises.length; i++) {
+      const p = promises[i]
+      p.then((r) => {
+        data[i] = r
+        count++
+        if (count === promises.length) {
+          res(data)
         }
-    })
+      }).catch((err) => {
+        data[i] = err
+        count++
+        if (count === promises.length) {
+          rej(data)
+        }
+      })
+    }
+  })
 }
 ```
 
 **测试**
 ```js
 function createPromise(timeout, success = true) {
-    return new Promise((res, rej) => {
-        setTimeout(() => {
-            if (success) {
-                res(timeout)
-                return
-            }
-            rej(timeout)
-        }, timeout)
-    })
+  return new Promise((res, rej) => {
+    setTimeout(() => {
+      if (success) {
+        res(timeout)
+        return
+      }
+      rej(timeout)
+    }, timeout)
+  })
 }
 
 const p1 = createPromise(1000)
 const p2 = createPromise(3000)
-const p3 = createPromise(2000,false)
+const p3 = createPromise(2000, false)
 
 PromiseAll([p1, p2, p3]).then(console.log).catch(console.error)
 // [1000,3000,2000]
 ```
-

@@ -23,8 +23,8 @@ TODO: 开一个专题,详细介绍各个面板的使用方法与场景
 开发调试前端应用必备
 
 * 打开快捷键
-  * F12 
-  * Windows: `Ctrl` + `Shift` + `I`  
+  * F12
+  * Windows: `Ctrl` + `Shift` + `I`
   * Mac: `Cmd` + `Opt` + `I`
 
 ## 面板简介
@@ -105,7 +105,7 @@ TODO: 开一个专题,详细介绍各个面板的使用方法与场景
 ## Chrome版本
 ### 查看当前版本
 
-在地址栏输入: 
+在地址栏输入:
 * **chrome://help**
 * **chrome://version**: 更加详细的查看
 
@@ -131,7 +131,6 @@ TODO: 开一个专题,详细介绍各个面板的使用方法与场景
 **chrome://chrome-urls/**
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzc4NDQyMzM0NQ==617784423345)
-
 
 ## 全局方法 copy(...)
 
@@ -172,11 +171,9 @@ copy(document.querySelector(selector).innerHTML)
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzc4NjAyMTIyNw==617786021227)
 
-
 其余所有快捷键
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzc4NzU5OTQ0Mg==617787599442)
-
 
 ## Command Menu
 快捷键 Ctrl + Shift + P
@@ -203,7 +200,7 @@ copy(document.querySelector(selector).innerHTML)
 如:统计页面中的中文数量
 
 ```js
-console.log(document.body.textContent.replace(/[^\u4e00-\u9fa5]/g,'').length)
+console.log(document.body.textContent.replace(/[^\u4E00-\u9FA5]/g, '').length)
 ```
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzc5ODIxNzkxMQ==617798217911)
@@ -221,4 +218,3 @@ tips: 默认打开Command会有一个 `>` 记得先删除
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzc5ODUyMzQ3Ng==617798523476)
 
 这个用来写 **一键评教** 脚本贼方便
-

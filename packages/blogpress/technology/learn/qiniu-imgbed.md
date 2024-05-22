@@ -24,7 +24,7 @@ categories:
 
 * [七牛云](https://portal.qiniu.com/)账号一枚
 * [七牛云对象存储空间](https://portal.qiniu.com/bucket/create)(免费10G)
-* 安装[Node.js](http://nodejs.cn/) 
+* 安装[Node.js](http://nodejs.cn/)
 
 ## 快速上手
 
@@ -42,7 +42,7 @@ yarn install
 
 这4项均需自己配置
 ```sh
-QINIU_ACCESS_KEY=AccessKey 
+QINIU_ACCESS_KEY=AccessKey
 QINIU_SECRET_KEY=SecretKey
 QINIU_BUCKET=Bucket # OSS空间名
 QINIU_DOMAIN=domain # 图床域名(包含协议https/http)
@@ -54,7 +54,7 @@ QINIU_DOMAIN=domain # 图床域名(包含协议https/http)
 
 ![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0b906243abb94329a8efdfaba5e66a58~tplv-k3u1fbpfcp-zoom-1.image)
 
-</details> 
+</details>
 
 <details>
 <summary>查看 Access Key和Secret Key</summary>
@@ -63,14 +63,14 @@ QINIU_DOMAIN=domain # 图床域名(包含协议https/http)
 
 ![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/36299d27ec07496ebeb58021fc49ade7~tplv-k3u1fbpfcp-zoom-1.image)
 
-</details> 
+</details>
 
 <details>
 <summary>查看域名</summary>
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e678a09cee3c4ec4b087bba565d8bb8a~tplv-k3u1fbpfcp-zoom-1.image)
 
-</details> 
+</details>
 
 ### 4. 启动
 开发环境预览
@@ -92,7 +92,7 @@ yarn build
 以**textarea**区域承载上述操作
 
 ```js
-const pastePanel = document.getElementById('pastePanel');
+const pastePanel = document.getElementById('pastePanel')
 ```
 ### 读取剪贴板中的内容
 * 监听目标Dom的`paste`事件
@@ -105,26 +105,27 @@ const pastePanel = document.getElementById('pastePanel');
 /**
  * 监听粘贴事件
  */
-pastePanel.addEventListener('paste', function (e) {
-    console.log('paste');
-    // 阻止触发默认的粘贴事件
-    e.preventDefault();
+pastePanel.addEventListener('paste', (e) => {
+  console.log('paste')
+  // 阻止触发默认的粘贴事件
+  e.preventDefault()
 
-    let { items } = e.clipboardData;
-    for (const item of items) {
-        if (item.kind === "file" && item.type.startsWith("image")) {
-            //上传的文件对象
-            let file = item.getAsFile();
-            //文件名(加一个前缀相当于目录)
-            let fileName = 'mdImg/' + btoa(Date.now()) + Date.now().toString().substring(1);
-            //开始上传
-            uploadFile(file, fileName);
-        } else if (item.type === 'text/plain') {
-            item.getAsString(str => {
-                e.target.value += str;
-            });
-        }
+  const { items } = e.clipboardData
+  for (const item of items) {
+    if (item.kind === 'file' && item.type.startsWith('image')) {
+      // 上传的文件对象
+      const file = item.getAsFile()
+      // 文件名(加一个前缀相当于目录)
+      const fileName = `mdImg/${btoa(Date.now())}${Date.now().toString().substring(1)}`
+      // 开始上传
+      uploadFile(file, fileName)
     }
+    else if (item.type === 'text/plain') {
+      item.getAsString((str) => {
+        e.target.value += str
+      })
+    }
+  }
 })
 ```
 
@@ -136,23 +137,23 @@ pastePanel.addEventListener('paste', function (e) {
 * 调用上传方法
 ```js
 // 禁用默认的拖拽触发的内容
-document.addEventListener('drop', function (e) {
-    e.preventDefault()
+document.addEventListener('drop', (e) => {
+  e.preventDefault()
 }, true)
-document.addEventListener('dragover', function (e) {
-    e.preventDefault()
+document.addEventListener('dragover', (e) => {
+  e.preventDefault()
 }, true)
 
-pastePanel.addEventListener('drop', function (e) {
-    let { files } = e.dataTransfer;
-    for (const file of files) {
-        if (file.type.startsWith("image")) {
-            //文件名(加一个前缀相当于目录)
-            let fileName = 'mdImg/' + btoa(Date.now()) + Date.now().toString().substring(1);
-            //开始上传
-            uploadFile(file, fileName);
-        }
+pastePanel.addEventListener('drop', (e) => {
+  const { files } = e.dataTransfer
+  for (const file of files) {
+    if (file.type.startsWith('image')) {
+      // 文件名(加一个前缀相当于目录)
+      const fileName = `mdImg/${btoa(Date.now())}${Date.now().toString().substring(1)}`
+      // 开始上传
+      uploadFile(file, fileName)
     }
+  }
 })
 ```
 ### 将内容写入剪贴板
@@ -160,20 +161,16 @@ pastePanel.addEventListener('drop', function (e) {
 ```js
 /**
  * 将结果写入的剪贴板
- * @param {String} text 
+ * @param {string} text
  */
 function copyRes(text) {
-    const input = document.createElement('input');
-    document.body.appendChild(input);
-    input.setAttribute('value', text);
-    input.select();
-    if (document.execCommand('copy')) {
-        document.execCommand('copy');
-    }
-    document.body.removeChild(input);
+  const input = document.createElement('input')
+  document.body.appendChild(input)
+  input.setAttribute('value', text)
+  input.select()
+  if (document.execCommand('copy')) {
+    document.execCommand('copy')
+  }
+  document.body.removeChild(input)
 }
 ```
-
-
-
-

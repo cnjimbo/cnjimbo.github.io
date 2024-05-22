@@ -59,7 +59,7 @@ export default{
 }
 </script>
 ```
-### $parent与$children 
+### $parent与$children
 >通过访问 $parent 或者 $children 对象来访问组件实例中的方法和数据
 
 **子组件**
@@ -205,4 +205,3 @@ export default{
 
 ## 示例
 [CodePen:示例](https://codepen.io/sugarInSoup/pen/wvapBYB)
-

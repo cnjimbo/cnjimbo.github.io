@@ -69,9 +69,8 @@ div .class2 span#id3{font-size:18px}
 
 <div id="id1" class="class1">
     <p id="id2" class="class2">
-        <span id="id3" class="class3">我是多大字号？</span> 
+        <span id="id3" class="class3">我是多大字号？</span>
         <!--  25px -->
     </p>
 </div>
 ```
-

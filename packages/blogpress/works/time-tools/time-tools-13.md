@@ -60,12 +60,12 @@ my-vue-app
 * 在`spawn`调用的方法中传入设置配置文件的参数
 
 ```js
-const cwd = path.resolve(__dirname, '../');
-const viteConfigPath = path.join(cwd, 'src/page/vite.config.js');
+const cwd = path.resolve(__dirname, '../')
+const viteConfigPath = path.join(cwd, 'src/page/vite.config.js')
 const serveService = spawn('node_modules/.bin/vite', ['src/page', '--host', '--config', viteConfigPath], {
   cwd,
   stdio: 'inherit',
-});
+})
 // 。。。code
 ```
 到这一步前端工程的基本内容算搭好了，页面展示需要的数据，需通过Node相关的API才能获取，这里有两种方案：
@@ -84,9 +84,9 @@ yarn add flash-wolves
 编写基本调用逻辑,在src/page下创建一个文件`server.js`
 * 使用`Node`执行这3行代码，这样一个简单的后端服务就在3001端口启动了
 ```js
-const { Fw } = require('flash-wolves');
-const app = new Fw();
-app.listen(3001);
+const { Fw } = require('flash-wolves')
+const app = new Fw()
+app.listen(3001)
 ```
 
 编写2个接口：
@@ -95,19 +95,19 @@ app.listen(3001);
 
 ```js
 app.get('/json', (req, res) => {
-  const config = getConfig();
-  const { recordFilepath } = config;
+  const config = getConfig()
+  const { recordFilepath } = config
   if (fs.existsSync(recordFilepath)) {
-    res.success(getJSON(getFileContent(recordFilepath)));
-    return;
+    res.success(getJSON(getFileContent(recordFilepath)))
+    return
   }
-  res.fail(500, 'not set default recordFilepath');
-});
+  res.fail(500, 'not set default recordFilepath')
+})
 
 app.get('/config', (req, res) => {
-  const config = getConfig();
-  res.success(config);
-});
+  const config = getConfig()
+  res.success(config)
+})
 ```
 
 **在什么时候启动这个服务？**
@@ -121,11 +121,11 @@ app.get('/config', (req, res) => {
 const server = spawn('node', ['src/page/server.js'], {
   cwd,
   stdio: 'inherit',
-});
+})
 serveService.on('close', (code) => {
-  server.kill('SIGSTOP');
-  process.exit(code);
-});
+  server.kill('SIGSTOP')
+  process.exit(code)
+})
 ```
 
 **客户端如何访问这些接口？**：
@@ -134,11 +134,11 @@ serveService.on('close', (code) => {
 
 ```js
 export function getConfig() {
-  return fetch('http://localhost:3000/config');
+  return fetch('http://localhost:3000/config')
 }
 
 export function getEveryDayData() {
-  return fetch('http://localhost:3001/json').then((res) => res.json());
+  return fetch('http://localhost:3001/json').then(res => res.json())
 }
 ```
 
@@ -146,23 +146,23 @@ export function getEveryDayData() {
 ```js
 const app = new Fw((req, res) => {
   // 开启CORS
-  const { method } = req;
+  const { method } = req
   // 允许跨域
-  res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+  res.setHeader('Access-Control-Allow-Origin', req.headers.origin)
   // 跨域允许的header类型
-  res.setHeader('Access-Control-Allow-Headers', '*');
+  res.setHeader('Access-Control-Allow-Headers', '*')
   // 允许跨域携带cookie
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader('Access-Control-Allow-Credentials', 'true')
   // 允许的方法
-  res.setHeader('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS')
   // 设置响应头
-  res.setHeader('Content-Type', 'application/json;charset=utf-8');
+  res.setHeader('Content-Type', 'application/json;charset=utf-8')
   // 对预检请求放行
   if (method === 'OPTIONS') {
-    res.statusCode = 204;
-    res.end();
+    res.statusCode = 204
+    res.end()
   }
-});
+})
 ```
 这样简单的前后端逻辑就都写好了,下面就是一键启动
 ```sh
@@ -179,4 +179,3 @@ timec page
 本系列会不断的更新迭代，直至产品初代完成
 
 * [仓库地址](https://github.com/ATQQ/time-control)
-

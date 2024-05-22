@@ -15,40 +15,39 @@ categories:
 * 提高代码复用性
 * 提高项目的可维护性
 
-
 ## 有哪几种方式可以实现模块化，各有什么特点
 * IIFE(立即执行函数)
 * AMD
   ```js
-    define(['./a', './b'], function(a, b) {
-      // 加载模块完毕可以使用
-      a.do()
-      b.do()
-    })
+  define(['./a', './b'], (a, b) => {
+    // 加载模块完毕可以使用
+    a.do()
+    b.do()
+  })
   ```
 * CMD
   ```js
-    define(function(require, exports, module) {
-      // 加载模块
-      // 可以把 require 写在函数体的任意地方实现延迟加载
-      var a = require('./a')
-      a.doSomething()
-    })
+  define((require, exports, module) => {
+    // 加载模块
+    // 可以把 require 写在函数体的任意地方实现延迟加载
+    const a = require('./a')
+    a.doSomething()
+  })
   ```
 * CommonJS
 
 CommonJS 最早是 Node 在使用，目前也仍然广泛使用，比如在 Webpack 中你就能见到它，当然目前在 Node 中的模块管理已经和 CommonJS 有一些区别了
   ```js
-    // a.js
-    module.exports = {
-        a: 1
-    }
-    // or 
-    exports.a = 1
+  // a.js
+  module.exports = {
+    a: 1
+  }
+  // or
+  exports.a = 1
 
-    // b.js
-    var module = require('./a.js')
-    module.a // -> log 1
+   / b.js
+   ar module = require('./a.js')
+   odule.a // -> log 1
   ```
 * ES Module
 
@@ -66,6 +65,5 @@ import XXX from './a.js'
 import { XXX } from './a.js'
 // 导出模块 API
 export function a() {}
-export default function() {}
+export default function () {}
 ```
-

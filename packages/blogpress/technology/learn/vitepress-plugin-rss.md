@@ -19,7 +19,6 @@ description: 使用 VitePress 作为个人博客的站点越来越多，RSS支�
 
 由于我的博客还分离了独立的主题包 [@sugarat/theme](https://theme.sugarat.top/)，我想把这个功能加到我的主题包里，这样使用这个主题的就可以简单的配置一下就能使用了，当然也为了方便广大 VitePress 用户更加简便的使用，我将这段逻辑单独分离封装到了 [vitepress-plugin-rss](https://www.npmjs.com/package/vitepress-plugin-rss) 这个插件里。
 
-
 **接下来我将会先介绍一下如何食用这个插件，再介绍它的核心实现原理**
 
 ## 插件使用
@@ -32,7 +31,7 @@ pnpm add vitepress-plugin-rss
 
 下面是最基础的使用配置
 ```ts
-import { RssPlugin, RSSOptions } from 'vitepress-plugin-rss'
+import { RSSOptions, RssPlugin } from 'vitepress-plugin-rss'
 const baseUrl = 'https://sugarat.top'
 const RSS: RSSOptions = {
   title: '粥里有勺糖',
@@ -66,7 +65,7 @@ pnpm run build
 如果你对插件的实现原理感兴趣，请接着往下看 🎉 🎉 🎉。
 
 ## 核心实现原理解析
-VitePress 的拓展在官方文档 [Use Cases](https://vitepress.dev/guide/what-is-vitepress#use-cases) 部分有提到 
+VitePress 的拓展在官方文档 [Use Cases](https://vitepress.dev/guide/what-is-vitepress#use-cases) 部分有提到
 
 ![](https://img.cdn.sugarat.top/mdImg/MTY5MjYyNzE4MDA4MA==692627180080)
 
@@ -100,7 +99,7 @@ function configResolved(config: any) {
   VPConfig.buildEnd = async (siteConfig: any) => {
     // 调用自己的
     await selfBuildEnd?.(siteConfig)
-    console.log('buildEnd', '生成 rss 文件');
+    console.log('buildEnd', '生成 rss 文件')
   }
 }
 ```
@@ -161,10 +160,10 @@ const files = glob.sync(`${srcDir}/**/*.md`, { ignore: ['node_modules'] })
 其中 `srcDir` 即文章所在的目录，可以通过如下方式获取到相对路径
 ```ts
 // config 即 SiteConfig
-const srcDir =
-    config.srcDir.replace(config.root, '').replace(/^\//, '') ||
-    process.argv.slice(2)?.[1] ||
-    '.'
+const srcDir
+    = config.srcDir.replace(config.root, '').replace(/^\//, '')
+    || process.argv.slice(2)?.[1]
+    || '.'
 ```
 
 **② 通过 gray-matter 解析 frontmatter**
@@ -180,8 +179,8 @@ description: 文章介绍
 ```
 利用 gray-matter 解析
 ```ts
-import matter from 'gray-matter'
 import fs from 'fs'
+import matter from 'gray-matter'
 
 for (const file of files) {
   const fileContent = fs.readFileSync(file, 'utf-8')
@@ -225,8 +224,8 @@ const feedOptions = {
 }
 const feed = new Feed(feedOptions)
 
-for (const file of files){
-  // 通过前面解析的信息，生成 feed item 
+for (const file of files) {
+  // 通过前面解析的信息，生成 feed item
   feed.addItem({
     title,
     id: link,

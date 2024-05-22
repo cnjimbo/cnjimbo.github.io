@@ -29,15 +29,15 @@ categories:
 
 ```js
 function readFile2Text(file) {
-    const fileReader = new FileReader()
-    fileReader.readAsArrayBuffer(file)
-    return new Promise(resolve=>{
-        fileReader.onload = function () {
-            const buf = this.result
-            const textDecoder = new TextDecoder('utf8')
-            resolve(textDecoder.decode(buf))
-        }
-    })
+  const fileReader = new FileReader()
+  fileReader.readAsArrayBuffer(file)
+  return new Promise((resolve) => {
+    fileReader.onload = function () {
+      const buf = this.result
+      const textDecoder = new TextDecoder('utf8')
+      resolve(textDecoder.decode(buf))
+    }
+  })
 }
 ```
 
@@ -47,13 +47,13 @@ function readFile2Text(file) {
 
 ```js
 function readFile2Text(file) {
-    const fileReader = new FileReader()
-    fileReader.readAsText(file)
-    return new Promise(resolve=>{
-        fileReader.onload = function () {
-            resolve(this.result)
-        }
-    })
+  const fileReader = new FileReader()
+  fileReader.readAsText(file)
+  return new Promise((resolve) => {
+    fileReader.onload = function () {
+      resolve(this.result)
+    }
+  })
 }
 ```
 
@@ -75,9 +75,9 @@ const $file = document.getElementById('file')
 
 // 选择目录
 $file.onchange = function () {
-    const files = this.files
-    // 打印获取所有的文件
-    console.log(files)
+  const files = this.files
+  // 打印获取所有的文件
+  console.log(files)
 }
 ```
 
@@ -135,7 +135,6 @@ $file.onchange = function () {
     </ul>
 </div>
 
-
 ### 具体实现
 
 **页面代码**
@@ -152,14 +151,14 @@ const $file = document.getElementById('file')
 const $lists = document.getElementById('lists')
 // 选择目录
 $file.onchange = function () {
-    const files = this.files
-    // 全部清空
-    $lists.innerHTML = ''
-    // 拆解目录
-    for (const f of files) {
-        f.paths = f.webkitRelativePath.split('/')
-    }
-    appendDir($lists, files)
+  const files = this.files
+  // 全部清空
+  $lists.innerHTML = ''
+  // 拆解目录
+  for (const f of files) {
+    f.paths = f.webkitRelativePath.split('/')
+  }
+  appendDir($lists, files)
 }
 ```
 
@@ -172,77 +171,78 @@ $file.onchange = function () {
 
 ```js
 function appendDir(parent, files, deep = 0) {
-    const $ul = document.createElement('ul')
-    // 使用Set存储所有的文件的公共前缀
-    // 利用Set自动去重
-    const dirs = new Set()
-    for (const f of files) {
-        // 取相同深度的目录
-        const p = f.paths[deep]
+  const $ul = document.createElement('ul')
+  // 使用Set存储所有的文件的公共前缀
+  // 利用Set自动去重
+  const dirs = new Set()
+  for (const f of files) {
+    // 取相同深度的目录
+    const p = f.paths[deep]
 
-        // 深度为0，说明是选择的那一个目录
-        if (deep === 0) {
-            dirs.add(p)
-        } else {
-            // 获取父节点对应的相对目录
-            const parentP = parent.getAttribute('path')
-            // 判断文件是否属于此父目录
-            if (f.webkitRelativePath.startsWith(parentP)) {
-                // 存放符合条件的文件路径
-                dirs.add([parentP, p].join('/'))
-            }
-        }
+    // 深度为0，说明是选择的那一个目录
+    if (deep === 0) {
+      dirs.add(p)
     }
-    // 
-    for (const d of dirs) {
-        const $li = document.createElement('li')
+    else {
+      // 获取父节点对应的相对目录
+      const parentP = parent.getAttribute('path')
+      // 判断文件是否属于此父目录
+      if (f.webkitRelativePath.startsWith(parentP)) {
+        // 存放符合条件的文件路径
+        dirs.add([parentP, p].join('/'))
+      }
+    }
+  }
+  //
+  for (const d of dirs) {
+    const $li = document.createElement('li')
 
-        // 只展示文件名/或目录名 (test/abc/index.js => index.js)
-        const idx = d.lastIndexOf('/') + 1
-        $li.textContent = idx===0 ? d : d.slice(idx)
+    // 只展示文件名/或目录名 (test/abc/index.js => index.js)
+    const idx = d.lastIndexOf('/') + 1
+    $li.textContent = idx === 0 ? d : d.slice(idx)
 
-        // 记录这个节点的深度与完整相对路径
-        $li.setAttribute('path', d)
-        $li.setAttribute('deep', deep)
-        $ul.appendChild($li)
-    }
-    // 插入页面
-    if (dirs.size !== 0) {
-        parent.appendChild($ul)
-    }
+    // 记录这个节点的深度与完整相对路径
+    $li.setAttribute('path', d)
+    $li.setAttribute('deep', deep)
+    $ul.appendChild($li)
+  }
+  // 插入页面
+  if (dirs.size !== 0) {
+    parent.appendChild($ul)
+  }
 }
 ```
 
 **利用事件代理监听li的点击事件**
 ```js
-$lists.addEventListener('click', function (e) {
-    const $li = e.target
-    // 不是li不管
-    if ($li.tagName.toLowerCase() !== 'li') {
-        return
+$lists.addEventListener('click', (e) => {
+  const $li = e.target
+  // 不是li不管
+  if ($li.tagName.toLowerCase() !== 'li') {
+    return
+  }
+  // 获取点击节点的路径与深度
+  const path = $li.getAttribute('path')
+  const deep = +$li.getAttribute('deep')
+
+  // 获取选择的所有文件
+  const files = $file.files
+
+  // 遍历文件，判断点击的是文件还是目录
+
+  for (const f of files) {
+    // 点击的文件
+    if (f.webkitRelativePath === path) {
+      // 预览内容
+      previewFile(f)
+      return
     }
-    // 获取点击节点的路径与深度
-    const path = $li.getAttribute('path')
-    const deep = +$li.getAttribute('deep')
+  }
 
-    // 获取选择的所有文件
-    const files = $file.files
-
-    // 遍历文件，判断点击的是文件还是目录
-
-    for (const f of files) {
-        // 点击的文件
-        if (f.webkitRelativePath === path) {
-            // 预览内容
-            previewFile(f)
-            return
-        } 
-    }
-
-    // 有子项，点击的目录且未被点击添加过
-    if ($li.children.length === 0) {
-        appendDir($li, files, deep + 1)
-    }
+  // 有子项，点击的目录且未被点击添加过
+  if ($li.children.length === 0) {
+    appendDir($li, files, deep + 1)
+  }
 })
 ```
 
@@ -250,9 +250,7 @@ $lists.addEventListener('click', function (e) {
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYyMzI0MzcyMzA5Nw==623243723097)
 
-
 ## 最后
 ArrayBuffer的内容还是比较多，本文只简单讲了利用其获取文件内容
 
 本文主要内容还是实践生成目录的树形结构，由于时间仓促，代码还有很多的优化空间
-

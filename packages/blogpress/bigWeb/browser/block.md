@@ -74,12 +74,11 @@ h1{
 
 当资源下载失败时，`<h1>red2</h1>` 才会被解析到，然后渲染出来
 
-
 ### 3. 如何解除阻塞
 在渲染树构建中，要求同时具有 DOM 树和 CSSOM树 才能进行构建,任何一个🌲构建过程中出现阻塞，会导致页面显示异常，导致出现严重的性能问题
 
 **HTML 和 CSS 都是阻塞渲染的资源**
-  
+
 * HTML 显然是必需的，因为如果没有 DOM，我们就没有可渲染的内容
 * CSS 的必要性就不一定
   * **浏览器会下载所有 CSS 资源，无论阻塞还是不阻塞**
@@ -201,7 +200,7 @@ JavaScript 可以查询和修改 DOM 与 CSSOM
 
 test.js
 ```js
-let d = Date.now()
+const d = Date.now()
 while (Date.now() < d + 1000 * 5) { }
 ```
 
@@ -238,14 +237,14 @@ while (Date.now() < d + 1000 * 5) { }
 ```
 test.js
 ```js
-let d = Date.now()
+const d = Date.now()
 while (Date.now() < d + 1000 * 5) { }
-console.log('render success');
+console.log('render success')
 ```
 
 tes2.js
 ```js
-console.log('render success2');
+console.log('render success2')
 ```
 
 **async使用示例**
@@ -274,15 +273,14 @@ console.log('render success2');
 ```
 test.js
 ```js
-let d = Date.now()
+const d = Date.now()
 while (Date.now() < d + 1000 * 4) { }
-console.log('render success');
+console.log('render success')
 ```
 
 ### 3. 小结
 **无论是内联还是外联，js脚本会阻塞DOM的解析与渲染**但
 * 外联：因为无法确定外联脚本中的内容，所以会优先渲染一次已经构建DOM，确保加载的脚本能取得最新的DOM
-
 
 将 JavaScript 脚本显式声明为异步，即可防止其阻塞DOM构建与渲染
 

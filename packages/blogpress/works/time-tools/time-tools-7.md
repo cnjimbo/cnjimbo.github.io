@@ -46,12 +46,12 @@ commander.command("task [name]")
 const idx = tasks.findIndex(v => v === name)
 
 if (del) {
-    tasks.splice(idx, 1)
-    console.log(`del ${name} success`);
-    config.defaultTaskIdx = tasks.length ? 0 : -1
-    if (config.defaultTaskIdx === 0) {
-        console.log('now use task：', tasks[config.defaultTaskIdx]);
-    }
+  tasks.splice(idx, 1)
+  console.log(`del ${name} success`)
+  config.defaultTaskIdx = tasks.length ? 0 : -1
+  if (config.defaultTaskIdx === 0) {
+    console.log('now use task：', tasks[config.defaultTaskIdx])
+  }
 }
 
 writeFileSync(configPath, JSON.stringify(config))
@@ -75,7 +75,7 @@ writeFileSync(configPath, JSON.stringify(config))
 其中存储位置对应配置文件中的`recordFilepath`属性
 ```json
 {
-    "recordFilepath":"/Users/sugar/Documents/fe-project/time-control/test.md"
+  "recordFilepath": "/Users/sugar/Documents/fe-project/time-control/test.md"
 }
 ```
 
@@ -86,12 +86,12 @@ writeFileSync(configPath, JSON.stringify(config))
 /**
  * 更改默认记录文件的位置
  */
-commander.command("upPath <recordFilepath>")
-    // .alias('urp')
-    .description('update config recordFilepath')
-    .action((recordFilePath) => {
-        // ...code
-    })
+commander.command('upPath <recordFilepath>')
+// .alias('urp')
+  .description('update config recordFilepath')
+  .action((recordFilePath) => {
+    // ...code
+  })
 ```
 
 通过指令执行目录`cwd`与传入的文件相对路径`recordFilePath`得到输出文件所在位置的绝对路径
@@ -106,15 +106,14 @@ const config = require(configPath)
 const fullPath = path.resolve(cwd, recordFilePath)
 config.recordFilepath = fullPath
 if (!existsSync(fullPath)) {
-    // 自动创建空文件
-    createFile(fullPath, '', false)
+  // 自动创建空文件
+  createFile(fullPath, '', false)
 }
 writeFileSync(configPath, JSON.stringify(config))
-console.log('set recordFilePath success：', fullPath);
+console.log('set recordFilePath success：', fullPath)
 ```
 
 设置输出文件路径的指令开发到这就完毕了
-
 
 ### 事务管理指令开发
 期望通过简单的`timec thing -s [name]`,即可完成事务的添加，结束，自动写入到文件
@@ -126,22 +125,21 @@ console.log('set recordFilePath success：', fullPath);
 其中`thing`属性的结构如下
 ```json
 {
-    "name":"abc",
-    "startTime":"2021-08-08 22:18:19"
+  "name": "abc",
+  "startTime": "2021-08-08 22:18:19"
 }
 ```
 分别存放当前进行中的事务名和事务开始时间
 
 ```js
-commander.command("thing [name]")
-    .option('-s, --stop', 'stop a thing ')
-    .description('update config recordFilepath')
-    .action((name, cmdObj) => {
-        const config = require(configPath)
-        const { thing, recordFilepath, tasks, defaultTaskIdx } = config
-        const task = tasks[defaultTaskIdx]
-        
-    })
+commander.command('thing [name]')
+  .option('-s, --stop', 'stop a thing ')
+  .description('update config recordFilepath')
+  .action((name, cmdObj) => {
+    const config = require(configPath)
+    const { thing, recordFilepath, tasks, defaultTaskIdx } = config
+    const task = tasks[defaultTaskIdx]
+  })
 ```
 
 首先做一些判断，避免引发错误
@@ -153,16 +151,14 @@ commander.command("thing [name]")
 const s = new Date(thing.startTime)
 
 if (!existsSync(recordFilepath)) {
-    console.log(`${recordFilepath} is not exist`);
-    console.log('you can use "timec upPath <recordFilepath>" set it');
-    return
+  console.log(`${recordFilepath} is not exist`)
+  console.log('you can use "timec upPath <recordFilepath>" set it')
+  return
 }
 if (!task) {
-    console.log('not set task');
-    console.log('you can use "timec task [name]" set it');
-    return
+  console.log('not set task')
+  console.log('you can use "timec task [name]" set it')
 }
-
 ```
 
 如果没有传入事件名称`name`，表示使用查询功能，打印当前事务的基本信息
@@ -173,27 +169,25 @@ if (!task) {
 如果设置了结束的标志`stop`，则将这个事务的记录写入到文件之中去，更新配置文件
 
 ```js
-      
 if (!name) {
-    if (!thing.name) {
-        console.log('Events not in progress');
-        return
-    }
-    const { stop } = cmdObj
-    if (stop) {
-        writeRecord(recordFilepath, task, thing.name, thing.startTime)
-        thing.name = ''
-        thing.startTime = ''
-        writeFileSync(configPath, JSON.stringify(config))
-        return
-    }
-    console.log('------');
-    console.log(`-name:     ${thing.name}`);
-    console.log(`-start:    ${s.format('yyyy-MM-dd hh:mm:ss')}`);
-    // TODO：时分秒
-    console.log(`-duration: ${Date.now() - s} mss`);
-    console.log('------');
+  if (!thing.name) {
+    console.log('Events not in progress')
     return
+  }
+  const { stop } = cmdObj
+  if (stop) {
+    writeRecord(recordFilepath, task, thing.name, thing.startTime)
+    thing.name = ''
+    thing.startTime = ''
+    writeFileSync(configPath, JSON.stringify(config))
+    return
+  }
+  console.log('------')
+  console.log(`-name:     ${thing.name}`)
+  console.log(`-start:    ${s.format('yyyy-MM-dd hh:mm:ss')}`)
+  // TODO：时分秒
+  console.log(`-duration: ${Date.now() - s} mss`)
+  console.log('------')
 }
 ```
 
@@ -210,4 +204,3 @@ if (!name) {
 本系列会不断的更新迭代，直至产品初代完成
 
 * [仓库地址](https://github.com/ATQQ/time-control)
-

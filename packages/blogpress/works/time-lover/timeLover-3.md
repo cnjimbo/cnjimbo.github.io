@@ -32,7 +32,7 @@ categories:
 * bug: 短信登录线上还有点小问题,发不出验证码
 
 ## 前端联调配置
-### Vite 
+### Vite
 前端构建工具使用的`Vite`
 
 在`vite.config.ts`中配置proxy，在开发环境时，根据指定的接口路径前缀，将请求转发到本地的后端服务
@@ -49,7 +49,7 @@ export default defineConfig({
       '/api/': {
         target: 'http://localhost:3000',
         changeOrigin: true,
-        rewrite: (p) => p.replace(/^\/api/, ''),
+        rewrite: p => p.replace(/^\/api/, ''),
       },
     },
   },
@@ -58,7 +58,7 @@ export default defineConfig({
 ### 环境变量
 主要配置`axios`请求的baseUrl路径
 
-开发环境访问接口，统一添加 `/api` 前缀，通过proxy转发到本地开发环境 
+开发环境访问接口，统一添加 `/api` 前缀，通过proxy转发到本地开发环境
 `.env`
 ```sh
 VITE_APP_AXIOS_BASE_URL=/api
@@ -154,24 +154,24 @@ import { Middleware } from '@/lib/server/types'
 const allowOrigins = ['https://lover.sugarat.top', 'http://lover.sugarat.top']
 
 const interceptor: Middleware = (req, res) => {
-    const { method } = req
-    if (allowOrigins.includes(req.headers.origin)) {
-        // 允许跨域
-        res.setHeader('Access-Control-Allow-Origin', req.headers.origin)
-    }
-    //跨域允许的header类型
-    res.setHeader('Access-Control-Allow-Headers', '*')
-    // 允许跨域携带cookie
-    res.setHeader('Access-Control-Allow-Credentials', 'true')
-    // 允许的方法
-    res.setHeader('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS')
-    // 设置响应头
-    res.setHeader('Content-Type', 'application/json;charset=utf-8')
-    // 对预检请求放行
-    if (method === 'OPTIONS') {
-        res.statusCode = 204
-        res.end()
-    }
+  const { method } = req
+  if (allowOrigins.includes(req.headers.origin)) {
+    // 允许跨域
+    res.setHeader('Access-Control-Allow-Origin', req.headers.origin)
+  }
+  // 跨域允许的header类型
+  res.setHeader('Access-Control-Allow-Headers', '*')
+  // 允许跨域携带cookie
+  res.setHeader('Access-Control-Allow-Credentials', 'true')
+  // 允许的方法
+  res.setHeader('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS')
+  // 设置响应头
+  res.setHeader('Content-Type', 'application/json;charset=utf-8')
+  // 对预检请求放行
+  if (method === 'OPTIONS') {
+    res.statusCode = 204
+    res.end()
+  }
 }
 export default interceptor
 ```
@@ -230,69 +230,69 @@ const router = new Router('user')
 
 // 用户登录接口
 router.post('login', async (req, res) => {
-    const { phone, code } = req.body
-    
-    // 测试账号数据，直接放行测试账号
-    if (phone === '13245678910' && code === '1234') {
-        // 通过手机号查询用户信息
-        const [user] = await queryUserList({
-            phone
-        })
-        // 直接调用createToken根据用户信息生成token（身份凭证），30天有效（自动存入redis中）
-        const token = await tokenUtil.createToken(user, 60 * 60 * 24 * 30)
-        res.success({
-            token
-        })
-        return
-    }
-    // 参数格式不正确
-    if (!rMobilePhone.test(phone) || !rVerCode.test(code)) {
-        res.failWithError(GlobalError.paramsError)
-        return
-    }
-    const v = await getRedisVal(`code-${phone}`)
-    if (code !== v) {
-        res.failWithError(UserError.errorCode)
-        return
-    }
-    let [user] = await queryUserList({
-        phone
+  const { phone, code } = req.body
+
+  // 测试账号数据，直接放行测试账号
+  if (phone === '13245678910' && code === '1234') {
+    // 通过手机号查询用户信息
+    const [user] = await queryUserList({
+      phone
     })
-    // 不存在就插入
-    if (!user) {
-        user = {
-            userId: getUniqueKey(),
-            phone,
-            joinTime: new Date()
-        }
-        await inserUser(user)
-    }
+    // 直接调用createToken根据用户信息生成token（身份凭证），30天有效（自动存入redis中）
     const token = await tokenUtil.createToken(user, 60 * 60 * 24 * 30)
-    // 过期验证码
-    expiredRedisKey(`code-${phone}`)
     res.success({
-        token
+      token
     })
+    return
+  }
+  // 参数格式不正确
+  if (!rMobilePhone.test(phone) || !rVerCode.test(code)) {
+    res.failWithError(GlobalError.paramsError)
+    return
+  }
+  const v = await getRedisVal(`code-${phone}`)
+  if (code !== v) {
+    res.failWithError(UserError.errorCode)
+    return
+  }
+  let [user] = await queryUserList({
+    phone
+  })
+  // 不存在就插入
+  if (!user) {
+    user = {
+      userId: getUniqueKey(),
+      phone,
+      joinTime: new Date()
+    }
+    await inserUser(user)
+  }
+  const token = await tokenUtil.createToken(user, 60 * 60 * 24 * 30)
+  // 过期验证码
+  expiredRedisKey(`code-${phone}`)
+  res.success({
+    token
+  })
 })
 
 // 获取登录验证码
 router.get('code', (req, res) => {
-    const { phone } = req.query
-    // 参数格式不正确
-    if (!rMobilePhone.test(phone)) {
-        res.failWithError(GlobalError.paramsError)
-        return
-    }
-    // 随机生成一个4位长的数字
-    const code = randomNumStr(4)
-    if (process.env.NODE_ENV !== 'development') {
-        // 调用封装的腾讯云SDK方法发送验证码
-        sendMessage(phone, code, 2)
-    }
-    // 存入redis中，120s有效时间
-    setRedisValue(`code-${phone}`, code, 120)
-    console.log(code)
-    res.success()
+  const { phone } = req.query
+  // 参数格式不正确
+  if (!rMobilePhone.test(phone)) {
+    res.failWithError(GlobalError.paramsError)
+    return
+  }
+  // 随机生成一个4位长的数字
+  const code = randomNumStr(4)
+  if (process.env.NODE_ENV !== 'development') {
+    // 调用封装的腾讯云SDK方法发送验证码
+    sendMessage(phone, code, 2)
+  }
+  // 存入redis中，120s有效时间
+  setRedisValue(`code-${phone}`, code, 120)
+  console.log(code)
+  res.success()
 })
 
 export default router
@@ -301,35 +301,29 @@ export default router
 ### 汇总各模块路由
 ```ts
 // types
-import { Route } from '@/lib/server/types'
 
 // router
 import user from './modules/user'
 import family from './modules/family'
 import record from './modules/record'
+import { Route } from '@/lib/server/types'
 
 // 这里注册路由
 const routers = [user, family, record]
 
 export default routers.reduce((pre: Route[], router) => {
-    return pre.concat(router.getRoutes())
+  return pre.concat(router.getRoutes())
 }, [])
 ```
 ### 注册路由&启动服务
 ```ts
 // polyfill
 import 'core-js/es/array'
-
-console.time('server-start')
 // 从.env加载环境变量
 import loadEnv from './utils/loadEnv'
 
-loadEnv()
-
 // 路径映射
 import loadModuleAlias from './utils/moduleAlias'
-
-loadModuleAlias()
 // 配置文件
 import { serverConfig } from './config'
 
@@ -340,22 +334,28 @@ import FW from './lib/server'
 import routes from './routes'
 
 // interceptor
-import { serverInterceptor, routeInterceptor } from './middleware'
+import { routeInterceptor, serverInterceptor } from './middleware'
+
+console.time('server-start')
+
+loadEnv()
+
+loadModuleAlias()
 
 const app = new FW(serverInterceptor, {
-    beforeRunRoute: routeInterceptor
+  beforeRunRoute: routeInterceptor
 })
 
 // 注册路由
 app.addRoutes(routes)
 
 app.listen(serverConfig.port, serverConfig.hostname, () => {
-    console.log('-----', new Date().toLocaleString(), '-----')
-    if (process.env.NODE_ENV === 'development') {
-        // 写入测试用逻辑
-    }
-    console.timeEnd('server-start')
-    console.log('server start success', `http://${serverConfig.hostname}:${serverConfig.port}`)
+  console.log('-----', new Date().toLocaleString(), '-----')
+  if (process.env.NODE_ENV === 'development') {
+    // 写入测试用逻辑
+  }
+  console.timeEnd('server-start')
+  console.log('server start success', `http://${serverConfig.hostname}:${serverConfig.port}`)
 })
 
 module.exports = app
@@ -371,14 +371,14 @@ import { Middleware } from '@/lib/server/types'
 import { getUserInfo } from '@/utils/tokenUtil'
 
 const interceptor: Middleware = async (req, res) => {
-    const { options } = req.route
-    console.log(`路由拦截:${req.method} - ${req.url}`)
-    if (options && options.needLogin) {
-        const user = await getUserInfo(req)
-        if(!user){
-            res.failWithError(GlobalError.powerError)
-        }
+  const { options } = req.route
+  console.log(`路由拦截:${req.method} - ${req.url}`)
+  if (options && options.needLogin) {
+    const user = await getUserInfo(req)
+    if (!user) {
+      res.failWithError(GlobalError.powerError)
     }
+  }
 }
 export default interceptor
 ```
@@ -386,23 +386,22 @@ export default interceptor
 
 ```ts
 router.post('add', async (req, res) => {
-    const { name } = req.body
-    const { userId } = await getUserInfo(req)
-    const familyId = getUniqueKey()
-    await insertFamily({
-        name,
-        userId,
-        familyId
-    })
-    res.success({
-        familyId
-    })
-    // 这个路由的options配置
-},{
-    needLogin:true
+  const { name } = req.body
+  const { userId } = await getUserInfo(req)
+  const familyId = getUniqueKey()
+  await insertFamily({
+    name,
+    userId,
+    familyId
+  })
+  res.success({
+    familyId
+  })
+  // 这个路由的options配置
+}, {
+  needLogin: true
 })
 ```
-
 
 ## 工具方法
 
@@ -436,7 +435,6 @@ export default function loadEnv() {
   // .env.[mode]
   load(dotenv.config({ path: `${baseDir}.env.${process.env.NODE_ENV}` }))
 }
-
 ```
 ### loadModuleAlias
 添加`module-alias`路径映射库，映射项目中使用的`@`开头或其它自定义的路径
@@ -452,7 +450,6 @@ export default function loadModuleAlias() {
     '@': `${__dirname}/../`,
   })
 }
-
 ```
 
 ### createToken
@@ -463,10 +460,10 @@ export default function loadModuleAlias() {
 将凭证作为key，用户信息序列化后的值作为value，存入redis中
 ```ts
 function createToken(user: User, timeout = 60 * 60 * 24) {
-    const { phone, userId } = user
-    const token = encryption([phone, userId, Date.now()].join())
-    await setRedisValue(token, JSON.stringify(user), timeout)
-    return token
+  const { phone, userId } = user
+  const token = encryption([phone, userId, Date.now()].join())
+  await setRedisValue(token, JSON.stringify(user), timeout)
+  return token
 }
 ```
 
@@ -479,7 +476,7 @@ import crypto from 'crypto'
  * @param str 待加密的字符串
  */
 export function encryption(str: string): string {
-    return crypto.createHash('md5').update(str).digest('base64')
+  return crypto.createHash('md5').update(str).digest('base64')
 }
 ```
 
@@ -491,10 +488,9 @@ export function encryption(str: string): string {
 import { ObjectId } from 'mongodb'
 
 export function getUniqueKey() {
-    return new ObjectId().toHexString()
+  return new ObjectId().toHexString()
 }
 ```
-
 
 ### 后端部署
 使用腾讯云Serverless服务部署后端的Node应用，详细教程移步：[Serverless实践-Node服务上线部署](https://juejin.cn/post/6974416943600107533)
@@ -509,4 +505,3 @@ export function getUniqueKey() {
 * [源码学习：探究MongoDB - ObjectId最新的生成原理](https://juejin.cn/post/6972191054321680421)
 * [module-alias](https://github.com/ilearnio/module-alias)
 * [dotenv](https://github.com/motdotla/dotenv)
-

@@ -24,7 +24,7 @@ categories:
 1. 从DOM根节点开始遍历每个可见的节点
    * 不可见节点:
       * 不能渲染输出的节点:link,script,meta等等
-      * 使用css隐藏的节点:display:none; 
+      * 使用css隐藏的节点:display:none;
 2. 对于每个节点在CSSOM树中找到对应的规则并应用
 3. 根据每个可见节点与其对应的css样式,组合生产渲染树
 
@@ -48,7 +48,7 @@ categories:
   * 内容发生变化
     * 文本
     * 图片(被另一尺寸图片替换)
-  
+
 ### 重绘
 * 回流一定触发重绘
 * 可见节点样式发生改变
@@ -73,7 +73,7 @@ e.style.fontSize = '18px'
 * class
     ```js
     const e = document.querySelector('#test')
-    el.className +='active'
+    el.className += 'active'
     ```
 
 ### 批量修改DOM
@@ -100,4 +100,3 @@ e.style.fontSize = '18px'
 [你真的了解回流和重绘吗?](https://github.com/chenjigeng/blog/blob/master/%E4%BD%A0%E7%9C%9F%E7%9A%84%E4%BA%86%E8%A7%A3%E5%9B%9E%E6%B5%81%E5%92%8C%E9%87%8D%E7%BB%98%E5%90%97.md)<br>
 [掘金(三元大佬):浏览器灵魂之问，请问你能接得住几个？](https://juejin.im/post/5df5bcea6fb9a016091def69#heading-63)
 :::
-

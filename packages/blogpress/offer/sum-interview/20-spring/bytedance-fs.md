@@ -16,8 +16,8 @@ categories:
 1. 数字格式化问题
 ```js
 // 使用“,”分割整数部分，小数保留两位
-function transfer(num){
-    // ...code
+function transfer(num) {
+  // ...code
 }
 transfer(1234567890.23) // "1,234,567,890.23"
 ```
@@ -66,4 +66,3 @@ TODO:补全codepen示例
 
 ### VUE
 1. 数据双向绑定的原理
-

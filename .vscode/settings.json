@@ -67,5 +67,6 @@
     "**/*.code-search": false,
     "**/bower_components": false,
     "**/node_modules": false
-  }
+  },
+  "workbench.colorCustomizations": {}
 }

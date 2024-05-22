@@ -19,20 +19,20 @@ export function formatDate(d: any, fmt = 'yyyy-MM-dd hh:mm:ss') {
     'm+': d.getMinutes(), // 分
     's+': d.getSeconds(), // 秒
     'q+': Math.floor((d.getMonth() + 3) / 3), // 季度
-    'S': d.getMilliseconds() // 毫秒
+    'S': d.getMilliseconds(), // 毫秒
   }
   if (/(y+)/.test(fmt)) {
     fmt = fmt.replace(
       RegExp.$1,
-      `${d.getFullYear()}`.substr(4 - RegExp.$1.length)
+      `${d.getFullYear()}`.substr(4 - RegExp.$1.length),
     )
   }
-  // eslint-disable-next-line no-restricted-syntax
+
   for (const k in o) {
     if (new RegExp(`(${k})`).test(fmt))
       fmt = fmt.replace(
         RegExp.$1,
-        RegExp.$1.length === 1 ? o[k] : `00${o[k]}`.substr(`${o[k]}`.length)
+        RegExp.$1.length === 1 ? o[k] : `00${o[k]}`.substr(`${o[k]}`.length),
       )
   }
   return fmt
@@ -74,7 +74,7 @@ export function formatShowDate(date: Date | string) {
 }
 
 const pattern
-  = /[a-zA-Z0-9_\u0392-\u03C9\u00C0-\u00FF\u0600-\u06FF\u0400-\u04FF]+|[\u4E00-\u9FFF\u3400-\u4DBF\uF900-\uFAFF\u3040-\u309F\uAC00-\uD7AF]+/g
+  = /[\w\u0392-\u03C9\u00C0-\u00FF\u0600-\u06FF\u0400-\u04FF]+|[\u4E00-\u9FFF\u3400-\u4DBF\uF900-\uFAFF\u3040-\u309F\uAC00-\uD7AF]+/g
 
 // copy from https://github.com/youngjuning/vscode-juejin-wordcount/blob/main/count-word.ts
 export default function countWord(data: string) {
@@ -127,7 +127,7 @@ export function getGithubDirUpdateTime(
   owner: string,
   repo: string,
   dir?: string,
-  branch?: string
+  branch?: string,
 ) {
   let baseUrl = `https://api.github.com/repos/${owner}/${repo}/commits`
   if (branch) {
@@ -156,7 +156,7 @@ export function getGithubDirUpdateTime(
 
 export function getImageUrl(
   image: ThemeableImage,
-  isDarkMode: boolean
+  isDarkMode: boolean,
 ): string {
   if (typeof image === 'string') {
     // 如果 ThemeableImage 类型为 string，则直接返回字符串

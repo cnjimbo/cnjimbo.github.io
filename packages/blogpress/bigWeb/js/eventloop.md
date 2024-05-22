@@ -29,12 +29,11 @@ categories:
 * 多个工厂 --> 多核CPU
 * 车间 --> 进程  : 同一个时间只能有一个进程运行
 * 工人 --> 线程 : 多个线程可以协同完成一个任务
-* 车间(进程)中的房间 --> 内存 
+* 车间(进程)中的房间 --> 内存
 
 本质上讲,两个名词都是 CPU 工作时间片的一个描述
 * 进程:运行指令及加载和保存上下文所需要的时间
 * 线程:执行一段指令所需时间
-
 
 在浏览器中
 * 一个tab是一个进程
@@ -55,11 +54,11 @@ js开始执行代码的时候会首先创建一个``main``函数,然后根据执
 
 示例
 ```js
-function a(v){
-    return v*4
+function a(v) {
+  return v * 4
 }
-function b(v){
-    return a(v*3)
+function b(v) {
+  return a(v * 3)
 }
 console.log(b(2))
 ```
@@ -102,18 +101,18 @@ async function async2() {
 }
 async1()
 
-setTimeout(function() {
+setTimeout(() => {
   console.log('setTimeout')
 }, 0)
 
-new Promise(resolve => {
+new Promise((resolve) => {
   console.log('Promise')
   resolve()
 })
-  .then(function() {
+  .then(() => {
     console.log('promise1')
   })
-  .then(function() {
+  .then(() => {
     console.log('promise2')
   })
 
@@ -123,7 +122,7 @@ console.log('script end')
 ```
 新的浏览器中不是如上打印的，因为 await 变快了
 ```js
-// script start --> async2 end --> Promise --> script end --> async1 end 
+// script start --> async2 end --> Promise --> script end --> async1 end
 //  promise1 --> promise2 --> setTimeout
 ```
 1. 当我们调用 async1 函数时，会马上输出 async2 end，并且函数返回一个 Promise
@@ -177,24 +176,24 @@ console.log('script end')
 ### 自测
 自测试1
 ```js
-console.log(1);
+console.log(1)
 
 setTimeout(() => {
-  console.log(2);
+  console.log(2)
   Promise.resolve().then(() => {
     console.log(3)
-  });
-});
+  })
+})
 
 new Promise((resolve, reject) => {
   console.log(4)
   resolve(5)
 }).then((data) => {
-  console.log(data);
+  console.log(data)
 })
 
 setTimeout(() => {
-  console.log(6);
+  console.log(6)
 })
 
 console.log(7)
@@ -203,49 +202,49 @@ console.log(7)
 <details>
   <summary><mark><font color=darkred>点击查看答案</font></mark></summary>
   <p> 输出结果</p>
-  <pre><code>  
+  <pre><code>
   // 1 4 7 5 2 3 6
   </code></pre>
 </details>
 
 自测2
 ```js
-console.log(1);
+console.log(1)
 
 setTimeout(() => {
-  console.log(2);
+  console.log(2)
   Promise.resolve().then(() => {
     console.log(3)
-  });
-});
+  })
+})
 
 new Promise((resolve, reject) => {
   console.log(4)
   resolve(5)
 }).then((data) => {
-  console.log(data);
-  
+  console.log(data)
+
   Promise.resolve().then(() => {
     console.log(6)
   }).then(() => {
     console.log(7)
-    
+
     setTimeout(() => {
       console.log(8)
-    }, 0);
-  });
+    }, 0)
+  })
 })
 
 setTimeout(() => {
-  console.log(9);
+  console.log(9)
 })
 
-console.log(10);
+console.log(10)
 ```
 <details>
   <summary><mark><font color=darkred>点击查看答案</font></mark></summary>
   <p> 输出结果</p>
-  <pre><code>  
+  <pre><code>
   // 1 4 10 5 6 7 2 3 9 8
   </code></pre>
 </details>
@@ -281,7 +280,6 @@ node中的定时器也是不准确的,只是**尽快执行**
     * 如果**有**``setImmediate``回调需要执行,poll阶段会停止并进入``check阶段``执行回调
     * 如果**没有**``setImmediate``,会等待回调被加入的队列中并立即执行回调(超时防止一直等待下去)
 
-
 ## check
 执行``setImmediate``回调
 
@@ -292,10 +290,10 @@ node中的定时器也是不准确的,只是**尽快执行**
 ### 某些情况下定时器随机执行
 ```js
 setTimeout(() => {
-    console.log('setTimeout')
+  console.log('setTimeout')
 }, 1)
 setImmediate(() => {
-    console.log('setImmediate')
+  console.log('setImmediate')
 })
 ```
 ``setTimeout``可能在前,可能在后
@@ -310,12 +308,12 @@ setImmediate(() => {
 ```js
 const fs = require('fs')
 fs.readFile(__filename, () => {
-    setTimeout(() => {
-        console.log('timeout');
-    }, 0)
-    setImmediate(() => {
-        console.log('immediate')
-    })
+  setTimeout(() => {
+    console.log('timeout')
+  }, 0)
+  setImmediate(() => {
+    console.log('immediate')
+  })
 })
 // timeout
 // immediate
@@ -335,24 +333,24 @@ fs.readFile(__filename, () => {
 ### 示例
 ```js
 setTimeout(() => {
-    console.log('timer1')
+  console.log('timer1')
 }, 0)
 
-Promise.resolve().then(function () {
-    console.log('promise1')
+Promise.resolve().then(() => {
+  console.log('promise1')
 })
 
 process.nextTick(() => {
+  console.log('nextTick')
+  process.nextTick(() => {
     console.log('nextTick')
     process.nextTick(() => {
+      console.log('nextTick')
+      process.nextTick(() => {
         console.log('nextTick')
-        process.nextTick(() => {
-            console.log('nextTick')
-            process.nextTick(() => {
-                console.log('nextTick')
-            })
-        })
+      })
     })
+  })
 })
 // nextTick
 // nextTick
@@ -366,4 +364,3 @@ process.nextTick(() => {
 [什么是Event Loop](http://www.ruanyifeng.com/blog/2013/10/event_loop.html)<br>
 [彻底弄得Event Loop](https://segmentfault.com/a/1190000016278115)
 :::
-

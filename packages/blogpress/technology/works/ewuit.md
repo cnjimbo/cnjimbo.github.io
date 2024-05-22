@@ -21,16 +21,16 @@ categories:
 打开一个网站在控制台中执行
 ```js
 (function () {
-    var url = '//unpkg.com/ewuit@latest/dist/index.min.js'
-    var script = document.createElement('script');
-    script.src = url;
-    document.body.appendChild(script);
-    script.onload = function () { 
-        const ewuit = new Ewuit()
-        // open a ui tool
-        ewuit.openUI()
-    }
-})();
+  const url = '//unpkg.com/ewuit@latest/dist/index.min.js'
+  const script = document.createElement('script')
+  script.src = url
+  document.body.appendChild(script)
+  script.onload = function () {
+    const ewuit = new Ewuit()
+    // open a ui tool
+    ewuit.openUI()
+  }
+})()
 ```
 
 ### 方式2
@@ -42,7 +42,7 @@ categories:
     var script = document.createElement('script');
     script.src = url;
     document.body.appendChild(script);
-    script.onload = function () { 
+    script.onload = function () {
         const ewuit = new Ewuit()
         // open a ui tool
         ewuit.openUI()
@@ -60,4 +60,3 @@ categories:
 ## 功能实现
 
 ## 其它
-

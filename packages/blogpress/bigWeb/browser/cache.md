@@ -91,15 +91,15 @@ index.js
 console.log('index.js')
 // 注册
 if (navigator.serviceWorker) {
-    console.log('开始注册service Worker')
-    navigator.serviceWorker
-        .register('sw.js')
-        .then(function (registration) {
-            console.log('service worker 注册成功')
-        })
-        .catch(function (err) {
-            console.log('servcie worker 注册失败')
-        })
+  console.log('开始注册service Worker')
+  navigator.serviceWorker
+    .register('sw.js')
+    .then((registration) => {
+      console.log('service worker 注册成功')
+    })
+    .catch((err) => {
+      console.log('servcie worker 注册失败')
+    })
 }
 ```
 
@@ -108,25 +108,25 @@ sw.js
 /**
  * 监听 `install` 事件，回调中缓存所需文件
  */
-self.addEventListener('install', e => {
-    e.waitUntil(
-        caches.open('my-cache').then(function (cache) {
-            return cache.addAll(['./index.html', './index.js', './index.css'])
-        })
-    )
+self.addEventListener('install', (e) => {
+  e.waitUntil(
+    caches.open('my-cache').then((cache) => {
+      return cache.addAll(['./index.html', './index.js', './index.css'])
+    })
+  )
 })
 
 // 拦截所有请求事件
 // 如果缓存中已经有请求的数据就直接用缓存，否则去请求数据
-self.addEventListener('fetch', e => {
-    e.respondWith(
-        caches.match(e.request).then(function (response) {
-            if (response) {
-                return response
-            }
-            console.log('fetch source')
-        })
-    )
+self.addEventListener('fetch', (e) => {
+  e.respondWith(
+    caches.match(e.request).then((response) => {
+      if (response) {
+        return response
+      }
+      console.log('fetch source')
+    })
+  )
 })
 ```
 显示效果
@@ -285,7 +285,6 @@ Cache-Control 生于 HTTP/1.1，**优先级高于** Expires 。
 |    max-stale=30     |    30s内,即使缓存过期也使用该缓存     |
 |    min-fresh=30     |        希望30s内获取最新的响应        |
 
-
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYwNDc0MDczMDcyMQ==604740730721)
 
 **特点** 优先级高于Expires，指令可以组合
@@ -319,7 +318,7 @@ Cache-Control 生于 HTTP/1.1，**优先级高于** Expires 。
 * 如果本地打开缓存文件，即使没有对文件进行修改，但还是会造成 Last-Modified 被修改，服务端不能命中缓存导致发送相同的资源
 * Last-Modified 只能以秒计时，如果在不可感知的时间内修改完成文件，那么服务端会认为资源还是命中了，不会返回正确的资源
 
-因为以上这些弊端，所以在 HTTP / 1.1 出现了 ``ETag`` 
+因为以上这些弊端，所以在 HTTP / 1.1 出现了 ``ETag``
 
 #### ETag
 Etag是服务器在响应请求时，返回的当前资源文件一个唯一标识(由服务器生成)，只要资源有变化，Etag就会重新生成
@@ -332,7 +331,7 @@ Etag是服务器在响应请求时，返回的当前资源文件一个唯一标�
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYwNDc1MjM0MjkwMg==604752342902)
 
-**特点：** 
+**特点：**
 * ETag 优先级比 Last-Modified 高
 * ETag 是服务端通过算法计算得出，需要损耗一定时间
 
@@ -375,7 +374,6 @@ Etag是服务器在响应请求时，返回的当前资源文件一个唯一标�
 一般来说，现在都会使用工具来打包代码，那么就可以对**HTML引用的静态资源的文件名进行哈希处理**，只有当文件内容发生修改后才会生成新的文件名
 
 因此可以给代码文件设置缓存有效期一年Cache-Control: max-age=31536000，这样只有当``HTML``文件中引入的文件名发生了改变才会去下载最新的代码文件，否则就一直使用缓存。
-
 
 :::tip 参考
 *  [简书 - 深入理解浏览器的缓存机制](https://www.jianshu.com/p/54cc04190252)

@@ -20,24 +20,24 @@ categories:
 
 简单的分步加法函数
 ```js
-function add(a){
-    return function(b){
-        return a+b
-    }
+function add(a) {
+  return function (b) {
+    return a + b
+  }
 }
-let add1 = add(1)
-add1(2) === 1+2 // true
+const add1 = add(1)
+add1(2) === 1 + 2 // true
 ```
 ``es6``写法
 ```js
-let add = a => b => a + b
+const add = a => b => a + b
 ```
 * 再例如
 ```js
-function strTools(fn){
-    return function(str){
-        return fn(str)
-    }
+function strTools(fn) {
+  return function (str) {
+    return fn(str)
+  }
 }
 ```
 
@@ -50,22 +50,22 @@ function strTools(fn){
 
 * 经典的栗子
 ```js
-let add = (a, b) => a + b
-console.log(add(2,3));//5
-console.log(add(2,4));//6
-console.log(add(2,5));//7
+const add = (a, b) => a + b
+console.log(add(2, 3))// 5
+console.log(add(2, 4))// 6
+console.log(add(2, 5))// 7
 ```
 柯里化后
 ```js
-function add(a){
-    return function(b){
-        return a+b
-    }
+function add(a) {
+  return function (b) {
+    return a + b
+  }
 }
 // es6
-let add = a => b => a + b
+const add = a => b => a + b
 
-let add2 = add(2)
+const add2 = add(2)
 console.log(add2(3)) // 5
 console.log(add2(4)) // 6
 console.log(add2(5)) // 7
@@ -75,8 +75,8 @@ es6写法中n个连续箭头组成的函数实际上就是柯里化了n-1次
 也就是连续箭头函数就是多次柯里化函数的es6写法
 
 ```js
-let test = x => y => z => k => x + y + z + k
-console.log(test(1)(2)(3)(4))//10
+const test = x => y => z => k => x + y + z + k
+console.log(test(1)(2)(3)(4))// 10
 ```
 
 ## 总结柯里化的功能
@@ -92,14 +92,13 @@ console.log(test(1)(2)(3)(4))//10
 ## 一个通用的封装方法
 ```js
 function curry(fn, ...args) {
-    return fn.length > args.length ? (...args2) => curry(fn, ...args, ...args2) : fn(...args)
+  return fn.length > args.length ? (...args2) => curry(fn, ...args, ...args2) : fn(...args)
 }
 
 function fn(a, b, c, d) {
-    console.log(a + b + c + d)
+  console.log(a + b + c + d)
 }
 
 fn = curry(fn)
 fn(1)(2)(3, 4) // 10
 ```
-

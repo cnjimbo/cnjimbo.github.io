@@ -15,7 +15,7 @@ export default defineConfig({
   // 详见：https://vitepress.dev/reference/site-config#head
   head: [
     // 配置网站的图标（显示在浏览器的 tab 上）
-    ['link', { rel: 'icon', href: '/favicon.ico' }]
+    ['link', { rel: 'icon', href: '/favicon.ico' }],
   ],
   themeConfig: {
     lastUpdatedText: '上次更新于',
@@ -27,13 +27,13 @@ export default defineConfig({
     // },
     nav: [
       { text: '首页', link: '/' },
-      { text: '关于作者', link: 'https://sugarat.top/aboutme.html' }
+      { text: '关于作者', link: 'https://sugarat.top/aboutme.html' },
     ],
     socialLinks: [
       {
         icon: 'github',
-        link: 'https://github.com/ATQQ/sugar-blog/tree/master/packages/theme'
-      }
-    ]
-  }
+        link: 'https://github.com/ATQQ/sugar-blog/tree/master/packages/theme',
+      },
+    ],
+  },
 })

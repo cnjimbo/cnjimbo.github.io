@@ -21,11 +21,11 @@ const data = [
   { name: 'xm4', age: 9 }
 ]
 
-function sleep(s){
+function sleep(s) {
   const end = s * 1000 + Date.now()
-  while(Date.now() < end){}
+  while (Date.now() < end) {}
 }
-async function fn(){
+async function fn() {
   for (const people of data) {
     if (people.age === 9) {
       break
@@ -34,9 +34,9 @@ async function fn(){
       continue
     }
     await sleep(people.age)
-    console.log(people.name);
+    console.log(people.name)
   }
-} 
+}
 fn() // xm2
 ```
 
@@ -44,12 +44,12 @@ fn() // xm2
 
 ## 1-Array.prototype.map
 ```ts
-function MapWithIdx(arr){
-    return arr.map((v, idx) => ([idx, v]))
+function MapWithIdx(arr) {
+  return arr.map((v, idx) => ([idx, v]))
 }
 
 for (const [idx, v] of MapWithIdx(data)) {
-  console.log(idx, v);
+  console.log(idx, v)
 }
 ```
 
@@ -57,7 +57,7 @@ for (const [idx, v] of MapWithIdx(data)) {
 这个方法是ES6新增的API
 ```ts
 for (const [idx, v] of data.entries()) {
-  console.log(idx, v);
+  console.log(idx, v)
 }
 ```
 
@@ -65,8 +65,7 @@ for (const [idx, v] of data.entries()) {
 这个方法也是ES6新增的API
 ```ts
 for (const idx of data.keys()) {
-    const v = data[idx]
-    console.log(idx, v);
+  const v = data[idx]
+  console.log(idx, v)
 }
 ```
-

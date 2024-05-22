@@ -20,7 +20,7 @@ categories:
 
 ### 模板字符串
 ```js
-var str = `
+const str = `
 a
 {{      obj.a   | filter |             filter2        }
 b
@@ -28,14 +28,14 @@ b
 c
 {obj.c.d}
 `
-var obj = {
-    a:function(){},
-    b:{c:{e:123}},
-    c:{}
+const obj = {
+  a() {},
+  b: { c: { e: 123 } },
+  c: {}
 }
-var g = {
-    filter(str) {return 'aaa' + str },
-    filter2(str) {return str + 'bbb'}
+const g = {
+  filter(str) { return `aaa${str}` },
+  filter2(str) { return `${str}bbb` }
 }
 ```
 请写一个方法实现模板字符串的替换,要求如下
@@ -55,4 +55,3 @@ var g = {
 ```
 ## HR面
 >因为春招的时候有过沟通，就没有问什么刁钻的问题，就问了一些很平常的问题就结束了
-

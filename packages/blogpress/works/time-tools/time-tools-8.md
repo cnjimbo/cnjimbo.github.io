@@ -18,7 +18,6 @@ tags:
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYyODUyMTgxOTI4Mw==628521819283)
 
-
 ## 功能开发
 ### 自动记录事务
 首先补齐打印事务耗时的逻辑
@@ -30,7 +29,7 @@ tags:
 ```js
 const { thing } = config
 const s = new Date(thing.startTime)
-console.log(`事务耗时:${thing.name} ${mmsToNormal(Date.now() - s)}`);
+console.log(`事务耗时:${thing.name} ${mmsToNormal(Date.now() - s)}`)
 ```
 
 `mmsToNormal`方法非常朴素，将一个毫秒表示的时间换成`天，时，分，秒`
@@ -39,14 +38,14 @@ console.log(`事务耗时:${thing.name} ${mmsToNormal(Date.now() - s)}`);
 
 ```js
 function mmsToNormal(mms) {
-    mms = (mms / 1000) >> 0
-    const day = (mms / (24 * 60 * 60)) >> 0
-    mms -= day * 24 * 60 * 60
-    const hour = (mms / (60 * 60)) >> 0
-    mms -= hour * 60 * 60
-    const minute = (mms / 60) >> 0
-    mms -= minute * 60
-    return `${day}天 ${hour}时 ${minute}分 ${mms}秒`
+  mms = (mms / 1000) >> 0
+  const day = (mms / (24 * 60 * 60)) >> 0
+  mms -= day * 24 * 60 * 60
+  const hour = (mms / (60 * 60)) >> 0
+  mms -= hour * 60 * 60
+  const minute = (mms / 60) >> 0
+  mms -= minute * 60
+  return `${day}天 ${hour}时 ${minute}分 ${mms}秒`
 }
 ```
 在结束当前事务和直接开始新的事务的时候都会打印这个任务的耗时，然后将其结果写入到md中
@@ -58,7 +57,7 @@ function mmsToNormal(mms) {
 * 更新配置
 
 ```js
-console.log(`事务耗时:${thing.name} ${mmsToNormal(Date.now() - s)}`);
+console.log(`事务耗时:${thing.name} ${mmsToNormal(Date.now() - s)}`)
 writeRecord(recordFilepath, task, thing.name, thing.startTime)
 
 thing.name = name
@@ -73,8 +72,8 @@ writeFileSync(configPath, JSON.stringify(config))
 * startTime：事务开始时间
 
 ```js
-function writeRecord(filePath, task, thing, startTime){
-    // ...code
+function writeRecord(filePath, task, thing, startTime) {
+  // ...code
 }
 ```
 
@@ -115,13 +114,13 @@ const hours = ((Date.now() - date.getTime()) / 3600000).toFixed(5)
 * 再遍历每一个thing，为其content加上时间
 ```js
 const things = json.reduce((pre, v) => {
-    const { tasks } = v
-    const things = tasks.map(v => v.things).flat(2)
-    return pre.concat(things)
+  const { tasks } = v
+  const things = tasks.map(v => v.things).flat(2)
+  return pre.concat(things)
 }, [])
-things.forEach(t => {
-    const { content, time } = t
-    t.content = `${content} ${time}`
+things.forEach((t) => {
+  const { content, time } = t
+  t.content = `${content} ${time}`
 })
 ```
 下面开始核心逻辑
@@ -133,22 +132,22 @@ things.forEach(t => {
 const dayIdx = json.findIndex(v => v.title === title)
 
 if (dayIdx === -1) {
-    const item = {
-        title,
-        tasks: [
-            {
-                title: task,
-                things: [
-                    {
-                        content: `${thing} ${hours}`,
-                        time: '0'
-                    }
-                ]
-            }
+  const item = {
+    title,
+    tasks: [
+      {
+        title: task,
+        things: [
+          {
+            content: `${thing} ${hours}`,
+            time: '0'
+          }
         ]
-    }
-    json.push(item)
-    return writeFileSync(filePath, outPutMarkdown(json, false))
+      }
+    ]
+  }
+  json.push(item)
+  return writeFileSync(filePath, outPutMarkdown(json, false))
 }
 ```
 如果不是当天首个事务，接着就判断是否是一个新的任务
@@ -162,24 +161,24 @@ const dataItem = json[dayIdx]
 const taskIdx = dataItem.tasks.findIndex(v => v.title === task)
 // 新的任务
 if (taskIdx === -1) {
-    dataItem.tasks.push({
-        title: task,
-        things: [
-            {
-                content: `${thing} ${hours}`,
-                time: '0'
-            }
-        ]
-    })
-    return writeFileSync(filePath, outPutMarkdown(json, false))
+  dataItem.tasks.push({
+    title: task,
+    things: [
+      {
+        content: `${thing} ${hours}`,
+        time: '0'
+      }
+    ]
+  })
+  return writeFileSync(filePath, outPutMarkdown(json, false))
 }
 ```
 最后就是直接将事务插入到旧的任务当中
 ```js
 const taskItem = dataItem.tasks[taskIdx]
 taskItem.things.push({
-    content: `${thing} ${hours}`,
-    time: '0'
+  content: `${thing} ${hours}`,
+  time: '0'
 })
 
 return writeFileSync(filePath, outPutMarkdown(json, false))
@@ -199,4 +198,3 @@ return writeFileSync(filePath, outPutMarkdown(json, false))
 本系列会不断的更新迭代，直至产品初代完成
 
 * [仓库地址](https://github.com/ATQQ/time-control)
-

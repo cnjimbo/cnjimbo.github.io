@@ -53,13 +53,12 @@ echo $branch
 
 ![](https://img.cdn.sugarat.top/mdImg/MTY5MTMwNDE3MDkzNg==691304170936)
 
-
 `Node.js` 里，可以通过`child_process`模块来执行命令
 
 ```js
-const { execSync } = require('child_process');
-const branch = execSync('git branch --show-current').toString().trim();
-console.log(branch);
+const { execSync } = require('child_process')
+const branch = execSync('git branch --show-current').toString().trim()
+console.log(branch)
 ```
 
 ![](https://img.cdn.sugarat.top/mdImg/MTY5MTMwNDU1NTQ2Nw==691304555467)
@@ -93,7 +92,7 @@ git branch --show-current | tr -d '\n' | pbcopy
 Node.js 里，在`.trim()`后加上`.replace(/\n/g, '')`即可
 
 ```js
-execSync('git branch --show-current').toString().trim().replace(/\n/g, '');
+execSync('git branch --show-current').toString().trim().replace(/\n/g, '')
 ```
 
 不过实际情况下，我们需要将这么长的指令封装起来，方便使用
@@ -154,7 +153,7 @@ const branch = execSync('git branch --show-current')
 console.log('当前分支:', branch)
 
 ncp.copy(branch)
-``` 
+```
 
 这个CLI通过npm包发布了，可以直接`npx bcy`使用
 

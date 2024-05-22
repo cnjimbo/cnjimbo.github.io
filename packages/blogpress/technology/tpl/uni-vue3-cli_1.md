@@ -28,7 +28,7 @@ HbuilderX没有Linux版本（不含wine），但有大神移植了linux版本下
 ```sh
 npm install -g @vue/cli
 ```
-### 初始化vue3工程 
+### 初始化vue3工程
 ```sh
 vue create -p dcloudio/uni-preset-vue#vue3 uni-vue3-ts-template
 ```
@@ -73,7 +73,6 @@ yarn build:mp-weixin
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYyNDM3MDAwMjk4NQ==624370002985)
 
-
 ## Sass支持
 模板默认是没有支持Sass的
 
@@ -106,15 +105,14 @@ yarn add @vant/weapp
 </style>
 ```
 
-
 在`src/pages.json`中全局注册引用的组件
 ```json
 {
-	"globalStyle": {
-		"usingComponents": {
-			"van-button": "/wxcomponents/@vant/weapp/dist/button/index"
-		}
-	}
+  "globalStyle": {
+    "usingComponents": {
+      "van-button": "/wxcomponents/@vant/weapp/dist/button/index"
+    }
+  }
 }
 ```
 
@@ -135,4 +133,3 @@ yarn add @vant/weapp
 ## 资料汇总
 * [uni-vue3-ts：模板仓库](https://github.com/ATQQ/uni-vue3-ts-template)
 * [uni-app 项目小程序端、H5 端支持 vue3 介绍](https://ask.dcloud.net.cn/article/37834)
-

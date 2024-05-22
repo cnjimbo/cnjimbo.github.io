@@ -65,7 +65,6 @@ pnpm create @sugarat/theme my-first-blog
 
 ![](https://img.cdn.sugarat.top/mdImg/MTY4OTQyMDE1NTcxMA==689420155710)
 
-
 ② 安装依赖
 ::: code-group
 

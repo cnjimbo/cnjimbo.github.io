@@ -27,56 +27,55 @@ categories:
 
 **简单实现**
 ```js
-let doc = document.createDocumentFragment()
+const doc = document.createDocumentFragment()
 
-// 屏幕可见高度 
+// 屏幕可见高度
 const screenHeight = window.innerHeight || document.documentElement.clientHeight
 /**
-* 节流函数
-*/
+ * 节流函数
+ */
 function throttle(fn, delay) {
-    let start = Date.now()
-    return function () {
-        if (start + delay >= Date.now()) {
-            return
-        }
-        start = Date.now()
-        fn.apply(this, [...arguments])
+  let start = Date.now()
+  return function () {
+    if (start + delay >= Date.now()) {
+      return
     }
+    start = Date.now()
+    fn.apply(this, [...arguments])
+  }
 }
 
 // 加载真实图片
 function loadImg() {
-    let imgs = Array.from(document.querySelectorAll('img[lazy]'))
-    for (img of imgs) {
-        let { top, bottom } = img.getBoundingClientRect()
-        // 如果默认图片还没加载完成就等一会儿在判断
-        if (top === bottom) {
-            setTimeout(() => {
-                loadImg()
-            }, 100)
-            return
-        }
-        if ((top >= 0 && top < screenHeight) || (bottom >= 0 && bottom < screenHeight)) {
-            img.src = img.getAttribute('lazy')
-            img.removeAttribute('lazy')
-        }
+  const imgs = Array.from(document.querySelectorAll('img[lazy]'))
+  for (img of imgs) {
+    const { top, bottom } = img.getBoundingClientRect()
+    // 如果默认图片还没加载完成就等一会儿在判断
+    if (top === bottom) {
+      setTimeout(() => {
+        loadImg()
+      }, 100)
+      return
     }
+    if ((top >= 0 && top < screenHeight) || (bottom >= 0 && bottom < screenHeight)) {
+      img.src = img.getAttribute('lazy')
+      img.removeAttribute('lazy')
+    }
+  }
 }
 // 生成测试数据
 function init() {
-    let i = 100
-    while (i--) {
-        let img = document.createElement('img')
-        img.src = 'https://img.cdn.sugarat.top/mdImg/MTU4MzM5NzA0NzA5OA==583397047098'
-        img.setAttribute('lazy', 'https://img.cdn.sugarat.top/mdImg/MTU4MzM5NzEyNTYzOA==583397125638')
-        doc.appendChild(img)
-    }
-    document.body.append(doc)
+  let i = 100
+  while (i--) {
+    const img = document.createElement('img')
+    img.src = 'https://img.cdn.sugarat.top/mdImg/MTU4MzM5NzA0NzA5OA==583397047098'
+    img.setAttribute('lazy', 'https://img.cdn.sugarat.top/mdImg/MTU4MzM5NzEyNTYzOA==583397125638')
+    doc.appendChild(img)
+  }
+  document.body.append(doc)
 }
 init()
 document.onscroll = throttle(loadImg, 200)
 ```
 
 [CodePen:示例](https://codepen.io/sugarInSoup/pen/WNvZEap)
-

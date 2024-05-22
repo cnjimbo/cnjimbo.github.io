@@ -14,7 +14,6 @@ categories:
 * 性能监控
 * 异常监控
 
-
 ## 页面埋点
 * [PV / UV](https://blog.csdn.net/baidu_35901646/article/details/81612422)
   * ``page view`` 与 ``unique visitor``,用户访问的数量与独立访客数
@@ -53,7 +52,6 @@ categories:
 |      HTML加载完成      |   domContentLoaded - fetchStart   |
 |      页面完全加载      |     loadEventStart-fetchStart     |
 
-
 ## 异常监控
 ### 代码报错
 使用 ``window.onerror`` 拦截报错,可以拦截大部分详细报错信息
@@ -63,4 +61,3 @@ categories:
 
 ### 接口异常上报
 * 可以通过img 标签的 src 发起一个请求
-

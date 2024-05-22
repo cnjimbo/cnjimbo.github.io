@@ -31,7 +31,7 @@ categories:
 **示例**
 1. 客户端 js 中，全局对象就是 Window 对象
 ```js
-console.log(this===window) // true
+console.log(this === window) // true
 ```
 2. 全局对象是由 Object 构造函数实例化的一个对象
 ```js
@@ -39,18 +39,18 @@ console.log(window instanceof Object) // true
 ```
 3. 预定义了许多函数和属性。
 ```js
-console.log(Math.max(1,2)) // 2
-console.log(this.Math.max(1,2)) // 2
+console.log(Math.max(1, 2)) // 2
+console.log(this.Math.max(1, 2)) // 2
 ```
 4. window作为全局变量的宿组
 ```js
-var a = '2'
+const a = '2'
 console.log(this.a) // 2
 console.log(window.a) // 2
 ```
 5. 客户端 js 中，全局对象 window 属性指向自身。
 ```js
-var a = 1
+const a = 1
 console.log(this.a) // 1
 console.log(window.a) // 1
 console.log(this.window.a) // 1
@@ -91,12 +91,12 @@ console.log(this.window.a) // 1
 **例子**
 ```js
 function foo(a) {
-  var b = 2;
+  let b = 2
   function c() {}
-  var d = function() {};
-  b = 3;
+  const d = function () {}
+  b = 3
 }
-foo(1);
+foo(1)
 ```
 在进入执行上下文后,此时的AO(活动对象)是
 ```js
@@ -137,27 +137,26 @@ AO = {
 * 在**代码执行**阶段会再次修改变量的值
 * 未进入执行阶段之前，变量对象(VO)中的属性都不能访问！但是进入执行阶段之后，变量对象(VO)转变为了活动对象(AO)，里面的属性都能被访问了，然后开始进行执行阶段的操作。
 
-
 ### 例子
 **例1**
 ```js
 function foo() {
-    console.log(a);
-    a = 1;
+  console.log(a)
+  a = 1
 }
-foo(); // Uncaught ReferenceError: a is not defined
+foo() // Uncaught ReferenceError: a is not defined
 function bar() {
-    a = 1;
-    console.log(a);
+  a = 1
+  console.log(a)
 }
-bar(); // 1
+bar() // 1
 ```
 1. 进入foo中后的执行上下文,因为a没有使用``var``,所以不会出现在AO的属性上:
 ```js
 AO = {
-    arguments:{
-        length:0
-    }
+  arguments: {
+    length: 0
+  }
 }
 ```
 2. 然后去全局找也没有``a``,所以会报错
@@ -166,18 +165,16 @@ AO = {
 
 **例2**
 ```js
-console.log(foo);
-function foo(){
-    console.log("foo");
+console.log(foo)
+function foo() {
+  console.log('foo')
 }
-var foo = 1;
+var foo = 1
 ```
 1. 函数提升会优先于变量提升
 2. 如果变量名跟已经声明的``形式参数``或``函数``相同，则变量声明不会干扰已经存在的这类属性
 3. 所以这里输出 ƒ foo(){console.log("foo");}
 
-
 :::tip 参考
 [JavaScript深入之变量对象](https://github.com/mqyqingfeng/Blog/issues/5)
 :::
-

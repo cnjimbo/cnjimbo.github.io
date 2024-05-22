@@ -2,7 +2,7 @@ import { useData, useRoute, withBase } from 'vitepress'
 import type {
   Component,
   InjectionKey,
-  Ref
+  Ref,
 } from 'vue'
 import {
   computed,
@@ -13,7 +13,7 @@ import {
   onUnmounted,
   provide,
   reactive,
-  ref
+  ref,
 } from 'vue'
 import { useColorMode } from '@vueuse/core'
 
@@ -43,14 +43,14 @@ export function withConfigProvider(App: Component) {
           config.value.blog?.works || {
             title: '',
             description: '',
-            list: []
-          }
-        )
+            list: [],
+          },
+        ),
       )
 
       const activeTag = ref<Theme.activeTag>({
         label: '',
-        type: ''
+        type: '',
       })
       provide(activeTagSymbol, activeTag)
 
@@ -68,12 +68,12 @@ export function withConfigProvider(App: Component) {
           'el-blue': 'el-blue',
           'el-yellow': 'el-yellow',
           'el-green': 'el-green',
-          'el-red': 'el-red'
-        }
+          'el-red': 'el-red',
+        },
       })
       mode.value = config.value.blog?.themeColor ?? 'vp-default'
       return () => h(App, null, slots)
-    }
+    },
   })
 }
 
@@ -91,7 +91,7 @@ export function useDocMetaInsertPosition() {
 
 export function useConfig() {
   return {
-    config: inject(configSymbol)!.value
+    config: inject(configSymbol)!.value,
   }
 }
 
@@ -133,7 +133,7 @@ export function useCurrentArticle() {
     // 兼容 /(index.md)
     if (currentPath.endsWith('/')) {
       okPaths.push(
-        ...[`${currentPath}index`, `${decodeURIComponent(currentPath)}index`]
+        ...[`${currentPath}index`, `${decodeURIComponent(currentPath)}index`],
       )
     }
     return docs.value?.find(v => okPaths.includes(withBase(v.route)))
@@ -150,8 +150,8 @@ function resolveConfig(config: Theme.Config): Theme.Config {
     ...config,
     blog: {
       ...config?.blog,
-      pagesData: config?.blog?.pagesData || []
-    }
+      pagesData: config?.blog?.pagesData || [],
+    },
   }
 }
 
@@ -176,7 +176,7 @@ export function useAutoUpdateAnchor() {
   // 初始化当前锚点
   const currentAnchor = reactive({
     id: '',
-    top: -1
+    top: -1,
   })
 
   // 定义计算当前锚点的方法

@@ -39,10 +39,10 @@ categories:
 初始化  进位 t = 0
 
 0:  x + y + t      /10  商(t)  余(p)
-1:  5 + 6 + 0 = 11 /10   1      1   
-2:  5 + 5 + 1 = 11 /10   1      1   
-3:  2 + 4 + 1 = 7  /10   0      7   
-4:  1 + 0 + 0 = 1  /10   0      1   
+1:  5 + 6 + 0 = 11 /10   1      1
+2:  5 + 5 + 1 = 11 /10   1      1
+3:  2 + 4 + 1 = 7  /10   0      7
+4:  1 + 0 + 0 = 1  /10   0      1
 结果：1711
 ```
 ### 实现代码
@@ -54,19 +54,21 @@ categories:
  * @param {string} num2
  * @return {string}
  */
-var addStrings = function (num1, num2) {
-    let res = ''
-    let i = num1.length - 1, j = num2.length - 1, flag = 0
-    while (i >= 0 || j >= 0 || flag !== 0) {
-        if (i >= 0) flag += num1.charCodeAt(i--) - 48
-        if (j >= 0) flag += num2.charCodeAt(j--) - 48
-        res = '' + flag % 10 + res
-        flag /= 10
-        // 向下取整
-        flag = ~~flag
-    }
-    return res
-};
+const addStrings = function (num1, num2) {
+  let res = ''
+  let i = num1.length - 1; let j = num2.length - 1; let flag = 0
+  while (i >= 0 || j >= 0 || flag !== 0) {
+    if (i >= 0)
+      flag += num1.charCodeAt(i--) - 48
+    if (j >= 0)
+      flag += num2.charCodeAt(j--) - 48
+    res = `${flag % 10}${res}`
+    flag /= 10
+    // 向下取整
+    flag = ~~flag
+  }
+  return res
+}
 ```
 
 **下面介绍一些其它类似的，清奇的思路**
@@ -86,26 +88,26 @@ var addStrings = function (num1, num2) {
  * @param {string} num2
  * @return {string}
  */
-var addStrings = function (num1, num2) {
-    let res = '' // 结果
-    let flag = 0 // 进位
-    // 补全0
-    while (num1.length < num2.length) {
-        num1 = '0' + num1
-    }
-    while (num2.length < num1.length) {
-        num2 = '0' + num2
-    }
-    let i = num1.length - 1
-    // 从尾数开始遍历
-    while (i >= 0) {
-        flag = Number(num1[i]) + Number(num2[i]) + flag
-        res = (flag % 10) + res
-        flag = flag >= 10 ? 1 : 0
-        i--
-    }
-    return flag === 1 ? '1' + res : res
-};
+const addStrings = function (num1, num2) {
+  let res = '' // 结果
+  let flag = 0 // 进位
+  // 补全0
+  while (num1.length < num2.length) {
+    num1 = `0${num1}`
+  }
+  while (num2.length < num1.length) {
+    num2 = `0${num2}`
+  }
+  let i = num1.length - 1
+  // 从尾数开始遍历
+  while (i >= 0) {
+    flag = Number(num1[i]) + Number(num2[i]) + flag
+    res = (flag % 10) + res
+    flag = flag >= 10 ? 1 : 0
+    i--
+  }
+  return flag === 1 ? `1${res}` : res
+}
 ```
 
 ## 解法3
@@ -123,30 +125,29 @@ var addStrings = function (num1, num2) {
  * @param {string} num2
  * @return {string}
  */
-var addStrings = function (num1, num2) {
-    let res = '' // 结果
-    let flag = 0 // 进位
-    const n = String(Number.MAX_SAFE_INTEGER).length - 1 // 所能表示的最大位数 -1
+const addStrings = function (num1, num2) {
+  let res = '' // 结果
+  let flag = 0 // 进位
+  const n = String(Number.MAX_SAFE_INTEGER).length - 1 // 所能表示的最大位数 -1
 
-    // 补全0
-    while (num1.length < num2.length) {
-        num1 = '0' + num1
+  // 补全0
+  while (num1.length < num2.length) {
+    num1 = `0${num1}`
+  }
+  while (num2.length < num1.length) {
+    num2 = `0${num2}`
+  }
+  while (num1.length) {
+    const sum = String(Number(num1.slice(-n)) + Number(num2.slice(-n)) + flag)
+    flag = sum.length > n ? 1 : 0
+    res = sum.slice(-n) + res
+    num1 = num1.slice(0, -n)
+    num2 = num2.slice(0, -n)
+    // 补0
+    if (num1.length && sum.length < n) {
+      res = Array.from({ length: n - sum.length }).fill(0).join('') + res
     }
-    while (num2.length < num1.length) {
-        num2 = '0' + num2
-    }
-    while (num1.length) {
-        let sum = String(Number(num1.slice(-n)) + Number(num2.slice(-n)) + flag)
-        flag = sum.length > n ? 1 : 0
-        res = sum.slice(-n) + res
-        num1 = num1.slice(0, -n)
-        num2 = num2.slice(0, -n)
-        // 补0
-        if (num1.length && sum.length < n) {
-            res = new Array(n - sum.length).fill(0).join('') + res
-        }
-    }
-    return res
-};
+  }
+  return res
+}
 ```
-

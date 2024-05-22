@@ -89,8 +89,8 @@ function scanDirFiles(
     }
 
     if (
-      file.isFile() &&
-      (extList.length === 0 || extList.includes(parse(filename).ext))
+      file.isFile()
+      && (extList.length === 0 || extList.includes(parse(filename).ext))
     ) {
       res.push(filename)
     }
@@ -104,7 +104,7 @@ function scanDirFiles(
 
 function isExclude(value: string, exclude: Exclude | Exclude[]) {
   const patterns = [exclude].flat()
-  return patterns.find((v) =>
+  return patterns.find(v =>
     typeof v === 'string' ? value.includes(v) : v.test(value)
   )
 }
@@ -113,7 +113,7 @@ function isExclude(value: string, exclude: Exclude | Exclude[]) {
 ```ts
 scanDirFiles(path.join(__dirname))
 scanDirFiles(path.join(__dirname), ['.ts'])
-scanDirFiles(path.join(__dirname), ['.ts','.js'], 'test')
+scanDirFiles(path.join(__dirname), ['.ts', '.js'], 'test')
 ```
 
 * js 系资源主要包含`.js`,`.jsx`,`.ts`,`.tsx`四类资源
@@ -144,7 +144,7 @@ import AST, { GoGoAST } from 'gogocode'
 const sources: string[] = []
 const ast = AST(fileText)
 
-const callback = (node: GoGoAST) => {
+function callback(node: GoGoAST) {
   const importPath = node.attr('source.value') as string
   sources.push(importPath)
 }
@@ -154,7 +154,7 @@ ast.find({ type: 'ExportNamedDeclaration' }).each(callback)
 
 `require/import()`提取
 ```ts
-const callback = (node: GoGoAST) => {
+function callback(node: GoGoAST) {
   const importPath = node.match[0][0]?.value
   sources.push(importPath)
 }
@@ -225,14 +225,14 @@ function isValidNodeModulesSource(
     return true
   }
   if (
-    ['./', '../', '@/', '~@/', '`'].some((prefix) =>
+    ['./', '../', '@/', '~@/', '`'].some(prefix =>
       importSourcePath.startsWith(prefix)
     )
   ) {
     return false
   }
   if (
-    ['', ...cssExt, ...jsExt].some((ext) =>
+    ['', ...cssExt, ...jsExt].some(ext =>
       existsSync(join(dir, `${importSourcePath}${ext}`))
     )
   ) {
@@ -266,7 +266,6 @@ test('getPkgNameBySourcePath', () => {
 })
 ```
 
-
 ### 过滤掉不合法的包名
 上述规则不能涵盖到所有情况，取到的包名可能有不合法的如`this.xxx`,`xx.resolve(yyy)`,`Node内置的包 fs/path/process/...etc`
 
@@ -286,7 +285,7 @@ function isNodeLib(v: string) {
 import validPkgName from 'validate-npm-package-name'
 
 function isValidPkgName(pkgName: string): boolean {
-  const { validForNewPackages, validForOldPackages} = validPkgName(pkgName)
+  const { validForNewPackages, validForOldPackages } = validPkgName(pkgName)
 
   return validForNewPackages
 }
@@ -311,7 +310,7 @@ test('isValidPkgName', () => {
 ```sh
 npm i -g @sugarat/ghost
 
-# default scan src 
+# default scan src
 ghost scan
 ```
 ### 项目中调用
@@ -340,4 +339,3 @@ const phantomDependency = findGhost(
 
 欢迎评论区交流指正，有 `case` 可以抛出来帮助工具完善得更好
 * [项目完整源码](https://github.com/ATQQ/tools/tree/main/packages/cli/ghost)
-

@@ -92,7 +92,7 @@ flex布局是css3中的新布局模块,为盒模型提供了最大的灵活性,�
 ```
 
 * nowrap
-  
+
 ![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzA3NDIwMDM3NQ==583074200375)
 
 * wrap
@@ -225,7 +225,6 @@ flex-flow:flex-direction flex-wrap
 * space-around:每行之间上下间隔一致
 * ``stretch``:占满整个空间,下方留一些空白
 
-
 ## 六个项目属性
 
 测试用例
@@ -315,7 +314,6 @@ flex-flow:flex-direction flex-wrap
 块3就是其它块的两倍宽度
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzExNjY0ODU0MA==583116648540)
-
 
 ### flex-shrink
 规定子元素的缩小比例,默认1,**空间不足则会缩小**
@@ -458,4 +456,3 @@ flex:flex-grow flex-shrink flex-basis
 }
 ```
 ![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzExOTQ3MzkxOA==583119473918)
-

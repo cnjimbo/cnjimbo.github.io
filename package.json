@@ -1,6 +1,6 @@
 {
   "name": "sugar-wiki-monorepo",
-  "type": "module",
+
   "version": "2.0.0",
   "private": true,
   "description": "个人博客&知识&文档站集",
@@ -26,7 +26,7 @@
     "build:create": "pnpm --filter \"@sugarat/create-theme\" build",
     "build:theme-only": "wait-on packages/vitepress-plugin-rss/dist packages/vitepress-plugin-pagefind/dist && pnpm --filter \"@sugarat/theme\" build:node",
     "serve": "pnpm --filter \"blogpress\" serve",
-    "lint": "eslint .",
+    "lint": "eslint . --fix",
     "deploy": "zx deploy.mjs",
     "deploy:theme": "zx deploy-theme.mjs",
     "release:only": "changeset publish",
@@ -39,22 +39,22 @@
     "preinstall": "pnpm pnpx only-allow pnpm"
   },
   "dependencies": {
-    "pagefind": "^1.0.4"
+    "pagefind": "^1.1.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.6.4",
-    "@changesets/cli": "^2.27.1",
-    "@types/node": "^20.11.16",
-    "eslint": "^8.56.0",
-    "eslint-plugin-antfu": "^2.1.2",
+    "@antfu/eslint-config": "^2.18.1",
+    "@changesets/cli": "^2.27.3",
+    "@types/node": "^20.12.12",
+    "eslint": "^9.3.0",
+    "eslint-plugin-antfu": "^2.2.0",
     "eslint-plugin-todo-ddl": "^1.1.1",
     "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
-    "simple-git-hooks": "^2.9.0",
-    "tsup": "^8.0.1",
-    "typescript": "5.3.3",
+    "simple-git-hooks": "^2.11.1",
+    "tsup": "^8.0.2",
+    "typescript": "5.4.5",
     "wait-on": "^7.2.0",
-    "zx": "^7.2.3"
+    "zx": "^8.1.0"
   },
   "pnpm": {
     "peerDependencyRules": {
@@ -68,7 +68,8 @@
     "pre-commit": "pnpm lint-staged"
   },
   "lint-staged": {
-    "*": "eslint --fix"
+
+
   },
   "volta": {
     "node": "20.11.0"

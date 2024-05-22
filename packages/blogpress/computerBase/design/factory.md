@@ -29,65 +29,63 @@ categories:
 ### ES5
 ```js
 function User(name, age, career, works) {
-    this.name = name
-    this.age = age
-    this.career = career
-    this.works = works
+  this.name = name
+  this.age = age
+  this.career = career
+  this.works = works
 }
 
 function Factory(name, age, career) {
-    let works = []
+  let works = []
 
-    switch (career) {
-        case 'coder':
-            works = ['写代码', '修bug', '系统分析报告']
-            break;
-        case 'product manager':
-            works = ['订会议室', '写需求', '催更']
-            break;
-        case 'boss':
-            works = ['喝茶', '看报', '见客户']
-            break;
-        default:
-            break;
-    }
-    return new User(name, age, career, works)
+  switch (career) {
+    case 'coder':
+      works = ['写代码', '修bug', '系统分析报告']
+      break
+    case 'product manager':
+      works = ['订会议室', '写需求', '催更']
+      break
+    case 'boss':
+      works = ['喝茶', '看报', '见客户']
+      break
+    default:
+      break
+  }
+  return new User(name, age, career, works)
 }
 
 console.log(Factory('小明', 18, 'coder'))
 console.log(Factory('小红', 20, 'product manager'))
 ```
 
-
 ### ES6
 ```js
 class User {
-    constructor(name, age, career, works) {
-        this.name = name
-        this.age = age
-        this.career = career
-        this.works = works
-    }
+  constructor(name, age, career, works) {
+    this.name = name
+    this.age = age
+    this.career = career
+    this.works = works
+  }
 }
 
 class Factory {
-    static create(name, age, career) {
-        let works = []
-        switch (career) {
-            case 'coder':
-                works = ['写代码', '修bug', '系统分析报告']
-                break;
-            case 'product manager':
-                works = ['订会议室', '写需求', '催更']
-                break;
-            case 'boss':
-                works = ['喝茶', '看报', '见客户']
-                break;
-            default:
-                break;
-        }
-        return new User(name, age, career, works)
+  static create(name, age, career) {
+    let works = []
+    switch (career) {
+      case 'coder':
+        works = ['写代码', '修bug', '系统分析报告']
+        break
+      case 'product manager':
+        works = ['订会议室', '写需求', '催更']
+        break
+      case 'boss':
+        works = ['喝茶', '看报', '见客户']
+        break
+      default:
+        break
     }
+    return new User(name, age, career, works)
+  }
 }
 ```
-

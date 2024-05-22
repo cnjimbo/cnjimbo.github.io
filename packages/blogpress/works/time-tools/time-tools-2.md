@@ -68,18 +68,18 @@ const lines = fileContent.split('\n')
 const resData = []
 let item = null
 for (const line of lines) {
-       // 判断是否新的一天
-       if (line.startsWith('# ')) {
-           // 存储旧的
-           if (item) {
-               resData.push(item)
-           }
-       const title = line.replace(/#|\s/g, '')
-        item = {
-            title,
-            tasks: []
-        }
+  // 判断是否新的一天
+  if (line.startsWith('# ')) {
+    // 存储旧的
+    if (item) {
+      resData.push(item)
     }
+    const title = line.replace(/#|\s/g, '')
+    item = {
+      title,
+      tasks: []
+    }
+  }
 }
 ```
 
@@ -87,30 +87,30 @@ for (const line of lines) {
 ```js
 // 判断是否是任务
 if (line.startsWith('## ')) {
-    const title = line.replace(/#|\s/g, '')
-    let task = {
-        title,
-        things: []
-    }
-    item.tasks.push(task)
+  const title = line.replace(/#|\s/g, '')
+  const task = {
+    title,
+    things: []
+  }
+  item.tasks.push(task)
 }
 ```
 
 判断是否以`* `开头，如果是则将其作为一件thing加入things列表
 ```js
 if (line.startsWith('* ')) {
-    const task = item.tasks.pop()
-    const { things } = task
-    const rTime = /((0.\d*)|(\d*))?$/
-    const time = line.match(rTime)[0] || '0'
-    let step = -1, text = ''
-    const content = (step = (text = line.replace(/\*|\s/g, '')).lastIndexOf(time)) === -1 ? text : text.slice(0, step)
-    const thing = {
-        time,
-        content
-    }
-    things.push(thing)
-    item.tasks.push(task)
+  const task = item.tasks.pop()
+  const { things } = task
+  const rTime = /((0.\d*)|(\d*))?$/
+  const time = line.match(rTime)[0] || '0'
+  let step = -1; let text = ''
+  const content = (step = (text = line.replace(/\*|\s/g, '')).lastIndexOf(time)) === -1 ? text : text.slice(0, step)
+  const thing = {
+    time,
+    content
+  }
+  things.push(thing)
+  item.tasks.push(task)
 }
 ```
 这样如此循环直到 遇到下一个 `# 一级标题`
@@ -125,10 +125,10 @@ if (line.startsWith('* ')) {
 当同时键入了 `--output`,`--json`两个参数时才执行导出json的操作
 ```js
 #!/usr/bin/env node
-const json = require('../package.json');
-const commander = require('commander');
-const { getFilesContent, getFilePath, createFile } = require('../src/utils');
-const { outputJson } = require('../src/output');
+const commander = require('commander')
+const json = require('../package.json')
+const { getFilesContent, getFilePath, createFile } = require('../src/utils')
+const { outputJson } = require('../src/output')
 
 // 命令执行目录
 const cwd = process.cwd()
@@ -138,30 +138,29 @@ commander.version(json.version)
 
 // 导出
 commander.arguments('<filenames...>') // 多个文件/目录
-    .option('-o, --output', 'Export analysis results')
-    .option('-j, --json', 'Export result as json description file')
-    .action((filenames, cmdObj) => {
-        const { output, json } = cmdObj
+  .option('-o, --output', 'Export analysis results')
+  .option('-j, --json', 'Export result as json description file')
+  .action((filenames, cmdObj) => {
+    const { output, json } = cmdObj
 
-        // 导出
-        if (output) {
-            let outFileName = 'res'
-            // 后续逻辑
+    // 导出
+    if (output) {
+      const outFileName = 'res'
+      // 后续逻辑
 
-            // 获取所有文件的内容
-            const content = getFilesContent(filenames.map(filename => {
-                return getFilePath(cwd, filename)
-            }))
-            if (json) {
-                createFile(getFilePath(cwd, `${outFileName}.json`), outputJson(content), false)
-            }
-        }
-    })
+      // 获取所有文件的内容
+      const content = getFilesContent(filenames.map((filename) => {
+        return getFilePath(cwd, filename)
+      }))
+      if (json) {
+        createFile(getFilePath(cwd, `${outFileName}.json`), outputJson(content), false)
+      }
+    }
+  })
 
 commander.parse(process.argv)
 ```
 添加完成后执行`timec --help`查看添加的指令如下
-
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYyODAwMTc1NDY4OQ==628001754689)
 
@@ -177,7 +176,6 @@ timec -oj filepath1 filepath2 ....
   * `--json`对应json参数的内容
   * 以此类推
 
-
 ## 其它
 由于每天空闲时间有限，本文就先到这
 
@@ -188,4 +186,3 @@ timec -oj filepath1 filepath2 ....
 本系列会不断的更新迭代，直至产品初代完成
 
 * [仓库地址](https://github.com/ATQQ/time-control)
-

@@ -67,7 +67,7 @@ categories:
 ### 1.4 为什么选Vite，而不是snowpack
 #### 1.4.1 生产构建
 
-Snowpack 
+Snowpack
 * 默认构建输出是未打包的：它将每个文件转换为单独的构建模块，然后将这些模块提供给执行实际绑定的不同“优化器”。这么做的好处是，你可以选择不同终端打包器，以适应不同需求（例如 webpack, Rollup，甚至是 ESbuild）
 * 缺点是体验有些支离破碎 —— 例如，esbuild 优化器仍然是不稳定的，Rollup 优化器也不是官方维护，而不同的优化器又有不同的输出和配置。
 
@@ -155,27 +155,27 @@ demo的目录结构如下
 
 ```js
 // vite.js
-const http = require('http');
-const { readFileSync } = require('fs');
+const http = require('http')
+const { readFileSync } = require('fs')
 const { getSourceType, transformSource } = require('./utils')
 
 const server = http.createServer((req, res) => {
-  const htmlAccepts = ['text/html', 'application/xhtml+xml'];
-  const isHtml = !!htmlAccepts.find((a) => req.headers?.accept?.includes(a));
+  const htmlAccepts = ['text/html', 'application/xhtml+xml']
+  const isHtml = !!htmlAccepts.find(a => req.headers?.accept?.includes(a))
   // HTML文档
   if (isHtml) {
-    res.end(readFileSync('./index.html'));
-    return;
+    res.end(readFileSync('./index.html'))
+    return
   }
-  const url = new URL(req.url, 'http://localhost');
+  const url = new URL(req.url, 'http://localhost')
   const { pathname } = url
   // 其它资源
   const type = getSourceType(pathname)
-  res.setHeader('content-type','application/javascript')
-  res.end(transformSource(type, pathname));
-});
+  res.setHeader('content-type', 'application/javascript')
+  res.end(transformSource(type, pathname))
+})
 
-server.listen(3000);
+server.listen(3000)
 ```
 
 esbuild 处理js（jsx,ts,cjs,mjs等等）相关的文件
@@ -183,9 +183,9 @@ esbuild 处理js（jsx,ts,cjs,mjs等等）相关的文件
 ```js
 const { transformSync } = require('esbuild')
 const res = transformSync(sourceCode, {
-    format: 'esm',
-    minify: true,
-    loader: 'ts'
+  format: 'esm',
+  minify: true,
+  loader: 'ts'
 }).code
 ```
 
@@ -193,7 +193,7 @@ sass 负责 scss文件的转换
 ```js
 const sass = require('sass')
 const css = sass.renderSync({
-    data: code
+  data: code
 }).css.toString()
 ```
 
@@ -203,51 +203,51 @@ const css = sass.renderSync({
 
 ```js
 // utils.js
-const { readFileSync, existsSync } = require('fs');
-const path = require('path');
+const { readFileSync, existsSync } = require('fs')
+const path = require('path')
 const sass = require('sass')
 const { transformSync } = require('esbuild')
 
-const resolved = (...p) => path.join(process.cwd(), ...p);
+const resolved = (...p) => path.join(process.cwd(), ...p)
 
 /**
  * 获取资源类型
  */
 function getSourceType(pathname) {
-    // TODO: 省略 tsx,jsx
-    const jsSourceType = ['ts', 'js']
-    // TODO：还有很多其它资源
-    const sourceType = [...jsSourceType, 'css', 'scss']
-    let type = sourceType.find(t => pathname.endsWith(`.${t}`))
+  // TODO: 省略 tsx,jsx
+  const jsSourceType = ['ts', 'js']
+  // TODO：还有很多其它资源
+  const sourceType = [...jsSourceType, 'css', 'scss']
+  let type = sourceType.find(t => pathname.endsWith(`.${t}`))
 
-    if (!type && !/\..+$/.test(pathname)) {
-        type = jsSourceType.find(t => {
-            return existsSync(resolved(`${pathname}.${t}`))
-        })
-    }
-    return type
+  if (!type && !/\..+$/.test(pathname)) {
+    type = jsSourceType.find((t) => {
+      return existsSync(resolved(`${pathname}.${t}`))
+    })
+  }
+  return type
 }
 
 /**
  * 获取资源的源码
- * @returns 
+ * @returns
  */
 function getSourceCode(type, pathname) {
-    if (existsSync(resolved(pathname))) {
-        return readFileSync(resolved(pathname), { encoding: 'utf-8' })
-    }
-    if (existsSync(resolved(`${pathname}.${type}`))) {
-        return readFileSync(resolved(`${pathname}.${type}`), { encoding: 'utf-8' })
-    }
-    return ''
+  if (existsSync(resolved(pathname))) {
+    return readFileSync(resolved(pathname), { encoding: 'utf-8' })
+  }
+  if (existsSync(resolved(`${pathname}.${type}`))) {
+    return readFileSync(resolved(`${pathname}.${type}`), { encoding: 'utf-8' })
+  }
+  return ''
 }
 
 /**
  * 添加内联样式表
  */
 function addInlineStyle(code) {
-    return `{
-        const style = document.createElement('style')    
+  return `{
+        const style = document.createElement('style')
         style.textContent = \`${code}\`
         document.head.appendChild(style)
     }
@@ -257,40 +257,40 @@ function addInlineStyle(code) {
  * 转换资源
  */
 function transformSource(type, pathname) {
-    const sourceCode = getSourceCode(type, pathname)
+  const sourceCode = getSourceCode(type, pathname)
 
-    const ops = {
-        css(code) {
-            return addInlineStyle(code)
-        },
-        scss(code) {
-            const css = sass.renderSync({
-                data: code
-            }).css.toString()
-            return this.css(css)
-        },
-        ts(code) {
-            return transformSync(code, {
-                format: 'esm',
-                minify: true,
-                loader: 'ts'
-            }).code
-        },
-        js(code) {
-            return transformSync(code, {
-                format: 'esm',
-                minify: true,
-                loader: 'js'
-            }).code
-        },
-    }
-    return ops[type] ? ops[type](sourceCode) : sourceCode
+  const ops = {
+    css(code) {
+      return addInlineStyle(code)
+    },
+    scss(code) {
+      const css = sass.renderSync({
+        data: code
+      }).css.toString()
+      return this.css(css)
+    },
+    ts(code) {
+      return transformSync(code, {
+        format: 'esm',
+        minify: true,
+        loader: 'ts'
+      }).code
+    },
+    js(code) {
+      return transformSync(code, {
+        format: 'esm',
+        minify: true,
+        loader: 'js'
+      }).code
+    },
+  }
+  return ops[type] ? ops[type](sourceCode) : sourceCode
 }
 
 module.exports = {
-    resolved,
-    getSourceType,
-    transformSource
+  resolved,
+  getSourceType,
+  transformSource
 }
 ```
 </my-details>
@@ -343,23 +343,23 @@ export default function HtmlTemplatePlugin(): PluginOption {
     name: 'wvs-html-tpl',
     apply: 'serve',
     configureServer(server) {
-      const { middlewares: app } = server;
+      const { middlewares: app } = server
       app.use(async (req, res, next) => {
-        const htmlAccepts = ['text/html', 'application/xhtml+xml'];
-        const isHtml = !!htmlAccepts.find((a) => req.headers?.accept?.includes(a));
+        const htmlAccepts = ['text/html', 'application/xhtml+xml']
+        const isHtml = !!htmlAccepts.find(a => req.headers?.accept?.includes(a))
         if (isHtml) {
-          const originHtml = loadHtmlContent(req.url);
-          const html = await server.transformIndexHtml(req.url, originHtml, req.originalUrl);
-          res.end(html);
-          return;
+          const originHtml = loadHtmlContent(req.url)
+          const html = await server.transformIndexHtml(req.url, originHtml, req.originalUrl)
+          res.end(html)
+          return
         }
-        next();
-      });
+        next()
+      })
     },
     transformIndexHtml(html) {
-      return transformTpl(html);
+      return transformTpl(html)
     },
-  };
+  }
 }
 ```
 
@@ -379,26 +379,26 @@ MPA默认按照如下路径进行查找
 /**
  * 获取原始模板
  */
-function loadHtmlContent(reqPath:string) {
+function loadHtmlContent(reqPath: string) {
   // 兜底页面
-  const pages = [path.resolve(__dirname, '../../public/index.html')];
+  const pages = [path.resolve(__dirname, '../../public/index.html')]
   // 单页/多页默认 public/index.html
-  pages.unshift(resolved('public/index.html'));
+  pages.unshift(resolved('public/index.html'))
   // 多页应用可以根据请求的 路径 作进一步的判断
   if (isMPA()) {
-    const entryName = getEntryName(reqPath);
+    const entryName = getEntryName(reqPath)
     if (entryName) {
     // src/pages/${entryName}/${entryName}.html
     // src/pages/${entryName}/index.html
     // public/${entryName}.html
-      pages.unshift(resolved(`public/${entryName}.html`));
-      pages.unshift(resolved(`src/pages/${entryName}/index.html`));
-      pages.unshift(resolved(`src/pages/${entryName}/${entryName}.html`));
+      pages.unshift(resolved(`public/${entryName}.html`))
+      pages.unshift(resolved(`src/pages/${entryName}/index.html`))
+      pages.unshift(resolved(`src/pages/${entryName}/${entryName}.html`))
     }
   }
   // TODO：根据框架的配置寻找，可自行进一步拓展
-  const page = pages.find((v) => existsSync(v));
-  return readFileSync(page, { encoding: 'utf-8' });
+  const page = pages.find(v => existsSync(v))
+  return readFileSync(page, { encoding: 'utf-8' })
 }
 ```
 </my-details>
@@ -411,9 +411,9 @@ function loadHtmlContent(reqPath:string) {
 export default function HtmlTemplatePlugin(): PluginOption {
   return {
     transformIndexHtml(html) {
-      return transformTpl(html);
+      return transformTpl(html)
     },
-  };
+  }
 }
 ```
 
@@ -422,9 +422,9 @@ transformTpl方法的实现，可以根据具体的场景进行实现，这里�
 <my-details title="点击展开源码">
 
 ```ts
-export function transformTpl(tplStr:string, data = {}, ops?:{
- backup?:string
- matches?:RegExp[]
+export function transformTpl(tplStr: string, data = {}, ops?: {
+  backup?: string
+  matches?: RegExp[]
 }) {
   data = {
     PUBLIC_URL: '.',
@@ -435,14 +435,14 @@ export function transformTpl(tplStr:string, data = {}, ops?:{
       },
     },
     ...data,
-  };
-  const { backup = '', matches = [] } = ops || {};
+  }
+  const { backup = '', matches = [] } = ops || {}
   // match %Name% <%Name%>
   return [/<?%=?(.*)%>?/g].concat(matches).reduce((tpl, r) => tpl.replace(r, (_, $1) => {
-    const keys = $1.trim().split('.');
-    const v = keys.reduce((pre, k) => (pre instanceof Object ? pre[k] : pre), data);
-    return (v === null || v === undefined) ? backup : v;
-  }), tplStr);
+    const keys = $1.trim().split('.')
+    const v = keys.reduce((pre, k) => (pre instanceof Object ? pre[k] : pre), data)
+    return (v === null || v === undefined) ? backup : v
+  }), tplStr)
 }
 ```
 </my-details>
@@ -466,15 +466,15 @@ export default function pageEntryPlugin(): PluginOption {
     name: 'wvs-page-entry',
     apply: 'serve',
     transformIndexHtml(html, ctx) {
-      const entry = getPageEntry(ctx.originalUrl);
+      const entry = getPageEntry(ctx.originalUrl)
       if (!entry) {
-        return html;
+        return html
       }
       return html.replace('</body>', `<script type="module" src="${path.join('/', entry)}"></script>
         </body>
-        `);
+        `)
     },
-  };
+  }
 }
 ```
 entryJs的获取逻辑如下：
@@ -487,28 +487,28 @@ entryJs的获取逻辑如下：
 ```ts
 function getPageEntry(reqUrl) {
   if (isMPA()) {
-    const pageName = getPageName(reqUrl);
-    return !!pageName && getEntryFullPath(`src/pages/${pageName}`);
+    const pageName = getPageName(reqUrl)
+    return !!pageName && getEntryFullPath(`src/pages/${pageName}`)
   }
   // 其它场景跟MPA处理类似
 
   // 默认SPA
-  const SPABase = 'src';
-  return getEntryFullPath(SPABase);
+  const SPABase = 'src'
+  return getEntryFullPath(SPABase)
 }
 
 function getEntryFullPath(dirPath) {
   if (!existsSync(resolved(dirPath))) {
-    return false;
+    return false
   }
   // main|index.js|ts|jsx|tsx
-  const entryName = /(index|main)\.[jt]sx?$/;
+  const entryName = /(index|main)\.[jt]sx?$/
   const entryNames = readdirSync(resolved(dirPath), { withFileTypes: true })
     .filter((v) => {
-      entryName.lastIndex = 0;
-      return v.isFile() && entryName.test(v.name);
-    });
-  return entryNames.length > 0 ? path.join(dirPath, entryNames[0].name) : false;
+      entryName.lastIndex = 0
+      return v.isFile() && entryName.test(v.name)
+    })
+  return entryNames.length > 0 ? path.join(dirPath, entryNames[0].name) : false
 }
 ```
 </my-details>
@@ -516,12 +516,12 @@ function getEntryFullPath(dirPath) {
 其中 pageName 根据请求的资源路径，使用 “/ ” 分割，对每个分割内容进行文件目录的存在与否进行判断
 
 ```ts
-export function getPageName(reqUrl:string) {
+export function getPageName(reqUrl: string) {
   // TODO：兼容webpack配置 historyRewrites
-  const { pathname } = new URL(reqUrl, 'http://localhost');
-  const paths = pathname.split('/').filter((v) => !!v);
-  const entryName = paths.find((p) => existsSync(path.join(getCWD(), 'src/pages', p)));
-  return entryName || '';
+  const { pathname } = new URL(reqUrl, 'http://localhost')
+  const paths = pathname.split('/').filter(v => !!v)
+  const entryName = paths.find(p => existsSync(path.join(getCWD(), 'src/pages', p)))
+  return entryName || ''
 }
 ```
 
@@ -532,7 +532,7 @@ export function getPageName(reqUrl:string) {
 vite构建的入口也是 html，通过 build.rollup.input 属性设置
 ```ts
 // vite.config.ts
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vite'
 
 export default defineConfig({
   build: {
@@ -543,7 +543,7 @@ export default defineConfig({
       },
     },
   },
-});
+})
 ```
 按照如上配置，构建产物中的html目录将会如下
 ```sh
@@ -573,18 +573,18 @@ export default defineConfig({
 
 ```ts
 export default function BuildPlugin(): PluginOption {
-  let userConfig:ResolvedConfig = null;
+  let userConfig: ResolvedConfig = null
   return {
     name: 'wvs-build',
     // 只在构建阶段生效
     apply: 'build',
     // 获取最终配置
     configResolved(cfg) {
-      userConfig = cfg;
+      userConfig = cfg
     },
     // 插件配置处理
     config() {
-      
+
     },
     resolveId(id) {
 
@@ -594,9 +594,9 @@ export default function BuildPlugin(): PluginOption {
     },
     // 构建完成后
     closeBundle() {
-      
+
     },
-  };
+  }
 }
 ```
 </my-details>
@@ -604,16 +604,17 @@ export default function BuildPlugin(): PluginOption {
 #### 4.2.2 获取所有的entry
 
 ```ts
-const entry = [];
+const entry = []
 if (isMPA()) {
-  entry.push(...getMpaPageEntry());
-} else {
+  entry.push(...getMpaPageEntry())
+}
+else {
   // 单页应用
   entry.push({
     entryName: 'index',
     entryHtml: 'public/index.html',
     entryJs: getEntryFullPath('src'),
-  });
+  })
 }
 ```
 
@@ -627,14 +628,14 @@ MPA的pageEntry逻辑获取如下:
 export function getMpaPageEntry(baseDir = 'src/pages') {
   // 获取所有的EntryName
   const entryNameList = readdirSync(resolved(baseDir), { withFileTypes: true })
-    .filter((v) => v.isDirectory())
-    .map((v) => v.name);
+    .filter(v => v.isDirectory())
+    .map(v => v.name)
 
   return entryNameList
-    .map((entryName) => ({ entryName, entryHtml: '', entryJs: getEntryFullPath(path.join(baseDir, entryName)) }))
-    .filter((v) => !!v.entryJs)
+    .map(entryName => ({ entryName, entryHtml: '', entryJs: getEntryFullPath(path.join(baseDir, entryName)) }))
+    .filter(v => !!v.entryJs)
     .map((v) => {
-      const { entryName } = v;
+      const { entryName } = v
       const entryHtml = [
         // src/pages/${entryName}/${entryName}.html
         resolved(`src/pages/${entryName}/${entryName}.html`),
@@ -646,12 +647,12 @@ export function getMpaPageEntry(baseDir = 'src/pages') {
         resolved('public/index.html'),
         // CLI兜底页面
         path.resolve(__dirname, '../index.html'),
-      ].find((html) => existsSync(html));
+      ].find(html => existsSync(html))
       return {
         ...v,
         entryHtml,
-      };
-    });
+      }
+    })
 }
 ```
 </my-details>
@@ -741,35 +742,35 @@ closeBundle() {
 Vite 提供了一个现成的方法用于读取与解析Vite的配置文件
 
 ```ts
-import { loadConfigFromFile, ConfigEnv } from 'vite';
+import { ConfigEnv, loadConfigFromFile } from 'vite'
 
-export function getUserConfig(configEnv:ConfigEnv, suffix = '') {
-  const configName = 'vite.config';
-  const _suffix = ['ts', 'js', 'mjs', 'cjs'];
+export function getUserConfig(configEnv: ConfigEnv, suffix = '') {
+  const configName = 'vite.config'
+  const _suffix = ['ts', 'js', 'mjs', 'cjs']
   if (suffix) {
-    _suffix.unshift(suffix);
+    _suffix.unshift(suffix)
   }
-  const configFile = _suffix.map((s) => `${configName}.${s}`).find((s) => existsSync(s));
-  return loadConfigFromFile(configEnv, configFile);
+  const configFile = _suffix.map(s => `${configName}.${s}`).find(s => existsSync(s))
+  return loadConfigFromFile(configEnv, configFile)
 }
 ```
 
 获取配置后通过 config 钩子，将配置并入最终的配置之中
 
 ```ts
-import type { PluginOption } from 'vite';
-import { getUserConfig } from '../utils';
+import type { PluginOption } from 'vite'
+import { getUserConfig } from '../utils'
 
 export default function UserConfigPlugin(): PluginOption {
   return {
     name: 'wvs-config',
     async config(cfg, env) {
-      const userConfig = await getUserConfig(env);
+      const userConfig = await getUserConfig(env)
       return {
         ...userConfig?.config,
-      };
+      }
     },
-  };
+  }
 }
 ```
 
@@ -800,28 +801,28 @@ vite -c configFilePath
 CLI内部可以通过 spawn 创建子进程启动，也可使用vite对外暴露的`createServer`方法
 
 ```ts
-import spawn from 'cross-spawn';
+import { spawn } from 'child_process'
+import spawn from 'cross-spawn'
 // 或者
-import { spawn } from 'child_process';
 
-const configPath = require.resolve('./../config/vite.js');
-const params = ['--config', configPath];
+const configPath = require.resolve('./../config/vite.js')
+const params = ['--config', configPath]
 
 if (debug) {
   // 标志debug
-  process.env.DEBUG = 'true';
+  process.env.DEBUG = 'true'
 
   // vite debug
-  params.push('--debug');
+  params.push('--debug')
   if (typeof debug === 'string') {
-    params.push(debug);
+    params.push(debug)
   }
 }
 
 const viteService = spawn('vite', params, {
   cwd: process.cwd(),
   stdio: 'inherit',
-});
+})
 ```
 
 ## 5 效果 - 接入Vite前后对比
@@ -867,5 +868,3 @@ Vite是一颗冉冉升起的前端新星，相信随着周边的不断完善。�
 * [知乎：Vite 的目标不是要干掉 webpack](https://www.zhihu.com/question/477139054/answer/2156019180)
 * [知乎：彻底告别编译 OOM，用 esbuild 做压缩器](https://zhuanlan.zhihu.com/p/139219361)
 * [Vite官方中文文档](https://cn.vitejs.dev/guide/why.html)
-
-

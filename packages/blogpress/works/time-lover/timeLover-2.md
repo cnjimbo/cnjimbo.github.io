@@ -208,7 +208,7 @@ function getTimeDiffDes(d1: Date, d2: Date) {
 |   date   |  Date  |     日期     |
 
 ## 初始化云数据库
->服务端使用Node.js开发,使用云开发提供的Node SDK初始化集合（表） 
+>服务端使用Node.js开发,使用云开发提供的Node SDK初始化集合（表）
 
 **安装依赖**
 
@@ -220,12 +220,12 @@ yarn add @cloudbase/node-sdk
 ```js
 const cloudbase = require('@cloudbase/node-sdk')
 const app = cloudbase.init({
-    secretId:process.env.secretId,
-    secretKey:process.env.secretKey,
-    env:process.env.envId
+  secretId: process.env.secretId,
+  secretKey: process.env.secretKey,
+  env: process.env.envId
 })
 
-const db = app.database();
+const db = app.database()
 db.createCollection('user')
 db.createCollection('family')
 db.createCollection('record')
@@ -265,52 +265,52 @@ db.createCollection('record')
 ```js
 const cloudbase = require('@cloudbase/node-sdk')
 const app = cloudbase.init({
-    secretId:process.env.secretId,
-    secretKey:process.env.secretKey,
-    env:process.env.envId
+  secretId: process.env.secretId,
+  secretKey: process.env.secretKey,
+  env: process.env.envId
 })
 
-const db = app.database();
+const db = app.database()
 function insertDocument(collection, data) {
-    return db.collection(collection).add(data)
+  return db.collection(collection).add(data)
 }
 
 function deleteDocument(collection, query) {
-    return db.collection(collection).where(query).remove()
+  return db.collection(collection).where(query).remove()
 }
 
 function findDocument(collection, query) {
-    return db.collection(collection).where(query).get()
+  return db.collection(collection).where(query).get()
 }
 
 function updateDocument(collection, query, data) {
-    return db.collection(collection).where(query).update(data)
+  return db.collection(collection).where(query).update(data)
 }
 ```
 #### TS版本
 ```ts
 import cloudbase from '@cloudbase/node-sdk'
 const app = cloudbase.init({
-    secretId: process.env.secretId,
-    secretKey: process.env.secretKey,
-    env: process.env.envId
+  secretId: process.env.secretId,
+  secretKey: process.env.secretKey,
+  env: process.env.envId
 })
 
 export const db = app.database()
 export function insertDocument<T>(collection: string, data: T | T[]) {
-    return db.collection(collection).add(data)
+  return db.collection(collection).add(data)
 }
 
 export function deleteDocument(collection: string, query: any) {
-    return db.collection(collection).where(query).remove()
+  return db.collection(collection).where(query).remove()
 }
 
 export function findDocument(collection: string, query: any) {
-    return db.collection(collection).where(query).get()
+  return db.collection(collection).where(query).get()
 }
 
-export function updateDocument<T>(collection: string, query: any, data:T) {
-    return db.collection(collection).where(query).update(data)
+export function updateDocument<T>(collection: string, query: any, data: T) {
+  return db.collection(collection).where(query).update(data)
 }
 ```
 ### 未完待续
@@ -324,5 +324,3 @@ export function updateDocument<T>(collection: string, query: any, data:T) {
 * [详细接口设计](https://easy2.w.eolinker.com/share/project/api/?groupID=-1&shareCode=nJMZ5t&shareToken=$2y$10$gNK48kATh9yIeQokemYpaefvSzmyUwCtpyZ6lEkHh7nQdoZ9PbGrm&shareID=322197)
 * [腾讯云数据库地址](https://cloud.tencent.com/document/product/876/19369)
 * [项目线上预览地址](https://lover.sugarat.top/dashboard)
-
-

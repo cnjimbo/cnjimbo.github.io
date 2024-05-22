@@ -62,7 +62,7 @@ categories:
 * [node.green](https://node.green/) 不同Node版本对ES的支持程度
 * [compat-table](https://kangax.github.io/compat-table/es6/) ES新提案进度，与浏览器对ES个版本的支持程度 查询
 * [JavaScript](https://jscig.github.io/#) 中文兴趣组
-* [凹凸实验室 - 前端代码规范](https://guide.aotu.io/index.html) 
+* [凹凸实验室 - 前端代码规范](https://guide.aotu.io/index.html)
 * [能不能好好说话](https://lab.magiconch.com/nbnhhsh/) - yyds
 * [webgradients](https://webgradients.com/) - Free Gradients Collection: Sketch/Photoshop/CSS
 * [uiGradients](https://uigradients.com/#EmeraldWater) - uiGradients is a handpicked collection of beautiful color gradients for designers and developers.
@@ -92,4 +92,3 @@ categories:
 * [JSX Lite Fiddle](https://jsx-lite.builder.io/?outputTab=vue) -  compile to common frameworks, import from popular tools
 * [Staticfile CDN](https://www.staticfile.org/) - 免费、快速、开放的 CDN 服务
 * [图好快](https://www.tuhaokuai.com/) - 在线图片压缩
-

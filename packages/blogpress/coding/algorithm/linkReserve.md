@@ -17,7 +17,6 @@ categories:
 
 <LeetCode href="https://leetcode-cn.com/problems/fan-zhuan-lian-biao-lcof/">剑指offer24:单链表反转</LeetCode>
 
-
 定义一个函数，输入一个链表的头节点，反转该链表并输出反转后链表的头节点。
 
 ListNode
@@ -38,18 +37,18 @@ ListNode
  * @param {ListNode} head
  * @return {ListNode}
  */
-var reverseList = function(head) {
-    let pre, back
-    pre = null
-    back = head
-    while(back){
-        let temp = back.next
-        back.next = pre
-        pre = back
-        back = temp
-    }
-    return pre
-};
+const reverseList = function (head) {
+  let pre, back
+  pre = null
+  back = head
+  while (back) {
+    const temp = back.next
+    back.next = pre
+    pre = back
+    back = temp
+  }
+  return pre
+}
 ```
 
 ## 递归法-1
@@ -60,19 +59,19 @@ var reverseList = function(head) {
  * @param {ListNode} head
  * @return {ListNode}
  */
-var reverseList = function (head) {
-    const reverse = (pre, back) => {
-        // 如果下一个节点是null,说明前一个节点是最后一个节点,作为新的头部返回
-        if (!back) {
-            return pre
-        }
-        const temp = reverse(back, back.next)
-        // 将后一个节点的next指向前一个
-        back.next = pre
-        return temp
+const reverseList = function (head) {
+  const reverse = (pre, back) => {
+    // 如果下一个节点是null,说明前一个节点是最后一个节点,作为新的头部返回
+    if (!back) {
+      return pre
     }
-    return reverse(null, head)
-};
+    const temp = reverse(back, back.next)
+    // 将后一个节点的next指向前一个
+    back.next = pre
+    return temp
+  }
+  return reverse(null, head)
+}
 ```
 
 ## 递归法-2
@@ -83,17 +82,17 @@ var reverseList = function (head) {
  * @param {ListNode} head
  * @return {ListNode}
  */
-var reverseList = function (head) {
-    // 如果head为null，表明其为空串直接返回
-    // 其下一个节点为null，说明它为最后一个节点，直接返回
-    if(!head||!head.next){
-        return head
-    }
-    let temp = reverseList(head.next)
-    head.next.next = head
-    head.next = null
-    return temp
-};
+const reverseList = function (head) {
+  // 如果head为null，表明其为空串直接返回
+  // 其下一个节点为null，说明它为最后一个节点，直接返回
+  if (!head || !head.next) {
+    return head
+  }
+  const temp = reverseList(head.next)
+  head.next.next = head
+  head.next = null
+  return temp
+}
 ```
 
 ## 借助栈
@@ -125,4 +124,3 @@ var reverseList = function (head) {
     return newHead
 };
 ```
-

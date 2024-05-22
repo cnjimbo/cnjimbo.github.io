@@ -32,9 +32,9 @@ const dotenv = require('dotenv')
 
 const res = dotenv.config()
 
-console.log(res);
+console.log(res)
 
-console.log(process.env.DB_PORT);
+console.log(process.env.DB_PORT)
 ```
 
 **运行结果**
@@ -65,17 +65,17 @@ export interface DotenvConfigOptions {
   /**
    * You may specify a custom path if your file containing environment variables is located elsewhere.
    */
-  path?: string;
+  path?: string
 
   /**
    * You may specify the encoding of your file containing environment variables.
    */
-  encoding?: string;
+  encoding?: string
 
   /**
    * You may turn on logging to help debug why certain keys or values are not being set as you expect.
    */
-  debug?: boolean;
+  debug?: boolean
 }
 ```
 可以看出通过path参数指定环境变量的路径
@@ -85,14 +85,14 @@ export interface DotenvConfigOptions {
 const dotenv = require('dotenv')
 const baseDir = process.cwd()
 
-const res1 = dotenv.config({path:`${baseDir}/.lalala`})
-const res2 = dotenv.config({path:`${baseDir}/.lalala2`})
-const res3 = dotenv.config({path:`${baseDir}/.不存在`})
+const res1 = dotenv.config({ path: `${baseDir}/.lalala` })
+const res2 = dotenv.config({ path: `${baseDir}/.lalala2` })
+const res3 = dotenv.config({ path: `${baseDir}/.不存在` })
 
-console.log(res1);
-console.log(res2);
-console.log(res3);
-console.log(process.env.TEST_ENV);
+console.log(res1)
+console.log(res2)
+console.log(res3)
+console.log(process.env.TEST_ENV)
 ```
 输出内容分别如下
 ```js
@@ -131,24 +131,24 @@ const res1 = dotenv.config({ path: `${baseDir}/.lalala` })
 const res2 = dotenv.config({ path: `${baseDir}/.lalala2` })
 const res3 = dotenv.config({ path: `${baseDir}/.不存在` })
 
-load(res1);
-load(res2);
-load(res3);
-console.log(process.env.TEST_ENV); // test2
+load(res1)
+load(res2)
+load(res3)
+console.log(process.env.TEST_ENV) // test2
 ```
 
 ### 实现Vite的读取规则
 ```js
 function loadEnv() {
-    const baseDir = process.cwd()
-    // .env
-    load(dotenv.config({ path: `${baseDir}/.env` }))
-    // .env.local
-    load(dotenv.config({ path: `${baseDir}/.env.local` }))
-    // .env.[mode]
-    load(dotenv.config({ path: `${baseDir}/.env.${process.env.NODE_ENV}` }))
-    // .env.[mode].local
-    load(dotenv.config({ path: `${baseDir}/.env.${process.env.NODE_ENV}.local` }))
+  const baseDir = process.cwd()
+  // .env
+  load(dotenv.config({ path: `${baseDir}/.env` }))
+  // .env.local
+  load(dotenv.config({ path: `${baseDir}/.env.local` }))
+  // .env.[mode]
+  load(dotenv.config({ path: `${baseDir}/.env.${process.env.NODE_ENV}` }))
+  // .env.[mode].local
+  load(dotenv.config({ path: `${baseDir}/.env.${process.env.NODE_ENV}.local` }))
 }
 ```
 
@@ -159,37 +159,38 @@ function loadEnv() {
 `package.json`
 ```json
 {
-    "scripts": {
-        "dev": "cross-env NODE_ENV=development node ./tests/test.js",
-    },
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development node ./tests/test.js"
+  }
 }
 ```
 ### 限制环境变量前缀
 简单修改后的代码,添加了前缀的过滤
 ```js
 function load(parseEnvObj, prefix = '') {
-    const { parsed } = parseEnvObj
-    if (parsed && parsed instanceof Object) {
-        Object.getOwnPropertyNames(parsed).forEach((k) => {
-            if (k.indexOf(prefix) === 0) {
-                process.env[k] = parsed[k]
-            }else{
-                process.env[k] = undefined
-            }
-        })
-    }
+  const { parsed } = parseEnvObj
+  if (parsed && parsed instanceof Object) {
+    Object.getOwnPropertyNames(parsed).forEach((k) => {
+      if (k.indexOf(prefix) === 0) {
+        process.env[k] = parsed[k]
+      }
+      else {
+        process.env[k] = undefined
+      }
+    })
+  }
 }
 function loadEnv(options = {}) {
-    const { prefix = '' } = options
-    const baseDir = process.cwd()
-    // .env
-    load(dotenv.config({ path: `${baseDir}/.env` }), prefix)
-    // .env.local
-    load(dotenv.config({ path: `${baseDir}/.env.local` }), prefix)
-    // .env.[mode]
-    load(dotenv.config({ path: `${baseDir}/.env.${process.env.NODE_ENV}` }), prefix)
-    // .env.[mode].local
-    load(dotenv.config({ path: `${baseDir}/.env.${process.env.NODE_ENV}.local` }), prefix)
+  const { prefix = '' } = options
+  const baseDir = process.cwd()
+  // .env
+  load(dotenv.config({ path: `${baseDir}/.env` }), prefix)
+  // .env.local
+  load(dotenv.config({ path: `${baseDir}/.env.local` }), prefix)
+  // .env.[mode]
+  load(dotenv.config({ path: `${baseDir}/.env.${process.env.NODE_ENV}` }), prefix)
+  // .env.[mode].local
+  load(dotenv.config({ path: `${baseDir}/.env.${process.env.NODE_ENV}.local` }), prefix)
 }
 ```
 
@@ -205,17 +206,16 @@ DB_PORT=3306
 SUGAR_USER=sugar
 ```
 
-
 ```js
 loadEnv()
-console.log(process.env.DB_USER); // test
-console.log(process.env.SUGAR_USER); // sugar
+console.log(process.env.DB_USER) // test
+console.log(process.env.SUGAR_USER) // sugar
 ```
 
 ```js
-loadEnv({prefix:'SUGAR'})
-console.log(process.env.DB_USER); // undefined
-console.log(process.env.SUGAR_USER); // sugar
+loadEnv({ prefix: 'SUGAR' })
+console.log(process.env.DB_USER) // undefined
+console.log(process.env.SUGAR_USER) // sugar
 ```
 ### 最终版
 ```js
@@ -225,13 +225,14 @@ const dotenv = require('dotenv')
 function load(parseEnvObj, prefix = '') {
   const { parsed } = parseEnvObj
   if (parsed && parsed instanceof Object) {
-      Object.getOwnPropertyNames(parsed).forEach((k) => {
-          if (k.indexOf(prefix) === 0) {
-              process.env[k] = parsed[k]
-          }else{
-              process.env[k] = undefined
-          }
-      })
+    Object.getOwnPropertyNames(parsed).forEach((k) => {
+      if (k.indexOf(prefix) === 0) {
+        process.env[k] = parsed[k]
+      }
+      else {
+        process.env[k] = undefined
+      }
+    })
   }
 }
 function loadEnv(options = {}) {
@@ -255,9 +256,8 @@ module.exports = loadEnv
 const loadEnv = require('modulePath')
 loadEnv()
 // or
-loadEnv({prefix:'xx'})
+loadEnv({ prefix: 'xx' })
 ```
 
 ## TODO
 下一次分享一下Vite中这部分的源码实现逻辑
-

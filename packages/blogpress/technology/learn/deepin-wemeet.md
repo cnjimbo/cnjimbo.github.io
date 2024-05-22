@@ -25,7 +25,6 @@ categories:
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYyMTUyNDI0Mzk1NA==621524243954)
 
-
 没试用过其它发行版，各位如不是deepin，不妨也可试试看
 ## 开始
 ### 安装deepin-wine5
@@ -97,10 +96,8 @@ deepin-wine5 wemeetapp.exe
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYyMTUyNTEzNTA3OA==621525135078)
 
-
 如果过程中遇到问题的老哥，欢迎评论区交流
 
 ## 参考
 * [Github:zq1997/deepin-wine](https://github.com/zq1997/deepin-wine)
 * [简书:记录完整的在Ubuntu 20.04下使用deepin-wine5安装微信3.0的过程](https://www.jianshu.com/p/6740f6c73033)
-

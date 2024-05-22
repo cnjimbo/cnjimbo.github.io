@@ -70,7 +70,6 @@ tips：编写完新的代码块，如需立即生效，需手动执行 SP Refres
 | ss-react | react组件代码块 |
 |  ss-tag  | html标签代码块  |
 
-
 一个配置文件，可以编写多个代码块
 
 完整的[配置文件编写文档](https://github.com/ATQQ/ShareSnippet/blob/master/README.md)
@@ -91,7 +90,6 @@ tips：编写完新的代码块，如需立即生效，需手动执行 SP Refres
 ### React组件代码块
 以一个默认的 `MyButton` 组件进行演示示例
 
-
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYyNDExMjg1ODQ5OQ==ss-react.gif)
 
 ## 总结
@@ -106,5 +104,3 @@ tips：编写完新的代码块，如需立即生效，需手动执行 SP Refres
 
 * [插件源码](https://github.com/ATQQ/ShareSnippet)
 * [插件体验](https://marketplace.visualstudio.com/items?itemName=sugar.snippet)
-
-

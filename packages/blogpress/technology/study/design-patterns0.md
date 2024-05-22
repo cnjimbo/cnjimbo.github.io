@@ -31,7 +31,6 @@ categories:
 * 子类可以扩展父类的功能，但不能改变父类原有的功能。
 * 子类继承父类时，除添加新的方法完成新增功能外，尽量不要重写父类的方法。
 
-
 ### 接口隔离原则
 >（Interface Segregation Principle）
 
@@ -59,4 +58,3 @@ categories:
 
 ## TODO
 吸收知识后补充上述内容的示例
-

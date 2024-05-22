@@ -28,8 +28,8 @@ categories:
 ### 例如:查看掘金页面中已加载的文章
 ```js
 {
-    const posts = $$('.title-row>a');
-    console.table(posts,['textContent','href']);
+  const posts = $$('.title-row>a')
+  console.table(posts, ['textContent', 'href'])
 }
 ```
 
@@ -46,7 +46,6 @@ categories:
 tips: 默认打开Command会有一个 `>` 记得先删除
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYyMTI0MzAyODY3Mg==621243028672)
-
 
 ## Command面板
 快捷键 Ctrl + Shift + P
@@ -70,14 +69,12 @@ tips: 默认打开Command会有一个 `>` 记得先删除
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYyMTI0MjA0NDg0MA==621242044840)
 
-
 ## Console面板相关
 
 ### copy方法
 有一个全局的`copy`方法，可以在console面板中**复制任何能够拿到的资源到剪贴板中**
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYyMTI0MDc2NjkzMQ==621240766931)
-
 
 ### $符号
 #### $number
@@ -151,4 +148,3 @@ $1 是对上一次我们选择的节点的引用， $2 是对在那之前选择�
 在Element面板中更改元素的样式可以在这直接查看
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYyMTIyNDQxMjE4OQ==621224412189)
-

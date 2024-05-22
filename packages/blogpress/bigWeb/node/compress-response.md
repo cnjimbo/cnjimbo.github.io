@@ -56,7 +56,6 @@ Node.js包含一个`zlib 模块`，提供了使用 `Gzip`、`Deflate/Inflate`、
 
 ![基于`buffer`的操作](https://img.cdn.sugarat.top/mdImg/MTY0NjQ2NjY4NDUyMw==646466684523)
 
-
 引入几个所需的模块
 ```js
 const zlib = require('zlib')
@@ -103,19 +102,19 @@ readStream.pipe(zlib.createUnzip()).pipe(writeStream)
 // 压缩
 const readStream = fs.createReadStream(testFile)
 const writeStream = fs.createWriteStream(targetFile)
-stream.pipeline(readStream, zlib.createGzip(), writeStream, err => {
-    if (err) {
-        console.error(err);
-    }
+stream.pipeline(readStream, zlib.createGzip(), writeStream, (err) => {
+  if (err) {
+    console.error(err)
+  }
 })
 
 // 解压
 const readStream = fs.createReadStream(targetFile)
 const writeStream = fs.createWriteStream(decodeFile)
-stream.pipeline(readStream, zlib.createUnzip(), writeStream, err => {
-    if (err) {
-        console.error(err);
-    }
+stream.pipeline(readStream, zlib.createUnzip(), writeStream, (err) => {
+  if (err) {
+    console.error(err)
+  }
 })
 ```
 
@@ -128,17 +127,17 @@ const pipeline = promisify(stream.pipeline)
 const readStream = fs.createReadStream(testFile)
 const writeStream = fs.createWriteStream(targetFile)
 pipeline(readStream, zlib.createGzip(), writeStream)
-    .catch(err => {
-        console.error(err);
-    })
+  .catch((err) => {
+    console.error(err)
+  })
 
 // 解压
 const readStream = fs.createReadStream(targetFile)
 const writeStream = fs.createWriteStream(decodeFile)
 pipeline(readStream, zlib.createUnzip(), writeStream)
-    .catch(err => {
-        console.error(err);
-    })
+  .catch((err) => {
+    console.error(err)
+  })
 ```
 
 ### 基于`Buffer`的操作
@@ -156,16 +155,16 @@ pipeline(readStream, zlib.createUnzip(), writeStream)
 // 压缩
 const buff = []
 readStream.on('data', (chunk) => {
-    buff.push(chunk)
+  buff.push(chunk)
 })
 readStream.on('end', () => {
-    zlib.gzip(Buffer.concat(buff), targetFile, (err, resBuff) => {
-        if(err){
-            console.error(err);
-            process.exit()
-        }
-        fs.writeFileSync(targetFile,resBuff)
-    })
+  zlib.gzip(Buffer.concat(buff), targetFile, (err, resBuff) => {
+    if (err) {
+      console.error(err)
+      process.exit()
+    }
+    fs.writeFileSync(targetFile, resBuff)
+  })
 })
 ```
 * gzipSync：同步
@@ -173,10 +172,10 @@ readStream.on('end', () => {
 // 压缩
 const buff = []
 readStream.on('data', (chunk) => {
-    buff.push(chunk)
+  buff.push(chunk)
 })
 readStream.on('end', () => {
-    fs.writeFileSync(targetFile,zlib.gzipSync(Buffer.concat(buff)))
+  fs.writeFileSync(targetFile, zlib.gzipSync(Buffer.concat(buff)))
 })
 ```
 
@@ -185,12 +184,12 @@ readStream.on('end', () => {
 // 压缩
 const readBuffer = fs.readFileSync(testFile)
 const decodeBuffer = zlib.gzipSync(readBuffer)
-fs.writeFileSync(targetFile,decodeBuffer)
+fs.writeFileSync(targetFile, decodeBuffer)
 
 // 解压
 const readBuffer = fs.readFileSync(targetFile)
 const decodeBuffer = zlib.gzipSync(decodeFile)
-fs.writeFileSync(targetFile,decodeBuffer)
+fs.writeFileSync(targetFile, decodeBuffer)
 ```
 
 ## 文本内容的解/压缩
@@ -224,8 +223,8 @@ transformStream.push(null)
 这里以写入到文件示例，当然也可以写到其它的流里，如`HTTP的Response`（后面会单独介绍）
 ```js
 transformStream
-    .pipe(zlib.createGzip())
-    .pipe(fs.createWriteStream(targetFile))
+  .pipe(zlib.createGzip())
+  .pipe(fs.createWriteStream(targetFile))
 ```
 
 ### 基于`Buffer`操作
@@ -260,71 +259,71 @@ const zlib = require('zlib')
 const testTxt = '测试数据123'.repeat(1000)
 
 const app = http.createServer((req, res) => {
-    const { url } = req
-    // 读取支持的压缩算法
-    const acceptEncoding = req.headers['accept-encoding'].match(/(br|deflate|gzip)/g)
+  const { url } = req
+  // 读取支持的压缩算法
+  const acceptEncoding = req.headers['accept-encoding'].match(/(br|deflate|gzip)/g)
 
-    // 默认响应的数据类型
-    res.setHeader('Content-Type', 'application/json; charset=utf-8')
+  // 默认响应的数据类型
+  res.setHeader('Content-Type', 'application/json; charset=utf-8')
 
-    // 几个示例的路由
-    const routes = [
-        ['/gzip', () => {
-            if (acceptEncoding.includes('gzip')) {
-                res.setHeader('content-encoding', 'gzip')
-                // 使用同步API直接压缩文本内容
-                res.end(zlib.gzipSync(Buffer.from(testTxt)))
-                return
-            }
-            res.end(testTxt)
-        }],
-        ['/deflate', () => {
-            if (acceptEncoding.includes('deflate')) {
-                res.setHeader('content-encoding', 'deflate')
-                // 基于流的单次操作
-                const originStream = new PassThrough()
-                originStream.write(Buffer.from(testTxt))
-                originStream.pipe(zlib.createDeflate()).pipe(res)
-                originStream.end()
-                return
-            }
-            res.end(testTxt)
-        }],
-        ['/br', () => {
-            if (acceptEncoding.includes('br')) {
-                res.setHeader('content-encoding', 'br')
-                res.setHeader('Content-Type', 'text/html; charset=utf-8')
-                // 基于流的多次写操作
-                const originStream = new PassThrough()
-                pipeline(originStream, zlib.createBrotliCompress(), res, (err) => {
-                    if (err) {
-                        console.error(err);
-                    }
-                })
-                originStream.write(Buffer.from('<h1>BrotliCompress</h1>'))
-                originStream.write(Buffer.from('<h2>测试数据</h2>'))
-                originStream.write(Buffer.from(testTxt))
-                originStream.end()
-                return
-            }
-            res.end(testTxt)
-        }]
-    ]
-    const route = routes.find(v => url.startsWith(v[0]))
-    if (route) {
-        route[1]()
+  // 几个示例的路由
+  const routes = [
+    ['/gzip', () => {
+      if (acceptEncoding.includes('gzip')) {
+        res.setHeader('content-encoding', 'gzip')
+        // 使用同步API直接压缩文本内容
+        res.end(zlib.gzipSync(Buffer.from(testTxt)))
         return
-    }
+      }
+      res.end(testTxt)
+    }],
+    ['/deflate', () => {
+      if (acceptEncoding.includes('deflate')) {
+        res.setHeader('content-encoding', 'deflate')
+        // 基于流的单次操作
+        const originStream = new PassThrough()
+        originStream.write(Buffer.from(testTxt))
+        originStream.pipe(zlib.createDeflate()).pipe(res)
+        originStream.end()
+        return
+      }
+      res.end(testTxt)
+    }],
+    ['/br', () => {
+      if (acceptEncoding.includes('br')) {
+        res.setHeader('content-encoding', 'br')
+        res.setHeader('Content-Type', 'text/html; charset=utf-8')
+        // 基于流的多次写操作
+        const originStream = new PassThrough()
+        pipeline(originStream, zlib.createBrotliCompress(), res, (err) => {
+          if (err) {
+            console.error(err)
+          }
+        })
+        originStream.write(Buffer.from('<h1>BrotliCompress</h1>'))
+        originStream.write(Buffer.from('<h2>测试数据</h2>'))
+        originStream.write(Buffer.from(testTxt))
+        originStream.end()
+        return
+      }
+      res.end(testTxt)
+    }]
+  ]
+  const route = routes.find(v => url.startsWith(v[0]))
+  if (route) {
+    route[1]()
+    return
+  }
 
-    // 兜底
-    res.setHeader('Content-Type', 'text/html; charset=utf-8')
-    res.end(`<h1>404: ${url}</h1>
+  // 兜底
+  res.setHeader('Content-Type', 'text/html; charset=utf-8')
+  res.end(`<h1>404: ${url}</h1>
     <h2>已注册路由</h2>
     <ul>
         ${routes.map(r => `<li><a href="${r[0]}">${r[0]}</a></li>`).join('')}
     </ul>
     `)
-    res.end()
+  res.end()
 })
 
 app.listen(3000)
@@ -336,4 +335,3 @@ app.listen(3000)
 * [美团技术团队:速度与压缩比如何兼得？压缩算法在构建部署中的优化](https://tech.meituan.com/2021/01/07/pack-gzip-zstd-lz4.html)
 * [Node.js v16.14.0 文档:zlib](http://nodejs.cn/api/zlib.html#zlib)
 * [Github:ayqy/string-to-file-stream](https://github.com/ayqy/string-to-file-stream/blob/2f43145ca9515345fb0b9b697414bcfd0effe276/index.js)
-

@@ -8,7 +8,7 @@ export default defineExamples([
     desc: '记录随笔与学习笔记',
     avatar: 'https://sugarat.top/logo.png',
     nickname: '粥里有勺糖',
-    home: 'https://github.com/atqq'
+    home: 'https://github.com/atqq',
   },
   {
     cover: 'https://img.cdn.sugarat.top/mdImg/MTcwMDE0MjE1NDM2MA==700142154360',
@@ -16,7 +16,7 @@ export default defineExamples([
     name: 'EastPicker（轻取）',
     desc: '在线文件收取平台',
     avatar: 'https://docs.ep.sugarat.top/logo.png',
-    nickname: 'EastPicker'
+    nickname: 'EastPicker',
   },
   {
     cover: 'https://img.cdn.sugarat.top/mdImg/MTcwMDE0Mjc1Nzc4OQ==700142757789',
@@ -24,7 +24,7 @@ export default defineExamples([
     name: '沐风的小站',
     desc: '沐风的个人空间',
     avatar: 'https://cravatar.cn/avatar/f1dcdc8fa782b81824df5d67022e4d4a?s=160',
-    nickname: 'MuFeng'
+    nickname: 'MuFeng',
   },
   {
     cover: 'https://img.cdn.sugarat.top/mdImg/MTcwMDY2MDYzNDI1Mg==700660634252',
@@ -32,7 +32,7 @@ export default defineExamples([
     name: '荷游@iTmei',
     desc: 'vue3学习,typescript学习,typescript/es6学习,qt学习,单片机学习',
     avatar: 'http://itmei.cn/logo.png',
-    nickname: '荷游'
+    nickname: '荷游',
   },
   {
     cover: '/imgs/example/haitang/cover.png',
@@ -40,7 +40,7 @@ export default defineExamples([
     name: '海棠的小屋',
     desc: '记录海棠的成长点滴',
     avatar: '/imgs/example/haitang/avatar.png',
-    nickname: 'Haitang'
+    nickname: 'Haitang',
   },
   {
     cover: 'https://mywisteria.ym94.cn/cover.png',
@@ -48,6 +48,6 @@ export default defineExamples([
     name: 'Ymri',
     desc: '语雀同步到个人博客',
     avatar: 'https://mywisteria.ym94.cn/header.jpg',
-    nickname: 'Ymri'
+    nickname: 'Ymri',
   },
 ])

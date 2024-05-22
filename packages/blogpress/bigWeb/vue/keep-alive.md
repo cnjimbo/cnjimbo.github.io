@@ -21,4 +21,3 @@ keep-alive 组件拥有两个独有的生命周期钩子函数:
 
 ## 示例
 [CodePen:动态组件](https://codepen.io/sugarInSoup/pen/mdJpeqB)
-

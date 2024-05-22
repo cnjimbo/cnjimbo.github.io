@@ -18,23 +18,24 @@ categories:
 
 JS 中并不存在类，class 只是语法糖，本质还是函数
 ```js
-class A{
-    constructor(name){
-        this.name = name
-    }
-    printName(){
-        console.log(this.name)
-    }
+class A {
+  constructor(name) {
+    this.name = name
+  }
+
+  printName() {
+    console.log(this.name)
+  }
 }
 
-class B extends A{
-    constructor(name,age){
-        super(name) // A 的构造函数
-        this.age = age
-    }
+class B extends A {
+  constructor(name, age) {
+    super(name) // A 的构造函数
+    this.age = age
+  }
 }
 
-let a = new B('123',0)
+const a = new B('123', 0)
 a.printName() // 123
 ```
 ## ES5
@@ -42,51 +43,51 @@ a.printName() // 123
 ### 组合继承
 ```js
 function A(name) {
-    this.name = name
+  this.name = name
 }
 A.prototype.printName = function () {
-    console.log(this.name)
+  console.log(this.name)
 }
 
 function B(name, age) {
-    A.call(this, name)
-    this.age = age
+  A.call(this, name)
+  this.age = age
 }
 B.prototype = new A()
 B.prototype.constructor = B
 
-let a = new B('123', 0)
+const a = new B('123', 0)
 a.printName() // 123
 ```
 
 ### 寄生组合继承
-1. 
+1.
 ```js
 function A(name) {
-    this.name = name
+  this.name = name
 }
 A.prototype.printName = function () {
-    console.log(this.name)
+  console.log(this.name)
 }
 
 function B(name, age) {
-    A.call(this, name)
-    this.age = age
+  A.call(this, name)
+  this.age = age
 }
 B.prototype = Object.create(A.prototype, {
-    constructor: {
-        value: B,
-        enumerable: false,
-        writable: true,
-        configurable: true
-    }
+  constructor: {
+    value: B,
+    enumerable: false,
+    writable: true,
+    configurable: true
+  }
 })
 
-let a = new B('123', 0)
+const a = new B('123', 0)
 a.printName() // 123
 ```
 
-2. 
+2.
 ```js
 function A(name) {
     this.name = name
@@ -111,4 +112,3 @@ extends(B, A)
 let a = new B('123', 0)
 a.printName() // 123
 ```
-

@@ -16,8 +16,8 @@ categories:
 
 被`chalk`处理后，其原本的内容会被‘\x1B...’所包裹
 ```js
-console.log(chalk.blue('green'));
-console.log([chalk.blue('green')]);
+console.log(chalk.blue('green'))
+console.log([chalk.blue('green')])
 ```
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYzMzE1NzQ3MjA5OQ==633157472099)
@@ -29,7 +29,7 @@ console.log([chalk.blue('green')]);
 
 在使用正则处理内容的时候发现了一个问题
 ```js
-'\x1B'.replace(/\\x/,'') // 结果？？
+'\x1B'.replace(/\\x/, '') // 结果？？
 ```
 
 通过`.length`查看其长度，结果就如标题所示
@@ -46,7 +46,7 @@ console.log([chalk.blue('green')]);
 因此这里的`\x1B`实际上就是一个字符
 
 ```js
-'\x41' === 'A'   // true
+'\x41' === 'A' // true
 'A' === '\u0041' // true
 ```
 
@@ -74,7 +74,7 @@ console.log([chalk.blue('green')]);
 
 在正则表达式中常见于匹配中文字符
 ```js
-const r = /[\u4e00-\u9fa5]/
+const r = /[\u4E00-\u9FA5]/
 r.test('中文') // true
 r.test('English') // false
 ```
@@ -88,11 +88,11 @@ r.test('English') // false
 编写的通用处理方法如下
 ```js
 function str2Unicode(str) {
-    let s = ''
-    for (const c of str) {
-        s += `\\u${c.charCodeAt(0).toString(16).padStart(4, '0')}`
-    }
-    return s
+  let s = ''
+  for (const c of str) {
+    s += `\\u${c.charCodeAt(0).toString(16).padStart(4, '0')}`
+  }
+  return s
 }
 
 str2Unicode('1a中文') // '\\u0031\\u0061\\u4e2d\\u6587'
@@ -106,10 +106,10 @@ str2Unicode('1a中文') // '\\u0031\\u0061\\u4e2d\\u6587'
 
 ```js
 function unicode2Str(str) {
-    const unicodeList = str.match(/\\u[\da-f]{4}/g) || []
-    return unicodeList.reduce((pre, u) => {
-        return pre.replace(u, String.fromCodePoint(Number(`0x${u.slice(2)}`)))
-    }, str)
+  const unicodeList = str.match(/\\u[\da-f]{4}/g) || []
+  return unicodeList.reduce((pre, u) => {
+    return pre.replace(u, String.fromCodePoint(Number(`0x${u.slice(2)}`)))
+  }, str)
 }
 
 unicode2Str('1\\u0061\\u4e2d文') // 1a中文
@@ -120,28 +120,28 @@ unicode2Str('1\\u0061\\u4e2d文') // 1a中文
 
 可以将色值相关的 `ANSI转义码` 匹配出来
 ```js
-import ansiRegex from 'ansi-regex';
+import ansiRegex from 'ansi-regex'
 
-'\u001B[4mcake\u001B[0m'.match(ansiRegex());
-//=> ['\u001B[4m', '\u001B[0m']
+'\u001B[4mcake\u001B[0m'.match(ansiRegex())
+// => ['\u001B[4m', '\u001B[0m']
 
-'\u001B[4mcake\u001B[0m'.match(ansiRegex({onlyFirst: true}));
-//=> ['\u001B[4m']
+'\u001B[4mcake\u001B[0m'.match(ansiRegex({ onlyFirst: true }))
+// => ['\u001B[4m']
 ```
 编写一下处理方法
 
 ```js
 function resetChalkStr(str) {
-    return str.replace(ansiRegex(), '')
+  return str.replace(ansiRegex(), '')
 }
 ```
 测试
 ```js
-console.log(chalk.green('green'), chalk.greenBright('greenBright'));
+console.log(chalk.green('green'), chalk.greenBright('greenBright'))
 
-console.log([chalk.green('green'), chalk.greenBright('greenBright')]);
+console.log([chalk.green('green'), chalk.greenBright('greenBright')])
 
-console.log(resetChalkStr(`${chalk.green('green')} ${chalk.greenBright('greenBright')}`));
+console.log(resetChalkStr(`${chalk.green('green')} ${chalk.greenBright('greenBright')}`))
 ```
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYzMzMzMzExNzEzOA==633333117138)
@@ -150,4 +150,3 @@ console.log(resetChalkStr(`${chalk.green('green')} ${chalk.greenBright('greenBri
 重拾了一下`\x`与`\u`相关的内容，突然额外想到一个点，使用\u去做字符串的加解密(下来再捋一捋)
 
 解决了一个`chalk`相关的问题“还原终端中的彩色内容”
-

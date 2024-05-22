@@ -26,7 +26,7 @@ TODO
 
 <img src="https://img.cdn.sugarat.top/mdImg/MTYzMzMzOTI3NzE0NA==633339277144" style="max-width:320px;">
 
-## 社招 
+## 社招
 
 反馈快，效率高。
 
@@ -35,4 +35,3 @@ Base 北京/上海。
 长期招前端&客户端，发简历到邮箱 **engineerzjl@foxmail.com** 进行内推。
 
 也可加微信小窗私聊，进一步了解岗位部门相关信息
-

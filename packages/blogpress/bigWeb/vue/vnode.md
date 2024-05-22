@@ -48,21 +48,21 @@ vue组件
 
 生成的js对象
 ```js
-function render(){
-    return new VNode('span',{
-        // 指令集合
-        directives:[
-            {
-                /* v-show指令 */
-                rawName: 'v-show',
-                expression: 'isShow',
-                name: 'show',
-                value: true
-            }
-        ],
-        /* 静态class */
-        staticClass: 'demo'
-    },[undefined,undefined,undefined,'This is a span.'])
+function render() {
+  return new VNode('span', {
+    // 指令集合
+    directives: [
+      {
+        /* v-show指令 */
+        rawName: 'v-show',
+        expression: 'isShow',
+        name: 'show',
+        value: true
+      }
+    ],
+    /* 静态class */
+    staticClass: 'demo'
+  }, [undefined, undefined, undefined, 'This is a span.'])
 }
 ```
 转换为VNode
@@ -75,7 +75,7 @@ function render(){
                 rawName:'v-show',
                 expression:'isShow',
                 name:'show',
-                value:true 
+                value:true
             }
         ],
         staticClass:'demo'
@@ -95,26 +95,25 @@ function render(){
 **方法封装**
 ```js
 // 空节点
-function createEmptyVNode(){
-    const node = new VNode()
-    node.text = ''
-    return node
+function createEmptyVNode() {
+  const node = new VNode()
+  node.text = ''
+  return node
 }
 
 // 文本节点
-function createTextVNode(val){
-    const node = new VNode()
-    node.text = String(val)
-    return node
+function createTextVNode(val) {
+  const node = new VNode()
+  node.text = String(val)
+  return node
 }
 
 // 克隆节点
-function cloneVNode(node){
-    return new VNode(node.tag,node.data,node.children,node.text,node.element)
+function cloneVNode(node) {
+  return new VNode(node.tag, node.data, node.children, node.text, node.element)
 }
 ```
 **总结**
 
 * VNode 就是一个 JavaScript 对象,用 JavaScript 对象的属性来描述当前节点的一些状态
 * 用 VNode 节点的形式来模拟一棵 Virtual DOM 树
-

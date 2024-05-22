@@ -62,15 +62,14 @@ timec create auto.md
 ### 设置文件路径
 设置自动记录文件的路径
 ```sh
-timec upPath ./auto.md 
+timec upPath ./auto.md
 ```
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYyODYwNjM0MDE3Mw==628606340173)
-
 
 ### 任务管理
 查看正在进行中的任务
 ```sh
-timec task 
+timec task
 ```
 
 创建新的任务
@@ -106,7 +105,6 @@ timec thing
 ```
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYyODYwNjg0MDEzMQ==628606840131)
-
 
 结束当前事务
 * 加上`-s`参数即可
@@ -195,4 +193,3 @@ timec -or -R <startTime_endTime> <filepath>
 本系列会不断的更新迭代，直至产品初代完成
 
 * [仓库地址](https://github.com/ATQQ/time-control)
-

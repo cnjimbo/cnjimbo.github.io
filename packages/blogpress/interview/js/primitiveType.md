@@ -29,9 +29,8 @@ categories:
   * Number.EPSILON的精度是2^-52，所以只要丢失精度小于Number.EPSILON基本可以确认相等。
 
 ```js
-function compareNum(num1,num2){
-    return Math.abs(num1-num2)<Number.EPSILON
+function compareNum(num1, num2) {
+  return Math.abs(num1 - num2) < Number.EPSILON
 }
-console.log(compareNum(0.1+0.2,0.3)) // true
+console.log(compareNum(0.1 + 0.2, 0.3)) // true
 ```
-

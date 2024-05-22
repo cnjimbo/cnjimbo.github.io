@@ -37,17 +37,17 @@ MongoDB 是一个基于分布式文件存储的数据库
 这里，只考虑传入参数为 `undefined` 的情况，简化后的代码如下
 
 ```ts
-const kId = Symbol('id');
-class ObjectId{
-    static index = ~~(Math.random() * 0xffffff)
+const kId = Symbol('id')
+class ObjectId {
+  static index = ~~(Math.random() * 0xFFFFFF)
 
-    constructor(id?: string | Buffer | number | ObjectIdLike | ObjectId) {
-      // The most common use case (blank id, new objectId instance)
-      if (id == null || typeof id === 'number') {
-        // Generate a new id
-        this[kId] = ObjectId.generate(typeof id === 'number' ? id : undefined);
-      }
+  constructor(id?: string | Buffer | number | ObjectIdLike | ObjectId) {
+    // The most common use case (blank id, new objectId instance)
+    if (id == null || typeof id === 'number') {
+      // Generate a new id
+      this[kId] = ObjectId.generate(typeof id === 'number' ? id : undefined)
     }
+  }
 }
 ```
 
@@ -59,14 +59,14 @@ class 上还有一个随机的静态变量 `index`， 这个 `index` 会用于�
 
 简化成一个js class代码的形式如下
 ```js
-const kId = Symbol('id');
-class ObjectId{
-    static index = ~~(Math.random() * 0xffffff)
-    constructor(id) {
-      if (id == null || typeof id === 'number') {
-        this[kId] = ObjectId.generate(typeof id === 'number' ? id : undefined);
-      }
+const kId = Symbol('id')
+class ObjectId {
+  static index = ~~(Math.random() * 0xFFFFFF)
+  constructor(id) {
+    if (id == null || typeof id === 'number') {
+      this[kId] = ObjectId.generate(typeof id === 'number' ? id : undefined)
     }
+  }
 }
 ```
 
@@ -80,36 +80,36 @@ class ObjectId{
 
 ```ts
 class ObjectId {
-    static generate(time?: number): Buffer {
-        if ('number' !== typeof time) {
-            time = ~~(Date.now() / 1000);
-        }
-
-        const inc = ObjectId.getInc();
-        const buffer = Buffer.alloc(12);
-
-        // 4-byte timestamp
-        buffer.writeUInt32BE(time, 0);
-
-        // set PROCESS_UNIQUE if yet not initialized
-        if (PROCESS_UNIQUE === null) {
-            PROCESS_UNIQUE = randomBytes(5);
-        }
-
-        // 5-byte process unique
-        buffer[4] = PROCESS_UNIQUE[0];
-        buffer[5] = PROCESS_UNIQUE[1];
-        buffer[6] = PROCESS_UNIQUE[2];
-        buffer[7] = PROCESS_UNIQUE[3];
-        buffer[8] = PROCESS_UNIQUE[4];
-
-        // 3-byte counter
-        buffer[11] = inc & 0xff;
-        buffer[10] = (inc >> 8) & 0xff;
-        buffer[9] = (inc >> 16) & 0xff;
-
-        return buffer;
+  static generate(time?: number): Buffer {
+    if (typeof time !== 'number') {
+      time = ~~(Date.now() / 1000)
     }
+
+    const inc = ObjectId.getInc()
+    const buffer = Buffer.alloc(12)
+
+    // 4-byte timestamp
+    buffer.writeUInt32BE(time, 0)
+
+    // set PROCESS_UNIQUE if yet not initialized
+    if (PROCESS_UNIQUE === null) {
+      PROCESS_UNIQUE = randomBytes(5)
+    }
+
+    // 5-byte process unique
+    buffer[4] = PROCESS_UNIQUE[0]
+    buffer[5] = PROCESS_UNIQUE[1]
+    buffer[6] = PROCESS_UNIQUE[2]
+    buffer[7] = PROCESS_UNIQUE[3]
+    buffer[8] = PROCESS_UNIQUE[4]
+
+    // 3-byte counter
+    buffer[11] = inc & 0xFF
+    buffer[10] = (inc >> 8) & 0xFF
+    buffer[9] = (inc >> 16) & 0xFF
+
+    return buffer
+  }
 }
 ```
 下面先介绍一下代码中 `Buffer` 相关的内容:
@@ -123,10 +123,10 @@ const buffer = Buffer.alloc(8)
 // <Buffer 00 00 00 00 00 00 00 00>
 
 // 0x开头表示16进制数
-buffer.writeUInt32BE(0xff,0)
+buffer.writeUInt32BE(0xFF, 0)
 // <Buffer 00 00 00 ff 00 00 00 00>
 
-buffer.writeUInt32BE(255,4)
+buffer.writeUInt32BE(255, 4)
 // <Buffer 00 00 00 ff 00 00 00 ff>
 ```
 
@@ -194,43 +194,43 @@ console.log(~~(-12.5)) // -12
 console.log(Math.ceil(-12.5)) // -12
 ```
 
-
 **时间戳的获取**
 ```js
-const time = ~~(Date.now() / 1000);
+const time = ~~(Date.now() / 1000)
 ```
 
 **存入前4字节**
 ```js
 // 4-byte timestamp
-buffer.writeUInt32BE(time, 0);
+buffer.writeUInt32BE(time, 0)
 ```
 
 ## 随机的“进程PID”生成
 可以看到这里是用的randomBytes方法生成的一个5字节的随机数
 ```ts
-import {randomBytes} from './parser/utils'
+import { randomBytes } from './parser/utils'
 
-PROCESS_UNIQUE = randomBytes(5);
+PROCESS_UNIQUE = randomBytes(5)
 ```
 `randomButes`精简后的内容如下
 ```ts
 // parser/utils
-const detectRandomBytes = (): RandomBytesFunction => {
+function detectRandomBytes(): RandomBytesFunction {
   if (typeof global !== 'undefined' && global.crypto && global.crypto.getRandomValues) {
-    return size => global.crypto.getRandomValues(Buffer.alloc(size));
+    return size => global.crypto.getRandomValues(Buffer.alloc(size))
   }
 
-  let requiredRandomBytes: RandomBytesFunction | null | undefined;
+  let requiredRandomBytes: RandomBytesFunction | null | undefined
   try {
-    requiredRandomBytes = require('crypto').randomBytes;
-  } catch (e) {
+    requiredRandomBytes = require('crypto').randomBytes
+  }
+  catch (e) {
   }
 
-  return requiredRandomBytes || insecureRandomBytes;
-};
+  return requiredRandomBytes || insecureRandomBytes
+}
 
-export const randomBytes = detectRandomBytes();
+export const randomBytes = detectRandomBytes()
 ```
 经过测试实际上调用的是`require('crypto').randomBytes`
 
@@ -238,45 +238,46 @@ export const randomBytes = detectRandomBytes();
 
 TODO:下次出文介绍一下这个`require('crypto').randomBytes`
 ```js
-export const randomBytes = require('crypto').randomBytes;
+export const randomBytes = require('crypto').randomBytes
 ```
 
 最终生成这5个字节的代码如下
 ```js
-const randomBytes = require('crypto').randomBytes;
+const randomBytes = require('crypto').randomBytes
 
-const PROCESS_UNIQUE = randomBytes(5);
+const PROCESS_UNIQUE = randomBytes(5)
 
 // 5-byte process unique
-buffer[4] = PROCESS_UNIQUE[0];
-buffer[5] = PROCESS_UNIQUE[1];
-buffer[6] = PROCESS_UNIQUE[2];
-buffer[7] = PROCESS_UNIQUE[3];
-buffer[8] = PROCESS_UNIQUE[4];
+buffer[4] = PROCESS_UNIQUE[0]
+buffer[5] = PROCESS_UNIQUE[1]
+buffer[6] = PROCESS_UNIQUE[2]
+buffer[7] = PROCESS_UNIQUE[3]
+buffer[8] = PROCESS_UNIQUE[4]
 ```
 
 ## 自增的随机数
 ```ts
 class ObjectId {
-    static index = ~~(Math.random() * 0xffffff)
-    static getInc(): number {
-      return (ObjectId.index = (ObjectId.index + 1) % 0xffffff);
-    }
-    static generate(time?: number): Buffer {
-        const inc = ObjectId.getInc();
-        // 省略中间无关代码
-        // 3-byte counter
-        // 存入最后2字节
-        buffer[11] = inc & 0xff;
+  static index = ~~(Math.random() * 0xFFFFFF)
+  static getInc(): number {
+    return (ObjectId.index = (ObjectId.index + 1) % 0xFFFFFF)
+  }
 
-        // 右移8位然后，低位的2字节存入第11位
-        buffer[10] = (inc >> 8) & 0xff;
+  static generate(time?: number): Buffer {
+    const inc = ObjectId.getInc()
+    // 省略中间无关代码
+    // 3-byte counter
+    // 存入最后2字节
+    buffer[11] = inc & 0xFF
 
-        // 右移16位，低位的2字节存入第10位
-        buffer[9] = (inc >> 16) & 0xff;
+    // 右移8位然后，低位的2字节存入第11位
+    buffer[10] = (inc >> 8) & 0xFF
 
-        return buffer;
-    }
+    // 右移16位，低位的2字节存入第10位
+    buffer[9] = (inc >> 16) & 0xFF
+
+    return buffer
+  }
 }
 ```
 1. 生成一个3字节的随机数`~~(Math.random() * 0xffffff)`
@@ -287,69 +288,72 @@ class ObjectId {
 
 ```js
 const randomBytes = require('crypto').randomBytes
-const kId = Symbol('id');
+const kId = Symbol('id')
 
-let PROCESS_UNIQUE = null;
+let PROCESS_UNIQUE = null
 
 class MyObjectId {
-    static index = ~~(Math.random() * 0xffffff)
-    constructor(id) {
-        if (id == null || typeof id === 'number') {
-            this[kId] = MyObjectId.generate(typeof id === 'number' ? id : undefined);
-        }
+  static index = ~~(Math.random() * 0xFFFFFF)
+  constructor(id) {
+    if (id == null || typeof id === 'number') {
+      this[kId] = MyObjectId.generate(typeof id === 'number' ? id : undefined)
     }
-    static getInc() {
-      return (MyObjectId.index = (MyObjectId.index + 1) % 0xffffff);
+  }
+
+  static getInc() {
+    return (MyObjectId.index = (MyObjectId.index + 1) % 0xFFFFFF)
+  }
+
+  static generate(time) {
+    if (typeof time !== 'number') {
+      time = ~~(Date.now() / 1000)
     }
-    static generate(time) {
-        if ('number' !== typeof time) {
-            time = ~~(Date.now() / 1000);
-        }
 
-        const inc = MyObjectId.getInc();
-        const buffer = Buffer.alloc(12);
+    const inc = MyObjectId.getInc()
+    const buffer = Buffer.alloc(12)
 
-        // 4-byte timestamp
-        buffer.writeUInt32BE(time, 0);
+    // 4-byte timestamp
+    buffer.writeUInt32BE(time, 0)
 
-        // set PROCESS_UNIQUE if yet not initialized
-        if (PROCESS_UNIQUE === null) {
-            PROCESS_UNIQUE = randomBytes(5);
-        }
-
-        // 5-byte process unique
-        buffer[4] = PROCESS_UNIQUE[0];
-        buffer[5] = PROCESS_UNIQUE[1];
-        buffer[6] = PROCESS_UNIQUE[2];
-        buffer[7] = PROCESS_UNIQUE[3];
-        buffer[8] = PROCESS_UNIQUE[4];
-
-        // 3-byte counter
-        buffer[11] = inc & 0xff;
-        buffer[10] = (inc >> 8) & 0xff;
-        buffer[9] = (inc >> 16) & 0xff;
-
-        return buffer;
+    // set PROCESS_UNIQUE if yet not initialized
+    if (PROCESS_UNIQUE === null) {
+      PROCESS_UNIQUE = randomBytes(5)
     }
-    toHexString(){
-        return this[kId].toString('hex')
-    }
+
+    // 5-byte process unique
+    buffer[4] = PROCESS_UNIQUE[0]
+    buffer[5] = PROCESS_UNIQUE[1]
+    buffer[6] = PROCESS_UNIQUE[2]
+    buffer[7] = PROCESS_UNIQUE[3]
+    buffer[8] = PROCESS_UNIQUE[4]
+
+    // 3-byte counter
+    buffer[11] = inc & 0xFF
+    buffer[10] = (inc >> 8) & 0xFF
+    buffer[9] = (inc >> 16) & 0xFF
+
+    return buffer
+  }
+
+  toHexString() {
+    return this[kId].toString('hex')
+  }
 }
 
 module.exports = {
-    MyObjectId
+  MyObjectId
 }
 ```
 ### 测试
 ```js
 const { ObjectId } = require('mongodb')
 const { MyObjectId } = require('./myObjectId')
-console.log(new ObjectId().toHexString());
-console.log(new ObjectId().toHexString());
-console.log(new ObjectId().toHexString());
-console.log(new MyObjectId().toHexString());
-console.log(new MyObjectId().toHexString());
-console.log(new MyObjectId().toHexString());
+console.log(new ObjectId().toHexString())
+console.log(new ObjectId().toHexString())
+console.log(new ObjectId().toHexString())
+console.log(new MyObjectId().toHexString())
+console.log(new MyObjectId().toHexString())
+console.log(new MyObjectId().toHexString())
 ```
 
 结果如下，符合预期
@@ -363,4 +367,3 @@ console.log(new MyObjectId().toHexString());
 * 位运算符虽在开发中用得不多，但很多优秀的库中都有，提醒自己下来还是多熟悉一下，看看能否用在计算场景中，提升计算效率
 
 * TODO：搞一篇位运算的文章，学习一下优秀开源库中的用法
-

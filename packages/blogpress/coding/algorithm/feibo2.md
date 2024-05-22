@@ -13,7 +13,7 @@ categories:
 ---
 # 斐波拉契数列II
 
-斐波那契数列示例： 
+斐波那契数列示例：
 
 1，1，2，3，5，8，13，21，34 。。。。
 
@@ -25,28 +25,27 @@ categories:
 ```js
 /**
  * 求指定斐波拉契数对应的位置
- * @param {number} num 
+ * @param {number} num
  * @returns {number}
  */
 function getFibIndex(num) {
-    if (num === 1) {
-        return 1
+  if (num === 1) {
+    return 1
+  }
+  let a = 1; let b = 1; let c = 0
+  let index = 2
+  while (c < num) {
+    index++
+    c = a + b
+    a = b
+    b = c
+    if (c === num) {
+      return index
     }
-    let a = 1, b = 1, c = 0
-    let index = 2
-    while (c < num) {
-        index++
-        c = a + b
-        a = b
-        b = c
-        if (c === num) {
-            return index
-        }
-    }
-    return -1
+  }
+  return -1
 }
 ```
-
 
 ## 递归
 类似迭代的处理思路，将计算过程作为参数传入
@@ -54,20 +53,19 @@ function getFibIndex(num) {
 ```js
 /**
  * 求指定斐波拉契数对应的位置
- * @param {number} num 
+ * @param {number} num
  * @returns {number}
  */
 function getFibIndex(num, a = 1, b = 1, index = 2) {
-    if (num === 1) {
-        return 1
-    }
-    if (a + b > num) {
-        return -1
-    }
-    if (a + b === num) {
-        return ++index
-    }
-    return getFibIndex(num, b, a + b, ++index)
+  if (num === 1) {
+    return 1
+  }
+  if (a + b > num) {
+    return -1
+  }
+  if (a + b === num) {
+    return ++index
+  }
+  return getFibIndex(num, b, a + b, ++index)
 }
 ```
-

@@ -28,19 +28,19 @@ categories:
 ```ts
 import { mixin } from '../index'
 const obj1 = {
-    logA() {
-        console.log(this.a);
-    }
+  logA() {
+    console.log(this.a)
+  }
 }
 const obj2 = {
-    printKeys() {
-        console.log(Object.keys(this));
-    }
+  printKeys() {
+    console.log(Object.keys(this))
+  }
 }
 
 @mixin(obj1, obj2)
 class Test {
-    public a = 1
+  public a = 1
 }
 
 const t: any = new Test()
@@ -55,14 +55,14 @@ t.printKeys() // ['a']
 
 ```ts
 function handleClass(target, mixins) {
-    if (!mixins.length) {
-        throw new SyntaxError(`@mixin() class ${target.name} requires at least one mixin as an argument`);
-    }
+  if (!mixins.length) {
+    throw new SyntaxError(`@mixin() class ${target.name} requires at least one mixin as an argument`)
+  }
 }
 export default function mixin(...objs) {
-    return function (target) {
-        return handleClass(target, objs)
-    }
+  return function (target) {
+    return handleClass(target, objs)
+  }
 }
 ```
 
@@ -78,28 +78,28 @@ export default function mixin(...objs) {
  * 获取对象上的每个属性的描述符
  */
 function getOwnPropertyDescriptors(obj) {
-    const descs = {};
-    Object.getOwnPropertyNames(obj).forEach(key => {
-        descs[key] = Object.getOwnPropertyDescriptor(obj, key)
-    })
-    return descs;
+  const descs = {}
+  Object.getOwnPropertyNames(obj).forEach((key) => {
+    descs[key] = Object.getOwnPropertyDescriptor(obj, key)
+  })
+  return descs
 }
 
 function handleClass(target, mixins) {
-    if (!mixins.length) {
-        throw new SyntaxError(`@mixin() class ${target.name} requires at least one mixin as an argument`);
-    }
-    for (let i = 0; i < mixins.length; i++) {
-        const descs = getOwnPropertyDescriptors(mixins[i])
-        const keys = Object.getOwnPropertyNames(mixins[i])
+  if (!mixins.length) {
+    throw new SyntaxError(`@mixin() class ${target.name} requires at least one mixin as an argument`)
+  }
+  for (let i = 0; i < mixins.length; i++) {
+    const descs = getOwnPropertyDescriptors(mixins[i])
+    const keys = Object.getOwnPropertyNames(mixins[i])
 
-        for (let j = 0; j < keys.length; j++) {
-            const key = keys[j];
-            if (!target.prototype.hasOwnProperty(key)) {
-                Object.defineProperty(target.prototype, key, descs[key])
-            }
-        }
+    for (let j = 0; j < keys.length; j++) {
+      const key = keys[j]
+      if (!target.prototype.hasOwnProperty(key)) {
+        Object.defineProperty(target.prototype, key, descs[key])
+      }
     }
+  }
 }
 ```
 
@@ -110,17 +110,18 @@ function handleClass(target, mixins) {
 将需要懒执行的逻辑放入到`@lazyInitialize`之中
 
 ```ts
-import { lazyInitialize } from "..";
+import { lazyInitialize } from '..'
 
-function getMaxArray(str=''){
-    console.log(str,'init huge array');
-    return new Array(100)
+function getMaxArray(str = '') {
+  console.log(str, 'init huge array')
+  return Array.from({ length: 100 })
 }
 
-class Test{
-    @lazyInitialize(()=>getMaxArray('a'))
-    public a
-    public b = getMaxArray('b')
+class Test {
+  @lazyInitialize(() => getMaxArray('a'))
+  public a
+
+  public b = getMaxArray('b')
 }
 
 const t = new Test()
@@ -144,28 +145,28 @@ a init huge array
 ### 函数实现
 ```ts
 function createDefaultSetter(key) {
-    return function set(newValue) {
-        Object.defineProperty(this, key, {
-            configurable: true,
-            writable: true,
-            enumerable: true,
-            value: newValue
-        });
-        return newValue;
-    };
+  return function set(newValue) {
+    Object.defineProperty(this, key, {
+      configurable: true,
+      writable: true,
+      enumerable: true,
+      value: newValue
+    })
+    return newValue
+  }
 }
 
 export default function lazyInitialize(initializer): any {
-    let t
-    return function (target, key) {
-        return {
-            get() {
-                t = t === undefined? initializer.call(this) : t
-                return t;
-            },
-            set: createDefaultSetter(key)
-        }
+  let t
+  return function (target, key) {
+    return {
+      get() {
+        t = t === undefined ? initializer.call(this) : t
+        return t
+      },
+      set: createDefaultSetter(key)
     }
+  }
 }
 ```
 
@@ -173,4 +174,3 @@ export default function lazyInitialize(initializer): any {
 下一篇将学习:
 * `@debounce`：防抖
 * `@throttle`：节流
-

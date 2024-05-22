@@ -27,22 +27,22 @@ categories:
 ```js
 /**
  * 检测构造函数的原型是否在实例的原型链上
- * @param {object} a 
- * @param {Object} b 
+ * @param {object} a
+ * @param {object} b
  */
 function instanceOf(a, b) {
-    const prototype = b.prototype
-    let __proto__ = a.__proto__
-    while (1) {
-        if (__proto__ === prototype) {
-            return true
-        }
-
-        if (!__proto__) {
-            return false
-        }
-        __proto__ = __proto__.__proto__
+  const prototype = b.prototype
+  let __proto__ = a.__proto__
+  while (1) {
+    if (__proto__ === prototype) {
+      return true
     }
+
+    if (!__proto__) {
+      return false
+    }
+    __proto__ = __proto__.__proto__
+  }
 }
 ```
 
@@ -50,20 +50,19 @@ function instanceOf(a, b) {
 ```js
 /**
  * 检测构造函数的原型是否在实例的原型链上
- * @param {object} a 
- * @param {Object} b 
+ * @param {object} a
+ * @param {object} b
  */
 function instanceOf(a, b) {
-    return a !== null && (a.__proto__ == b.prototype || instanceOf(a.__proto__, b))
+  return a !== null && (a.__proto__ == b.prototype || instanceOf(a.__proto__, b))
 }
 ```
 
 ### 测试代码
 ```js
-console.log(instanceOf([], Array));
-console.log(instanceOf({}, Object));
-console.log(instanceOf(/^$/, RegExp));
-console.log(instanceOf(function () { }, Function));
-console.log(instanceOf([], Function));
+console.log(instanceOf([], Array))
+console.log(instanceOf({}, Object))
+console.log(instanceOf(/^$/, RegExp))
+console.log(instanceOf(() => { }, Function))
+console.log(instanceOf([], Function))
 ```
-

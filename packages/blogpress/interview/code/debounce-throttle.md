@@ -14,14 +14,14 @@ categories:
 >对于短时间内连续触发的事件（上面的滚动事件），防抖的含义就是让某个时间期限内，事件处理函数只执行一次
 
 ```js
-function debounce(fn,delay){
-    let timer
-    return function(){
-        if(timer){
-            clearTimeout(timer)
-        }
-        timer = setTimeout(fn,delay,...arguments)
+function debounce(fn, delay) {
+  let timer
+  return function () {
+    if (timer) {
+      clearTimeout(timer)
     }
+    timer = setTimeout(fn, delay, ...arguments)
+  }
 }
 ```
 
@@ -33,31 +33,31 @@ function debounce(fn,delay){
 **标志位与定时器实现**
 ```js
 function throttle(fn, delay) {
-    let flag = false
-    return function () {
-        if (flag) {
-            return
-        }
-        flag = true
-        fn.apply(this, arguments)
-        setTimeout(() => {
-            flag = false
-        }, delay)
+  let flag = false
+  return function () {
+    if (flag) {
+      return
     }
+    flag = true
+    fn.apply(this, arguments)
+    setTimeout(() => {
+      flag = false
+    }, delay)
+  }
 }
 ```
 
 **使用时间戳**
 ```js
 function throttle(fn, delay) {
-    let now = 0
-    return function () {
-        if (now + delay > Date.now()) {
-            return
-        }
-        fn.apply(this, arguments)
-        now = Date.now()
+  let now = 0
+  return function () {
+    if (now + delay > Date.now()) {
+      return
     }
+    fn.apply(this, arguments)
+    now = Date.now()
+  }
 }
 ```
 
@@ -66,25 +66,25 @@ function throttle(fn, delay) {
 
 ```js
 function superThrottle(fn, delay) {
-    let start = Date.now(), timer = null
-    return function () {
-        let end = Date.now()
-        let context = this;
-        let args = arguments
-        if (start + delay > end) {
-            if (timer) {
-                clearTimeout(timer)
-            }
-            timer = setTimeout(() => {
-                start = end
-                fn.apply(context, args)
-            }, delay)
-        } else {
-            start = end
-            fn.apply(context, args)
-            clearTimeout(timer)
-        }
+  let start = Date.now(); let timer = null
+  return function () {
+    const end = Date.now()
+    const context = this
+    const args = arguments
+    if (start + delay > end) {
+      if (timer) {
+        clearTimeout(timer)
+      }
+      timer = setTimeout(() => {
+        start = end
+        fn.apply(context, args)
+      }, delay)
     }
+    else {
+      start = end
+      fn.apply(context, args)
+      clearTimeout(timer)
+    }
+  }
 }
 ```
-

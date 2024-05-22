@@ -1,5 +1,3 @@
-/* eslint-disable global-require */
-/* eslint-disable prefer-rest-params */
 import { spawn, spawnSync } from 'node:child_process'
 import path from 'node:path'
 import { formatDate } from '../client'
@@ -101,7 +99,7 @@ export function getTextSummary(text: string, count = 100) {
 export function aliasObjectToArray(obj: Record<string, string>) {
   return Object.entries(obj).map(([find, replacement]) => ({
     find,
-    replacement
+    replacement,
   }))
 }
 

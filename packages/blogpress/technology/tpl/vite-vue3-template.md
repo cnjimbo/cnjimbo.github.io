@@ -19,7 +19,6 @@ categories:
 >[模板仓库地址](https://github.com/ATQQ/vite-vue3-template)
 ><br>[线上预览](https://vite-vue3-template-2d76i8beae2d0-1256505457.tcloudbaseapp.com/)
 
-
 两步到位
 ### 本地引入
 ```sh
@@ -102,9 +101,9 @@ Vite有多牛牪犇，我就不赘述了
 <summary>简单的vite.config.ts配置文件</summary>
 
 ```ts
+import path from 'path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -121,12 +120,12 @@ export default defineConfig({
       '/api/': {
         target: 'http://localhost:3000',
         changeOrigin: true,
-        rewrite: (p) => p.replace(/^\/api/, ''),
+        rewrite: p => p.replace(/^\/api/, ''),
       },
       '/api-prod/': {
         target: 'http://localhost:3001',
         changeOrigin: true,
-        rewrite: (p) => p.replace(/^\/api-prod/, ''),
+        rewrite: p => p.replace(/^\/api-prod/, ''),
       },
     },
   },
@@ -137,7 +136,6 @@ export default defineConfig({
     },
   },
 })
-
 ```
 </details>
 
@@ -198,7 +196,6 @@ const store: Module<State, unknown> = {
 }
 
 export default store
-
 ```
 </details>
 
@@ -263,18 +260,18 @@ src/router/
 import { Router } from 'vue-router'
 
 declare module 'vue-router' {
-    interface RouteMeta {
-        // 是可选的
-        isAdmin?: boolean
-        // 是否需要登录
-        requireLogin?: boolean
-    }
+  interface RouteMeta {
+    // 是可选的
+    isAdmin?: boolean
+    // 是否需要登录
+    requireLogin?: boolean
+  }
 }
 
 function registerRouteGuard(router: Router) {
   /**
-     * 全局前置守卫
-     */
+   * 全局前置守卫
+   */
   router.beforeEach((to, from) => {
     if (to.meta.requireLogin) {
       if (from.path === '/') {
@@ -286,13 +283,14 @@ function registerRouteGuard(router: Router) {
   })
 
   /**
-     * 全局解析守卫
-     */
+   * 全局解析守卫
+   */
   router.beforeResolve(async (to) => {
     if (to.meta.isAdmin) {
       try {
         console.log(to)
-      } catch (error) {
+      }
+      catch (error) {
         // if (error instanceof NotAllowedError) {
         //     // ... 处理错误，然后取消导航
         //     return false
@@ -306,8 +304,8 @@ function registerRouteGuard(router: Router) {
   })
 
   /**
-     * 全局后置守卫
-     */
+   * 全局后置守卫
+   */
   router.afterEach((to, from, failure) => {
     // 改标题,监控上报一些基础信息
     // sendToAnalytics(to.fullPath)
@@ -545,4 +543,3 @@ import mountElementUI from './utils/elementUI'
 
 mountElementUI(app)
 ```
-

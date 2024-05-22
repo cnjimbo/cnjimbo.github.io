@@ -26,7 +26,6 @@ categories:
 
 如有表述不清，内容错误等还请评论区斧正
 
-
 ## 准备工作
 * [注册腾讯云账号](https://cloud.tencent.com/register)
 
@@ -109,74 +108,74 @@ categories:
 这里用到的最简单的`cloudbaserc.json`如下
 ```json
 {
-    "version": "2.0",
-    "envId": "kerno-photo-0got9tjdb1cb34fe",
-    "region": "ap-shanghai",
-    "$schema": "https://framework-1258016615.tcloudbaseapp.com/schema/latest.json",
-    "functionRoot": "cloudfunctions",
-    "framework": {
-      "name": "kerno-photo-web",
-      "plugins": {
-        "client": {
-          "use": "@cloudbase/framework-plugin-website",
-          "inputs": {
-            "outputPath": "/",
-            "cloudPath": "/"
-          }
-        },
-        "auth": {
-          "use": "@cloudbase/framework-plugin-auth",
-          "inputs": {
-            "configs": [
-              {
-                "platform": "NONLOGIN",
-                "status": "ENABLE"
-              }
-            ]
-          }
+  "version": "2.0",
+  "envId": "kerno-photo-0got9tjdb1cb34fe",
+  "region": "ap-shanghai",
+  "$schema": "https://framework-1258016615.tcloudbaseapp.com/schema/latest.json",
+  "functionRoot": "cloudfunctions",
+  "framework": {
+    "name": "kerno-photo-web",
+    "plugins": {
+      "client": {
+        "use": "@cloudbase/framework-plugin-website",
+        "inputs": {
+          "outputPath": "/",
+          "cloudPath": "/"
+        }
+      },
+      "auth": {
+        "use": "@cloudbase/framework-plugin-auth",
+        "inputs": {
+          "configs": [
+            {
+              "platform": "NONLOGIN",
+              "status": "ENABLE"
+            }
+          ]
         }
       }
     }
   }
+}
 ```
 ### 运用了构建工具的项目
 推荐的`cloudbaserc.json`内容如下
 ```json
 {
-    "version": "2.0",
-    "envId": "kerno-photo-0got9tjdb1cb34fe",// 环境id
-    "region": "ap-shanghai",  // 环境所在地区
-    "$schema": "https://framework-1258016615.tcloudbaseapp.com/schema/latest.json",
-    "functionRoot": "cloudfunctions",
-    "framework": {
-      "name": "kerno-photo-web",// 应用名称
-      "plugins": {
-        "client": {
-          "use": "@cloudbase/framework-plugin-website",
-          "inputs": {
-            "installCommand": "yarn install --prefer-offline --no-audit --progress=false", // 安装依赖的指令
-            "buildCommand": "npm run build",    // 构建项目指令
-            "outputPath": "dist",   // 用于部署的静态文件目录
-            "cloudPath": "/",   // 线上的基础路径
-            "envVariables": {
-              "VUE_APP_ENV_ID": "{{env.ENV_ID}}"
+  "version": "2.0",
+  "envId": "kerno-photo-0got9tjdb1cb34fe", // 环境id
+  "region": "ap-shanghai", // 环境所在地区
+  "$schema": "https://framework-1258016615.tcloudbaseapp.com/schema/latest.json",
+  "functionRoot": "cloudfunctions",
+  "framework": {
+    "name": "kerno-photo-web", // 应用名称
+    "plugins": {
+      "client": {
+        "use": "@cloudbase/framework-plugin-website",
+        "inputs": {
+          "installCommand": "yarn install --prefer-offline --no-audit --progress=false", // 安装依赖的指令
+          "buildCommand": "npm run build", // 构建项目指令
+          "outputPath": "dist", // 用于部署的静态文件目录
+          "cloudPath": "/", // 线上的基础路径
+          "envVariables": {
+            "VUE_APP_ENV_ID": "{{env.ENV_ID}}"
+          }
+        }
+      },
+      "auth": {
+        "use": "@cloudbase/framework-plugin-auth",
+        "inputs": {
+          "configs": [
+            {
+              "platform": "NONLOGIN",
+              "status": "ENABLE"
             }
-          }
-        },
-        "auth": {
-          "use": "@cloudbase/framework-plugin-auth",
-          "inputs": {
-            "configs": [
-              {
-                "platform": "NONLOGIN",
-                "status": "ENABLE"
-              }
-            ]
-          }
+          ]
         }
       }
     }
   }
+}
 ```
 
 ## 部署上线
@@ -315,14 +314,14 @@ main.yml文件内容如下
 
 name: prod-CI
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ main ] # push到main分支上时触发
+    branches: [main] # push到main分支上时触发
   pull_request:
-    types: [ assigned ]
-    branches: [ main ] # 合并pr到main分支上时触发
+    types: [assigned]
+    branches: [main] # 合并pr到main分支上时触发
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -388,5 +387,3 @@ git push
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYyMTQyNjI3MjYzNg==621426272636)
 ## 参考资料
 * [文档:云开发 CloudBase](https://cloud.tencent.com/document/product/876)
-
-

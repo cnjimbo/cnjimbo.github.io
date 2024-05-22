@@ -19,14 +19,13 @@ categories:
 ## 原因
 结论先行，`require`引入的模块会被Node缓存，下面用一个简单的demo实验一下
 
-
 ### 示例
 **test-module.js**
 ```js
-console.log('1');
+console.log('1')
 
 module.exports = {
-    name:'0'
+  name: '0'
 }
 ```
 
@@ -34,7 +33,7 @@ module.exports = {
 const m1 = require('./test-module')
 m1.name = '2'
 const m2 = require('./test-module')
-console.log(m2.name);
+console.log(m2.name)
 ```
 运行后的输出结果输出如下
 ```sh
@@ -49,7 +48,7 @@ console.log(m2.name);
 * 返回一个对象
 ```js
 const m1 = require('./test-module')
-console.log(require.cache);
+console.log(require.cache)
 ```
 
 输出内容如下(这里就贴一张截图)
@@ -61,11 +60,11 @@ console.log(require.cache);
 ```js
 const m1 = require('./test-module')
 m1.name = '2'
-console.log(m1.name);
+console.log(m1.name)
 
 delete require.cache[`${__dirname}/test-module.js`]
 const m2 = require('./test-module')
-console.log(m2.name);
+console.log(m2.name)
 ```
 内容输出如下
 ```sh
@@ -85,15 +84,15 @@ console.log(m2.name);
 test.json
 ```json
 {
-    "name":"xm"
+  "name": "xm"
 }
 ```
 测试demo
 ```js
 const d1 = require('./test.json')
-console.log(d1); // { name: 'xm' }
+console.log(d1) // { name: 'xm' }
 const d2 = require('./test')
-console.log(d2); // { name: 'xm' }
+console.log(d2) // { name: 'xm' }
 ```
 
 ## 其它差异
@@ -115,4 +114,3 @@ console.log(d2); // { name: 'xm' }
 本文内容比较精简，对于兼职学Node的同学可能会漏掉此部分知识
 
 后续将继续更新`时间管理工具`的实践内容
-

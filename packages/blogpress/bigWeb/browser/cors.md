@@ -82,7 +82,7 @@ categories:
 
 ```js
 Access to fetch at 'https://ep.sugarat.top/' from origin 'http://127.0.0.1:5500' has been blocked by CORS policy:
-No 'Access-Control-Allow-Origin' header is present on the requested resource. 
+No 'Access-Control-Allow-Origin' header is present on the requested resource.
 If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
 ```
 
@@ -109,7 +109,7 @@ If an opaque response serves your needs, set the request's mode to 'no-cors' to 
 ```html
 <body>
     <iframe src="https://sugarat.top/" width="100%" height="1000px" frameborder="0"></iframe>
-        
+
     <script>
         const iframe = document.getElementsByTagName('iframe')[0]
         console.log(iframe.contentWindow.document.children[0].outerHTML)
@@ -117,7 +117,6 @@ If an opaque response serves your needs, set the request's mode to 'no-cors' to 
     </script>
 </body>
 ```
-
 
 ## 跨站
 
@@ -189,7 +188,6 @@ tips: 这里的一级,二级域名主要指计算机网络中规定的，与通�
 * Access-Control-Allow-Headers：表明服务器支持的头信息
 * Access-Control-Max-Age：指定本次预检请求的有效期，单位为秒，在此期间，不用再重新发型新的预检请求
 
-
 ## 解决跨域的方案
 
 **Tips:** 对于前端页面的运行可以 使用 [**http-server**](https://www.npmjs.com/package/http-server)
@@ -225,11 +223,11 @@ script获取到的内容会被当做js脚本进行执行
 // 以Node.js为例
 const http = require('http')
 const app = http.createServer((req, res) => {
-    const jsonData = {
-        name: 'sugar',
-        age: 18
-    }
-    res.end(`diyCallBackFun(${JSON.stringify(jsonData)})`)
+  const jsonData = {
+    name: 'sugar',
+    age: 18
+  }
+  res.end(`diyCallBackFun(${JSON.stringify(jsonData)})`)
 })
 app.listen(3000)
 ```
@@ -259,23 +257,22 @@ document.body.appendChild($srcipt)
 
 ```js
 /**
-* JSONP方法
-* @param {string} url 请求路径
-* @param {string} callbackName 全局函数名称（后端拼接的方法名称） 
-* @param {function} success 响应的回调函数
-*/
+ * JSONP方法
+ * @param {string} url 请求路径
+ * @param {string} callbackName 全局函数名称（后端拼接的方法名称）
+ * @param {Function} success 响应的回调函数
+ */
 function jsonp(url, callbackName, success) {
-   const $script = document.createElement('script')
-   $script.src = url + `&callback=${callbackName}`
-   $script.async = true
-   $script.type = 'text/javascript'
-   window[callbackName] = function (data) {
-       success && success(data)
-   }
-   document.body.appendChild($script)
+  const $script = document.createElement('script')
+  $script.src = `${url}&callback=${callbackName}`
+  $script.async = true
+  $script.type = 'text/javascript'
+  window[callbackName] = function (data) {
+    success && success(data)
+  }
+  document.body.appendChild($script)
 }
 ```
-
 
 ### CORS
 跨域资源共享（Cross-origin resource sharing）
@@ -318,29 +315,29 @@ function jsonp(url, callbackName, success) {
 ```js
 const http = require('http')
 
-let server = http.createServer(async (req, res) => {
-    //  -------跨域支持-----------
-    // 放行指定域名
-    res.setHeader('Access-Control-Allow-Origin', '*')
-    //跨域允许的header类型
-    res.setHeader("Access-Control-Allow-Headers", "*")
-    // 允许跨域携带cookie
-    res.setHeader("Access-Control-Allow-Credentials", "true")
-    // 允许的方法
-    res.setHeader('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS')
+const server = http.createServer(async (req, res) => {
+  //  -------跨域支持-----------
+  // 放行指定域名
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  // 跨域允许的header类型
+  res.setHeader('Access-Control-Allow-Headers', '*')
+  // 允许跨域携带cookie
+  res.setHeader('Access-Control-Allow-Credentials', 'true')
+  // 允许的方法
+  res.setHeader('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS')
 
-    let { method, url } = req
-    // 对预检请求放行
-    if (method === 'OPTIONS') {
-        return res.end()
-    }
-    console.log(method, url)
-    res.end('success')
+  const { method, url } = req
+  // 对预检请求放行
+  if (method === 'OPTIONS') {
+    return res.end()
+  }
+  console.log(method, url)
+  res.end('success')
 })
 
 // 启动
-server.listen(3000, err => {
-    console.log(`listen 3000 success`);
+server.listen(3000, (err) => {
+  console.log('listen 3000 success')
 })
 ```
 ### 反向代理
@@ -383,53 +380,56 @@ const BASE_URL = 'http://www.baidu.com'
 const PORT = 3000
 
 const app = http.createServer(async (req, res) => {
-    const { url, method } = req
-    console.log(url);
-    // 对预检请求放行
-    if (method === 'OPTIONS') {
-        return res.end()
-    }
-    // 获取传递的参数
-    const reqData = await getBodyContent(req)
-    console.log(reqData);
-    const { data } = await axios.request({
-        method,
-        url,
-        baseURL: BASE_URL,
-        data: reqData
-    })
-    res.setHeader('Access-Control-Allow-Origin', '*')
-    res.setHeader('Content-Type', 'application/json;charset=utf-8')
-    res.end(JSON.stringify(data))
+  const { url, method } = req
+  console.log(url)
+  // 对预检请求放行
+  if (method === 'OPTIONS') {
+    return res.end()
+  }
+  // 获取传递的参数
+  const reqData = await getBodyContent(req)
+  console.log(reqData)
+  const { data } = await axios.request({
+    method,
+    url,
+    baseURL: BASE_URL,
+    data: reqData
+  })
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader('Content-Type', 'application/json;charset=utf-8')
+  res.end(JSON.stringify(data))
 })
 
 app.listen(PORT, () => {
-    console.log(`listen ${PORT} success`);
+  console.log(`listen ${PORT} success`)
 })
 
 function getBodyContent(req) {
-    return new Promise((resolve, reject) => {
-        let buffer = Buffer.alloc(0)
+  return new Promise((resolve, reject) => {
+    let buffer = Buffer.alloc(0)
 
-        req.on('data', chunk => {
-            try {
-                buffer = Buffer.concat([buffer, chunk])
-            } catch (err) {
-                console.error(err);                
-            }
-        })
-
-        req.on('end', () => {
-            let data = {}
-            try {
-                data = JSON.parse(buffer.toString('utf-8'))
-            } catch (error) {
-                data = {}
-            } finally {
-                resolve(data)
-            }
-        })
+    req.on('data', (chunk) => {
+      try {
+        buffer = Buffer.concat([buffer, chunk])
+      }
+      catch (err) {
+        console.error(err)
+      }
     })
+
+    req.on('end', () => {
+      let data = {}
+      try {
+        data = JSON.parse(buffer.toString('utf-8'))
+      }
+      catch (error) {
+        data = {}
+      }
+      finally {
+        resolve(data)
+      }
+    })
+  })
 }
 ```
 测试页面
@@ -442,7 +442,6 @@ function getBodyContent(req) {
 运行结果，请求被成功转发
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYwODA4NTkxMjcxMw==608085912713)
-
 
 ### websocket
 WebSocket protocol是HTML5一种新的协议。它实现了浏览器与服务器全双工通信，同时允许跨域通讯，是server push技术的一种很好的实现
@@ -499,46 +498,46 @@ WebSocket protocol是HTML5一种新的协议。它实现了浏览器与服务器
 #### 服务端
 这里采用Node实现，需安装`websocket`模块
 ```js
-const WebSocketServer = require('websocket').server;
-const http = require('http');
+const WebSocketServer = require('websocket').server
+const http = require('http')
 
-const server = http.createServer(function (request, response) {
-    console.log((new Date()) + ' Received request for ' + request.url);
-    response.writeHead(200);
-    response.end();
-});
-server.listen(3000, function () {
-    console.log((new Date()) + ' Server is listening on port 3000');
-});
+const server = http.createServer((request, response) => {
+  console.log(`${new Date()} Received request for ${request.url}`)
+  response.writeHead(200)
+  response.end()
+})
+server.listen(3000, () => {
+  console.log(`${new Date()} Server is listening on port 3000`)
+})
 
 const wsServer = new WebSocketServer({
-    httpServer: server,
-    autoAcceptConnections: false
-});
+  httpServer: server,
+  autoAcceptConnections: false
+})
 
 function originIsAllowed(origin) {
-    return true;
+  return true
 }
 
-wsServer.on('request', function (request) {
-    if (!originIsAllowed(request.origin)) {
-        request.reject();
-        console.log((new Date()) + ' Connection from origin ' + request.origin + ' rejected.');
-        return;
-    }
+wsServer.on('request', (request) => {
+  if (!originIsAllowed(request.origin)) {
+    request.reject()
+    console.log(`${new Date()} Connection from origin ${request.origin} rejected.`)
+    return
+  }
 
-    var connection = request.accept('echo-protocol', request.origin);
-    console.log((new Date()) + ' Connection accepted.');
-    connection.on('message', function (message) {
-        if (message.type === 'utf8') {
-            console.log('Received Message: ' + message.utf8Data);
-            connection.sendUTF(`${new Date().toLocaleString()}:${message.utf8Data}`);
-        }
-    });
-    connection.on('close', function (reasonCode, description) {
-        console.log((new Date()) + ' Peer ' + connection.remoteAddress + ' disconnected.');
-    });
-});
+  const connection = request.accept('echo-protocol', request.origin)
+  console.log(`${new Date()} Connection accepted.`)
+  connection.on('message', (message) => {
+    if (message.type === 'utf8') {
+      console.log(`Received Message: ${message.utf8Data}`)
+      connection.sendUTF(`${new Date().toLocaleString()}:${message.utf8Data}`)
+    }
+  })
+  connection.on('close', (reasonCode, description) => {
+    console.log(`${new Date()} Peer ${connection.remoteAddress} disconnected.`)
+  })
+})
 ```
 
 #### 运行结果
@@ -653,13 +652,12 @@ window.postMessage 方法可以安全地实现跨源通信,可以适用的场景
 
 用法
 ```js
-otherWindow.postMessage(message, targetOrigin);
+otherWindow.postMessage(message, targetOrigin)
 ```
 targetOrigin值示例:
 * 协议+主机+端口：只有三者完全匹配，消息才会被发送
 * *：传递给任意窗口
 * /：和当前窗口同源的窗口
-
 
 **使用示例**
 
@@ -746,4 +744,3 @@ targetOrigin值示例:
 * [浏览器同源政策及其规避方法](https://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html)
 * [前端常见跨域解决方案](https://segmentfault.com/a/1190000011145364)
 * [WebSocket-Node](https://github.com/theturtle32/WebSocket-Node)
-

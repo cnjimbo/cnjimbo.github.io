@@ -45,4 +45,3 @@ categories:
     new SuperComponent().$mount('#app')
 </script>
 ```
-

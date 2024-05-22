@@ -25,22 +25,22 @@ Blob 对象表示一个二进制文件的数据内容,是Binary Large Object （
 ### 下载文件
 responseType属性为blob，下载下来的就是一个 Blob 对象。
 ```js
-function getBlob(url,callback){
-    let xhr = new XMLHttpRequest()
-    xhr.open('GET',url)
-    xhr.responseType = 'blob'
-    xhr.onload = function(){
-        // 这里返回的就是一个blob
-        callback(xhr.response);
-    }
-    xhr.send(null)
+function getBlob(url, callback) {
+  const xhr = new XMLHttpRequest()
+  xhr.open('GET', url)
+  xhr.responseType = 'blob'
+  xhr.onload = function () {
+    // 这里返回的就是一个blob
+    callback(xhr.response)
+  }
+  xhr.send(null)
 }
 ```
 ### 生成文件的临时url
 比如选择图片文件时生成缩略图
 ```js
-function getBlobUrl(blob){
-    return URL.createObjectURL(blob)
+function getBlobUrl(blob) {
+  return URL.createObjectURL(blob)
 }
 ```
 
@@ -56,20 +56,20 @@ function getBlobUrl(blob){
 <input type="file" id="filePicker">
 ```
 ```js
-let picker = document.querySelector('#filePicker')
-let reader = new FileReader();
+const picker = document.querySelector('#filePicker')
+const reader = new FileReader()
 reader.onload = function () {
-    var text = reader.result;
-    let pre = document.createElement('pre')
-    pre.textContent = text
-    document.body.append(pre)
+  const text = reader.result
+  const pre = document.createElement('pre')
+  pre.textContent = text
+  document.body.append(pre)
 }
-picker.addEventListener('change', function (e) {
-    let file = e.currentTarget.files[0]
-    reader.readAsText(file, "UTF-8")
+picker.addEventListener('change', (e) => {
+  const file = e.currentTarget.files[0]
+  reader.readAsText(file, 'UTF-8')
 })
 ```
-## File 
+## File
 File 实例对象是一个特殊的 Blob 实例，增加了``name``(文件名称)和``lastModifiedDate``(最后修改时间)属性。它继承了 Blob 对象，所有可以使用 Blob 对象的场合都可以使用它
 
 最常见的获取方式就是``<input type="file">``，用户选中文件以后，浏览器就会生成一个数组，里面的内容就是选择的文件,它们都是 File 实例对象。
@@ -77,4 +77,3 @@ File 实例对象是一个特殊的 Blob 实例，增加了``name``(文件名称
 :::tip 参考
 [网道JavaScript](http://wangdoc.com/javascript/bom/file.html#file-%E5%AF%B9%E8%B1%A1)
 :::
-

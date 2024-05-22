@@ -23,8 +23,8 @@ const path = require('path')
 const cwd = process.cwd()
 
 // 将传入的相对文件路径批量转为绝对路径
-filenames = filenames.map(f=>{
-  return path.join(cwd,f)
+filenames = filenames.map((f) => {
+  return path.join(cwd, f)
 })
 ```
 
@@ -36,21 +36,21 @@ const fs = require('fs')
 
 /**
  * 获取文件内容
- * @param {string} filepath 
+ * @param {string} filepath
  */
 function getFileContent(filepath) {
-    return fs.readFileSync(filepath, { encoding: 'utf-8' })
+  return fs.readFileSync(filepath, { encoding: 'utf-8' })
 }
 /**
  * 获取多个文件的内容
- * @param {string[]} files 
+ * @param {string[]} files
  */
 function getFilesContent(files) {
-    return files.reduce((pre, now) => {
-        pre += '\n'
-        pre += getFileContent(now)
-        return pre
-    }, '')
+  return files.reduce((pre, now) => {
+    pre += '\n'
+    pre += getFileContent(now)
+    return pre
+  }, '')
 }
 ```
 将MD转为JSON并输出到文件：
@@ -61,32 +61,32 @@ function getFilesContent(files) {
 // 获取所有文件的内容
 const content = getFilesContent(filenames)
 
-let outFileName = 'res'
+const outFileName = 'res'
 // 转为JSON对象，并执行JSON.stringify
 createFile(path.join(cwd, `${outFileName}.json`), outputJson(content), false)
 
 // ------------------------------------------------
 function outputJson(content) {
-    return JSON.stringify(getJSON(content))
+  return JSON.stringify(getJSON(content))
 }
 
 /**
  * 创建一个新文件
- * @param {string} path 
- * @param {string} content 
+ * @param {string} path
+ * @param {string} content
  * @param {boolean} judgeRepeat
  */
 function createFile(path, content, judgeRepeat = true) {
-    if (!fs.existsSync(path)) {
-        fs.writeFileSync(path, content, { encoding: 'utf-8' })
-        return true
-    }
-    if (judgeRepeat) {
-        console.error(`${path} 已存在`);
-        return false
-    }
-    fs.writeFileSync(getNoRepeatFilePath(path), content, { encoding: 'utf-8' })
+  if (!fs.existsSync(path)) {
+    fs.writeFileSync(path, content, { encoding: 'utf-8' })
     return true
+  }
+  if (judgeRepeat) {
+    console.error(`${path} 已存在`)
+    return false
+  }
+  fs.writeFileSync(getNoRepeatFilePath(path), content, { encoding: 'utf-8' })
+  return true
 }
 ```
 根据已存在的路径，生成一个新的路径逻辑如下
@@ -100,18 +100,18 @@ function createFile(path, content, judgeRepeat = true) {
 ```js
 /**
  * 获取与原文件不重复的一个文件路经
- * @param {string} originPath 
+ * @param {string} originPath
  */
 function getNoRepeatFilePath(originPath) {
-    let num = 1
-    const { dir, name, ext } = path.parse(originPath)
-    if (!fs.existsSync(originPath)) {
-        return originPath
-    }
-    while (fs.existsSync(getFilePath(dir, `${name}-${num}${ext}`))) {
-        num += 1
-    }
-    return getFilePath(dir, `${name}-${num}${ext}`)
+  let num = 1
+  const { dir, name, ext } = path.parse(originPath)
+  if (!fs.existsSync(originPath)) {
+    return originPath
+  }
+  while (fs.existsSync(getFilePath(dir, `${name}-${num}${ext}`))) {
+    num += 1
+  }
+  return getFilePath(dir, `${name}-${num}${ext}`)
 }
 ```
 
@@ -122,22 +122,22 @@ function getNoRepeatFilePath(originPath) {
 
 ```js
 commander.arguments('<filenames...>') // 多个文件/目录
-    .option('-m, --markdown', 'Export the result as a markdown file')
-    .action((filenames, cmdObj) => {
-        const { output,markdown } = cmdObj
+  .option('-m, --markdown', 'Export the result as a markdown file')
+  .action((filenames, cmdObj) => {
+    const { output, markdown } = cmdObj
 
-        // 导出
-        if (output) {
-            let outFileName = 'res'
-            // 获取所有文件的内容（同上）
-            const content = getFilesContent(filenames.map(filename => {
-                return getFilePath(cwd, filename)
-            }))
-            if (markdown) {
-                createFile(getFilePath(cwd, `${outFileName}.md`), outPutMarkdown(getJSON(content),time), false)
-            }
-        }
-    })
+    // 导出
+    if (output) {
+      const outFileName = 'res'
+      // 获取所有文件的内容（同上）
+      const content = getFilesContent(filenames.map((filename) => {
+        return getFilePath(cwd, filename)
+      }))
+      if (markdown) {
+        createFile(getFilePath(cwd, `${outFileName}.md`), outPutMarkdown(getJSON(content), time), false)
+      }
+    }
+  })
 ```
 代码涉及到的其它函前面些文章已经做了详细介绍
 
@@ -147,16 +147,16 @@ commander.arguments('<filenames...>') // 多个文件/目录
 * 将排序后的json对象，调用`getEverydayData`详细转换每一天的数据
 
 ```js
-function outPutMarkdown(jsonSchema,withTime = false) {
-    // 从小到大排
-    jsonSchema = jsonSchema.sort((a, b) => {
-        const d1 = new Date(a.title)
-        const d2 = new Date(b.title)
-        return d1 - d2
-    })
-    const res = []
-    res.push(...getEverydayData(jsonSchema, withTime))
-    return res.join('\n')
+function outPutMarkdown(jsonSchema, withTime = false) {
+  // 从小到大排
+  jsonSchema = jsonSchema.sort((a, b) => {
+    const d1 = new Date(a.title)
+    const d2 = new Date(b.title)
+    return d1 - d2
+  })
+  const res = []
+  res.push(...getEverydayData(jsonSchema, withTime))
+  return res.join('\n')
 }
 ```
 
@@ -165,36 +165,36 @@ function outPutMarkdown(jsonSchema,withTime = false) {
 从每一个具体事件(以 `*` 开头)开始遍历，解析事件的内容和消耗时间，然后累加得出任务耗时与每一天的耗时
 ```js
 function getEverydayData(timeDesc, withTime = false) {
-    let res = []
-    // 按天任务时间汇总
-    timeDesc.forEach(oneDay => {
-        const _oneRes = []
-        const { title, tasks } = oneDay
-        const sum = tasks.reduce((pre, task, _i) => {
-            const { title, things } = task
-            const sum = things.reduce((pre, thing) => {
-                // 某件事情况
-                const { content, time } = thing
-                _oneRes.unshift(`* ${content} -- ${fixedNum(time)}`)
-                return pre + (+thing.time)
-            }, 0)
+  let res = []
+  // 按天任务时间汇总
+  timeDesc.forEach((oneDay) => {
+    const _oneRes = []
+    const { title, tasks } = oneDay
+    const sum = tasks.reduce((pre, task, _i) => {
+      const { title, things } = task
+      const sum = things.reduce((pre, thing) => {
+        // 某件事情况
+        const { content, time } = thing
+        _oneRes.unshift(`* ${content} -- ${fixedNum(time)}`)
+        return pre + (+thing.time)
+      }, 0)
 
-            // 某一个任务
-            _oneRes.unshift(`## ${title} -- ${fixedNum(sum)}`)
-            return pre + sum
-        }, 0)
+      // 某一个任务
+      _oneRes.unshift(`## ${title} -- ${fixedNum(sum)}`)
+      return pre + sum
+    }, 0)
 
-        // 一天的标题
-        _oneRes.unshift(`# ${title} -- ${fixedNum(sum)}`)
-        res.push(..._oneRes, '')
+    // 一天的标题
+    _oneRes.unshift(`# ${title} -- ${fixedNum(sum)}`)
+    res.push(..._oneRes, '')
+  })
+  // 去掉统计的时间
+  if (!withTime) {
+    res = res.map((v) => {
+      return v.replace(/\s--.*/, '')
     })
-    // 去掉统计的时间
-    if (!withTime) {
-        res = res.map(v => {
-            return v.replace(/\s--.*/, '')
-        })
-    }
-    return res
+  }
+  return res
 }
 ```
 
@@ -214,4 +214,3 @@ function getEverydayData(timeDesc, withTime = false) {
 本系列会不断的更新迭代，直至产品初代完成
 
 * [仓库地址](https://github.com/ATQQ/time-control)
-

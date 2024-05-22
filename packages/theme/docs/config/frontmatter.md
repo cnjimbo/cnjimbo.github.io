@@ -10,7 +10,7 @@ recommend: 1
 ---
 
 # 主题配置
-这里将配置分成了2块 
+这里将配置分成了2块
 * `home`：首页的独立配置
 * `Article`：单篇文章独立配置
 
@@ -61,7 +61,6 @@ layout: home
 配完这个之后，首页样式就有了，如下图所示
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTY3MzE4MDM5ODQ3MQ==673180398471)
-
 
 ### blog
 设置首页的博客样式文案
@@ -286,7 +285,7 @@ cover: false
 `hiddenCover` 控制是否展示当前文章的封面，全局配置开关见 [article.hiddenCover](./global.md#article)
 ```md
 ---
-hiddenCover: true 
+hiddenCover: true
 cover: url
 ---
 ```
@@ -467,7 +466,6 @@ hidden: true
 recommend: false
 ---
 ```
-
 
 比如设置在`changelog.md`里，首页将不会展示此项
 

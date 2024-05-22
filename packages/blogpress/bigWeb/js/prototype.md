@@ -24,11 +24,11 @@ categories:
 
 **示例**
 ```js
-function Animal(){}
+function Animal() {}
 Animal.prototype.weight = 20
 
-let dog1 = new Animal()
-let dog2 = new Animal()
+const dog1 = new Animal()
+const dog2 = new Animal()
 console.log(dog1.weight) // 20
 console.log(dog2.weight) // 20
 ```
@@ -41,13 +41,13 @@ console.log(dog2.weight) // 20
 
 **示例**
 ```js
-function Animal(){ }
+function Animal() { }
 Animal.prototype.weight = 20
 
-let dog1 = new Animal()
+const dog1 = new Animal()
 console.log(dog1.__proto__ === Animal.prototype) // true
 // es5方法获取对象原型
-console.log(Object.getPrototypeOf(dog1)===Animal.prototype) // true
+console.log(Object.getPrototypeOf(dog1) === Animal.prototype) // true
 ```
 ### constructor
 * 每个原型都有一个``constructor``属性
@@ -56,11 +56,11 @@ console.log(Object.getPrototypeOf(dog1)===Animal.prototype) // true
 
 **示例**
 ```js
-function Animal(){ }
+function Animal() { }
 
 console.log(Animal === Animal.prototype.constructor) // true
 
-let dog = new Animal()
+const dog = new Animal()
 // 从原型链上查找到的constructor属性
 console.log(dog.constructor === Animal.prototype.constructor) // true
 console.log(dog.constructor === Animal) // true
@@ -75,12 +75,12 @@ function Teacher() { }
 Teacher.prototype.name = '老师'
 
 function Student(name) {
-    this.name = name + '同学'
+  this.name = `${name}同学`
 }
 Student.prototype = Object.create(Teacher.prototype)
 Student.prototype.constructor = Student
 
-let s1 = new Student('小明')
+const s1 = new Student('小明')
 console.log(s1.name) // 小明同学
 delete s1.name
 console.log(s1.name) // 老师
@@ -89,10 +89,10 @@ console.log(s1.sex) // undefined
 ## 原型的原型
 * 原型也是一个对象,可以通过``new Object()``的方式创建
 ```js
-let obj = new Object()
+const obj = new Object()
 
-function Animal(){}
-let cat = new Animal()
+function Animal() {}
+const cat = new Animal()
 // 实例对象的原型
 console.log(cat.__proto__ === Animal.prototype) // true
 // 原型的原型
@@ -115,4 +115,3 @@ console.log(Object.prototype.__proto__ === null) // true
 :::tip 参考
 [JavaScript深入之从原型到原型链](https://github.com/mqyqingfeng/Blog/issues/2)
 :::
-

@@ -28,24 +28,25 @@ vite --debug
 在源码中搜索 `--debug`，可以在[vite/packages/vite/bin/vite.js](https://github.com/vitejs/vite/blob/63c7a88cadfff1d9fb10f63415a7132bf5eec483/packages/vite/bin/vite.js#L14)文件中定位到目标代码
 
 ```js
-const debugIndex = process.argv.findIndex((arg) => /^(?:-d|--debug)$/.test(arg))
+const debugIndex = process.argv.findIndex(arg => /^(?:-d|--debug)$/.test(arg))
 
 if (debugIndex > 0) {
   let value = process.argv[debugIndex + 1]
   if (!value || value.startsWith('-')) {
     value = 'vite:*'
-  } else {
+  }
+  else {
     // support debugging multiple flags with comma-separated list
     value = value
       .split(',')
-      .map((v) => `vite:${v}`)
+      .map(v => `vite:${v}`)
       .join(',')
   }
   process.env.DEBUG = value
 }
 ```
 
-可以看到如果使用了`--debug`或者`-d`参数，`process.env`上挂载`DEBUG`变量标识开启了Debug 
+可以看到如果使用了`--debug`或者`-d`参数，`process.env`上挂载`DEBUG`变量标识开启了Debug
 
 ## 定位打印日志方法
 debug下每条日志都是以`vite:label`开头，比如
@@ -73,8 +74,8 @@ export function createDebugger(
 ): debug.Debugger['log'] {
   const log = debug(namespace)
   const { onlyWhenFocused } = options
-  const focus =
-    typeof onlyWhenFocused === 'string' ? onlyWhenFocused : namespace
+  const focus
+    = typeof onlyWhenFocused === 'string' ? onlyWhenFocused : namespace
   return (msg: string, ...args: any[]) => {
     if (filter && !msg.includes(filter)) {
       return
@@ -96,40 +97,41 @@ export function createDebugger(
 入口文件比较简单，这里直接去看`./node.js`中的逻辑
 ```js
 if (typeof process === 'undefined' || process.type === 'renderer' || process.browser === true || process.__nwjs) {
-	module.exports = require('./browser.js');
-} else {
-	module.exports = require('./node.js');
+  module.exports = require('./browser.js')
+}
+else {
+  module.exports = require('./node.js')
 }
 ```
 
 这部分代码一共只有**264**行，关键代码如下
 ```js
-exports.log = log;
+exports.log = log
 
 function log(...args) {
-	return process.stderr.write(util.format(...args) + '\n');
+  return process.stderr.write(`${util.format(...args)}\n`)
 }
 
-module.exports = require('./common')(exports);
+module.exports = require('./common')(exports)
 ```
 **./common.js**中部分代码
 ```js
 function setup(env) {
-	createDebug.debug = createDebug;
-	createDebug.default = createDebug;
+  createDebug.debug = createDebug
+  createDebug.default = createDebug
 
-	function createDebug(namespace) {
-		function debug(...args) {
-			const self = debug;
-			const logFn = self.log || createDebug.log;
-			logFn.apply(self, args);
-		}
-		return debug;
-	}
-	return createDebug;
+  function createDebug(namespace) {
+    function debug(...args) {
+      const self = debug
+      const logFn = self.log || createDebug.log
+      logFn.apply(self, args)
+    }
+    return debug
+  }
+  return createDebug
 }
 
-module.exports = setup;
+module.exports = setup
 ```
 到此能够确定日志的打印都是通过`process.stderr.write`方法输出的内容
 
@@ -141,18 +143,18 @@ module.exports = setup;
 定义插件入参
 ```ts
 interface PluginOptions {
-    /**
-     * 是否在终端中输出原来的日志
-     */
-    log?: boolean
-    /**
-     * 默认回调
-     */
-    monitor?: MonitorCallback
-    /**
-     * debug回调
-     */
-    debug?: DebugCallback
+  /**
+   * 是否在终端中输出原来的日志
+   */
+  log?: boolean
+  /**
+   * 默认回调
+   */
+  monitor?: MonitorCallback
+  /**
+   * debug回调
+   */
+  debug?: DebugCallback
 }
 ```
 直接在调用插件方法的时候进行`write`方法重写，具体实现逻辑如下
@@ -188,7 +190,6 @@ export default function Monitor(ops: PluginOptions = {}): Plugin {
           const time2 = (originStr.match(/\+(\d+)ms/) || [])[1];
           const time = +(time1 || 0) + +(time2 || 0);
 
-
           if (tag && monitor) {
             monitor(tag, time, {
               time1: +(time1 || 0),
@@ -217,7 +218,7 @@ export default function Monitor(ops: PluginOptions = {}): Plugin {
 ## 体验插件
 >[插件源码](https://github.com/ATQQ/vite-plugin-monitor/tree/main/#readme)
 
-安装依赖 
+安装依赖
 ```sh
 yarn add vite-plugin-monitor --dev
 ```
@@ -256,4 +257,3 @@ vite --debug
 目前已经能够完全拦截到debug下的所有内容，但内容由于有彩色打印相关的字符，提取信息比较麻烦
 
 下一步将对日志的提取再做一些格式化，确保能够解析出完整的日志内容
-

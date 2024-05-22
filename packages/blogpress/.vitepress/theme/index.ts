@@ -23,11 +23,11 @@ export default {
           const tagName = url.pathname.match(pattern)?.[2]
           if (tagName) {
             window.location.replace(
-              `${window.location.origin}${ctx.router.route.path}?tag=${tagName}`
+              `${window.location.origin}${ctx.router.route.path}?tag=${tagName}`,
             )
           }
         }
       }
     }
-  }
+  },
 }

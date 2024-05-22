@@ -1,34 +1,72 @@
 {
 	"folders": [
 		{
-			"name": "✨  root",
+			"name": "🌱  sugar-wiki-monorepo",
 			"path": "."
 		},
 		{
-			"name": "📦  blogpress (CORE)",
+			"name": "🍀  blogpress",
 			"path": "packages/blogpress"
 		},
 		{
-			"name": "📦  @sugarat/create-theme (CORE)",
+			"name": "🍀  @sugarat/create-theme",
 			"path": "packages/create-theme"
 		},
 		{
-			"name": "📦  @sugarat/theme (CORE)",
+			"name": "🍀  @sugarat/theme",
 			"path": "packages/theme"
-		},
-		{
-			"name": "📦  vitepress-plugin-pagefind (CORE)",
-			"path": "packages/vitepress-plugin-pagefind"
-		},
-		{
-			"name": "📦  vitepress-plugin-rss (CORE)",
-			"path": "packages/vitepress-plugin-rss"
 		}
 	],
 	"settings": {
 		"conventionalCommits.scopes": [
-			"tsup"
+			"workspace"
 		],
-		"typescript.tsdk": "node_modules/typescript/lib"
+		"workbench.colorCustomizations": {
+			"statusBar.background": "#17d3e1",
+			"statusBar.foreground": "#000000",
+			"tab.activeBorder": "#17d3e1",
+			"sideBarTitle.foreground": "#17d3e1"
+		},
+		"ColorfulMonorepo.workspaces.collection": [
+			{
+				"path": "c:\\AppData\\code-vPress\\cnjimbo.github.io",
+				"packageName": "sugar-wiki-monorepo",
+				"label": "🌱  sugar-wiki-monorepo",
+				"foreground": "#000000",
+				"background": "#17d3e1"
+			},
+			{
+				"path": "c:\\AppData\\code-vPress\\cnjimbo.github.io\\packages\\blogpress",
+				"packageName": "blogpress",
+				"label": "🍀  blogpress",
+				"foreground": "#000000",
+				"background": "#dbe172"
+			},
+			{
+				"path": "c:\\AppData\\code-vPress\\cnjimbo.github.io\\packages\\create-theme",
+				"packageName": "@sugarat/create-theme",
+				"label": "🍀  @sugarat/create-theme",
+				"foreground": "#000000",
+				"background": "#b494ce"
+			},
+			{
+				"path": "c:\\AppData\\code-vPress\\cnjimbo.github.io\\packages\\theme",
+				"packageName": "@sugarat/theme",
+				"label": "🍀  @sugarat/theme",
+				"foreground": "#ffffff",
+				"background": "#0f53f2"
+			}
+		],
+		"files.exclude": {
+			"**/.git": true,
+			"**/.svn": true,
+			"**/.hg": true,
+			"**/CVS": true,
+			"**/.DS_Store": true,
+			"**/Thumbs.db": true,
+			"**/node_modules": true,
+			"**/.history": true
+		},
+		"explorerExclude.backup": {}
 	}
 }
