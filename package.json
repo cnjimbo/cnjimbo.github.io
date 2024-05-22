@@ -35,8 +35,8 @@
     "pc:version": "pnpm changeset version",
     "pcpe": "changeset pre enter beta",
     "pcpe:exit": "changeset pre enter exit",
-    "postinstall": "pnpm pnpx simple-git-hooks",
-    "preinstall": "pnpm pnpx only-allow pnpm"
+    "postinstall_x": "npx simple-git-hooks",
+    "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
     "pagefind": "^1.1.0"
@@ -68,8 +68,7 @@
     "pre-commit": "pnpm lint-staged"
   },
   "lint-staged": {
-
-
+    "*": "eslint --fix"
   },
   "volta": {
     "node": "20.11.0"
