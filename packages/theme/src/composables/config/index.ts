@@ -1,7 +1,10 @@
+/* eslint-disable ts/no-namespace */
 import type { ElButton } from 'element-plus'
-import type { DefaultTheme } from 'vitepress'
+import type { DefaultTheme, Route } from 'vitepress'
 import type { RSSOptions } from 'vitepress-plugin-rss'
 import type { Mapping, Repo } from '@giscus/vue'
+import type { Options as Oml2dOptions } from 'oh-my-live2d'
+import type { Ref } from 'vue'
 
 type RSSPluginOptions = RSSOptions
 
@@ -38,8 +41,8 @@ export declare namespace BlogPopover {
 
 export type ThemeableImage =
   | string
-  | { src: string, alt?: string }
-  | { light: string, dark: string, alt?: string }
+  | { src: string; alt?: string }
+  | { light: string; dark: string; alt?: string }
 
 export namespace Theme {
   export interface PageMeta {
@@ -65,7 +68,7 @@ export namespace Theme {
     /**
      * 手动控制相关文章列表的顺序
      */
-    recommend?: number | false
+    recommend?: number | false | string | string[] | [...string[], number]
     /**
      * TODO: 待开发
      * 时间线
@@ -95,10 +98,39 @@ export namespace Theme {
   }
   export interface activeTag {
     label: string
-    type: string
+    /**
+     * @type {string}
+     */
+    type: any
   }
 
-  export interface GiscusConfig {
+  export type CommentConfig = ((GiscusOption & CommentCommonConfig) | GiscusConfig | ArtalkConfig)
+
+  export interface CommentCommonConfig {
+    /**
+     * @default '评论'
+     */
+    label?: string
+    /**
+     * 自定义图标，SVG 格式
+     * @recommend https://iconbuddy.app/search?q=fire
+     */
+    icon?: string
+    /**
+     * 移动端最小化按钮
+     * @default true
+     */
+    mobileMinify?: boolean
+  }
+  export interface GiscusConfig extends CommentCommonConfig {
+    type: 'giscus'
+    options: GiscusOption
+  }
+  export interface ArtalkConfig extends CommentCommonConfig {
+    type: 'artalk'
+    options: ArtalkOption
+  }
+  export interface GiscusOption {
     repo: Repo
     repoId: string
     category: string
@@ -107,6 +139,10 @@ export namespace Theme {
     inputPosition?: 'top' | 'bottom'
     lang?: string
     loading?: 'lazy' | 'eager'
+  }
+  export interface ArtalkOption {
+    site: string
+    server: string
   }
 
   export interface HotArticle {
@@ -161,6 +197,11 @@ export namespace Theme {
 
   export interface ArticleConfig {
     readingTime?: boolean
+    /**
+     * 阅读时间分析展示位置
+     * @default 'inline'
+     */
+    readingTimePosition?: 'inline' | 'newLine' | 'top'
     hiddenCover?: boolean
   }
   export interface Alert {
@@ -180,6 +221,9 @@ export namespace Theme {
     html?: string
   }
 
+  /**
+   * 公告
+   */
   export interface Popover {
     title: string
     /**
@@ -188,12 +232,38 @@ export namespace Theme {
      * 配置改变时，会重新触发展示
      */
     duration: number
+    /**
+     * 移动端自动最小化
+     * @default false
+     */
+    mobileMinify?: boolean
     body?: BlogPopover.Value[]
     footer?: BlogPopover.Value[]
     /**
      * 手动重新打开
+     * @default true
      */
     reopen?: boolean
+    /**
+     * 是否打开闪烁提示，通常需要和 reopen 搭配使用
+     * @default true
+     */
+    twinkle?: boolean
+    /**
+     * 设置展示图标，svg
+     * @recommend https://iconbuddy.app/search?q=fire
+     */
+    icon?: string
+    /**
+     * 设置关闭图标，svg
+     * @recommend https://iconbuddy.app/search?q=fire
+     */
+    closeIcon?: string
+    /**
+     * 自定义展示策略
+     * @param to 切换到的目标路由
+     */
+    onRouteChanged?: (to: Route, show: Ref<boolean>) => void
   }
   export interface FriendLink {
     nickname: string
@@ -224,32 +294,32 @@ export namespace Theme {
     title: string
     description: string
     time:
-      | string
-      | {
-        start: string
-        end?: string
-        lastupdate?: string
-      }
+    | string
+    | {
+      start: string
+      end?: string
+      lastupdate?: string
+    }
     status?: {
       text: string
       type?: 'tip' | 'warning' | 'danger'
     }
     url?: string
     github?:
-      | string
-      | {
-        owner: string
-        repo: string
-        branch?: string
-        path?: string
-      }
+    | string
+    | {
+      owner: string
+      repo: string
+      branch?: string
+      path?: string
+    }
     cover?:
-      | string
-      | string[]
-      | {
-        urls: string[]
-        layout?: 'swiper' | 'list'
-      }
+    | string
+    | string[]
+    | {
+      urls: string[]
+      layout?: 'swiper' | 'list'
+    }
     links?: {
       title: string
       url: string
@@ -298,7 +368,7 @@ export namespace Theme {
     pagesData: PageData[]
     srcDir?: string
     author?: string
-    hotArticle?: HotArticle
+    hotArticle?: HotArticle | false
     home?: HomeBlog
     /**
      * 本地全文搜索定制
@@ -309,9 +379,10 @@ export namespace Theme {
     search?: SearchConfig
     /**
      * 配置评论
-     * power by https://giscus.app/zh-CN
+     * giscus: https://giscus.app/zh-CN
+     * artalk: https://artalk.js.org/
      */
-    comment?: GiscusConfig | false
+    comment?: CommentConfig | false
     /**
      * 阅读文章左侧的推荐文章（替代默认的sidebar）
      */
@@ -361,8 +432,52 @@ export namespace Theme {
     /**
      * 配置内置的 markdown-it-task-checkbox 插件，设置 false 则关闭
      * 详见 https://github.com/linsir/markdown-it-task-checkbox
+     * @default true
      */
     taskCheckbox?: TaskCheckbox | boolean
+    /**
+     * 支持 markdown 时间线语法，在 vitepress 中使用 markdown 渲染时间线（时间轴）样式。
+     * 详见 https://github.com/HanochMa/vitepress-markdown-timeline
+     * @default true
+     */
+    timeline?: boolean
+    /**
+     * 回到顶部
+     * @default true
+     */
+    backToTop?: boolean | BackToTop
+
+    /**
+     * oh-my-live2d 的 loadOml2d 方法的配置选项
+     * 详见 https://oml2d.com/options/Options.html
+     */
+    oml2d?: Oml2dOptions
+    homeTags?: boolean
+    buttonAfterArticle?: ButtonAfterArticleConfig | false
+    /**
+     * 是否开启深色模式过渡动画
+     * @reference https://vitepress.dev/zh/guide/extending-default-theme#on-appearance-toggle
+     * @default true
+     */
+    darkTransition?: boolean
+    /**
+     * 渲染时替换图片地址
+     */
+    imageStyle?: ImageStyleConfig
+  }
+
+  export interface BackToTop {
+    /**
+     * 距离顶部多少距离出现
+     * @default 450
+     */
+    top?: number
+
+    /**
+     * 设置展示图标，svg
+     * @recommend https://iconbuddy.app/search?q=fire
+     */
+    icon?: string
   }
 
   export interface TaskCheckbox {
@@ -376,11 +491,25 @@ export namespace Theme {
 
   export type RSSOptions = RSSPluginOptions
 
+  export interface FooterItem {
+    text: string
+    link?: string
+    icon?: boolean | string
+  }
+
   export interface Footer {
     /**
-     * 自定义补充信息
+     * 自定义补充信息（支持配置为HTML），在内置的 footer 上方
      */
     message?: string | string[]
+    /**
+     * 自定义补充信息（支持配置为HTML），在内置的 footer 下方
+     */
+    bottomMessage?: string | string[]
+    /**
+     * 自定义补充信息（支持配置为HTML），紧随内置的后方
+     */
+    list?: string | string[] | FooterItem | FooterItem[]
     /**
      * 是否展示主题版本信息
      */
@@ -419,5 +548,42 @@ export namespace Theme {
      * 此方法已经废弃，这个定义将在未来某一刻被移除，请为 inspiring 配置数租来实现相同的效果
      */
     handleChangeSlogan?: (oldSlogan: string) => string | Promise<string>
+  }
+  export interface ButtonAfterArticleConfig {
+    openTitle?: string
+    closeTitle?: string
+    content?: string
+    icon?: 'aliPay' | 'wechatPay' | string
+    /**
+     * 按钮尺寸
+     * @default 'default'
+     */
+    size?: 'small' | 'default' | 'large'
+    /**
+     * 默认展开
+     * @default false
+     */
+    expand?: boolean
+  }
+
+  export interface ReplaceRule {
+    /**
+     * 匹配规则
+     */
+    rule: string | RegExp
+    /**
+     * 直接追加后缀
+     */
+    suffix?: string
+    /**
+     * 替换函数或字符串(优先级高于 suffix)
+     */
+    replace?: string | ((match: string) => string)
+  }
+  export interface ImageStyleConfig {
+    /**
+     * 首页封面预览图
+     */
+    coverPreview?: ReplaceRule | ReplaceRule[]
   }
 }

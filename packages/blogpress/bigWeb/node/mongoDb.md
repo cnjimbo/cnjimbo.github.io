@@ -18,11 +18,7 @@ categories:
 ## 获取数据库链接
 ```ts
 const {
-  host,
-  port,
-  user,
-  password,
-  database,
+  host, port, user, password, database,
 } = mongodbConfig
 const url = `mongodb://${user}:${password}@${host}:${port}/${database}`
 
@@ -30,8 +26,8 @@ const url = `mongodb://${user}:${password}@${host}:${port}/${database}`
 // const url = `mongodb://${host}:${port}/${database}`
 
 interface Res {
-  db: MongoClient
-  Db: Db
+    db: MongoClient
+    Db: Db
 }
 
 function getDBConnection(): Promise<Res> {
@@ -64,7 +60,7 @@ export function query<T>(callback: Callback<T>): Promise<T> {
       // 执行回调
       callback(Db, resolve)
       // resolve后关闭
-      p.catch(e => rej(e))
+      p.catch((e) => rej(e))
         .finally(() => {
           db.close()
         })
@@ -79,14 +75,14 @@ export function query<T>(callback: Callback<T>): Promise<T> {
 ## CRUD
 ### 插入数据
 ```ts
-function insertCollection<T>(collection: string, data: T[] | T, many = false) {
-  return mongoDbQuery<InsertOneWriteOpResult<WithId<T>>>((db, resolve) => {
-    if (many && Array.isArray(data)) {
-      db.collection<T>(collection).insertMany(data as any).then(resolve as any)
-      return
-    }
-    db.collection<T>(collection).insertOne(data as any).then(resolve)
-  })
+function insertCollection<T>(collection: string, data: T[] | T, many = false){
+    return mongoDbQuery<InsertOneWriteOpResult<WithId<T>>>((db, resolve) => {
+        if (many && Array.isArray(data)) {
+            db.collection<T>(collection).insertMany(data as any).then(resolve as any)
+            return
+        }
+        db.collection<T>(collection).insertOne(data as any).then(resolve)
+    })
 }
 ```
 参数：
@@ -96,12 +92,12 @@ function insertCollection<T>(collection: string, data: T[] | T, many = false) {
 
 ### 查询数据
 ```ts
-function findCollection<T>(collection: string, query: FilterQuery<T>) {
-  return mongoDbQuery<T[]>((db, resolve) => {
-    db.collection<T>(collection).find(query).toArray().then((data) => {
-      resolve(data)
+function findCollection<T>(collection: string, query: FilterQuery<T>){
+    return mongoDbQuery<T[]>((db, resolve) => {
+        db.collection<T>(collection).find(query).toArray().then((data) => {
+            resolve(data)
+        })
     })
-  })
 }
 ```
 参数：
@@ -110,14 +106,14 @@ function findCollection<T>(collection: string, query: FilterQuery<T>) {
 
 ### 更新数据
 ```ts
-function updateCollection<T>(collection: string, query: FilterQuery<T>, data: UpdateQuery<T> | Partial<T>, many = false) {
-  return mongoDbQuery<UpdateWriteOpResult>((db, resolve) => {
-    if (many) {
-      db.collection<T>(collection).updateMany(query, data).then(resolve)
-      return
-    }
-    db.collection<T>(collection).updateOne(query, data).then(resolve)
-  })
+function updateCollection<T>(collection: string, query: FilterQuery<T>, data: UpdateQuery<T> | Partial<T>, many = false){
+    return mongoDbQuery<UpdateWriteOpResult>((db, resolve) => {
+        if (many) {
+            db.collection<T>(collection).updateMany(query, data).then(resolve)
+            return
+        }
+        db.collection<T>(collection).updateOne(query, data).then(resolve)
+    })
 }
 ```
 参数：
@@ -129,13 +125,13 @@ function updateCollection<T>(collection: string, query: FilterQuery<T>, data: Up
 ### 删除数据
 ```ts
 function deleteCollection<T>(collection: string, query: FilterQuery<T>, many = false) {
-  return mongoDbQuery<DeleteWriteOpResultObject>((db, resolve) => {
-    if (many) {
-      db.collection(collection).deleteMany(query).then(resolve)
-      return
-    }
-    db.collection(collection).deleteOne(query).then(resolve)
-  })
+    return mongoDbQuery<DeleteWriteOpResultObject>((db, resolve) => {
+        if (many) {
+            db.collection(collection).deleteMany(query).then(resolve)
+            return
+        }
+        db.collection(collection).deleteOne(query).then(resolve)
+    })
 }
 ```
 ## 业务调用示例
@@ -153,22 +149,23 @@ function addUser(userId: string, options = {}) {
   return insertCollection('user', { userId, ...ops })
 }
 
-function findUser(user: User) {
+function findUser(user:User) {
   return findCollection<User>('user', user)
 }
 
 function updateUserInfo(userId: string, info: User) {
-  return updateCollection<User>('user', {
-    userId,
-  }, {
-    $set: info,
-  })
+    return updateCollection<User>('user', {
+        userId,
+    }, {
+        $set: info,
+    })
 }
 
 function deleteUser(userId: number) {
-  return deleteCollection<User>('user', { id: userId })
+    return deleteCollection<User>('user', { id: userId })
 }
 ```
 
 ## 最后
 完整源码地址移步[这里](https://github.com/ATQQ/node-server/blob/master/src/lib/dbConnect/mongodb.ts)
+

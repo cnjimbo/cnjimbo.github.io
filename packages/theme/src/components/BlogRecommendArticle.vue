@@ -1,10 +1,11 @@
 <script lang="ts" setup>
-import { computed, ref } from 'vue'
-import { useRoute, withBase } from 'vitepress'
-import { ElButton, ElLink } from 'element-plus'
-import { formatShowDate } from '../utils/client'
-import { useArticles, useBlogConfig } from '../composables/config/blog'
+import { computed, onMounted, ref } from 'vue'
+import { useRoute, useRouter, withBase } from 'vitepress'
+import { ElButton } from 'element-plus'
+import { formatShowDate, wrapperCleanUrls } from '../utils/client'
+import { useArticles, useBlogConfig, useCleanUrls } from '../composables/config/blog'
 import { recommendSVG } from '../constants/svg'
+import type { Theme } from '../composables/config/index'
 
 const { recommend: _recommend } = useBlogConfig()
 
@@ -27,18 +28,47 @@ const docs = useArticles()
 
 const route = useRoute()
 
+function getRecommendCategory(page?: Theme.PageData): string[] {
+  if (!page)
+    return []
+  const { meta } = page
+  if (Array.isArray(meta.recommend)) {
+    return meta.recommend.filter(v => typeof v === 'string') as string[]
+  }
+  if (typeof meta.recommend === 'string') {
+    return [meta.recommend]
+  }
+  return []
+}
+
+function getRecommendValue(page?: Theme.PageData) {
+  return Array.isArray(page?.meta?.recommend) ? page.meta.recommend[page.meta.recommend.length - 1] : page?.meta.recommend
+}
+
+function hasIntersection(arr1: any[], arr2: any[]) {
+  return arr1.some(item => arr2.includes(item))
+}
+
 const recommendList = computed(() => {
   // 中文支持
   const paths = decodeURIComponent(route.path).split('/')
-
+  const currentPage = docs.value.find(v => isCurrentDoc(v.route))
+  const currentRecommendCategory = getRecommendCategory(currentPage)
   const origin = docs.value
     .map(v => ({ ...v, route: withBase(v.route) }))
-    // 过滤出公共路由前缀
-    // 限制为同路由前缀
     .filter(
-      v =>
-        v.route.split('/').length === paths.length
+      (v) => {
+        // 筛选出类别有交集的
+        if (currentRecommendCategory.length) {
+          return hasIntersection(currentRecommendCategory, getRecommendCategory(v))
+        }
+        // 如果没有自定义归类则保持原逻辑
+        // 过滤出公共路由前缀
+        // 限制为同路由前缀
+        return v.route.split('/').length === paths.length
         && v.route.startsWith(paths.slice(0, paths.length - 1).join('/'))
+      }
+
     )
     // 过滤出带标题的
     .filter(v => !!v.meta.title)
@@ -50,12 +80,16 @@ const recommendList = computed(() => {
     )
     // 过滤掉不需要展示的
     .filter(v => v.meta.recommend !== false)
+    // 自定义过滤
     .filter(v => recommend.value?.filter?.(v) ?? true)
 
-  const topList = origin.filter(v => v.meta?.recommend)
-  topList.sort((a, b) => Number(a.meta.recommend) - Number(b.meta.recommend))
+  const topList = origin.filter((v) => {
+    const value = getRecommendValue(v)
+    return typeof value === 'number'
+  })
+  topList.sort((a, b) => Number(getRecommendValue(a)) - Number(getRecommendValue(b)))
 
-  const normalList = origin.filter(v => !v.meta?.recommend)
+  const normalList = origin.filter(v => typeof getRecommendValue(v) !== 'number')
 
   // 排序
   const sortMode = recommend.value?.sort ?? 'date'
@@ -88,6 +122,7 @@ function changePage() {
   const newIdx
     = currentPage.value % Math.ceil(recommendList.value.length / pageSize.value)
   currentPage.value = newIdx + 1
+  return newIdx + 1
 }
 // 当前页开始的序号
 const startIdx = computed(() => (currentPage.value - 1) * pageSize.value)
@@ -101,6 +136,22 @@ const currentWikiData = computed(() => {
 const showChangeBtn = computed(() => {
   return recommendList.value.length > pageSize.value
 })
+
+onMounted(() => {
+  // 更新当前页，确保访问页面在列表中
+  const currentPageIndex = recommendList.value.findIndex(v => isCurrentDoc(v.route))
+  if (currentPageIndex === -1)
+    return
+  const currentPageNum = Math.floor(currentPageIndex / pageSize.value) + 1
+  currentPage.value = currentPageNum
+})
+
+const cleanUrls = useCleanUrls()
+
+const router = useRouter()
+function handleLinkClick(link: string) {
+  router.go(link)
+}
 </script>
 
 <template>
@@ -123,13 +174,18 @@ const showChangeBtn = computed(() => {
         <!-- 简介 -->
         <div class="des">
           <!-- title -->
-          <ElLink
-            type="info" class="title" :class="{
+          <a
+            class="title" :class="{
               current: isCurrentDoc(v.route),
-            }" :href="v.route"
+            }"
+            :href="wrapperCleanUrls(cleanUrls, v.route)"
+            @click="(e) => {
+              e.preventDefault()
+              handleLinkClick(wrapperCleanUrls(cleanUrls, v.route))
+            }"
           >
-            {{ v.meta.title }}
-          </ElLink>
+            <span>{{ v.meta.title }}</span>
+          </a>
           <!-- 描述信息 -->
           <div class="suffix">
             <!-- 日期 -->
@@ -202,10 +258,23 @@ const showChangeBtn = computed(() => {
       color: var(--vp-c-text-1);
       word-break: break-all;
       white-space: break-spaces;
+      font-weight: 500;
+      position: relative;
+      cursor: pointer;
 
       &.current {
         color: var(--vp-c-brand-1);
       }
+    }
+
+    .title:hover::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 0;
+      bottom: -3px;
+      border-bottom: 1px solid #b1b3b8;
     }
 
     .suffix {

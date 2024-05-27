@@ -2,7 +2,7 @@ import { useData, useRoute, withBase } from 'vitepress'
 import type {
   Component,
   InjectionKey,
-  Ref,
+  Ref
 } from 'vue'
 import {
   computed,
@@ -13,7 +13,7 @@ import {
   onUnmounted,
   provide,
   reactive,
-  ref,
+  ref
 } from 'vue'
 import { useColorMode } from '@vueuse/core'
 
@@ -43,14 +43,14 @@ export function withConfigProvider(App: Component) {
           config.value.blog?.works || {
             title: '',
             description: '',
-            list: [],
-          },
-        ),
+            list: []
+          }
+        )
       )
 
       const activeTag = ref<Theme.activeTag>({
         label: '',
-        type: '',
+        type: ''
       })
       provide(activeTagSymbol, activeTag)
 
@@ -68,15 +68,14 @@ export function withConfigProvider(App: Component) {
           'el-blue': 'el-blue',
           'el-yellow': 'el-yellow',
           'el-green': 'el-green',
-          'el-red': 'el-red',
-        },
+          'el-red': 'el-red'
+        }
       })
       mode.value = config.value.blog?.themeColor ?? 'vp-default'
       return () => h(App, null, slots)
-    },
+    }
   })
 }
-
 export function useDocMetaInsertSelector() {
   const blogConfig = useConfig()
   const { frontmatter } = useData()
@@ -91,21 +90,26 @@ export function useDocMetaInsertPosition() {
 
 export function useConfig() {
   return {
-    config: inject(configSymbol)!.value,
+    config: inject(configSymbol)!.value
   }
 }
 
 export function useBlogConfig() {
   return inject(configSymbol)!.value.blog!
 }
+/**
+ * 获取 oh-my-live2d的配置选项
+ */
+export function useOml2dOptions() {
+  return inject(configSymbol)!.value.blog?.oml2d
+}
+
+export function useDarkTransitionConfig() {
+  return inject(configSymbol)!.value.blog?.darkTransition ?? true
+}
 
 export function useBlogThemeMode() {
   return inject(configSymbol)!.value?.blog?.blog ?? true
-}
-
-export function useGiscusConfig() {
-  const blogConfig = useConfig()
-  return blogConfig.config?.blog?.comment
 }
 
 export function useArticles() {
@@ -133,7 +137,7 @@ export function useCurrentArticle() {
     // 兼容 /(index.md)
     if (currentPath.endsWith('/')) {
       okPaths.push(
-        ...[`${currentPath}index`, `${decodeURIComponent(currentPath)}index`],
+        ...[`${currentPath}index`, `${decodeURIComponent(currentPath)}index`]
       )
     }
     return docs.value?.find(v => okPaths.includes(withBase(v.route)))
@@ -150,8 +154,8 @@ function resolveConfig(config: Theme.Config): Theme.Config {
     ...config,
     blog: {
       ...config?.blog,
-      pagesData: config?.blog?.pagesData || [],
-    },
+      pagesData: config?.blog?.pagesData || []
+    }
   }
 }
 
@@ -176,7 +180,7 @@ export function useAutoUpdateAnchor() {
   // 初始化当前锚点
   const currentAnchor = reactive({
     id: '',
-    top: -1,
+    top: -1
   })
 
   // 定义计算当前锚点的方法
@@ -215,4 +219,17 @@ export function useAutoUpdateAnchor() {
 
 export function useHomeFooterConfig() {
   return inject(homeFooter)
+}
+
+export function useBackToTopConfig() {
+  return useBlogConfig().backToTop
+}
+
+export function useCleanUrls() {
+  const { site } = useData()
+  return !!site.value.cleanUrls
+}
+
+export function useImageStyle() {
+  return inject(configSymbol)?.value?.blog?.imageStyle || {} as Theme.ImageStyleConfig
 }

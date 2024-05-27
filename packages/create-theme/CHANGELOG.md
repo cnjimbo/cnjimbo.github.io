@@ -1,5 +1,144 @@
 # @sugarat/create-theme
 
+## 0.0.61
+
+### Patch Changes
+
+- chore: update deps
+
+## 0.0.60
+
+### Patch Changes
+
+- chore: add peer deps
+
+## 0.0.59
+
+### Patch Changes
+
+- Updated dependencies
+  - vitepress-plugin-rss@0.2.4
+
+## 0.0.58
+
+### Patch Changes
+
+- chore: 依赖优化
+
+## 0.0.57
+
+### Patch Changes
+
+- fix: description xss error
+
+## 0.0.56
+
+### Patch Changes
+
+- feat: support theme auto reload
+
+## 0.0.55
+
+### Patch Changes
+
+- chore: 依赖升级
+
+## 0.0.54
+
+### Patch Changes
+
+- chore: update deps
+
+## 0.0.53
+
+### Patch Changes
+
+- chore: remove pnpm warn
+
+## 0.0.52
+
+### Patch Changes
+
+- chore: 依赖更新
+
+## 0.0.51
+
+### Patch Changes
+
+- chore: update deps
+
+## 0.0.50
+
+### Patch Changes
+
+- chore: update deps
+
+## 0.0.49
+
+### Patch Changes
+
+- feat: 内置 oml2d 看板娘
+
+## 0.0.48
+
+### Patch Changes
+
+- feat: 依赖升级
+
+## 0.0.47
+
+### Patch Changes
+
+- feat: 模板更新
+
+## 0.0.46
+
+### Patch Changes
+
+- feat: up deps
+
+## 0.0.45
+
+### Patch Changes
+
+- chore: up deps
+
+## 0.0.44
+
+### Patch Changes
+
+- feat: rss 与 pagefind 插件升级
+
+## 0.0.43
+
+### Patch Changes
+
+- chore: adapt to rc43
+
+## 0.0.42
+
+### Patch Changes
+
+- feat: up deps
+
+## 0.0.41
+
+### Patch Changes
+
+- feat: up deps
+
+## 0.0.40
+
+### Patch Changes
+
+- update deps
+
+## 0.0.39
+
+### Patch Changes
+
+- update template
+
 ## 0.0.38
 
 ### Patch Changes

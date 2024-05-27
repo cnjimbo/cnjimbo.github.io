@@ -20,7 +20,7 @@ categories:
 
 **示例**
 ```js
-[] == ![]
+[] == ![] 
 [] == !true
 [] == false
 [] == 0
@@ -33,13 +33,14 @@ categories:
 
 **示例**
 ```js
-true === 'true' // false 类型不同
+true==='true' // false 类型不同
 
 true == 'true'
 1 == 'true'
-Number.NaN == 1 // false
+1 == NaN // false
 ```
 
 :::tip 更多参考
 [JS中的类型转换](./../../bigWeb/js/typeConvert.md)
 :::
+

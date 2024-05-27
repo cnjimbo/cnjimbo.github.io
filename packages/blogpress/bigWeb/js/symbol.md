@@ -19,7 +19,7 @@ categories:
 * Symbol 值可以显式转为字符串
 ## 简单使用
 ```js
-const a = Symbol()
+let a = Symbol()
 console.log(a) // Symbol()
 console.log(typeof a) // symbol
 ```
@@ -27,52 +27,52 @@ console.log(typeof a) // symbol
 ## 传入参数
 接受一个字符串作为参数,对 Symbol 实例的描述
 ```js
-const a = Symbol('1')
-const b = Symbol('2')
+let a = Symbol('1')
+let b = Symbol('2')
 console.log(a) // Symbol(1)
 console.log(b) // Symbol(2)
 ```
 相同参数的 Symbol 函数的返回值是不相等的。
 ```js
-const a = Symbol('1')
-const b = Symbol('1')
-console.log(a === b) // false
+let a = Symbol('1')
+let b = Symbol('1')
+console.log(a===b) // false
 ```
 
 ## Stmbol.for
 接受一个字符串作为参数，然后搜索有没有以该参数作为名称的 Symbol 值。如果有，就返回这个 Symbol 值，否则就新建并返回一个以该字符串为名称的 Symbol 值。
 
 ```js
-const a = Symbol.for('a')
-const aa = Symbol.for('a')
+let a = Symbol.for('a')
+let aa = Symbol.for('a')
 console.log(a === aa) // true
 ```
 
 ## Symbol.keyFor
 返回一个已登记的 Symbol 类型值的 key
 ```js
-const a = Symbol.for('a')
+let a = Symbol.for('a')
 console.log(Symbol.keyFor(a)) // a
 
-const b = Symbol('b')
+let b = Symbol('b')
 console.log(Symbol.keyFor(b)) // undefined
 ```
 
 ## 用途
 1. 作为标识符,对象属性名称
 ```js
-const apple = Symbol()
+let apple = Symbol()
 // 第一种
 let a = {}
 a[apple] = 'apple'
 
 // 第二种
 let a = {
-  [apple]: 'apple'
+    [apple]:"apple"
 }
 
 let a = {}
-Object.defineProperty(a, apple, { value: 'apple' })
+Object.defineProperty(a,apple,{value:'apple'})
 console.log(a[apple]) // apple
 ```
 Symbol 作为属性名:
@@ -82,24 +82,24 @@ Symbol 作为属性名:
 
 2. 常量
 ```js
-const APPLE = Symbol()
-const ORANGE = Symbol()
-const BANANA = Symbol()
+let APPLE = Symbol()
+let ORANGE = Symbol()
+let BANANA = Symbol()
 ```
 3. 单例模式中运用
 Phone.js
 ```js
 class Phone {
-  constructor() {
-    this.name = '小米'
-    this.price = '1999'
-  }
+    constructor() {
+        this.name = '小米'
+        this.price = '1999'
+    }
 }
 
-const key = Symbol.for('Phone')
+let key = Symbol.for('Phone')
 
 if (!global[key]) {
-  global[key] = new Phone()
+    global[key] = new Phone()
 }
 
 module.exports = global[key]
@@ -117,28 +117,29 @@ User.js
 const AGE = Symbol()
 const GET_AGE = Symbol()
 class User {
-  constructor(name, sex, age) {
-    this.name = name
-    this.sex = sex
-    this[AGE] = age
-    this[GET_AGE] = function () {
-      return this[AGE]
+    constructor(name, sex, age) {
+        this.name = name
+        this.sex = sex
+        this[AGE] = age
+        this[GET_AGE] = function () {
+            return this[AGE]
+        }
     }
-  }
+    printAge() {
+        console.log(this[GET_AGE]())
+    }
 
-  printAge() {
-    console.log(this[GET_AGE]())
-  }
 }
 module.exports = User
 ```
 test.js
 ```js
-const User = require('./User')
+let User = require('./User')
 
-const u1 = new User('xm', 'M', 18)
+let u1 = new User('xm', 'M', 18)
 
 console.log(u1.name) // xm
 console.log(u1.age) // undefined
 u1.printAge() // 18
 ```
+

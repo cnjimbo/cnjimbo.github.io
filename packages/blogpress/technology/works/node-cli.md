@@ -190,10 +190,10 @@ console.log('hello js')
 其中`bin`属性用于设置`指令名称`和`执行脚本所在位置`
 ```json
 {
-  "name": "pkgName",
-  "bin": {
-    "command": "exec/filepath.js"
-  }
+    "name":"pkgName",
+    "bin": {
+        "command": "exec/filepath.js"
+    }
 }
 ```
 
@@ -221,7 +221,7 @@ npm link -g
 我们可以通过`process.argv`方法获取到运行时的 命令行入参
 
 ```js
-console.log(process.argv)
+console.log(process.argv);
 ```
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTY2NjAxMzEwMTkzNQ==666013101935)
@@ -246,15 +246,15 @@ const program = new Command()
 program.version(pkg.version)
 
 program
-  .command('hello [paths...]')
-  .description('hello world demo')
-  .alias('h')
-  .option('-p, --pkg <path>', 'set package.json path')
-  .action((paths, options) => {
-    console.log('😄😄😄')
-    console.log(paths)
-    console.log(options)
-  })
+    .command('hello [paths...]')
+    .description('hello world demo')
+    .alias('h')
+    .option('-p, --pkg <path>', 'set package.json path')
+    .action((paths, options) => {
+        console.log('😄😄😄');
+        console.log(paths);
+        console.log(options);
+    })
 
 program.parse(process.argv)
 ```
@@ -282,17 +282,17 @@ echo '[36mhello  world[39m'
 实际开发中，也很少直接写这种原始的数值。通常会使用[chalk](https://www.npmjs.com/package/chalk)这个库辅助，比如上面这个颜色对应代码如下。
 
 ```js
-const Chalk = require('chalk')
+const Chalk = require('chalk');
 
-console.log(Chalk.cyan('hello world'))
+console.log(Chalk.cyan('hello world'));
 ```
 
 渐变色打印就常用[gradient-string](https://www.npmjs.com/package/gradient-string)这个库
 
 ```js
-const gradient = require('gradient-string')
+const gradient = require('gradient-string');
 
-console.log(gradient('cyan', 'pink')('Hello world!'))
+console.log(gradient('cyan', 'pink')('Hello world!'));
 ```
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTY2NjAxNzA5NTYwOQ==666017095609)
@@ -308,30 +308,30 @@ console.log(gradient('cyan', 'pink')('Hello world!'))
 
 下面是简单`checkbox`示例
 ```js
-const inquirer = require('inquirer')
+const inquirer = require('inquirer');
 
 inquirer
-  .prompt([
-    {
-      type: 'checkbox',
-      message: '水果选择',
-      name: 'fruits',
-      choices: [
+    .prompt([
         {
-          name: '🍌',
+            type: 'checkbox',
+            message: '水果选择',
+            name: 'fruits',
+            choices: [
+                {
+                    name: '🍌',
+                },
+                {
+                    name: '🍉',
+                },
+                {
+                    name: '🍇',
+                },
+            ]
         },
-        {
-          name: '🍉',
-        },
-        {
-          name: '🍇',
-        },
-      ]
-    },
-  ])
-  .then((answers) => {
-    console.log(answers)
-  })
+    ])
+    .then((answers) => {
+        console.log(answers);
+    });
 ```
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTY2NjAyMDU3NDQzOQ==666020574439)
@@ -342,3 +342,5 @@ inquirer
 如内容有不妥之处，可以评论区交流；有感兴趣希望深入了解的知识点也可评论区@。
 
 完整示例代码移步=>[Github](https://github.com/ATQQ/tools/tree/main/packages/demos/diy-cli)
+
+

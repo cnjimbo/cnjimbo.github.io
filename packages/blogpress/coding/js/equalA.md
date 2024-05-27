@@ -17,37 +17,39 @@ categories:
 
 如对隐式转换不了解，推荐阅读[类型转换](./../../bigWeb/js/typeConvert.md)
 ```js
-if (a == 1 && a == 2) {
-  console.log('yes')
+if(a==1&&a==2){
+    console.log('yes')
 }
 ```
 
 ## 定义[ToPrimitive]
 ```js
-const a = {
-  v: 1,
-  [Symbol.toPrimitive]() {
-    return this.v++
-  }
+let a = {
+    v:1,
+    [Symbol.toPrimitive](){
+        return this.v++
+    }
 }
 ```
 
 ## 定义valueOf
 ```js
-const a = {
-  v: 1,
-  valueOf() {
-    return this.v++
-  }
+let a = {
+    v:1,
+    valueOf(){
+        return this.v++
+    }
 }
 ```
 
 ## 定义toString
 ```js
-const a = {
-  v: 1,
-  toString() {
-    return this.v++
-  }
+let a = {
+    v:1,
+    toString(){
+        return this.v++
+    }
 }
 ```
+
+

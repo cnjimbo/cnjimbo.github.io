@@ -37,6 +37,7 @@ categories:
 
 这种加密方式就可以完美解决对称加密存在的问题
 
+
 通过对比，选用保密性好的 **非对称加密** 方案作为加密方案
 
 本文选用 **[RSA](https://baike.baidu.com/item/RSA%E7%AE%97%E6%B3%95/263310)** 对称加密算法
@@ -123,28 +124,28 @@ const { JSEncrypt } = require('nodejs-jsencrypt')
 // 上述自动生成
 const pubKey = '上述生成的公钥'
 
-function publicEncrypt(str) {
-  const encrypt = new JSEncrypt()
-  encrypt.setPublicKey(pubKey)
-  return encrypt.encrypt(str)
+function publicEncrypt(str){
+    const encrypt = new JSEncrypt()
+    encrypt.setPublicKey(pubKey)
+    return encrypt.encrypt(str)
 }
 ```
 
 ### 私钥解密方法
 ```js
-const privKey = '上述生成的私钥'
+const privKey = `上述生成的私钥`
 
 function privDecrypt(str) {
-  const encrypt = new JSEncrypt()
-  encrypt.setPrivateKey(privKey)
-  return encrypt.decrypt(str)
+    const encrypt = new JSEncrypt()
+    encrypt.setPrivateKey(privKey)
+    return encrypt.decrypt(str)
 }
 ```
 
 可以看出API非常简洁
 ### 使用示例
 ```js
-const str = publicEncrypt('hello world')
+let str = publicEncrypt('hello world')
 console.log(str)
 console.log(privDecrypt(str))
 ```
@@ -159,49 +160,50 @@ npm i axios
 将加密逻辑放入到axios的请求拦截器中，将原内容使用 `JSON.stringify`处理后再进行加密，加密后的内容使用`value`属性传递，如下所示
 
 ```js
-import axios from 'axios'
+import axios from "axios";
 
 // 引入刚刚编写的加密方法
-import { publicEncrypt } from './utils/crypto'
+import { publicEncrypt } from "./utils/crypto";
 
-const http = axios
+const http = axios;
 http.defaults.baseURL = '/api'
 http.defaults.headers = {
-  'content-Type': 'application/json'
-}
+  "content-Type": "application/json"
+};
 
 // 请求拦截器
 http.interceptors.request.use(
-  (config) => {
+  config => {
     // 发送之前操作config
     // 对传递的 data 进行加密
     config.data = {
-      value: publicEncrypt(JSON.stringify(config.data))
+      value:publicEncrypt(JSON.stringify(config.data))
     }
-    return config
+    return config;
   },
-  (err) => {
+  err => {
     // 处理错误
-    return Promise.reject(err)
+    return Promise.reject(err);
   }
-)
+);
 http.interceptors.response.use(
-  (response) => {
+  response => {
     // 返回前操作
-    return response.data
+    return response.data;
   },
-  (err) => {
-    return Promise.reject(err)
+  err => {
+    return Promise.reject(err);
   }
-)
+);
 
-export default http
+export default http;
 ```
 
 ### 服务端解密示例代码
 这里列举了两种，一种直接使用Node.js的`http`模块编写，一种使用Express编写：
 1. 解密收到的内容
 2. 将解密后的内容直接返回
+
 
 #### http模块示例
 使用`data`事件与`end`事件配合，接收传递的数据，然后进行解密返回
@@ -213,29 +215,28 @@ const http = require('http')
 const { privDecrypt } = require('./utils/crypto')
 
 const server = http.createServer((req, res) => {
-  res.setHeader('content-type', 'application/json')
-  let buffer = Buffer.alloc(0)
+    res.setHeader('content-type','application/json')
+    let buffer = Buffer.alloc(0)
 
-  // 接收传递的数据
-  req.on('data', (chunk) => {
-    buffer = Buffer.concat([buffer, chunk])
-  })
-  req.on('end', () => {
-    try {
-      // 解密传递的数据
-      const data = privDecrypt(JSON.parse(buffer.toString('utf-8')).value)
-      res.end(data)
-    }
-    catch (error) {
-      console.log(error)
-      res.end('error')
-    }
-  })
+    // 接收传递的数据
+    req.on('data',(chunk)=>{
+        buffer = Buffer.concat([buffer, chunk])
+    })
+    req.on('end',()=>{
+        try {
+            // 解密传递的数据
+            const data = privDecrypt(JSON.parse(buffer.toString('utf-8')).value)
+            res.end(data)
+        } catch (error) {
+            console.log(error);
+            res.end('error')            
+        }
+    })
 })
 
 // 启动
-server.listen(3000, (err) => {
-  console.log('listen 3000 success')
+server.listen(3000, err => {
+    console.log(`listen 3000 success`);
 })
 ```
 
@@ -253,19 +254,19 @@ server.use(express.json({ strict: true }))
 
 // 首先进入的路由
 server.route('*').all((req, res, next) => {
-  console.log(`${req.method}--${req.url}`)
-  req.body = JSON.parse(privDecrypt(req.body.value))
-  next()
+    console.log(`${req.method}--${req.url}`)
+    req.body = JSON.parse(privDecrypt(req.body.value))
+    next()
 })
 
-server.post('/test/demo', (req, res) => {
-  // 直接返回实际的内容
-  res.json(req.body)
+server.post('/test/demo',(req,res)=>{
+    // 直接返回实际的内容
+    res.json(req.body)
 })
 
 // 启动
-server.listen(3000, (err) => {
-  console.log('listen 3000 success')
+server.listen(3000, err => {
+    console.log(`listen 3000 success`);
 })
 ```
 
@@ -275,15 +276,15 @@ server.listen(3000, (err) => {
 vite.config.js配置: 只做了请求代理，解决开发跨域问题
 ```js
 export default {
-  server: {
-    proxy: {
-      '/api': {
-        target: 'http://localhost:3000',
-        changeOrigin: true,
-        rewrite: path => path.replace(/^\/api/, '')
-      },
+    server: {
+        proxy: {
+            '/api': {
+                target: 'http://localhost:3000',
+                changeOrigin: true,
+                rewrite: (path) => path.replace(/^\/api/, '')
+            },
+        }
     }
-  }
 }
 ```
 
@@ -304,18 +305,18 @@ import $http from './http'
 const $send = document.getElementById('send')
 const $receive = document.getElementById('receive')
 
-$send.addEventListener('click', () => {
-  // 发送一个随机内容
-  $http.post('/test/demo', {
-    name: 'xm',
-    age: ~~(Math.random() * 1000)
-  }).then(res => [
-    updateReceive(res)
-  ])
+$send.addEventListener('click',function(){
+    // 发送一个随机内容
+    $http.post('/test/demo',{
+        name:'xm',
+        age:~~(Math.random()*1000)
+    }).then((res)=>[
+        updateReceive(res)
+    ])
 })
 
-function updateReceive(data) {
-  $receive.value = data instanceof Object ? JSON.stringify(data) : data
+function updateReceive(data){
+    $receive.value = data instanceof Object?JSON.stringify(data):data
 }
 ```
 
@@ -328,6 +329,7 @@ function updateReceive(data) {
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYyMzE2NjEyMTMwNQ==623166121305)
 
+
 **请求响应内容**
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYyMzE2NjE0Njk0MQ==623166146941)
@@ -335,3 +337,4 @@ function updateReceive(data) {
 大工告成,接入十分简单
 
 [完整的示例代码仓库](https://github.com/ATQQ/demos/tree/main/asymmetric-encryption)
+

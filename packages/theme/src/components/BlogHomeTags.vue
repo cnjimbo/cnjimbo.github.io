@@ -2,16 +2,17 @@
 import { computed, watch } from 'vue'
 import { ElTag } from 'element-plus'
 import { useBrowserLocation, useDark, useUrlSearchParams } from '@vueuse/core'
-import { useRouter, useRoute } from 'vitepress'
+import { useRoute, useRouter } from 'vitepress'
 import {
   useActiveTag,
   useArticles,
-  useCurrentPageNum
+  useConfig,
+  useCurrentPageNum,
 } from '../composables/config/blog'
 
 const route = useRoute()
 const docs = useArticles()
-
+const showTags = useConfig()?.config?.blog?.homeTags ?? true
 const tags = computed(() => {
   return [...new Set(docs.value.map(v => v.meta.tag || []).flat(3))]
 })
@@ -77,7 +78,7 @@ watch(
 </script>
 
 <template>
-  <div v-if="tags.length" class="card tags" data-pagefind-ignore="all">
+  <div v-if="showTags && tags.length" class="card tags" data-pagefind-ignore="all">
     <!-- 头部 -->
     <div class="card-header">
       <span class="title svg-icon"><svg
@@ -101,7 +102,7 @@ watch(
           fill="#D3D3D3" p-id="4294"
         />
       </svg> 标签</span>
-      <ElTag v-if="activeTag.label" :type="activeTag.type as any" :effect="colorMode" closable @close="handleCloseTag">
+      <ElTag v-if="activeTag.label" :type="activeTag.type || 'primary'" :effect="colorMode" closable @close="handleCloseTag">
         {{ activeTag.label }}
       </ElTag>
     </div>
@@ -109,7 +110,7 @@ watch(
     <ul class="tag-list">
       <li v-for="(tag, idx) in tags" :key="tag">
         <ElTag
-          :type="tagType[idx % tagType.length]" :effect="colorMode"
+          :type="tagType[idx % tagType.length] || 'primary'" :effect="colorMode"
           @click="handleTagClick(tag, tagType[idx % tagType.length])"
         >
           {{ tag }}

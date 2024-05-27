@@ -96,6 +96,7 @@ pnpm add -D typescript rimraf vite eslint tslib core-js @rollup/plugin-typescrip
 * `rimraf`：替代`rm -rf`指令用于清理不需要的资源
 * `typescript`：TS支持
 
+
 ### typescript配置
 创建`tsconfig.json`配置文件
 
@@ -119,11 +120,11 @@ pnpm add -D typescript rimraf vite eslint tslib core-js @rollup/plugin-typescrip
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
-    "downlevelIteration": true
+    "downlevelIteration": true,
   },
   "include": [
-    "src/**/*"
-  ],
+    "src/**/*",
+   ],
   "exclude": [
     "node_modules"
   ]
@@ -158,8 +159,8 @@ src
 
 `src/index.ts`
 ```ts
-export { default } from './lib/pkg'
-export type { DataItem } from './types/index'
+export { default } from './lib/pkg';
+export type { DataItem } from './types/index';
 ```
 
 ## 构建相关配置
@@ -167,15 +168,15 @@ export type { DataItem } from './types/index'
 `vite.config.js`文件
 * Vite构建能力由Rollup提供，因此大部分Rollup插件可以直接复用
 ```js
-const path = require('path')
-const typescript = require('@rollup/plugin-typescript')
-const { defineConfig } = require('vite')
+const path = require('path');
+const typescript = require('@rollup/plugin-typescript');
+const { defineConfig } = require('vite');
 
-const libName = 'LibName'
-const bundlePrefix = 'index'
+const libName = 'LibName';
+const bundlePrefix = 'index';
 
 // 入口
-const entry = path.resolve(__dirname, 'src/index.ts')
+const entry = path.resolve(__dirname, 'src/index.ts');
 
 module.exports = defineConfig({
   plugins: [
@@ -196,9 +197,9 @@ module.exports = defineConfig({
       formats: ['umd', 'cjs', 'es'],
       fileName: (format) => {
         if (format === 'umd') {
-          return `${bundlePrefix}.min.js`
+          return `${bundlePrefix}.min.js`;
         }
-        return `${bundlePrefix}.${format}.js`
+        return `${bundlePrefix}.${format}.js`;
       },
     },
     rollupOptions: {
@@ -211,7 +212,7 @@ module.exports = defineConfig({
   server: {
     host: '0.0.0.0',
   },
-})
+});
 ```
 `build`下的配置释义
 * outDir：构建输出目录
@@ -231,8 +232,8 @@ module.exports = defineConfig({
   "types": "dist/index.d.ts",
   "scripts": {
     "build:dev": "vite build -w",
-    "build": "rimraf dist && vite build"
-  }
+    "build": "rimraf dist && vite build",
+  },
 }
 ```
 1. 添加构建相关指令
@@ -260,42 +261,42 @@ npm run build:dev
 入口文件除类型导出外，如果只包含`export default VarName1`，那么`globalThis.LibName`就等于`VarName1`
 
 ```ts
-export type { DataItem } from './types/index'
+export type { DataItem } from './types/index';
 export default function Demo1() {}
 
 // 编译后
-(function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() : typeof define === 'function' && define.amd ? define(factory) : (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.LibName = factory())
-})(this, () => {
-  'use strict'
+(function(global, factory) {
+  typeof exports === "object" && typeof module !== "undefined" ? module.exports = factory() : typeof define === "function" && define.amd ? define(factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, global.LibName = factory());
+})(this, function() {
+  "use strict";
   function Demo1() {
   }
-  return Demo1
-})
+  return Demo1;
+});
 ```
 
 如果包含其它导出`export const vaeName2`，那么`globalThis.LibName`就等于`VarName1.default`
 
 ```ts
-export type { DataItem } from './types/index'
+export type { DataItem } from './types/index';
 export default function Demo1() {}
 export function Demo2() {}
 
 // 编译后
-(function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) : typeof define === 'function' && define.amd ? define(['exports'], factory) : (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.LibName = {}))
-})(this, (exports2) => {
-  'use strict'
+(function(global, factory) {
+  typeof exports === "object" && typeof module !== "undefined" ? factory(exports) : typeof define === "function" && define.amd ? define(["exports"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.LibName = {}));
+})(this, function(exports2) {
+  "use strict";
   function Demo1() {
   }
   function Demo2() {
   }
-  exports2.Demo2 = Demo2
+  exports2.Demo2 = Demo2;
   // 关键代码
-  exports2.default = Demo1
-  Object.defineProperty(exports2, '__esModule', { value: true })
-  exports2[Symbol.toStringTag] = 'Module'
-})
+  exports2["default"] = Demo1;
+  Object.defineProperty(exports2, "__esModule", { value: true });
+  exports2[Symbol.toStringTag] = "Module";
+});
 ```
 
 如果的确需要有导出多个，那么建议
@@ -304,19 +305,19 @@ export function Demo2() {}
 
 ```ts
 // 方式1
-export function fun1() {}
+export function fun1(){}
 export const var1 = 1
-export class LibName {
+export class LibName{
 
 }
 
 // 方式2
-class LibName {
+class LibName{
 
 }
 export default {
-  fun1() {},
-  var1: 1,
+  fun1(){},
+  var1:1,
   libName
 }
 ```
@@ -334,6 +335,7 @@ npm link pkgName
 ```
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYzMzUwNDM0NDkwMQ==633504344901)
+
 
 运行示例
 
@@ -376,8 +378,8 @@ vite本身就是一个支持ESM的Server，在项目中测试使用完全没问�
 ```json
 {
   "scripts": {
-    "serve": "vite"
-  }
+    "serve": "vite",
+  },
 }
 ```
 
@@ -398,7 +400,7 @@ h1{
 ### 外部样式表
 直接在入口文件`src/index.ts`中引入
 ```ts
-import './styles/demo.css'
+import './styles/demo.css';
 ```
 `build`产物包含一个`style.css`文件，里面即为书写的样式
 
@@ -433,10 +435,10 @@ export function addStyleDom(target: HTMLElement, style: string) {
 ```
 
 ```ts
-import style from './styles/demo.css'
-import { addStyleDom } from './utils'
+import style from './styles/demo.css';
+import { addStyleDom } from './utils';
 
-addStyleDom(document.documentElement, style)
+addStyleDom(document.documentElement, style);
 ```
 
 于是此种方式会将css内容写入到js代码中，在运行时自动通过style节点插入到文档节点中
@@ -451,8 +453,8 @@ pnpm add -D less sass
 
 使用
 ```ts
-import './styles/demo.scss'
-import style from './styles/demo.less'
+import './styles/demo.scss';
+import style from './styles/demo.less';
 ```
 ## 发布
 要让别人使用，那就得将npm包发布上线
@@ -527,3 +529,5 @@ new libName()
 经过一些思考（文章篇幅与相关性），关于一些工程通用的能力，如`eslint`，`api-extractor`，`prettier`，`jest`，`husky`等等将会在后续文章中专门介绍
 
 >文中所涉及[源码仓库](https://github.com/ATQQ/web-lib-template)地址：https://github.com/ATQQ/web-lib-template
+
+

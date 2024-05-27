@@ -17,7 +17,7 @@ categories:
 </div>
 
 ## 为什么🤔
-网站接入了资源离线化方案 [ServiceWorker](https://developer.mozilla.org/zh-CN/docs/Web/API/Service_Worker_API)
+网站接入了资源离线化方案 [ServiceWorker](https://developer.mozilla.org/zh-CN/docs/Web/API/Service_Worker_API) 
 
 通俗讲就是首次联网访问后，浏览器会把资源文件都缓存起来，用户断网后仍能访问本站点（需要用户的浏览器支持 ServiceWorker）
 
@@ -38,3 +38,4 @@ categories:
 💡2. **完全**退出浏览器，重新访问本站点
 
 以上两种方式都可实现最新内容的加载
+

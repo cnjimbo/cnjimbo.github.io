@@ -17,16 +17,17 @@ function myString() {
 
 }
 Object.defineProperty(myString, Symbol.hasInstance, {
-  value(str) {
-    return typeof str === 'string'
-  },
-  enumerable: false,
-  configurable: true
+    value: function (str) {
+        return typeof str === 'string'
+    },
+    enumerable: false,
+    configurable: true
 })
-console.log('ss' instanceof myString) // true
+console.log('ss' instanceof myString); // true
 ```
 
 :::tip 更多参考
 [js类型判断](./../../bigWeb/js/p4.md)<br>
 [原型与原型链](./../../bigWeb/js/prototype.md)
 :::
+

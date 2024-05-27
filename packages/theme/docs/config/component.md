@@ -1,5 +1,5 @@
 ---
-description: 详细介绍主题提供的组件能力
+description: 详细介绍主题内置提供的全局组件，三方插件，三方组件等能力。
 title: 🔧 主题配置 - 组件能力
 recommend: 5
 top: 5
@@ -8,10 +8,56 @@ tag:
 ---
 
 # 组件配置
+
+部分内置组件（插件），来源 [vitepress.yiov.top](https://vitepress.yiov.top/plugin.html) 推荐
+
+## oml2d - 看板娘集成
+* Type：[oml2dOptions](https://oml2d.com/options/Options.html)
+
+为网站提供一个 Live2D 看板组件。
+
+:::tip 一点说明
+通过内置 [oh-my-live2d](https://oml2d.com) 实现, 可以通过 `oml2d` 选项配置。
+
+通过这个能力可以快速加入并定制属于自己的看板娘, 开启只需要为其传递一个 [配置选项](https://oml2d.com/options/Options.html) 即可
+:::
+
+以下是一个简单的使用示例，当模型加载成功时它将出现在您网站的左下角。
+
+```ts
+const blogTheme = getThemeConfig({
+  oml2d: {
+    mobileDisplay: true,
+    models: [
+      {
+        path: 'https://registry.npmmirror.com/oml2d-models/latest/files/models/Senko_Normals/senko.model3.json'
+      }
+    ]
+  }
+})
+```
+效果图如下
+
+![](https://loclink-1259720482.cos.ap-beijing.myqcloud.com/image/%E5%BD%95%E5%B1%8F2024-03-11%2023.51.51.gif)
+
+之后您还可以前往[配置选项](https://oml2d.com/options/Options.html)查阅更多自定义内容
+
+:::tip 版本说明
+由于时间原因，主题内置的版本不一定都是最新的，可以通过 `resolutions` 配置指定要使用的版本。
+
+下面是使用示例，配置在 `package.json` 中，其它依赖覆盖版本也是这样操作。
+```json
+{
+  "resolutions": {
+    "oh-my-live2d": "^0.17.0"
+  }
+}
+```
+:::
 ## task-checkbox
 * Type: `boolean | TaskCheckbox`
 
-支持渲染 markdown 任务列表，内置 markdown-it-task-checkbox 插件提供支持
+支持渲染 markdown 任务列表，内置 [markdown-it-task-checkbox](https://github.com/linsir/markdown-it-task-checkbox) 插件提供支持
 
 * [ ] 🥔 TODO
 * [ ] 真不戳
@@ -51,6 +97,48 @@ interface TaskCheckbox {
 ```
 :::
 
+## timeline
+* Type: `boolean`
+* default: `true`
+
+提供 markdown 时间线语法，在 vitepress 中使用 markdown 渲染时间线（时间轴）样式。
+
+:::tip 一点说明
+内置 [vitepress-markdown-timeline](https://github.com/HanochMa/vitepress-markdown-timeline) 实现
+:::
+
+效果如下
+
+::: timeline 2023-05-24
+- **do some thing1**
+- do some thing2
+:::
+
+::: timeline 2023-05-23
+do some thing3
+do some thing4
+:::
+
+语法如下
+```md
+::: timeline 2023-05-24
+- **do some thing1**
+- do some thing2
+:::
+
+::: timeline 2023-05-23
+do some thing3
+do some thing4
+:::
+```
+
+:::code-group
+```ts [关闭]
+const blogTheme = getThemeConfig({
+  timeline: false
+})
+```
+:::
 ## tabs
 * Type: `boolean`
 
@@ -117,6 +205,7 @@ b content 2
 :::
 ```
 
+
 :::=tabs=ab
 ::a
 a content
@@ -159,6 +248,7 @@ flowchart TD
   Start --> Stop
 ```
 </pre>
+
 
 效果如下
 
@@ -211,6 +301,7 @@ gantt
     Parallel 4   :         des6, after des4, 1d
 ```
 
+
 ## UserWorksPage
 * Type: `UserWorks`
 
@@ -221,7 +312,7 @@ gantt
 ![](https://img.cdn.sugarat.top/mdImg/MTY4NzA4ODczMzkwNg==687088733906)
 
 新建一个`works.md`文件，放入以下内容
-
+  
 ```md
 ---
 layout: page
@@ -286,32 +377,32 @@ interface UserWork {
   title: string
   description: string
   time:
-    | string
-    | {
-      start: string
-      end?: string
-      lastupdate?: string
-    }
+  | string
+  | {
+    start: string
+    end?: string
+    lastupdate?: string
+  }
   status?: {
     text: string
     type?: 'tip' | 'warning' | 'danger'
   }
   url?: string
   github?:
-    | string
-    | {
-      owner: string
-      repo: string
-      branch?: string
-      path?: string
-    }
+  | string
+  | {
+    owner: string
+    repo: string
+    branch?: string
+    path?: string
+  }
   cover?:
-    | string
-    | string[]
-    | {
-      urls: string[]
-      layout?: 'swiper' | 'list'
-    }
+  | string
+  | string[]
+  | {
+    urls: string[]
+    layout?: 'swiper' | 'list'
+  }
   links?: {
     title: string
     url: string

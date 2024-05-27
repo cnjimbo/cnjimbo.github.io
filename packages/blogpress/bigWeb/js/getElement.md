@@ -110,7 +110,8 @@ nodeList = document.getElementsByTagNameNS(namespace, name)
    * 只有`getElementById`与`getElementById`返回对象本身
    * 其余查询方法均返回一个类数组`HTMLCollectio`
 
-:::tip 参考
+
+:::tip 参考 
 [简书-JS获取HTML DOM元素的8种方法](https://www.jianshu.com/p/6fefda57b51f)
 
 [MDN-Document.getElementsByTagNameNS](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/getElementsByTagNameNS)

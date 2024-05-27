@@ -67,7 +67,7 @@ function downloadByUrl(url: string, filename?: string) {
 }
 
 // sourceUrl 为前面的原图链接
-downloadByUrl(sourceUrl, 'test.image')
+downloadByUrl(sourceUrl,'test.image')
 ```
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTY2ODI2MjI2ODMxNQ==668262268315)
@@ -157,7 +157,7 @@ downloadByUrl(sourceUrl, 'test.image')
 
 这里稍微改造一下之前的代码，添加一个重定向逻辑即可
 ```ts
-// 通过url 简单区分一下 资源是 https 还是 http
+// 通过url 简单区分一下 资源是 https 还是 http 
 const _http = url.startsWith('https') ? https : http
 _http.get(
   url,
@@ -213,6 +213,7 @@ function downloadByUrl(url: string, option?: Partial<Options>) {
         // 递归调用
         if (response.headers.location) {
           downloadByUrl(response.headers.location, ops)
+          return
         }
       }
     }
@@ -263,7 +264,7 @@ request.on('timeout', () => {
 ```ts
 import http from 'http'
 
-const request = http.get(url, {
+const request = http.get(url,{
   agent: Agent,
 })
 ```
@@ -431,17 +432,18 @@ const writeStream = fs.createWriteStream(filepath)
 ```ts
 let request: http.ClientRequest
 
-function errorFn(err, source) {
+let errorFn = (err, source) => {
   console.log('error url:', source)
   console.log('error msg:', err.message)
   console.log()
 }
 
-function responseCallback(response: http.IncomingMessage) {
+const responseCallback = (response: http.IncomingMessage) => {
   const { statusCode } = response
   // 404
   if (statusCode === 404) {
     request.emit('error', new Error('404 source'))
+    return
   }
 }
 
@@ -455,8 +457,7 @@ try {
   request.on('timeout', () => {
     request.emit('error', new Error('request timeout'))
   })
-}
-catch (error: any) {
+} catch (error: any) {
   setTimeout(() => {
     errorFn && errorFn(error, url)
   })
@@ -612,7 +613,7 @@ formatSize(10240) // 10.00K
  */
 function getSpeedCalculator(cycle = 500) {
   let startTime = 0
-  let endTime = 0
+  let endTime = 0 
   let speed = 'N/A' // 记录速度
   let sum = 0 // 计算之前收到了多少B
 
@@ -672,10 +673,9 @@ function getCLIConfig(key = '') {
     return !key
       ? value
       : key.split('.').reduce((pre, k) => {
-        return pre?.[key]
-      }, value)
-  }
-  catch {
+          return pre?.[key]
+        }, value)
+  } catch {
     return !key ? {} : ''
   }
 }
@@ -693,8 +693,7 @@ function setCLIConfig(key: string, value: string) {
     // 赋值
     if (i === keys.length - 1) {
       pre[k] = value
-    }
-    else if (!(pre[k] instanceof Object)) {
+    } else if (!(pre[k] instanceof Object)) {
       pre[k] = {}
     }
     return pre[k]
@@ -781,7 +780,7 @@ config 指令这部分逻辑完全可以分离成一个通用的 `commander` 模
 import { Command } from 'commander'
 const program = new Command()
 
-registerConfigCommand(program, '.efstrc')
+registerConfigCommand(program,'.efstrc')
 ```
 
 ## 最后
@@ -790,3 +789,5 @@ registerConfigCommand(program, '.efstrc')
 内容有不妥的之处，还请评论区斧正。
 
 CLI完整源码见[GitHub](https://github.com/ATQQ/tools/tree/main/packages/cli/efst)
+
+

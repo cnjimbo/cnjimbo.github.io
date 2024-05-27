@@ -131,6 +131,7 @@ scheme://host:port/path?query
 | Proxy-Authenticate |  向代理服务器发送验证信息  |
 |       Server       |         服务器名字         |
 
+
 **实体首部**
 |      字段      |               作用               |
 | :------------: | :------------------------------: |
@@ -210,6 +211,7 @@ Accept-Encoding: gizp
 * HTTPS除了 TCP 的三个包，还要加上 ssl 握手需要的 9 个包,一共是 12 个包。
 * HTTPS是在HTTP上建立SSL/TLS加密层，并对传输数据进行加密，是HTTP协议的安全版。
 ![图片](https://img.cdn.sugarat.top/mdImg/MTU4NDE5NTg5ODc3Mw==584195898773)
+
 
 **特点**
 * ``通过抓包获取到的数据不是明文传输的``
@@ -328,6 +330,7 @@ HTTP/2 相比于 HTTP/1，可以说是大幅度提高了网页的性能。
 
 基于这个原因，Google 就更起炉灶搞了一个基于 UDP 协议的 QUIC 协议，并且使用在了 HTTP/3 上
 
+
 ## QUIC
 QUIC 基于 UDP，在原本的基础上新增了很多功能，比如:
 * 多路复用
@@ -341,6 +344,7 @@ QUIC 基于 UDP，在原本的基础上新增了很多功能，比如:
 >一种全新的基于UDP的web开发协议。可以用一个公式大致概括：TCP + TLS + HTTP2 = UDP + QUIC + HTTP2’s API
 
 >从公式可看出：QUIC协议虽然是基于UDP，但它不但具有TCP的可靠性、拥塞控制、流量控制等，且在TCP协议的基础上做了一些改进，比如避免了队首阻塞；另外，QUIC协议具有TLS的安全传输特性，实现了TLS的保密功能，同时又使用更少的RTT建立安全的会话。
+
 
 ### 多路复用
 >无队头阻塞的多路复用
@@ -384,3 +388,4 @@ QUIC 原生实现了这个功能，并且传输的单个数据流可以保证有
 [http](https://yuchengkai.cn/docs/cs/#post-%E5%92%8C-get-%E7%9A%84%E5%8C%BA%E5%88%AB)<br>
 [CSDN:QUIC（Quick UDP Internet Connections）协议：全新的基于UDP的web开发协议](https://blog.csdn.net/coloriy/article/details/88418258)
 :::
+

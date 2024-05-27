@@ -105,7 +105,7 @@ categories:
 // {}
 ```
 52. 为什么0.1+0.2!==0.3
-53.
+53. 
 
 ### 代码实现
 1. 模拟实现bind
@@ -120,21 +120,23 @@ categories:
     ```
 6. 实现一个节流函数
    ```js
-   function throttle(fn, delay) {
+    function throttle(fn,delay){
 
+    }
    ```
 7. 实现防抖函数
    ```js
-   function debounce(fn, delay) {
+    function debounce(fn,delay){
 
+    }
    ```
 8. 数组转换
    * 多维转一维
     ```js
-    function _flat(arr) {
-      // ...code
+    function _flat(arr){
+        // ...code
     }
-    _flat([1, [2, [3]]]) // [1,2,3]
+    _flat([1,[2,[3]]]) // [1,2,3]
     ```
    * 数组变换
     ```js
@@ -146,51 +148,51 @@ categories:
     // [1,2,'1','2',1,null,null,undefined,undefined,{},{},[],[],[1],[1],['1'],['1'],NaN.NaN,true,true]
 
     function duplicate(arr){
-       / ...code
+        // ...code
     }
     ```
 9.  请求合并：短时间内需要请求多个资源合并成一个请求发送
    ```js
    // 首先有一个接口其请求路径为 /path
-   // query有一个id参数支持传一个或者多个id
-   // /path?id=1
-   // /path?id=1,2,3
-   // /path?id=1,2
-   // 返回内容格式为（假设请求的query是 id=1,2）
-   const demoRes = {
-     1: {
-       data: {}
-     },
-     2: {
-       data: {}
-     }
-   }
-   // request的构成
-   request({
-     url: '/path',
-     query: {
-       id: ''
-     }
-   })
+    // query有一个id参数支持传一个或者多个id
+    // /path?id=1
+    // /path?id=1,2,3
+    // /path?id=1,2
+    // 返回内容格式为（假设请求的query是 id=1,2）
+    const demoRes = {
+        1:{
+            data:{}
+        },
+        2:{
+            data:{}
+        }
+    }
+    // request的构成
+    request({
+        url:'/path',
+        query:{
+            id:''
+        }
+    })
 
-    / 下面是使用场景实现,每个方法回调最终拿到的是自己需要的内容
+    // 下面是使用场景实现,每个方法回调最终拿到的是自己需要的内容
 
-    gtArticle(3).then(re(res){} )
-    gtArticle(4).then(re(res){} )
-    gtArticle(5).then(re(res){} )
-    gtArticle(6).then(re(res){} )
+    getArticle(3).then(res=>{})
+    getArticle(4).then(res=>{})
+    getArticle(5).then(res=>{})
+    getArticle(6).then(res=>{})
 
-    //实现这个getArticle方法
+    // 实现这个getArticle方法
    ```
 10. 数字格式化
 ```js
 // 输入为数字，输出为字符串
 // 使用“,”分割整数部分，小数保留两位
 /**
- * @param {number} num
- */
-function transfer(num) {
-  // ...code
+* @param {number} num
+*/
+function transfer(num){
+    // ...code
 }
 transfer(1234567890.23) // "1,234,567,890.23"
 ```
@@ -200,7 +202,7 @@ transfer(1234567890.23) // "1,234,567,890.23"
 // 有一个reject就走catch
 // 返回数组:（包括每一个resolved/reject的内容）
 // 返回的数组结果对应的顺序与传入的promise顺序一致
-function PromiseAll() {
+function PromiseAll(){
 
 }
 ```
@@ -211,42 +213,41 @@ function PromiseAll() {
 // 有兴趣自己探究一 如下特殊场景如何满足
 // 特殊场景 循环引用/Date/Regex/Symbol/函数
 
-function deepClone(obj) {
+function deepClone(obj){
 
 }
 ```
 13. ES5,ES6实现函数的继承
 ```js
-function extend(A, B) {
-  // ...code
+function extend(A,B){
+    // ...code
 }
 ```
 14. 根据async/await与generator的关系模拟实现myAsync
 ```js
 // gen 为generator
-function myAsync(gen) {
-  // ...code
+function myAsync(gen){
+    // ...code
 }
 
 // 测试代码
 myAsync(function* () {
-  const a = yield Promise.resolve(1)
-  const b = yield new Promise((res, rej) => {
-    setTimeout(() => {
-      res(2)
-    }, 2000)
-  })
-  const c = yield Promise.resolve(3)
-  console.log(a, b, c)
+    const a = yield Promise.resolve(1)
+    const b = yield new Promise((res, rej) => {
+        setTimeout(() => {
+            res(2)
+        }, 2000)
+    })
+    const c = yield Promise.resolve(3)
+    console.log(a, b, c);
 
-  try {
-    const d = yield Promise.reject(4)
-  }
-  catch (error) {
-    console.log(error)
-  }
+    try {
+        const d = yield Promise.reject(4)
+    } catch (error) {
+        console.log(error);
+    }
 
-  return [a, b, c]
+    return [a, b, c]
 }).then(console.log)
 // 输出
 // 1 2 3
@@ -259,7 +260,7 @@ myAsync(function* () {
   * 如果结果是对象则对接过进行 JSON.stringify()
   * 如果结果是函数则进行 toString()
 ```js
-const str = `
+var str = `
 a
 {{      obj.a   | filter |             filter2        }
 b
@@ -267,21 +268,21 @@ b
 c
 {obj.c.d}
 `
-const obj = {
-  a() {},
-  b: { c: { e: 123 } },
-  c: {}
+var obj = {
+    a:function(){},
+    b:{c:{e:123}},
+    c:{}
 }
-const g = {
-  filter(str) { return `aaa${str}` },
-  filter2(str) { return `${str}bbb` }
+var g = {
+    filter(str) {return 'aaa' + str },
+    filter2(str) {return str + 'bbb'}
 }
 
 // 实现
-function parseTemplate(temp, obj, filters) {
-  // ...code
+function parseTemplate(temp,obj,filters){
+    // ...code
 }
-parseTemplate(str, obj, g)
+parseTemplate(str,obj,g)
 ```
 替换后的结果为
 ```js
@@ -295,36 +296,36 @@ parseTemplate(str, obj, g)
 16. 实现一个简单的Promise，具备then 与 catch方法
 ```js
 // 如有精力，考虑一下如何实现链式调用
-function myPromise(executor) {
-  // ...你的实现
+function myPromise(executor){
+    // ...你的实现
 }
 
-new myPromise((res, rej) => {
-  console.log(1)
-  res('success')
+new myPromise((res,rej)=>{
+    console.log(1)
+    res('success')
 }).then(console.log)
 
-new myPromise((res, rej) => {
-  console.log(2)
-  rej('error')
+new myPromise((res,rej)=>{
+    console.log(2)
+    rej('error')
 }).then(console.log)
-  .catch((err) => {
+.catch(err=>{
     console.log('----')
     console.log(err)
-  })
+})
 ```
 17. 实现一个柯里化函数
 ```js
-function currying() {
-  // ... 你的实现
+function currying(){
+    // ... 你的实现
 }
 
 // ---测试代码---
-function sum(a, b, c, d, e) {
-  console.log(a + b + c + d + e)
+function sum(a,b,c,d,e){
+    console.log(a+b+c+d+e)
 }
 sum = currying(sum)
-sum(1, 2)(3)(4)(5) // 15
+sum(1,2)(3)(4)(5) // 15
 ```
 18. 实现一个demo
 * html结构
@@ -352,7 +353,7 @@ sum(1, 2)(3)(4)(5) // 15
    * 结果
     ```js
     null instanceof Object
-    Object.prototype.__proto__ === null
+    null === Object.prototype.__proto__
     ```
 2. 考察隐式类型转换,下面if为真的有哪些
 ```js
@@ -363,14 +364,14 @@ if({}==false)
 ```
 3. this指向考察
 ```js
-function a() {
-  this.b = 3
+function a(){
+    this.b = 3
 }
 a()
 console.log(b) // ?
 var b = 5
 console.log(b) // ?
-const c = new a()
+var c = new a()
 console.log(b) // ?
 a.prototype.b = 4
 a.prototype.c = 5
@@ -381,38 +382,38 @@ console.log(b) // ?
 4. 作用域考察
    1. 例1
    ```js
-   const scope = 'global scope'
-   function checkscope() {
-     const scope = 'local scope'
-     function f() {
-       return scope
-     }
-     return f()
-   }
-   console.log(checkscope()) // ?
+   var scope = "global scope";
+    function checkscope() {
+        var scope = "local scope";
+        function f() {
+            return scope;
+        }
+        return f();
+    }
+    console.log(checkscope()); // ?
    ```
    2. 例2
    ```js
-   const scope = 'global scope'
-   function checkscope() {
-     const scope = 'local scope'
-     function f() {
-       return scope
-     }
-     return f
-   }
-   checkscope()() // ?
+    var scope = "global scope";
+    function checkscope(){
+        var scope = "local scope";
+        function f(){
+            return scope;
+        }
+        return f;
+    }
+    checkscope()(); // ?
    ```
    3. 例3
     ```js
-    for (var i = 0; i < 2; i++) {
-      setTimeout(() => {
-        for (var j = 0; j < 3; j++) {
-          setTimeout(() => {
-            console.log(i * j)
-          }, 0)
-        }
-      }, 0)
+    for(var i = 0;i<2;i++){
+        setTimeout(()=>{
+            for(var j = 0;j<3;j++){
+                setTimeout(()=>{
+                    console.log(i*j)
+                },0)
+            }        
+        },0)
     }
     // 输出结果是多少？为什么
     // var 变为 let 结果又是多少？为什么
@@ -421,32 +422,32 @@ console.log(b) // ?
    * 例1
     ```js
     const promise = new Promise((resolve, reject) => {
-      console.log(1)
-      resolve()
-      console.log(2)
+        console.log(1)
+        resolve()
+        console.log(2)
     })
     promise.then(() => {
-      console.log(3)
+        console.log(3)
     })
     console.log(4)
     ```
     * 例2
     ```js
-    function fn() {
-      for (let i = 0; i < 4; i++) {
-        setTimeout(() => {
-          console.log(i)
-        }, 1000)
-      }
+    function fn(){
+        for (let i = 0; i < 4; i++) {
+            setTimeout(function(){
+                console.log(i)
+            },1000)
+        }
     }
     fn()
     ```
     * 例3
     ```js
     let a = 0
-    async function b() {
-      a = a + await 10
-      console.log('2', a)
+    let b = async () => {
+        a = a + await 10
+        console.log('2', a)
     }
     b()
     a++
@@ -455,24 +456,24 @@ console.log(b) // ?
 6. this指向考察，阐明输出结果是什么
    * 例1
     ```js
-    const a = 1
-    const obj = {
-      fun() {
-        console.log(a)
-      },
-      a: 2
+    var a = 1
+    var obj = {
+        fun:function(){
+            console.log(a)
+        },
+        a:2
     }
     obj.fun() // ?
     ```
     * 例2
     ```js
-    const a = 1
-    function foo() {
-      console.log(a)
+    var a = 1
+    function foo(){
+        console.log(a) 
     }
-    function bar() {
-      const a = 2
-      foo()
+    function bar(){
+        var a = 2
+        foo()
     }
     bar() // ?
     ```
@@ -534,3 +535,4 @@ console.log(b) // ?
 7. 事件触发的几个阶段是什么
 8. 为什么通常在冒泡阶段执行事件
 9. 事件触发的过程是怎样的
+

@@ -32,31 +32,31 @@ timec remind [option]
 commander.command('remind')
   .description('Open auto remind music')
   .option('-c,--cycle [time]', 'Set the duration of the reminder cycle（minute）', '40')
-  .action(remindCommand)
+  .action(remindCommand);
 ```
 
 具体逻辑如下:
 1. 将`cycle`参数转为整数
 2. 然后使用定时器`setTimeout`，在`cycle*oneMinute`毫秒后,播放音频与自动记录
 ```js
-const spawn = require('cross-spawn')
+const spawn = require('cross-spawn');
 
 // 提醒周期（minute）
-const time = +cmdObj.cycle
-const oneMinute = 1000 * 60
-function loop() {
-  setTimeout(() => {
-    playRemindAudio(loop)
-    // 自动记录一下
-    const cwd = getCWD()
-    const { thing } = getConfig()
-    spawn('timec', ['thing', thing.name], {
-      cwd,
-      stdio: 'inherit',
-    })
-  }, time * oneMinute)
-}
-loop()
+  const time = +cmdObj.cycle;
+  const oneMinute = 1000 * 60;
+  const loop = () => {
+    setTimeout(() => {
+      playRemindAudio(loop);
+      // 自动记录一下
+      const cwd = getCWD();
+      const { thing } = getConfig();
+      spawn('timec', ['thing', thing.name], {
+        cwd,
+        stdio: 'inherit',
+      });
+    }, time * oneMinute);
+  };
+  loop();
 ```
 其中自动记录的方法比较简单，通过`spawn`执行`timec thing [newthing]`指令即可进行自动的事件记录
 
@@ -87,20 +87,20 @@ sudo apt-get install mpg123
 
 首先是第一个,API 比较简单，通过[查看源码](https://github.com/Marak/play.js/blob/d3ca7a04d1bd58c3ad72df3088f92985742e41cc/lib/play.js#L54)，实际上他也是调用系统指令播放
 ```js
-const play = require('play/lib/play')
+const play = require('play/lib/play');
 
-play.sound('filepath.wav')
+play.sound('filepath.wav');
 ```
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYyOTczMTE1Mjk1MA==629731152950)
 
 其次是`audio-play`,需要配合`audio-loader`使用
 ```js
-const audioPlay = require('audio-play')
-const audioLoad = require('audio-loader')
+const audioPlay = require('audio-play');
+const audioLoad = require('audio-loader');
 audioLoad('filepath.wav').then((v) => {
-  audioPlay(v)
-})
+  audioPlay(v);
+});
 ```
 在`mac`上测试播放正常，在linux上依旧无法正常播放
 
@@ -123,3 +123,4 @@ process.stdout.write('\x07')
 本系列会不断的更新迭代，直至产品初代完成
 
 * [仓库地址](https://github.com/ATQQ/time-control)
+

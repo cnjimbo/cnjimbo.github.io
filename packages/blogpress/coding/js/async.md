@@ -26,7 +26,7 @@ async，await大家在平时工作中用得非常的多，大部分同志也知�
 利用async和await可以很简单的利用Promise将异步行为改成同步
 
 ```js
-async function fn() {
+async function fn(){
   await promise1()
   await promise2()
   await promise3()
@@ -44,12 +44,12 @@ async函数默认返回一个Promis
 
 ```js
 function* gen() {
-  yield 1
-  yield 2
-  yield 3
+  yield 1;
+  yield 2;
+  yield 3;
 }
 const obj = gen()
-for (const o of obj) {
+for(const o of obj){
   console.log(o) // 1 2 3
 }
 ```
@@ -61,14 +61,14 @@ for (const o of obj) {
 
 ```js
 const obj = {
-  0: '000',
-  1: '777',
-  2: '666',
-  length: 3,
-  [Symbol.iterator]: [][Symbol.iterator]
+  0:'000',
+  1:'777',
+  2:'666',
+  length:3,
+  [Symbol.iterator]:[][Symbol.iterator]
 }
-for (const o of obj) {
-  console.log(o) // 000 777 666
+for(const o of obj){
+  console.log(o) // 000 777 666 
 }
 ```
 定义对象为类数组的形式，然后直接使用Array的`Symbol.iterator`
@@ -332,16 +332,16 @@ function myAsync(generator) {
   return new Promise(
     (resolve, reject) => {
       // 获得迭代器对象
-      const gen = generator()
+      const gen = generator();
 
       function _next(doneValue) {
-        const { done, value }
-          = doneValue || {}
+        const { done, value } =
+          doneValue || {};
 
         if (done) {
           // 正确处理async的返回值
-          resolve(value)
-          return
+          resolve(value);
+          return;
         }
 
         // 执行完这一个后执行下一个
@@ -351,22 +351,21 @@ function myAsync(generator) {
             // 捕获生成器内部非yield表达式抛出的错误
             try {
               // 将Promise resolve的内容赋值给await 左侧的变量
-              _next(gen.next(data))
-            }
-            catch (err) {
-              reject(err)
+              _next(gen.next(data));
+            } catch (err) {
+              reject(err);
             }
           })
           .catch((err) => {
             // 捕获异常则向生成器抛出一个错误
             // 并恢复生成器的执行，返回带有 done 及 value 两个属性的对象。
-            _next(gen.throw(err))
-          })
+            _next(gen.throw(err));
+          });
       }
 
-      _next()
+      _next();
     }
-  )
+  );
 }
 ```
 ## 测试
@@ -481,3 +480,4 @@ hello world
 catch err
 TypeError: Assignment to constant variable.
 ```
+

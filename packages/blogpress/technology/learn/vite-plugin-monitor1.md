@@ -25,9 +25,9 @@ categories:
 
 ```json
 {
-  "scripts": {
-    "dev": "vite --debug"
-  }
+    "scripts": {
+        "dev": "vite --debug",
+    }
 }
 ```
 ```sh
@@ -64,14 +64,15 @@ yarn add -D vite typescript @types/node rimraf
 添加必要的两个指令`dev`,`build`，配置入口文件`dist/index.js`
 ```json
 {
-  "main": "dist/index.js",
-  "scripts": {
-    "dev": "tsc -w -p .",
-    "build": "rimraf dist && tsc -p ."
-  }
+    "main": "dist/index.js",
+    "scripts": {
+        "dev": "tsc -w -p .",
+        "build": "rimraf dist && tsc -p ."
+    }
 }
 ```
 其中`dev`环境下添加了`-w(--watch)`参数，当文件有变动时，以便实时的进行更新
+
 
 `rimraf`的作用是替代`rm -rf`指令，且是跨平台的，windows下同样生效
 
@@ -82,20 +83,20 @@ yarn add -D vite typescript @types/node rimraf
 根目录创建 `tsconfig.json` 内容如下
 ```json
 {
-  "compilerOptions": {
-    "target": "es2015",
-    "moduleResolution": "node",
-    "strict": false,
-    "declaration": true,
-    "noUnusedLocals": true,
-    "esModuleInterop": true,
-    "outDir": "dist",
-    "module": "commonjs",
-    "lib": ["ESNext", "DOM"],
-    "sourceMap": true
-  },
-  "include": ["./src"]
-}
+    "compilerOptions": {
+      "target": "es2015",
+      "moduleResolution": "node",
+      "strict": false,
+      "declaration": true,
+      "noUnusedLocals": true,
+      "esModuleInterop": true,
+      "outDir": "dist",
+      "module": "commonjs",
+      "lib": ["ESNext","DOM"],
+      "sourceMap": true,
+    },
+    "include": ["./src"]
+  }
 ```
 在 `src` 目录下进行开发，里面存放我们的源码
 
@@ -105,7 +106,7 @@ yarn add -D vite typescript @types/node rimraf
 ├── package.json
 ├── src
 |  ├── index.ts     # 插件入口
-|  ├── types
+|  ├── types        
 |  |  └── index.ts  # 类型定义
 |  └── utils
 |     └── index.ts  # 工具方法
@@ -118,19 +119,19 @@ yarn add -D vite typescript @types/node rimraf
 * apply：标识插件在哪个时期工作(serve|build)，默认都会调用
 * config：这个钩子接收原始用户配置（命令行选项指定的会与配置文件合并）和一个描述配置环境的变量
 ```ts
-import type { Plugin } from 'vite'
+import type { Plugin } from 'vite';
 
 export default function Monitor(): Plugin {
   return {
     name: 'vite-plugin-monitor',
     apply: 'serve',
     config(userConfig, env) {
-      console.log(userConfig)
+      console.log(userConfig);
       console.log(env)
       // 可以做进一步的修改，会自动合入当前的配置
       // return
     },
-  }
+  };
 }
 ```
 一个打印Vite配置的插件就搞定了，下面就是测试我们开发的插件
@@ -174,3 +175,4 @@ export default defineConfig({
 [下一篇文章](./vite-plugin-monitor2.md)将详细介绍功能的实现
 
 查看：[仓库源码](https://github.com/ATQQ/vite-plugin-monitor)
+

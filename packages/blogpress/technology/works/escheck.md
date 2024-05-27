@@ -29,13 +29,13 @@ categories:
 先看一下其效果，下面是用于测试的代码
 ```js
 // test.js
-const str = 'hello'
-const str2 = 'world'
+var str = 'hello'
+var str2 = 'world'
 
 const varConst = 'const'
-const varLet = 'let'
-function arrFun() {
-  console.log('hello world')
+let varLet = 'let'
+const arrFun = () => {
+    console.log('hello world');
 }
 ```
 ```sh
@@ -57,9 +57,9 @@ npx tsup __test__/testProject/js/index.js --sourcemap -d __test__/testProject/di
 如果有`sourcemap`那么我们暂且是可以通过[source-map](https://www.npmjs.com/package/source-map)这个库解析一下，以上面的报错为例
 ```ts
 // npx esno source-map.ts
+import sourceMap from 'source-map'
 import fs from 'fs'
 import path from 'path'
-import sourceMap from 'source-map'
 
 const file = path.join(__dirname, 'testProject/dist/index.js.map')
 const lineNumber = 1
@@ -97,14 +97,13 @@ const columnNumber = 45
 import * as acorn from 'acorn'
 
 try {
-  acorn.parse('const a = \'hello\'', {
+  acorn.parse(`const a = 'hello'`, {
     ecmaVersion: 5,
     silent: true
     // sourceType: 'module'
     // allowHashBang:true
   })
-}
-catch (err) {
+} catch (err) {
   // The keyword 'const' is reserved (1:0)
   console.log(err)
   // err 除了继承常规 Error 对象，包含 stack 和 message 等内容外，还包含如下信息
@@ -120,10 +119,10 @@ catch (err) {
 
 ```ts
 // npx esno es-check.ts
-import path from 'path'
-import fs from 'fs'
 import fg from 'fast-glob'
+import path from 'path'
 import * as acorn from 'acorn'
+import fs from 'fs'
 
 const testPattern = path.join(__dirname, 'testProject/**/*.js')
 // 要检查的文件
@@ -131,7 +130,7 @@ const files = fg.sync(testPattern)
 
 // acorn 解析配置
 const acornOpts = {
-  ecmaVersion: 5, // 目标版本
+  ecmaVersion: 5,// 目标版本
   silent: true
   // sourceType: 'module'
   // allowHashBang:true
@@ -145,8 +144,7 @@ files.forEach((file) => {
   const code = fs.readFileSync(file, 'utf8')
   try {
     acorn.parse(code, acornOpts as any)
-  }
-  catch (err: any) {
+  } catch (err: any) {
     errArr.push({
       err,
       stack: err.stack,
@@ -174,9 +172,10 @@ if (errArr.length > 0) {
   process.exit(1)
 }
 
-console.info('ES-Check: there were no ES version matching errors!  🎉')
+console.info(`ES-Check: there were no ES version matching errors!  🎉`)
 ```
 ![图片](https://img.cdn.sugarat.top/mdImg/MTY2NDEwNzY1NjA0Nw==664107656047)
+
 
 ### 小结
 1. 只能检测源码中是否存在不符合对应ECMAScript版本的语法
@@ -307,10 +306,9 @@ acornWalk.full(ast, (node, _state, _type) => {
   const codeSnippet = code.slice(node.start, node.end)
   try {
     acorn.parse(codeSnippet, {
-      ecmaVersion,
+        ecmaVersion,
     })
-  }
-  catch (error) {
+  } catch (error) {
     // 在这里输出错误片段和解析报错原因
     console.log(codeSnippet)
     console.log(error.message)
@@ -319,13 +317,13 @@ acornWalk.full(ast, (node, _state, _type) => {
 ```
 还是以前面的测试代码为例，输出的错误信息如下
 ```ts
-const str = 'hello'
-const str2 = 'world'
+var str = 'hello'
+var str2 = 'world'
 
 const varConst = 'const'
-const varLet = 'let'
-function arrFun() {
-  console.log('hello world')
+let varLet = 'let'
+const arrFun = () => {
+    console.log('hello world');
 }
 ```
 [完整demo1代码](https://github.com/ATQQ/tools/blob/feature/es-check/packages/cli/es-check/__test__/demos/more-error/1.ts)
@@ -340,7 +338,7 @@ function arrFun() {
 
 ```ts
 const obj = {
-  boolean: true,
+  'boolean': true,
 }
 ```
 
@@ -352,13 +350,12 @@ try {
   acorn.parse(codeSnippet, {
     ecmaVersion: 'latest'
   })
-}
-catch (_) {
+} catch (_) {
   isValidCode = false
 }
 // 不合法不处理
 if (!isValidCode) {
-
+  return 
 }
 ```
 
@@ -377,8 +374,7 @@ acornWalk.full(ast, (node, _state, _type) => {
     acorn.parse(codeSnippet, {
       ecmaVersion: '5'
     } as any)
-  }
-  catch (error: any) {
+  } catch (error: any) {
     // 与先存错误进行比较
     const isRepeat = codeErrorList.find((e) => {
       // 判断是否是包含关系
@@ -408,7 +404,7 @@ console.log(codeErrorList)
 比如下代码
 
 ```ts
-const { boolean: hello } = {}
+var { boolean:hello } = {}
 ```
 ![图片](https://img.cdn.sugarat.top/mdImg/MTY2NDI5MjY5Mjg2Ng==664292692866)
 
@@ -418,8 +414,8 @@ const { boolean: hello } = {}
 
 ```ts
 const filterMessage = [/^The keyword /]
-if (filterMessage.find(r => r.test(error.message))) {
-
+if (filterMessage.find((r) => r.test(error.message))) {
+  return
 }
 ```
 调整后的报错信息就是`解构赋值`的语法错误了
@@ -449,8 +445,7 @@ acornWalk.full(ast, (node, _state, _type) => {
     acorn.parse(codeSnippet, {
       ecmaVersion: '5'
     } as any)
-  }
-  catch (error) {
+  } catch (error) {
     const locStart = acorn.getLineInfo(code, node.start)
     const locEnd = acorn.getLineInfo(code, node.end)
     codeErrorList.push({
@@ -563,7 +558,7 @@ function traverse(ast: any, traverseSchema: Record<string, any>) {
 ```ts
 traverse(htmlAST, {
   script(node: any) {
-    const code = `${node.childNodes.map(n => n.value)}`
+    const code = `${node.childNodes.map((n) => n.value)}`
     const loc = node.sourceCodeLocation
     if (code) {
       console.log(code)
@@ -581,7 +576,7 @@ traverse(htmlAST, {
 ```ts
 traverse(htmlAST, {
   script(node: any) {
-    const code = `${node.childNodes.map(n => n.value)}`
+    const code = `${node.childNodes.map((n) => n.value)}`
     const loc = node.sourceCodeLocation
     if (code) {
       const errList = checkCode(code)
@@ -639,3 +634,4 @@ escheck es5 testProject/**/*.js testProject/**/*.html --out
 ## 参考
 * [es-check](https://github.com/yowainwright/es-check)：社区出品
 * [mpx-es-check](https://github.com/mpx-ecology/mpx-es-check)：滴滴出品 [MPX](https://mpxjs.cn/) 框架的配套工具
+

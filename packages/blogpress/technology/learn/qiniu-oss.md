@@ -25,8 +25,8 @@ npm i qiniu
 ```js
 const qiniu = require('qiniu')
 const qiniuConfig = {
-  accessKey: process.env.qiniu_accessKey,
-  secretKey: process.env.qiniu_secretKey
+    accessKey: process.env.qiniu_accessKey,
+    secretKey: process.env.qiniu_secretKey
 }
 const mac = new qiniu.auth.digest.Mac(qiniuConfig.accessKey, qiniuConfig.secretKey)
 ```
@@ -118,9 +118,9 @@ qiniuUpload(uploadToken, file, key, {
 
 ### 获取OSS文件的下载链接
 ```js
-function getDeadline() {
-  // 12小时过期
-  return Math.floor(Date.now() / 1000) + 3600 * 12
+const getDeadline = () => {
+    // 12小时过期
+    return Math.floor(Date.now() / 1000) + 3600 * 12
 }
 /**
  * 获取OSS上文件的下载链接
@@ -128,15 +128,15 @@ function getDeadline() {
  * @param expiredTime 链接过期的具体时间
  */
 function createDownloadUrl(key, expiredTime = getDeadline()) {
-  const config = new qiniu.conf.Config()
-  const bucketManager = new qiniu.rs.BucketManager(mac, config)
-  return bucketManager.privateDownloadUrl(privateBucketDomain, key, expiredTime)
+    const config = new qiniu.conf.Config()
+    const bucketManager = new qiniu.rs.BucketManager(mac, config)
+    return bucketManager.privateDownloadUrl(privateBucketDomain, key, expiredTime)
 }
 ```
 
 ### 单个删除指定资源
 ```js
-function deleteSourceByKey(key) {
+function deleteSourceByKey(key){
   const config = new qiniu.conf.Config()
   const bucketManager = new qiniu.rs.BucketManager(mac, config)
   bucketManager.delete(bucket, key, (err) => {
@@ -153,25 +153,22 @@ function deleteSourceByKey(key) {
 ```js
 function batchDeleteFiles(keys) {
   const config = new qiniu.conf.Config()
-  const delOptions = keys.map(k => qiniu.rs.deleteOp(bucket, k))
+  const delOptions = keys.map((k) => qiniu.rs.deleteOp(bucket, k))
   const bucketManager = new qiniu.rs.BucketManager(mac, config)
   bucketManager.batch(delOptions, (err, respBody, respInfo) => {
     if (err) {
       console.log(err)
-    }
-    else {
+    } else {
       // 200 is success, 298 is part success
-      if (Number.parseInt(`${respInfo.statusCode / 100}`, 10) === 2) {
+      if (parseInt(`${respInfo.statusCode / 100}`, 10) === 2) {
         respBody.forEach((item) => {
           if ((+item.code) === 200) {
             console.log(`${item.code}\tsuccess`)
-          }
-          else {
+          } else {
             console.log(`${item.code}\t${item.data.error}`)
           }
         })
-      }
-      else {
+      } else {
         console.log(respInfo.deleteusCode)
         console.log(respBody)
       }
@@ -182,7 +179,7 @@ function batchDeleteFiles(keys) {
 
 ### 删除指定前缀资源
 ```js
-function deleteFilesBuPrefix(prefix) {
+function deleteFilesBuPrefix(prefix){
   const config = new qiniu.conf.Config()
   const bucketManager = new qiniu.rs.BucketManager(mac, config)
   bucketManager.listPrefix(bucket, {
@@ -191,7 +188,7 @@ function deleteFilesBuPrefix(prefix) {
   }, (err, respBody) => {
     const files = respBody.items
     // 调用批量删除接口
-    batchDeleteFiles(files.map(f => f.key))
+    batchDeleteFiles(files.map((f) => f.key))
   })
 }
 ```
@@ -199,15 +196,14 @@ function deleteFilesBuPrefix(prefix) {
 ### 判断资源是否存在
 `bucketManager.stat`这个方法用于查看资源信息
 ```js
-function judgeFileIsExist(key) {
+function judgeFileIsExist(key){
   return new Promise((res) => {
     const config = new qiniu.conf.Config()
     const bucketManager = new qiniu.rs.BucketManager(mac, config)
     bucketManager.stat(bucket, key, (err, respBody, respInfo) => {
-      if (respInfo?.statusCode) {
+      if(respInfo?.statusCode){
         res(respInfo.statusCode !== 612)
-      }
-      else {
+      }else{
         res(false)
       }
     })
@@ -217,22 +213,20 @@ function judgeFileIsExist(key) {
 
 ### 批量查询文件信息
 ```js
-export function batchFileStatus(keys) {
+export function batchFileStatus(keys){
   return new Promise((resolve, reject) => {
-    const statOperations = keys.map(k => qiniu.rs.statOp(bucket, k))
+    const statOperations = keys.map((k) => qiniu.rs.statOp(bucket, k))
     const config = new qiniu.conf.Config()
     const bucketManager = new qiniu.rs.BucketManager(mac, config)
     bucketManager.batch(statOperations, (err, respBody, respInfo) => {
       if (err) {
         console.log(err)
         // throw err;
-      }
-      else {
+      } else {
         // 200 is success, 298 is part success
-        if (Number.parseInt(`${respInfo.statusCode / 100}`) == 2) {
+        if (parseInt(`${respInfo.statusCode / 100}`) == 2) {
           resolve(respBody)
-        }
-        else {
+        } else {
           console.log(respInfo.statusCode)
           console.log(respBody)
         }
@@ -261,18 +255,16 @@ const { urlsafeBase64Encode } = qiniu.util
 function getKeyInfo(key: string) {
   const { name, base, ext } = path.parse(key)
   return {
-    name,
-    base,
-    ext,
+    name, base, ext,
   }
 }
 /**
  * 资源归档为zip
  * @param {string[]} keys 需要归档的资源
- * @param {string} zipName 压缩包名称
- * @returns
+ * @param {string} zipName 压缩包名称 
+ * @returns 
  */
-function makeZipWithKeys(keys, zipName) {
+function makeZipWithKeys(keys, zipName){
   return new Promise((res) => {
     const names = []
     const content = keys.map((key) => {
@@ -297,7 +289,8 @@ function makeZipWithKeys(keys, zipName) {
     const putExtra = new qiniu.form_up.PutExtra()
     const key = `${Date.now()}-${~~(Math.random() * 1000)}.txt`
 
-    formUploader.put(getUploadToken(), key, content, putExtra, (respErr, respBody, respInfo) => {
+    formUploader.put(getUploadToken(), key, content, putExtra, (respErr,
+      respBody, respInfo) => {
       if (respErr) {
         throw respErr
       }
@@ -321,14 +314,12 @@ function makeZipWithKeys(keys, zipName) {
             console.log(statusUrl)
             // 这里只返回任务id，转由客户端发请求查询
             res(respBody.persistentId)
-          }
-          else {
+          } else {
             console.log(respInfo.statusCode)
             console.log(respBody)
           }
         })
-      }
-      else {
+      } else {
         console.log(respInfo.statusCode)
         console.log(respBody)
       }
@@ -346,10 +337,10 @@ function makeZipWithKeys(keys, zipName) {
 ```js
 /**
  * 查询Fop任务完成状态
- * @param {string} persistentId
- * @returns
+ * @param {string} persistentId 
+ * @returns 
  */
-function checkFopTaskStatus(persistentId) {
+function checkFopTaskStatus(persistentId){
   const config = new qiniu.conf.Config()
   const operManager = new qiniu.fop.OperationManager(null, config)
   return new Promise((res) => {
@@ -363,8 +354,7 @@ function checkFopTaskStatus(persistentId) {
         const item = respBody.items[0]
         const { code, key } = item
         res({ code, key })
-      }
-      else {
+      } else {
         console.log(respInfo.statusCode)
         console.log(respBody)
       }
@@ -378,3 +368,4 @@ function checkFopTaskStatus(persistentId) {
 
 ## 参考
 * [七牛云-Node.js SDK](https://developer.qiniu.com/kodo/1289/nodejs)
+

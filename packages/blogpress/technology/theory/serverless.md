@@ -66,6 +66,7 @@ Serverless 架构即“⽆服务器”架构，它是一种全新的架构方式
 * PaaS: 平台即服务
 * SaaS: 软件即服务
 
+
 [云原生](https://www.jianshu.com/p/a37baa7c3eff)特点：
 * 业务开发变轻，变薄，聚焦业务逻辑
 * 基础设施变重，变厚，变标准
@@ -106,7 +107,7 @@ Serverless是一种思想，不一定是所谓的 FaaS + BaaS（后端即服务�
 ### 1. 为什么Serverless这么火
 >在中国，能算清账的公司已经打败了99%的公司
 
-现代软件开发成本非常的高，主要就在于 “成本意识”
+现代软件开发成本非常的高，主要就在于 “成本意识” 
 
 函数即服务（FaaS）作为 Serverless 时代重要的发展⽅向，能够从⼯程效率、可靠性、性能、成本等⽅方⾯给开发者（企业）带来巨大的价值，尤其是能够极大地提升研发效率。
 
@@ -156,3 +157,4 @@ Serverless能够让依赖Node服务的前端极大减低成本，开发者只需
 * [什么是 Serverless 架构](https://www.phodal.com/blog/Serverless-architecture-what-is-Serverless-architecture/)
 * [掘金· 分享狼叔关于《大前端工程化的实践与思考》](https://juejin.im/post/6844903887091023885)
 :::
+

@@ -27,26 +27,26 @@ Reference有三个组成部分:
 
 **例子**
 ```js
-const foo = 1
+var foo = 1
 
-const fooReference = {
-  base: envirronmentRecord,
-  name: 'foo',
-  strict: false
+var fooReference = {
+    base:envirronmentRecord,
+    name:'foo',
+    strict:false
 }
 ```
 ```js
-const foo = {
-  bar() {
-    return this
-  }
+var foo = {
+    bar:function(){
+        return this
+    }
 }
 foo.bar()
 
-const barReference = {
-  base: foo,
-  propertyName: 'bar',
-  strict: false
+var barReference = {
+    base:foo,
+    propertyName:'bar',
+    strict:false
 }
 ```
 **获取 Reference 组成部分的方法**
@@ -59,3 +59,4 @@ const barReference = {
 [JavaScript深入之从ECMAScript规范解读this](https://github.com/mqyqingfeng/Blog/issues/7)
 [ ECMAScript 5.1 ](http://yanhaijing.com/es5/#115)
 :::
+

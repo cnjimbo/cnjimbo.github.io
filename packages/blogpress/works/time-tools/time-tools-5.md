@@ -34,10 +34,10 @@ tags:
 ```js
 // 导出
 commander.arguments('<filenames...>') // 多个文件/目录
-  .option('-o, --output', 'Export analysis results')
-  .option('-r, --report', 'Export the result as a md report')
-  .option('-R, --range [startDate_endDate]', 'A time period')
-// .action
+    .option('-o, --output', 'Export analysis results')
+    .option('-r, --report', 'Export the result as a md report')
+    .option('-R, --range [startDate_endDate]', 'A time period')
+    // .action
 ```
 
 再添加简单的判断逻辑：
@@ -79,19 +79,19 @@ commander.arguments('<filenames...>') // 多个文件/目录
 
 ```js
 function getJSONByRange(fileContent, startTime, endTime) {
-  let jsonSchema = getJSON(fileContent)
-  // 从小到大排
-  jsonSchema = jsonSchema.sort((a, b) => {
-    const d1 = new Date(a.title)
-    const d2 = new Date(b.title)
-    return d1 - d2
-  }).filter((v) => {
-    const d = new Date(v.title)
-    const s = new Date(startTime)
-    const e = new Date(endTime)
-    return d >= s && d <= e
-  })
-  return jsonSchema
+    let jsonSchema = getJSON(fileContent)
+    // 从小到大排
+    jsonSchema = jsonSchema.sort((a, b) => {
+        const d1 = new Date(a.title)
+        const d2 = new Date(b.title)
+        return d1 - d2
+    }).filter(v => {
+        const d = new Date(v.title)
+        const s = new Date(startTime)
+        const e = new Date(endTime)
+        return d >= s && d <= e
+    })
+    return jsonSchema
 }
 ```
 #### JSON转报告内容
@@ -133,10 +133,10 @@ JSON数据结构如下（复习一下）
             "content": "b组件"
           }
         ]
-      }
+      },
     ]
-  }
-]
+  },
+] 
 ```
 
 首先使用一个数组存放每一行的数据的结果（最终md的每一行）
@@ -144,13 +144,13 @@ JSON数据结构如下（复习一下）
 const res = []
 
 // 记录总耗时
-const sumTime = 0
+let sumTime = 0
 ```
 
 开始结束时间分别为`json`对象的第一项和最后一项的title
 ```js
 const startDate = jsonSchema[0].title
-const endDate = jsonSchema[jsonSchema.length - 1].title
+const endDate = jsonSchema[jsonSchema.length-1].title
 // 时间
 res.push(`# ${startDate} 至 ${endDate}`)
 ```
@@ -163,9 +163,9 @@ res.push(`# ${startDate} 至 ${endDate}`)
 * 遍历然后用`concat`链接这些数组
 ```js
 // 过滤出所有的tasks
-const allTasks = jsonSchema.reduce((pre, current) => {
-  return pre.concat(current.tasks)
-}, [])
+const allTasks = jsonSchema.reduce((pre,current)=>{
+    return pre.concat(current.tasks)
+},[])
 ```
 
 合并相同任务(task)的事务(things)
@@ -179,10 +179,10 @@ const allTasks = jsonSchema.reduce((pre, current) => {
       {
         "time": "0.2",
         "content": "a组件"
-      }
+      },
     ]
   },
-  {
+    {
     "title": "任务1",
     "things": [
       {
@@ -190,7 +190,7 @@ const allTasks = jsonSchema.reduce((pre, current) => {
         "content": "b组件"
       }
     ]
-  }
+  },
 ]
 ```
 
@@ -220,19 +220,19 @@ const allTasks = jsonSchema.reduce((pre, current) => {
 
 ```js
 // 合并相同的任务
-const tasks = allTasks.reduce((pre, current) => {
-  if (pre.length === 0) {
-    pre.push(current)
+const tasks = allTasks.reduce((pre,current)=>{
+    if(pre.length===0){
+        pre.push(current)
+        return pre
+    }
+    let sameTask = pre.find(v=>v.title===current.title)
+    if(!sameTask){
+        pre.push(current)
+        return pre
+    }
+    sameTask.things.push(...current.things)
     return pre
-  }
-  const sameTask = pre.find(v => v.title === current.title)
-  if (!sameTask) {
-    pre.push(current)
-    return pre
-  }
-  sameTask.things.push(...current.things)
-  return pre
-}, [])
+},[])
 ```
 
 结构整理完毕，接着就是内容的生成了:
@@ -245,19 +245,19 @@ const tasks = allTasks.reduce((pre, current) => {
 到此，生成范围报告的逻辑就完成了
 ```js
 for (const taskItem of tasks) {
-  res.push('')
-  res.push(`## ${taskItem.title}`)
-  let taskTime = 0
-  const things = taskItem.things.map((thing) => {
-    const { time, content } = thing
-    taskTime += (+time)
-    return `* ${content}`
-  })
-  res.push(`>耗时：${taskTime.toFixed(2)}`)
-  res.push(...things)
-  sumTime += taskTime
+    res.push('')
+    res.push(`## ${taskItem.title}`)
+    let taskTime = 0
+    let things = taskItem.things.map(thing=>{
+        const {time,content} = thing
+        taskTime += (+time)
+        return `* ${content}`
+    })
+    res.push(`>耗时：${taskTime.toFixed(2)}`)
+    res.push(...things)
+    sumTime += taskTime
 }
-res.splice(1, 0, `**总耗时** ${sumTime.toFixed(2)}`)
+res.splice(1,0,`**总耗时** ${sumTime.toFixed(2)}`)
 ```
 
 [本部分的完整代码地址](https://github.com/ATQQ/time-control/pull/2/files)
@@ -273,3 +273,4 @@ res.splice(1, 0, `**总耗时** ${sumTime.toFixed(2)}`)
 本系列会不断的更新迭代，直至产品初代完成
 
 * [仓库地址](https://github.com/ATQQ/time-control)
+

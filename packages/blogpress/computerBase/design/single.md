@@ -23,127 +23,127 @@ categories:
 利用instanceof判断是否使用new关键字调用函数进行对象的实例化
 ```js
 function User() {
-  if (!(this instanceof User)) {
-    return
-  }
-  if (!User._instance) {
-    this.name = '无名'
-    User._instance = this
-  }
-  return User._instance
+    if (!(this instanceof User)) {
+        return
+    }
+    if (!User._instance) {
+        this.name = '无名'
+        User._instance = this
+    }
+    return User._instance
 }
 
 const u1 = new User()
 const u2 = new User()
 
-console.log(u1 === u2)// true
+console.log(u1===u2);// true
 ```
 ### 方式2
 在函数上直接添加方法属性调用生成实例
 ```js
-function User() {
-  this.name = '无名'
+function User(){
+    this.name = '无名'
 }
-User.getInstance = function () {
-  if (!User._instance) {
-    User._instance = new User()
-  }
-  return User._instance
+User.getInstance = function(){
+    if(!User._instance){
+        User._instance = new User()
+    }
+    return User._instance
 }
 
 const u1 = User.getInstance()
 const u2 = User.getInstance()
 
-console.log(u1 === u2)
+console.log(u1===u2);
 ```
 
 ### 方式3
 使用闭包，改进方式2
 ```js
 function User() {
-  this.name = '无名'
+    this.name = '无名'
 }
 User.getInstance = (function () {
-  let instance
-  return function () {
-    if (!instance) {
-      instance = new User()
+    var instance
+    return function () {
+        if (!instance) {
+            instance = new User()
+        }
+        return instance
     }
-    return instance
-  }
 })()
 
 const u1 = User.getInstance()
 const u2 = User.getInstance()
 
-console.log(u1 === u2)
+console.log(u1 === u2);
 ```
 ### 方式4
 使用包装对象结合闭包的形式实现
 ```js
 const User = (function () {
-  function _user() {
-    this.name = 'xm'
-  }
-  return function () {
-    if (!_user.instance) {
-      _user.instance = new _user()
+    function _user() {
+        this.name = 'xm'
     }
-    return _user.instance
-  }
+    return function () {
+        if (!_user.instance) {
+            _user.instance = new _user()
+        }
+        return _user.instance
+    }
 })()
 
 const u1 = new User()
 const u2 = new User()
 
-console.log(u1 === u2) // true
+console.log(u1 === u2); // true
 ```
 当然这里可以将闭包部分的代码单独封装为一个函数
 
 在频繁使用到单例的情况下，推荐使用类似此方法的方案
 ```js
 function SingleWrapper(cons) {
-  // 排出非函数与箭头函数
-  if (!(cons instanceof Function) || !cons.prototype) {
-    throw new Error('不是合法的构造函数')
-  }
-  let instance
-  return function () {
-    if (!instance) {
-      instance = new cons()
+    // 排出非函数与箭头函数
+    if (!(cons instanceof Function) || !cons.prototype) {
+        throw new Error('不是合法的构造函数')
     }
-    return instance
-  }
+    var instance
+    return function () {
+        if (!instance) {
+            instance = new cons()
+        }
+        return instance
+    }
 }
 
-function User() {
-  this.name = 'xm'
+function User(){
+    this.name = 'xm'
 }
 const SingleUser = SingleWrapper(User)
 const u1 = new SingleUser()
 const u2 = new SingleUser()
-console.log(u1 === u2)
+console.log(u1 === u2);
 ```
 
 ### 方式5
 在构造函数中利用`new.target`判断是否使用new关键字
 ```js
-class User {
-  constructor() {
-    if (new.target !== User) {
-      return
+class User{
+    constructor(){
+        if(new.target !== User){
+            return
+        }
+        if(!User._instance){
+            this.name = 'xm'
+            User._instance = this
+        }
+        return User._instance
     }
-    if (!User._instance) {
-      this.name = 'xm'
-      User._instance = this
-    }
-    return User._instance
-  }
 }
 
 const u1 = new User()
 const u2 = new User()
-console.log(u1 === u2)
+console.log(u1 === u2);
 ```
 
 ### 方式6
@@ -151,22 +151,22 @@ console.log(u1 === u2)
 
 ```js
 class User {
-  constructor() {
-    this.name = 'xm'
-  }
-
-  static getInstance() {
-    if (!User._instance) {
-      User._instance = new User()
+    constructor() {
+        this.name = 'xm'
     }
-    return User._instance
-  }
+    static getInstance() {
+        if (!User._instance) {
+            User._instance = new User()
+        }
+        return User._instance
+    }
 }
+
 
 const u1 = User.getInstance()
 const u2 = User.getInstance()
 
-console.log(u1 === u2)
+console.log(u1 === u2);
 ```
 
 ## 面试题
@@ -176,50 +176,48 @@ console.log(u1 === u2)
 **静态方法**
 ```js
 class Storage {
-  static getInstance() {
-    if (!Storage.instance) {
-      Storage.instance = new Storage()
+    static getInstance() {
+        if (!Storage.instance) {
+            Storage.instance = new Storage()
+        }
+        return Storage.instance
     }
-    return Storage.instance
-  }
-
-  setItem(key, value) {
-    localStorage.setItem(key, value)
-  }
-
-  getItem(key) {
-    return localStorage.getItem(key)
-  }
+    setItem(key,value){
+        localStorage.setItem(key,value)
+    }
+    getItem(key){
+        return localStorage.getItem(key)
+    }
 }
-const s1 = Storage.getInstance()
-const s2 = Storage.getInstance()
-console.log(s1 === s2) // true
-s1.setItem('abc', 666)
+let s1 = Storage.getInstance()
+let s2 = Storage.getInstance()
+console.log(s1===s2) // true
+s1.setItem('abc',666)
 console.log(s2.getItem('abc')) // 666
 ```
 **闭包**
 ```js
 function baseStorage() { }
 baseStorage.prototype.setItem = function (key, value) {
-  localStorage.setItem(key, value)
+    localStorage.setItem(key, value)
 }
 baseStorage.prototype.getItem = function (key) {
-  return localStorage.getItem(key)
+    return localStorage.getItem(key)
 }
 const Storage = (function () {
-  let instance = null
-  return function () {
-    if (!instance) {
-      instance = new baseStorage()
+    let instance = null
+    return function () {
+        if (!instance) {
+            instance = new baseStorage()
+        }
+        return instance
     }
-    return instance
-  }
 })()
 
-const s1 = new Storage()
-const s2 = Storage()
-console.log(s1 === s2) // true
-s1.setItem('abc', 666)
+let s1 = new Storage()
+let s2 = Storage()
+console.log(s1===s2) // true
+s1.setItem('abc',666)
 console.log(s2.getItem('abc')) // 666
 ```
 :::tip 例2
@@ -247,37 +245,38 @@ console.log(s2.getItem('abc')) // 666
 ```
 ```js
 class Modal {
-  constructor(msg) {
-    const modal = document.createElement('div')
-    modal.textContent = msg
-    modal.classList.add('global-modal')
-    modal.style.display = 'none'
-    this.modal = modal
-    document.body.append(modal)
-  }
-
-  show() {
-    this.modal.style.display = 'block'
-  }
-
-  hide() {
-    this.modal.style.display = 'none'
-  }
+    constructor(msg) {
+        let modal = document.createElement('div')
+        modal.textContent = msg
+        modal.classList.add('global-modal')
+        modal.style.display = 'none'
+        this.modal = modal
+        document.body.append(modal)
+    }
+    show() {
+        this.modal.style.display = 'block'
+    }
+    hide() {
+        this.modal.style.display = 'none'
+    }
 }
 class GlobalModal {
-  constructor() {
-    if (!GlobalModal.instance) {
-      GlobalModal.instance = new Modal('666')
+    constructor() {
+        if (!GlobalModal.instance) {
+            GlobalModal.instance = new Modal('666')
+        }
+        return GlobalModal.instance
     }
-    return GlobalModal.instance
-  }
 }
-const a = new GlobalModal()
-const b = new GlobalModal()
-document.getElementById('open').addEventListener('click', () => {
-  a.show()
+let a = new GlobalModal()
+let b = new GlobalModal()
+document.getElementById('open').addEventListener('click',function(){
+    a.show()
 })
-document.getElementById('close').addEventListener('click', () => {
-  b.hide()
+document.getElementById('close').addEventListener('click',function(){
+    b.hide()
 })
 ```
+
+
+

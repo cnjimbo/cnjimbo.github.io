@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { withBase } from 'vitepress'
+import { useRouter, withBase } from 'vitepress'
 import { computed } from 'vue'
-import { useWindowSize } from '@vueuse/core'
-import { formatShowDate } from '../utils/client'
+import { formatShowDate, wrapperCleanUrls } from '../utils/client'
+import { useCleanUrls, useImageStyle } from '../composables/config/blog'
 
 const props = defineProps<{
   route: string
@@ -13,65 +13,96 @@ const props = defineProps<{
   descriptionHTML?: string
   tag?: string[]
   author?: string
-  cover?: string | boolean
+  cover?: string | false
   pin?: number
 }>()
-const { width } = useWindowSize()
-const inMobile = computed(() => width.value <= 500)
 const showTime = computed(() => {
   return formatShowDate(props.date)
 })
+const cleanUrls = useCleanUrls()
+const link = computed(() => withBase(wrapperCleanUrls(!!cleanUrls, props.route)))
 
-// function isWrappedWithPreventDefault(element: HTMLElement) {
-//   let parent = element.parentElement
+const router = useRouter()
+function handleSkipDoc() {
+  router.go(link.value)
+}
 
-//   while (parent) {
-//     if (parent.hasAttribute('preventDefault')) {
-//       return true
-//     }
-//     parent = parent.parentElement
-//   }
+const { coverPreview } = useImageStyle()
 
-//   return false
-// }
+const resultCover = computed(() => {
+  if (!props.cover) {
+    return ''
+  }
+  const baseCover = withBase(props.cover)
+  const coverRule = [coverPreview]
+    .flat()
+    .filter(v => !!v)
+    .find((coverRule) => {
+      if (!coverRule) {
+        return false
+      }
+      return coverRule.rule instanceof RegExp ? coverRule.rule.test(baseCover) : baseCover.includes(coverRule.rule)
+    })
+
+  if (!coverRule) {
+    return baseCover
+  }
+  const { suffix, replace, rule } = coverRule
+  if (!replace && suffix) {
+    return `${baseCover}${suffix}`
+  }
+  if (typeof replace === 'function') {
+    return replace(baseCover)
+  }
+  if (typeof replace === 'string') {
+    return baseCover.replace(rule, replace)
+  }
+
+  return baseCover
+})
 </script>
 
 <template>
-  <a class="blog-item" :href="withBase(route)">
-    <i v-if="!!pin" class="pin" />
+  <a
+    class="blog-item" :href="link" @click="(e) => {
+      e.preventDefault()
+      handleSkipDoc()
+    }"
+  >
+    <i v-show="!!pin" class="pin" />
     <!-- 标题 -->
-    <p v-if="inMobile" class="title">{{ title }}</p>
+    <p class="title mobile-visible">
+      {{ title }}
+    </p>
     <div class="info-container">
       <!-- 左侧信息 -->
       <div class="info-part">
         <!-- 标题 -->
-        <p v-if="!inMobile" class="title">{{ title }}</p>
+        <p class="title pc-visible">
+          {{ title }}
+        </p>
         <!-- 简短描述 -->
-        <p v-if="!descriptionHTML && !!description" class="description">
+        <p v-show="!descriptionHTML && !!description" class="description">
           {{ description }}
         </p>
         <template v-if="descriptionHTML">
           <div class="description-html" v-html="descriptionHTML" />
         </template>
         <!-- 底部补充描述 -->
-        <div v-if="!inMobile" class="badge-list">
-          <span v-if="author" class="split">{{ author }}</span>
+        <div class="badge-list pc-visible">
+          <span v-show="author" class="split">{{ author }}</span>
           <span class="split">{{ showTime }}</span>
-          <span v-if="tag?.length" class="split">{{ tag.join(' · ') }}</span>
+          <span v-show="tag?.length" class="split">{{ tag?.join(' · ') }}</span>
         </div>
       </div>
       <!-- 右侧封面图 -->
-      <div
-        v-if="cover"
-        class="cover-img"
-        :style="`background-image: url(${withBase(`${cover}`)});`"
-      />
+      <div v-show="cover" class="cover-img" :style="`background-image: url(${resultCover});`" />
     </div>
     <!-- 底部补充描述 -->
-    <div v-if="inMobile" class="badge-list">
-      <span v-if="author" class="split">{{ author }}</span>
+    <div class="badge-list mobile-visible">
+      <span v-show="author" class="split">{{ author }}</span>
       <span class="split">{{ showTime }}</span>
-      <span v-if="tag?.length" class="split">{{ tag.join(' · ') }}</span>
+      <span v-show="tag?.length" class="split">{{ tag?.join(' · ') }}</span>
     </div>
   </a>
 </template>
@@ -86,19 +117,19 @@ const showTime = computed(() => {
   left: -4px;
   opacity: 0.5;
 }
+
 .blog-item:hover .pin {
   opacity: 1;
 }
+
 .blog-item .pin::before {
   content: '';
   position: absolute;
   width: 120%;
   height: 30px;
-  background-image: linear-gradient(
-    45deg,
-    var(--blog-theme-color),
-    var(--blog-theme-color)
-  );
+  background-image: linear-gradient(45deg,
+      var(--blog-theme-color),
+      var(--blog-theme-color));
   transform: rotate(-45deg) translateY(-20px);
   display: flex;
   align-items: center;
@@ -120,10 +151,12 @@ const showTime = computed(() => {
   cursor: pointer;
   display: flex;
   flex-direction: column;
+
   &:hover {
     box-shadow: var(--box-shadow-hover);
   }
 }
+
 .info-container {
   display: flex;
   align-items: center;
@@ -133,11 +166,13 @@ const showTime = computed(() => {
 .info-part {
   flex: 1;
 }
+
 .title {
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 8px;
 }
+
 .description {
   color: var(--description-font-color);
   font-size: 14px;
@@ -149,13 +184,16 @@ const showTime = computed(() => {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
+
 .description-html {
   font-size: 14px;
 }
+
 .badge-list {
   font-size: 13px;
   color: var(--badge-font-color);
   margin-top: 8px;
+
   .split:not(:last-child) {
     &::after {
       content: '';
@@ -167,20 +205,39 @@ const showTime = computed(() => {
     }
   }
 }
+
 .cover-img {
   width: 120px;
   height: 80px;
   margin-left: 24px;
   border-radius: 2px;
   background-repeat: no-repeat;
-  background-size: 120px 80px;
+  background-size: contain;
+  background-position: center;
+}
+
+.pc-visible {
+  display: block;
+}
+
+.mobile-visible {
+  display: none;
 }
 
 @media screen and (max-width: 500px) {
   .cover-img {
     width: 100px;
     height: 60px;
-    background-size: 100px 60px;
+    background-size: contain;
+    background-position: center;
+  }
+
+  .pc-visible {
+    display: none;
+  }
+
+  .mobile-visible {
+    display: block;
   }
 }
 </style>

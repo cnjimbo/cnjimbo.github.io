@@ -22,30 +22,30 @@ categories:
 ```js
 // problem1
 const promise = new Promise((resolve, reject) => {
-  console.log(1)
-  resolve()
-  console.log(2)
+    console.log(1)
+    resolve()
+    console.log(2)
 })
 promise.then(() => {
-  console.log(3)
+    console.log(3)
 })
 console.log(4)
 
 // problem2
-function fn() {
-  for (let i = 0; i < 4; i++) {
-    setTimeout(() => {
-      console.log(i)
-    }, 1000)
-  }
+function fn(){
+    for (let i = 0; i < 4; i++) {
+        setTimeout(function(){
+            console.log(i)
+        },1000)
+    }
 }
 fn()
 
 // problem3
 let a = 0
-async function b() {
-  a = a + await 10
-  console.log('2', a)
+let b = async () => {
+    a = a + await 10
+    console.log('2', a)
 }
 b()
 a++
@@ -65,3 +65,4 @@ console.log('1', a)
 
 ### 算法
 1. 快排的时间复杂度
+

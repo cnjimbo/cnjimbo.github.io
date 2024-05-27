@@ -22,52 +22,52 @@ categories:
 ```js
 // 抽象手机工厂
 class MobilePhoneFactory {
-  createOS() {
-    throw new Error('不允许使用抽象工厂的方法')
-  }
+    createOS() {
+        throw new Error('不允许使用抽象工厂的方法')
+    }
 
-  createHardWare() {
-    throw new Error('不允许使用抽象工厂的方法')
-  }
+    createHardWare() {
+        throw new Error('不允许使用抽象工厂的方法')
+    }
 }
 // 抽象操作系统
 class OS {
-  controlHardWare() {
-    throw new Error('不允许使用抽象工厂的方法')
-  }
+    controlHardWare() {
+        throw new Error('不允许使用抽象工厂的方法')
+    }
 }
 // 抽象硬件
 class HandWare {
-  operateByCommand() {
-    throw new Error('不允许使用抽象工厂的方法')
-  }
+    operateByCommand() {
+        throw new Error('不允许使用抽象工厂的方法')
+    }
 }
 ```
 抽象工厂不干活，具体工厂（ConcreteFactory）来干活
 
 ```js
 class AndroidOS extends OS {
-  controlHardWare() {
-    console.log('安卓的方式调用硬件')
-  }
+    controlHardWare() {
+        console.log('安卓的方式调用硬件')
+    }
 }
 
-class IOS extends OS {
-  controlHardWare() {
-    console.log('苹果的方式调用硬件')
-  }
+class IOS extends OS{
+    controlHardWare() {
+        console.log('苹果的方式调用硬件')
+    }
 }
 
 class GTHandWare extends HandWare {
-  operateByCommand() {
-    console.log('高通的方式去运行指令')
-  }
+    operateByCommand() {
+        console.log('高通的方式去运行指令')
+    }
 }
 
 class AppleHandWare extends HandWare {
-  operateByCommand() {
-    console.log('苹果的方式去运行指令')
-  }
+    operateByCommand() {
+        console.log('苹果的方式去运行指令')
+    }
 }
 ```
 
@@ -75,37 +75,37 @@ class AppleHandWare extends HandWare {
 
 ```js
 class FakeMobile extends MobilePhoneFactory {
-  createOS() {
-    return new AndroidOS()
-  }
+    createOS() {
+        return new AndroidOS()
+    }
 
-  createHardWare() {
-    return new GTHandWare()
-  }
+    createHardWare() {
+        return new GTHandWare()
+    }
 }
 ```
 
 制作一台苹果手机,IOS,苹果处理器
 ```js
 class AppleMobile extends MobilePhoneFactory {
-  createOS() {
-    return new IOS()
-  }
+    createOS() {
+        return new IOS()
+    }
 
-  createHardWare() {
-    return new AppleHandWare()
-  }
+    createHardWare() {
+        return new AppleHandWare()
+    }
 }
 ```
 测试
 ```js
-const m1 = new FakeMobile()
-const m2 = new AppleMobile()
+let m1 = new FakeMobile()
+let m2 = new AppleMobile()
 
 m1.createOS().controlHardWare()
 m1.createHardWare().operateByCommand()
 m2.createOS().controlHardWare()
-m2.createHardWare().operateByCommand()
+m2.createHardWare().operateByCommand()  
 // 安卓的方式调用硬件
 // 高通的方式去运行指令
 // 苹果的方式调用硬件
@@ -127,3 +127,4 @@ m2.createHardWare().operateByCommand()
 * 具体工厂:用于生成产品族里的一个具体的产品,继承自抽象工厂,实现了抽象工厂里声明的那些方法，用于创建具体的产品的类。
 * 抽象产品:抽象类，它不能被用于生成具体实例,具体工厂里实现的接口，会依赖一些类，这些类对应到各种各样的具体的细粒度产品（比如操作系统、硬件等），这些具体产品类的共性各自抽离，便对应到了各自的抽象产品类。
 * 具体产品:用于生成产品族里的一个具体的产品所依赖的更细粒度的产品,比如具体的一种操作系统或具体的一种硬件等。
+

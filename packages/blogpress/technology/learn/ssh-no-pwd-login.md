@@ -61,3 +61,4 @@ ssh -p22 root@$host "service sshd restart"
 ```sh
 ssh root@$host
 ```
+

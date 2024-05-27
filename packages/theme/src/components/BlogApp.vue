@@ -2,13 +2,11 @@
 import Theme from 'vitepress/theme'
 import { useData } from 'vitepress'
 import { computed } from 'vue'
-import { useBlogThemeMode } from '../composables/config/blog'
+import { useDarkTransition } from '../hooks/useDarkTransition'
+import { useBlogThemeMode, useDarkTransitionConfig } from '../composables/config/blog'
 import BlogHomeInfo from './BlogHomeInfo.vue'
 import BlogHomeBanner from './BlogHomeBanner.vue'
 import BlogList from './BlogList.vue'
-import BlogComment from './BlogComment.vue'
-
-// import BlogSearch from './BlogSearch.vue'
 import BlogSidebar from './BlogSidebar.vue'
 import BlogImagePreview from './BlogImagePreview.vue'
 import BlogArticleAnalyze from './BlogArticleAnalyze.vue'
@@ -16,19 +14,34 @@ import BlogAlert from './BlogAlert.vue'
 import BlogPopover from './BlogPopover.vue'
 import BlogFooter from './BlogFooter.vue'
 import BlogHomeHeaderAvatar from './BlogHomeHeaderAvatar.vue'
+import BlogBackToTop from './BlogBackToTop.vue'
+import CommentGiscus from './CommentGiscus.vue'
+import BlogOml2d from './BlogOml2d.vue'
+
+import CommentArtalk from './CommentArtalk.vue'
+import BlogButtonAfterArticle from './BlogButtonAfterArticle.vue'
+import BlogCommentWrapper from './BlogCommentWrapper.vue'
 
 const { frontmatter } = useData()
 const layout = computed(() => frontmatter.value.layout)
 const isBlogTheme = useBlogThemeMode()
 const { Layout } = Theme
+
+// 切换深色模式过渡
+// https://vitepress.dev/zh/guide/extending-default-theme#on-appearance-toggle
+useDarkTransition()
+const openTransition = useDarkTransitionConfig()
 </script>
 
 <template>
-  <Layout>
+  <Layout :class="{ 'blog-theme-layout': openTransition }">
     <template #layout-top>
       <slot name="layout-top" />
-      <BlogAlert />
-      <BlogPopover />
+      <ClientOnly>
+        <BlogOml2d />
+        <BlogAlert />
+        <BlogPopover />
+      </ClientOnly>
     </template>
 
     <template #doc-before>
@@ -36,9 +49,9 @@ const { Layout } = Theme
       <!-- 阅读时间分析 -->
       <ClientOnly>
         <BlogArticleAnalyze />
+        <!-- 图片预览 -->
+        <BlogImagePreview />
       </ClientOnly>
-      <!-- 图片预览 -->
-      <BlogImagePreview />
     </template>
 
     <template #nav-bar-content-before>
@@ -66,10 +79,17 @@ const { Layout } = Theme
       <slot name="sidebar-nav-after" />
       <BlogSidebar />
     </template>
-    <!-- 评论 -->
     <template #doc-after>
       <slot name="doc-after" />
-      <BlogComment />
+      <!-- 评论 -->
+      <ClientOnly>
+        <BlogButtonAfterArticle />
+        <BlogBackToTop />
+        <BlogCommentWrapper>
+          <CommentArtalk />
+          <CommentGiscus />
+        </BlogCommentWrapper>
+      </ClientOnly>
     </template>
     <template #layout-bottom>
       <BlogFooter v-if="layout === 'home'" />
@@ -184,6 +204,7 @@ const { Layout } = Theme
 .blog-list-wrapper {
   width: 100%;
 }
+
 .blog-info-wrapper {
   margin-left: 16px;
   position: sticky;
@@ -208,4 +229,8 @@ const { Layout } = Theme
     width: 100%;
   }
 }
+</style>
+
+<style>
+@import url(./../styles/dark-transition.css);
 </style>

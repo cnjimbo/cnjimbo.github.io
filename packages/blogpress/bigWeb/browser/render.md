@@ -67,6 +67,7 @@ CSS 字节转换成字符，接着转换成令牌和节点，最后链接为为�
 
 <img style="background-color:white;" src="https://img.cdn.sugarat.top/mdImg/MTYwMzYxOTEwMjEzNA==603619102134">/>
 
+
 ### 小结
 * 浏览器渲染页面前需要先构建 DOM树 和 CSSOM 树
 * 构建流程：字节(Bytes) → 字符(Characters) → 令牌(Tokens) → 节点(Nodes) → 对象模型(Dom)
@@ -85,6 +86,7 @@ CSS 字节转换成字符，接着转换成令牌和节点，最后链接为为�
   * 某些节点不可见（例如脚本标记、元标记等--title,meta,link）
   * 某些节点通过 CSS 隐藏，因此在渲染树中也会被忽略（display:none）
 * 对于每个可见节点，为其找到适配的 CSSOM 规则并应用它们
+
 
 ### 小结
 1. DOM 树和 CSSOM 树合并生成渲染树
@@ -141,3 +143,4 @@ CSS 字节转换成字符，接着转换成令牌和节点，最后链接为为�
 * [浏览器|前端进阶之道](https://yuchengkai.cn/docs/frontend/browser.html)
 * [developers.google](https://developers.google.com/web/fundamentals/performance/critical-rendering-path)
 :::
+

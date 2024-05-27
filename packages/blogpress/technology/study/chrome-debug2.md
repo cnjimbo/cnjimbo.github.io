@@ -58,19 +58,20 @@ TODO: 补充实用例子
 
 用于监控函数的入参,自动打印函数名与入参
 ```js
-function sum(a, b) {
-  return a + b
+function sum(a,b){
+  return a+b
 }
 monitor(sum)
 ```
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzgwMjIyNjk5Mg==617802226992)
+
 
 ## monitorEvents
 
 事件监控
 
 ```js
-monitorEvents(window, ['click', 'resize'])
+monitorEvents(window,['click','resize'])
 ```
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzgwMjQxNTc4MQ==617802415781)
@@ -85,8 +86,8 @@ monitorEvents(window, ['click', 'resize'])
 
 当第一个参数为 false 时， console.assert 打印跟在这个参数后面的值
 ```js
-console.assert(100 === '100', 'no equal')
-console.assert(100 == '100', 'yes')
+console.assert(100==='100','no equal')
+console.assert(100=='100','yes')
 ```
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzgwMjY5MTU2MA==617802691560)
@@ -98,7 +99,7 @@ console.assert(100 == '100', 'yes')
 第二个参数指定要展示的列
 
 ```js
-console.table(document.querySelectorAll('a'), ['textContent', 'href'])
+console.table(document.querySelectorAll('a'),['textContent','href'])
 
 console.table(location)
 ```
@@ -113,7 +114,7 @@ console.table(location)
 
 ```js
 console.time('a')
-setTimeout(console.timeEnd, 1000, 'a')
+setTimeout(console.timeEnd,1000,'a')
 ```
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzgwMzI0NDMyNA==617803244324)
 
@@ -134,8 +135,8 @@ console.dir(document.body)
 console.log 除第一个参数外的参数都是css规则
 
 ```js
-console.log('%cred', 'color:red;')
-console.log('%cred%cblue', 'color:red;', 'color:blue')
+console.log("%cred","color:red;")
+console.log("%cred%cblue","color:red;","color:blue")
 ```
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzgwMzUwODYyMA==617803508620)
@@ -146,3 +147,4 @@ console.log('%cred%cblue', 'color:red;', 'color:blue')
 ![](https://wingman-1300536089.file.myqcloud.com//chrome/C03/live-expression.gif)
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzgwNDAwMjcyMg==617804002722)
+

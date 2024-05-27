@@ -26,15 +26,15 @@ yarn add element-plus
 
 ```js
 // main.js
-import { createApp } from 'vue'
-import ElementPlus from 'element-plus'
-import 'element-plus/lib/theme-chalk/index.css'
-import App from './App.vue'
+import { createApp } from 'vue';
+import ElementPlus from 'element-plus';
+import 'element-plus/lib/theme-chalk/index.css';
+import App from './App.vue';
 
-const app = createApp(App)
-app.use(ElementPlus)
+const app = createApp(App);
+app.use(ElementPlus);
 
-app.mount('#app')
+app.mount('#app');
 ```
 选用日历组件`el-calendar`，直接使用的化，默认样式如下：
 
@@ -101,7 +101,7 @@ const item = {
 优化后的数据结构如下,对外包了一层
 ```js
 const oneDay = {
-  '2021-08-18': item
+  '2021-08-18':item
 }
 ```
 
@@ -191,13 +191,13 @@ const sumData = reactive({
 2. 遍历返回的数据，然后对每一项数据进行格式化
 3. 通过`Object.assign`将新的数据赋给旧数据`sumData`
 ```js
-import { getEveryDayData } from '../api'
+import { getEveryDayData } from '../api';
 const sumData = reactive({})
 
-async function refresData() {
+const refresData = async ()=>{
   const { data } = await getEveryDayData()
-  data.forEach((v) => {
-    Object.assign(sumData, {
+  data.forEach(v=>{
+    Object.assign(sumData,{
       ...parseOneDay(v)
     })
   })
@@ -217,7 +217,7 @@ async function refresData() {
   * 任务时间累加就是当天的总耗时
 * 返回的数据加上日期title包一层
 ```js
-function parseOneDay(data) {
+const parseOneDay = (data) => {
   const o = {
     time: '',
     tasks: []
@@ -226,15 +226,15 @@ function parseOneDay(data) {
     return {}
   }
   let sumTime = 0
-  data.tasks.forEach((t) => {
-    const task = {
+  data.tasks.forEach(t => {
+    let task = {
       title: t.title,
       time: '',
       things: []
     }
 
     let taskTime = 0
-    t.things.forEach((thing) => {
+    t.things.forEach(thing => {
       const { time, content } = thing
       taskTime += (+time)
       task.things.push({
@@ -256,12 +256,12 @@ function parseOneDay(data) {
 
 数据处理完毕后就是调用,将调用逻辑放到`onMounted`钩子中，并将执行逻辑放入`setInterval`定时器中，通过接口轮训达到数据实时展示的效果
 ```js
-import { onMounted } from 'vue'
+import { onMounted } from 'vue';
 
-onMounted(() => {
-  setInterval(() => {
+onMounted(()=>{
+  setInterval(()=>{
     refresData()
-  }, 1200)
+  },1200)
 })
 ```
 
@@ -277,3 +277,4 @@ onMounted(() => {
 本系列会不断的更新迭代，直至产品初代完成
 
 * [仓库地址](https://github.com/ATQQ/time-control)
+

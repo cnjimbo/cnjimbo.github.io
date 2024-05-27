@@ -14,5 +14,6 @@ categories:
 
 ## 使用方式
 ```html
-<link rel="prerender" href="//sugarat.top">
+<link rel="prerender" href="//sugarat.top"> 
 ```
+

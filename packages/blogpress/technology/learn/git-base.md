@@ -19,7 +19,7 @@ git init
 **跟踪文件｜将改动放入暂存区**
 ```sh
 # 当前目录下的所有，不包括.gitignore中的文件或目录
-git add .
+git add . 
 # 指定目录
 git add dirPath
 # 指定文件
@@ -85,7 +85,7 @@ git reset HEAD^ --hard
 **从本地仓库中取回被删除的文件**
 ```sh
 git checkout filename
-# 命令本质的作用就是用最新的commit中的文件替换当前的文件
+# 命令本质的作用就是用最新的commit中的文件替换当前的文件 
 ```
 
 **从本地仓库中删除指定的文件**
@@ -140,7 +140,7 @@ git push remoteName branchName
 
 **设置上游分支**
 ```sh
-git push -u remoteName branchName
+git push -u remoteName branchName 
 # 设置上游分支后
 # 本地在push的时候就可以直接执行
 git push
@@ -265,7 +265,7 @@ git tag -a tagName -m "description" comment_id
 
 查看指定tag的说明内容
 ```sh
-git show tagName
+git show tagName 
 ```
 
 查看所有标签
@@ -277,3 +277,4 @@ git tag
 ```sh
 git push --tag
 ```
+

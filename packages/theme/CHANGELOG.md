@@ -1,5 +1,194 @@
 # @sugarat/theme
 
+## 0.3.6
+
+### Patch Changes
+
+- fix: 分页通过左上角无法回到首页
+- chore: Updated dependencies
+  - vitepress-plugin-pagefind@0.3.3
+  - vitepress-plugin-rss@0.2.6
+
+## 0.3.5
+
+### Patch Changes
+
+- feat: 公告优化
+  - 支持收起自动闪动
+  - 跳转优化，同站点不再刷新页面
+  - 支持自定义展示策略（页面维度）
+- feat: pagefind 插件更新
+  - 支持跳转目录
+  * 结果优化，支持预览
+  * 搜索关键词没高亮问题修复
+  * 构建时间优化
+  * 添加 peer deps 减少偶现构建失败的问题
+- fix: 首页分页跳动问题
+- fix: 评论数据展示异常（切换路由不刷新）
+- Updated dependencies
+  - vitepress-plugin-pagefind@0.3.2
+  - oh-my-live2d@0.19.3
+  - vitepress@1.2.2
+
+## 0.3.4
+
+### Patch Changes
+
+- Updated dependencies
+  - vitepress-plugin-rss@0.2.4
+
+## 0.3.3
+
+### Patch Changes
+
+- feat：支持首页 cover 图添加 image style
+- chore：导航 logo 样式优化
+- chore: reduce element css size
+- chore: 依赖升级，无用依赖移除，peerDeps 调整
+
+## 0.3.2
+
+### Patch Changes
+
+- fix: description xss error
+
+## 0.3.1
+
+### Patch Changes
+
+- feat: dev mode 支持首页内容自动刷新
+- feat: 支持深色模式更加丝滑的过渡动画
+- chore：首页加载优化，水合问题优化
+- fix: 首页和侧边栏跳转导致页面刷新
+
+## 0.3.0
+
+### Minor Changes
+
+- feat: 支持 [artalk](https://artalk.js.org/) 评论系统
+- feat: 支持文章底部打赏按钮
+- fix: 首页文章列表的封面拉伸异常
+- chore: 依赖升级
+  - vitepress 1.0.2
+
+## 0.2.30
+
+### Patch Changes
+
+- feat: 新增各个模块可选开启的开关
+- fix: Hydration error
+- Updated dependencies
+  - vitepress-plugin-pagefind@0.2.14
+  - oh-my-live2d@0.15.2
+
+## 0.2.29
+
+### Patch Changes
+
+- fix: 生成的链接兼容 `cleanUrls` 配置
+
+## 0.2.28
+
+### Patch Changes
+
+- feat: footer 支持更丰富的配置
+- chore: 依赖升级
+
+## 0.2.27
+
+### Patch Changes
+
+- chore: oh-my-live2d 依赖升级，添加外部覆盖版本操作引导
+
+## 0.2.26
+
+### Patch Changes
+
+- feat: 内置 oml2d 看板娘
+
+## 0.2.25
+
+### Patch Changes
+
+- fix: showSelf 渲染异常
+- Updated dependencies
+  - vitepress-plugin-pagefind@0.2.13
+
+## 0.2.24
+
+### Patch Changes
+
+- feat: 支持调整阅读时间分析组件位置，详见全局配置 `article` 属性
+- feat: 左侧推荐列表可以自定义关联关键词，详见文章配置 `recommend` 属性
+
+| top(原)                                                                       | inline(新)                                                                    | newLine(新)                                                                   |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| ![](https://img.cdn.sugarat.top/mdImg/sugar/21aa2571b60f76e7401b66af851009bb) | ![](https://img.cdn.sugarat.top/mdImg/sugar/5da6e5e56bde48265e706bc004e2ad41) | ![](https://img.cdn.sugarat.top/mdImg/sugar/50e9ec84b37af64f723c3b477b99283a) |
+
+## 0.2.23
+
+### Patch Changes
+
+- fix: 左侧推荐列表在很多文章时，首次展示页码不正确
+- feat: 兼容 cover 指向非public 目录文件封面展示
+
+```md
+---
+cover: /abc.png
+---
+
+# 标题
+
+<img src="./abc.png" style="display: none;"/>
+```
+
+## 0.2.22
+
+### Patch Changes
+
+- Updated dependencies
+  - vitepress-plugin-pagefind@0.2.12
+  - vitepress-plugin-rss@0.2.2
+- feat: 内置 pagefind 搜索自动过滤 `publish:false` 文章
+- feat: RSS 插件支持配置忽略 `publish:false` 的影响
+
+## 0.2.21
+
+### Patch Changes
+
+- chore: 适配 [vitepress@1.0.0-rc.43](https://github.com/vuejs/vitepress/blob/main/CHANGELOG.md)
+
+## 0.2.20
+
+### Patch Changes
+
+- Updated dependencies
+  - vitepress-plugin-pagefind@0.2.11
+
+## 0.2.19
+
+### Patch Changes
+
+- feat: 友链列表实现使用swiper
+
+## 0.2.18
+
+### Patch Changes
+
+- feat: 内置时间线组件
+- fix: 修复回到顶部按钮点击不生效
+- chore: SSG 内容优化
+
+## 0.2.17
+
+### Patch Changes
+
+- feat: 添加回到顶部组件
+- feat: 支持移动端自动收起公告
+- feat：评论组件优化（最小化新样式）
+- feat：图标自定义（公告，评论，回到顶部）
+- fix：流程图配置构建无效
+
 ## 0.2.16
 
 ### Patch Changes

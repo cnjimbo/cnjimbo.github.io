@@ -46,6 +46,7 @@ document.cookie
 ```
 可以通过此 API获取或者修改cookie
 
+
 ### Set-Cookie
 
 **:star:Set-Cookie 字段的属性介绍**
@@ -100,6 +101,7 @@ Set-Cookie:'name=value;SameSite=Lax;'
 |   image   |             <img src="..." \/>             |              ❌               |
 |  iframe   |       <iframe src="..."\></iframe\>        |              ❌               |
 |   ajax    |                 fetch(url)                 |              ❌               |
+
 
 **:star:Cookie 的作用域**
 

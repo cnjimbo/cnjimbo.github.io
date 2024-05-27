@@ -49,7 +49,7 @@ categories:
 webpack 是单线程的，当存在多个任务，只能排队一个接一个地等待处理。[Happypack](https://github.com/amireh/happypack) 会充分释放 CPU 在多核并发方面的优势，把任务分解给多个子进程去并发执行，大大提升打包效率。
 
 ```js
-const HappyPack = require('happypack')
+const HappyPack = require('happypack');
 
 exports.module = {
   rules: [
@@ -58,27 +58,27 @@ exports.module = {
       // 1) replace your original list of loaders with "happypack/loader":
       // loaders: [ 'babel-loader?presets[]=es2015' ],
       use: 'happypack/loader',
-      include: [],
-      exclude: []
+      include: [ /* ... */ ],
+      exclude: [ /* ... */ ]
     }
   ]
-}
+};
 
 exports.plugins = [
   // 2) create the plugin:
   new HappyPack({
     // 3) re-add the loaders you replaced above in #1:
-    loaders: ['babel-loader?presets[]=es2015']
+    loaders: [ 'babel-loader?presets[]=es2015' ]
   })
-]
+];
 ```
 
 ### 构建结果体积压缩
 [webpack-bundle-analyzer](https://www.npmjs.com/package/webpack-bundle-analyzer),文件结构可视化，找出导致体积过大的原因
 
 ```js
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+ 
 module.exports = {
   plugins: [
     new BundleAnalyzerPlugin()
@@ -97,3 +97,4 @@ module.exports = {
 accept-encoding:gzip
 ```
 压缩后通常能帮我们减少响应 70% 左右的大小
+

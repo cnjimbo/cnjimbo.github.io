@@ -37,18 +37,19 @@ categories:
 ## 如何正确判断
 1. Number.EPSILON的精度是2^-52，所以只要丢失精度小于Number.EPSILON基本可以确认相等。
 ```js
-function compareNum(num1, num2) {
-  return Math.abs(num1 - num2) < Number.EPSILON
+function compareNum(num1,num2){
+    return Math.abs(num1-num2)<Number.EPSILON
 }
-console.log(compareNum(0.1 + 0.2, 0.3)) // true
+console.log(compareNum(0.1+0.2,0.3)) // true
 ```
 2. 使用toFixed 比较指定的精确位数
 ```js
-function compareNum(num1, num2) {
-  return num1.toFixed(10) === num2.toFixed(10)
+function compareNum(num1,num2){
+    return num1.toFixed(10) === num2.toFixed(10)
 }
-console.log(compareNum(0.1 + 0.2, 0.3)) // true
+console.log(compareNum(0.1+0.2,0.3)) // true
 ```
 :::tip 参考
 [JavaScript 深入之浮点数精度](https://github.com/mqyqingfeng/Blog/issues/155)
 :::
+

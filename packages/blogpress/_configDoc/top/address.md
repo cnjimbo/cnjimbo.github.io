@@ -62,7 +62,7 @@ categories:
 * [node.green](https://node.green/) 不同Node版本对ES的支持程度
 * [compat-table](https://kangax.github.io/compat-table/es6/) ES新提案进度，与浏览器对ES个版本的支持程度 查询
 * [JavaScript](https://jscig.github.io/#) 中文兴趣组
-* [凹凸实验室 - 前端代码规范](https://guide.aotu.io/index.html)
+* [凹凸实验室 - 前端代码规范](https://guide.aotu.io/index.html) 
 * [能不能好好说话](https://lab.magiconch.com/nbnhhsh/) - yyds
 * [webgradients](https://webgradients.com/) - Free Gradients Collection: Sketch/Photoshop/CSS
 * [uiGradients](https://uigradients.com/#EmeraldWater) - uiGradients is a handpicked collection of beautiful color gradients for designers and developers.
@@ -78,6 +78,8 @@ categories:
 ## 在线工具
 * [CODELF](https://unbug.github.io/codelf/) - 解决变量命名难题
 * [carbon](https://carbon.now.sh/) - 为各种语言代码上色然后 导出 SVG/PNG 用于分享或者演示
+* [cyrilex](https://extendsclass.com/regex-tester.html) - 正则表达式测试器和可视化工具
+* [pyrexp](https://pythonium.net/regex) - Python 正则表达式测试和可视化工具
 * [regexper](https://regexper.com/) - 正则逻辑可视化
 * [cubic-bezier](https://cubic-bezier.com) - 贝塞尔曲线
 * [tool.lu](https://tool.lu/nav/) - 在线工具合集
@@ -92,3 +94,4 @@ categories:
 * [JSX Lite Fiddle](https://jsx-lite.builder.io/?outputTab=vue) -  compile to common frameworks, import from popular tools
 * [Staticfile CDN](https://www.staticfile.org/) - 免费、快速、开放的 CDN 服务
 * [图好快](https://www.tuhaokuai.com/) - 在线图片压缩
+

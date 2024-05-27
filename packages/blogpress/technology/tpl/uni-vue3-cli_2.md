@@ -61,7 +61,7 @@ module.exports = {
   },
   plugins: ['vue', '@typescript-eslint'],
   rules: {},
-}
+};
 ```
 
 添加`.eslintignore`文件，忽略一些不检查格式的文件或目录
@@ -73,7 +73,7 @@ dist
 ```json
 {
   "scripts": {
-    "lint": "eslint --fix --ext .js,.jsx,.ts,.vue ./src"
+    "lint": "eslint --fix --ext .js,.jsx,.ts,.vue ./src",
   }
 }
 ```
@@ -115,10 +115,10 @@ src/store
 
 `src/store/modules/test.ts`
 ```ts
-import { Module } from 'vuex'
+import { Module } from 'vuex';
 
 interface State {
-  count: number
+  count: number;
 }
 
 const store: Module<State, unknown> = {
@@ -126,33 +126,33 @@ const store: Module<State, unknown> = {
   state() {
     return {
       count: 0,
-    }
+    };
   },
   getters: {
     isEven(state) {
-      return state.count % 2 === 0
+      return state.count % 2 === 0;
     },
   },
   // 只能同步
   mutations: {
     increase(state, num = 1) {
-      state.count += num
+      state.count += num;
     },
     decrease(state) {
-      state.count -= 1
+      state.count -= 1;
     },
   },
   // 支持异步,可以考虑引入API
   actions: {
     increase(context, payload) {
       setTimeout(() => {
-        context.commit('increase', payload)
-      }, 1000)
+        context.commit('increase', payload);
+      }, 1000);
     },
   },
-}
+};
 
-export default store
+export default store;
 ```
 
 ### 示例模块的使用
@@ -160,33 +160,33 @@ export default store
 
 `src/store/index.ts`
 ```ts
-import { createStore } from 'vuex'
-import test from './modules/test'
+import { createStore } from 'vuex';
+import test from './modules/test';
 
 // Create a new store instance.
 const store = createStore({
   modules: {
     m1: test,
   },
-})
+});
 
-export default store
+export default store;
 ```
 
 在`main.ts`中直接使用这个 `store` 即可
 
 ```ts
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from 'vue';
+import App from './App.vue';
 // 引入store
-import store from './store/index'
+import store from './store/index';
 
-const app = createApp(App)
+const app = createApp(App);
 
 // 在Vue上注册
-app.use(store)
+app.use(store);
 
-app.mount('#app')
+app.mount('#app');
 ```
 
 ### 示例组件编写
@@ -240,6 +240,7 @@ export default defineComponent({
 ### 效果
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYyNDQzMDYzMDE0Nw==vuex4.gif)
 
+
 ## Axios
 由于axios只兼容Node与Web两端，在uni-app中无法直接使用，uni-app 收口的网络请求方法是 `uni.request`
 
@@ -274,32 +275,32 @@ VUE_APP_AXIOS_BASEURL=http://localhost:3000
 
 在请求拦截器中添加鉴权身份令牌，响应拦截器中根据返回的状态做进一步处理（统一的警告弹窗，权限校验）
 ```ts
-import axios from 'axios-miniprogram'
+import axios from 'axios-miniprogram';
 
-const http = axios
+const http = axios;
 
 // 请求base路径
-http.defaults.baseURL = process.env.AXIOS_BASEURL
+http.defaults.baseURL = process.env.AXIOS_BASEURL;
 http.defaults.headers = {
   'content-Type': 'application/json',
-}
+};
 
 http.interceptors.request.use(
   (config) => {
     // 所有请求都携带token
     Object.assign(config.headers, {
       token: uni.getStorageSync('token'),
-    })
+    });
     // 发送之前操作config
-    return config
+    return config;
   },
   (err) => {
     if (err.status !== 200) {
       // 处理错误
     }
-    return Promise.reject(err)
+    return Promise.reject(err);
   },
-)
+);
 
 /**
  * 响应拦截
@@ -307,23 +308,23 @@ http.interceptors.request.use(
 http.interceptors.response.use(
   (response: any) => {
     // 对拿到的数据做一些额外操作操作 (如无权限,直接跳转首页)
-    const { code, msg } = response.data
+    const { code, msg } = response.data;
     if (code !== 0) {
       if (msg) {
         uni.showToast({
           title: msg,
-        })
+        });
       }
       // 走catch逻辑
-      return Promise.reject(response.data)
+      return Promise.reject(response.data);
     }
     // 返回前操作
-    return response.data
+    return response.data;
   },
-  err => Promise.reject(err),
-)
+  (err) => Promise.reject(err),
+);
 
-export default http
+export default http;
 ```
 
 ### 接口模块化
@@ -332,23 +333,23 @@ export default http
 例如`modules/user.ts`
 
 ```ts
-import http from '../http'
+import http from '../http';
 
 function login(account: string, pwd: string) {
   return http.post('user/login', {
     account,
     pwd,
-  })
+  });
 }
 
 export default {
   login,
-}
+};
 ```
 
 通过`api/index.ts`统一对业务方暴露
 ```ts
-export { default as userApi } from './modules/user'
+export { default as userApi } from './modules/user';
 ```
 
 ### 业务调用
@@ -382,3 +383,4 @@ export default defineComponent({
 * 。。。and more
 ## 资料汇总
 * [uni-vue3-ts：模板仓库](https://github.com/ATQQ/uni-vue3-ts-template)
+

@@ -15,65 +15,68 @@ categories:
 
 ```js
 function swap(arr, left, right) {
-  const t = arr[left]
-  arr[left] = arr[right]
-  arr[right] = t
+    let t = arr[left]
+    arr[left] = arr[right]
+    arr[right] = t
 }
 // 快排
 function quickSort(array) {
-  const _quickSort = (arr, left, right) => {
-    if (left >= right) {
-      return
+    const _quickSort = (arr, left, right) => {
+        if (left >= right) {
+            return
+        }
+        let o = left
+        let start = left
+        let end = right
+        while (left < right) {
+            while (arr[right] >= arr[o] && right > left) {
+                right--
+            }
+            while (arr[left] <= arr[o] && left < right) {
+                left++
+            }
+            if (left !== right) {
+                swap(arr, left, right)
+            }
+        }
+        swap(arr, o, left)
+        _quickSort(arr, start, left - 1)
+        _quickSort(arr, left + 1, end)
     }
-    const o = left
-    const start = left
-    const end = right
-    while (left < right) {
-      while (arr[right] >= arr[o] && right > left) {
-        right--
-      }
-      while (arr[left] <= arr[o] && left < right) {
-        left++
-      }
-      if (left !== right) {
-        swap(arr, left, right)
-      }
-    }
-    swap(arr, o, left)
-    _quickSort(arr, start, left - 1)
-    _quickSort(arr, left + 1, end)
-  }
-  _quickSort(array, 0, array.length - 1)
+    _quickSort(array, 0, array.length - 1)
 }
 
 // 插入排序 (元素个数小于10个时使用)
 function insertion(array) {
-  const { length } = array
-  for (let i = 1; i < length; i++) {
-    for (let j = i - 1; j >= 0 && array[j] > array[j + 1]; j--) {
-      swap(array, j, j + 1)
+    let { length } = array
+    for (let i = 1; i < length; i++) {
+        for (let j = i - 1; j >= 0 && array[j] > array[j + 1]; j--) {
+            swap(array, j, j + 1)
+        }
     }
-  }
 }
 
 Array.prototype.mySort = function () {
-  const argv = this
-  if (argv.length < 11) {
-    insertion(argv)
-  }
-  else {
-    quickSort(argv)
-  }
-  return argv
+    let argv = this
+    if (argv.length < 11) {
+        insertion(argv)
+    } else {
+        quickSort(argv)
+    }
+    return argv
 }
 
-const a = [1, 3, 2, 2, 32, 13, 53, 13, 423, 34, 2, 34, 2, 34, 2, 42, 213, 4542, 2, 313, 1, 2]
-const b = [1, 3, 2, 42, 213, 4542, 313, 1, 2]
+let a = [1, 3, 2, 2, 32, 13,
+ 53, 13, 423, 34, 2, 34,
+ 2, 34, 2, 42, 213, 4542,
+  2, 313, 1, 2]
+let b = [1, 3, 2, 42, 213, 4542, 313, 1, 2]
 a.mySort()
 b.mySort()
 console.log(a)
 console.log(b)
 ```
+
 
 2. 一张90*90的图片由9个表情组成,每10s随机显示其中一个
 
@@ -90,17 +93,17 @@ console.log(b)
 }
 ```
 ```js
-const $emoji = document.querySelector('.emoji')
+let $emoji = document.querySelector('.emoji')
 
 function rand() {
-  return (~~(Math.random() * 100) % 3) * 30
+    return (~~(Math.random() * 100) % 3) * 30
 }
 
 function loop() {
-  const x = rand()
-  const y = rand()
-  $emoji.style.backgroundPosition = `${x}px ${y}px`
-  setTimeout(loop, 10000)
+    let x = rand()
+    let y = rand()
+    $emoji.style.backgroundPosition = `${x}px ${y}px`
+    setTimeout(loop, 10000)
 }
 loop()
 ```
@@ -109,6 +112,7 @@ loop()
   See the Pen <a href='https://codepen.io/sugarInSoup/pen/qBdoMeX'>tencent-video1-p1</a> by sugar
   (<a href='https://codepen.io/sugarInSoup'>@sugarInSoup</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
+
 
 3. 弹性9宫格布局,9个表情(30*30),每10秒随机显示一个
 
@@ -142,15 +146,15 @@ loop()
 ```
 ```js
 // 获取到所有的
-const $emojis = document.querySelectorAll('.emoji')
+let $emojis = document.querySelectorAll('.emoji')
 // 记录上次展示和当前展示的
-let oldFlag = 4; let newFlag = 4
+let oldFlag = 4, newFlag = 4;
 function loop() {
-  $emojis[oldFlag].style.visibility = 'hidden'
-  $emojis[newFlag].style.visibility = 'visible'
-  oldFlag = newFlag
-  newFlag = ~~(Math.random() * 100) % 9
-  setTimeout(loop, 1000)
+    $emojis[oldFlag].style.visibility = 'hidden'
+    $emojis[newFlag].style.visibility = 'visible'
+    oldFlag = newFlag
+    newFlag = ~~(Math.random() * 100) % 9
+    setTimeout(loop, 1000)
 }
 loop()
 ```
@@ -175,6 +179,8 @@ loop()
 **区别：**
 * 调度：线程作为调度和分配的基本单位，进程作为拥有资源的基本单位。
 * 拥有资源：进程是拥有资源的一个独立单位，线程不拥有系统资源，但可以访问隶属于进程的资源。
+
+
 
 ### webpack
 1.loader
@@ -255,14 +261,14 @@ loop()
 
 2. 弹性布局兼容性
 ```css
-.container{
-    display: -webkit-box; /* Chrome 4+, Safari 3.1, iOS Safari 3.2+ */
-    display: -moz-box; /* Firefox 17- */
-    display: -webkit-flex; /* Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16 */
-    display: -moz-flex; /* Firefox 18+ */
-    display: -ms-flexbox; /* IE 10 */
-    display: flex; /* Chrome 29+, Firefox 22+, IE 11+, Opera 12.1/17/18, Android 4.4+ */
-}
+.container{  
+    display: -webkit-box; /* Chrome 4+, Safari 3.1, iOS Safari 3.2+ */  
+    display: -moz-box; /* Firefox 17- */  
+    display: -webkit-flex; /* Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16 */  
+    display: -moz-flex; /* Firefox 18+ */  
+    display: -ms-flexbox; /* IE 10 */  
+    display: flex; /* Chrome 29+, Firefox 22+, IE 11+, Opera 12.1/17/18, Android 4.4+ */  
+}  
 ```
 ### 网络
 1. [概述Http](./../../../computerBase/Internet/http.md)
@@ -285,6 +291,7 @@ loop()
 3. 进程之间如何切换
 4. 进程与线程如何工作
 
+
 ## 二面
 ### 算法与数据结构
 1. 二叉树的深度优先(DFS)与广度优先(BFS)遍历分别使用什么数据结构?如何实现?
@@ -292,38 +299,38 @@ loop()
 * BFS:队列
 ```js
 // DFS
-function dfs(root) {
-  const stack = []
-  if (!root) {
-    stack.push(root)
-  }
-  while (stack.length !== 0) {
-    const node = stack.pop()
-    console.log(node.value)
-    if (node.right) {
-      stack.push(node.right)
+function dfs(root){
+    let stack = []
+    if(!root){
+        stack.push(root)
     }
-    if (node.left) {
-      stack.push(node.left)
+    while(stack.length!==0){
+        let node = stack.pop()
+        console.log(node.value)
+        if(node.right){
+            stack.push(node.right)
+        }
+        if(node.left){
+            stack.push(node.left)
+        }
     }
-  }
 }
 // BFS
-function bfs(root) {
-  const queue = []
-  if (!root) {
-    queue.push(root)
-  }
-  while (queue.length !== 0) {
-    const node = queue.shift()
-    console.log(node.value)
-    if (node.left) {
-      stack.push(node.left)
+function bfs(root){
+    let queue = []
+    if(!root){
+        queue.push(root)
     }
-    if (node.right) {
-      stack.push(node.right)
+    while(queue.length!==0){
+        let node = queue.shift()
+        console.log(node.value)
+        if(node.left){
+            stack.push(node.left)
+        }
+        if(node.right){
+            stack.push(node.right)
+        }
     }
-  }
 }
 ```
 2. 哈希表冲突处理规则?
@@ -336,9 +343,9 @@ function bfs(root) {
    2. 使用局部排序(冒泡):
 ```js
 function swap(array, left, right) {
-  const t = array[left]
+  let t = array[left]
   array[left] = array[right]
-  array[right] = t
+  array[right] = t;
 }
 
 function topK(arr, k) {
@@ -349,22 +356,21 @@ function topK(arr, k) {
       }
     }
   }
-  return arr.slice(0, k)
+  return arr.slice(0, k);
 }
 // 统计
-const testStr = 'Hello1 World2 Hello1 World3 Hello1 World1 Hello2 World2 Hello3 World3'
-const wordsMap = {}
-testStr.split(' ').forEach((v) => {
+let testStr = 'Hello1 World2 Hello1 World3 Hello1 World1 Hello2 World2 Hello3 World3'
+let wordsMap = {}
+testStr.split(' ').forEach(v => {
   if (wordsMap[v]) {
     wordsMap[v]++
-  }
-  else {
+  } else {
     wordsMap[v] = 1
   }
 })
 
 // 转为数组
-const wordsArr = Object.keys(wordsMap).map((v) => {
+let wordsArr = Object.keys(wordsMap).map(v => {
   return {
     value: v,
     count: wordsMap[v]
@@ -472,7 +478,7 @@ topK(wordsArr, 3).forEach(v => console.log(v.value))
    * 监听parent,回调e.stopProportion(),e.target 指向谁,e.currentTarget 指向谁
 
 ### CSS
-1.
+1. 
 ```html
 <body><div id='child' style='position:absolute;'>内容</div></body>
 ```
@@ -500,3 +506,4 @@ topK(wordsArr, 3).forEach(v => console.log(v.value))
 4. 什么是XSS?有哪些预防手段
 5. 什么是CSRF?有哪些预防手段
 6. 什么是DNS劫持?有哪些预防手段
+

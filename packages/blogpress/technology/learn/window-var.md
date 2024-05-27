@@ -63,25 +63,27 @@ function patchWindowFun(
 ## 方法实现
 如果目标属性存在则直接执行相应的回掉，不做进一步处理
 ```js
-if (window[key]) {
-  alreadyExistCB && alreadyExistCB()
-  console.log(key, 'already exist')
-}
+  if (window[key]) {
+    alreadyExistCB && alreadyExistCB()
+    console.log(key, 'already exist')
+    return
+  }
 ```
 
 目标属性不存在，传入的方法存在时直接进行赋值
 ```js
-// 函数直接赋值
-if (typeof value === 'function') {
-  window[key] = value
-}
+  // 函数直接赋值
+  if (typeof value === 'function') {
+    window[key] = value
+    return
+  }
 ```
 
 剩余逻辑则是处理方法从外部js资源加载的情况
 
 由于加载script大部分情况是异步的，业务代码中可能已经调用了相关方法，为此临时创建一个方法收集传入的参数
 ```js
-const params = []
+let params = []
 window[key] = function () {
   params.push(arguments)
 }
@@ -98,7 +100,7 @@ script.defer = !!async
 script.onload = function () {
   afterScriptLoad && afterScriptLoad()
   // 处理原来没处理的
-  params.forEach((param) => {
+  params.forEach(param => {
     window[key].apply(this, param)
   })
 }
@@ -136,7 +138,7 @@ function patchWindowFun(
 
   // script url
   if (typeof value === 'string') {
-    const params = []
+    let params = []
     window[key] = function () {
       params.push(arguments)
     }
@@ -148,7 +150,7 @@ function patchWindowFun(
     script.onload = function () {
       afterScriptLoad && afterScriptLoad()
       // 处理原来没处理的
-      params.forEach((param) => {
+      params.forEach(param => {
         window[key].apply(this, param)
       })
     }

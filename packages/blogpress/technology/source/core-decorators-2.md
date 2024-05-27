@@ -27,20 +27,18 @@ export { default as deprecate, default as deprecated } from './core/deprecate'
 ```ts
 import { deprecate, deprecated } from '../index'
 class Test {
-  @deprecate()
-  sayHello1() {
-    console.log('hello 1')
-  }
-
-  @deprecated('API弃用警告')
-  sayHello2() {
-    console.log('hello 2')
-  }
-
-  @deprecate('API弃用警告', { url: 'https://www.baidu.com' })
-  sayHello3() {
-    console.log('hello 3')
-  }
+    @deprecate()
+    sayHello1() {
+        console.log('hello 1');
+    }
+    @deprecated('API弃用警告')
+    sayHello2() {
+        console.log('hello 2');
+    }
+    @deprecate('API弃用警告',{url:'https://www.baidu.com'})
+    sayHello3() {
+        console.log('hello 3');
+    }
 }
 
 const t = new Test()
@@ -59,52 +57,52 @@ t.sayHello3()
 * options：通过url属性进一步指定文档链接
 
 ```ts
-const DEFAULT_MSG = 'This function will be removed in future versions.'
+const DEFAULT_MSG = 'This function will be removed in future versions.';
 
-interface Options {
-  url?: string
+interface Options{
+    url?:string
 }
 
-export default function deprecate(msg = DEFAULT_MSG, options: Options = {}) {
-  return function (target, key, descriptor) {
+export default function deprecate(msg = DEFAULT_MSG, options:Options = {}) {
+    return function (target, key, descriptor) {
 
-  }
+    }
 }
 ```
 
 ### 最终实现
 ```ts
-const DEFAULT_MSG = 'This function will be removed in future versions.'
+const DEFAULT_MSG = 'This function will be removed in future versions.';
 
-interface Options {
-  url?: string
+interface Options{
+    url?:string
 }
 
-export default function deprecate(msg = DEFAULT_MSG, options: Options = {}) {
-  return function (target, key, descriptor) {
-    // 如果被装饰对象不是函数，直接抛出错误
-    if (typeof descriptor.value !== 'function') {
-      throw new SyntaxError('Only functions can be marked as deprecated')
-    }
+export default function deprecate(msg = DEFAULT_MSG, options:Options = {}) {
+    return function (target, key, descriptor) {
+        // 如果被装饰对象不是函数，直接抛出错误
+        if (typeof descriptor.value !== 'function') {
+            throw new SyntaxError('Only functions can be marked as deprecated');
+        }
 
-    // 生成方法的签名（反应来自与xx类xx方法）
-    const methodSignature = `${target.constructor.name}#${key}`
+        // 生成方法的签名（反应来自与xx类xx方法）
+        const methodSignature = `${target.constructor.name}#${key}`;
 
-    // 如果有线上地址的文档描述原因，则展示一下这个地址
-    if (options.url) {
-      msg += `\n\n    See ${options.url} for more details.\n\n`
-    }
+        // 如果有线上地址的文档描述原因，则展示一下这个地址
+        if (options.url) {
+            msg += `\n\n    See ${options.url} for more details.\n\n`;
+        }
 
-    return {
-      ...descriptor,
-      value: function deprecationWrapper() {
-        // 打印警告信息
-        console.warn(`DEPRECATION ${methodSignature}: ${msg}`)
-        // 执行函数
-        return descriptor.value.apply(this, arguments)
-      }
+        return {
+            ...descriptor,
+            value: function deprecationWrapper() {
+                // 打印警告信息
+                console.warn(`DEPRECATION ${methodSignature}: ${msg}`);
+                // 执行函数
+                return descriptor.value.apply(this, arguments);
+            }
+        };
     }
-  }
 }
 ```
 
@@ -115,27 +113,27 @@ export default function deprecate(msg = DEFAULT_MSG, options: Options = {}) {
 使用如下,通过一个简单的 `@readonly` 即可将目标属性变为只读
 
 ```ts
-import { readonly } from '../index'
+import { readonly } from '../index';
 class Test {
-  hello1() {
-    console.log('hello1')
-  }
+    hello1(){
+        console.log('hello1');
+    }
 
-  @readonly
-  hello2() {
-    console.log('hello2')
-  }
+    @readonly
+    hello2(){
+        console.log('hello2');
+    }
 }
 
-const t = new Test()
-t.hello1 = function () {
-  console.log('1')
+const t = new Test();
+t.hello1 = function(){
+    console.log('1');
 }
 
 t.hello1()
 
-t.hello2 = function () {
-  console.log('2')
+t.hello2 = function(){
+    console.log('2');
 }
 
 t.hello2()
@@ -149,8 +147,8 @@ t.hello2()
 无需额外传参，直接通过修改装饰对象的`descriptor`上的`writable`属性为`false`实现
 ```ts
 export default function readonly(target, key, descriptor) {
-  descriptor.writable = false
-  return descriptor
+    descriptor.writable = false
+    return descriptor
 }
 ```
 
@@ -159,32 +157,30 @@ export default function readonly(target, key, descriptor) {
 
 ### 使用示例
 ```ts
-import enumable from '../core/enumable'
-import enumerable from '../core/enumerable'
-import nonenumerable from '../core/nonenumerable'
+import enumable from "../core/enumable";
+import enumerable from "../core/enumerable";
+import nonenumerable from "../core/nonenumerable";
 
 class Test {
-  @nonenumerable
-  a() {
+    @nonenumerable
+    a(){
+        
+    }
+    @enumerable
+    b(){
 
-  }
+    }
+    @enumable(false)
+    c(){
 
-  @enumerable
-  b() {
-
-  }
-
-  @enumable(false)
-  c() {
-
-  }
+    }
 }
 
-console.log(Object.getOwnPropertyDescriptor(Test.prototype, 'a')?.enumerable === false) // true
-console.log(Object.getOwnPropertyDescriptor(Test.prototype, 'b')?.enumerable === true) // true
-console.log(Object.getOwnPropertyDescriptor(Test.prototype, 'c')?.enumerable === false) // true
+console.log(Object.getOwnPropertyDescriptor(Test.prototype,'a')?.enumerable === false); // true
+console.log(Object.getOwnPropertyDescriptor(Test.prototype,'b')?.enumerable === true);  // true
+console.log(Object.getOwnPropertyDescriptor(Test.prototype,'c')?.enumerable === false); // true
 
-console.log(Object.keys(Test.prototype)) // ['b']
+console.log(Object.keys(Test.prototype)); // ['b']
 ```
 
 ### 实现
@@ -193,26 +189,27 @@ console.log(Object.keys(Test.prototype)) // ['b']
 #### enumerable
 ```ts
 export default function enumerable(target, key, descriptor) {
-  descriptor.enumerable = true
-  return descriptor
+    descriptor.enumerable = true
+    return descriptor
 }
 ```
 #### nonenumerable
 ```ts
 export default function nonenumerable(target, key, descriptor) {
-  descriptor.enumerable = false
-  return descriptor
+    descriptor.enumerable = false
+    return descriptor
 }
 ```
 #### enumable
 ```ts
 export default function enumable(v = true) {
-  return function (target, key, descriptor) {
-    descriptor.enumerable = v
-    return descriptor
-  }
+    return function (target, key, descriptor) {
+        descriptor.enumerable = v
+        return descriptor
+    }
 }
 ```
+
 
 ## nonconfigurable
 设置装饰对象的`configurable`属性为false
@@ -221,32 +218,31 @@ export default function enumable(v = true) {
 
 ### 使用示例
 ```ts
-import { nonconfigurable } from '../index'
+import { nonconfigurable } from "../index";
 
 class Test {
-  @nonconfigurable
-  a() {
+    @nonconfigurable
+    a(){
+        
+    }
+    b(){
 
-  }
-
-  b() {
-
-  }
+    }
 }
 
-const prototype: any = Test.prototype
+let prototype:any = Test.prototype
 delete prototype.b
-console.log(Object.keys(Test.prototype)) // ['a']
+console.log(Object.keys(Test.prototype)); // ['a']
 delete prototype.a // 抛出错误： Cannot delete property 'a' of #<Test>
-console.log(Object.keys(Test.prototype))
+console.log(Object.keys(Test.prototype));
 ```
 
 ### 实现
 这个依旧比较简单就是修改一下装饰对象的`configurable`值
 ```ts
 export default function nonconfigurable(target, key, descriptor) {
-  descriptor.configurable = false
-  return descriptor
+    descriptor.configurable = false
+    return descriptor
 }
 ```
 
@@ -256,3 +252,5 @@ export default function nonconfigurable(target, key, descriptor) {
 * `@lazyInitialize`：在使用的时候才初始化目标属性
 * `@debounce`：防抖
 * `@throttle`：节流
+
+

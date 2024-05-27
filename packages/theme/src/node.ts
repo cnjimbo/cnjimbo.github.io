@@ -1,7 +1,12 @@
 import type { UserConfig } from 'vitepress'
 import type { Theme } from './composables/config/index'
-import { getMarkdownPlugins, patchMermaidPluginCfg, patchOptimizeDeps, registerMdPlugins } from './utils/node/mdPlugins'
-import { getArticles, patchVPThemeConfig } from './utils/node/theme'
+import {
+  getMarkdownPlugins,
+  patchMermaidPluginCfg,
+  patchOptimizeDeps,
+  registerMdPlugins,
+} from './utils/node/mdPlugins'
+import { checkConfig, getArticles, patchVPConfig, patchVPThemeConfig } from './utils/node/theme'
 import { getVitePlugins, registerVitePlugins } from './utils/node/vitePlugins'
 
 /**
@@ -9,6 +14,9 @@ import { getVitePlugins, registerVitePlugins } from './utils/node/vitePlugins'
  * @param cfg 主题配置
  */
 export function getThemeConfig(cfg?: Partial<Theme.BlogConfig>) {
+  // 配置校验
+  checkConfig(cfg)
+
   // 文章数据
   const pagesData = getArticles(cfg)
   const extraVPConfig: any = {}
@@ -26,16 +34,18 @@ export function getThemeConfig(cfg?: Partial<Theme.BlogConfig>) {
   // patch extraVPConfig
   patchMermaidPluginCfg(extraVPConfig)
   patchOptimizeDeps(extraVPConfig)
+
+  patchVPConfig(extraVPConfig, cfg)
   return {
     themeConfig: {
       blog: {
         pagesData,
-        ...cfg,
+        ...cfg
       },
       // 补充一些额外的配置用于继承
-      ...patchVPThemeConfig(cfg),
+      ...patchVPThemeConfig(cfg)
     },
-    ...extraVPConfig,
+    ...extraVPConfig
   }
 }
 
@@ -48,3 +58,15 @@ export function defineConfig(config: UserConfig<Theme.Config>): any {
 
 // 重新导包 tabsMarkdownPlugin 导出CJS格式支持
 export { tabsMarkdownPlugin } from 'vitepress-plugin-tabs'
+
+export function footerHTML(footerData: Theme.FooterItem | Theme.FooterItem[]) {
+  const data = [footerData || []].flat()
+  return data.map((d) => {
+    const { icon, text, link } = d
+
+    return `<span class="footer-item">
+    ${icon ? `<i>${icon}</i>` : ''}
+    ${link ? `<a href="${link}" target="_blank" rel="noopener noreferrer">${text}</a>` : `<span>${text}</span>`}
+</span>`
+  }).join('')
+}

@@ -13,7 +13,7 @@ categories:
 ---
 # 斐波拉契数列I
 
-斐波那契数列示例：
+斐波那契数列示例： 
 
 1，1，2，3，5，8，13，21，34 。。。。
 
@@ -23,20 +23,20 @@ categories:
 ```js
 /**
  * 求斐波拉契数列第n项
- * @param {number} index
+ * @param {number} index 
  * @returns {number}
  */
 function fib(index) {
-  let a = 1; let b = 1; let c = 0
-  if (index === 1 || index === 2) {
-    return 1
-  }
-  while (index-- > 2) {
-    c = a + b
-    a = b
-    b = c
-  }
-  return c
+    let a = 1, b = 1, c = 0
+    if (index === 1 || index === 2) {
+        return 1
+    }
+    while (index-- > 2) {
+        c = a + b
+        a = b
+        b = c
+    }
+    return c
 };
 ```
 
@@ -44,13 +44,14 @@ function fib(index) {
 ```js
 /**
  * 求斐波拉契数列第n项
- * @param {number} index
+ * @param {number} index 
  * @returns {number}
  */
 function fib(index) {
-  if (index === 1 || index === 2) {
-    return 1
-  }
-  return fib(index - 1) + fib(index - 2)
+    if (index === 1 || index === 2) {
+        return 1
+    }
+    return fib(index - 1) + fib(index - 2)
 };
 ```
+

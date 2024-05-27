@@ -54,13 +54,14 @@ css有一个属性[cursor](https://developer.mozilla.org/zh-CN/docs/Web/CSS/curs
 ### 实现鼠标轨迹
 每个一段时间（如30ms）记录一下鼠标的位置，然后与绘制指针一样的逻辑，将轨迹用月饼🥮绘制出来
 
+
 这里只描述了开发中初期会遇到的问题，还有一些其它问题将在下面详细实现部分进行介绍
 
 ## 玉兔指针实现
 监听`mousemove`事件，获取指针相对屏幕顶部与左侧位置信息
 ```js
-window.addEventListener('mousemove', (e) => {
-  const { clientX, clientY } = e
+window.addEventListener('mousemove', function (e) {
+    const { clientX, clientY } = e
 })
 ```
 
@@ -68,10 +69,10 @@ window.addEventListener('mousemove', (e) => {
 ```js
 const size = '30px'
 function createCursor() {
-  const cursor = h()
-  cursor.id = 'cursor'
+    const cursor = h()
+    cursor.id = 'cursor'
 
-  addStyles(cursor, `
+    addStyles(cursor, `
     #cursor{
         background-image:url(https://img.cdn.sugarat.top/mdImg/MTYzMTMyNDYwNTgzMQ==631324605831);
         width:${size};
@@ -83,38 +84,38 @@ function createCursor() {
         transform: translate(-30%, -20%);
     }
     `)
-  document.body.append(cursor)
-  return cursor
+    document.body.append(cursor)
+    return cursor
 }
 const cursor = createCursor()
 
 // 工具方法
 function addStyles(target, styles) {
-  const style = document.createElement('style')
-  style.textContent = styles
-  target.append(style)
+    const style = document.createElement('style')
+    style.textContent = styles
+    target.append(style)
 }
 
 function h(tag = 'div') {
-  return document.createElement(tag)
+    return document.createElement(tag)
 }
 ```
 
 编写更新玉兔位置的方法`refreshCursorPos`，并在一段时间后，让指针恢复原状
 ```js
 function refreshCursorPos(x, y) {
-  cursor.style.display = 'block'
-  cursor.style.cursor = 'none'
-  cursor.style.left = `${x}px`
-  cursor.style.top = `${y}px`
+    cursor.style.display = 'block'
+    cursor.style.cursor = 'none'
+    cursor.style.left = `${x}px`
+    cursor.style.top = `${y}px`
 
-  // 一段时间后隐藏
-  if (refreshCursorPos.timer) {
-    clearTimeout(refreshCursorPos.timer)
-  }
-  refreshCursorPos.timer = setTimeout(() => {
-    cursor.style.display = 'none'
-  }, 500)
+    // 一段时间后隐藏
+    if (refreshCursorPos.timer) {
+        clearTimeout(refreshCursorPos.timer)
+    }
+    refreshCursorPos.timer = setTimeout(() => {
+        cursor.style.display = 'none'
+    }, 500)
 }
 ```
 
@@ -122,22 +123,22 @@ function refreshCursorPos(x, y) {
 
 ```js
 const weakMap = new WeakMap()
-window.addEventListener('mousemove', (e) => {
-  const { clientX, clientY } = e
+window.addEventListener('mousemove', function (e) {
+    const { clientX, clientY } = e
 
-  // 隐藏捕获mousemove事件的元素的指针，并在一段时间后恢复
-  e.target.style.cursor = 'none'
-  let timer = weakMap.get(e.target)
-  if (timer) {
-    clearTimeout(timer)
-  }
-  timer = setTimeout(() => {
-    e.target.style.cursor = 'auto'
-  }, 500)
-  weakMap.set(e.target, timer)
-
-  // 更新玉兔位置
-  refreshCursorPos(clientX, clientY)
+    // 隐藏捕获mousemove事件的元素的指针，并在一段时间后恢复
+    e.target.style.cursor = 'none'
+    let timer = weakMap.get(e.target)
+    if(timer){
+        clearTimeout(timer)
+    }
+    timer = setTimeout(()=>{
+        e.target.style.cursor = 'auto'
+    },500)
+    weakMap.set(e.target,timer)
+    
+    // 更新玉兔位置
+    refreshCursorPos(clientX, clientY)
 })
 ```
 
@@ -179,17 +180,17 @@ addStyles(document.body, `
 const ybCounts = 5
 const domList = []
 for (let i = 0; i < ybCounts; i++) {
-  const d = h()
-  d.classList.add('orbit')
-  domList.push(d)
-  document.body.append(d)
+    const d = h()
+    d.classList.add('orbit')
+    domList.push(d)
+    document.body.append(d)
 }
 ```
 
 创建一个数组用于存储指针最近的**5**个位置，一个临时变量用于后续辅助存储轨迹点信息
 ```js
 const posList = []
-const now = 0
+let now = 0
 ```
 
 编写`refreshOrbit`方法用于更新轨迹：
@@ -198,59 +199,58 @@ const now = 0
 * 根据存储的指针位置信息，一一对应的更新月饼位置即可
 ```js
 function refreshOrbit(x, y) {
-  // 刷新位置
-  const maxScale = 1.5
-  const minScale = maxScale / domList.length
-  posList.forEach(({ x, y }, idx) => {
-    const dom = domList[idx]
-    dom.style.display = 'block'
-    dom.style.left = `${x}px`
-    dom.style.top = `${y}px`
-    dom.style.transform = `scale(${(idx + 1) * minScale}) translate(10%,10%)`
-    if (dom.timer) {
-      clearTimeout(dom.timer)
-    }
-    dom.timer = setTimeout(() => {
-      dom.style.display = 'none'
-    }, 50 * (idx + 1))
-  })
+    // 刷新位置
+    const maxScale = 1.5
+    const minScale = maxScale / domList.length
+    posList.forEach(({ x, y }, idx) => {
+        const dom = domList[idx]
+        dom.style.display = 'block'
+        dom.style.left = `${x}px`
+        dom.style.top = `${y}px`
+        dom.style.transform = `scale(${(idx + 1) * minScale}) translate(10%,10%)`
+        if (dom.timer) {
+            clearTimeout(dom.timer)
+        }
+        dom.timer = setTimeout(() => {
+            dom.style.display = 'none'
+        }, 50 * (idx + 1))
+    })
 
-  const nowTime = Date.now()
-  // 隔一段时间存储一个
-  if (now + 50 > nowTime) {
-    return
-  }
-  now = nowTime
-  posList.push({
-    x,
-    y
-  })
-  // 只存储限定的个数
-  if (posList.length === ybCounts + 1) {
-    posList.shift()
-  }
+    const nowTime = Date.now()
+    // 隔一段时间存储一个
+    if (now + 50 > nowTime) {
+        return
+    }
+    now = nowTime
+    posList.push({
+        x, y
+    })
+    // 只存储限定的个数
+    if (posList.length === ybCounts+1) {
+        posList.shift()
+    }
 }
 ```
 
 时间回掉中调用更新轨迹的方法
 ```js
-window.addEventListener('mousemove', (e) => {
-  const { clientX, clientY } = e
-  // ...省略其它代码
-  // 更新月饼轨迹
-  refreshOrbit(clientX, clientY)
+window.addEventListener('mousemove', function (e) {
+    const { clientX, clientY } = e
+    // ...省略其它代码
+    // 更新月饼轨迹
+    refreshOrbit(clientX, clientY)
 })
 ```
 
 ## 支持移动端
 这个简单，监听`touchmove`事件即可
 ```js
-window.addEventListener('touchmove', (e) => {
-  const { clientX, clientY } = e.changedTouches[0]
-  refreshCursorPos(clientX, clientY)
-
-  // 更新月饼轨迹
-  refreshOrbit(clientX, clientY)
+window.addEventListener('touchmove', function (e) {
+    const { clientX, clientY } = e.changedTouches[0]
+    refreshCursorPos(clientX, clientY)
+    
+    // 更新月饼轨迹
+    refreshOrbit(clientX, clientY)
 })
 ```
 
@@ -258,3 +258,4 @@ window.addEventListener('touchmove', (e) => {
 后续准备把这个设置指针样式的脚本抽成一个通用的js sdk和大家分享，这样想怎么改指针样式就怎么改
 
 大家有更好的方案可以评论区交流一波
+

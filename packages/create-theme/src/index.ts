@@ -10,7 +10,7 @@ const stringFlag = argvs.filter(item => !item.startsWith('--'))
 const projectName = stringFlag[stringFlag.length - 1] || 'my-blog'
 
 const pkgInfo = pkgFromUserAgent(process.env.npm_config_user_agent)
-const pkgManager = pkgInfo ? pkgInfo.name : 'pnpm'
+const pkgManager = pkgInfo ? pkgInfo.name : 'npm'
 
 const isBun = pkgManager === 'bun'
 
@@ -32,14 +32,14 @@ function createThemeProject(destination) {
     // 同步创建.gitignore文件和配置文件
     await fs.copy(
       path.join(__dirname, 'move/gitignore'),
-      path.join(destination, '.gitignore'),
+      path.join(destination, '.gitignore')
     )
 
     const sourceRc = isBun ? 'bunfig.toml' : 'npmrc'
     const targetFile = isBun ? 'bunfig.toml' : '.npmrc'
     await fs.copy(
       path.join(__dirname, `move/${sourceRc}`),
-      path.join(destination, targetFile),
+      path.join(destination, targetFile)
     )
     // package.json build 指令添加 NODE_ENV=production
     // issue https://github.com/oven-sh/bun/issues/3791

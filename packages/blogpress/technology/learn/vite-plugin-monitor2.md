@@ -29,9 +29,9 @@ categories:
 ```ts
 const info = server.config.logger.info
 
-// @ts-expect-error
+// @ts-ignore
 if (global.__vite_start_time) {
-  // @ts-expect-error
+  // @ts-ignore
   const startupDuration = performance.now() - global.__vite_start_time
   info(`\n  ${chalk.cyan(`ready in ${Math.ceil(startupDuration)}ms.`)}\n`)
 }
@@ -42,7 +42,7 @@ if (global.__vite_start_time) {
 
 **index.ts**
 ```ts
-import type { Plugin } from 'vite'
+import type { Plugin } from 'vite';
 
 export default function Monitor(): Plugin {
   const startTime = global.__vite_start_time
@@ -51,23 +51,24 @@ export default function Monitor(): Plugin {
     name: 'vite-plugin-monitor',
     apply: 'serve',
     configureServer(server) {
-      const { info } = server.config.logger
+      const { info } = server.config.logger;
       // 拦截info方法的调用
       server.config.logger.info = function _info(str) {
         // 调用原info方法
-        info.apply(this, arguments)
+        info.apply(this, arguments);
         // 通过字符串内容进行一个简单的判断
         if (str.includes('ready in')) {
           console.log('startupDuration', Date.now() - startTime)
         }
-      }
+      };
     },
-  }
+  };
 }
 ```
 
 启动一个项目看看效果，成了。
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYzMjkyMzY1MjAzMg==632923652032)
+
 
 ### HMR时间获取
 热更新时，终端中会出现下面的日志
@@ -77,8 +78,8 @@ export default function Monitor(): Plugin {
 同理源码里搜一搜，能够定位出如下内容
 ```ts
 config.logger.info(
-  updates
-    .map(({ path }) => chalk.green('hmr update ') + chalk.dim(path))
+    updates
+    .map(({ path }) => chalk.green(`hmr update `) + chalk.dim(path))
     .join('\n'),
   { clear: true, timestamp: true }
 )
@@ -87,14 +88,15 @@ config.logger.info(
 
 ```ts
 let startTime = null
-const { info } = server.config.logger
+const { info } = server.config.logger;
 server.config.logger.info = function _info(str) {
-  info.apply(this, arguments)
-  if (str.includes('hmr update')) {
+  info.apply(this, arguments);
+  if (str.indexOf('hmr update') >= 0) {
     startTime = Date.now()
   }
-}
+};
 ```
+
 
 触发HMR时，客户端会发出一个获取资源的请求，请求携带了一个import参数，我们通过这个参数来标识这个特定的请求
 ```sh
@@ -106,19 +108,19 @@ http://localhost:8080/src/pages/home/index.vue?import&t=1632924377207
 
 ```ts
 server.middlewares.use(async (req, res, next) => {
-  const { search } = new URL(req.url, `http://${req.headers.host}`)
+  const { search } = new URL(req.url, `http://${req.headers.host}`);
   if (
-    search.includes('import&')
+    search.indexOf('import&') >= 0
   ) {
-    const { end } = res
+    const { end } = res;
     res.end = function _end() {
       // 在资源返回后打印耗时
-      end.apply(this, arguments)
+      end.apply(this, arguments);
       console.log(Date.now() - startTime)
-    }
+    };
   }
-  next()
-})
+  next();
+});
 ```
 
 事实上通过`--debug`启动服务，能看到在HMR时会打印4个时间
@@ -130,3 +132,4 @@ server.middlewares.use(async (req, res, next) => {
 ## 小结
 更加详细的信息只能通过`--debug`看到，下一步的计划就是hack，模拟一下debug下的行为，将debug的打印的数据都拦截下来
 由于时间关系，这部分hack还没完成。准备假期抽时间实现一下。下一篇文章将详细的介绍最终实现。
+

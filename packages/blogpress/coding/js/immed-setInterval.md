@@ -19,10 +19,10 @@ categories:
 
 当然这个处理，也是比较简单的，但是看上去总觉得不太优雅
 ```js
-function fn() {}
+function fn(){}
 
 fn()
-const timer = setTimeout(fn, timeout)
+const timer = setTimeout(fn,timeout)
 ```
 
 咱的目的是整个优雅的`setImmTimeout`和`setImmInterval`，即在调用够会立即执行一次回掉函数
@@ -46,16 +46,16 @@ const timer = setTimeout(fn, timeout)
 朴素的实现方法如下，延迟执行前调用一次
 ```js
 function setImmTimeout(func, delay = 0, ...args) {
-  if (typeof func !== 'function')
-    throw new TypeError('func is not function')
-  func.apply(this, args)
-  return setTimeout(func, delay, ...args)
+    if (typeof func !== 'function') throw new TypeError('func is not function')
+    func.apply(this, args)
+    return setTimeout(func, delay, ...args)
 }
 
-function setImmInterval(func, delay = 0, ...args) {
-  if (typeof func !== 'function')
-    throw new TypeError('func is not function')
-  func.apply(this, args)
-  return setInterval(func, delay, ...args)
+function setImmInterval(func, delay = 0, ...args){
+    if (typeof func !== 'function') throw new TypeError('func is not function')
+    func.apply(this, args)
+    return setInterval(func, delay, ...args)
 }
 ```
+
+

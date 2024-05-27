@@ -73,14 +73,14 @@ vite配置通过官方的`vite.config.[tj]s`配置文件拓展即可
 * 遍历寻找第一个`src/pages/${path}`存在的`path`,此path即为`entryName`
 
 ```ts
-function getEntryName(reqUrl: string, cfg?: any) {
-  const { pathname } = new URL(reqUrl, 'http://localhost')
-  const paths = pathname.split('/').filter(v => !!v)
-  const entryName = paths.find(p => existsSync(path.join(getCWD(), 'src/pages', p)))
+function getEntryName(reqUrl:string, cfg?:any) {
+  const { pathname } = new URL(reqUrl, 'http://localhost');
+  const paths = pathname.split('/').filter((v) => !!v);
+  const entryName = paths.find((p) => existsSync(path.join(getCWD(), 'src/pages', p)));
   if (!entryName) {
-    console.log(pathname, 'not match any entry')
+    console.log(pathname, 'not match any entry');
   }
-  return entryName || ''
+  return entryName || '';
 }
 ```
 
@@ -91,24 +91,24 @@ function getEntryName(reqUrl: string, cfg?: any) {
 * `public/index.html`
 
 ```ts
-function loadHtmlContent(reqPath: string) {
+function loadHtmlContent(reqPath:string) {
   // 兜底页面
-  const pages = [path.resolve(__dirname, '../../public/index.html')]
+  const pages = [path.resolve(__dirname, '../../public/index.html')];
 
   // 单页/多页默认 public/index.html
-  pages.unshift(resolved('public/index.html'))
+  pages.unshift(resolved('public/index.html'));
 
   // 多页应用可以根据请求的 路径 作进一步的判断
   if (isMPA()) {
-    const entryName = getEntryName(reqPath)
+    const entryName = getEntryName(reqPath);
     if (entryName) {
-      pages.unshift(resolved(`public/${entryName}.html`))
-      pages.unshift(resolved(`src/pages/${entryName}/index.html`))
-      pages.unshift(resolved(`src/pages/${entryName}/${entryName}.html`))
+      pages.unshift(resolved(`public/${entryName}.html`));
+      pages.unshift(resolved(`src/pages/${entryName}/index.html`));
+      pages.unshift(resolved(`src/pages/${entryName}/${entryName}.html`));
     }
   }
-  const page = pages.find(v => existsSync(v))
-  return readFileSync(page, { encoding: 'utf-8' })
+  const page = pages.find((v) => existsSync(v));
+  return readFileSync(page, { encoding: 'utf-8' });
 }
 ```
 
@@ -118,12 +118,12 @@ function loadHtmlContent(reqPath: string) {
 ```ts
 function getPageEntry(reqUrl) {
   if (isMPA()) {
-    const entryName = getEntryName(reqUrl)
-    return !!entryName && getEntryFullPath(`src/pages/${entryName}`)
+    const entryName = getEntryName(reqUrl);
+    return !!entryName && getEntryFullPath(`src/pages/${entryName}`);
   }
   // 默认SPA
-  const SPABase = 'src'
-  return getEntryFullPath(SPABase)
+  const SPABase = 'src';
+  return getEntryFullPath(SPABase);
 }
 ```
 
@@ -131,7 +131,7 @@ function getPageEntry(reqUrl) {
 vite构建的入口是`html`模板，可以通过`build.rollup.input`属性设置
 ```ts
 // vite.config.ts
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vite';
 
 export default defineConfig({
   build: {
@@ -142,7 +142,7 @@ export default defineConfig({
       },
     },
   },
-})
+});
 ```
 按照如上配置，构建产物中的html目录将会如下
 ```sh
@@ -163,18 +163,18 @@ export default defineConfig({
 ### 插件结构
 ```ts
 export default function BuildPlugin(): PluginOption {
-  let userConfig: ResolvedConfig = null
+  let userConfig:ResolvedConfig = null;
   return {
     name: 'wvs-build',
     // 只在构建阶段生效
     apply: 'build',
     // 获取最终配置
     configResolved(cfg) {
-      userConfig = cfg
+      userConfig = cfg;
     },
     // 插件配置处理
     config() {
-
+      
     },
     resolveId(id) {
 
@@ -184,9 +184,9 @@ export default function BuildPlugin(): PluginOption {
     },
     // 构建完成后
     closeBundle() {
-
+      
     },
-  }
+  };
 }
 ```
 通过`configResolved`钩子获取最终配置，配置提供给其它钩子使用
@@ -194,25 +194,24 @@ export default function BuildPlugin(): PluginOption {
 ### 获取entry
 首先获取`src/pages`下所有的entry
 ```ts
-const entry = []
+const entry = [];
 if (isMPA()) {
-  entry.push(...getMpaEntry())
-}
-else {
+  entry.push(...getMpaEntry());
+} else {
   // 单页应用
   entry.push({
     entryName: 'index',
     entryHtml: 'public/index.html',
     entryJs: getEntryFullPath('src'),
-  })
+  });
 }
 ```
 entry的定义为
 ```ts
-interface Entry {
-  entryHtml: string
-  entryName: string
-  entryJs: string
+interface Entry{
+  entryHtml:string
+  entryName:string
+  entryJs:string
 }
 ```
 获取逻辑如下
@@ -221,26 +220,26 @@ interface Entry {
 ```ts
 export function getMpaEntry(baseDir = 'src/pages') {
   const entryNameList = readdirSync(resolved(baseDir), { withFileTypes: true })
-    .filter(v => v.isDirectory())
-    .map(v => v.name)
+    .filter((v) => v.isDirectory())
+    .map((v) => v.name);
 
   return entryNameList
-    .map(entryName => ({ entryName, entryHtml: '', entryJs: getEntryFullPath(path.join(baseDir, entryName)) }))
-    .filter(v => !!v.entryJs)
+    .map((entryName) => ({ entryName, entryHtml: '', entryJs: getEntryFullPath(path.join(baseDir, entryName)) }))
+    .filter((v) => !!v.entryJs)
     .map((v) => {
-      const { entryName } = v
+      const { entryName } = v;
       const entryHtml = [
         resolved(`src/pages/${entryName}/${entryName}.html`),
         resolved(`src/pages/${entryName}/index.html`),
         resolved(`public/${entryName}.html`),
         resolved('public/index.html'),
         path.resolve(__dirname, '../../public/index.html'),
-      ].find(html => existsSync(html))
+      ].find((html) => existsSync(html));
       return {
         ...v,
         entryHtml,
-      }
-    })
+      };
+    });
 }
 ```
 ### 生成构建配置
@@ -321,65 +320,64 @@ closeBundle() {
 
 接入wp2vite的插件实现如下
 ```ts
-import wp2vite from 'wp2vite'
+import wp2vite from 'wp2vite';
 // 省略不重要的 import
 export default function wp2vitePlugin(): PluginOption {
   return {
     name: 'wvs-wp2vite',
     enforce: 'pre',
     async config(_, env) {
-      const cfgFile = resolved('vite.config.js')
-      const tplFile = resolved('index.html')
-      const contentMap = new Map([[cfgFile, ''], [tplFile, '']])
-      const files = [cfgFile, tplFile]
+      const cfgFile = resolved('vite.config.js');
+      const tplFile = resolved('index.html');
+      const contentMap = new Map([[cfgFile, ''], [tplFile, '']]);
+      const files = [cfgFile, tplFile];
 
-      console.time('wp2vite')
+      console.time('wp2vite');
       // 判断是否存在vite.config.js 、index.html
       // 避免 wp2vite 覆盖
       files.forEach((f) => {
         if (existsSync(f)) {
-          contentMap.set(f, readFileSync(f, { encoding: 'utf-8' }))
+          contentMap.set(f, readFileSync(f, { encoding: 'utf-8' }));
         }
-      })
+      });
 
       // 转换出配置文件vite.config.js
       await wp2vite.start(getCWD(), {
         force: false,
         // 统一开启debug
         debug: !!process.env.DEBUG,
-      })
+      });
 
       // TODO:提PR优化
       // 转换耗时计算
-      console.timeEnd('wp2vite')
+      console.timeEnd('wp2vite');
 
       // 获取wp2vite转换出的配置
-      const cfg = await getUserConfig(env, 'js')
+      const cfg = await getUserConfig(env, 'js');
 
       contentMap.forEach((v, k) => {
         if (v) {
           // 如果修改了内容，还原内容
-          writeFileSync(k, v)
-        }
-        else {
+          writeFileSync(k, v);
+        } else {
           // 移除创建的文件
-          unlinkSync(k)
+          unlinkSync(k);
         }
-      })
+      });
 
       if (cfg.config) {
-        const { config } = cfg || {}
+        const { config } = cfg || {};
         // 留下需要的配置
         return {
           resolve: config?.resolve,
           server: config?.server,
           css: config?.css,
-        }
+        };
       }
 
-      return null
+      return null;
     },
-  }
+  };
 }
 ```
 wp2vite，对外暴露了一个`start`方法调用
@@ -390,16 +388,16 @@ wp2vite，对外暴露了一个`start`方法调用
 
 其中获取用户配置的`getUserConfig`实现如下
 ```ts
-import { ConfigEnv, loadConfigFromFile } from 'vite'
+import { loadConfigFromFile, ConfigEnv } from 'vite';
 
-export function getUserConfig(configEnv: ConfigEnv, suffix = '') {
-  const configName = 'vite.config'
-  const _suffix = ['ts', 'js', 'mjs', 'cjs']
+export function getUserConfig(configEnv:ConfigEnv, suffix = '') {
+  const configName = 'vite.config';
+  const _suffix = ['ts', 'js', 'mjs', 'cjs'];
   if (suffix) {
-    _suffix.unshift(suffix)
+    _suffix.unshift(suffix);
   }
-  const configFile = _suffix.map(s => `${configName}.${s}`).find(s => existsSync(s))
-  return loadConfigFromFile(configEnv, configFile)
+  const configFile = _suffix.map((s) => `${configName}.${s}`).find((s) => existsSync(s));
+  return loadConfigFromFile(configEnv, configFile);
 }
 ```
 vite提供了`loadConfigFromFile`方法，只需要在此方法中做一层简单的封装即可直接使用，方法内部使用esbuild自动对ts与es语法进行了转换
@@ -412,3 +410,4 @@ vite提供了`loadConfigFromFile`方法，只需要在此方法中做一层简�
 ## 后续规划
 1. 目前`wp2vite`在配置转换这一块，还不能太满足使用要求，准备提PR增强一下
 2. 将内部能力抽成一个个单独的vite插件
+

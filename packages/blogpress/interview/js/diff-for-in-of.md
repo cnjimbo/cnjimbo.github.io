@@ -15,7 +15,7 @@ categories:
 遍历的是每个数组的值
 ```js
 for (variable of iterable) {
-  // statements
+    //statements
 }
 ```
 
@@ -23,13 +23,13 @@ for (variable of iterable) {
 ```js
 const data = ['a', 'b', 3]
 for (const v of data) {
-  console.log(v) // a b 3
+    console.log(v); // a b 3
 }
 ```
 ## for-in
 ```js
 for (variable in obj) {
-  // statements
+    //statements
 }
 ```
 遍历一个对象的可枚举属性
@@ -40,16 +40,16 @@ for (variable in obj) {
 
 ```js
 const data = {
-  [Symbol.for('a')]: 'a',
-  name: 'name',
-  2: '2',
-  1: '1',
-  b: 'b',
-  a: 'a'
+    [Symbol.for('a')]: 'a',
+    name: 'name',
+    '2': '2',
+    '1': '1',
+    b: 'b',
+    a: 'a'
 }
 data.__proto__.sex = 'sex'
 for (const k in data) {
-  console.log(k) // 1 2 name b a sex
+    console.log(k) // 1 2 name b a sex
 }
 ```
 
@@ -61,4 +61,5 @@ for (const k in data) {
 * 不可遍历Symbol属性
 * 为普通对象设计的，遍历顺序是任意的,数组索引顺序很重要,不适用于数组遍历
 * 遍历出来的key是string类型
-* 可以遍历到原型上的属性
+* 可以遍历到原型上的属性 
+

@@ -20,21 +20,22 @@ categories:
 const func = (function () {
 // TODO 请实现对应代码逻辑
 
-})()
-console.log(func()) // -> 1
-console.log(func()) // -> 2
-console.log(func()) // -> 3
+})();
+console.log(func()); // -> 1
+console.log(func()); // -> 2
+console.log(func()); // -> 3
 ```
 
 ## 题解
 ```js
 const func = (function () {
-  let count = 0
-  return () => {
-    return ++count
-  }
-})()
-console.log(func()) // -> 1
-console.log(func()) // -> 2
-console.log(func()) // -> 3
+    let count = 0
+    return () => {
+        return ++count
+    }
+})();
+console.log(func()); // -> 1
+console.log(func()); // -> 2
+console.log(func()); // -> 3
 ```
+

@@ -20,22 +20,22 @@ categories:
 #### 实现
 ```js
 function User(name, age, type, works) {
-  this.name = name
-  this.age = age
-  this.type = type
-  this.works = works
+    this.name = name
+    this.age = age
+    this.type = type
+    this.works = works
 }
 
 function userFactory(name, age, type) {
-  const worksObj = {
-    teacher: ['传道', '授业', '解惑'],
-    student: ['上课', '写作', '课外实践'],
-    // ... any more
-  }
-  return new User(name, age, type, worksObj[type] || [])
+    const worksObj = {
+        'teacher': ['传道', '授业', '解惑'],
+        'student': ['上课', '写作', '课外实践'],
+        // ... any more
+    }
+    return new User(name, age, type, worksObj[type] || [])
 }
-const s1 = userFactory('小明', 18, 'student')
-const t1 = userFactory('王刚', 28, 'teacher')
+const s1 = userFactory('小明',18,'student')
+const t1 = userFactory('王刚',28,'teacher')
 ```
 
 ### 示例2
@@ -44,31 +44,31 @@ const t1 = userFactory('王刚', 28, 'teacher')
 
 #### 实现
 ```js
-function Circle() {
-  this.name = 'circle'
-  this.r = 0
+function Circle(){
+    this.name = 'circle'
+    this.r = 0
 }
 
-function Triangle() {
-  this.name = 'triangle'
-  this.a = 0
-  this.b = 0
-  this.c = 0
+function Triangle(){
+    this.name = 'triangle'
+    this.a = 0
+    this.b = 0
+    this.c = 0
 }
 
-function Rectangle() {
-  this.name = 'rectangle'
-  this.width = 0
-  this.height = 0
+function Rectangle(){
+    this.name = 'rectangle'
+    this.width = 0
+    this.height = 0
 }
 
-function shapeFactory(shape) {
-  switch (shape) {
-    case 'circle':return new Circle()
-    case 'triangle':return new Triangle()
-    case 'rectangle':return new Rectangle()
-    default: return null
-  }
+function shapeFactory(shape){
+    switch(shape){
+        case 'circle':return new Circle()
+        case 'triangle':return new Triangle()
+        case 'rectangle':return new Rectangle()
+        default: return null;
+    }
 }
 
 const c1 = shapeFactory('circle')
@@ -87,52 +87,51 @@ const r1 = shapeFactory('rectangle')
 #### 实现
 ```js
 class AbstractSystemFactory {
-  userFactory() {
-    throw new Error('不允许直接调用抽象工厂方法')
-  }
+    userFactory() {
+        throw new Error('不允许直接调用抽象工厂方法')
+    }
 
-  logFactory() {
-    throw new Error('不允许直接调用抽象工厂方法')
-  }
+    logFactory() {
+        throw new Error('不允许直接调用抽象工厂方法')
+    }
 }
 
 class TradingSystem extends AbstractSystemFactory {
-  userFactory() {
-    return new TradingSystemUserFactory()
-  }
+    userFactory() {
+        return new TradingSystemUserFactory()
+    }
 
-  logFactory() {
-    // 类似实现
-  }
+    logFactory() {
+        // 类似实现
+    }
 }
 
 class AbstractSystemUserFactory {
-  createUser() {
-    throw new Error('不允许直接调用抽象工厂方法')
-  }
+    createUser() {
+        throw new Error('不允许直接调用抽象工厂方法')
+    }
 }
 
 class TradingSystemUserFactory extends AbstractSystemUserFactory {
-  createUser(name, age) {
-    return new TradingSystemUser(name, age)
-  }
+    createUser(name, age) {
+        return new TradingSystemUser(name, age)
+    }
 }
 
 class TradingSystemUser {
-  constructor(name, age) {
-    this.name = name
-    this.age = age
-  }
-
-  printInfo() {
-    console.log(this.name, this.age)
-  }
+    constructor(name, age) {
+        this.name = name
+        this.age = age
+    }
+    printInfo() {
+        console.log(this.name, this.age);
+    }
 }
 
 const tradingSystem = new TradingSystem()
 const tradingSystemUserFactory = tradingSystem.userFactory()
 
-const tsu1 = tradingSystemUserFactory.createUser('xm', 18)
+const tsu1 = tradingSystemUserFactory.createUser('xm',18)
 tsu1.printInfo()
 ```
 
@@ -146,127 +145,127 @@ tsu1.printInfo()
 利用instanceof判断是否使用new关键字调用函数进行对象的实例化
 ```js
 function User() {
-  if (!(this instanceof User)) {
-    return
-  }
-  if (!User._instance) {
-    this.name = '无名'
-    User._instance = this
-  }
-  return User._instance
+    if (!(this instanceof User)) {
+        return
+    }
+    if (!User._instance) {
+        this.name = '无名'
+        User._instance = this
+    }
+    return User._instance
 }
 
 const u1 = new User()
 const u2 = new User()
 
-console.log(u1 === u2)// true
+console.log(u1===u2);// true
 ```
 #### 方式2
 在函数上直接添加方法属性调用生成实例
 ```js
-function User() {
-  this.name = '无名'
+function User(){
+    this.name = '无名'
 }
-User.getInstance = function () {
-  if (!User._instance) {
-    User._instance = new User()
-  }
-  return User._instance
+User.getInstance = function(){
+    if(!User._instance){
+        User._instance = new User()
+    }
+    return User._instance
 }
 
 const u1 = User.getInstance()
 const u2 = User.getInstance()
 
-console.log(u1 === u2)
+console.log(u1===u2);
 ```
 
 #### 方式3
 使用闭包，改进方式2
 ```js
 function User() {
-  this.name = '无名'
+    this.name = '无名'
 }
 User.getInstance = (function () {
-  let instance
-  return function () {
-    if (!instance) {
-      instance = new User()
+    var instance
+    return function () {
+        if (!instance) {
+            instance = new User()
+        }
+        return instance
     }
-    return instance
-  }
 })()
 
 const u1 = User.getInstance()
 const u2 = User.getInstance()
 
-console.log(u1 === u2)
+console.log(u1 === u2);
 ```
 #### 方式4
 使用包装对象结合闭包的形式实现
 ```js
 const User = (function () {
-  function _user() {
-    this.name = 'xm'
-  }
-  return function () {
-    if (!_user.instance) {
-      _user.instance = new _user()
+    function _user() {
+        this.name = 'xm'
     }
-    return _user.instance
-  }
+    return function () {
+        if (!_user.instance) {
+            _user.instance = new _user()
+        }
+        return _user.instance
+    }
 })()
 
 const u1 = new User()
 const u2 = new User()
 
-console.log(u1 === u2) // true
+console.log(u1 === u2); // true
 ```
 当然这里可以将闭包部分的代码单独封装为一个函数
 
 在频繁使用到单例的情况下，推荐使用类似此方法的方案
 ```js
 function SingleWrapper(cons) {
-  // 排出非函数与箭头函数
-  if (!(cons instanceof Function) || !cons.prototype) {
-    throw new Error('不是合法的构造函数')
-  }
-  let instance
-  return function () {
-    if (!instance) {
-      instance = new cons()
+    // 排出非函数与箭头函数
+    if (!(cons instanceof Function) || !cons.prototype) {
+        throw new Error('不是合法的构造函数')
     }
-    return instance
-  }
+    var instance
+    return function () {
+        if (!instance) {
+            instance = new cons()
+        }
+        return instance
+    }
 }
 
-function User() {
-  this.name = 'xm'
+function User(){
+    this.name = 'xm'
 }
 const SingleUser = SingleWrapper(User)
 const u1 = new SingleUser()
 const u2 = new SingleUser()
-console.log(u1 === u2)
+console.log(u1 === u2);
 ```
 
 #### 方式5
 在构造函数中利用`new.target`判断是否使用new关键字
 ```js
-class User {
-  constructor() {
-    if (new.target !== User) {
-      return
+class User{
+    constructor(){
+        if(new.target !== User){
+            return
+        }
+        if(!User._instance){
+            this.name = 'xm'
+            User._instance = this
+        }
+        return User._instance
     }
-    if (!User._instance) {
-      this.name = 'xm'
-      User._instance = this
-    }
-    return User._instance
-  }
 }
 
 const u1 = new User()
 const u2 = new User()
-console.log(u1 === u2)
+console.log(u1 === u2);
 ```
 
 #### 方式6
@@ -274,22 +273,22 @@ console.log(u1 === u2)
 
 ```js
 class User {
-  constructor() {
-    this.name = 'xm'
-  }
-
-  static getInstance() {
-    if (!User._instance) {
-      User._instance = new User()
+    constructor() {
+        this.name = 'xm'
     }
-    return User._instance
-  }
+    static getInstance() {
+        if (!User._instance) {
+            User._instance = new User()
+        }
+        return User._instance
+    }
 }
+
 
 const u1 = User.getInstance()
 const u2 = User.getInstance()
 
-console.log(u1 === u2)
+console.log(u1 === u2);
 ```
 ## 建造者模式
 ### 概念
@@ -302,127 +301,119 @@ console.log(u1 === u2)
 ```js
 // 木盘子
 class WoodenBowl {
-  pack() {
-    return 'WoodenBowl'
-  }
+    pack() {
+        return 'WoodenBowl'
+    }
 }
 
 // 瓶子
 class Bottle {
-  pack() {
-    return 'Bottle'
-  }
+    pack() {
+        return 'Bottle'
+    }
 }
 
 // 小吃用木碗装
 class Snack {
-  packing() {
-    return new WoodenBowl()
-  }
+    packing() {
+        return new WoodenBowl()
+    }
 }
 
 // 饮品用瓶装
 class Drink {
-  packing() {
-    return new Bottle()
-  }
+    packing() {
+        return new Bottle()
+    }
 }
 
 // 可乐
 class Coke extends Drink {
-  price() {
-    return 3.00
-  }
-
-  name() {
-    return 'Coke'
-  }
+    price() {
+        return 3.00
+    }
+    name() {
+        return 'Coke'
+    }
 }
 
 // 茶
 class Tea extends Drink {
-  price() {
-    return 5.00
-  }
-
-  name() {
-    return 'Tea'
-  }
+    price() {
+        return 5.00
+    }
+    name() {
+        return 'Tea'
+    }
 }
 
 // 薯条
 class FrenchFries extends Snack {
-  price() {
-    return 15.00
-  }
-
-  name() {
-    return 'FrenchFries'
-  }
+    price() {
+        return 15.00
+    }
+    name() {
+        return 'FrenchFries'
+    }
 }
 
 // 面包
 class Bread extends Snack {
-  price() {
-    return 5.00
-  }
-
-  name() {
-    return 'Bread'
-  }
+    price() {
+        return 5.00
+    }
+    name() {
+        return 'Bread'
+    }
 }
 
 // 套餐
 class Meal {
-  constructor() {
-    this.items = []
-  }
-
-  addItem(item) {
-    this.items.push(item)
-  }
-
-  getCost() {
-    let cost = 0.0
-    for (const item of this.items) {
-      cost += item.price()
+    constructor() {
+        this.items = []
     }
-    return cost
-  }
-
-  showItems() {
-    for (const item of this.items) {
-      const nameStr = `Item : ${item.name()}`
-      const packStr = `Packing : ${item.packing().pack()}`
-      const priceStr = `Price : ${item.price()}`
-      console.log(`${nameStr},${packStr},${priceStr}`)
+    addItem(item) {
+        this.items.push(item);
     }
-  }
+    getCost() {
+        let cost = 0.0;
+        for (const item of this.items) {
+            cost += item.price();
+        }
+        return cost;
+    }
+    showItems() {
+        for (const item of this.items) {
+            const nameStr = "Item : " + item.name();
+            const packStr = "Packing : " + item.packing().pack();
+            const priceStr = "Price : " + item.price();
+            console.log(`${nameStr},${packStr},${priceStr}`);
+        }
+    }
 }
 
 //  建造套餐
 class MealBuilder {
-  prepare2People() {
-    const meal = new Meal()
-    meal.addItem(new Coke())
-    meal.addItem(new Tea())
-    meal.addItem(new Bread())
-    meal.addItem(new FrenchFries())
-    return meal
-  }
-
-  prepare1People() {
-    const meal = new Meal()
-    meal.addItem(new Coke())
-    meal.addItem(new FrenchFries())
-    return meal
-  }
+    prepare2People() {
+        const meal = new Meal();
+        meal.addItem(new Coke());
+        meal.addItem(new Tea());
+        meal.addItem(new Bread());
+        meal.addItem(new FrenchFries());
+        return meal;
+    }
+    prepare1People() {
+        const meal = new Meal();
+        meal.addItem(new Coke());
+        meal.addItem(new FrenchFries());
+        return meal;
+    }
 }
 
-const mealBuilder = new MealBuilder()
-const people2 = mealBuilder.prepare2People()
-people2.showItems()
-console.log(`Total Cost: ${people2.getCost()}`)
+const mealBuilder = new MealBuilder();
+const people2 = mealBuilder.prepare2People();
+people2.showItems();
+console.log("Total Cost: " + people2.getCost());
 ```
 输出
 ```
@@ -441,3 +432,4 @@ Total Cost: 28
 JS创建对象的方式就是原型引用：
 * [模拟new实现](./../../coding/js/myNew.md)
 * [原型与原型链](./../../bigWeb/js/prototype.md)
+

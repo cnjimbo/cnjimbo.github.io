@@ -20,8 +20,8 @@ categories:
 4. 归并排序
 5. 数组去重(只能用ES5)
 ```js
-const obj = { a: 1 }
-const testData = [1, 2, 3, 1, 2, 3, '1', '2', '2', '3', [1, 2], [3, 4], [1, 2], { a: 1 }, { b: 2 }, { a: 1 }, ob1, obj, true, false, true, false, null, null, undefined, undefined]
+let obj = {a:1}
+let testData = [1,2,3,1,2,3,'1','2','2','3',[1,2],[3,4],[1,2],{a:1},{b:2},{a:1},ob1,obj,true,false,true,false,null,null,undefined,undefined]
 ```
 ### Vue
 1. 数据双向绑定实现原理
@@ -30,3 +30,4 @@ const testData = [1, 2, 3, 1, 2, 3, '1', '2', '2', '3', [1, 2], [3, 4], [1, 2], 
 4. vuex实现数据响应的原理
 5. vue-router路由模式有哪些，有什么区别，其原理是什么
 6. vue diff算法
+

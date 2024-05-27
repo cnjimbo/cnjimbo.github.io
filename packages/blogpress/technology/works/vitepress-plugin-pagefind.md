@@ -48,8 +48,8 @@ pnpm add vitepress-plugin-pagefind
 import { defineConfig } from 'vitepress'
 import { pagefindPlugin } from 'vitepress-plugin-pagefind'
 export default defineConfig({
-  vite: {
-    plugins: [pagefindPlugin()],
+  vite:{
+    plugins:[pagefindPlugin()],
   }
 })
 ```
@@ -112,11 +112,11 @@ npx pagefind --source docs/.vitepress/dist
 
 ```ts
 // 1. Initializing Pagefind
-const pagefind = await import('/_pagefind/pagefind.js')
+const pagefind = await import("/_pagefind/pagefind.js");
 // 2. search docs
-const search = await pagefind.search('hello')
+const search = await pagefind.search("hello");
 // 3. Loading a result
-const oneResult = await search.results[0].data()
+const oneResult = await search.results[0].data();
 ```
 
 搜索结果格式如下
@@ -124,12 +124,12 @@ const oneResult = await search.results[0].data()
 ![](https://img.cdn.sugarat.top/mdImg/MTY4MDQyMzg0NzMxMg==680423847312)
 ```ts
 interface SearchResult {
-  url: string
-  excerpt: string
-  filters: Record<string, any>
-  meta: Record<string, any>
-  content: string
-  word_count: number
+  url: string;
+  excerpt: string;
+  filters: Record<string,any>;
+  meta: Record<string,any>;
+  content: string;
+  word_count: number;
 }
 ```
 
@@ -191,7 +191,7 @@ export function pagefindPlugin() {
         return code.replace('<VPContent>', '<VPContent data-pagefind-body>')
       }
       return code
-    }
+    }    
   }
 }
 ```
@@ -204,7 +204,7 @@ export function pagefindPlugin() {
 ```ts
 import { onBeforeMount } from 'vue'
 
-function addInlineScript() {
+const addInlineScript = () => {
   const scriptText = `import('/_pagefind/pagefind.js')
         .then((module) => {
           window.__pagefind__ = module

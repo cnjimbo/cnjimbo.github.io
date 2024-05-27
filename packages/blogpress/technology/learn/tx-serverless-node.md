@@ -18,6 +18,7 @@ categories:
 本系列已更新:
 * [腾讯云Serverless实践-静态网站托管](./tx-serverless-static.md)
 
+
 超多图预警！！！
 
 该手把手Serverless实践系列预计会出几篇包含[静态站点](./tx-serverless-static.md)，云函数，后端服务等等
@@ -63,6 +64,7 @@ categories:
 
 赖心等待几分钟服务就初始化完毕了
 
+
 这个真免费，不要钱（咱根本用不完免费额度 嘿嘿）
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYyMzg1MzI0Njc1MQ==623853246751)
@@ -91,12 +93,12 @@ categories:
 ### 模板目录结构
 ```sh
 /home/sugar/Downloads/source
-├── index.html
-├── layer
-|  └── serverless.yml
-├── package-lock.json
-├── package.json
-├── serverless.yml
+├── index.html             
+├── layer                  
+|  └── serverless.yml      
+├── package-lock.json      
+├── package.json           
+├── serverless.yml   
 ├── sls.js
 └── src.map
 
@@ -115,12 +117,12 @@ directory: 1 file: 7
 <summary>点击查看完整源码</summary>
 
 ```js
-const path = require('path')
 const express = require('express')
+const path = require('path')
 const app = express()
 
 // Routes
-app.get('/', (req, res) => {
+app.get(`/`, (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'))
 })
 
@@ -136,7 +138,7 @@ app.get('/user', (req, res) => {
 app.get('/user/:id', (req, res) => {
   const id = req.params.id
   res.send({
-    id,
+    id: id,
     title: 'serverless framework',
     link: 'https://serverless.com'
   })
@@ -151,7 +153,7 @@ app.get('/500', (req, res) => {
 })
 
 // Error handler
-app.use((err, req, res, next) => {
+app.use(function(err, req, res, next) {
   console.error(err)
   res.status(500).send('Internal Serverless Error')
 })
@@ -180,6 +182,7 @@ module.exports = app
 3. 调用listen方法监听一个端口，以启动服务福
 4. 导出这个实例
 
+
 所以要部署咱们自己的Node - Express项目（其它Node项目类似），只需要简单的2步：
 1. 拷贝serverless.yml 文件到自己项目对应目录
 2. 小小修改sls.js文件，**先引入**自己的express实例,**再将其导出**即可
@@ -197,7 +200,7 @@ stage: dev
 inputs:
   src:
     src: ./
-    exclude: # 上传代码时，需要排除的目录或文件
+    exclude:              # 上传代码时，需要排除的目录或文件
       - .env
       - node_modules/**
   region: ap-chengdu
@@ -212,8 +215,8 @@ inputs:
   isAutoCiDeploy: false
   functionConf:
     eip: false
-    timeout: 3 # 配置的响应超时时间，超过此时间接口未响应，就直接返回错误
-    memorySize: 128 # 配置的服务使用的内存大小
+    timeout: 3           # 配置的响应超时时间，超过此时间接口未响应，就直接返回错误
+    memorySize: 128      # 配置的服务使用的内存大小
   layers:
     - name: '${output:${stage}:${app}:suixinsuoyu-layer.name}'
       version: '${output:${stage}:${app}:suixinsuoyu-layer.version}'
@@ -297,7 +300,7 @@ app.listen(serverConfig.port, serverConfig.hostname, () => {
 |  ├── api
 |  └── db.md
 ├── jest.config.js
-├── layer
+├── layer       
 |  └── serverless.yml # 1
 ├── package.json
 ├── serverless.yml   # 2
@@ -349,6 +352,7 @@ module.exports = app
 
 咱就能通过WebIDE查看到我们模板项目的源代码，其中还有一些不是模板中的代码，咱不管它，也不去修改
 
+
 ## 部署上线
 下面咱简单修改一下我们刚才的那个模板项目，然后部署上线
 
@@ -389,27 +393,27 @@ module.exports = app
 <summary>点击查看 sls.js 修改后的内容</summary>
 
 ```js
-const path = require('path')
 const express = require('express')
+const path = require('path')
 const app = express()
 
 // Routes
-app.get('/', (req, res) => {
+app.get(`/`, (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'))
 })
 
-app.get('/random/code', (req, res) => {
+app.get('/random/code',(req,res)=>{
   res.send({
-    num: Math.random()
+    num:Math.random()
   })
 })
 app.post('/user/login', (req, res) => {
   res.send({
-    code: 0,
-    data: {
-      token: 'test-token'
+    code:0,
+    data:{
+      token:'test-token'
     },
-    msg: 'ok'
+    msg:'ok'
   })
 })
 
@@ -418,7 +422,7 @@ app.get('/404', (req, res) => {
 })
 
 // Error handler
-app.use((err, req, res, next) => {
+app.use(function(err, req, res, next) {
   console.error(err)
   res.status(500).send('Internal Serverless Error')
 })
@@ -426,6 +430,7 @@ app.use((err, req, res, next) => {
 app.listen(8080)
 
 module.exports = app
+
 ```
 </details>
 
@@ -479,13 +484,16 @@ sls deploy
 * [GET /random/code](https://service-rbji0bev-1256505457.cd.apigw.tencentcs.com/release/random/code)
 * [GET /404](https://service-rbji0bev-1256505457.cd.apigw.tencentcs.com/release/404)
 
+
 访问结果可以看出我们改造后的模板项目已经上去了
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYyMzg1NjM4NDQyMw==623856384423)
 
 到此从0-1的创建应用到部署上线的流程都走完了
 
+
 # TODO
 * 补全原生Node使用HTTP模块开发的应用部署
 * 补全koa项目的部署
 * 探究一下终端如何展示二维码的，展示图片的可能性
+

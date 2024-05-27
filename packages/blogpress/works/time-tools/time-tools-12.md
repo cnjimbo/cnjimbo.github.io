@@ -34,7 +34,7 @@ npm i chalk
 const chalk = require('chalk')
 
 // 打印
-console.log(chalk.yellow('hello'), chalk.red('world'))
+console.log(chalk.yellow('hello'),chalk.red('world'))
 ```
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYyOTAzMzYyNTg5NQ==629033625895)
 
@@ -46,32 +46,32 @@ console.log(chalk.yellow('hello'), chalk.red('world'))
   * fail:红色
   * advice:蓝色
 ```js
-const { log } = console
+const { log } = console;
 
 function print(...str) {
-  log(...str)
+  log(...str);
 }
 
 Object.assign(print, {
   success(...str) {
-    log(chalk.green('success:'), ...str)
+    log(chalk.green('success:'), ...str);
   },
   fail(...str) {
-    log(chalk.red('fail:'), ...str)
+    log(chalk.red('fail:'), ...str);
   },
   advice(...str) {
-    log(chalk.blue('advice:'), ...str)
+    log(chalk.blue('advice:'), ...str);
   },
-})
+});
 ```
 使用示例如下
 ```js
-const { print } = require('../src/utils')
+const { print } = require('../src/utils');
 
-print('default')
-print.success('成功文案')
-print.fail('失败提示')
-print.advice('建议文案')
+print('default');
+print.success('成功文案');
+print.fail('失败提示');
+print.advice('建议文案');
 ```
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYyOTAzMzkyMDI0Mg==629033920242)
 
@@ -88,8 +88,8 @@ print.advice('建议文案')
 commander.command('page')
   .description('Use Page show report')
   .action(() => {
-    // ..code
-  })
+      // ..code
+  });
 ```
 这里准备用[Vite](https://vitejs.dev/)来启动这个本地服务
 
@@ -131,16 +131,16 @@ index.html内容如下，一个很简单的内容
   * 第一个参数是要执行的指令
   * 第二个参数是需要添加的参数
 ```js
-const child_process = require('child_process')
+const child_process = require('child_process');
 
-const cwd = path.resolve(__dirname, '../')
+const cwd = path.resolve(__dirname, '../');
 const serveService = child_process.spawn('node_modules/.bin/vite', ['src/page', '--host'], {
   cwd,
   stdio: 'inherit',
-})
+});
 serveService.on('close', (code) => {
-  process.exit(code)
-})
+  process.exit(code);
+});
 ```
 安装`Vite`后就会在`node_modules/.bin/vite`下创建一个可执行文件，当然这个可执行文件里会有如下一行注释代码
 
@@ -154,9 +154,9 @@ Usage:
   $ vite [root]
 
 Commands:
-  [root]
-  build [root]
-  optimize [root]
+  [root]           
+  build [root]     
+  optimize [root]  
   preview [root]
   ....
 ```
@@ -177,20 +177,20 @@ yarn add cross-spawn
 
 更新上面的启动代码
 ```js
-const spawn = require('cross-spawn')
+const spawn = require('cross-spawn');
 
 commander.command('page')
   .description('Use Page show report')
   .action(() => {
-    const cwd = path.resolve(__dirname, '../')
+    const cwd = path.resolve(__dirname, '../');
     const serveService = spawn('node_modules/.bin/vite', ['src/page', '--host'], {
       cwd,
       stdio: 'inherit',
-    })
+    });
     serveService.on('close', (code) => {
-      process.exit(code)
-    })
-  })
+      process.exit(code);
+    });
+  });
 ```
 ## 最后
 由于每天空闲时间有限，本文就先到这，下一期将继续完善`timec page`指令
@@ -202,3 +202,4 @@ commander.command('page')
 本系列会不断的更新迭代，直至产品初代完成
 
 * [仓库地址](https://github.com/ATQQ/time-control)
+

@@ -15,22 +15,22 @@ categories:
 
 **所以说 typeof 并不能准确判断变量到底是什么类型**
 ```js
-typeof 1 // number
-typeof '1' // string
+typeof 1    // number
+typeof '1'  // string
 typeof true // boolean
 typeof undefined // undefined
 typeof Symbol // symbol
 typeof null // object(实际上null不是Object)
 typeof [] // object
 typeof {} // object
-typeof Function // function
+typeof Function // function 
 ```
 
 ## instanceof
 通过原型链来判断的
 ```js
 function People() { }
-const p = new People()
+let p = new People()
 console.log(p instanceof People) // true
 
 function Teacher() { }
@@ -38,7 +38,7 @@ Teacher.prototype = Object.create(People.prototype)
 function Student() { }
 Student.prototype = Object.create(People.prototype)
 
-const t = new Teacher()
+let t = new Teacher()
 console.log(t instanceof Teacher) // true
 console.log(t instanceof People) // true
 console.log(t instanceof Student) // false
@@ -46,16 +46,17 @@ console.log(t instanceof Student) // false
 ## myInstanceof
 ```js
 function myInstanceof(target, origin) {
-  const prototype = origin.prototype
-  target = Object.getPrototypeOf(target)
-  while (true) {
-    if (target === null || target === undefined) {
-      return false
-    }
-    if (target === prototype) {
-      return true
-    }
+    let prototype = origin.prototype
     target = Object.getPrototypeOf(target)
-  }
+    while (true) {
+        if (target === null || target === undefined) {
+            return false
+        }
+        if (target === prototype) {
+            return true
+        }
+        target = Object.getPrototypeOf(target)
+    }
 }
 ```
+

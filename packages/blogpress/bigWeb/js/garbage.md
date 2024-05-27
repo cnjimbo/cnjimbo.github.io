@@ -34,7 +34,7 @@ JavaScript 中的内存管理是自动执行的，而且是不可见的。
 ## 例子
 1. 单个对象的引用
 ```js
-let user = { name: 'xiaoming' }
+let user = {name:'xiaoming'}
 // user --> {name:'xiaoming'}
 
 user = null
@@ -45,10 +45,10 @@ user = null
 ```
 2. 两个对象引用同一个
 ```js
-let user1 = { name: 'xiaoming' }
+let user1 = {name:'xiaoming'}
 // user --> {name:'xiaoming'}
 
-let user2 = { name: 'xiaoming' }
+let user2 = {name:'xiaoming'}
 // user1 --> {name:'xiaoming'}  <-- user2
 
 user1 = null
@@ -64,20 +64,20 @@ user2 = null
 3. 相互引用
 ```js
 function marray(woman, man) {
-  woman.husband = man
-  man.wife = woman
-  return {
-    male: man,
-    female: woman
-  }
+    woman.husband = man
+    man.wife = woman
+    return {
+        male: man,
+        female: woman
+    }
 }
-const woman = { name: 'qq' }
+let woman = { name: 'qq' }
 // woman --> qq
 
 let man = { name: 'tb' }
 // man --> tb
 
-const couple = marray(woman, man)
+let couple = marray(woman, man)
 
 // couple --> male --> tb x qq  <-- female <--couple
 
@@ -94,10 +94,10 @@ console.log(couple)
 ```
 4. 无法访问的数据块
 ```js
-let a = marray({ name: 'a' }, { name: 'b' })
+let a = marray({name:'a'},{name:'b'})
 
 a = null
-// 直接回收数据块
+// 直接回收数据块 
 ```
 
 ## 总结
@@ -119,3 +119,4 @@ a = null
 :::tip 参考
 [前端面试：谈谈 JS 垃圾回收机制](https://segmentfault.com/a/1190000018605776?utm_source=tag-newest#item-1)
 :::
+

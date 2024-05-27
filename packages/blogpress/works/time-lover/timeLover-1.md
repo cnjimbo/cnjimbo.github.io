@@ -20,6 +20,7 @@ categories:
 * @vue/compiler-sfc
 * 彩色字体图标的使用
 
+
 ## 背景
 女朋友天天都在念叨:"我又胖了,怎么不吃东西也没见轻"
 
@@ -67,6 +68,7 @@ categories:
 ### 项目初始化
 直接使用搭建的[ATQQ/vite-vue3-template](https://github.com/atqq/vite-vue3-template)模板[初始化项目](https://github.com/ATQQ/vite-vue3-template/generate)
 
+
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYyMzY0MzEwNDkzNw==623643104937)
 
 ### 引入Vant UI
@@ -91,12 +93,13 @@ export default defineConfig({
         {
           libraryName: 'vant',
           esModule: true,
-          resolveStyle: name => `vant/es/${name}/style`,
+          resolveStyle: (name) => `vant/es/${name}/style`,
         },
       ],
     }),
   ]
 })
+
 ```
 ```ts
 // src/utils/vantUI.ts
@@ -251,7 +254,7 @@ export default routes
 使用的渐变色来源：[webgradients](https://webgradients.com/)
 ### 首页
 * [完整源码](https://github.com/ATQQ/timeLover/blob/main/src/pages/home/index.vue)
-
+  
 页面整体上只包含`应用名`，`简介`，`导航登录`3部分
 ```vue
 <template>
@@ -313,7 +316,7 @@ Dom结构如下
 输入内容使用简单的正则进行校验
 ```ts
 // 手机号
-export const rMobile = /^1\d{10}$/
+export const rMobile = /^[1]\d{10}$/
 // 验证码
 export const rCode = /\d{4}/
 ```
@@ -351,6 +354,7 @@ Dom结构如下：
 * 彩色图标使用`iconfont`
 * 项目中[引入步骤](https://at.alicdn.com/t/project/2609471/b1aed21a-fa33-4a1a-8b32-175e4b295c16.html?spm=a313x.7781069.1998910419.35)
 
+
 只需要简单的在模板中引入css资源，使用的时候直接书写class即可
 
 ```html
@@ -376,3 +380,4 @@ Dom结构如下：
 * [渐变色：webgradients](https://webgradients.com/)
 * [@vue/compiler-sfc使用](https://github.com/vuejs/rfcs/blob/script-setup-2/active-rfcs/0000-script-setup.md)
 * [在线带壳截图生成](https://deviceshots.com/app?device=apple-iphone-x)
+

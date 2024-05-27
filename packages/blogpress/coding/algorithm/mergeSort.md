@@ -35,44 +35,44 @@ categories:
 ```js
 /**
  * 归并排序
- * @param {Array<number>} arr
+ * @param {Array<number>} arr 
  */
 function mergeSort(arr) {
-  const len = arr.length
-  // 无需排序
-  if (len < 2) {
-    return arr
-  }
-  const mid = len >> 1 // 右移一位 === 除2并向下取整
-  return merge(mergeSort(arr.slice(0, mid)), mergeSort(arr.slice(mid)))
+    const len = arr.length
+    // 无需排序
+    if (len < 2) {
+        return arr
+    }
+    const mid = len >> 1 // 右移一位 === 除2并向下取整
+    return merge(mergeSort(arr.slice(0, mid)), mergeSort(arr.slice(mid)))
 }
 
 /**
  * 合并
- * @param {Array<number>} left
- * @param {Array<number>} right
+ * @param {Array<number>} left 
+ * @param {Array<number>} right 
  */
 function merge(left, right) {
-  const res = []
-  let i = 0; let j = 0
-  while (i < left.length && j < right.length) {
-    res.push(left[i] <= right[j] ? left[i++] : right[j++])
-  }
+    const res = []
+    let i = 0, j = 0
+    while (i < left.length && j < right.length) {
+        res.push(left[i] <= right[j] ? left[i++] : right[j++])
+    }
 
-  while (i < left.length) {
-    res.push(left[i++])
-  }
+    while (i < left.length) {
+        res.push(left[i++])
+    }
 
-  while (j < right.length) {
-    res.push(right[j++])
-  }
+    while (j < right.length) {
+        res.push(right[j++])
+    }
 
-  return res
+    return res
 }
 ```
 
 ## 迭代实现
 
 ```js
-// TODO： ... 未完待续
+//TODO： ... 未完待续
 ```

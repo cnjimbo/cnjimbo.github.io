@@ -35,7 +35,7 @@ FaaS(Function as a Service - 函数即服务) 是在无状态容器中运行的�
 
 就像这样的：[点我体验](https://service-rixme52n-1256505457.cd.apigw.tencentcs.com/release/checkWeather?cityId=3)
 
-参数：cityId [地区参照表](https://www.weiyun.com/office?fid=1c8be5bf-7ee0-451d-ba19-0cd31371d7a2&pid=2d1ebb3d8cd9f0ef71a8cf4cb1f75120&ppid=2d1ebb3d07e603741f4015313cc3cd2b&size=908800&share_key=5lgsGhw)
+参数：cityId [地区参照表](https://www.weiyun.com/office?fid=1c8be5bf-7ee0-451d-ba19-0cd31371d7a2&pid=2d1ebb3d8cd9f0ef71a8cf4cb1f75120&ppid=2d1ebb3d07e603741f4015313cc3cd2b&size=908800&share_key=5lgsGhw) 
 
 ## 所使用到的技术与平台
 * Node.js (云函数选用JavaScript语言)
@@ -123,14 +123,14 @@ FaaS(Function as a Service - 函数即服务) 是在无状态容器中运行的�
 
 再看代码
 ```js
-'use strict'
+'use strict';
 exports.main_handler = async (event, context) => {
-  console.log('Hello World')
-  console.log(event)
-  console.log(event['non-exist'])
-  console.log(context)
-  return event
-}
+    console.log("Hello World")
+    console.log(event)
+    console.log(event["non-exist"])
+    console.log(context)
+    return event
+};
 ```
 
 根据上上图返回的结果可知其对应的是`event`里面的内容: 即我们可以在event中取到我们请求的参数,header,body等信息，便于我们执行后续逻辑
@@ -194,6 +194,7 @@ npm i axios
     "axios": "^0.21.0"
   }
 }
+
 ```
 
 在平台上创建一个 package.json文件,并把上述内容粘贴进去,`ctrl/command + S` 保存修改的内容
@@ -226,22 +227,22 @@ JS云函数创建相关流程，差不都陈述完毕
 
 index.js
 ```js
-'use strict'
+'use strict';
 const http = require('axios').default
 
 function getNowWeather(cityId = 3) {
-  // 待编写
-  return {
-    data: {
-      cityId
+    // 待编写
+    return {
+        data:{
+            cityId
+        }
     }
-  }
 }
 exports.main_handler = async (event, context) => {
-  // 结构取得url中传递的参数
-  const { queryString: { cityId } } = event
-  return getNowWeather(cityId)
-}
+    // 结构取得url中传递的参数
+    const { queryString: { cityId } } = event
+    return getNowWeather(cityId)
+};
 ```
 
 下面实现`getNowWeather`的逻辑就要用到阿里云的服务了
@@ -257,23 +258,24 @@ exports.main_handler = async (event, context) => {
 const http = require('axios').default
 
 function getNowWeather(cityId = 3) {
-  const token = ''
-  const appcode = ''
-  const nowStatusURL = 'http://freecityid.market.alicloudapi.com/whapi/json/alicityweather/briefcondition' // 精简实况的请求URL
-  const data = `cityId=${cityId}&token=${token}` // 请求参数
-  const headers = { // header
-    'Authorization': `APPCODE ${appcode}`,
-    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-  }
-
-  // 发送请求
-  return http.post(nowStatusURL, data, {
-    headers
-  }).then(res => res.data)
+    const token = ''
+    const appcode = ''
+    const nowStatusURL = 'http://freecityid.market.alicloudapi.com/whapi/json/alicityweather/briefcondition' // 精简实况的请求URL
+    const data = `cityId=${cityId}&token=${token}` // 请求参数
+    const headers = { // header
+        'Authorization': `APPCODE ${appcode}`,
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+    }
+    
+    // 发送请求
+    return http.post(nowStatusURL, data, {
+        headers
+    }).then(res => res.data)
 }
 ```
 
 购买服务后根据[文档](https://market.aliyun.com/products/57096001/cmapi023656.html?accounttraceid=235b91fa4fc145eb8c2e539568143ea2arym#sku=yuncode1765600000)找到[token](https://share.weiyun.com/5ebmy2i?spm=5176.730006-56956004-57096001-cmapi023656.content.12.4afb308fDQi0lQ)与[appcode](https://help.aliyun.com/document_detail/157953.html?spm=5176.730006-56956004-57096001-cmapi023656.content.9.4afb308fDQi0lQ)即可
+
 
 [控制台](https://apigateway.console.aliyun.com/?spm=5176.12818093.products-recent.dapigateway.718e16d05FzxRX#/cn-beijing/purchasedApis/list)->API网关->华北2（北京）
 
@@ -297,31 +299,31 @@ function getNowWeather(cityId = 3) {
 
 index.js
 ```js
-'use strict'
+'use strict';
 const http = require('axios').default
 
 function getNowWeather(cityId = 3) {
-  const token = ''
-  const appcode = ''
-  const nowStatusURL = 'http://freecityid.market.alicloudapi.com/whapi/json/alicityweather/briefcondition' // 精简实况的请求URL
-  const data = `cityId=${cityId}&token=${token}` // 请求参数
-  const headers = { // header
-    'Authorization': `APPCODE ${appcode}`,
-    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-  }
-
-  // 发送请求
-  return http.post(nowStatusURL, data, {
-    headers
-  }).then(res => res.data)
+    const token = ''
+    const appcode = ''
+    const nowStatusURL = 'http://freecityid.market.alicloudapi.com/whapi/json/alicityweather/briefcondition' // 精简实况的请求URL
+    const data = `cityId=${cityId}&token=${token}` // 请求参数
+    const headers = { // header
+        'Authorization': `APPCODE ${appcode}`,
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+    }
+    
+    // 发送请求
+    return http.post(nowStatusURL, data, {
+        headers
+    }).then(res => res.data)
 }
 
 exports.main_handler = async (event, context) => {
-  const { queryString: { cityId } } = event
-  return await getNowWeather(cityId)
-}
+    const {queryString:{cityId}} = event
+    return await getNowWeather(cityId)
+};
 ```
-触发器[链接](https://service-36n2x31h-1256505457.cd.apigw.tencentcs.com/release/demoAPi?cityId=4)
+触发器[链接](https://service-36n2x31h-1256505457.cd.apigw.tencentcs.com/release/demoAPi?cityId=4) 
 
 ## 最后
 到此一个云函数就开发完毕了

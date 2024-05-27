@@ -19,19 +19,19 @@ categories:
 1.给定数组如下，请根据数组元素的age字段对数组排序，多种实现方式可加分
 ```js
 const a = [
-  {
-    name: '大毛',
-    age: 12,
-  },
-  {
-    name: '二毛',
-    age: 34,
-  },
-  {
-    name: '三毛',
-    age: 23,
-  }
-]
+    {
+        name: '大毛',
+        age: 12,
+    },
+    {
+        name: '二毛',
+        age: 34,
+    },
+    {
+        name: '三毛',
+        age: 23,
+    }
+];
 // 我写了三种
 // Array.sort
 // 冒泡排序O(N2)
@@ -46,13 +46,13 @@ const a = [
 我的解法利用Object.defineProperty与闭包
 ```js
 (function () {
-  const log = console.log
-  Object.defineProperty(console, 'log', {
-    configurable: true,
-    value(...arg) {
-      log('自定义内容xxx', arg.join('-'))
-    }
-  })
+    const log = console.log
+    Object.defineProperty(console, 'log', {
+        configurable: true,
+        value: function (...arg) {
+            log('自定义内容xxx', arg.join('-'));
+        }
+    })
 })()
 
 console.log('hello', 'world')
@@ -63,19 +63,19 @@ console.log('hello', 'world')
 const func = (function () {
 // TODO 请实现对应代码逻辑
 
-})()
-console.log(func()) // -> 1
-console.log(func()) // -> 2
-console.log(func()) // -> 3
+})();
+console.log(func()); // -> 1
+console.log(func()); // -> 2
+console.log(func()); // -> 3
 ```
 
 4. 编写代码判断两个日期是否是同一周（可使用MDN查询JS相关日期函数）
 ```js
-function isSameWeek(d1: Date, d2: Date): boolean {
+function isSameWeek (d1: Date, d2: Date): boolean {
 // TODO，已知 d2 > d1, 按照周一是一周的第一天的逻辑来算，请实现对应的代码
 }
-console.log(isSameWeek(new Date('2019-09-28'), new Date('2019-09-29'))) // true
-console.log(isSameWeek(new Date('2019-09-29'), new Date('2019-09-30'))) // false
+console.log(isSameWeek(new Date('2019-09-28'), new Date('2019-09-29')));   // true
+console.log(isSameWeek(new Date('2019-09-29'), new Date('2019-09-30')));   // false
 ```
 
 5. 给定一个大小为n的数组，找到其中的多数元素
@@ -145,3 +145,4 @@ output：
 1. 最近在学什么
 2. 平时怎么学习的
 3. 为什么选择前端而不是后端
+

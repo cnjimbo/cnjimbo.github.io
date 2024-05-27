@@ -23,40 +23,40 @@ categories:
 ## ES2020
 ### 1. #号创建类的私有变量
 ```ts
-class p {
-  #name = 'xiaoming'
-  getName() {
-    return this.#name
-  }
+class p{
+    #name='xiaoming'
+    getName(){
+        return this.#name
+    }
 }
-const a = new p()
-console.log(a.getName())
+let a = new p()
+console.log(a.getName());
 // Property '#name' is not accessible outside class 'p' because it has a private identifier.
-console.log(a.#name)// error
+console.log(a.#name);// error
 ```
 
 ### 2. Promise.allSelected
 可以在回调中取到所有的promise的返回值与状态，包括rject的
 ```ts
 class p {
-  #name = 'xiaoming'
-  getName() {
-    return this.#name
-  }
+    #name = 'xiaoming'
+    getName() {
+        return this.#name
+    }
 }
-const a = new p()
-console.log(a.getName())
+let a = new p()
+console.log(a.getName());
 // console.log(a.#name);
 
 const p1 = new Promise((resolve, reject) => setTimeout(resolve, 1000, 'success'))
 const p2 = new Promise((resolve, reject) => setTimeout(reject, 1000, 'fail'))
 
-Promise.allSettled([p1, p2]).then((res) => {
-  console.log(res)
-  // [
-  //     {status: "fulfilled", value: "success"}
-  //     {status: "rejected", reason: "fail"}
-  // ]
+Promise.allSettled([p1, p2]).then(res => {
+    console.log(res);
+    // [
+    //     {status: "fulfilled", value: "success"}
+    //     {status: "rejected", reason: "fail"}
+    // ]
 })
 ```
 ### 3. 空值运算符??
@@ -65,17 +65,17 @@ Promise.allSettled([p1, p2]).then((res) => {
 ?? 运算符只会把 null 和 undefined 判断为 false
 ```ts
 const user = {
-  name: 'xiaoming',
-  age: '',
-  height: 0
-}
-console.log(user.name || 'abc') // xiaoming
-console.log(user.age || 18) // 18
-console.log(user.height || 180) // 180
+    name: 'xiaoming',
+    age: '',
+    height: 0
+};
+console.log(user.name || 'abc'); // xiaoming
+console.log(user.age || 18); // 18
+console.log(user.height || 180); // 180
 // 使用??
-console.log(user.name ?? 'abc') // xiaoming
-console.log(user.age ?? 18) //
-console.log(user.height ?? 180) // 0
+console.log(user.name ?? 'abc'); // xiaoming
+console.log(user.age ?? 18); // 
+console.log(user.height ?? 180); // 0
 ```
 
 ### 4. 可选链运算符?.
@@ -83,12 +83,12 @@ console.log(user.height ?? 180) // 0
 
 使用可选链可让代码更加简洁明了
 ```ts
-const data = {}
+let data = {}
 // &&
-console.log(data && data.a && data.a.b)
+console.log(data && data.a && data.a.b);
 
 // ?.
-console.log(data?.a?.b)
+console.log(data?.a?.b);
 ```
 
 ### 5. globalThis
@@ -107,45 +107,45 @@ globalThis === window
 ### 1. Array.flat
 展开数组
 ```ts
-const arr = [1, 2, 3, [4, 5, 6, [7, 8, 9, [10, 11, 12]]]]
+let arr = [1, 2, 3, [4, 5, 6, [7, 8, 9, [10, 11, 12]]]];
 
-arr.flat() // [1, 2, 3, 4, 5, 6, Array(4)];
+arr.flat(); // [1, 2, 3, 4, 5, 6, Array(4)];
 
-arr.flat().flat() // [1, 2, 3, 4, 5, 6, 7, 8, 9, Array(3)];
+arr.flat().flat(); // [1, 2, 3, 4, 5, 6, 7, 8, 9, Array(3)];
 
-arr.flat(3) // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+arr.flat(3); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
 // 展开任意层级
-arr.flat(Number.POSITIVE_INFINITY) // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+arr.flat(Infinity); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 ```
 
 ### 2. Array.flatMap
 与ES6Array.Map()方法相同，但同时也支持展平。该Array.flatMap()方法首先使用映射函数映射每个元素，然后将结果展平为新数组
 ```ts
-const arr = [1, 2, 3, 4, 5]
+let arr = [1, 2, 3, 4, 5];
 
-arr.map(x => [x, x * 2])
+arr.map(x => [x, x * 2]);
 // [Array(2), Array(2), Array(2)]
 // 0: (2)[1, 2]
 // 1: (2)[2, 4]
 // 2: (2)[3, 6]
 
-arr.flatMap(v => [v, v * 2])
+arr.flatMap(v => [v, v * 2]);
 // [1, 2, 2, 4, 3, 6, 4, 8, 5, 10]
 ```
 
 ### 3. String.trimStart() & String.trimEnd()
 String.trimStart()可用于从字符串的开头去掉空白。String.trimEnd()可用于从字符串的尾部去掉空白
 ```ts
-const greeting = '    Hello everyone'
+let  greeting =  "    Hello everyone";
 
-console.log(greeting.trimStart())
+console.log(greeting.trimStart());
 // "Hello everyone"
 ```
 ```ts
-const greeting = 'Hello world    '
+let greeting = "Hello world    ";
 
-console.log(greeting.trimEnd())
+console.log(greeting.trimEnd());
 // "Hello world"
 ```
 
@@ -164,7 +164,7 @@ catch (err) {
 
 现在可以
 ```js
-try {
+try  {
   // some code
 }
 catch {
@@ -177,24 +177,24 @@ Object.fromEntries()创建一个对象或将键值对转换为一个对象。它
 
 例如：Object.fromEntries(someIterable)
 ```ts
-const entries = new Map([['name', 'john'], ['age', 22]])
+let entries = new Map([["name", "john"], ["age", 22]]);
 
-console.log(Object.fromEntries(entries))
+console.log(Object.fromEntries(entries));
 // { name: 'john', age: 22 }
 ```
 
 ### 6. Symbol.description
 只读描述属性，是一个返回Symbol对象的可选描述的字符串
 ```ts
-const mySymbol = 'My Symbol'
+let mySymbol = `My Symbol`;
 
-const symObj = Symbol(mySymbol)
+let symObj = Symbol(mySymbol);
 
 console.log(symObj) // Symbol(mySymbol);
 
-console.log(String(symObj) === `Symbol(${mySymbol})`) // true
+console.log(String(symObj) === `Symbol(${mySymbol})`); // true
 
-console.log(symObj.description) // "My Symbol"
+console.log(symObj.description); // "My Symbol"
 ```
 
 ## ES2018/ES9
@@ -206,16 +206,16 @@ for await of可以用来遍历具有Symbol.asyncIterator方法的数据结构，
 **for of遍历**
 ```ts
 function d(timeout: number) {
-  return new Promise((res, rej) => {
-    setTimeout(() => {
-      res(timeout)
-    }, timeout)
-  })
+    return new Promise((res, rej) => {
+        setTimeout(() => {
+            res(timeout)
+        }, timeout)
+    })
 }
-const data = [d(1000), d(500), d(1200)]
+let data = [d(1000), d(500), d(1200)]
 
 for (const v of data) {
-  v.then(console.log)
+    v.then(console.log)
 }
 // 500
 // 1000
@@ -225,19 +225,19 @@ for (const v of data) {
 **for await of**
 ```ts
 function d(timeout: number) {
-  return new Promise((res, rej) => {
-    setTimeout(() => {
-      res(timeout)
-    }, timeout)
-  })
+    return new Promise((res, rej) => {
+        setTimeout(() => {
+            res(timeout)
+        }, timeout)
+    })
 }
-const data = [d(1000), d(500), d(1200)]
+let data = [d(1000), d(500), d(1200)]
 async function test() {
-  for await (const v of data) {
-    console.log(v)
-  }
+    for await (const v of data) {
+        console.log(v);
+    }
 }
-test()
+test();
 // 1000
 // 500
 // 1200
@@ -247,10 +247,10 @@ test()
 
 元字符`.`无法匹配换行符,可以通过 s(doAll)flag解决
 ```ts
-console.log(/foo.bar/.test('foo\nbar')) // false
+console.log(/foo.bar/.test('foo\nbar')); // false
 
 // 使用 s
-console.log(/foo.bar/s.test('foo\nbar')) // true
+console.log(/foo.bar/s.test('foo\nbar')); // true
 ```
 
 **2.2 命名捕获组**
@@ -260,21 +260,21 @@ console.log(/foo.bar/s.test('foo\nbar')) // true
 命名捕获组，允许为每一个组匹配指定一个名字，既便于阅读代码，又便于引用
 
 ```ts
-const re = /(\d{4})-(\d{2})-(\d{2})/
-const match = re.exec('2020-01-01')
-console.log(match[0]) // 2020-01-01
-console.log(match[1]) // 2020
-console.log(match[2]) // 01
-console.log(match[3]) // 01
+const re = /(\d{4})-(\d{2})-(\d{2})/;
+const match= re.exec('2020-01-01');
+console.log(match[0]);    // 2020-01-01
+console.log(match[1]);    // 2020
+console.log(match[2]);    // 01
+console.log(match[3]);    // 01
 ```
 
 ```ts
-const re = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/
-const match = re.exec('2020-01-01')
-console.log(match.groups) // { year: '2020', month: '01', day: '01' }
-console.log(match.groups.year) // 2020
-console.log(match.groups.month) // 01
-console.log(match.groups.day) // 01
+const re = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/;
+const match = re.exec('2020-01-01');
+console.log(match.groups);          // { year: '2020', month: '01', day: '01' }
+console.log(match.groups.year);     // 2020
+console.log(match.groups.month);    // 01
+console.log(match.groups.day);      // 01
 ```
 
 使用replace
@@ -289,13 +289,13 @@ console.log('2020-09-01'.replace(re, '$<month>-$<day>-$<year>')) // 09-01-2020
 Object.values方法返回一个数组，其值由对象的值组成
 ```ts
 const obj = { a: '1', b: '2' }
-console.log(Object.values(obj))
+console.log(Object.values(obj));
 // [ '1', '2' ]
 ```
 Object.entries()方法返回一个数组,其值为[key,value]
 ```ts
 const obj = { a: '1', b: '2' }
-console.log(Object.entries(obj))
+console.log(Object.entries(obj));
 // [ [ 'a', '1' ], [ 'b', '2' ] ]
 ```
 ### 2. String padding
@@ -309,15 +309,15 @@ console.log(Object.entries(obj))
 在字符串之后补全
 
 ```ts
-console.log('llo'.padStart(5, 'hello')) // hello
-console.log('0'.padEnd(5, '123')) // 01231
+console.log('llo'.padStart(5, 'hello')); // hello
+console.log('0'.padEnd(5, '123')); // 01231
 ```
 
 ### 3 Object.getOwnPropertyDescriptors()
 获取指定对象的属性描述符
 ```ts
-const obj = { a: 1 }
-console.log(Object.getOwnPropertyDescriptor(obj, 'a'))
+const obj = { a: 1 };
+console.log(Object.getOwnPropertyDescriptor(obj, 'a'));
 // { value: 1, writable: true, enumerable: true, configurable: true }
 ```
 
@@ -325,15 +325,15 @@ console.log(Object.getOwnPropertyDescriptor(obj, 'a'))
 ### 1. 求幂运算符**
 效果跟`Math.pow(x,y)`一致
 ```ts
-console.log(2 ** 10) // 1024
-console.log(2 ** 10) // 1024
+console.log(2**10); // 1024
+console.log(Math.pow(2,10)); // 1024
 ```
 
 ### 2. Array.prototype.includes
 用法跟String.prototype.includes一致，可读性高于indexOf()
 ```ts
 const arr = [1, 2, 'hello']
-console.log(arr.includes('hello')) // true
+console.log(arr.includes('hello')); // true
 ```
 
 ## 参考
@@ -345,3 +345,5 @@ console.log(arr.includes('hello')) // true
 * [String padding](https://www.digitalocean.com/community/tutorials?q=String+padding)
 * [Object.getOwnPropertyDescriptor()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor)
 * [compat-table/es2016plus/](https://kangax.github.io/compat-table/es2016plus/)
+
+

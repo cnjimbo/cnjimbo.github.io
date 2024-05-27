@@ -76,9 +76,9 @@ npm run dev
 按照文档描述在配置文件添加一点配置
 ```js
 export default defineConfig({
-  build: {
-    rollupOptions: {
-      input: []
+  build:{
+    rollupOptions:{
+      input:[]
     }
   },
   optimizeDeps: {
@@ -101,9 +101,9 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react({
-    babel: {
-      plugins: ['@babel/plugin-transform-react-jsx'],
-    },
+      babel: {
+        plugins: ['@babel/plugin-transform-react-jsx'],
+      },
   })],
 })
 ```
@@ -114,11 +114,12 @@ export default defineConfig({
 
 原因是没有在App.js中引入`React`,咱们引入一下
 ```js
-import React, { useState } from 'react'
+import React,{ useState } from 'react'
 ```
 大功告成
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYzNDAxODAxNTMxMw==634018015313)
+
 
 ## 总结
 两种处理方案
@@ -131,3 +132,4 @@ import React, { useState } from 'react'
 欢迎大家在评论区共享/交流在开发过程中接入Vite时遇到的一些问题与总结的经验
 
 * [源码地址](https://github.com/ATQQ/demos/tree/main/vite-react-js)
+

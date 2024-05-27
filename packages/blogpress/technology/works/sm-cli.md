@@ -154,7 +154,7 @@ import https from 'https'
 
 function getRemoteSource(
   url: string
-): Promise<{ body: string, code?: number }> {
+): Promise<{ body: string; code?: number }> {
   return new Promise((resolve, reject) => {
     // 区别https与http资源
     const HTTP = url.startsWith('https://') ? https : http
@@ -199,6 +199,7 @@ function getRemoteSourceByAxios(url: string) {
   })
 }
 ```
+
 
 `fetch`，在web侧已经出现很久了，Node.js>=v17.5.0 内置，低版本可使用第三方的[node-fetch](https://www.npmjs.com/package/node-fetch)
 
@@ -247,9 +248,8 @@ async function getRemoteSourceMapFilePath(sourceJsPath: string) {
 
 简单做合并后的方法如下
 ```ts
-function isHTTPSource(sourcePath: string) {
-  return sourcePath.startsWith('http')
-}
+const isHTTPSource = (sourcePath: string) =>
+  sourcePath.startsWith('http')
 
 async function getSourceMapFilePath(sourceJsPath: string) {
   if (!isHTTPSource(sourceJsPath)) {
@@ -305,7 +305,7 @@ const sourceMapURL = await getSourceMapFilePath(url)
 
 // sourceMap 内容
 const sourceMapCode = await (isHTTPSource(sourceMapURL)
-  ? getRemoteSource(sourceMapURL).then(v => v.body)
+  ? getRemoteSource(sourceMapURL).then((v) => v.body)
   : fs.readFile(sourceMapURL, 'utf-8'))
 
 const consumer = await createSourceMapConsumer(sourceMapCode)
@@ -537,3 +537,4 @@ CLI
 * [source-map-to-source](https://www.npmjs.com/package/source-map-to-source)
 * [kaifu](https://www.npmjs.com/package/kaifu)
 * [@hl-cli/restore-code](https://www.npmjs.com/package/@hl-cli/restore-code)
+

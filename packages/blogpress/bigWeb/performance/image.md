@@ -24,18 +24,18 @@ categories:
 
 ```js
 function getBase64URL(url, width, height) {
-  return new Promise((resolve) => {
-    const img = new Image()
-    const canvas = document.createElement('canvas')
-    img.src = url
-    img.onload = function () {
-      canvas.width = width || img.width
-      canvas.height = height || img.height
-      const ctx = canvas.getContext('2d')
-      ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
-      resolve(canvas.toDataURL())
-    }
-  })
+    return new Promise(resolve => {
+        let img = new Image()
+        let canvas = document.createElement("canvas");
+        img.src = url
+        img.onload = function () {
+            canvas.width = width ? width : img.width;
+            canvas.height = height ? height : img.height;
+            let ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            resolve(canvas.toDataURL())
+        }
+    })
 }
 ```
 
@@ -125,3 +125,4 @@ Base64 编码后，图片大小会膨胀为原文件的 4/3
 **缺点**
 * 兼容性差
 * 编码同样质量的 WebP 文件会占用更多的计算资源
+

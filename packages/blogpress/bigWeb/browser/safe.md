@@ -96,11 +96,11 @@ XSS 可以分为两类：``持久型``和``非持久型``
 
 ```js
 function renderPage() {
-  // ajax获取数据 <script>alert(123)</script>
-  // 解析字符串生成对应dom节点
-  const script = document.createElement('script')
-  script.innerHTML = 'alert(123)'
-  document.body.appendChild(script)
+    // ajax获取数据 <script>alert(123)</script>
+    // 解析字符串生成对应dom节点
+    const script = document.createElement('script')
+    script.innerHTML = 'alert(123)'
+    document.body.appendChild(script)
 }
 renderPage()
 ```
@@ -110,7 +110,7 @@ renderPage()
 一般通过修改 URL 参数的方式加入攻击代码，诱导用户访问链接从而进行攻击
 ```html
 <!-- http://www.domain.com?name=<script>alert(1)</script> -->
-<div>{{name}}</div>
+<div>{{name}}</div>  
 ```
 
 **jquery触发此错误示例**
@@ -135,12 +135,12 @@ renderPage()
 test.js
 ```js
 const data = [
-  '1',
-  '2',
-  '<script>alert(123)</script>'
+    '1',
+    '2',
+    '<script>alert(123)</script>'
 ]
-data.forEach((str) => {
-  $('#list').append(`<li>${str}</li>`)
+data.forEach(str=>{
+    $('#list').append(`<li>${str}</li>`)
 })
 ```
 ### 如何防范
@@ -166,9 +166,9 @@ function escape(str) {
 自动处理特殊字符
 ```js
 function filterStr(str) {
-  const div = document.createElement('div')
-  div.textContent = str
-  return div.innerHTML
+    const div = document.createElement('div')
+    div.textContent = str
+    return div.innerHTML
 }
 filterStr('<div></div>') // &lt;div&gt;&lt;/div&gt;
 ```
@@ -246,11 +246,13 @@ console.log(document.cookie)
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTYwNjMyMDU3MDE0Mw==606320570143)
 
+
 目前很多统计网站的埋点监控，权限控制，离线数据都依赖于cookie，第三方脚本很容易的能够进行窃取
 
 可以为Cookie添加HttpOnly属性，防止脚本读取网站的cookie
 
 添加`Secure`属性要求必须使用https协议才能传输此cookie，可以防止中间人截获修改到传输的cookie
+
 
 ## CSRF
 ### 什么是CSRF
@@ -309,6 +311,7 @@ Cookie相关更多知识-> [本地存储-Cookie](./storage.md#set-cookie)
 1. 攻击者将需要攻击的网站通过 iframe 嵌套的方式嵌入自己的网页中，并将 iframe 设置为透明，在页面中透出一个按钮诱导用户点击：此种方式最为常见，因为iframe中可以嵌入用户已经登陆过的网页
 2. 使用一个透明的绑定了事件元素附在正常元素上，诱导用户点击
 
+
 ### 如何防范
 #### 1. X-FRAME-OPTIONS
 针对iframe形式的可通过设置**X-FRAME-OPTIONS**
@@ -319,6 +322,7 @@ X-FRAME-OPTIONS 是一个 HTTP 响应头
 * DENY，表示页面不允许通过 iframe 的方式展示
 * SAMEORIGIN，表示页面可以在相同域名下通过 iframe 的方式展示
 * ALLOW-FROM，表示页面可以在指定来源的 iframe 中展示
+
 
 #### 2. JS 防御
 * window.self: 当前 window 对象的引用

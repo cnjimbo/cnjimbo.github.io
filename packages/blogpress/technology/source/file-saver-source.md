@@ -21,7 +21,7 @@ categories:
 
 **问题方案代码**
 ```js
-function download(url) {
+function download(url){
   const a = document.createElement('a')
   a.target = '_blank'
   a.href = url
@@ -41,10 +41,10 @@ function download(url) {
 
 ### 使用
 ```js
-import { saveAs } from 'file-saver'
+import { saveAs } from 'file-saver';
 saveAs('sourceUrl')
 // or
-saveAs('sourceUrl', 'filename')
+saveAs('sourceUrl','filename')
 ```
 
 API非常简洁（吃鲸.jpg），非常好用
@@ -57,11 +57,11 @@ API非常简洁（吃鲸.jpg），非常好用
 补齐了一些注释后如下
 ```js
 function download(url, name) {
-  const xhr = new XMLHttpRequest()
+  var xhr = new XMLHttpRequest()
   xhr.open('GET', url)
   // 设置返回数据的类型为blob
   xhr.responseType = 'blob'
-
+  
   // 资源完成下载
   xhr.onload = function () {
     // 获取响应的blob对象
@@ -80,9 +80,9 @@ function download(url, name) {
     a.href = URL.createObjectURL(blob)
 
     // 40s后移除这个临时链接
-    setTimeout(() => { URL.revokeObjectURL(a.href) }, 4e4) // 40s
+    setTimeout(function () { URL.revokeObjectURL(a.href) }, 4E4) // 40s
     // 触发a标签，执行下载
-    setTimeout(() => {
+    setTimeout(function () {
       a.dispatchEvent(new MouseEvent('click'))
     }, 0)
   }
@@ -101,7 +101,7 @@ function download(url, name) {
 ```
 
 ```js
-document.getElementById('btn').addEventListener('click', () => {
+document.getElementById('btn').addEventListener('click', function () {
   const url = 'https://img.cdn.sugarat.top/mdImg/MTU3OTM2ODc3OTM4Nw==579368779387'
   download(url)
 })
@@ -125,17 +125,17 @@ document.getElementById('btn').addEventListener('click', () => {
 
 ```js
 function download(url, name) {
-  const xhr = new XMLHttpRequest()
+  var xhr = new XMLHttpRequest()
   xhr.open('GET', url)
   xhr.responseType = 'blob'
 
   // 增加的代码
   xhr.onprogress = function (e) {
-    const { total, loaded } = e
-    const percentage = (loaded / total).toFixed(2)
-    console.log('progress:', percentage)
+    const { total,loaded } = e
+    const percentage = (loaded/total).toFixed(2)
+    console.log('progress:', percentage);
   }
-
+  
   xhr.onload = function () {
     // 省略...跟前面的代码一致
   }
@@ -156,3 +156,4 @@ download('https://img.cdn.sugarat.top/mdImg/MTYyMzA3NjA4NDQ4NA==desktop.jpg')
 * 针对比较大的资源，可以改造一下，反馈下载进度，提升用户体验
 
 偶尔遇到一些工具库，源代码不多的话，可以花些时间看看，精炼精炼，然后变成自己的东西
+

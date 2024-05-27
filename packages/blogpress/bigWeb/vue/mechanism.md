@@ -21,7 +21,7 @@ categories:
   * 初始化生命周期、事件、 props、 methods、 data、 computed 与 watch 等
   * **通过 Object.defineProperty 设置 setter 与 getter 函数，用来实现`响应式`以及`依赖收集`**
   * 初始化之后调用 $mount 挂载组件
-    * 如果是运行时编译，即不存在 render function
+    * 如果是运行时编译，即不存在 render function 
     * 存在 template 的情况，需要进行`编译`步骤。
 
 ## 编译
@@ -65,10 +65,10 @@ generate 是将 `AST` 转化成 `render function` 字符串的过程，得到结
 **简单示例**
 ```js
 {
-    tag: 'div',
-    children: [
+    tag: 'div',                 
+    children: [                 
         {
-            tag: 'a',
+            tag: 'a',    
             text: 'click me'
         }
     ]
@@ -86,3 +86,4 @@ generate 是将 `AST` 转化成 `render function` 字符串的过程，得到结
 
 当数据变化后，执行 `render function` 就可以得到一个新的 `VNode` 节点,将`新 VNode` 与`旧 VNode` 一起传入 `patch` 进行比较，经过 diff 算法得出它们的`差异`
 ,只需要将这些`差异`的对应 DOM 进行修改即可。
+

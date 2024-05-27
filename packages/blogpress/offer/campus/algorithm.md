@@ -35,7 +35,7 @@ tags:
   * [力扣：漫画算法 - 小灰的算法之旅](https://leetcode-cn.com/leetbook/detail/journey-of-algorithm/) - 收费
   * [GitHub：漫画算法 - 小灰的算法之旅](https://github.com/lydiarong/Books/blob/master/%E6%BC%AB%E7%94%BB%E7%AE%97%E6%B3%95%EF%BC%9A%E5%B0%8F%E7%81%B0%E7%9A%84%E7%AE%97%E6%B3%95%E4%B9%8B%E6%97%85.pdf)
   * PDF资源 - [阿里云盘](https://www.aliyundrive.com/s/GdwHhU9YbDj)
-* [坐在马桶上看算法系列](https://blog.51cto.com/ahalei)
+* [坐在马桶上看算法系列](https://blog.51cto.com/ahalei) 
   * PDF资源 - [阿里云盘](https://www.aliyundrive.com/s/xZKxj9rRTgx)
 * 算法101 - 政采云前端团队提供
   * PDF资源 - [阿里云盘](https://www.aliyundrive.com/s/CYLb3PYX2hj)
@@ -52,3 +52,4 @@ TODO:待完善
 ### 其它
 * DFS
 * BFS
+

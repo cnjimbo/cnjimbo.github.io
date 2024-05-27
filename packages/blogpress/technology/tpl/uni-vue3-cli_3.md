@@ -77,12 +77,12 @@ module.exports = {
     divideStyle: false,
     divideWidth: false,
   },
-}
+};
 ```
 
 修改`postcss.config.js`文件内容，最终配置如下
 ```js
-const path = require('path')
+const path = require('path');
 
 module.exports = {
   parser: require('postcss-comment'),
@@ -90,15 +90,15 @@ module.exports = {
     require('postcss-import')({
       resolve(id, basedir, importOptions) {
         if (id.startsWith('~@/')) {
-          return path.resolve(process.env.UNI_INPUT_DIR, id.substr(3))
+          return path.resolve(process.env.UNI_INPUT_DIR, id.substr(3));
         }
         if (id.startsWith('@/')) {
-          return path.resolve(process.env.UNI_INPUT_DIR, id.substr(2))
+          return path.resolve(process.env.UNI_INPUT_DIR, id.substr(2));
         }
         if (id.startsWith('/') && !id.startsWith('//')) {
-          return path.resolve(process.env.UNI_INPUT_DIR, id.substr(1))
+          return path.resolve(process.env.UNI_INPUT_DIR, id.substr(1));
         }
-        return id
+        return id;
       },
     }),
     // 新增
@@ -112,7 +112,7 @@ module.exports = {
     }),
     require('@dcloudio/vue-cli-plugin-uni/packages/postcss'),
   ],
-}
+};
 ```
 
 在 App.vue中加入引入 `tailwindcss`的代码
@@ -144,3 +144,4 @@ module.exports = {
 * [uni-vue3-ts：模板仓库](https://github.com/ATQQ/uni-vue3-ts-template)
 * [PostCSS 7 compatibility build](https://tailwindcss.com/docs/installation#post-css-7-compatibility-build)
 * [uni-app 使用 tailwindcss](https://wyz.xyz/d/150-uni-app-tailwindcss)
+

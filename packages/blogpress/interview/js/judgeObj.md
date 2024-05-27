@@ -17,14 +17,16 @@ categories:
 [] instanceof Object // true
 ```
 
+
 ## 2. typeof
 ```js
 function isObject(obj) {
-  const type = typeof obj
-  return obj && type === 'object' || type === 'function'
+    const type = typeof obj
+    return obj && type === 'object' || type === 'function'
 }
 ```
 
 其余方案,编写`isObject`函数稍许麻烦
 * constructor
 * Object.prototype.toString.call
+

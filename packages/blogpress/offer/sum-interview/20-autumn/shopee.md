@@ -20,13 +20,14 @@ const res3 = await requestUser(3)
 // 我感觉这题出得有问题，用了await异步代码变同步，后两个执行 要等第一个执行完才开始
 
 // 我觉得 当时面试官的意思是这样，因为我是按下面的理解给的解法
-requestUser(1).then((res1) => {})
-requestUser(2).then((res2) => {})
-requestUser(3).then((res3) => {})
+requestUser(1).then(res1=>{})
+requestUser(2).then(res2=>{})
+requestUser(3).then(res3=>{})
 ```
 
 2. setTimeout(fn1,0),process.nextTick(fn2),Promise.resolve().then().then(fn3) 执行顺序
 3. setTimeout(fn1,0),setImmediate(fn2)谁先执行
+
 
 ### 性能优化
 1. 如何计算/查看页面首次可交互时间
@@ -48,3 +49,4 @@ requestUser(3).then((res3) => {})
 
 ### 其它
 1. 对MVVM，MVC，MVP架构的认识
+

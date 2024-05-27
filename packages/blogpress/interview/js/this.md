@@ -13,12 +13,12 @@ categories:
 function foo() {
   console.log(this.a)
 }
-const a = 1
+var a = 1
 foo() // 1
 
 const obj = {
   a: 2,
-  foo
+  foo: foo
 }
 obj.foo() // 2
 
@@ -36,116 +36,118 @@ c()
 
 **示例**
 ```js
-const p1 = 1
-function fn1() {
-  console.log(this.p1)
+var p1 = 1
+function fn1(){
+    console.log(this.p1)
 }
 fn1() // 1
 
-const obj2 = {
-  p2: 2,
-  fn2() {
-    console.log(this.p2)
-  }
+let obj2 = {
+    p2:2,
+    fn2(){
+        console.log(this.p2)
+    }
 }
 obj2.fn2() // 2
 
-const p3 = 1
+var p3 = 1
 function fn3() {
-  this.p3 = 3
-  console.log(this.p3)
+    this.p3 = 3
+    console.log(this.p3)
 }
-const fn31 = new fn3() // 3
+let fn31 = new fn3() // 3
 
-const p4 = 4
-function fn4() {
-  console.log(this.p4)
+var p4 = 4
+const fn4 = ()=>{
+    console.log(this.p4)
 }
 fn4() // 4
 
 function fn5() {
-  this.p5 = 5
-  return function () {
-    this.p5 = 55
+    this.p5 = 5
     return function () {
-      this.p5 = 555
-      return () => {
-        console.log(this.p5)
-      }
+        this.p5 = 55
+        return function () {
+            this.p5 = 555
+            return () => {
+                console.log(this.p5)
+            }
+        }
     }
-  }
 }
 
 fn5()()()() // 555
 
-function fn6() {
-  console.log(this.p6)
+const fn6 = ()=>{
+    console.log(this.p6)
 }
-fn6.bind({ p6: 6 })() // undefined
-fn6.call({ p6: 6 }) // undefined
+fn6.bind({p6:6})() // undefined
+fn6.call({p6:6}) // undefined
 
-const p7 = 7
-function fn7() {
-  console.log(this.p7)
+var p7 = 7
+function fn7(){
+    console.log(this.p7)
 }
-fn7.bind({ p7: 77 })() // 77
+fn7.bind({p7:77})() // 77
 fn7.bind()() // 7
 
-function fn8() {
-  console.log(this.p8)
+function fn8(){
+    console.log(this.p8)
 }
-fn8 = fn8.bind({ p8: 8 }).bind({ p8: 88 }).bind({ p8: 888 })
+fn8 = fn8.bind({p8:8}).bind({p8:88}).bind({p8:888})
 fn8() // 8
 ```
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzgyNjg3NzI4Mw==583826877283)
 
+
+
 **一个笔试题**
 ```js
-const obj2 = {
-  name: 'obj2'
+let obj2 = {
+    name: 'obj2'
 }
 
 const obj = {
-  name: 'obj',
-  say1() {
-    console.log(this.name)
-  },
-  obj1: {
-    name: 'obj1',
-    say2() {
-      console.log(this.name)
+    name: 'obj',
+    say1() {
+        console.log(this.name)
+    },
+    obj1: {
+        name: 'obj1',
+        say2() {
+            console.log(this.name);
+        }
+    },
+    say3() {
+        const fn = () => {
+            console.log(this.name);
+        }
+        fn()
+    },
+    say4() {
+        const fn = function () {
+            console.log(this.name);
+        }
+        fn()
+    },
+    say5() {
+        const fn = () => {
+            console.log(this.name);
+        }
+        fn.call(obj2)
+    },
+    say6() {
+        const fn = function () {
+            console.log(this.name);
+        }
+        fn.call(obj2)
     }
-  },
-  say3() {
-    const fn = () => {
-      console.log(this.name)
-    }
-    fn()
-  },
-  say4() {
-    const fn = function () {
-      console.log(this.name)
-    }
-    fn()
-  },
-  say5() {
-    const fn = () => {
-      console.log(this.name)
-    }
-    fn.call(obj2)
-  },
-  say6() {
-    const fn = function () {
-      console.log(this.name)
-    }
-    fn.call(obj2)
-  }
 }
 
-const a = obj.say1
-const b = obj.obj1.say2
-a()
+let a = obj.say1
+let b = obj.obj1.say2
+a() 
 b()
 obj.say1()
 obj.obj1.say2()
@@ -170,13 +172,13 @@ obj2
 
 **题解**
 
-1.
+1. 
 ```js
 let a = obj.say1
 a()
 // 等价于
 let a = function () {
-  console.log(this.name)
+    console.log(this.name)
 }
 
 // 这里的是普通的function
@@ -185,19 +187,19 @@ let a = function () {
 // 结果为
 undefined
 ```
-2.
+2. 
 ```js
 let b = obj.obj1.say2
 b()
 // 等价于
 let b = function () {
-  console.log(this.name)
+    console.log(this.name);
 }
 // 后续步骤与上面一致
 // 结果为
 undefined
 ```
-3.
+3. 
 ```js
 obj.say1()
 // 对于对象来说,谁调用函数谁就是this
@@ -206,7 +208,7 @@ obj.say1()
 // 结果为
 'obj'
 ```
-4.
+4. 
 ```js
 obj.obj1.say2()
 // 与上一个同理
@@ -215,7 +217,7 @@ obj.obj1.say2()
 // 结果为
 'obj1'
 ```
-5.
+5. 
 ```js
 obj.say3()
 // 函数内部有个箭头函数
@@ -223,18 +225,18 @@ obj.say3()
 // 所以这里的上下文为say3 的function
 // 等价于
 obj = {
-  // ...precode
-  say3() {
-    console.log(this.name)
-  }
-  // ...behcode
+    // ...precode
+    say3(){
+        console.log(this.name);
+    }
+    // ...behcode
 }
 // 对于对象来说,谁调用函数谁就是this
 // 所以这里的 this.name -> obj.name
 // 结果为
 'obj'
 ```
-6.
+6. 
 ```js
 obj.say4()
 // 函数内部为普通函数
@@ -244,7 +246,7 @@ obj.say4()
 // 结果为
 undefined
 ```
-7.
+7. 
 ```js
 obj.say5()
 // 其内部为箭头函数
@@ -268,3 +270,4 @@ obj.say6()
 'obj2'
 ```
 </my-details>
+

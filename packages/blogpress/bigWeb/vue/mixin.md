@@ -54,3 +54,4 @@ var Component = Vue.extend({
 new Component().$mount("#app")
 </script>
 ```
+

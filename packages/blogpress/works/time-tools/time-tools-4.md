@@ -48,16 +48,16 @@ project
 /**
  * 初始化项目
  */
-commander.command('init <projectName>')
-  .alias('i')
-  .description('init project')
-  .action((projectName) => {
-    if (initProject(cwd, projectName)) {
-      console.log(`初始化 ${projectName} 成功`)
-      return
-    }
-    console.log(`${projectName} 已存在`)
-  })
+commander.command("init <projectName>")
+    .alias('i')
+    .description('init project')
+    .action((projectName) => {
+        if (initProject(cwd, projectName)) {
+            console.log(`初始化 ${projectName} 成功`);
+            return
+        }
+        console.log(`${projectName} 已存在`);
+    })
 ```
 接下来是具体的`initProject`逻辑:
 * cmd：`process.cwd()`指令执行目录
@@ -69,6 +69,7 @@ commander.command('init <projectName>')
 2. 将模板文件的内容先读入
 3. 通过`createDir`方法创建目录
 4. 通过`createFile`方法将内容写到目标目录
+
 
 ```js
 const path = require('path')
@@ -84,33 +85,33 @@ const demoContent = getFileContent(path.resolve(assetsDir, 'demo.md'))
  * @param {string} projectName 项目名称
  */
 function initProject(cwd, projectName) {
-  const dir = path.resolve(cwd, projectName)
-  // 创建目录
-  if (createDir(dir)) {
-    createFile(path.resolve(dir, 'README.md'), readmeContent)
+    const dir = path.resolve(cwd, projectName)
+    // 创建目录
+    if (createDir(dir)) {
+        createFile(path.resolve(dir, 'README.md'), readmeContent)
 
-    createDir(path.resolve(dir, 'work'))
-    createDir(path.resolve(dir, 'study'))
+        createDir(path.resolve(dir, 'work'))
+        createDir(path.resolve(dir, 'study'))
 
-    createFile(path.resolve(dir, 'work', 'README.md'), demoContent)
-    createFile(path.resolve(dir, 'study', 'README.md'), demoContent)
-    return true
-  }
+        createFile(path.resolve(dir, 'work', 'README.md'), demoContent)
+        createFile(path.resolve(dir, 'study', 'README.md'), demoContent)
+        return true
+    }
 
-  return false
+    return false
 }
 
 /**
  * 创建一个不存在的目录
- * @param {string} path
+ * @param {string} path 
  */
 function createDir(path) {
-  if (!fs.existsSync(path)) {
-    fs.mkdirSync(path, { recursive: true })
-    return true
-  }
-  console.error(`${path} 已存在`)
-  return false
+    if (!fs.existsSync(path)) {
+        fs.mkdirSync(path, { recursive: true })
+        return true
+    }
+    console.error(`${path} 已存在`);
+    return false
 }
 ```
 
@@ -126,16 +127,16 @@ function createDir(path) {
 /**
  * 创建一个时间记录模板文件
  */
-commander.command('create <filename>')
-  .alias('c')
-  .description('create template note file')
-  .action((filename) => {
-    if (createTemplateFIle(cwd, filename)) {
-      console.log(`${filename} 创建成功`)
-      return
-    }
-    console.log(`${filename} 已存在`)
-  })
+commander.command("create <filename>")
+    .alias('c')
+    .description('create template note file')
+    .action((filename) => {
+        if (createTemplateFIle(cwd, filename)) {
+            console.log(`${filename} 创建成功`);
+            return
+        }
+        console.log(`${filename} 已存在`);
+    })
 ```
 主要逻辑是`createTemplateFIle`方法里
 
@@ -149,7 +150,7 @@ commander.command('create <filename>')
  * @param {string} filename 文件名称
  */
 function createTemplateFIle(cwd, filename) {
-  return createFile(path.resolve(cwd, filename), demoContent)
+    return createFile(path.resolve(cwd, filename), demoContent)
 }
 ```
 
@@ -168,3 +169,4 @@ function createTemplateFIle(cwd, filename) {
 本系列会不断的更新迭代，直至产品初代完成
 
 * [仓库地址](https://github.com/ATQQ/time-control)
+

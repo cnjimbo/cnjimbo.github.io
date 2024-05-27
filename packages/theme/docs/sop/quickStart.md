@@ -13,7 +13,6 @@ descriptionHTML: '
 tag:
  - SOP
 top: 1
-sidebar: false
 ---
 
 # 快速上手
@@ -36,7 +35,7 @@ npm install -g bun
 ```
 :::
 
-## 快速创建项目
+## 快速创建项目 
 使用 [@sugarat/create-theme](https://github.com/ATQQ/sugar-blog/tree/master/packages/create-theme) 快速创建模板项目
 
 :::code-group
@@ -84,6 +83,7 @@ bun create @sugarat/theme my-first-blog
 | :---------------------------------------------------------------------: | :---------------------------------------------------------------------: |
 | ![](https://img.cdn.sugarat.top/mdImg/MTY4OTQyMDE1NTcxMA==689420155710) | ![](https://img.cdn.sugarat.top/mdImg/MTY5NjE0NzY1NDEwMA==696147654100) |
 
+
 ① 切换到项目的目录
 ```sh
 cd my-blog
@@ -110,6 +110,7 @@ pnpm dev
 bun run --bun dev
 ```
 :::
+
 
 ![](https://img.cdn.sugarat.top/mdImg/MTY5NTIxODUyMDU4MQ==695218520581)
 
@@ -176,3 +177,4 @@ bun install vitepress@latest
 * [主题配置：首页&文章](./../config/frontmatter.md) - 主题提供的一些 `frontmatter`
 * [主题配置：全局](./../config/global.md) - 主题提供的额外能力
 * [主题配置：样式](./../config/style.md) - 自定义博客样式介绍
+* [使用 GitHub/Gitee Pages 部署博客](./gh-pages.md)

@@ -20,3 +20,4 @@ Boolean(1) // true
 ```js
 !!'' // false
 ```
+

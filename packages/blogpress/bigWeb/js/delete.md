@@ -15,7 +15,7 @@ categories:
 delete命令用于删除对象的属性，删除成功后返回true。
 
 ```js
-const a = { key: 123 }
+let a = { key: 123 }
 console.log(delete a.key) // true
 console.log(a) // {}
 ```
@@ -24,28 +24,28 @@ delete不能删除原型链上的属性
 ```js
 function fun() { }
 fun.prototype.age = 18
-const a = new fun()
+let a = new fun() 
 console.log(delete a.age) // true
-console.log(a.age) // 18
+console.log(a.age) // 18  
 ```
 
 删除不存在的键
 ```js
-const a = {}
-console.log(delete a.id) // true
-console.log(a) // {}
+let a = {}
+console.log(delete a['id']);    // true
+console.log(a); // {}
 ```
 
 非严格模式下删除不可配置的属性
 ```js
-const a = {}
+let a = {}
 Object.defineProperty(a, 'key', {
-  value: 666,
-  configurable: false
+    value: 666,
+    configurable: false
 })
-console.log(a.key) // 666
-console.log(delete a.key) // false
-console.log(a.key) // 666
+console.log(a.key); // 666 
+console.log(delete a.key); // false
+console.log(a.key); // 666
 ```
 
 :::tip
@@ -61,11 +61,11 @@ console.log(a.key) // 666
 ## 示例
 1. 自身与原型链上的具有同名属性
 ```js
-function fn() {
-  this.name = 'abc'
+function fn(){
+    this.name = 'abc'
 }
 fn.prototype.name = '123'
-const a = new fn()
+let a = new fn()
 console.log(a.name) // abc
 delete a.name
 console.log(a.name) // 123
@@ -76,3 +76,4 @@ console.log(a.name) // undefined
 :::tip 参考
 [MDN-delete](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/delete)
 :::
+

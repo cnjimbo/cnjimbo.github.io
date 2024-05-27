@@ -20,9 +20,11 @@ categories:
 
 表示文档结构已经加载完成(不包含图片等非文字媒体文件)
 
+
 **结论**
 先执行document.ready,后执行window.onload
 
 :::tip 参考
 [博客园:细说document.ready和window.onload](https://www.cnblogs.com/shcrk/p/9256308.html)
 :::
+

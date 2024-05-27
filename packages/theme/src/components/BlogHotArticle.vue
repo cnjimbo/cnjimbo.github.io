@@ -1,16 +1,21 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
-import { ElButton, ElLink } from 'element-plus'
-import { withBase } from 'vitepress'
-import { useArticles, useBlogConfig } from '../composables/config/blog'
-import { formatShowDate } from '../utils/client'
+import { ElButton } from 'element-plus'
+import { useRouter, withBase } from 'vitepress'
+import { useArticles, useBlogConfig, useCleanUrls } from '../composables/config/blog'
+import { formatShowDate, wrapperCleanUrls } from '../utils/client'
 import { fireSVG } from '../constants/svg'
 
-const { hotArticle } = useBlogConfig()
-const title = computed(() => hotArticle?.title || (`<span class="svg-icon">${fireSVG}</span>` + ' 精选文章'))
-const nextText = computed(() => hotArticle?.nextText || '换一组')
-const pageSize = computed(() => hotArticle?.pageSize || 9)
-const empty = computed(() => hotArticle?.empty ?? '暂无精选内容')
+const { hotArticle: _hotArticle } = useBlogConfig()
+
+const hotArticle = computed(() =>
+  _hotArticle === false ? undefined : _hotArticle
+)
+
+const title = computed(() => hotArticle.value?.title || (`<span class="svg-icon">${fireSVG}</span>` + ' 精选文章'))
+const nextText = computed(() => hotArticle.value?.nextText || '换一组')
+const pageSize = computed(() => hotArticle.value?.pageSize || 9)
+const empty = computed(() => hotArticle.value?.empty ?? '暂无精选内容')
 
 const docs = useArticles()
 
@@ -21,16 +26,25 @@ const recommendList = computed(() => {
 })
 
 const currentPage = ref(1)
+
+const router = useRouter()
+function handleLinkClick(link: string) {
+  router.go(link)
+}
 function changePage() {
   const newIdx
     = currentPage.value % Math.ceil(recommendList.value.length / pageSize.value)
   currentPage.value = newIdx + 1
 }
 
+const cleanUrls = useCleanUrls()
 const currentWikiData = computed(() => {
   const startIdx = (currentPage.value - 1) * pageSize.value
   const endIdx = startIdx + pageSize.value
-  return recommendList.value.slice(startIdx, endIdx)
+  return recommendList.value.slice(startIdx, endIdx).map(v => ({
+    ...v,
+    route: wrapperCleanUrls(cleanUrls, v.route)
+  }))
 })
 
 const showChangeBtn = computed(() => {
@@ -39,7 +53,10 @@ const showChangeBtn = computed(() => {
 </script>
 
 <template>
-  <div v-if="recommendList.length || empty" class="card recommend" data-pagefind-ignore="all">
+  <div
+    v-if="_hotArticle !== false && (recommendList.length || empty)" class="card recommend"
+    data-pagefind-ignore="all"
+  >
     <!-- 头部 -->
     <div class="card-header">
       <span class="title" v-html="title" />
@@ -55,11 +72,19 @@ const showChangeBtn = computed(() => {
         <!-- 简介 -->
         <div class="des">
           <!-- title -->
-          <ElLink type="info" class="title" :href="withBase(v.route)">
-            {{
-              v.meta.title
-            }}
-          </ElLink>
+          <a
+            :href="withBase(v.route)"
+            class="title" @click="(e) => {
+              e.preventDefault()
+              handleLinkClick(withBase(v.route))
+            }"
+          >
+            <span>
+              {{
+                v.meta.title
+              }}
+            </span>
+          </a>
           <!-- 描述信息 -->
           <div class="suffix">
             <!-- 日期 -->
@@ -163,6 +188,19 @@ const showChangeBtn = computed(() => {
     .title {
       font-size: 14px;
       color: var(--vp-c-text-1);
+      font-weight: 500;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .title:hover::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 0;
+      bottom: -3px;
+      border-bottom: 1px solid #b1b3b8;
     }
 
     .suffix {

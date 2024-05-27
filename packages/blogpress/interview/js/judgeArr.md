@@ -15,34 +15,33 @@ console.log(Array.isArray([])) // true
 ```
 ## 2.instanceof
 ```js
-console.log(Array.isArray([]))
+console.log([] instanceof Array)
 ```
 ## 3.constructor
 ```js
 function isArray(arr) {
-  if (!(arr instanceof Object)) {
-    return false
-  }
-  return arr.constructor === Array
+    if (!(arr instanceof Object)) {
+        return false
+    }
+    return arr.constructor === Array
 }
 console.log(isArray([]))
 ```
 ## 4.Object.prototype.toString
 ```js
 function isArray(arr) {
-  return Object.prototype.toString.call(arr) === '[object Array]'
+    return Object.prototype.toString.call(arr) === '[object Array]'
 }
 console.log(isArray([]))
 ```
 ## 5.正则+JSON.stringify
 ```js
 function isArray(arr) {
-  try {
-    return /^\[.*\]$/.test(JSON.stringify(arr))
-  }
-  catch (err) {
-    return false
-  }
+    try {
+        return /^\[.*\]$/.test(JSON.stringify(arr))
+    } catch (err) {
+        return false
+    }
 }
 console.log(isArray([]))
 ```

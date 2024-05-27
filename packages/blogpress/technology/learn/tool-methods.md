@@ -20,48 +20,49 @@ categories:
  * @param headers 头部
  * @param body 主体部分数据
  */
-function tableToExcel(headers, body, filename = 'res.xls') {
+function tableToExcel(headers, body, filename = "res.xls") {
   // 列标题
-  let str = `<tr>${headers.map(v => `<th>${v}</th>`).join('')}</tr>`
+  let str = `<tr>${headers.map((v) => `<th>${v}</th>`).join("")}</tr>`;
   // 循环遍历，每行加入tr标签，每个单元格加td标签
   for (const row of body) {
-    str += '<tr>'
+    str += "<tr>";
     for (const cell of row) {
       // 增加\t为了不让表格显示科学计数法或者其他格式
-      str += `<td>${`${cell}\t`}</td>`
+      str += `<td>${`${cell}\t`}</td>`;
     }
-    str += '</tr>'
+    str += "</tr>";
   }
 
   // Worksheet名
-  const worksheet = 'sheet1'
-  const uri = 'data:application/vnd.ms-excel;base64,'
+  const worksheet = "sheet1";
+  const uri = "data:application/vnd.ms-excel;base64,";
 
   // 下载的表格模板数据
-  const template
-    = '<html xmlns:o="urn:schemas-microsoft-com:office:office" \n'
-    + '      xmlns:x="urn:schemas-microsoft-com:office:excel" \n'
-    + '      xmlns="http://www.w3.org/TR/REC-html40">\n'
-    + '      <head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet>\n'
-    + `        <x:Name>${worksheet}</x:Name>\n`
-    + '        <x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet>\n'
-    + '        </x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]-->\n'
-    + `        </head><body><table>${str}</table></body></html>\n`
+  const template =
+    '<html xmlns:o="urn:schemas-microsoft-com:office:office" \n' +
+    '      xmlns:x="urn:schemas-microsoft-com:office:excel" \n' +
+    '      xmlns="http://www.w3.org/TR/REC-html40">\n' +
+    "      <head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet>\n" +
+    `        <x:Name>${worksheet}</x:Name>\n` +
+    "        <x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet>\n" +
+    "        </x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]-->\n" +
+    `        </head><body><table>${str}</table></body></html>\n`;
   // 下载模板
-  const tempA = document.createElement('a')
-  tempA.href = uri + base64(template)
-  tempA.download = filename
-  document.body.appendChild(tempA)
-  tempA.click()
-  document.body.removeChild(tempA)
+  const tempA = document.createElement("a");
+  tempA.href = uri + base64(template);
+  tempA.download = filename;
+  document.body.appendChild(tempA);
+  tempA.click();
+  document.body.removeChild(tempA);
 }
 
 function base64(s) {
-  return window.btoa(unescape(encodeURIComponent(s)))
+  return window.btoa(unescape(encodeURIComponent(s)));
 }
 ```
 
 <codepen title="export-excell" src="https://codepen.io/sugarInSoup/embed/xxgaggK?height=265&theme-id=dark&default-tab=js,result"></codepen>
+
 
 ## 日期格式化
 ```js
@@ -73,13 +74,10 @@ function formatDate(d, fmt = 'yyyy-MM-dd hh:mm:ss') {
     'm+': d.getMinutes(), // 分
     's+': d.getSeconds(), // 秒
     'q+': Math.floor((d.getMonth() + 3) / 3), // 季度
-    'S': d.getMilliseconds(), // 毫秒
+    S: d.getMilliseconds(), // 毫秒
   }
   if (/(y+)/.test(fmt)) { fmt = fmt.replace(RegExp.$1, (`${d.getFullYear()}`).substr(4 - RegExp.$1.length)) }
-  for (const k in o) {
-    if (new RegExp(`(${k})`).test(fmt))
-      fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? (o[k]) : ((`00${o[k]}`).substr((`${o[k]}`).length)))
-  }
+  for (const k in o) { if (new RegExp(`(${k})`).test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? (o[k]) : ((`00${o[k]}`).substr((`${o[k]}`).length))) }
   return fmt
 }
 ```
@@ -104,9 +102,9 @@ formatSize(size, pointLength, units) {
 ## 内容写入剪贴板
 ```js
 /**
- * 将结果写入的剪贴板
- * @param {string} text
- */
+* 将结果写入的剪贴板
+* @param {String} text
+*/
 export function copyRes(text) {
   const input = document.createElement('input')
   document.body.appendChild(input)
@@ -120,3 +118,4 @@ export function copyRes(text) {
 ```
 
 <codepen src="https://codepen.io/sugarInSoup/embed/rNjZzLx?height=265&theme-id=dark&default-tab=js,result"></codepen>
+

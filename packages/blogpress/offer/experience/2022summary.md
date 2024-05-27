@@ -4,7 +4,7 @@ outline: [2,3]
 date: 2022-12-25 21:40
 description: 千万不要因为走得太久，而忘记了我们为什么出发；2022也是波折比较多的一年，工作上换了组，工作内容发生翻天覆地的变化；生活中换了租处，换了新的装备；经历了防疫政策的突变，从🐑变为阳康，更多细节文中慢慢道来。。。
 cover: https://img.cdn.sugarat.top/mdImg/MTY3MTk2ODk2NzI1OQ==671968967259
-tag:
+tag: 
  - 心得总结
 ---
 
@@ -89,12 +89,13 @@ tag:
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTY3MTk3MjMyMTQ2OA==671972321468)
 
+
 ## 开源
 今年和去年的[Github commit](https://github.com/ATQQ) 数量差不太多
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTY3MTk3MjU3ODQzOQ==671972578439)
 
-今年主要维护3个仓库
+今年主要维护3个仓库 
 * [easypicker2](https://github.com/ATQQ/easypicker2-client)：40⭐️ [在线文件收集Web应用](https://ep2.sugarat.top/)
 * [uni-vue3-ts-template](https://github.com/ATQQ/uni-vue3-ts-template)：112⭐️ uni Vue3的一个模板仓库
 * [tools](https://github.com/ATQQ/tools)：6⭐️ 一些Node相关的CLI工具

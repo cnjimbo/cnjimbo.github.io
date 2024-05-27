@@ -29,9 +29,9 @@ categories:
 .
 ├── README.md                   插件介绍文档
 ├── index.js                    对外暴露插件
-├── lib
+├── lib                         
 │   └── rules                   自定义规则
-│       └── comments-key.js
+│       └── comments-key.js     
 ├── package.json
 └── tests                       测试自定义规则
     └── lib
@@ -55,48 +55,48 @@ npm i eslint mocha -D
 
 ```js
 module.exports = {
-  meta: {
-    type: 'suggestion',
-    docs: {
-      description: 'Not allowed comment words', // 规则的简述
-      category: 'Stylistic Issues', // 规则分类
-      recommended: true //  配置文件中的 "extends": "eslint:recommended"属性是否启用该规则
-    }
-  },
-  create(context) {
-    // context对象包含与规则上下文相关的信息
-    // 返回一个SourceCode对象，你可以使用该对象处理传递给 ESLint 的源代码
-    const sourceCode = context.getSourceCode()
+    meta: {
+        type: "suggestion",
+        docs: {
+            description: "Not allowed comment words", // 规则的简述
+            category: "Stylistic Issues", // 规则分类
+            recommended: true //  配置文件中的 "extends": "eslint:recommended"属性是否启用该规则
+        }
+    },
+    create: function (context) {
+        // context对象包含与规则上下文相关的信息
+        // 返回一个SourceCode对象，你可以使用该对象处理传递给 ESLint 的源代码
+        const sourceCode = context.getSourceCode()
 
-    // 定义不被允许出现在注释中的内容
-    const notAllowWords = ['fixme', 'xxx']
-    return {
-      Program(node) {
-        // 获取所有注释的节点
-        const comments = sourceCode.getAllComments()
-        // 遍历注释节点判断是否有不符合规范的
-        comments.forEach((comment) => {
-          let { loc, value, type } = comment
-          value = value.toLowerCase()
-          let warnWord = ''
-          // 判断注释内容是否包含不被允许的word
-          for (const word of notAllowWords) {
-            if (value.includes(word)) {
-              warnWord = word
+        // 定义不被允许出现在注释中的内容
+        const notAllowWords = ['fixme', 'xxx']
+        return {
+            Program(node) {
+                // 获取所有注释的节点
+                const comments = sourceCode.getAllComments()
+                // 遍历注释节点判断是否有不符合规范的
+                comments.forEach(comment => {
+                    let { loc, value, type } = comment
+                    value = value.toLowerCase()
+                    let warnWord = ''
+                    // 判断注释内容是否包含不被允许的word
+                    for (const word of notAllowWords) {
+                        if (value.includes(word)) {
+                            warnWord = word
+                        }
+                    }
+
+                    if (warnWord) {
+                        context.report({
+                            node: comment, // 可选 与问题有关的 AST 节点
+                            message: `注释中含有不被允许的字符${warnWord}` // 有问题发出的消息
+                        })
+                    }
+                })
             }
-          }
-
-          if (warnWord) {
-            context.report({
-              node: comment, // 可选 与问题有关的 AST 节点
-              message: `注释中含有不被允许的字符${warnWord}` // 有问题发出的消息
-            })
-          }
-        })
-      }
+        };
     }
-  }
-}
+};
 ```
 
 ## 编写测试用例
@@ -110,36 +110,36 @@ const rule = require('../../../lib/rules/comments-key')
 // TESTS
 // 加入默认配置
 const ruleTester = new RuleTester({
-  parserOptions: { ecmaVersion: 2018 }
+    parserOptions: { ecmaVersion: 2018 }
 })
 
 const errMsg = warnWord => `注释中含有不被允许的字符${warnWord}`
 
 ruleTester.run('comments-key', rule, {
-  valid: [
-    '// sssss',
-    '// fixdddd',
+    valid: [
+        '// sssss',
+        '// fixdddd',
         `/**
         * 容十三内水s是说
         */`
-  ],
-  invalid: [
-    {
-      code: '// fixme: DDL 2020-4-28 测试内容',
-      errors: [{ message: errMsg('fixme') }]
-    },
-    {
-      code: '// FIXME: DDL 2020-5-23 测试内容',
-      errors: [{ message: errMsg('fixme') }]
-    },
-    {
-      code: `/**
+    ],
+    invalid: [
+        {
+            code: "// fixme: DDL 2020-4-28 测试内容",
+            errors: [{ message: errMsg('fixme') }]
+        },
+        {
+            code: "// FIXME: DDL 2020-5-23 测试内容",
+            errors: [{ message: errMsg('fixme') }]
+        },
+        {
+            code: `/**
             * xxx
             * 内容
             */`,
-      errors: [{ message: errMsg('xxx') }]
-    }
-  ]
+            errors: [{ message: errMsg('xxx') }]
+        }
+    ]
 })
 ```
 
@@ -180,87 +180,87 @@ rules:{
 下面示例加入可配置属性，用于自定义关键词的检测(代码中只包含修改部分，其余部分跟前面相同)
 ```js
 module.exports = {
-  meta: {
-    // ...code
-    schema: [ // 指定该选项 这样的 ESLint 可以避免无效的规则配置
-      // 遵循 json schema 后文会有介绍文档
-      {
-        keyWords: {
-          type: 'array',
-          items: {
-            type: 'string'
-          }
-        }
-      }
-    ]
-  },
-  create(context) {
-    // ...code
+    meta: {
+        // ...code
+        schema: [ // 指定该选项 这样的 ESLint 可以避免无效的规则配置
+            // 遵循 json schema 后文会有介绍文档
+            {
+                "keyWords": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        ]
+    },
+    create: function (context) {
+        // ...code
 
-    // 定义不被允许出现在注释中的内容
+        // 定义不被允许出现在注释中的内容
 
-    // 可以使用 context.options检索一个规则的可选项，它是个数组，包含该规则的所有配置的可选项
+        // 可以使用 context.options检索一个规则的可选项，它是个数组，包含该规则的所有配置的可选项
+        
+        // console.log(context.options);
 
-    // console.log(context.options);
+        // 取得设置的keywords
+        let [argv0] = context.options
+        let keyWords = argv0 ? argv0.keyWords ? argv0.keyWords.length > 0 ? argv0.keyWords : undefined : undefined : undefined
 
-    // 取得设置的keywords
-    const [argv0] = context.options
-    const keyWords = argv0 ? argv0.keyWords ? argv0.keyWords.length > 0 ? argv0.keyWords : undefined : undefined : undefined
+        // 没有设置则使用默认的
+        let notAllowWords = keyWords || ['fixme', 'xxx']
 
-    // 没有设置则使用默认的
-    let notAllowWords = keyWords || ['fixme', 'xxx']
-
-    // 忽略大小写
-    notAllowWords = notAllowWords.map(v => v.toLowerCase())
-    // ...code
-  }
-}
+        // 忽略大小写
+        notAllowWords = notAllowWords.map(v => v.toLowerCase())
+        // ...code
+    }
+};
 ```
 
 ## 完善我们的单元测试
 ```js
 // ...code
 ruleTester.run('comments-key', rule, {
-  valid: [
-    '// sssss',
-    '// fixdddd',
+    valid: [
+        '// sssss',
+        '// fixdddd',
         `/**
         * 容十三内水s是说
         */`
-  ],
-  invalid: [
-    {
-      code: '// fixme: DDL 2020-4-28 测试内容',
-      errors: [{ message: errMsg('ddl') }],
-      options: [{ // 通过options 配置自定义参数
-        keyWords: ['ddl']
-      }]
-    },
-    {
-      code: '// FIXME: DDL 2020-5-23 测试内容 \n let a = "232"',
-      errors: [{ message: errMsg('fixme') }],
-      rules: { // 通过rules  配置eslint提供的一些规则
-        quotes: ['error', 'double'],
-      },
-      options: [{
-        keyWords: ['abc', 'efg', 'fixme']
-      }]
-    },
-    {
-      code: `/**
+    ],
+    invalid: [
+        {
+            code: "// fixme: DDL 2020-4-28 测试内容",
+            errors: [{ message: errMsg('ddl') }],
+            options: [{ // 通过options 配置自定义参数
+                keyWords: ['ddl']
+            }]
+        },
+        {
+            code: '// FIXME: DDL 2020-5-23 测试内容 \n let a = "232"',
+            errors: [{ message: errMsg('fixme') }],
+            rules: { // 通过rules  配置eslint提供的一些规则
+                "quotes": ["error", "double"],
+            },
+            options: [{
+                keyWords: ['abc', 'efg', 'fixme']
+            }]
+        },
+        {
+            code: `/**
             * xxx
             * 内容
             */`,
-      errors: [{ message: errMsg('xxx') }]
-    },
-    {
-      code: '// abds asa',
-      errors: [{ message: errMsg('abd') }],
-      options: [{
-        keyWords: ['abc', 'abd']
-      }]
-    }
-  ]
+            errors: [{ message: errMsg('xxx') }]
+        },
+        {
+            code: '// abds asa',
+            errors: [{ message: errMsg('abd') }],
+            options: [{
+                keyWords: ['abc', 'abd']
+            }]
+        }
+    ]
 })
 ```
 
@@ -293,15 +293,15 @@ ruleTester.run('comments-key', rule, {
 
 **index.js**
 ```js
-'use strict'
+'use strict';
 module.exports = {
   rules: {
-    diy: require('./lib/rules/comments-key')
+    'diy': require('./lib/rules/comments-key') 
   },
   rulesConfig: {
-    diy: 1
+    'diy': 1
   }
-}
+};
 ```
 
 # 5.发布npm
@@ -323,6 +323,7 @@ npm config set registry https://registry.npmjs.org/
 npm login
 ```
 按提示依次输入`账号`,`密码`,`邮箱`
+
 
 登录完成之后,查看当前npm用户,不报错说明登录成功
 ```js
@@ -401,4 +402,6 @@ Add `comments-key` to the plugins section of your `.eslintrc` configuration file
 * [npm](https://www.npmjs.com/package/eslint-plugin-comments-key)
 * [github](https://github.com/ATQQ/eslint-plugin-comments-key/tree/master)
 
+
 因笔者水平有限，内容上如有阐述不明白之处，还请斧正
+

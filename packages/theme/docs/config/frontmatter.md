@@ -10,7 +10,7 @@ recommend: 1
 ---
 
 # 主题配置
-这里将配置分成了2块
+这里将配置分成了2块 
 * `home`：首页的独立配置
 * `Article`：单篇文章独立配置
 
@@ -22,31 +22,32 @@ recommend: 1
 
 :::details 主题相关的 `frontmatter` 汇总
 ```ts
-const frontmatter = ['layout', 'blog', 'title', 'description', 'descriptionHTML', 'cover', 'hiddenCover', 'hidden', 'author', 'readingTime', 'comment', 'date', 'tag', 'tags', 'categories', 'sticky', 'top', 'recommend', 'publish']
+const frontmatter = ['layout', 'blog', 'title', 'description', 'descriptionHTML', 'cover', 'hiddenCover', 'hidden', 'author', 'readingTime', 'comment', 'date', 'tag', 'tags', 'categories', 'sticky', 'top', 'recommend', 'publish', 'buttonAfterArticle']
 ```
 
 对照表
-|      属性       |     描述     |
-| :-------------: | :----------: |
-|     layout      |     布局     |
-|      blog       |   博客首页   |
-|      title      |     标题     |
-|   description   |     描述     |
-| descriptionHTML |   描述HTML   |
-|      cover      |     封面     |
-|   hiddenCover   |   隐藏封面   |
-|     hidden      | 隐藏首页展示 |
-|     author      |     作者     |
-|   readingTime   |   阅读时间   |
-|     comment     |     评论     |
-|      date       |     日期     |
-|       tag       |     标签     |
-|      tags       |    同标签    |
-|   categories    |    同标签    |
-|     sticky      |   精选置顶   |
-|       top       |   首页置顶   |
-|    recommend    | 推荐列表控制 |
-|     publish     |   是否发布   |
+|        属性        |         描述         |
+| :----------------: | :------------------: |
+|       layout       |         布局         |
+|        blog        |       博客首页       |
+|       title        |         标题         |
+|    description     |         描述         |
+|  descriptionHTML   |       描述HTML       |
+|       cover        |         封面         |
+|    hiddenCover     |       隐藏封面       |
+|       hidden       |     隐藏首页展示     |
+|       author       |         作者         |
+|    readingTime     |       阅读时间       |
+|      comment       |         评论         |
+|        date        |         日期         |
+|        tag         |         标签         |
+|        tags        |        同标签        |
+|     categories     |        同标签        |
+|       sticky       |       精选置顶       |
+|        top         |       首页置顶       |
+|     recommend      |     推荐列表控制     |
+|      publish       |       是否发布       |
+| buttonAfterArticle | 文章底部引导操作按钮 |
 :::
 ## Home
 ### layout
@@ -61,6 +62,7 @@ layout: home
 配完这个之后，首页样式就有了，如下图所示
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTY3MzE4MDM5ODQ3MQ==673180398471)
+
 
 ### blog
 设置首页的博客样式文案
@@ -254,7 +256,7 @@ descriptionHTML: '
 ![](https://img.cdn.sugarat.top/mdImg/MTY4OTQzMTQyMzE1MA==689431423150)
 
 ### cover
-* Type: `string|boolean`
+* Type: `string|false`
 
 用于设置文章在首页卡片列表里展示的 `封面信息`
 ::: code-group
@@ -285,7 +287,7 @@ cover: false
 `hiddenCover` 控制是否展示当前文章的封面，全局配置开关见 [article.hiddenCover](./global.md#article)
 ```md
 ---
-hiddenCover: true
+hiddenCover: true 
 cover: url
 ---
 ```
@@ -429,25 +431,42 @@ top: 1
 ![](https://img.cdn.sugarat.top/mdImg/MTY3NzA3ODA4MDM5NA==677078080394)
 
 ### recommend
-* type: `number | false`
+* type: `number | false | string | string[] | [...string[], number]`
 
-用于设置文章左侧展示的 `推荐文章` 顺序（越小越靠前），或者在推荐列表中隐藏掉不展示
+可用于配置左侧推荐列表数据表现，默认只展示同级目录下的文章
+* 文章左侧展示的 `推荐文章` 顺序（越小越靠前）
+* 在推荐列表中隐藏掉不展示
+* 手动关联不同目录的文章进行展现
 
-```md
+:::code-group
+```md [① 只调整顺序]
 ---
 recommend: 1
 ---
 ```
 
-![](https://img.cdn.sugarat.top/mdImg/MTY3NzI0NTYyNDEyOA==677245624128)
-
-```md
+```md [② 在列表中隐藏]
 ---
 recommend: false
 ---
 ```
 
-![](https://img.cdn.sugarat.top/mdImg/MTY3NzI0NjQ2NzIyNA==677246467224)
+```md [③ 关联不同目录的文章]
+---
+# 直接设置文章的关键词
+recommend: 'Node.js'
+# 设置多个关键词
+recommend: ['Node.js', 'css', 'html']
+# 设置关键词并设置顺序
+recommend: ['Node.js', 'css', 'html', 1]
+---
+```
+:::
+
+| 手动设置顺序                                                            | 隐藏                                                                    | 自定义关联                                                                    |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| ![](https://img.cdn.sugarat.top/mdImg/MTY3NzI0NTYyNDEyOA==677245624128) | ![](https://img.cdn.sugarat.top/mdImg/MTY3NzI0NjQ2NzIyNA==677246467224) | ![](https://img.cdn.sugarat.top/mdImg/sugar/21db9f87e7b64958dad2c24ed94e40d3) |
+
 
 ### publish
 * type: `false`
@@ -467,8 +486,30 @@ recommend: false
 ---
 ```
 
+
 比如设置在`changelog.md`里，首页将不会展示此项
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTY3MzE4MTcwMDU4MQ==673181700581)
 
 同时，左侧边栏也不会展示
+
+### buttonAfterArticle
+* Type: `false | ButtonAfterArticleConfig`
+
+用于单独控制某篇文章底部按钮，点击按钮会在按钮下方渲染一个自定义的html内容，例如可以用来做赞赏按钮，内置了 `wechatPay` 和 `aliPay` 两个图标，也可自定义图标(svg)。
+
+```yaml
+---
+buttonAfterArticle:
+  openTitle: 投币
+  closeTitle: 下次一定
+  content: '<img src="https://img.cdn.sugarat.top/mdImg/MTY0Nzc1NTYyOTE5Mw==647755629193">'
+  icon: aliPay
+  # size: small
+  # expand: true
+---
+```
+
+![](https://img.cdn.sugarat.top/mdImg/sugar/4d429bea65b8840f5cfda875fac50926)
+
+也支持在全局设置，对所有页面都生效。

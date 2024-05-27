@@ -16,6 +16,7 @@ cover: https://img.cdn.sugarat.top/mdImg/MTY4ODMwOTEzMzUzNA==688309133534
 * [python 3.16.0](https://www.python.org/downloads/release/python-3106/) ：确保大部分依赖库能顺利运行
 * [stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui)：sd 网页应用
 
+
 ### 安装python
 >笔者的操作不一定是最佳实践
 
@@ -70,6 +71,7 @@ pip install -r requirements.txt
 
 ![](https://img.cdn.sugarat.top/mdImg/MTY4ODMwMTY2MTk5MA==688301661990)
 
+
 ## 配置 stable-diffusion-webui
 ### 汉化
 为了方便后续的使用我们可以将 stable-diffusion-webui 汉化一下
@@ -97,6 +99,7 @@ pip install -r requirements.txt
 再次访问即可看到英文汉化的内容
 
 ### 安装插件
+
 
 由于网络问题可能会出现访问失败的情况，如下图所示
 
