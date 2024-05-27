@@ -56,7 +56,12 @@ jobs:
           cache: pnpm
       - name: Install dependencies
         # 5、安装依赖
-        run: pnpm -r i --frozen-lockfile
+        run:
+          if [ -f pnpm-lock.yaml ]; then
+          pnpm install --frozen-lockfile
+          else
+          pnpm install
+          fi
       - name: Buildlib
         # 6、打包
         run: pnpm buildlib
