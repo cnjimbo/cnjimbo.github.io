@@ -30,7 +30,10 @@
 			"workspace"
 		],
 		"workbench.colorCustomizations": {
-			"sideBarTitle.foreground": "#04f964"
+			"statusBar.background": "#5562f1",
+			"statusBar.foreground": "#ffffff",
+			"tab.activeBorder": "#5562f1",
+			"sideBarTitle.foreground": "#5562f1"
 		},
 		"ColorfulMonorepo.workspaces.collection": [
 			{
@@ -75,6 +78,7 @@
 				"foreground": "#ffffff",
 				"background": "#0c4ad7"
 			}
-		]
+		],
+		"files.exclude": {}
 	}
 }
