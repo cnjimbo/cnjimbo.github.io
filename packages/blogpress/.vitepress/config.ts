@@ -1,16 +1,16 @@
 import process from 'node:process'
-import { defineConfig, getThemeConfig } from '@sugarat/theme/node'
+import { getThemeConfig } from '@sugarat/theme/node'
 import type { Theme } from '@sugarat/theme'
 import type { RSSOptions } from 'vitepress-plugin-rss'
 import { RssPlugin } from 'vitepress-plugin-rss'
+import { defineConfig } from 'vitepress'
 
-const baseUrl = 'https://dmsrs.gitee.io/cnjimbo'
+const baseUrl = 'https://sugarat.top'
 const weekly = `${baseUrl}/weekly`
 const RSSWeekly: RSSOptions = {
   title: '视野修炼 - 技术周刊',
   baseUrl,
-  description:
-    '每周会精选出一些 优质&有趣 的内容做推送（大前端为主），包含但不限于 优质文章，开源库，工具网站，有意思的知识',
+  description: '每周会精选出一些 优质&有趣 的内容做推送（大前端为主），包含但不限于 优质文章，开源库，工具网站，有意思的知识',
   id: weekly,
   link: weekly,
   language: 'zh-cn',
@@ -18,10 +18,11 @@ const RSSWeekly: RSSOptions = {
     return value.url.startsWith('/weekly/') && !value.url.endsWith('/weekly/')
   },
   image: 'https://img.cdn.sugarat.top/mdImg/MTcwNTIwMDEzNjM5Mw==705200136393',
-  favicon: '/favicon.ico',
+  favicon: 'https://sugarat.top/favicon.ico',
   copyright: 'Copyright (c) 2018-present, 粥里有勺糖',
   url: `${baseUrl}/weekly.rss`,
-  icon: false,
+  icon: '<svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5155" width="200" height="200"><title>视野修炼周刊 RSS 订阅</title><path d="M831.8 128l-640 0c-35.3 0-64 28.7-64 64l0 640c0 35.3 28.7 64 64 64l640 0c35.3 0 64-28.7 64-64L895.8 192C895.8 156.7 867.1 128 831.8 128zM707.4 193l0 185.8L673 344.3c-6.4-6.4-14.9-9.5-23.3-9.4-8.4-0.2-16.9 2.9-23.3 9.4L592 378.8 592 193 707.4 193zM831.8 833.1l-640 0L191.8 193 528 193l0 263c0 0.5 0 1.1 0 1.6 0 0.3 0 0.5 0.1 0.7 0 0.3 0 0.5 0.1 0.8 0 0.3 0.1 0.6 0.1 0.9 0 0.2 0 0.4 0.1 0.6 0 0.3 0.1 0.7 0.2 1 0 0.2 0.1 0.3 0.1 0.5 0.1 0.3 0.1 0.7 0.2 1 0 0.2 0.1 0.3 0.1 0.5 0.1 0.3 0.2 0.7 0.3 1 0.1 0.2 0.1 0.4 0.2 0.5 0.1 0.3 0.2 0.6 0.3 0.9 0.1 0.2 0.1 0.4 0.2 0.6 0.1 0.3 0.2 0.5 0.3 0.8 0.1 0.2 0.2 0.5 0.3 0.7 0.1 0.2 0.2 0.5 0.3 0.7 0.1 0.3 0.2 0.5 0.3 0.8 0.1 0.2 0.2 0.4 0.3 0.6 0.1 0.3 0.3 0.6 0.4 0.8 0.1 0.2 0.2 0.3 0.3 0.5 0.2 0.3 0.3 0.6 0.5 0.9 0.1 0.2 0.2 0.3 0.3 0.4 0.2 0.3 0.4 0.6 0.6 0.9 0.1 0.1 0.2 0.3 0.3 0.4 0.2 0.3 0.4 0.6 0.6 0.8 0.1 0.2 0.2 0.3 0.4 0.5 0.2 0.2 0.4 0.5 0.6 0.7 0.2 0.2 0.4 0.4 0.5 0.6 0.2 0.2 0.3 0.4 0.5 0.6 0.7 0.8 1.5 1.5 2.2 2.2 0.2 0.2 0.4 0.3 0.6 0.5 0.2 0.2 0.4 0.4 0.6 0.5 0.2 0.2 0.5 0.4 0.7 0.6 0.2 0.1 0.3 0.3 0.5 0.4 0.3 0.2 0.6 0.4 0.8 0.6 0.1 0.1 0.3 0.2 0.4 0.3 0.3 0.2 0.6 0.4 0.9 0.6 0.1 0.1 0.3 0.2 0.4 0.3 0.3 0.2 0.6 0.3 0.9 0.5 0.2 0.1 0.3 0.2 0.5 0.3 0.3 0.1 0.6 0.3 0.8 0.4 0.2 0.1 0.4 0.2 0.6 0.3 0.3 0.1 0.5 0.2 0.8 0.3 0.2 0.1 0.5 0.2 0.7 0.3 0.2 0.1 0.5 0.2 0.7 0.3 0.3 0.1 0.5 0.2 0.8 0.3 0.2 0.1 0.4 0.1 0.6 0.2 0.3 0.1 0.6 0.2 0.9 0.3 0.2 0.1 0.4 0.1 0.5 0.2 0.3 0.1 0.6 0.2 1 0.3 0.2 0 0.3 0.1 0.5 0.1 0.3 0.1 0.7 0.2 1 0.2 0.2 0 0.4 0.1 0.5 0.1 0.3 0.1 0.7 0.1 1 0.2 0.2 0 0.4 0.1 0.6 0.1 0.3 0 0.6 0.1 0.9 0.1 0.3 0 0.5 0 0.8 0.1 0.2 0 0.5 0 0.7 0.1 0.5 0 1.1 0 1.6 0 0 0 0 0 0 0l0 0c0.5 0 1.1 0 1.6 0 0.3 0 0.5 0 0.7-0.1 0.3 0 0.5 0 0.8-0.1 0.3 0 0.6-0.1 0.9-0.1 0.2 0 0.4 0 0.6-0.1 0.3 0 0.7-0.1 1-0.2 0.2 0 0.4-0.1 0.5-0.1 0.3-0.1 0.7-0.1 1-0.2 0.2 0 0.3-0.1 0.5-0.1 0.3-0.1 0.6-0.2 1-0.3 0.2-0.1 0.4-0.1 0.5-0.2 0.3-0.1 0.6-0.2 0.9-0.3 0.2-0.1 0.4-0.1 0.6-0.2 0.3-0.1 0.5-0.2 0.8-0.3 0.2-0.1 0.5-0.2 0.7-0.3 0.2-0.1 0.5-0.2 0.7-0.3 0.3-0.1 0.5-0.2 0.8-0.4 0.2-0.1 0.4-0.2 0.6-0.3 0.3-0.1 0.6-0.3 0.8-0.4 0.2-0.1 0.3-0.2 0.5-0.3 0.3-0.2 0.6-0.3 0.9-0.5 0.1-0.1 0.3-0.2 0.4-0.3 0.3-0.2 0.6-0.4 0.9-0.6 0.1-0.1 0.3-0.2 0.4-0.3 0.3-0.2 0.6-0.4 0.8-0.6 0.2-0.1 0.3-0.2 0.5-0.4 0.2-0.2 0.5-0.4 0.7-0.6 0.2-0.2 0.4-0.3 0.6-0.5 0.2-0.2 0.4-0.3 0.6-0.5 0.4-0.4 0.8-0.7 1.1-1.1l67.1-67.1 67.1 67.1c0 0 0 0 0 0 0.4 0.4 0.7 0.7 1.1 1.1 0.2 0.2 0.4 0.3 0.6 0.5 0.2 0.2 0.4 0.4 0.6 0.5 0.2 0.2 0.5 0.4 0.7 0.6 0.2 0.1 0.3 0.3 0.5 0.4 0.3 0.2 0.6 0.4 0.8 0.6 0.1 0.1 0.3 0.2 0.4 0.3 0.3 0.2 0.6 0.4 0.9 0.6 0.1 0.1 0.3 0.2 0.4 0.3 0.3 0.2 0.6 0.3 0.9 0.5 0.2 0.1 0.3 0.2 0.5 0.3 0.3 0.1 0.6 0.3 0.8 0.4 0.2 0.1 0.4 0.2 0.6 0.3 0.3 0.1 0.5 0.2 0.8 0.3 0.2 0.1 0.5 0.2 0.7 0.3 0.2 0.1 0.5 0.2 0.7 0.3 0.3 0.1 0.5 0.2 0.8 0.3 0.2 0.1 0.4 0.1 0.6 0.2 0.3 0.1 0.6 0.2 0.9 0.3 0.2 0.1 0.4 0.1 0.5 0.2 0.3 0.1 0.6 0.2 1 0.3 0.2 0 0.3 0.1 0.5 0.1 0.3 0.1 0.7 0.2 1 0.2 0.2 0 0.4 0.1 0.5 0.1 0.3 0.1 0.7 0.1 1 0.2 0.2 0 0.4 0.1 0.6 0.1 0.3 0 0.6 0.1 0.9 0.1 0.3 0 0.5 0 0.8 0.1 0.2 0 0.5 0 0.7 0.1 1.1 0.1 2.1 0.1 3.2 0 0.3 0 0.5 0 0.7-0.1 0.3 0 0.5 0 0.8-0.1 0.3 0 0.6-0.1 0.9-0.1 0.2 0 0.4 0 0.6-0.1 0.3 0 0.7-0.1 1-0.2 0.2 0 0.4-0.1 0.5-0.1 0.3-0.1 0.7-0.1 1-0.2 0.2 0 0.3-0.1 0.5-0.1 0.3-0.1 0.6-0.2 1-0.3 0.2-0.1 0.4-0.1 0.5-0.2 0.3-0.1 0.6-0.2 0.9-0.3 0.2-0.1 0.4-0.1 0.6-0.2 0.3-0.1 0.5-0.2 0.8-0.3 0.2-0.1 0.5-0.2 0.7-0.3 0.2-0.1 0.5-0.2 0.7-0.3 0.3-0.1 0.5-0.2 0.8-0.3 0.2-0.1 0.4-0.2 0.6-0.3 0.3-0.1 0.6-0.3 0.8-0.4 0.2-0.1 0.3-0.2 0.5-0.3 0.3-0.2 0.6-0.3 0.9-0.5 0.1-0.1 0.3-0.2 0.4-0.3 0.3-0.2 0.6-0.4 0.9-0.6 0.1-0.1 0.3-0.2 0.4-0.3 0.3-0.2 0.6-0.4 0.8-0.6 0.2-0.1 0.3-0.2 0.5-0.4 0.2-0.2 0.5-0.4 0.7-0.6 0.2-0.2 0.4-0.3 0.6-0.5 0.2-0.2 0.4-0.3 0.6-0.5 0.8-0.7 1.5-1.5 2.2-2.2 0.2-0.2 0.3-0.4 0.5-0.6 0.2-0.2 0.4-0.4 0.5-0.6 0.2-0.2 0.4-0.5 0.6-0.7 0.1-0.2 0.2-0.3 0.4-0.5 0.2-0.3 0.4-0.6 0.6-0.8 0.1-0.1 0.2-0.3 0.3-0.4 0.2-0.3 0.4-0.6 0.6-0.9 0.1-0.1 0.2-0.3 0.3-0.4 0.2-0.3 0.3-0.6 0.5-0.9 0.1-0.2 0.2-0.3 0.3-0.5 0.1-0.3 0.3-0.6 0.4-0.8 0.1-0.2 0.2-0.4 0.3-0.6 0.1-0.3 0.2-0.5 0.4-0.8 0.1-0.2 0.2-0.5 0.3-0.7 0.1-0.2 0.2-0.5 0.3-0.7 0.1-0.3 0.2-0.5 0.3-0.8 0.1-0.2 0.1-0.4 0.2-0.6 0.1-0.3 0.2-0.6 0.3-0.9 0.1-0.2 0.1-0.4 0.2-0.5 0.1-0.3 0.2-0.6 0.3-1 0-0.2 0.1-0.3 0.1-0.5 0.1-0.3 0.2-0.7 0.2-1 0-0.2 0.1-0.4 0.1-0.5 0.1-0.3 0.1-0.7 0.2-1 0-0.2 0.1-0.4 0.1-0.6 0-0.3 0.1-0.6 0.1-0.9 0-0.3 0-0.5 0.1-0.8 0-0.2 0-0.5 0.1-0.7 0-0.5 0-1.1 0-1.6L771.1 193l60.3 0L831.4 833.1z" p-id="5156"></path><path d="M468.7 416c0 17.7-14.3 32-32 32l-148 0c-17.7 0-32-14.3-32-32l0 0c0-17.7 14.3-32 32-32l148 0C454.4 384 468.7 398.3 468.7 416L468.7 416z" p-id="5157"></path><path d="M772.3 565c0 17.7-14.3 32-32 32L291.3 597c-17.7 0-32-14.3-32-32l0 0c0-17.7 14.3-32 32-32l449.1 0C758 533 772.3 547.3 772.3 565L772.3 565z" p-id="5158"></path><path d="M771.4 702c0 17.7-14.3 32-32 32L291.3 734c-17.7 0-32-14.3-32-32l0 0c0-17.7 14.3-32 32-32l448.2 0C757.1 670 771.4 684.4 771.4 702L771.4 702z" p-id="5159"></path></svg>',
+  ariaLabel: '视野修炼周刊RSS订阅',
   filename: 'weekly.rss',
 }
 const RSS: Theme.RSSOptions = {
@@ -32,16 +33,30 @@ const RSS: Theme.RSSOptions = {
   link: baseUrl,
   language: 'zh-cn',
   image: 'https://img.cdn.sugarat.top/mdImg/MTY3NDk5NTE2NzAzMA==674995167030',
-  favicon: '/favicon.ico',
+  favicon: 'https://sugarat.top/favicon.ico',
   copyright: 'Copyright (c) 2018-present, 粥里有勺糖',
   url: `${baseUrl}/feed.rss`,
   /**
    * 最近100篇，避免太大影响解析
    */
-  limit: 100,
+  limit: 100
 }
 
 const blogTheme = getThemeConfig({
+  imageStyle: {
+    coverPreview: [
+      // 七牛云
+      {
+        rule: '//img.cdn.sugarat.top',
+        suffix: '~cover.webp'
+      },
+      // 又拍云CDN
+      {
+        rule: '//cdn.upyun.sugarat.top',
+        suffix: '-cover'
+      }
+    ]
+  },
   themeColor: 'el-blue',
   RSS,
   author: '粥里有勺糖',
@@ -50,7 +65,20 @@ const blogTheme = getThemeConfig({
     repoId: 'MDEwOlJlcG9zaXRvcnkyNDEyNDUyOTk',
     category: 'Announcements',
     categoryId: 'DIC_kwDODmEcc84COVc6',
-    inputPosition: 'top',
+    inputPosition: 'top'
+  },
+  oml2d: {
+    mobileDisplay: true,
+    models: [
+      {
+        path: 'https://sugarat.s3.bitiful.net/npm/oml2d-model/models/Senko_Normals/senko.model3.json',
+      }
+    ],
+    libraryUrls: {
+      complete: 'https://sugarat.s3.bitiful.net/npm/oh-my-live2d/latest/lib/complete.js',
+      cubism2: 'https://sugarat.s3.bitiful.net/npm/oh-my-live2d/latest/lib/cubism2.js',
+      cubism5: 'https://sugarat.s3.bitiful.net/npm/oh-my-live2d/latest/lib/cubism5.js'
+    }
   },
   popover: {
     title: '公告',
@@ -58,123 +86,143 @@ const blogTheme = getThemeConfig({
       { type: 'text', content: '👇公众号👇---👇 微信 👇' },
       {
         type: 'image',
-        src: 'https://img.cdn.sugarat.top/mdImg/MTYxNTAxODc2NTIxMA==615018765210',
+        src: 'https://img.cdn.sugarat.top/mdImg/MTYxNTAxODc2NTIxMA==615018765210~fmt.webp'
       },
       {
         type: 'text',
-        content: '欢迎大家私信&加群交流',
+        content: '欢迎大家私信&加群交流'
       },
       {
         type: 'button',
         content: '关于作者',
-        link: '/aboutme',
+        link: '/aboutme'
       },
       {
         type: 'button',
         content: '加群交流',
         props: {
-          type: 'success',
+          type: 'success'
         },
         link: '/group',
-      },
+      }
     ],
-    duration: -1,
+    duration: -1
   },
   friend: {
     list: [
       {
         nickname: '冴羽',
         des: '冴羽的JavaScript博客',
-        avatar: 'https://img.cdn.sugarat.top/mdImg/MTYyNjQ4MzkxMzIxMA==626483913210',
-        url: 'https://github.com/mqyqingfeng/Blog',
+        avatar:
+          'https://sugarat.s3.bitiful.net/avatar/blog/mqyqingfeng.png',
+        url: 'https://github.com/mqyqingfeng/Blog'
       },
       {
         nickname: 'Linbudu',
         des: '未来的不可知，是前进的原动力',
-        avatar: 'https://linbudu-img-store.oss-cn-shenzhen.aliyuncs.com/img/48507806.jfif',
-        url: 'https://linbudu.top/',
+        avatar:
+          'https://sugarat.s3.bitiful.net/avatar/blog/linbudu.jfif',
+        url: 'https://linbudu.top/'
       },
       {
         nickname: '小九',
         des: '日益努力，而后风生水起',
-        avatar: 'https://jiangly.com/favicon.ico',
-        url: 'https://jiangly.com/',
+        avatar: 'https://sugarat.s3.bitiful.net/avatar/blog/jiangly.png',
+        url: 'https://jiangly.com/'
       },
       {
         nickname: '花喵电台      ',
         des: '曹豪侠和余湾湾还有两只猫的生活记录~',
         avatar:
-          'https://pic.fmcat.top/head.jpg?x-oss-process=image/auto-orient,1/resize,m_fill,w_110,h_110/quality,q_90',
-        url: 'https://www.fmcat.top',
+          'https://sugarat.s3.bitiful.net/avatar/blog/fmcat.jpeg',
+        url: 'https://www.fmcat.top'
       },
       {
         nickname: '张成威的网络日志',
         des: '知不足而奋进，望远山而前行',
-        avatar: 'https://www.zhangchengwei.work/logo.png',
-        url: 'https://www.zhangchengwei.work',
+        avatar: 'https://sugarat.s3.bitiful.net/avatar/blog/zhangchengwei.png',
+        url: 'https://www.zhangchengwei.work'
       },
       {
         url: 'https://leelaa.cn',
-        avatar: 'https://leelaa.cn/pwa-192x192.png',
+        avatar: 'https://sugarat.s3.bitiful.net/avatar/blog/leelaa.png',
         des: '肯了个德的博客',
-        nickname: 'LEEDAISEN',
+        nickname: 'LEEDAISEN'
       },
       {
         url: 'https://next.blackcell.fun/',
-        avatar: 'https://avatars.githubusercontent.com/u/45719798?v=4',
+        avatar: 'https://sugarat.s3.bitiful.net/avatar/blog/blackcell.jpeg',
         des: '物以类聚 人以群分',
-        nickname: 'BlackCell',
+        nickname: 'BlackCell'
       },
       {
-        url: 'https://blog.yovvis.top',
-        avatar: 'https://img.yovvis.top/avatar.png',
+        url: 'https://blog.cuuxx.com',
+        avatar: 'https://sugarat.s3.bitiful.net/avatar/blog/tenyon.webp',
         des: '工夫为艺，笃志成技',
-        nickname: 'Yovvis\'s Blog',
+        nickname: 'Yovvis\'s Blog'
       },
       {
         nickname: '强少来了',
         des: '互联网产品经理',
-        avatar: 'https://fengxiaoqiang.com/images/logo.png',
-        url: 'https://fengxiaoqiang.com/',
+        avatar: 'https://sugarat.s3.bitiful.net/avatar/blog/fengxiaoqiang.png',
+        url: 'https://fengxiaoqiang.com/'
       },
       {
         nickname: '博友圈',
         des: '独立博客人的专属朋友圈！',
-        avatar: '',
-        url: 'https://www.boyouquan.com/home',
+        avatar: 'https://cdn.upyun.sugarat.top/mdImg/sugar/bdee5d11a1e036ca3634943d34469f59',
+        url: 'https://www.boyouquan.com/home'
       },
       {
         nickname: 'Simon He',
         des: '除了coding，我什么都不会',
-        avatar: 'https://simonme.netlify.app/black.png',
-        url: 'https://simonme.netlify.app/',
+        avatar: 'https://sugarat.s3.bitiful.net/avatar/blog/simonme.png',
+        url: 'https://simonme.netlify.app/'
       },
-    ],
+      {
+        nickname: 'laiky',
+        des: '一名全栈开发工程师，.NET全栈经验',
+        avatar: 'https://sugarat.s3.bitiful.net/avatar/blog/llxz.png',
+        url: 'http://llxz.top/'
+      }
+    ].map((v) => {
+      if (v.avatar.includes('//sugarat.s3.bitiful.net')) {
+        v.avatar = `${v.avatar}?w=50&h=50&fmt=webp&mode=crop`
+      }
+      return v
+    }),
     random: true,
     limit: 6,
   },
-  search: false,
+  // search: false,
   recommend: {
     showSelf: true,
     nextText: '下一页',
-    style: 'sidebar',
+    style: 'sidebar'
   },
   authorList: [
     {
       nickname: '粥里有勺糖',
-      url: '/aboutme.html',
-      des: '你的指尖,拥有改变世界的力量',
-    },
+      url: 'https://sugarat.top/aboutme.html',
+      des: '你的指尖,拥有改变世界的力量'
+    }
   ],
   footer: {
     copyright: `粥里有勺糖 2018 - ${new Date().getFullYear()}`,
     icpRecord: {
       name: '蜀ICP备19011724号',
-      link: 'https://beian.miit.gov.cn/',
+      link: 'https://beian.miit.gov.cn/'
     },
+    message: '<a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank" style="display:flex;align-items:center;justify-content:center;">本网站由 <img src="https://sugarat.s3.bitiful.net/logo/upyun.png?w=56&h=24&fmt=webp" style="width:56px;height:24px;" alt="又拍云"> 提供CDN加速/云存储服务</a>'
   },
   hotArticle: {
-    pageSize: 12,
+    pageSize: 12
+  },
+  buttonAfterArticle: {
+    openTitle: '投"币"支持',
+    closeTitle: '下次一定',
+    content: '<img src="https://img.cdn.sugarat.top/mdImg/MTY0Nzc1NTYyOTE5Mw==647755629193">',
+    icon: 'wechatPay',
   },
 })
 
@@ -186,22 +234,33 @@ const extraHead: any
           {
             charset: 'UTF-8',
             id: 'LA_COLLECT',
-            src: '//sdk.51.la/js-sdk-pro.min.js',
-          },
+            defer: true,
+            src: '//sugarat.s3.bitiful.net/npm/51la-analysis-sdk/js-sdk-pro.min.js',
+          }
         ],
-        ['script', {}, 'LA.init({id: "Jgmg5avjAUvoyePS",ck: "Jgmg5avjAUvoyePS",hashMode: true})'],
+        [
+          'script',
+          {},
+          'document.addEventListener(\'DOMContentLoaded\', function() {typeof LA !==\'undefined\' && LA.init({id: "Jgmg5avjAUvoyePS",ck: "Jgmg5avjAUvoyePS",hashMode: true})});'
+        ],
       ]
     : []
 
 export default defineConfig({
   extends: blogTheme,
+  markdown: {
+    image: {
+      lazyLoading: true
+    }
+  },
   ignoreDeadLinks: true,
   sitemap: {
-    hostname: '',
+    hostname: 'https://sugarat.top',
   },
   lang: 'zh-cn',
   title: '粥里有勺糖',
-  description: '粥里有勺糖的个人博客，记录随笔与学习笔记，大前端相关的知识，高频面试题，个人面经等',
+  description:
+    '粥里有勺糖的个人博客，记录随笔与学习笔记，大前端相关的知识，高频面试题，个人面经等',
   head: [
     // <meta name="baidu-site-verification" content="codeva-b08avp82Uj" />
     ['meta', { name: 'baidu-site-verification', content: 'codeva-b08avp82Uj' }],
@@ -213,49 +272,61 @@ export default defineConfig({
         rel: 'alternate icon',
         href: '/favicon.ico',
         type: 'image/png',
-        sizes: '16x16',
-      },
+        sizes: '16x16'
+      }
     ],
     ['meta', { name: 'author', content: '粥里有勺糖' }],
     ['link', { rel: 'mask-icon', href: '/favicon.ico', color: '#ffffff' }],
-    ['link', { rel: 'apple-touch-icon', href: '/favicon.ico', sizes: '180x180' }],
-    ...extraHead,
+    [
+      'link',
+      { rel: 'apple-touch-icon', href: '/favicon.ico', sizes: '180x180' }
+    ],
+    ...extraHead
   ],
   vite: {
     server: {
       port: 4000,
-      host: '0.0.0.0',
+      host: '0.0.0.0'
     },
-    plugins: [RssPlugin(RSSWeekly)],
-    optimizeDeps: {
-      include: ['element-plus'],
-      exclude: ['@sugarat/theme'],
-    },
+    plugins: [
+      RssPlugin(RSSWeekly)
+    ]
+  },
+  vue: {
+    template: {
+      compilerOptions: {
+        // https://github.com/vuejs/vitepress/discussions/468
+        isCustomElement: (tag) => {
+          return ['center'].includes(tag.toLocaleLowerCase())
+        }
+      }
+    }
   },
   lastUpdated: true,
   themeConfig: {
     outline: {
-      level: [2, 3],
+      level: [2, 3]
     },
-    search: {
-      provider: 'algolia',
-      options: {
-        appId: 'F919JCK8WY',
-        apiKey: '3eca209ad24bdfc26db63382dd5e4490',
-        indexName: 'sugarat_top',
-        placeholder: '请输入要搜索的内容...',
-      },
-    },
+    // search: {
+    //   provider: 'algolia',
+    //   options: {
+    //     appId: 'F919JCK8WY',
+    //     apiKey: '3eca209ad24bdfc26db63382dd5e4490',
+    //     indexName: 'sugarat_top',
+    //     placeholder: '请输入要搜索的内容...'
+    //   }
+    // },
     lastUpdatedText: '上次更新于',
-    logo: '/logo.png',
+    logo: 'https://sugarat.s3.bitiful.net/avatar/blog/zlyst-avatar.jpeg!style:avatar',
     editLink: {
-      pattern: 'https://github.com/ATQQ/sugar-blog/tree/master/packages/blogpress/:path',
-      text: '去 GitHub 上编辑内容',
+      pattern:
+        'https://github.com/ATQQ/sugar-blog/tree/master/packages/blogpress/:path',
+      text: '去 GitHub 上编辑内容'
     },
     nav: [
       {
         text: '关于我',
-        link: '/aboutme',
+        link: '/aboutme'
       },
       {
         text: '备战春秋',
@@ -263,8 +334,8 @@ export default defineConfig({
           { text: '心得总结', link: '/offer/experience/' },
           { text: '校招考点汇总', link: '/offer/campus/' },
           { text: '面经汇总', link: '/offer/sum-interview/' },
-          { text: '复习自查', link: '/offer/review/' },
-        ],
+          { text: '复习自查', link: '/offer/review/' }
+        ]
       },
       {
         text: '技术笔记',
@@ -274,8 +345,8 @@ export default defineConfig({
           { text: '源码学习', link: '/technology/source/' },
           { text: '技术概念', link: '/technology/theory/' },
           { text: '个人作品', link: '/technology/works/' },
-          { text: '学习笔记', link: '/technology/study/' },
-        ],
+          { text: '学习笔记', link: '/technology/study/' }
+        ]
       },
       {
         text: '计算机基础',
@@ -284,9 +355,9 @@ export default defineConfig({
           { text: '操作系统', link: '/computerBase/os/' },
           { text: '计算机网络', link: '/computerBase/Internet/' },
           { text: '设计模式', link: '/computerBase/design/' },
-          { text: '剑指offer', link: '/computerBase/offer/' },
+          { text: '剑指offer', link: '/computerBase/offer/' }
           // { text: '力扣', link: '/computerBase/leetcode/' }
-        ],
+        ]
       },
       {
         text: '大前端',
@@ -298,8 +369,8 @@ export default defineConfig({
           { text: '🌏浏览器专题', link: '/bigWeb/browser/' },
           { text: 'Web性能优化', link: '/bigWeb/performance/' },
           { text: 'regexp', link: '/bigWeb/regexp/' },
-          { text: 'node', link: '/bigWeb/node/' },
-        ],
+          { text: 'node', link: '/bigWeb/node/' }
+        ]
       },
       {
         text: '面试',
@@ -318,17 +389,17 @@ export default defineConfig({
           // { text: '设计模式', link: '/interview/design/' },
           { text: '综合问题', link: '/interview/other/' },
           { text: '面经汇总', link: '/offer/sum-interview/' },
-          { text: '小程序', link: '/interview/mini/' },
+          { text: '小程序', link: '/interview/mini/' }
           // { text: '面经', link: '/interview/experience/' }
-        ],
+        ]
       },
       {
         text: '手撕代码',
         items: [
           { text: '数据结构与算法', link: '/coding/algorithm/' },
           { text: 'javascript', link: '/coding/js/' },
-          { text: 'css', link: '/coding/css/' },
-        ],
+          { text: 'css', link: '/coding/css/' }
+        ]
       },
       // {
       //   text: '个人站点',
@@ -362,33 +433,33 @@ export default defineConfig({
         items: [
           {
             text: '轻取(文件收集)',
-            link: 'https://ep2.sugarat.top',
+            link: 'https://ep2.sugarat.top'
           },
           {
             text: '个人图床',
-            link: 'https://imgbed.sugarat.top',
+            link: 'https://imgbed.sugarat.top'
           },
           {
             text: '考勤小程序',
-            link: 'https://hdkq.sugarat.top/',
+            link: 'https://hdkq.sugarat.top/'
           },
           {
             text: '时光恋人',
-            link: 'https://lover.sugarat.top',
+            link: 'https://lover.sugarat.top'
           },
           {
             text: '在线简历生成',
-            link: 'https://resume.sugarat.top/',
-          },
-        ],
-      },
+            link: 'https://resume.sugarat.top/'
+          }
+        ]
+      }
     ],
     socialLinks: [
       { icon: 'github', link: 'https://github.com/ATQQ/sugar-blog' },
       {
         icon: 'x',
-        link: 'https://x.com/Mr_XiaoZou',
-      },
-    ],
-  },
+        link: 'https://x.com/Mr_XiaoZou'
+      }
+    ]
+  }
 })

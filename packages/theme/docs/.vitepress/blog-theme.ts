@@ -1,140 +1,7 @@
 import process from 'node:process'
 import type { Theme } from '@sugarat/theme'
 import { getThemeConfig } from '@sugarat/theme/node'
-
-export const workConfig: Theme.UserWorks = {
-  title: '个人项目/线上作品',
-  description: '记录开发的点点滴滴',
-  topTitle: '举些🌰',
-  list: [
-    {
-      title: '博客主题 @sugarat/theme',
-      description: '基于 vitepress 实现的博客主题',
-      time: {
-        start: '2023/01/29'
-      },
-      github: {
-        owner: 'ATQQ',
-        repo: 'sugar-blog',
-        branch: 'master',
-        path: 'packages/theme'
-      },
-      status: {
-        text: '积级维护'
-      },
-      url: 'https://theme.sugarat.top',
-      cover:
-        'https://img.cdn.sugarat.top/mdImg/MTY3MzE3MDUxOTMwMw==673170519303',
-      tags: ['Vitepress', 'Vue'],
-      links: [
-        {
-          title: '一个简约风的VitePress博客主题',
-          url: 'https://juejin.cn/post/7196517835380293693'
-        }
-      ]
-    },
-    {
-      title: 'EasyPicker(轻取)',
-      description:
-        '在线文件收集系统，支持各种文件的收集，一站式存储，提交者无需注册',
-      time: {
-        start: '2019/03/27'
-      },
-      github: {
-        owner: 'ATQQ',
-        repo: 'easypicker2-client',
-        branch: 'main'
-      },
-      status: {
-        text: '积级维护'
-      },
-      url: 'https://docs.ep.sugarat.top',
-      cover:
-        'https://img.cdn.sugarat.top/mdImg/MTY3ODAwMzU3MTc2Ng==678003571766',
-      tags: ['Vue'],
-      links: [
-        {
-          title: '提交示例',
-          url: 'https://ep2.sugarat.top/task/627bd3b18a567f1b47bcdace'
-        },
-        { title: '私有化部署', url: 'https://docs.ep.sugarat.top/deploy/' }
-      ]
-    },
-    {
-      title: '个人博客',
-      description: '✍️📚我写博客的地方🤪🤪🤪，记录随笔与学习笔记',
-      time: {
-        start: '2020/02/18'
-      },
-      github: 'https://github.com/ATQQ/sugar-blog',
-      url: 'https://sugarat.top',
-      tags: ['Vitepress', 'Vue'],
-      cover:
-        'https://img.cdn.sugarat.top/mdImg/MTY3MzE3MDUxOTMwMw==673170519303',
-      links: [
-        { title: '掘金', url: 'https://juejin.cn/user/1028798615918983' },
-        { title: 'GitHub主页', url: 'https://github.com/ATQQ' }
-      ]
-    },
-    {
-      title: '示例1',
-      description: `项目介绍${'阿巴'.repeat(50)}`,
-      time: {
-        start: '2022/03/27'
-      },
-      status: {
-        text: '内置badge',
-        type: 'danger'
-      },
-      top: 1,
-      github: 'https://github.com/ATQQ/sugar-blog',
-      url: 'https://sugarat.top',
-      tags: ['Vitepress', 'Vue'],
-      cover: [
-        'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
-        'https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg',
-        'https://fuss10.elemecdn.com/0/6f/e35ff375812e6b0020b6b4e8f9583jpeg.jpeg',
-        'https://fuss10.elemecdn.com/9/bb/e27858e973f5d7d3904835f46abbdjpeg.jpeg',
-        'https://fuss10.elemecdn.com/d/e6/c4d93a3805b3ce3f323f7974e6f78jpeg.jpeg',
-        'https://fuss10.elemecdn.com/3/28/bbf893f792f03a54408b3b7a7ebf0jpeg.jpeg',
-        'https://fuss10.elemecdn.com/2/11/6535bcfb26e4c79b48ddde44f4b6fjpeg.jpeg'
-      ],
-      links: [
-        { title: '掘金', url: 'https://juejin.cn/user/1028798615918983' },
-        { title: 'GitHub主页', url: 'https://github.com/ATQQ' }
-      ]
-    },
-    {
-      title: '示例2',
-      description: `项目介绍${'哈哈'.repeat(50)}`,
-      time: {
-        start: '2022/03/27'
-      },
-      status: {
-        text: '内置badge',
-        type: 'tip'
-      },
-      top: 2,
-      github: 'https://github.com/ATQQ/sugar-blog',
-      tags: ['Vitepress'],
-      cover: {
-        urls: [
-          'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
-          'https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg',
-          'https://fuss10.elemecdn.com/0/6f/e35ff375812e6b0020b6b4e8f9583jpeg.jpeg',
-          'https://fuss10.elemecdn.com/9/bb/e27858e973f5d7d3904835f46abbdjpeg.jpeg',
-          'https://fuss10.elemecdn.com/d/e6/c4d93a3805b3ce3f323f7974e6f78jpeg.jpeg',
-          'https://fuss10.elemecdn.com/3/28/bbf893f792f03a54408b3b7a7ebf0jpeg.jpeg',
-          'https://fuss10.elemecdn.com/2/11/6535bcfb26e4c79b48ddde44f4b6fjpeg.jpeg'
-        ],
-        layout: 'list'
-      },
-      links: [
-        { title: '自定义链接', url: 'https://juejin.cn/user/1028798615918983' }
-      ]
-    }
-  ]
-}
+import workConfig from './works'
 
 const baseUrl = 'https://theme.sugarat.top'
 const RSS: Theme.RSSOptions = {
@@ -145,7 +12,41 @@ const RSS: Theme.RSSOptions = {
 }
 
 export const blogTheme = getThemeConfig({
+  imageStyle: {
+    coverPreview: [
+      // 七牛云
+      {
+        rule: '//img.cdn.sugarat.top',
+        suffix: '~cover.webp'
+      },
+      // 又拍云CDN
+      {
+        rule: '//cdn.upyun.sugarat.top',
+        suffix: '-cover'
+      }
+    ]
+  },
+  oml2d: {
+    mobileDisplay: true,
+    models: [
+      {
+        path: 'https://sugarat.s3.bitiful.net/npm/oml2d-model/models/Senko_Normals/senko.model3.json',
+      }
+    ],
+    libraryUrls: {
+      complete: 'https://sugarat.s3.bitiful.net/npm/oh-my-live2d/latest/lib/complete.js',
+      cubism2: 'https://sugarat.s3.bitiful.net/npm/oh-my-live2d/latest/lib/cubism2.js',
+      cubism5: 'https://sugarat.s3.bitiful.net/npm/oh-my-live2d/latest/lib/cubism5.js'
+    }
+  },
   RSS,
+  authorList: [
+    {
+      nickname: '粥里有勺糖',
+      url: 'https://sugarat.top/aboutme.html',
+      des: '你的指尖,拥有改变世界的力量'
+    }
+  ],
   recommend: {
     nextText: '下一页',
     sort(a, b) {
@@ -171,11 +72,20 @@ export const blogTheme = getThemeConfig({
   author: '粥里有勺糖',
   // 评论
   comment: {
-    repo: 'ATQQ/sugar-blog',
-    repoId: 'MDEwOlJlcG9zaXRvcnkyNDEyNDUyOTk',
-    category: 'Announcements',
-    categoryId: 'DIC_kwDODmEcc84COVc6',
-    inputPosition: 'top'
+    type: 'giscus',
+    options: {
+      repo: 'ATQQ/sugar-blog',
+      repoId: 'MDEwOlJlcG9zaXRvcnkyNDEyNDUyOTk',
+      category: 'Announcements',
+      categoryId: 'DIC_kwDODmEcc84COVc6',
+      inputPosition: 'top',
+    },
+  },
+  buttonAfterArticle: {
+    openTitle: '投"币"支持',
+    closeTitle: '下次一定',
+    content: '<img src="https://img.cdn.sugarat.top/mdImg/MTY0Nzc1NTYyOTE5Mw==647755629193">',
+    icon: 'wechatPay',
   },
   popover: {
     title: '公告',
@@ -183,7 +93,7 @@ export const blogTheme = getThemeConfig({
       { type: 'text', content: '👇公众号👇---👇 微信 👇' },
       {
         type: 'image',
-        src: 'https://img.cdn.sugarat.top/mdImg/MTYxNTAxODc2NTIxMA==615018765210'
+        src: 'https://img.cdn.sugarat.top/mdImg/MTYxNTAxODc2NTIxMA==615018765210~fmt.webp'
       },
       {
         type: 'text',

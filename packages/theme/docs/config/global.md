@@ -10,9 +10,11 @@ outline: [2,3]
 ---
 
 # 全局配置
+
 全局配置通常是 添加到 `.vitepress/config.ts`文件中
 
 默认配置如下
+
 ```ts
 import { defineConfig, getThemeConfig } from '@sugarat/theme/node'
 
@@ -23,10 +25,12 @@ export default defineConfig({
   // ...other config
 })
 ```
+
 :::details 我启动时遇到配置方式过期提示？
 ![](https://img.cdn.sugarat.top/mdImg/MTY3OTIxNDY5MjE3NQ==679214692175)
 
 只需动动手指将配置按照如上最新的方式做个替换即可
+
 * 将 `...blogTheme` 改成通过 `extends` 的方式引入
 
 ```ts
@@ -42,6 +46,7 @@ export default defineConfig({
   }
 })
 ```
+
 :::
 
 :::tip
@@ -53,6 +58,7 @@ export default defineConfig({
 本主题的拓展配置都在导出的`getThemeConfig`方法中
 
 下面是简单示例 **关闭主题自带搜索**
+
 ```ts
 import { defineConfig, getThemeConfig } from '@sugarat/theme/node'
 
@@ -65,11 +71,13 @@ export default defineConfig({
   // ...other config
 })
 ```
+
 ![](https://img.cdn.sugarat.top/mdImg/MTY3OTEyMjg5Nzc1Mg==679122897752)
 
 下面开始详细介绍 [Theme.BlogConfig](https://github.com/ATQQ/sugar-blog/blob/255c4b1e6a85a529be3a72c88e365077e067ecba/packages/theme/src/composables/config/index.ts#L69-L137)
 
 ## author
+
 * Type: `string`
 
 设置文章默认的作者名字，优先级低于[单独在文章中设置](./frontmatter.md#author)的情况
@@ -83,6 +91,9 @@ const blogTheme = getThemeConfig({
 ![图片](https://img.cdn.sugarat.top/mdImg/MTY3NDkxMzUxNzQxMg==674913517412)
 
 ## hotArticle
+
+* Type: `false | HotArticle`
+
 用于控制首页右侧的精选文章内容，其中精选的文章由 [frontmatter: sticky](./frontmatter.md#sticky) 进行控制
 
 ::: code-group
@@ -129,7 +140,30 @@ sticky: 1
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTY3NDkxNzkzMjY5Nw==674917932697)
 
+设置为 false 时，不展示
+
+```ts
+const blogTheme = getThemeConfig({
+  hotArticle: false
+})
+```
+
+## homeTags
+
+* Type: `boolean`
+
+用于控制首页右侧的标签内容
+
+设置为 false 时，不展示
+
+```ts
+const blogTheme = getThemeConfig({
+  homeTags: false
+})
+```
+
 ## home
+
 用于设置首页的自定义内容
 ::: code-group
 
@@ -177,17 +211,21 @@ interface HomeBlog {
 ![图片](https://img.cdn.sugarat.top/mdImg/MTY3NDkyMDIwMzE5MQ==674920203192)
 
 ![](https://img.cdn.sugarat.top/mdImg/MTY5NjE1NTk3MjkxMQ==696155972911)
+
 ## search
+
 * Type: `boolean | 'pagefind' | Object`
 * Default: `true`
 
 控制是否启用主题自带的搜索功能（简化版的[pagefind](https://pagefind.app/)）
 :::code-group
+
 ```ts [关闭搜索]
 const blogTheme = getThemeConfig({
   search: false
 })
 ```
+
 ```ts [修改搜索文案]
 const blogTheme = getThemeConfig({
   search: {
@@ -198,6 +236,7 @@ const blogTheme = getThemeConfig({
   }
 })
 ```
+
 ```ts [type]
 type SearchConfig =
     | boolean
@@ -214,8 +253,8 @@ type SearchConfig =
       mode?: boolean | 'pagefind'
     }
 ```
-:::
 
+:::
 
 ![](https://img.cdn.sugarat.top/mdImg/MTY3OTEyMjg5Nzc1Mg==679122897752)
 
@@ -244,9 +283,11 @@ export default defineConfig({
 ![](https://img.cdn.sugarat.top/mdImg/MTY4MjE3NDYxOTczMA==682174619730)
 
 ### 全文搜索 - pagefind
+
 开启全文搜索（基于 [pagefind](https://pagefind.app/) 实现）
 
 :::code-group
+
 ```ts [demo1]
 const blogTheme = getThemeConfig({
   search: 'pagefind'
@@ -264,6 +305,7 @@ const blogTheme = getThemeConfig({
   }
 })
 ```
+
 :::
 
 :::tip
@@ -277,7 +319,6 @@ const blogTheme = getThemeConfig({
 
 ![](https://img.cdn.sugarat.top/mdImg/MTY3OTEyMzQ0NDAwOA==679123444008)
 
-
 如果需要自定义更多的内容可以使用独立的插件 [vitepress-plugin-pagefind](https://github.com/ATQQ/sugar-blog/blob/master/packages/vitepress-plugin-pagefind/README-zh.md)
 
 :::code-group
@@ -290,6 +331,7 @@ pnpm add vitepress-plugin-pagefind
 // 在 `.vitepress/config.ts` 引入
 import { defineConfig } from 'vitepress'
 import { chineseSearchOptimize, pagefindPlugin } from 'vitepress-plugin-pagefind'
+import { getThemeConfig } from '@sugarat/theme/node'
 
 const blogTheme = getThemeConfig({
   // 关闭主题内置
@@ -311,9 +353,11 @@ export default defineConfig({
   },
 })
 ```
+
 :::
 
 ### 全文搜索 - algolia
+
 当然也推荐大家接入[algolia](https://vitepress.dev/guide/theme-search)使用，申请教程可以参考 [博客优化之开启 Algolia 全文搜索](https://github.com/mqyqingfeng/Blog/issues/267)
 
 ```ts
@@ -341,6 +385,7 @@ export default defineConfig({
 如下接入步骤
 
 ::: code-group
+
 ```sh [① 安装必要依赖]
 pnpm add vitepress-plugin-search markdown-it flexsearch -D
 ```
@@ -355,44 +400,204 @@ export default defineConfig({
   }
 })
 ```
+
 :::
 
 ## comment
+* type: `false | CommentConfig`
+
+:::details 查看类型定义
+```ts [type]
+type CommentConfig = ((GiscusOption & CommentCommonConfig) | GiscusConfig | ArtalkConfig)
+
+interface CommentCommonConfig {
+  /**
+   * @default '评论'
+   */
+  label?: string
+  /**
+   * 自定义图标，SVG 格式
+   * @recommend https://iconbuddy.app/search?q=fire
+   */
+  icon?: string
+  /**
+   * 移动端最小化按钮
+   * @default true
+   */
+  mobileMinify?: boolean
+}
+interface GiscusConfig extends CommentCommonConfig {
+  type: 'giscus'
+  options: GiscusOption
+}
+interface ArtalkConfig extends CommentCommonConfig {
+  type: 'artalk'
+  options: ArtalkOption
+}
+interface GiscusOption {
+  repo: Repo
+  repoId: string
+  category: string
+  categoryId: string
+  mapping?: Mapping
+  inputPosition?: 'top' | 'bottom'
+  lang?: string
+  loading?: 'lazy' | 'eager'
+}
+interface ArtalkOption {
+  site: string
+  server: string
+}
+```
+
+:::
+
+### giscus
+
 配置文章的评论，使用 [giscus](https://giscus.app/zh-CN)（由 GitHub Discussions 驱动的评论系统）
 
-访问 https://giscus.app/zh-CN 获取下述的参数
+访问 <https://giscus.app/zh-CN> 获取下述的参数
 
 ::: code-group
 
-```ts [example]
+```ts [兼容旧配置]
 const blogTheme = getThemeConfig({
   comment: {
     repo: 'ATQQ/sugar-blog',
     repoId: 'MDEwOlJlcG9zaXRvcnkyNDEyNDUyOTk',
     category: 'Announcements',
-    categoryId: 'DIC_kwDODmEcc84COVc6'
+    categoryId: 'DIC_kwDODmEcc84COVc6',
+    inputPosition: 'top',
   }
 })
 ```
 
-```ts [type]
-interface GiscusConfig {
-  repo: string
-  repoId: string
-  category: string
-  categoryId: string
-  mapping?: string
-  inputPosition?: 'top' | 'bottom'
-  lang?: string
-  loading?: 'lazy' | ''
-}
+```ts [配置示例]
+const blogTheme = getThemeConfig({
+  comment: {
+    type: 'giscus',
+    options: {
+      repo: 'ATQQ/sugar-blog',
+      repoId: 'MDEwOlJlcG9zaXRvcnkyNDEyNDUyOTk',
+      category: 'Announcements',
+      categoryId: 'DIC_kwDODmEcc84COVc6',
+      inputPosition: 'top'
+    },
+    mobileMinify: true
+  }
+})
+```
+
+```ts [自定义图标&文案]
+const blogTheme = getThemeConfig({
+  comment: {
+    type: 'giscus',
+    options: {
+      repo: 'ATQQ/sugar-blog',
+      repoId: 'MDEwOlJlcG9zaXRvcnkyNDEyNDUyOTk',
+      category: 'Announcements',
+      categoryId: 'DIC_kwDODmEcc84COVc6',
+      inputPosition: 'top'
+    },
+    // 自定义展示内容
+    label: '发表意见',
+    icon: `<svg width="512" height="512" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#fbbf67" d="M63.962 31.979c0 17.665-14.318 31.979-31.981 31.979C14.319 63.958 0 49.644 0 31.979C0 14.315 14.319 0 31.981 0c17.663 0 31.981 14.315 31.981 31.979"/>
+      <path fill="#633d19" d="M39.512 47.925c-.624-1.461-1.959-2.202-3.97-2.202c-1.568 0-3.271.45-4.515.78l-.727.185c-.32.079-1.979 1.012-1.868 1.914l.193.727h.671c.111 0 .229-.016.37-.049l.602-.152c1.361-.342 2.643-.666 3.983-.666c.788 0 1.46.305 2 .905c.442.487.371.773.348.868c-.118.494-.889 1.085-1.916 1.476c0 0-1.594.658-1.663 1.574l.052.622l.415.237c2.326 1.333 2.278 2.194 1.979 2.796c-.332.664-1.275.805-2.01.805c-1.019 0-2.121-.273-2.765-.542l-.427-.083c-.806 0-2.105.97-2.248 1.673l-.071.716l.573.238a8.03 8.03 0 0 0 3.128.628h.004c1.896 0 3.831-.663 5.442-1.866c1.431-1.066 1.713-2.18 1.699-2.929c-.02-.938-.506-1.882-1.391-2.728c2.23-1.332 2.939-2.986 2.112-4.927"/>
+      <ellipse cx="11.242" cy="42.42" fill="#ed307c" opacity=".48" rx="7.928" ry="6.462"/>
+      <path fill="#ed307c" d="M60.65 43.24c0 3.571-3.549 6.462-7.927 6.462c-4.379 0-7.93-2.891-7.93-6.462c0-3.572 3.551-6.466 7.93-6.466c4.378 0 7.927 2.894 7.927 6.466" opacity=".48"/>
+      <path fill="#633d19" d="M25.23 12.968c-5.951-.411-11.346 2.028-15.08 6.66c-1.622 2.01 1.223 4.89 2.86 2.86c3.134-3.887 7.215-5.822 12.221-5.475c2.605.179 2.588-3.867 0-4.045m14.079 0c5.95-.411 11.346 2.028 15.08 6.66c1.621 2.01-1.223 4.89-2.86 2.86c-3.134-3.887-7.215-5.822-12.221-5.475c-2.605.179-2.587-3.867 0-4.045M28.886 32.33c-.225 0-4.333-1.576-8.48-1.576c-3.705 0-7.442 1.576-8.481 1.576c-.9 0-1.236-1.043-.691-1.667c4.961-5.728 13.378-5.728 18.344 0c.541.624.205 1.667-.692 1.667m25.019 0c-.226 0-4.333-1.576-8.48-1.576c-3.705 0-7.441 1.576-8.48 1.576c-.9 0-1.236-1.043-.691-1.667c4.961-5.728 13.379-5.728 18.344 0c.54.624.204 1.667-.693 1.667"/>
+  </svg>`,
+    mobileMinify: false
+  }
+})
 ```
 
 :::
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTY3NDkyMDc2MDIxMw==674920760213)
 
+![](https://img.cdn.sugarat.top/mdImg/sugar/4f5883d87e53fbea63b9231beed0d52f)
+
+### artalk
+
+配置文章的评论，使用 [artalk](https://artalk.js.org/)（由 Artalk 驱动的评论系统）
+
+访问 <https://artalk.js.org/> 获取具体部署文档
+
+![](https://img.cdn.sugarat.top/mdImg/sugar/826637f9ade0aae08c19bb58ece08f22)
+
+**本主题采用Artalk后端控制前端配置，这样能让前后端始终保持兼容性，且无需在程序升级后手动更换 Artalk 前端资源的引入地址。**
+
+::: code-group
+
+```ts [配置示例]
+const blogTheme = getThemeConfig({
+  comment: {
+    type: 'artalk',
+    options: {
+      // 建议通过反向代理处理跨域问题，将路径指向服务地址 例如 http://localhost:23366
+      server: '/artalk',
+      site: 'Default Site'
+    },
+  }
+})
+```
+
+```ts [自定义图标&文案]
+const blogTheme = getThemeConfig({
+  comment: {
+    type: 'artalk',
+    options: {
+      server: 'http://localhost:8080',
+      site: 'Default Site'
+    },
+    // 自定义展示内容
+    label: '发表意见',
+    icon: `<svg width="512" height="512" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#fbbf67" d="M63.962 31.979c0 17.665-14.318 31.979-31.981 31.979C14.319 63.958 0 49.644 0 31.979C0 14.315 14.319 0 31.981 0c17.663 0 31.981 14.315 31.981 31.979"/>
+      <path fill="#633d19" d="M39.512 47.925c-.624-1.461-1.959-2.202-3.97-2.202c-1.568 0-3.271.45-4.515.78l-.727.185c-.32.079-1.979 1.012-1.868 1.914l.193.727h.671c.111 0 .229-.016.37-.049l.602-.152c1.361-.342 2.643-.666 3.983-.666c.788 0 1.46.305 2 .905c.442.487.371.773.348.868c-.118.494-.889 1.085-1.916 1.476c0 0-1.594.658-1.663 1.574l.052.622l.415.237c2.326 1.333 2.278 2.194 1.979 2.796c-.332.664-1.275.805-2.01.805c-1.019 0-2.121-.273-2.765-.542l-.427-.083c-.806 0-2.105.97-2.248 1.673l-.071.716l.573.238a8.03 8.03 0 0 0 3.128.628h.004c1.896 0 3.831-.663 5.442-1.866c1.431-1.066 1.713-2.18 1.699-2.929c-.02-.938-.506-1.882-1.391-2.728c2.23-1.332 2.939-2.986 2.112-4.927"/>
+      <ellipse cx="11.242" cy="42.42" fill="#ed307c" opacity=".48" rx="7.928" ry="6.462"/>
+      <path fill="#ed307c" d="M60.65 43.24c0 3.571-3.549 6.462-7.927 6.462c-4.379 0-7.93-2.891-7.93-6.462c0-3.572 3.551-6.466 7.93-6.466c4.378 0 7.927 2.894 7.927 6.466" opacity=".48"/>
+      <path fill="#633d19" d="M25.23 12.968c-5.951-.411-11.346 2.028-15.08 6.66c-1.622 2.01 1.223 4.89 2.86 2.86c3.134-3.887 7.215-5.822 12.221-5.475c2.605.179 2.588-3.867 0-4.045m14.079 0c5.95-.411 11.346 2.028 15.08 6.66c1.621 2.01-1.223 4.89-2.86 2.86c-3.134-3.887-7.215-5.822-12.221-5.475c-2.605.179-2.587-3.867 0-4.045M28.886 32.33c-.225 0-4.333-1.576-8.48-1.576c-3.705 0-7.442 1.576-8.481 1.576c-.9 0-1.236-1.043-.691-1.667c4.961-5.728 13.378-5.728 18.344 0c.541.624.205 1.667-.692 1.667m25.019 0c-.226 0-4.333-1.576-8.48-1.576c-3.705 0-7.441 1.576-8.48 1.576c-.9 0-1.236-1.043-.691-1.667c4.961-5.728 13.379-5.728 18.344 0c.54.624.204 1.667-.693 1.667"/>
+  </svg>`,
+    mobileMinify: false
+  }
+})
+```
+
+:::
+
+本地测试验证可以使用 `Vite Proxy` 解决跨域问题
+```ts
+// config.mts
+const blogTheme = getThemeConfig({
+  comment: {
+    type: 'artalk',
+    options: {
+      site: '粥里有勺糖',
+      server: '/artalk',
+    },
+  },
+})
+export default defineConfig({
+  extends: blogTheme,
+  // 省略其他配置
+  vite: {
+    server: {
+      proxy: {
+        '/artalk': {
+          target: 'http://localhost:23366',
+          changeOrigin: true,
+          rewrite: path => path.replace(/^\/artalk/, '')
+        }
+      }
+    }
+  },
+})
+```
 ## recommend
+
 * Type: `false | RecommendArticle`
 
 用于控制推荐文章的展示卡片
@@ -461,6 +666,7 @@ interface RecommendArticle {
 ![图片](https://img.cdn.sugarat.top/mdImg/MTY3NDkyMTI2MDQyNQ==674921260425)
 
 设置为 false 时，不展示
+
 ```ts
 const blogTheme = getThemeConfig({
   recommend: false
@@ -476,11 +682,13 @@ const blogTheme = getThemeConfig({
   }
 })
 ```
+
 ![](https://img.cdn.sugarat.top/mdImg/MTY5MTIxODc4NDYzNw==691218784637)
 
 通过 `sort` 属性可以自定义排序规则，默认按照时间排序`date`，例如按照文件名排序
 
 :::code-group
+
 ```ts [文件名]
 const blogTheme = getThemeConfig({
   recommend: {
@@ -498,13 +706,16 @@ const blogTheme = getThemeConfig({
   }
 })
 ```
+
 :::
 
 ## article
+
 设置文章全局相关能力
 ::: code-group
 
 ```ts [default]
+// 内置默认配置如下
 const blogTheme = getThemeConfig({
   article: {
     /**
@@ -514,7 +725,11 @@ const blogTheme = getThemeConfig({
     /**
      * 是否隐藏文章页的封面展示
      */
-    hiddenCover: false
+    hiddenCover: false,
+    /**
+     * 阅读时间分析展示位置
+     */
+    readingTimePosition: 'inline'
   }
 })
 ```
@@ -522,6 +737,11 @@ const blogTheme = getThemeConfig({
 ```ts [type]
 interface ArticleConfig {
   readingTime?: boolean
+  /**
+   * 阅读时间分析展示位置
+   * @default 'inline'
+   */
+  readingTimePosition?: 'inline' | 'newLine' | 'top'
   hiddenCover?: boolean
 }
 ```
@@ -532,17 +752,24 @@ interface ArticleConfig {
 
 ![](https://img.cdn.sugarat.top/mdImg/MTY4MjE3NDAzNzMxMw==682174037313)
 
+不同配置效果
+| top                                                                           | inline                                                                        | newLine                                                                       |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| ![](https://img.cdn.sugarat.top/mdImg/sugar/21aa2571b60f76e7401b66af851009bb) | ![](https://img.cdn.sugarat.top/mdImg/sugar/5da6e5e56bde48265e706bc004e2ad41) | ![](https://img.cdn.sugarat.top/mdImg/sugar/50e9ec84b37af64f723c3b477b99283a) |
+
 ## srcDir
+
 * Type: `string`
 * Default: `.`
 
 相对于项目根目录，文章所在位置，同 [App Configs #srcdir](https://vitepress.dev/config/app-configs#srcdir)
 
-**通常情况下无需设置**，默认从 CLI 指令取值 
+**通常情况下无需设置**，默认从 CLI 指令取值
 
 例如 `vitepress dev docs`，取值即为`docs`
 
 等价于
+
 ```ts
 const blogTheme = getThemeConfig({
   srcDir: './docs'
@@ -550,6 +777,7 @@ const blogTheme = getThemeConfig({
 ```
 
 ## alert
+
 设置一个全局的提示弹窗 (由 [el-alert](https://element-plus.gitee.io/zh-CN/component/alert.html) 驱动)
 
 ::: code-group
@@ -595,6 +823,7 @@ interface Alert {
   html?: string
 }
 ```
+
 :::
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTY3NDk5MzQwNTQwOA==674993405408)
@@ -605,8 +834,7 @@ interface Alert {
 
 设置一个全局的公告弹窗，支持设置图片，文字，按钮（[el-button](https://element-plus.gitee.io/zh-CN/component/button.html)）跳链
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTY3NDk5NDY3Nzc5NQ==674994677795)
-
+![](https://img.cdn.sugarat.top/mdImg/MTY3NDk5NDY3Nzc5NQ==674994677795)
 
 ::: code-group
 
@@ -615,6 +843,7 @@ const blogTheme = getThemeConfig({
   popover: {
     title: '📢 广而周知 📢',
     duration: -1,
+    mobileMinify: false,
     body: [
       {
         type: 'title',
@@ -624,7 +853,7 @@ const blogTheme = getThemeConfig({
       { type: 'text', content: '👇公众号👇---👇 微信 👇' },
       {
         type: 'image',
-        src: 'https://img.cdn.sugarat.top/mdImg/MTYxNTAxODc2NTIxMA==615018765210'
+        src: 'https://img.cdn.sugarat.top/mdImg/MTYxNTAxODc2NTIxMA==615018765210~fmt.webp'
       }
     ],
     footer: [
@@ -654,12 +883,37 @@ interface Popover {
    * 配置改变时，会重新触发展示
    */
   duration: number
+  /**
+   * 移动端自动最小化
+   * @default false
+   */
+  mobileMinify?: boolean
   body?: BlogPopover.Value[]
   footer?: BlogPopover.Value[]
   /**
    * 手动重新打开
    */
   reopen?: boolean
+  /**
+   * 设置展示图标，svg
+   * @recommend https://iconbuddy.app/search?q=fire
+   */
+  icon?: string
+  /**
+   * 设置关闭图标，svg
+   * @recommend https://iconbuddy.app/search?q=fire
+   */
+  closeIcon?: string
+  /**
+   * 是否打开闪烁提示，通常需要和 reopen 搭配使用
+   * @default true
+   */
+  twinkle?: boolean
+  /**
+   * 自定义展示策略
+   * @param to 切换到的目标路由
+   */
+  onRouteChanged?: (to: Route, show: Ref<boolean>) => void
 }
 
 export namespace BlogPopover {
@@ -692,13 +946,41 @@ export namespace BlogPopover {
   export type Value = Title | Text | Image | Button
 }
 ```
+
 :::
 
+公告图标也可使用 `icon`, `closeIcon` 进行自定义
+
+常见问题：**如果希望 2 个图片并排展示**，自定义如下样式实现
+
+```ts
+const blogTheme = getThemeConfig({
+  popover: {
+    body: [
+      { type: 'text', content: '👇公众号👇---👇 微信 👇' },
+      {
+        type: 'image',
+        src: '二维码1链接',
+        style: 'display: inline-block;width:46%;padding-right:6px'
+      },
+      {
+        type: 'image',
+        src: '二维码2链接',
+        style: 'display: inline-block;width:46%;padding-left:6px'
+      }
+    ],
+  },
+})
+```
+
+也支持根据不同路由自定义展示策略，详见`onRouteChanged` 方法。
+
+
 ## friend
+
 用于设置首页展示的友链信息
 
 ![](https://img.cdn.sugarat.top/mdImg/MTY5MzMxODIxNDY0Mg==693318214642)
-
 
 ::: code-group
 
@@ -757,6 +1039,7 @@ interface BlogConfig {
   friend?: FriendLink[] | FriendConfig
 }
 ```
+
 :::
 
 同时也支持设置logo `alt` 信息（默认取 nickname）
@@ -808,6 +1091,7 @@ const blogTheme = getThemeConfig({
 ```
 
 ## authorList
+
 用于设置文章页作者信息跳转相关信息，默认情况下`author`仅做展示
 
 设置这个列表后，作者信息如果匹配上，即可跳转
@@ -835,10 +1119,11 @@ interface AuthorInfo {
   url: string
 }
 ```
+
 :::
 
-
 ## blog
+
 * Type: `boolean`
 * Default: `true`
 
@@ -876,6 +1161,7 @@ hero:
 ![](https://img.cdn.sugarat.top/mdImg/MTY3NzE2Mjk1NzczNw==677162957737)
 
 ## RSS
+
 * Type：`RSSOptions`
 
 开启 RSS 支持，自动生成 `feed.rss` 文件
@@ -900,6 +1186,7 @@ const blogTheme = getThemeConfig({
   RSS
 })
 ```
+
 ```ts [example2 复杂配置]
 import type { Theme } from '@sugarat/theme'
 
@@ -957,6 +1244,11 @@ type RSSOptions = Omit<FeedOptions, 'id'> & {
    */
   ignoreHome?: boolean
   /**
+   * 是否忽略 frontmatter publish 控制
+   * @default false
+   */
+  ignorePublish?: boolean
+  /**
    * 博客站点内容涉及的作者列表
    */
   authors?: Author[]
@@ -996,17 +1288,21 @@ interface FeedOptions {
 ![](https://img.cdn.sugarat.top/mdImg/MTY5MTkyODAxMDEwMQ==691928010101)
 
 :::warning 特别提示
-你也可以使用单独的插件 [vitepress-plugin-rss](https://www.npmjs.com/package/vitepress-plugin-rss) 来添加同样的能力，其支持更加丰富的定制
+你也可以使用单独的插件 [vitepress-plugin-rss](https://www.npmjs.com/package/vitepress-plugin-rss) 来添加同样的能力，其支持更加丰富的定制。
+
+如果需要同时生成多个 RSS 订阅配置文件，也可多次重复配置这个插件。
 
 实现原理见文章：[如何快速为 VitePress 添加 RSS 订阅支持 - 掘金](https://juejin.cn/post/7270046196642005049)
 :::
 
 ## themeColor
+
 * Type: `ThemeColor`
 
 用于设置博客整体的主题色，内置了多套（从 `VP` 和 `Element` 移植的主题色）
 
 ::: code-group
+
 ```ts [default]
 const blogTheme = getThemeConfig({
   themeColor: 'vp-default'
@@ -1022,6 +1318,7 @@ const blogTheme = getThemeConfig({
 ```ts [type]
 type ThemeColor = 'vp-default' | 'vp-green' | 'vp-yellow' | 'vp-red' | 'el-blue' | 'el-yellow' | 'el-green' | 'el-red'
 ```
+
 :::
 
 |                               vp-default                                |                                vp-green                                 |                                 el-blue                                 |
@@ -1030,7 +1327,72 @@ type ThemeColor = 'vp-default' | 'vp-green' | 'vp-yellow' | 'vp-red' | 'el-blue'
 
 <ChangeThemeDemo />
 
+## buttonAfterArticle
+
+* Type: `false | ButtonAfterArticleConfig`
+
+用于控制文章底部按钮，点击按钮会在按钮下方渲染一个自定义的html内容，例如可以用来做赞赏按钮，内置了 `wechatPay` 和 `aliPay` 两个图标，也可自定义图标(svg)。
+
+![](https://img.cdn.sugarat.top/mdImg/sugar/4d429bea65b8840f5cfda875fac50926)
+
+::: code-group
+
+```ts [example]
+const blogTheme = getThemeConfig({
+  buttonAfterArticle: {
+    openTitle: '赞赏',
+    closeTitle: '下次一定',
+    content: '<img src="https://img.cdn.sugarat.top/mdImg/MTY0Nzc1NTYyOTE5Mw==647755629193">',
+    icon: 'aliPay'
+  }
+})
+```
+
+```ts [type]
+interface ButtonAfterArticleConfig {
+  openTitle?: string
+  closeTitle?: string
+  content?: string
+  icon?: 'aliPay' | 'wechatPay' | string
+  /**
+   * 按钮尺寸
+   * @default 'default'
+   */
+  size?: 'small' | 'default' | 'large'
+  /**
+   * 默认展开
+   * @default false
+   */
+  expand?: boolean
+}
+```
+
+:::
+
+设置为 false 时，不展示
+
+```ts
+const blogTheme = getThemeConfig({
+  buttonAfterArticle: false
+})
+```
+
+也可以在文章 `Frontmatter` 处单独设置 `buttonAfterArticle` 或 `false` 以控制单独一篇文章的展示内容
+
+```yaml
+---
+buttonAfterArticle:
+  openTitle: 投币
+  closeTitle: 下次一定
+  content: '<img src="https://img.cdn.sugarat.top/mdImg/MTY4NTIwMTQwMTAzNg==685201401036">'
+  icon: aliPay
+  # size: small
+  # expand: true
+---
+```
+
 ## footer
+
 * Type: `Footer | Footer[]`
 
 设置首页页脚的内容（可用于设置版权，备案信息，自定义内容等）
@@ -1049,11 +1411,25 @@ const blogTheme = getThemeConfig({
 ```
 
 ```ts [type]
+interface FooterItem {
+  text: string
+  link?: string
+  icon?: boolean | string
+}
+
 interface Footer {
   /**
-   * 自定义补充信息
+   * 自定义补充信息（支持配置为HTML），在内置的 footer 上方
    */
   message?: string | string[]
+  /**
+   * 自定义补充信息（支持配置为HTML），在内置的 footer 下方
+   */
+  bottomMessage?: string | string[]
+  /**
+   * 自定义补充信息（支持配置为HTML），紧随内置的后方
+   */
+  list?: string | string[] | FooterItem | FooterItem[]
   /**
    * 是否展示主题版本信息
    */
@@ -1063,7 +1439,7 @@ interface Footer {
    */
   copyright?: string | {
     message: string
-    link: string
+    link?: string
     icon?: boolean | string
   }
   /**
@@ -1084,6 +1460,7 @@ interface Footer {
   }
 }
 ```
+
 :::
 
 下面是一个较完整例子
@@ -1093,7 +1470,7 @@ interface Footer {
 ```ts
 const blogTheme = getThemeConfig({
   footer: {
-    message: '下面 的内容和图标都是可以修改的噢（当然本条内容也是可以隐藏的）',
+    message: '下面 的内容和图标都是可以修改的噢（当然本条内容也是可以隐藏的，也可以配置为HTML）',
     copyright: 'MIT License | 粥里有勺糖',
     icpRecord: {
       name: '蜀ICP备19011724号',
@@ -1108,6 +1485,7 @@ const blogTheme = getThemeConfig({
 ```
 
 不想显示主题版本也可主动关闭(不过还是希望大家展示 😄)
+
 ```ts
 const blogTheme = getThemeConfig({
   footer: {
@@ -1168,9 +1546,32 @@ const blogTheme = getThemeConfig({
 
 ![](https://img.cdn.sugarat.top/mdImg/MTY5NjE1NDYyMjI3NQ==696154622275)
 
+同时提供方了一个配置简化的方法，用于生成和主题一样风格的标签的 HTML 代码。
+
+```ts
+import { footerHTML } from '@sugarat/theme/node'
+
+const blogTheme = getThemeConfig({
+  footer: {
+    message: footerHTML([
+      {
+        text: '本网站由 又拍云 提供CDN加速/云存储服务',
+        link: 'https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral',
+        icon: '又拍云SVG图标'
+      },
+      {
+        text: '标题，图标支持SVG 或 emoji',
+        icon: '🎉'
+      }
+    ]),
+  }
+})
+```
+
 ## docMetaInsert
 
-主要是指 
+主要是指
+
 * `docMetaInsertSelector`：可配配置 CSS 选择器 (`querySelector` 可解析即可)
   * type: `string`
   * default: `'h1'`
@@ -1212,3 +1613,113 @@ const blogTheme = getThemeConfig({
 ```
 
 ![](https://img.cdn.sugarat.top/mdImg/MTcwNDM0NjAxNjg3NQ==704346016875)
+
+## backToTop
+
+设置回到顶部，默认开启
+
+* type: `boolean|BackToTop`
+* default: `true`
+
+![](https://img.cdn.sugarat.top/mdImg/sugar/258187044dcf166044e722f879317e14)
+
+:::code-group
+
+```ts [example]
+const blogTheme = getThemeConfig({
+  backToTop: true
+})
+
+const blogTheme = getThemeConfig({
+  backToTop: {
+    // 自定义触发高度
+    top: 450,
+    // 自定义图标
+    icon: ''
+  }
+})
+```
+
+```ts [type]
+interface BackToTop {
+  /**
+   * 距离顶部多少距离出现
+   * @default 450
+   */
+  top?: number
+
+  /**
+   * 设置展示图标，svg
+   * @recommend https://iconbuddy.app/search?q=fire
+   */
+  icon?: string
+}
+```
+
+:::
+
+## darkTransition
+是否开启深色模式过渡动画
+
+* type：`boolean`
+* default：`true`
+
+```ts
+const blogTheme = getThemeConfig({
+  // 默认开启
+  darkTransition: true
+})
+```
+![深色模式过渡动画](https://vitepress.dev/appearance-toggle-transition.webp)
+
+
+## imageStyle
+设置图片处理样式（图片资源路径调整），比如图片路径替换，添加图片压缩参数等，可以根据自己的需求进行配置。
+
+*目前仅支持首页文章列表的封面图。*
+
+* type：`ImageStyleConfig`
+
+:::code-group
+```ts [example]
+const blogTheme = getThemeConfig({
+  imageStyle: {
+    coverPreview: [
+      // 七牛云
+      {
+        rule: '//img.cdn.sugarat.top',
+        suffix: '~cover.webp'
+      },
+      // 又拍云CDN
+      {
+        rule: '//cdn.upyun.sugarat.top',
+        suffix: '-cover'
+      }
+    ]
+  },
+})
+```
+
+```ts [type]
+interface ReplaceRule {
+  /**
+   * 匹配规则
+   */
+  rule: string | RegExp
+  /**
+   * 直接追加后缀
+   */
+  suffix?: string
+  /**
+   * 替换函数或字符串(优先级高于 suffix)
+   */
+  replace?: string | ((match: string) => string)
+}
+interface ImageStyleConfig {
+  /**
+   * 首页封面预览图
+   */
+  coverPreview?: ReplaceRule | ReplaceRule[]
+}
+```
+:::

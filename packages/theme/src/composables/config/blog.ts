@@ -76,7 +76,6 @@ export function withConfigProvider(App: Component) {
     }
   })
 }
-
 export function useDocMetaInsertSelector() {
   const blogConfig = useConfig()
   const { frontmatter } = useData()
@@ -98,14 +97,19 @@ export function useConfig() {
 export function useBlogConfig() {
   return inject(configSymbol)!.value.blog!
 }
+/**
+ * 获取 oh-my-live2d的配置选项
+ */
+export function useOml2dOptions() {
+  return inject(configSymbol)!.value.blog?.oml2d
+}
+
+export function useDarkTransitionConfig() {
+  return inject(configSymbol)!.value.blog?.darkTransition ?? true
+}
 
 export function useBlogThemeMode() {
   return inject(configSymbol)!.value?.blog?.blog ?? true
-}
-
-export function useGiscusConfig() {
-  const blogConfig = useConfig()
-  return blogConfig.config?.blog?.comment
 }
 
 export function useArticles() {
@@ -215,4 +219,17 @@ export function useAutoUpdateAnchor() {
 
 export function useHomeFooterConfig() {
   return inject(homeFooter)
+}
+
+export function useBackToTopConfig() {
+  return useBlogConfig().backToTop
+}
+
+export function useCleanUrls() {
+  const { site } = useData()
+  return !!site.value.cleanUrls
+}
+
+export function useImageStyle() {
+  return inject(configSymbol)?.value?.blog?.imageStyle || {} as Theme.ImageStyleConfig
 }

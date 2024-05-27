@@ -1,5 +1,4 @@
-/* eslint-disable no-console */
-import fs, { writeFileSync } from 'node:fs'
+import fs from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
 import glob from 'fast-glob'
@@ -10,6 +9,7 @@ import {
   formatDate,
   getDefaultTitle,
   getFileBirthTime,
+  getTextSummary,
   normalizePath
 } from './utils'
 import type { PostInfo, RSSOptions } from './type'
@@ -18,7 +18,7 @@ const imageRegex = /!\[.*?\]\((.*?)\s*(".*?")?\)/
 export async function getPostsData(
   srcDir: string,
   config: SiteConfig,
-  ops?: Pick<RSSOptions, 'renderExpect'>
+  ops?: Pick<RSSOptions, 'renderExpect' | 'renderHTML'>
 ) {
   const files = glob.sync(`${srcDir}/**/*.md`, { ignore: ['node_modules'] })
 
@@ -31,36 +31,47 @@ export async function getPostsData(
     config.logger
   )
   const posts: PostInfo[] = []
-  for (const file of files) {
-    const fileContent = fs.readFileSync(file, 'utf-8')
+  const fileContentPromises = files.reduce((prev, f) => {
+    prev[f] = {
+      contentPromise: fs.promises.readFile(f, 'utf-8'),
+      datePromise: getFileBirthTime(f)
+    }
+    return prev
+  }, {} as Record<string, { contentPromise: Promise<string>; datePromise: Promise<Date | undefined> | undefined | Date }>)
 
-    const { data: frontmatter, excerpt } = matter(fileContent, {
+  for (const file of files) {
+    const { contentPromise, datePromise } = fileContentPromises[file]
+    const fileContent = await contentPromise
+
+    const { data: frontmatter, excerpt, content } = matter(fileContent, {
       excerpt: true
     })
 
     if (!frontmatter.title) {
-      frontmatter.title = getDefaultTitle(fileContent)
+      frontmatter.title = getDefaultTitle(content)
     }
 
-    if (!frontmatter.date) {
-      frontmatter.date = getFileBirthTime(file)
-    }
-    else {
-      frontmatter.date = formatDate(new Date(frontmatter.date))
-    }
+    const date = await (frontmatter.date || datePromise)
+    frontmatter.date = formatDate(date)
 
     // 获取摘要信息
     frontmatter.description
       // eslint-disable-next-line no-await-in-loop
-      = (await ops?.renderExpect?.(fileContent, { ...frontmatter }))
-      ?? (frontmatter.description || excerpt)
+      = (await ops?.renderExpect?.(content, { ...frontmatter }))
+      ?? (frontmatter.description || excerpt || getTextSummary(content, 100))
 
     // 获取封面图
     frontmatter.cover
       = (frontmatter.cover
       ?? (fileContent.match(imageRegex)?.[1])) || ''
 
-    const html = mdRender.render(fileContent)
+    let html: string | undefined
+    if (ops?.renderHTML === true) {
+      html = mdRender.render(fileContent)
+    }
+    else if (typeof ops?.renderHTML === 'function') {
+      html = await ops.renderHTML(fileContent)
+    }
     const url
       = config.site.base
       + normalizePath(path.relative(config.srcDir, file))
@@ -91,18 +102,20 @@ export async function genFeed(config: SiteConfig, rssOptions: RSSOptions) {
     || process.argv.slice(2)?.[1]
     || '.'
 
-  const { baseUrl, filename, ignoreHome = true, filter: filterPost = () => true } = rssOptions
+  const { baseUrl, filename, ignoreHome = true, filter: filterPost = () => true, ignorePublish = false } = rssOptions
 
+  const { renderHTML = true, ...restOps } = rssOptions
   const feed = new Feed({
     id: rssOptions.baseUrl,
     link: rssOptions.baseUrl,
-    ...rssOptions
+    ...restOps,
   })
 
   // 获取所有文章
   const posts = (
     await getPostsData(srcDir, config, {
-      renderExpect: rssOptions.renderExpect
+      renderExpect: rssOptions.renderExpect,
+      renderHTML
     })
   ).filter((p) => {
     // 忽略 layout:home
@@ -110,7 +123,7 @@ export async function genFeed(config: SiteConfig, rssOptions: RSSOptions) {
       return false
     }
     // 跳过未发布的文章
-    if (p.frontmatter.publish === false)
+    if (p.frontmatter.publish === false && !ignorePublish)
       return false
 
     return true
@@ -151,12 +164,11 @@ export async function genFeed(config: SiteConfig, rssOptions: RSSOptions) {
   }
   const RSSFilename = filename || 'feed.rss'
   const RSSFilepath = path.join(config.outDir, RSSFilename)
-  writeFileSync(RSSFilepath, feed.rss2())
+  await fs.promises.writeFile(RSSFilepath, feed.rss2())
   if (rssOptions.log ?? true) {
     console.log('🎉 RSS generated', RSSFilename)
     console.log('rss filepath:', RSSFilepath)
     console.log('rss url:', `${baseUrl}${config.site.base + RSSFilename}`)
     console.log('include', posts.length, 'posts')
-    console.log()
   }
 }

@@ -1,5 +1,60 @@
 # vitepress-plugin-pagefind
 
+## 0.3.3
+
+### Patch Changes
+
+- fix: dev pending and build failed
+
+## 0.3.2
+
+### Patch Changes
+
+- chore: add peer deps
+
+## 0.3.1
+
+### Patch Changes
+
+- chore: 搜索结果标题添加#
+
+## 0.3.0
+
+### Minor Changes
+
+- feat: 支持过滤 `publish: false` 文章
+- feat: 搜索框样式对齐 `vitepress local search`，支持展示更多的搜索内容
+- feat: 移动端样式调整，展示更多的数据
+- fix: 描述信息生成错误
+- chore: 移除 `timeZone` 配置
+- chore: 数据改用异步方式获取
+- chore: 使用媒体查询替代 `useWindowSize`
+- chore: 无关代码/依赖移除
+
+## 0.2.14
+
+### Patch Changes
+
+- fix: Hydration error
+
+## 0.2.13
+
+### Patch Changes
+
+- fix: 与其它库 build 时存在冲突
+
+## 0.2.12
+
+### Patch Changes
+
+- chore: 补充meta中丢失的 frontmatter 数据
+
+## 0.2.11
+
+### Patch Changes
+
+- fix: 鼠标移入抖动
+
 ## 0.2.10
 
 ### Patch Changes

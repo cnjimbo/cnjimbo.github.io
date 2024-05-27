@@ -1,6 +1,6 @@
 {
   "name": "@sugarat/theme",
-  "version": "0.2.16",
+  "version": "0.3.6",
   "description": "简约风的 Vitepress 博客主题，sugarat vitepress blog theme",
   "author": "sugar",
   "license": "MIT",
@@ -39,37 +39,39 @@
     "build": "npm run build:node && npm run build:docs",
     "build:docs": "vitepress build docs",
     "build:node": "npx tsup",
-    "serve": "vitepress serve docs",
-    "documate:upload": "documate upload"
+    "serve": "vitepress serve docs"
+  },
+  "peerDependencies": {
+    "@element-plus/icons-vue": "^2.3.1",
+    "element-plus": "^2.7"
   },
   "dependencies": {
     "@giscus/vue": "^2.4.0",
-    "@mdit-vue/shared": "^2.0.0",
+    "@mdit-vue/shared": "^0.12.1",
     "@mermaid-js/mermaid-mindmap": "^9.3.0",
-    "@vue/shared": "^3.4.15",
-    "@vueuse/core": "^10.7.2",
+    "@vue/shared": "^3.4.26",
+    "@vueuse/core": "^9.13.0",
     "fast-glob": "^3.3.2",
     "gray-matter": "^4.0.3",
     "markdown-it-task-checkbox": "^1.0.6",
-    "mermaid": "^10.7.0",
+    "mermaid": "^10.9.0",
+    "oh-my-live2d": "^0.19.3",
+    "swiper": "^11.1.1",
+    "vitepress-markdown-timeline": "^1.2.1",
     "vitepress-plugin-mermaid": "2.0.13",
     "vitepress-plugin-pagefind": "workspace:*",
     "vitepress-plugin-rss": "workspace:*",
-    "vitepress-plugin-tabs": "0.5.0"
+    "vitepress-plugin-tabs": "0.2.0"
   },
   "devDependencies": {
-    "@documate/documate": "^0.2.1",
-    "@documate/vue": "^0.3.1",
     "@element-plus/icons-vue": "^2.3.1",
-    "element-plus": "^2.5.3",
-    "esbuild-plugin-vue-next": "^0.1.4",
-    "esbuild-sass-plugin": "^3.0.0",
-    "eslint-plugin-vue": "^9.21.1",
-    "javascript-stringify": "^2.1.0",
-    "pagefind": "1.0.4",
-    "sass": "^1.70.0",
-    "typescript": "^5.3.3",
-    "vitepress": "1.0.0-rc.41",
-    "vue": "^3.4.15"
+    "artalk": "^2.8.5",
+    "element-plus": "^2.7.2",
+    "pagefind": "^1.1.0",
+    "sass": "^1.76.0",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.11",
+    "vitepress": "1.2.2",
+    "vue": "^3.4.26"
   }
 }

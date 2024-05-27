@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { computed, watch } from 'vue'
 import { ElPagination } from 'element-plus'
-import { useData, useRouter } from 'vitepress'
-import { useBrowserLocation } from '@vueuse/core'
+import { useData, useRoute, useRouter } from 'vitepress'
 import {
   useActiveTag,
   useArticles,
@@ -54,7 +53,6 @@ const currentWikiData = computed(() => {
 })
 
 const router = useRouter()
-const location = useBrowserLocation()
 const queryPageNumKey = 'pageNum'
 function handleUpdatePageNum(current: number) {
   if (currentPage.value === current) {
@@ -64,28 +62,32 @@ function handleUpdatePageNum(current: number) {
   const { searchParams } = new URL(window.location.href!)
   searchParams.delete(queryPageNumKey)
   searchParams.append(queryPageNumKey, String(current))
+  window.scrollTo({ top: 0, behavior: 'auto' })
   router.go(
-    `${location.value.origin}${router.route.path}?${searchParams.toString()}`
+    `${router.route.path}?${searchParams.toString()}`
   )
 }
 
-watch(
-  location,
-  () => {
-    if (location.value.href) {
-      const { searchParams } = new URL(location.value.href)
-      if (searchParams.has(queryPageNumKey)) {
-        currentPage.value = Number(searchParams.get(queryPageNumKey))
-      }
-      else {
-        currentPage.value = 1
-      }
-    }
-  },
-  {
-    immediate: true
+const route = useRoute()
+
+function refreshCurrentPage() {
+  if (typeof window === 'undefined')
+    return
+  const search = window.location.search.slice(1)
+  const searchParams = new URLSearchParams(search)
+  const pageNum = Number(searchParams.get(queryPageNumKey)) || 1
+  if (pageNum !== currentPage.value) {
+    currentPage.value = pageNum
   }
-)
+}
+watch(route, () => {
+  refreshCurrentPage()
+}, { immediate: true })
+
+// 未覆盖的场景处理 左上回到首页
+router.onAfterRouteChanged = () => {
+  refreshCurrentPage()
+}
 </script>
 
 <template>

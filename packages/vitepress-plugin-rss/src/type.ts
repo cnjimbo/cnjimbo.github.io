@@ -41,6 +41,11 @@ export type RSSOptions = Omit<FeedOptions, 'id'> & {
    */
   ignoreHome?: boolean
   /**
+   * 是否忽略 frontmatter publish 控制
+   * @default false
+   */
+  ignorePublish?: boolean
+  /**
    * 博客站点内容涉及的作者列表
    */
   authors?: Author[]
@@ -58,12 +63,17 @@ export type RSSOptions = Omit<FeedOptions, 'id'> & {
    */
   limit?: number
   ariaLabel?: string
+  /**
+   * 手动控制生成 HTML的逻辑，或不是用 vitepress 内置的 HTML 渲染逻辑
+   * @default true
+   */
+  renderHTML?: ((filecontent: string) => string | Promise<string>) | boolean
 }
 
 export interface PostInfo {
   filepath: string
   fileContent: string
-  html: string
+  html?: string
   description: string
   date: string
   title: string

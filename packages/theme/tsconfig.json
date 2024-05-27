@@ -1,22 +1,21 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "jsx": "preserve",
     "lib": ["ESNext", "DOM"],
-    "baseUrl": ".",
+    "jsx": "preserve",
     "module": "esnext",
     "moduleResolution": "node",
+    "baseUrl": ".",
     "paths": {
       "@sugarat/theme/node": ["./node"],
       "@sugarat/theme": ["src/index.ts"]
     },
     "resolveJsonModule": true,
     "allowJs": true,
-    "strict": true,
-    "noUnusedLocals": true,
     "outDir": "dist",
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noUnusedLocals": true,
     "skipLibCheck": true
   },
   "include": ["src", "types", "docs/.vitepress/*.ts", "docs/.vitepress/config.mts"],

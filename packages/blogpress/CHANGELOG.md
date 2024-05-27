@@ -3,7 +3,164 @@ publish: false
 ---
 
 # CHANGELOG
+
+
+## 2.0.47
+### Patch Changes
+
+- Updated dependencies
+  - vitepress-plugin-rss@0.2.6
+  - @sugarat/theme@0.3.6
+
+## 2.0.46
+
+### Patch Changes
+
+- @sugarat/theme@0.3.5
+
+## 2.0.45
+
+### Patch Changes
+
+- Updated dependencies
+  - vitepress-plugin-rss@0.2.4
+  - @sugarat/theme@0.3.4
+
+## 2.0.44
+
+### Patch Changes
+
+- Updated dependencies
+  - @sugarat/theme@0.3.3
+
+## 2.0.43
+
+### Patch Changes
+
+- Updated dependencies
+  - vitepress-plugin-rss@0.2.3
+
+## 2.0.42
+
+### Patch Changes
+
+- Updated dependencies
+  - @sugarat/theme@0.3.2
+
+## 2.0.41
+
+### Patch Changes
+
+- Updated dependencies
+  - @sugarat/theme@0.3.1
+
+## 2.0.40
+
+### Patch Changes
+
+- Updated dependencies
+  - @sugarat/theme@0.3.0
+
+## 2.0.39
+
+### Patch Changes
+
+- Updated dependencies
+  - @sugarat/theme@0.2.30
+
+## 2.0.38
+
+### Patch Changes
+
+- Updated dependencies
+  - @sugarat/theme@0.2.29
+
+## 2.0.37
+
+### Patch Changes
+
+- Updated dependencies
+  - @sugarat/theme@0.2.28
+
+## 2.0.36
+
+### Patch Changes
+
+- Updated dependencies
+  - @sugarat/theme@0.2.27
+
+## 2.0.35
+
+### Patch Changes
+
+- Updated dependencies
+  - @sugarat/theme@0.2.26
+
+## 2.0.34
+
+### Patch Changes
+
+- Updated dependencies
+  - @sugarat/theme@0.2.25
+
+## 2.0.33
+
+### Patch Changes
+
+- Updated dependencies
+  - @sugarat/theme@0.2.24
+
+## 2.0.32
+
+### Patch Changes
+
+- Updated dependencies
+  - @sugarat/theme@0.2.23
+
+## 2.0.31
+
+### Patch Changes
+
+- Updated dependencies
+  - vitepress-plugin-rss@0.2.2
+  - @sugarat/theme@0.2.22
+
+## 2.0.30
+
+### Patch Changes
+
+- Updated dependencies
+  - @sugarat/theme@0.2.21
+
+## 2.0.29
+
+### Patch Changes
+
+- @sugarat/theme@0.2.20
+
+## 2.0.28
+
+### Patch Changes
+
+- Updated dependencies
+  - @sugarat/theme@0.2.19
+
+## 2.0.27
+
+### Patch Changes
+
+- Updated dependencies
+  - @sugarat/theme@0.2.18
+
+## 2.0.26
+
+### Patch Changes
+
+- Updated dependencies
+  - @sugarat/theme@0.2.17
+
 ## 2.0.25
+
 ### Patch Changes
 
 - Updated dependencies

@@ -1,60 +1,62 @@
 import fs from 'node:fs'
-import { execSync, spawn, spawnSync } from 'node:child_process'
+import { execSync } from 'node:child_process'
 import path from 'node:path'
 import os from 'node:os'
 import process from 'node:process'
+import { spawn } from 'cross-spawn'
 import type { SiteConfig } from 'vitepress'
 import matter from 'gray-matter'
 import glob from 'fast-glob'
 import { formatDate } from './utils'
-import type { PagefindOption } from './type'
+import type { PagefindOption, SearchConfig } from './type'
 
-export function getPagesData(
+export async function getPagesData(
   srcDir: string,
   config: SiteConfig,
-  pluginSiteConfig?: any
+  searchConfig: SearchConfig
 ) {
   const files = glob.sync(`${srcDir}/**/*.md`, { ignore: ['node_modules'] })
+  const fileContentPromises = files.reduce((prev, f) => {
+    prev[f] = {
+      content: fs.promises.readFile(f, 'utf-8'),
+      date: (searchConfig.showDate ?? true) ? getFileBirthTime(f) : undefined
+    }
+    return prev
+  }, {} as Record<string, { content: Promise<string>; date: Promise<Date | undefined> | undefined | Date }>)
+  const pageData = []
+  for (const file of files) {
+    // page url
+    const route = config.site.base + normalizePath(path.relative(config.srcDir, file))
+      .replace(/(^|\/)index\.md$/, '$1')
+      .replace(/\.md$/, config.cleanUrls ? '' : '.html')
 
-  return files
-    .map((file) => {
-      // page url
-      const route
-        = config.site.base
-        + normalizePath(path.relative(config.srcDir, file))
-          .replace(/(^|\/)index\.md$/, '$1')
-          .replace(/\.md$/, config.cleanUrls ? '' : '.html')
+    const fileContent = await fileContentPromises[file].content
 
-      const fileContent = fs.readFileSync(file, 'utf-8')
-
-      const { data: frontmatter, excerpt } = matter(fileContent, {
-        excerpt: true
-      })
-
-      // frontmatter
-      const meta: Record<string, string | undefined> = {
-        description: excerpt,
-        ...frontmatter
-      }
-      if (!meta.title) {
-        meta.title = getDefaultTitle(fileContent)
-      }
-
-      if (!meta.date) {
-        meta.date = getFileBirthTime(file)
-      }
-      else {
-        const timeZone = pluginSiteConfig?.timeZone ?? 8
-        meta.date = formatDate(
-          new Date(`${new Date(meta.date).toUTCString()}+${timeZone}`)
-        )
-      }
-      return {
-        route,
-        meta
-      }
+    const { data: frontmatter, content } = matter(fileContent, {
+      excerpt: true
     })
-    .filter(v => v.meta.layout !== 'home')
+
+    // frontmatter
+    const meta: Record<string, string | undefined> = {
+      ...frontmatter
+    }
+    if (meta.layout === 'home') {
+      continue
+    }
+    if (!meta.title) {
+      meta.title = getDefaultTitle(content)
+    }
+
+    const date = await (meta.date || fileContentPromises[file].date)
+    if (date) {
+      meta.date = formatDate(date, 'yyyy-MM-dd')
+    }
+    pageData.push({
+      route,
+      meta
+    })
+  }
+  return pageData
 }
 
 const windowsSlashRE = /\\/g
@@ -69,67 +71,30 @@ export function normalizePath(id: string): string {
 }
 
 export function getDefaultTitle(content: string) {
-  const title
-    = clearMatterContent(content)
-      .split('\n')
-      ?.find((str) => {
-        return str.startsWith('# ')
-      })
-      ?.slice(2)
-      .replace(/[\s]/g, '') || ''
-  return title
+  const match = content.match(/^(#+)\s+(.+)/m)
+  return match?.[2] || ''
 }
 
-export function clearMatterContent(content: string) {
-  let first___: unknown
-  let second___: unknown
+const cache = new Map<string, Date>()
+export function getFileBirthTime(url: string): Promise<Date | undefined> | Date {
+  const cached = cache.get(url)
+  if (cached)
+    return cached
 
-  const lines = content.split('\n').reduce<string[]>((pre, line) => {
-    // 移除开头的空白行
-    if (!line.trim() && pre.length === 0) {
-      return pre
-    }
-    if (line.trim() === '---') {
-      if (first___ === undefined) {
-        first___ = pre.length
-      }
-      else if (second___ === undefined) {
-        second___ = pre.length
-      }
-    }
-    pre.push(line)
-    return pre
-  }, [])
-  return (
-    lines
-      // 剔除---之间的内容
-      .slice((second___ as number) || 0)
-      .join('\n')
-  )
-}
-
-export function getFileBirthTime(url: string) {
-  let date = new Date()
-
-  try {
-    // 参考 vitepress 中的 getGitTimestamp 实现
-    // const infoStr = execSync(`git log -1 --pretty="%ci" ${url}`)
-    //   .toString('utf-8')
-    //   .trim()
-
-    const infoStr = spawnSync('git', ['log', '-1', '--pretty="%ci"', url])
-      .stdout?.toString()
-      .replace(/["']/g, '')
-      .trim()
-    if (infoStr) {
-      date = new Date(infoStr)
-    }
-  }
-  catch (error) {
-    return formatDate(date)
-  }
-
-  return formatDate(date)
+  return new Promise((resolve) => {
+    // 使用异步回调
+    const child = spawn('git', ['log', '-1', '--pretty="%ai"', url])
+    let output = ''
+    child.stdout.on('data', d => (output += String(d)))
+    child.on('close', () => {
+      const date = new Date(output)
+      cache.set(url, date)
+      resolve(date)
+    })
+    child.on('error', () => {
+      resolve(undefined)
+    })
+  })
 }
 
 export function getGitTimestamp(file: string) {
@@ -144,27 +109,6 @@ export function getGitTimestamp(file: string) {
     })
     child.on('error', reject)
   })
-}
-
-export function getTextSummary(text: string, count = 100) {
-  return (
-    clearMatterContent(text)
-      .match(/^# ([\s\S]+)/m)?.[1]
-      // 除去标题
-      ?.replace(/#/g, '')
-      // 除去图片
-      ?.replace(/!\[.*?\]\(.*?\)/g, '')
-      // 除去链接
-      ?.replace(/\[(.*?)\]\(.*?\)/g, '$1')
-      // 除去加粗
-      ?.replace(/\*\*(.*?)\*\*/g, '$1')
-      ?.split('\n')
-      ?.filter(v => !!v)
-      ?.slice(1)
-      ?.join('\n')
-      ?.replace(/>(.*)/, '')
-      ?.slice(0, count)
-  )
 }
 
 // 需要忽略检索的内容

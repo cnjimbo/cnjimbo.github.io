@@ -1,3 +1,0 @@
-/path/to/directory/
-**/node_modules/**
-!.gitignore

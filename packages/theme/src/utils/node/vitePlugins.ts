@@ -11,6 +11,8 @@ import {
 } from 'vitepress-plugin-pagefind'
 import { RssPlugin } from 'vitepress-plugin-rss'
 import type { Theme } from '../../composables/config/index'
+import { _require } from './mdPlugins'
+import { themeReloadPlugin } from './hot-reload-plugin'
 import { joinPath } from './index'
 
 export function getVitePlugins(cfg?: Partial<Theme.BlogConfig>) {
@@ -18,21 +20,33 @@ export function getVitePlugins(cfg?: Partial<Theme.BlogConfig>) {
 
   // Build完后运行的一系列列方法
   const buildEndFn: any[] = []
+
   // 执行自定义的 buildEnd 钩子
   plugins.push(inlineBuildEndPlugin(buildEndFn))
+
   // 处理cover image的路径（暂只支持自动识别的文章首图）
   plugins.push(coverImgTransform())
+
+  // 自动重载首页
+  plugins.push(themeReloadPlugin())
+
   // 内置简化版的pagefind
   if (cfg && cfg.search !== false) {
     const ops = cfg.search instanceof Object ? cfg.search : {}
     plugins.push(
-      pagefindPlugin({ ...ops, customSearchQuery: chineseSearchOptimize })
+      pagefindPlugin({
+        ...ops,
+        customSearchQuery: chineseSearchOptimize,
+        filter(searchItem) {
+          return searchItem.meta.publish !== false
+        }
+      })
     )
   }
 
   // 内置支持Mermaid
   if (cfg?.mermaid !== false) {
-    const { MermaidPlugin } = require('vitepress-plugin-mermaid')
+    const { MermaidPlugin } = _require('vitepress-plugin-mermaid')
     plugins.push(MermaidPlugin(cfg?.mermaid === true ? {} : (cfg?.mermaid ?? {})))
   }
 
@@ -40,13 +54,6 @@ export function getVitePlugins(cfg?: Partial<Theme.BlogConfig>) {
   if (cfg?.RSS) {
     plugins.push(RssPlugin(cfg.RSS))
   }
-  // 未来移除使用
-  // if (cfg && cfg.search !== undefined) {
-  //   console.log(
-  //     '已从内部移除 pagefind 支持，请单独安装 vitepress-plugin-pagefind 插件使用'
-  //   )
-  // }
-
   return plugins
 }
 

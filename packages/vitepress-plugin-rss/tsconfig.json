@@ -1,18 +1,17 @@
 {
   "compilerOptions": {
     "target": "es2015",
-    "jsx": "preserve",
     "lib": ["ESNext", "DOM"],
-    "baseUrl": ".",
+    "jsx": "preserve",
     "module": "esnext",
     "moduleResolution": "node",
+    "baseUrl": ".",
     "resolveJsonModule": true,
     "allowJs": true,
-    "strict": true,
-    "noUnusedLocals": true,
     "outDir": "dist",
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noUnusedLocals": true,
     "skipLibCheck": true
   }
 }
