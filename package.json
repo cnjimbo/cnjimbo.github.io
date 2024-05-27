@@ -1,6 +1,5 @@
 {
   "name": "sugar-wiki-monorepo",
-
   "version": "2.0.0",
   "private": true,
   "description": "个人博客&知识&文档站集",
@@ -37,6 +36,7 @@
     "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
+    "globals": "^15.3.0",
     "pagefind": "^1.1.0"
   },
   "devDependencies": {
@@ -45,12 +45,15 @@
     "@types/node": "^20.12.12",
     "eslint": "^9.3.0",
     "eslint-plugin-antfu": "^2.2.0",
+    "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-todo-ddl": "^1.1.1",
+    "eslint-plugin-vue": "^9.26.0",
     "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
     "simple-git-hooks": "^2.11.1",
     "tsup": "^8.0.2",
     "typescript": "5.4.5",
+    "typescript-eslint": "^7.10.0",
     "wait-on": "^7.2.0",
     "zx": "^8.1.0"
   },
@@ -69,6 +72,6 @@
     "*": "eslint --fix"
   },
   "volta": {
-    "node": "20.11.0"
+    "node": "20.13.1"
   }
 }
