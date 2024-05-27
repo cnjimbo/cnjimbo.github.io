@@ -54,22 +54,14 @@ jobs:
           node-version: 20
           registry-url: https://registry.npmjs.org
           cache: pnpm
-      - name: Check for pnpm-lock.yaml
-        id: check_lockfile
-        run: |
-          if [ -f pnpm-lock.yaml ]; then
-            echo "::set-output name=lockfile_exists::true"
-          else
-            echo "::set-output name=lockfile_exists::false"
-          fi
-
       - name: Install Dependencies
-        if: steps.check_lockfile.outputs.lockfile_exists == 'true'
-        run: pnpm install --frozen-lockfile
-
-      - name: Install Dependencies without Frozen Lockfile
-        if: steps.check_lockfile.outputs.lockfile_exists == 'false'
-        run: pnpm install
+        run: |
+          pnpm install
+          # if [ -f pnpm-lock.yaml ]; then
+          #   pnpm install --frozen-lockfile
+          # else
+          #   pnpm install
+          # fi
       - name: Buildlib
         # 6、打包
         run: pnpm buildlib
