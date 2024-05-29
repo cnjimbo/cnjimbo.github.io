@@ -28,7 +28,8 @@
 	"settings": {
 		"conventionalCommits.scopes": [
 			"pkg upgrade",
-			"eslint"
+			"eslint",
+			"scaffold"
 		],
 		"ColorfulMonorepo.workspaces.collection": [
 			{
@@ -79,6 +80,10 @@
 			"statusBar.foreground": "#000000",
 			"tab.activeBorder": "#adca7f",
 			"sideBarTitle.foreground": "#adca7f"
+		},
+		"editor.tokenColorCustomizations": {
+			"comments": "",
+			"textMateRules": []
 		}
 	}
 }

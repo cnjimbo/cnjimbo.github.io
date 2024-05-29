@@ -33,10 +33,10 @@
     "types"
   ],
   "scripts": {
-    "dev": "npm run build:node && npm run dev:docs",
+    "dev": "pnpm run build:node && pnpm run dev:docs",
     "dev:docs": "vitepress dev docs",
     "dev:node": "npx tsup",
-    "build": "npm run build:node && npm run build:docs",
+    "build": "pnpm run build:node && pnpm run build:docs",
     "build:docs": "vitepress build docs",
     "build:node": "npx tsup",
     "serve": "vitepress serve docs"
