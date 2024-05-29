@@ -29,7 +29,8 @@
 		"conventionalCommits.scopes": [
 			"pkg upgrade",
 			"eslint",
-			"scaffold"
+			"scaffold",
+			"blog"
 		],
 		"ColorfulMonorepo.workspaces.collection": [
 			{
