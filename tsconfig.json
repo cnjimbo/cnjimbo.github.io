@@ -80,7 +80,8 @@
   "exclude": [
     "node_modules",
     "**/dist/**",
-    "*.d.ts"
+    "*.d.ts",
+    "**/node_modules/**"
     // "./*.mjs"
   ]
 }
