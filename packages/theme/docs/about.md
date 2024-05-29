@@ -43,7 +43,7 @@ sticky: 1
 
 * [reco](https://vuepress-theme-reco.recoluan.com/)
 * [掘金](https://juejin.cn/)
-* [surmon](https://surmon.me/) 
+* [surmon](https://surmon.me/)
 * [@vue/theme](https://github.com/vuejs/theme)
 * [vitest](https://vitest.dev/)
 * [element-plus](https://element-plus.gitee.io/zh-CN/)
@@ -56,7 +56,7 @@ sticky: 1
 * 主题地址：https://theme.sugarat.top/
 * 主题包：[@sugarat/theme](https://www.npmjs.com/package/@sugarat/theme)
 * 项目地址：https://github.com/ATQQ/sugar-blog/tree/master/packages/theme
-* 作者博客地址：https://sugarat.top
+* 作者博客地址：https://www.dmsrs.org
 
 
 ## 最后

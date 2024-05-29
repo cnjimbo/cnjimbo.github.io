@@ -196,7 +196,7 @@ outline: [2,3]
 
 22年也将是`Vite`迅速发展的一年
 
-具体接入方案可参照文章：[webpack项目接入Vite的通用方案介绍](https://sugarat.top/technology/learn/webapck2vite.html)
+具体接入方案可参照文章：[webpack项目接入Vite的通用方案介绍](https://www.dmsrs.org/technology/learn/webapck2vite.html)
 
 ### 插件化迁移工具
 项目`重构`/`升级`是一个长期的工作，如`Vue2`升`Vue3`项目脚手架更换，基建升级等等
@@ -251,7 +251,7 @@ TODO：`码一篇2022的前端趋势技术尝鲜`
     * [ ] 面试专区
     * [ ] 源码专区
     * [ ] 实践专区
-* [ ] 站点迁移 - 阿里云 => 腾讯云 
+* [ ] 站点迁移 - 阿里云 => 腾讯云
   * [ ] 数据库迁移
     * [ ] MySQL => NoSQL
   * [ ] 域名迁移

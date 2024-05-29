@@ -3,11 +3,11 @@ import { defineExamples } from './util'
 export default defineExamples([
   {
     cover: 'https://img.cdn.sugarat.top/mdImg/MTY3MzE3MDUxOTMwMw==673170519303',
-    link: 'https://sugarat.top',
-    name: '粥里有勺糖',
+    link: 'https://www.dmsrs.org',
+    name: '兜里有糖',
     desc: '记录随笔与学习笔记',
     avatar: 'https://sugarat.s3.bitiful.net/avatar/blog/zlyst-avatar.jpeg',
-    nickname: '粥里有勺糖',
+    nickname: '兜里有糖',
     home: 'https://github.com/atqq'
   },
   {

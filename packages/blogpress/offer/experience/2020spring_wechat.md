@@ -140,7 +140,7 @@ categories:
 
 如果面完了HR面切忌不要放松(除非有100%的把握通过),身边不少HR面挂掉的例子,不然还是继续投,该笔试的笔试,该面就面
 # 面经
-*因篇幅有限,内容太多,所遇面试题,都整理在了我的→[博客](https://sugarat.top)←中,欢迎大家戳链接查看*
+*因篇幅有限,内容太多,所遇面试题,都整理在了我的→[博客](https://www.dmsrs.org)←中,欢迎大家戳链接查看*
 
 >下面分享(水货)一下个人是如何跳进前端这个"坑"
 
@@ -168,6 +168,6 @@ categories:
 
 **个人站点**
 * [Github](https://github.com/ATQQ)
-* [博客](https://sugarat.top)
+* [博客](https://www.dmsrs.org)
 * [博客园](https://www.cnblogs.com/roseAT/)
 

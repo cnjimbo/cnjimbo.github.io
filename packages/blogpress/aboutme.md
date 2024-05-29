@@ -2,7 +2,7 @@
 sidebar: false
 title: 关于自己
 date: 2021-12-11
-cover: https://sugarat.top/mp-code.png
+cover: https://www.dmsrs.org/mp-code.png
 tags:
  - 其它
 ---

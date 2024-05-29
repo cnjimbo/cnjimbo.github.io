@@ -67,7 +67,7 @@ const workConfig: Theme.UserWorks = {
         start: '2020/02/18'
       },
       github: 'https://github.com/ATQQ/sugar-blog',
-      url: 'https://sugarat.top',
+      url: 'https://www.dmsrs.org',
       tags: ['Vitepress', 'Vue'],
       cover:
             'https://img.cdn.sugarat.top/mdImg/MTY3MzE3MDUxOTMwMw==673170519303',

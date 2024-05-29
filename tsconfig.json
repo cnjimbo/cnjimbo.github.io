@@ -7,15 +7,15 @@
       "DOM"
     ],
     "baseUrl": "./",
-    "module": "esnext",
-    "moduleResolution": "Node",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "resolveJsonModule": true,
     "allowJs": true,
     "strict": false,
     "noUnusedLocals": false,
     "removeComments": true,
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
     /// -----------
     /* 访问 https://aka.ms/tsconfig.json 以阅读有关此文件的更多信息 */
     /* 基本选项 */
@@ -32,7 +32,7 @@
     // "outFile": "./", /* 连接输出到单个文件。 */
     // "outDir": "./", /* 将输出结构重定向到目录。 */
     // "rootDir": "./", /* 指定输入文件的根目录。用于通过 --outDir 控制输出目录结构。 */
-    // "composite": true, /* 启用项目编译 */
+    "composite": true, /* 启用项目编译 */
     // "tsBuildInfoFile": "./", /* 指定文件存放增量编译信息 */
     // "removeComments": true, /* 不要向输出发出注释（删除除代码注释）。 */
     // "noEmit": true, /* 不发出输出（不生成编译后的文件）。 */

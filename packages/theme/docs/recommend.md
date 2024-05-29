@@ -118,11 +118,11 @@ export default withMermaid({
 ```ts
 import { RSSOptions, RssPlugin } from 'vitepress-plugin-rss'
 
-const baseUrl = 'https://sugarat.top'
+const baseUrl = 'https://www.dmsrs.org'
 const RSS: RSSOptions = {
-  title: '粥里有勺糖',
+  title: '兜里有糖',
   baseUrl,
-  copyright: 'Copyright (c) 2018-present, 粥里有勺糖',
+  copyright: 'Copyright (c) 2018-present, 兜里有糖',
 }
 
 export default defineConfig({

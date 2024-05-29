@@ -17,7 +17,7 @@ export default defineConfig({
   // base,
   lang: 'zh-cn',
   title: '@sugarat/theme',
-  description: '粥里有勺糖的博客主题，基于 vitepress 实现',
+  description: '兜里有糖的博客主题，基于 vitepress 实现',
   lastUpdated: true,
   // 详见：https://vitepress.dev/zh/reference/site-config#head
   head: [
@@ -45,7 +45,7 @@ export default defineConfig({
     // },
     nav: [
       { text: '首页', link: '/' },
-      { text: '关于作者', link: 'https://sugarat.top/aboutme.html' }
+      { text: '关于作者', link: 'https://www.dmsrs.org/aboutme.html' }
     ],
     socialLinks: [
       {

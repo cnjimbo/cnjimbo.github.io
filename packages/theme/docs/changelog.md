@@ -1,7 +1,7 @@
 ---
 title: 更新日志
 description: 最近更新（v0.3.6） ⏰ 2024/05/26：依赖优化，首页优化，搜索优化，公告优化。
-author: 粥里有勺糖
+author: 兜里有糖
 top: 2
 tag: 日志
 ---
@@ -69,7 +69,7 @@ bun install vitepress@latest
 ### Patch Changes
 
 - feat：支持首页 cover 图添加 image style
-- chore：导航 logo 样式优化 
+- chore：导航 logo 样式优化
 - chore: reduce element css size
 - chore: 依赖升级，无用依赖移除，peerDeps 调整
 

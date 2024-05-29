@@ -4,7 +4,7 @@ cover: https://img.cdn.sugarat.top/mdImg/MTcwNDAwMzUwMzY3OA==704003503678
 description: 时间不在于你拥有多少，而在于你怎样使用
 sticky: 10
 date: 2024-01-01
-tag: 
+tag:
  - 心得总结
 ---
 # 2023年度总结
@@ -53,7 +53,7 @@ tag:
 
 
 ## 内容创作
-今年主要还是在[掘金](https://juejin.cn/user/1028798615918983)，[公众号](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA4ODMyMTk5OA%3D%3D&action=getalbum&album_id=2744191050839457793#wechat_redirect)，[个人博客](https://sugarat.top/)三个渠道发文，相比往年的频率更高了（主要还是[技术周刊](https://juejin.cn/column/7187956135570194491)有稳定的频率），技术性的干货文章倒不是很多。
+今年主要还是在[掘金](https://juejin.cn/user/1028798615918983)，[公众号](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzA4ODMyMTk5OA%3D%3D&action=getalbum&album_id=2744191050839457793#wechat_redirect)，[个人博客](https://www.dmsrs.org/)三个渠道发文，相比往年的频率更高了（主要还是[技术周刊](https://juejin.cn/column/7187956135570194491)有稳定的频率），技术性的干货文章倒不是很多。
 
 ### 写作
 本年度纯技术相关的原创文章大约10篇左右，由于今年重构了博客，所以有一大部分都是 VitePress 相关的。
@@ -195,6 +195,6 @@ tag:
 * 持续开源，多分享；
 * 健康乐观的生活。
 
-**祝愿大家2024年诸事顺遂。** 
+**祝愿大家2024年诸事顺遂。**
 
 支付宝口令红包（base64） **“Mjc5MjIxMzI=”**
