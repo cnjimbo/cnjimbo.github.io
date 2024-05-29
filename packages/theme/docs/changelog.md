@@ -274,7 +274,7 @@ cover: /abc.png
 ### Patch Changes
 
 - feat: 友链支持随机顺序和滚动
-- fix: tag error ([#154](https://github.com/ATQQ/sugar-blog/pull/154)) ([@itcatplayit](https://github.com/itcatplayit))
+- fix: tag error ([#154](https://github.com/cnjimbo/cnjimbo.github.io/pull/154)) ([@itcatplayit](https://github.com/itcatplayit))
 - chore: update rc31
 - chore: devtool warn fix
 
@@ -356,7 +356,7 @@ cover: /abc.png
 
 ### Patch Changes
 
-- fix: setActiveLink [#138](https://github.com/ATQQ/sugar-blog/issues/138)
+- fix: setActiveLink [#138](https://github.com/cnjimbo/cnjimbo.github.io/issues/138)
 - Updated dependencies
   - vitepress-plugin-pagefind@0.2.10
 
@@ -470,7 +470,7 @@ cover: /abc.png
 
 ### Patch Changes
 
-- feat: 新的项目创建方式使用 [@sugarat/create-theme](https://github.com/ATQQ/sugar-blog/tree/master/packages/create-theme) 快速创建模板项目
+- feat: 新的项目创建方式使用 [@sugarat/create-theme](https://github.com/cnjimbo/cnjimbo.github.io/tree/master/packages/create-theme) 快速创建模板项目
 - feat: 支持使用自定义的HTML内容设置文章在首页卡片列表里展示的 `描述信息`
 - feat: 支持使用 `cover:false` 隐藏首页展示的封面
 
@@ -577,7 +577,7 @@ cover: /abc.png
 - feat: 内置 pagefind 搜索针对中文优化
 - fix: 内置 pagefind 在自定义 base 后无效
 - chore: 没有 git 仓库时，打印 Not 日志
-- chore: pagefind 引导使用独立的插件 [vitepress-plugin-pagefind](https://github.com/ATQQ/sugar-blog/blob/master/packages/vitepress-plugin-pagefind/README-zh.md)
+- chore: pagefind 引导使用独立的插件 [vitepress-plugin-pagefind](https://github.com/cnjimbo/cnjimbo.github.io/blob/master/packages/vitepress-plugin-pagefind/README-zh.md)
 
 ## 0.1.19 (2023/04/02)
 
@@ -604,7 +604,7 @@ cover: /abc.png
 
 ## 0.1.15 (2023/03/26)
 
-- feat: 分离可独立使用的的 搜索插件[pagefind](https://github.com/ATQQ/sugar-blog/tree/master/packages/vitepress-plugin-pagefind)
+- feat: 分离可独立使用的的 搜索插件[pagefind](https://github.com/cnjimbo/cnjimbo.github.io/tree/master/packages/vitepress-plugin-pagefind)
 - feat: 搜索框展示 UI 优化，支持定制文案，展示适配移动端
 - fix: 搜索结果未全部展示
 - fix: 中文文件名文章时间显示 NaN

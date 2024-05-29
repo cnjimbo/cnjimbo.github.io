@@ -111,7 +111,7 @@ export default withMermaid({
 
 ![](https://img.cdn.sugarat.top/mdImg/sugar/9238f8f2ddebc56daba7c45819b88974)
 
-#### [vitepress-plugin-rss](https://github.com/ATQQ/sugar-blog/tree/master/packages/vitepress-plugin-rss)
+#### [vitepress-plugin-rss](https://github.com/cnjimbo/cnjimbo.github.io/tree/master/packages/vitepress-plugin-rss)
 
 给 vitepress 提供 RSS 订阅源链接生成支持。
 
@@ -159,7 +159,7 @@ export default defineConfig({
   vite: { plugins: [SearchPlugin(options)] }
 })
 ```
-#### [vitepress-plugin-pagefind](https://github.com/ATQQ/sugar-blog/tree/master/packages/vitepress-plugin-pagefind)
+#### [vitepress-plugin-pagefind](https://github.com/cnjimbo/cnjimbo.github.io/tree/master/packages/vitepress-plugin-pagefind)
 
 基于 [pagefind](https://github.com/cloudcannon/pagefind) 实现的离线全文搜索插件。
 

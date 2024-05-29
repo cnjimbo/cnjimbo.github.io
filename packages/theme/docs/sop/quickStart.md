@@ -35,8 +35,8 @@ npm install -g bun
 ```
 :::
 
-## 快速创建项目 
-使用 [@sugarat/create-theme](https://github.com/ATQQ/sugar-blog/tree/master/packages/create-theme) 快速创建模板项目
+## 快速创建项目
+使用 [@sugarat/create-theme](https://github.com/cnjimbo/cnjimbo.github.io/tree/master/packages/create-theme) 快速创建模板项目
 
 :::code-group
 ```sh [npm]

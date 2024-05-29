@@ -9,7 +9,7 @@ description: 记录一下每天干的杂事，写的杂七杂八的代码，用�
 
 ## 2024/03/27
 
-*[@sugarat/theme](https://github.com/ATQQ/sugar-blog/tree/master/packages/theme)*
+*[@sugarat/theme](https://github.com/cnjimbo/cnjimbo.github.io/tree/master/packages/theme)*
 
 - feat: 新增各个模块可选开启的开关
 - fix: Hydration error
@@ -30,7 +30,7 @@ description: 记录一下每天干的杂事，写的杂七杂八的代码，用�
 
 - 编写 UPNG.js 在线 Demo
 
-*[@sugarat/theme](https://github.com/ATQQ/sugar-blog/tree/master/packages/theme)*
+*[@sugarat/theme](https://github.com/cnjimbo/cnjimbo.github.io/tree/master/packages/theme)*
 
 - 依赖更新 看板娘 和 VitePress1.0.1
 - footer 支持更丰富的定制（参加[又拍云活动](https://www.upyun.com/league)）
@@ -48,7 +48,7 @@ description: 记录一下每天干的杂事，写的杂七杂八的代码，用�
 
 ### 博客主题
 
-*[@sugarat/theme](https://github.com/ATQQ/sugar-blog/tree/master/packages/theme)*
+*[@sugarat/theme](https://github.com/cnjimbo/cnjimbo.github.io/tree/master/packages/theme)*
 
 - 内置开箱即用的看板娘支持（[oh-my-live2d](https://github.com/oh-my-live2d/oh-my-live2d)）
 
@@ -56,7 +56,7 @@ description: 记录一下每天干的杂事，写的杂七杂八的代码，用�
 
 ### 博客主题
 
-*[@sugarat/theme](https://github.com/ATQQ/sugar-blog/tree/master/packages/theme)*
+*[@sugarat/theme](https://github.com/cnjimbo/cnjimbo.github.io/tree/master/packages/theme)*
 
 - fix：主题 `showSelf: false` 失效的问题
 - fix：pagefind 搜索插件 SSR 编译时影响 SVG 图标导入
@@ -65,7 +65,7 @@ description: 记录一下每天干的杂事，写的杂七杂八的代码，用�
 
 ### 博客主题CLI
 
-*[@sugarat/create-theme](https://github.com/ATQQ/sugar-blog/tree/master/packages/create-theme)*
+*[@sugarat/create-theme](https://github.com/cnjimbo/cnjimbo.github.io/tree/master/packages/create-theme)*
 
 - 模板更新
   - 添加 GitHub/Gitee Pages 部署所需文件

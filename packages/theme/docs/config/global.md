@@ -74,7 +74,7 @@ export default defineConfig({
 
 ![](https://img.cdn.sugarat.top/mdImg/MTY3OTEyMjg5Nzc1Mg==679122897752)
 
-下面开始详细介绍 [Theme.BlogConfig](https://github.com/ATQQ/sugar-blog/blob/255c4b1e6a85a529be3a72c88e365077e067ecba/packages/theme/src/composables/config/index.ts#L69-L137)
+下面开始详细介绍 [Theme.BlogConfig](https://github.com/cnjimbo/cnjimbo.github.io/blob/255c4b1e6a85a529be3a72c88e365077e067ecba/packages/theme/src/composables/config/index.ts#L69-L137)
 
 ## author
 
@@ -319,7 +319,7 @@ const blogTheme = getThemeConfig({
 
 ![](https://img.cdn.sugarat.top/mdImg/MTY3OTEyMzQ0NDAwOA==679123444008)
 
-如果需要自定义更多的内容可以使用独立的插件 [vitepress-plugin-pagefind](https://github.com/ATQQ/sugar-blog/blob/master/packages/vitepress-plugin-pagefind/README-zh.md)
+如果需要自定义更多的内容可以使用独立的插件 [vitepress-plugin-pagefind](https://github.com/cnjimbo/cnjimbo.github.io/blob/master/packages/vitepress-plugin-pagefind/README-zh.md)
 
 :::code-group
 

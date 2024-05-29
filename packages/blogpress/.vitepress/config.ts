@@ -320,7 +320,7 @@ export default defineConfig({
     logo: 'https://sugarat.s3.bitiful.net/avatar/blog/zlyst-avatar.jpeg!style:avatar',
     editLink: {
       pattern:
-        'https://github.com/ATQQ/sugar-blog/tree/master/packages/blogpress/:path',
+        'https://github.com/cnjimbo/cnjimbo.github.io/tree/master/packages/blogpress/:path',
       text: '去 GitHub 上编辑内容',
     },
     nav: [
@@ -406,7 +406,7 @@ export default defineConfig({
       //   items: [
       //     {
       //       text: 'GitHub',
-      //       link: 'https://github.com/ATQQ/sugar-blog'
+      //       link: 'https://github.com/cnjimbo/cnjimbo.github.io'
       //     },
       //     {
       //       text: '博客园',
@@ -455,7 +455,7 @@ export default defineConfig({
       },
     ],
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/ATQQ/sugar-blog' },
+      { icon: 'github', link: 'https://github.com/cnjimbo/cnjimbo.github.io' },
       {
         icon: 'x',
         link: 'https://x.com/Mr_XiaoZou',

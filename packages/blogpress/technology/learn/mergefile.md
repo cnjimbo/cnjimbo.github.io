@@ -51,7 +51,7 @@ node index.js /home/sugar/Documents/VueProject
 ```
 
 ### 获取指定目录下的所有文件
- 
+
 **思路**
 
 咱使用`path`,`fs`模块结合递归搞定:
@@ -66,7 +66,7 @@ const fs = require('fs')
 /**
  * 递归获取指定目录中的所有文件的绝对路径路径
  * @param {string} dir 目标目录
- * @param {string[]} 
+ * @param {string[]}
  * @returns {string[]} 文件绝对路径数组
  */
 function getDirFiles(dir) {
@@ -105,7 +105,7 @@ console.log(getDirFiles('/home/sugar/Documents/VueProject/my-blog-vuepress/docs'
 /**
  * 递归获取指定目录中的所有文件的绝对路径路径
  * @param {string} dir 目标目录
- * @param {string[]} 
+ * @param {string[]}
  * @returns {string[]} 文件绝对路径数组
  */
 function getDirFiles(dir, exclude = []) {
@@ -138,7 +138,7 @@ function getDirFiles(dir, exclude = []) {
 ```js
 /**
  * 内容并入一个文件中
- * @param {string[]} files 
+ * @param {string[]} files
  */
 function mergeFile(files) {
     // 写入的目标文件(时间戳命名)
@@ -158,7 +158,7 @@ function mergeFile(files) {
 }
 ```
 ## 测试
-以我[当前的项目](https://github.com/ATQQ/sugar-blog)为例子
+以我[当前的项目](https://github.com/cnjimbo/cnjimbo.github.io)为例子
 ```sh
 node index.js /home/sugar/Documents/VueProject/my-blog-vuepress
 ```
@@ -190,7 +190,7 @@ mergeFile(files)
 
 /**
  * 内容并入一个文件中
- * @param {string[]} files 
+ * @param {string[]} files
  */
 function mergeFile(files) {
     // 写入的目标文件(时间戳命名)
@@ -212,7 +212,7 @@ function mergeFile(files) {
 /**
  * 递归获取指定目录中的所有文件的绝对路径路径
  * @param {string} dir 目标目录
- * @param {string[]} 
+ * @param {string[]}
  * @returns {string[]} 文件绝对路径数组
  */
 function getDirFiles(dir, exclude = []) {

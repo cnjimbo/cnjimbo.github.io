@@ -7,10 +7,10 @@
   "homepage": "https://theme.sugarat.top",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ATQQ/sugar-blog.git"
+    "url": "git+https://github.com/cnjimbo/cnjimbo.github.io.git"
   },
   "bugs": {
-    "url": "https://github.com/ATQQ/sugar-blog/issues"
+    "url": "https://github.com/cnjimbo/cnjimbo.github.io/issues"
   },
   "keywords": [
     "vitepress",

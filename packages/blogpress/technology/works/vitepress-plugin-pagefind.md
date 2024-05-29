@@ -34,7 +34,7 @@ outline: [2,3]
 ## 接入后效果
 只需要2步即可完成接入
 
-① 安装 [vitepress-plugin-pagefind](https://github.com/ATQQ/sugar-blog/tree/master/packages/vitepress-plugin-pagefind)
+① 安装 [vitepress-plugin-pagefind](https://github.com/cnjimbo/cnjimbo.github.io/tree/master/packages/vitepress-plugin-pagefind)
 ```sh
 npm i vitepress-plugin-pagefind
 # or
@@ -141,7 +141,7 @@ interface SearchResult {
 
 ## 插件实现原理解析
 
-这部分主要介绍 `vitepress-plugin-pagefind` 的关键实现部分（细节可看[源码](https://github.com/ATQQ/sugar-blog/tree/master/packages/vitepress-plugin-pagefind)，如读者有更好的实现思路可以评论区交流）
+这部分主要介绍 `vitepress-plugin-pagefind` 的关键实现部分（细节可看[源码](https://github.com/cnjimbo/cnjimbo.github.io/tree/master/packages/vitepress-plugin-pagefind)，如读者有更好的实现思路可以评论区交流）
 
 几个关键步骤:
 1. 替换默认搜索组件
@@ -191,7 +191,7 @@ export function pagefindPlugin() {
         return code.replace('<VPContent>', '<VPContent data-pagefind-body>')
       }
       return code
-    }    
+    }
   }
 }
 ```

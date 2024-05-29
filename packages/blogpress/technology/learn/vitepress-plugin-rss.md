@@ -251,7 +251,7 @@ const RSSFilepath = path.join(config.outDir, RSSFilename)
 writeFileSync(RSSFilepath, feed.rss2())
 ```
 ## 最后
-插件的完整源码见 [GitHub](https://github.com/ATQQ/sugar-blog/tree/master/packages/vitepress-plugin-rss)，欢迎大家试用和反馈
+插件的完整源码见 [GitHub](https://github.com/cnjimbo/cnjimbo.github.io/tree/master/packages/vitepress-plugin-rss)，欢迎大家试用和反馈
 
 ## 参考
 * [jpmonette/feed](https://www.npmjs.com/package/feed)

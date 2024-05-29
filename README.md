@@ -99,7 +99,7 @@ pnpm dev:theme
 
 Thanks to all the contributors!
 
-<a href="https://github.com/atqq/sugar-blog/graphs/contributors">
+<a href="https://github.com/cnjimbo/cnjimbo.github.io/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=atqq/sugar-blog" />
 </a>
 

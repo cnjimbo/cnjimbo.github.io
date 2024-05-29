@@ -66,7 +66,7 @@ const workConfig: Theme.UserWorks = {
       time: {
         start: '2020/02/18'
       },
-      github: 'https://github.com/ATQQ/sugar-blog',
+      github: 'https://github.com/cnjimbo/cnjimbo.github.io',
       url: 'https://www.dmsrs.org',
       tags: ['Vitepress', 'Vue'],
       cover:

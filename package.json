@@ -6,13 +6,13 @@
   "description": "个人博客&知识&文档站集",
   "author": "sugar",
   "license": "MIT",
-  "homepage": "https://github.com/ATQQ/sugar-blog#readme",
+  "homepage": "https://github.com/cnjimbo/cnjimbo.github.io#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ATQQ/sugar-blog.git"
+    "url": "git+https://github.com/cnjimbo/cnjimbo.github.io.git"
   },
   "bugs": {
-    "url": "https://github.com/ATQQ/sugar-blog/issues"
+    "url": "https://github.com/cnjimbo/cnjimbo.github.io/issues"
   },
   "keywords": [],
   "scripts": {
