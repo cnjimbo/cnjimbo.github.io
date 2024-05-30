@@ -1,90 +1,18 @@
 {
-	"folders": [
-		{
-			"name": "🌱  sugar-wiki-monorepo",
-			"path": "."
-		},
-		{
-			"name": "🍀  blogpress",
-			"path": "packages/blogpress"
-		},
-		{
-			"name": "🍀  @sugarat/create-theme",
-			"path": "packages/create-theme"
-		},
-		{
-			"name": "🍀  @sugarat/theme",
-			"path": "packages/theme"
-		},
-		{
-			"name": "🍀  vitepress-plugin-pagefind",
-			"path": "packages/vitepress-plugin-pagefind"
-		},
-		{
-			"name": "🍀  vitepress-plugin-rss",
-			"path": "packages/vitepress-plugin-rss"
-		}
-	],
-	"settings": {
-		"conventionalCommits.scopes": [
-			"pkg upgrade",
-			"eslint",
-			"scaffold",
-			"blog"
-		],
-		"ColorfulMonorepo.workspaces.collection": [
-			{
-				"path": "c:\\AppData\\code-vPress\\cnjimbo.github.io",
-				"packageName": "sugar-wiki-monorepo",
-				"label": "🌱  sugar-wiki-monorepo",
-				"foreground": "#000000",
-				"background": "#adca7f"
-			},
-			{
-				"path": "c:\\AppData\\code-vPress\\cnjimbo.github.io\\packages\\blogpress",
-				"packageName": "blogpress",
-				"label": "🍀  blogpress",
-				"foreground": "#000000",
-				"background": "#58a4de"
-			},
-			{
-				"path": "c:\\AppData\\code-vPress\\cnjimbo.github.io\\packages\\create-theme",
-				"packageName": "@sugarat/create-theme",
-				"label": "🍀  @sugarat/create-theme",
-				"foreground": "#ffffff",
-				"background": "#7056ac"
-			},
-			{
-				"path": "c:\\AppData\\code-vPress\\cnjimbo.github.io\\packages\\theme",
-				"packageName": "@sugarat/theme",
-				"label": "🍀  @sugarat/theme",
-				"foreground": "#ffffff",
-				"background": "#630352"
-			},
-			{
-				"path": "c:\\AppData\\code-vPress\\cnjimbo.github.io\\packages\\vitepress-plugin-pagefind",
-				"packageName": "vitepress-plugin-pagefind",
-				"label": "🍀  vitepress-plugin-pagefind",
-				"foreground": "#000000",
-				"background": "#bc9cea"
-			},
-			{
-				"path": "c:\\AppData\\code-vPress\\cnjimbo.github.io\\packages\\vitepress-plugin-rss",
-				"packageName": "vitepress-plugin-rss",
-				"label": "🍀  vitepress-plugin-rss",
-				"foreground": "#ffffff",
-				"background": "#b33ca8"
-			}
-		],
-		"workbench.colorCustomizations": {
-			"statusBar.background": "#adca7f",
-			"statusBar.foreground": "#000000",
-			"tab.activeBorder": "#adca7f",
-			"sideBarTitle.foreground": "#adca7f"
-		},
-		"editor.tokenColorCustomizations": {
-			"comments": "",
-			"textMateRules": []
-		}
-	}
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "ColorfulMonorepo.workspaces.collection": [
+            {
+                "path": "g:\\vPress\\cnjimbo.github.io",
+                "packageName": "sugar-wiki-monorepo",
+                "label": "🌱  sugar-wiki-monorepo",
+                "foreground": "#000000",
+                "background": "#79f381"
+            }
+        ]
+    }
 }
