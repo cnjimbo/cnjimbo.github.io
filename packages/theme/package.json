@@ -20,17 +20,17 @@
   "exports": {
     "./node": {
       "types": "./dist/node.d.ts",
-      "default": "./dist/node.js"
+      "import": "./dist/node.js"
     },
     "./package.json": "./package.json",
     ".": "./src/index.ts"
   },
   "main": "src/index.ts",
   "files": [
-    "node.d.ts",
-    "node.js",
-    "src",
-    "types"
+    "./dist/node.d.ts",
+    "./dist/node.js",
+    "./src",
+    "./types"
   ],
   "scripts": {
     "dev": "pnpm run build:node && pnpm run dev:docs",

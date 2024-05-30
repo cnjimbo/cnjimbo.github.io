@@ -77,14 +77,13 @@
 			}
 		],
 		"workbench.colorCustomizations": {
-			"statusBar.background": "#adca7f",
-			"statusBar.foreground": "#000000",
-			"tab.activeBorder": "#adca7f",
 			"sideBarTitle.foreground": "#adca7f"
 		},
 		"editor.tokenColorCustomizations": {
 			"comments": "",
 			"textMateRules": []
-		}
+		},
+		"typescript.tsdk": "🌱  sugar-wiki-monorepo\\node_modules\\typescript\\lib",
+		"references.preferredLocation": "view"
 	}
 }

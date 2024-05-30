@@ -1,13 +1,13 @@
 {
   "extends": [
-    "./../../tsconfig.json"
+    "./../../tsconfig.base.json"
   ],
   "compilerOptions": {
-    "baseUrl": "./"
-  },
-  "references": [
-    {
-      "path": "./../theme/tsconfig.json"
-    }
-  ]
+    "esModuleInterop": true
+  }
+  // "references": [
+  //   {
+  //     "path": "./../theme/tsconfig.json"
+  //   }
+  // ]
 }

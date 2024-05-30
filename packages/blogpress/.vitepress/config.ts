@@ -1,4 +1,4 @@
-import process from 'node:process'
+import * as process from 'node:process'
 import { getThemeConfig } from '@sugarat/theme/node'
 import type { Theme } from '@sugarat/theme'
 import type { RSSOptions } from 'vitepress-plugin-rss'
