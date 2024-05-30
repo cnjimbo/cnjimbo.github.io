@@ -5,13 +5,17 @@
   "compilerOptions": {
     "paths": {
       "@sugarat/theme/node": [
-        "./node"
+        "./dist/node.js",
       ],
       "@sugarat/theme": [
         "./src/index.ts"
       ]
     },
-    "outDir": "./dist/"
+    "types": [
+      "./dist/node.d.ts",
+      "./**/*.d.ts"
+    ],
+    "outDir": "./dist/",
   },
   "files": [
     "./src/node.ts"

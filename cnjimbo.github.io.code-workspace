@@ -1,7 +1,28 @@
 {
     "folders": [
         {
+            "name": "🌱  sugar-wiki-monorepo",
             "path": "."
+        },
+        {
+            "name": "🍀  blogpress",
+            "path": "packages/blogpress"
+        },
+        {
+            "name": "🍀  @sugarat/create-theme",
+            "path": "packages/create-theme"
+        },
+        {
+            "name": "🍀  @sugarat/theme",
+            "path": "packages/theme"
+        },
+        {
+            "name": "🍀  vitepress-plugin-pagefind",
+            "path": "packages/vitepress-plugin-pagefind"
+        },
+        {
+            "name": "🍀  vitepress-plugin-rss",
+            "path": "packages/vitepress-plugin-rss"
         }
     ],
     "settings": {
@@ -12,7 +33,49 @@
                 "label": "🌱  sugar-wiki-monorepo",
                 "foreground": "#000000",
                 "background": "#79f381"
+            },
+            {
+                "path": "g:\\vPress\\cnjimbo.github.io\\packages\\blogpress",
+                "packageName": "blogpress",
+                "label": "🍀  blogpress",
+                "foreground": "#000000",
+                "background": "#66ca15"
+            },
+            {
+                "path": "g:\\vPress\\cnjimbo.github.io\\packages\\create-theme",
+                "packageName": "@sugarat/create-theme",
+                "label": "🍀  @sugarat/create-theme",
+                "foreground": "#ffffff",
+                "background": "#9177c7"
+            },
+            {
+                "path": "g:\\vPress\\cnjimbo.github.io\\packages\\theme",
+                "packageName": "@sugarat/theme",
+                "label": "🍀  @sugarat/theme",
+                "foreground": "#ffffff",
+                "background": "#c3580d"
+            },
+            {
+                "path": "g:\\vPress\\cnjimbo.github.io\\packages\\vitepress-plugin-pagefind",
+                "packageName": "vitepress-plugin-pagefind",
+                "label": "🍀  vitepress-plugin-pagefind",
+                "foreground": "#ffffff",
+                "background": "#c28046"
+            },
+            {
+                "path": "g:\\vPress\\cnjimbo.github.io\\packages\\vitepress-plugin-rss",
+                "packageName": "vitepress-plugin-rss",
+                "label": "🍀  vitepress-plugin-rss",
+                "foreground": "#ffffff",
+                "background": "#7f5324"
             }
-        ]
+        ],
+        "files.exclude": {},
+        "workbench.colorCustomizations": {
+            "statusBar.background": "#66ca15",
+            "statusBar.foreground": "#000000",
+            "tab.activeBorder": "#66ca15",
+            "sideBarTitle.foreground": "#66ca15"
+        }
     }
 }

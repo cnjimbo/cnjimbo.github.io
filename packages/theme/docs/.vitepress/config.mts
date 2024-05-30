@@ -11,7 +11,7 @@ export default defineConfig({
   cleanUrls: false,
   lang: 'zh-cn',
   title: '@sugarat/theme',
-  description: '粥里有勺糖的博客主题，基于 vitepress 实现',
+  description: '代碼收容所的博客主题，基于 vitepress 实现',
   head: [...extraHead],
   vite: {
     resolve: {
@@ -64,7 +64,7 @@ export default defineConfig({
     socialLinks: [
       {
         icon: 'github',
-        link: 'https://github.com/ATQQ/sugar-blog/tree/master/packages/theme'
+        link: 'https://github.com/cnjimbo/cnjimbo.github.io/tree/master/packages/theme'
       },
       {
         icon: 'x',
@@ -73,7 +73,7 @@ export default defineConfig({
     ],
     editLink: {
       pattern:
-        'https://github.com/ATQQ/sugar-blog/tree/master/packages/theme/docs/:path',
+        'https://github.com/cnjimbo/cnjimbo.github.io/tree/master/packages/theme/docs/:path',
       text: '去 GitHub 上编辑内容'
     },
     lastUpdatedText: '上次更新于',

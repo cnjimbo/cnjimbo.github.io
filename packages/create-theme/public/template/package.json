@@ -2,7 +2,7 @@
   "name": "vitepress-blog",
   "version": "1.0.0",
   "private": true,
-  "author": "粥里有勺糖",
+  "author": "代碼收容所",
   "license": "MIT",
   "scripts": {
     "dev": "vitepress dev docs",

@@ -1,4 +1,4 @@
-<h1 align="center"> 粥里有勺糖 </h1>
+<h1 align="center"> 代碼收容所 </h1>
 <p align="center">你的指尖,拥有改变世界的力量</p>
 <p align="center">博客主题：<a href="https://theme.sugarat.top/" target="_blank">@sugarat/theme</a></p>
 
@@ -66,7 +66,7 @@ pnpm dev:theme
 
 ## :link:个人相关链接
 
-* [粥里有勺糖●博客园](https://www.cnblogs.com/roseAT/)
+* [代碼收容所●博客园](https://www.cnblogs.com/roseAT/)
 * [ATQQ●GitHub](https://github.com/ATQQ)
 * [ES6笔记●GITBOOK](https://sugar-js.gitbook.io/-1/)
 * [blog●GitBook](https://sugar-at.gitbook.io/blog-article/)
@@ -99,7 +99,7 @@ pnpm dev:theme
 
 Thanks to all the contributors!
 
-<a href="https://github.com/atqq/sugar-blog/graphs/contributors">
+<a href="https://github.com/cnjimbo/cnjimbo.github.io/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=atqq/sugar-blog" />
 </a>
 

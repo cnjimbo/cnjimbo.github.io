@@ -4,13 +4,13 @@
   "description": "vitepress plugin, generate feed.rss",
   "author": "sugar",
   "license": "MIT",
-  "homepage": "https://github.com/ATQQ/sugar-blog/tree/master/packages/vitepress-plugin-rss",
+  "homepage": "https://github.com/cnjimbo/cnjimbo.github.io/tree/master/packages/vitepress-plugin-rss",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ATQQ/sugar-blog.git"
+    "url": "git+https://github.com/cnjimbo/cnjimbo.github.io.git"
   },
   "bugs": {
-    "url": "https://github.com/ATQQ/sugar-blog/issues"
+    "url": "https://github.com/cnjimbo/cnjimbo.github.io/issues"
   },
   "keywords": [
     "vitepress",

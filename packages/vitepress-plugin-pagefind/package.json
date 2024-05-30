@@ -4,13 +4,13 @@
   "description": "vitepress plugin, Offline full-text search based on pagefind implementation.",
   "author": "sugar",
   "license": "MIT",
-  "homepage": "https://github.com/ATQQ/sugar-blog/tree/master/packages/vitepress-plugin-pagefind",
+  "homepage": "https://github.com/cnjimbo/cnjimbo.github.io/tree/master/packages/vitepress-plugin-pagefind",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ATQQ/sugar-blog.git"
+    "url": "git+https://github.com/cnjimbo/cnjimbo.github.io.git"
   },
   "bugs": {
-    "url": "https://github.com/ATQQ/sugar-blog/issues"
+    "url": "https://github.com/cnjimbo/cnjimbo.github.io/issues"
   },
   "keywords": [
     "vitepress",

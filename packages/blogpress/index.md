@@ -1,12 +1,12 @@
 ---
 layout: home
 blog:
- name: 粥里有勺糖
+ name: 代碼收容所
  motto: 你的指尖,拥有改变世界的力量
  pageSize: 12
  # 设置 inspiringTimeout 可以实现自动切换
  inspiringTimeout: 3000
- inspiring: 
+ inspiring:
     - 千万不要因为走得太久，而忘记了我们为什么出发
     - 无论多么沉重的负担，也不要忘记微笑；无论多么漫长的路程，也不要忘记坚持
     - 生活的真谛不在繁华，而在于淡泊

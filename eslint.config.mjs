@@ -9,6 +9,7 @@ export default antfu({
   ],
 }, {
   rules: {
+    'jsonc/sort-keys': 'off',
     '@typescript-eslint/ban-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',

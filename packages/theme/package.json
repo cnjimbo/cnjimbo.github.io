@@ -7,15 +7,15 @@
   "homepage": "https://theme.sugarat.top",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ATQQ/sugar-blog.git"
+    "url": "git+https://github.com/cnjimbo/cnjimbo.github.io.git"
   },
   "bugs": {
-    "url": "https://github.com/ATQQ/sugar-blog/issues"
+    "url": "https://github.com/cnjimbo/cnjimbo.github.io/issues"
   },
   "keywords": [
     "vitepress",
     "theme",
-    "粥里有勺糖"
+    "代碼收容所"
   ],
   "exports": {
     "./node": {
@@ -27,8 +27,8 @@
   },
   "main": "src/index.ts",
   "files": [
-    "node.d.ts",
-    "node.js",
+    "./dist/node.d.ts",
+    "./dist/node.js",
     "src",
     "types"
   ],
@@ -65,6 +65,8 @@
   },
   "devDependencies": {
     "@element-plus/icons-vue": "^2.3.1",
+    "@vue/runtime-core": "^3.4.27",
+    "@vue/runtime-dom": "^3.4.27",
     "artalk": "^2.8.6",
     "element-plus": "^2.7.3",
     "pagefind": "^1.1.0",

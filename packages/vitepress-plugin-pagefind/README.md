@@ -1,6 +1,6 @@
 # vitepress-plugin-pagefind
 
-English | [简体中文](https://github.com/ATQQ/sugar-blog/blob/master/packages/vitepress-plugin-pagefind/README-zh.md)
+English | [简体中文](https://github.com/cnjimbo/cnjimbo.github.io/blob/master/packages/vitepress-plugin-pagefind/README-zh.md)
 
 Offline full-text search based on [pagefind](https://github.com/cloudcannon/pagefind) implementation.
 
@@ -91,8 +91,8 @@ pagefindPlugin({
 })
 ```
 
-### Example 3：Setting the force language option when indexing 
-Different languages have different strategies for generating content index，more detail see [pagefind：multilingual](https://pagefind.app/docs/multilingual/#language-support) 
+### Example 3：Setting the force language option when indexing
+Different languages have different strategies for generating content index，more detail see [pagefind：multilingual](https://pagefind.app/docs/multilingual/#language-support)
 
 ```ts
 pagefindPlugin({
@@ -319,4 +319,4 @@ Thanks to the following libraries for inspiration.
 * [pagefind](https://github.com/cloudcannon/pagefind)
 * [vitepress-plugin-search](https://github.com/emersonbottero/vitepress-plugin-search)
 * [vue-command-palette](https://github.com/xiaoluoboding/vue-command-palette)
-* [@sugarat/theme](https://github.com/ATQQ/sugar-blog/tree/master/packages/theme)
+* [@sugarat/theme](https://github.com/cnjimbo/cnjimbo.github.io/tree/master/packages/theme)

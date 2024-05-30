@@ -7,7 +7,7 @@ const baseUrl = 'https://theme.sugarat.top'
 const RSS: Theme.RSSOptions = {
   title: '@sugarat/theme',
   baseUrl,
-  copyright: 'Copyright (c) 2023-present, 粥里有勺糖',
+  copyright: 'Copyright (c) 2023-present, 代碼收容所',
   description: '基于 vitepress 实现的简约博客主题'
 }
 
@@ -42,8 +42,8 @@ export const blogTheme = getThemeConfig({
   RSS,
   authorList: [
     {
-      nickname: '粥里有勺糖',
-      url: 'https://sugarat.top/aboutme.html',
+      nickname: '代碼收容所',
+      url: 'https://www.dmsrs.org/aboutme.html',
       des: '你的指尖,拥有改变世界的力量'
     }
   ],
@@ -55,11 +55,11 @@ export const blogTheme = getThemeConfig({
   },
   friend: [
     {
-      nickname: '粥里有勺糖',
+      nickname: '代碼收容所',
       des: '你的指尖,拥有改变世界的力量',
       avatar:
         'https://img.cdn.sugarat.top/mdImg/MTY3NDk5NTE2NzAzMA==674995167030',
-      url: 'https://sugarat.top'
+      url: 'https://www.dmsrs.org'
     },
     {
       nickname: 'Vitepress',
@@ -69,7 +69,7 @@ export const blogTheme = getThemeConfig({
     }
   ],
   // 文章默认作者
-  author: '粥里有勺糖',
+  author: '代碼收容所',
   // 评论
   comment: {
     type: 'giscus',
@@ -107,7 +107,7 @@ export const blogTheme = getThemeConfig({
       {
         type: 'button',
         content: '作者博客',
-        link: 'https://sugarat.top'
+        link: 'https://www.dmsrs.org'
       },
       {
         type: 'button',
@@ -122,7 +122,7 @@ export const blogTheme = getThemeConfig({
   },
   works: workConfig,
   footer: {
-    copyright: 'MIT License | 粥里有勺糖',
+    copyright: 'MIT License | 代碼收容所',
   }
 })
 
