@@ -77,6 +77,8 @@ jobs:
   # 任务2: 部署 Gitee Pages
   deploy-gitee-pages:
     name: deploy gitee pages
+    # 这里确保只有当前面的 jobs 都成功时才运行
+    if: success()
     needs: deploy-github-pages
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
