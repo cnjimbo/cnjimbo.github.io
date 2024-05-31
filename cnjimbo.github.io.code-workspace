@@ -72,10 +72,10 @@
         ],
         "files.exclude": {},
         "workbench.colorCustomizations": {
-            "statusBar.background": "#66ca15",
-            "statusBar.foreground": "#000000",
-            "tab.activeBorder": "#66ca15",
-            "sideBarTitle.foreground": "#66ca15"
+            "statusBar.background": "#c3580d",
+            "statusBar.foreground": "#ffffff",
+            "tab.activeBorder": "#c3580d",
+            "sideBarTitle.foreground": "#c3580d"
         }
     }
 }

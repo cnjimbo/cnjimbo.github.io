@@ -12,8 +12,8 @@
       ]
     },
     "types": [
-      "./dist/node.d.ts",
-      "./**/*.d.ts"
+
+      "./types/vue-shim.d.ts"
     ],
     "outDir": "./dist/",
   },
