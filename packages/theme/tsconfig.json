@@ -3,21 +3,13 @@
     "./../../tsconfig.json"
   ],
   "compilerOptions": {
-    "paths": {
-      "@sugarat/theme/node": [
-        "./dist/node.js",
-      ],
-      "@sugarat/theme": [
-        "./src/index.ts"
-      ]
-    },
-    "types": [
-
-      "./types/vue-shim.d.ts"
-    ],
     "outDir": "./dist/",
   },
   "files": [
     "./src/node.ts"
-  ]
+  ],
+  "include": [
+    "src/**/*",
+    "types/**/*"
+  ],
 }
