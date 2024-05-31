@@ -2,7 +2,7 @@
   "name": "@sugarat/create-theme",
   "version": "0.0.61",
   "description": "简约风的 Vitepress 博客主题，sugarat vitepress blog theme",
-  "author": "代碼收容所",
+  "author": "代碼收容",
   "license": "MIT",
   "homepage": "https://github.com/cnjimbo/cnjimbo.github.io/tree/master/packages/create-theme",
   "repository": {

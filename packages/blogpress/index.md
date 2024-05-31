@@ -1,7 +1,7 @@
 ---
 layout: home
 blog:
- name: 代碼收容所
+ name: 代碼收容
  motto: 你的指尖,拥有改变世界的力量
  pageSize: 12
  # 设置 inspiringTimeout 可以实现自动切换

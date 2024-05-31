@@ -6,9 +6,12 @@ export default antfu({
 }, {
   ignores: [
     'packages/theme/*.js',
+    '**/node_modules/**',
+    '**/*.md',
+    '**/*.yml'
   ],
-}, {
   rules: {
+    'style/comma-dangle': 'off',
     'jsonc/sort-keys': 'off',
     '@typescript-eslint/ban-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',

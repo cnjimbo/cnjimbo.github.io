@@ -120,9 +120,9 @@ import { RSSOptions, RssPlugin } from 'vitepress-plugin-rss'
 
 const baseUrl = 'https://www.dmsrs.org'
 const RSS: RSSOptions = {
-  title: '代碼收容所',
+  title: '代碼收容',
   baseUrl,
-  copyright: 'Copyright (c) 2018-present, 代碼收容所',
+  copyright: 'Copyright (c) 2018-present, 代碼收容',
 }
 
 export default defineConfig({
