@@ -243,7 +243,7 @@ cover: /abc.png
 ### Patch Changes
 
 - feat: 友链支持随机顺序和滚动
-- fix: tag error ([#154](https://github.com/ATQQ/sugar-blog/pull/154)) ([@itcatplayit](https://github.com/itcatplayit))
+- fix: tag error ([#154](https://github.com/cnjimbo/cnjimbo.github.io/pull/154)) ([@itcatplayit](https://github.com/itcatplayit))
 - chore: update rc31
 - chore: devtool warn fix
 
@@ -325,7 +325,7 @@ cover: /abc.png
 
 ### Patch Changes
 
-- fix: setActiveLink [#138](https://github.com/ATQQ/sugar-blog/issues/138)
+- fix: setActiveLink [#138](https://github.com/cnjimbo/cnjimbo.github.io/issues/138)
 - Updated dependencies
   - vitepress-plugin-pagefind@0.2.10
 
@@ -590,7 +590,7 @@ cover: /abc.png
 
 ### Patch Changes
 
-- feat: 分离可独立使用的的 搜索插件[pagefind](https://github.com/ATQQ/sugar-blog/tree/master/packages/vitepress-plugin-pagefind)
+- feat: 分离可独立使用的的 搜索插件[pagefind](https://github.com/cnjimbo/cnjimbo.github.io/tree/master/packages/vitepress-plugin-pagefind)
 - feat: 搜索框展示 UI 优化，支持定制文案，展示适配移动端
 - fix: 搜索结果未全部展示
 - fix: 中文文件名文章时间显示 NaN

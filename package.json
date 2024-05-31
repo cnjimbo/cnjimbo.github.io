@@ -6,13 +6,13 @@
   "description": "个人博客&知识&文档站集",
   "author": "sugar",
   "license": "MIT",
-  "homepage": "https://github.com/ATQQ/sugar-blog#readme",
+  "homepage": "https://github.com/cnjimbo/cnjimbo.github.io#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ATQQ/sugar-blog.git"
+    "url": "git+https://github.com/cnjimbo/cnjimbo.github.io.git"
   },
   "bugs": {
-    "url": "https://github.com/ATQQ/sugar-blog/issues"
+    "url": "https://github.com/cnjimbo/cnjimbo.github.io/issues"
   },
   "keywords": [],
   "scripts": {
@@ -43,6 +43,8 @@
     "@changesets/cli": "^2.27.3",
     "@types/bun": "^1.1.3",
     "@types/node": "^20.12.12",
+    "@vue/runtime-core": "^3.4.27",
+    "@vue/runtime-dom": "^3.4.27",
     "eslint": "^9.3.0",
     "eslint-plugin-todo-ddl": "^1.1.1",
     "lint-staged": "^15.2.5",
@@ -50,6 +52,7 @@
     "simple-git-hooks": "^2.11.1",
     "tsup": "8.0.2",
     "typescript": "5.4.5",
+    "vue": "^3.4.27",
     "wait-on": "^7.2.0",
     "zx": "^8.1.1"
   },

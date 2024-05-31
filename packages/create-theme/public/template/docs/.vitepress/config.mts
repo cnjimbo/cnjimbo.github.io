@@ -17,7 +17,7 @@ export default defineConfig({
   // base,
   lang: 'zh-cn',
   title: '@sugarat/theme',
-  description: '粥里有勺糖的博客主题，基于 vitepress 实现',
+  description: '代碼收容所的博客主题，基于 vitepress 实现',
   lastUpdated: true,
   // 详见：https://vitepress.dev/zh/reference/site-config#head
   head: [
@@ -40,17 +40,17 @@ export default defineConfig({
     logo: '/logo.png',
     // editLink: {
     //   pattern:
-    //     'https://github.com/ATQQ/sugar-blog/tree/master/packages/blogpress/:path',
+    //     'https://github.com/cnjimbo/cnjimbo.github.io/tree/master/packages/blogpress/:path',
     //   text: '去 GitHub 上编辑内容'
     // },
     nav: [
       { text: '首页', link: '/' },
-      { text: '关于作者', link: 'https://sugarat.top/aboutme.html' }
+      { text: '关于作者', link: 'https://www.dmsrs.org/aboutme.html' }
     ],
     socialLinks: [
       {
         icon: 'github',
-        link: 'https://github.com/ATQQ/sugar-blog/tree/master/packages/theme'
+        link: 'https://github.com/cnjimbo/cnjimbo.github.io/tree/master/packages/theme'
       }
     ]
   }

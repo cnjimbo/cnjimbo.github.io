@@ -2,12 +2,12 @@
   "name": "@sugarat/create-theme",
   "version": "0.0.61",
   "description": "简约风的 Vitepress 博客主题，sugarat vitepress blog theme",
-  "author": "粥里有勺糖",
+  "author": "代碼收容所",
   "license": "MIT",
-  "homepage": "https://github.com/ATQQ/sugar-blog/tree/master/packages/create-theme",
+  "homepage": "https://github.com/cnjimbo/cnjimbo.github.io/tree/master/packages/create-theme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ATQQ/sugar-blog.git"
+    "url": "git+https://github.com/cnjimbo/cnjimbo.github.io.git"
   },
   "keywords": [
     "blog",

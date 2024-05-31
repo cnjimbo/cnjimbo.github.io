@@ -9,7 +9,7 @@ export type RSSOptions = Omit<FeedOptions, 'id'> & {
   filter?: (value: PostInfo, index: number, array: PostInfo[]) => boolean
   /**
    * 你的站点地址
-   * @example 'https://sugarat.top'
+   * @example 'https://www.dmsrs.org'
    */
   baseUrl: string
   /**

@@ -172,7 +172,7 @@ lighthouse 检测结果
 * DOMContentLoaded：507ms
 * LCP（Largest Contentful Paint）：496ms
 
-访问 https://sugarat.top 可以看到效果还是很明显的。
+访问 https://www.dmsrs.org 可以看到效果还是很明显的。
 
 ## 总结
 1. 图片：压缩，加载合适尺寸，优先使用 WebP 格式
