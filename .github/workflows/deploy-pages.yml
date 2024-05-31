@@ -21,7 +21,8 @@ on:
     - cron: 30 17 * * *
   # 可手动执行
   workflow_dispatch:
-
+permissions:
+  contents: write
 jobs:
   # 任务1: 部署 GitHub Pages
   deploy-github-pages:
@@ -68,8 +69,10 @@ jobs:
       - name: Build
         run: pnpm build
       - name: Deploy GitHub Pages
+
         # 7、部署 GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.5.0
         with:
+
           branch: pages
           folder: packages/blogpress/.vitepress/dist
