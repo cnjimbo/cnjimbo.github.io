@@ -4,6 +4,14 @@
   ],
   "compilerOptions": {
     "outDir": "./dist/",
+    "paths": {
+      "@sugrat/theme/node": [
+        "./src/node.ts"
+      ],
+      "@sugrat/theme": [
+        "./src/index.ts"
+      ]
+    }
   },
   "files": [
     "./src/node.ts"
