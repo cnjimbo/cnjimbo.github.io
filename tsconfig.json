@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "types": [
-      "vue",
-      "@vue/runtime-core",
-      "@vue/runtime-dom"
-    ],
+    // "types": [
+    //   "vue",
+    //   "@vue/runtime-core",
+    //   "@vue/runtime-dom"
+    // ],
     "jsx": "preserve",
     "lib": [
       "ESNext",

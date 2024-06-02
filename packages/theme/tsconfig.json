@@ -3,21 +3,24 @@
     "./../../tsconfig.json"
   ],
   "compilerOptions": {
+    // "baseUrl": "./",
+    "typeRoots": [
+      "./dist"
+    ],
     "outDir": "./dist/",
     "paths": {
-      "@sugrat/theme/node": [
-        "./src/node.ts"
+      "@sugarat/theme/node": [
+        "./packages/theme/src/node.ts"
       ],
-      "@sugrat/theme": [
-        "./src/index.ts"
+      "@sugarat/theme": [
+        "./packages/theme/src/index.ts"
       ]
-    }
+    },
   },
   "files": [
     "./src/node.ts"
   ],
   "include": [
-    "src/**/*",
-    "types/**/*"
+    "src/**/*.ts"
   ],
 }
