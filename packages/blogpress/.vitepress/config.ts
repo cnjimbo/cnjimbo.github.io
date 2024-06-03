@@ -28,7 +28,7 @@ const RSSWeekly: RSSOptions = {
 const RSS: Theme.RSSOptions = {
   title: '代碼收容',
   baseUrl,
-  description: '你的指尖,拥有改变世界的力量（大前端相关技术分享）',
+  description: '天道酬勤，恒以致遠（大前端相关技术分享）',
   id: baseUrl,
   link: baseUrl,
   language: 'zh-cn',
@@ -204,7 +204,7 @@ const blogTheme = getThemeConfig({
     {
       nickname: '代碼收容',
       url: 'https://www.dmsrs.org/aboutme.html',
-      des: '你的指尖,拥有改变世界的力量',
+      des: '天道酬勤，恒以致遠',
     },
   ],
   footer: {

@@ -988,8 +988,8 @@ const blogTheme = getThemeConfig({
 const blogTheme = getThemeConfig({
   friend: [
     {
-      nickname: '代碼收容',
-      des: '你的指尖用于改变世界的力量',
+      nickname: '代碼收容所',
+      des: '天道酬勤，恒以致遠',
       avatar:
         'https://img.cdn.sugarat.top/mdImg/MTY3NDk5NTE2NzAzMA==674995167030',
       url: 'https://www.dmsrs.org'
@@ -1106,7 +1106,7 @@ const blogTheme = getThemeConfig({
     {
       nickname: '代碼收容',
       url: 'https://www.dmsrs.org/aboutme.html',
-      des: '你的指尖,拥有改变世界的力量'
+      des: '天道酬勤，恒以致遠'
     }
   ]
 })

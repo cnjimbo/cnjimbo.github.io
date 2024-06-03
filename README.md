@@ -1,5 +1,5 @@
-<h1 align="center"> 代碼收容 </h1>
-<p align="center">你的指尖,拥有改变世界的力量</p>
+<h1 align="center"> 代碼收容所 </h1>
+<p align="center">天道酬勤，恒以致遠</p>
 <p align="center">博客主题：<a href="https://theme.sugarat.top/" target="_blank">@sugarat/theme</a></p>
 
 [![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
