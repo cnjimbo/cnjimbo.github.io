@@ -221,7 +221,7 @@ const blogTheme = getThemeConfig({
   buttonAfterArticle: {
     openTitle: '投"币"支持',
     closeTitle: '下次一定',
-    content: '<img src="https://img.cdn.sugarat.top/mdImg/MTY0Nzc1NTYyOTE5Mw==647755629193">',
+    content: '<img src="/donate.png">',
     icon: 'wechatPay',
   },
 })
@@ -318,7 +318,7 @@ export default defineConfig({
     // },
     lastUpdatedText: '上次更新于',
     // logo: 'https://sugarat.s3.bitiful.net/avatar/blog/zlyst-avatar.jpeg!style:avatar',
-    logo: 'logo.png',
+    logo: '/logo.png',
     editLink: {
       pattern:
         'https://github.com/cnjimbo/cnjimbo.github.io/tree/master/packages/blogpress/:path',
