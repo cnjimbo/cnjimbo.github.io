@@ -2,8 +2,16 @@
   "extends": [
     "./../../tsconfig.json"
   ],
+  "compilerOptions": {
+    "moduleResolution": "Node"
+  },
   "include": [
     ".vitepress/**/*",
     "types/**/*"
   ],
+  "exclude": [
+    "node_modules",
+    "**/cache/**",
+    "**/dist/**/*"
+  ]
 }

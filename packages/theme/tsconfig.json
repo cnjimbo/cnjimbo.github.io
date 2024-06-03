@@ -3,9 +3,15 @@
     "./../../tsconfig.json"
   ],
   "compilerOptions": {
-    "outDir": "./dist/",
+    // "baseUrl": "./",
+    // "typeRoots": [
+    //   "./dist"
+    // ],
+    "outDir": "./dist/"
   },
-  "files": [
+
+  "include": [
+    "./src/index.ts",
     "./src/node.ts"
   ],
   "include": [

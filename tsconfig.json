@@ -1,17 +1,25 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@sugarat/theme/node": [
+        "./packages/theme/src/node.ts"
+      ],
+      "@sugarat/theme": [
+        "./packages/theme/src/index.ts"
+      ]
+    },
     "target": "esnext",
-    "types": [
-      "vue",
-      "@vue/runtime-core",
-      "@vue/runtime-dom"
-    ],
+    // "types": [
+    //   "vue",
+    //   "@vue/runtime-core",
+    //   "@vue/runtime-dom"
+    // ],
     "jsx": "preserve",
     "lib": [
       "ESNext",
       "DOM"
     ],
-    "baseUrl": "./",
     "module": "esnext",
     "moduleResolution": "Node",
     "resolveJsonModule": true,
@@ -84,7 +92,7 @@
   },
   "exclude": [
     "node_modules",
-    "**/dist/**",
+    "./dist/**/*",
     "*.d.ts",
     "**/node_modules/**/*",
     "./*.mjs"
