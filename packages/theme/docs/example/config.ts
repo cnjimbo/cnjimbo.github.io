@@ -4,10 +4,10 @@ export default defineExamples([
   {
     cover: 'https://img.cdn.sugarat.top/mdImg/MTY3MzE3MDUxOTMwMw==673170519303',
     link: 'https://www.dmsrs.org',
-    name: '代碼收容所',
+    name: '代碼收容',
     desc: '记录随笔与学习笔记',
     avatar: 'https://sugarat.s3.bitiful.net/avatar/blog/zlyst-avatar.jpeg',
-    nickname: '代碼收容所',
+    nickname: '代碼收容',
     home: 'https://github.com/atqq'
   },
   {

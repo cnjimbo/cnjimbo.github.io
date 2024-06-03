@@ -17,9 +17,9 @@ import { RSSOptions, RssPlugin } from 'vitepress-plugin-rss'
 
 const baseUrl = 'https://www.dmsrs.org'
 const RSS: RSSOptions = {
-  title: '代碼收容所',
+  title: '代碼收容',
   baseUrl,
-  copyright: 'Copyright (c) 2018-present, 代碼收容所',
+  copyright: 'Copyright (c) 2018-present, 代碼收容',
 }
 
 export default defineConfig({
@@ -57,22 +57,22 @@ publish: false
 ```ts
 const RSS: RSSOptions = {
   // necessary（必选参数）
-  title: '代碼收容所',
+  title: '代碼收容',
   baseUrl,
-  copyright: 'Copyright (c) 2018-present, 代碼收容所',
+  copyright: 'Copyright (c) 2018-present, 代碼收容',
 
   // optional（可选参数）
   description: '大前端相关技术分享',
   language: 'zh-cn',
   author: {
-    name: '代碼收容所',
+    name: '代碼收容',
     email: 'engineerzjl@foxmail.com',
     link: 'https://www.dmsrs.org'
   },
   icon: true,
   authors: [
     {
-      name: '代碼收容所',
+      name: '代碼收容',
       email: 'engineerzjl@foxmail.com',
       link: 'https://www.dmsrs.org'
     },
