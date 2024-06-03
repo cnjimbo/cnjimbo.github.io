@@ -4,16 +4,14 @@
   ],
   "compilerOptions": {
     // "baseUrl": "./",
-    "typeRoots": [
-      "./dist"
-    ],
+    // "typeRoots": [
+    //   "./dist"
+    // ],
     "outDir": "./dist/"
-
   },
-  "files": [
-    "./src/node.ts"
-  ],
+
   "include": [
-    "src/**/*.ts"
+    "./src/index.ts",
+    "./src/node.ts"
   ]
 }

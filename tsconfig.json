@@ -92,7 +92,7 @@
   },
   "exclude": [
     "node_modules",
-    "**/dist/**",
+    "./dist/**/*",
     "*.d.ts",
     "**/node_modules/**/*",
     "./*.mjs"
