@@ -7,20 +7,13 @@
     "typeRoots": [
       "./dist"
     ],
-    "outDir": "./dist/",
-    "paths": {
-      "@sugarat/theme/node": [
-        "./packages/theme/src/node.ts"
-      ],
-      "@sugarat/theme": [
-        "./packages/theme/src/index.ts"
-      ]
-    },
+    "outDir": "./dist/"
+
   },
   "files": [
     "./src/node.ts"
   ],
   "include": [
     "src/**/*.ts"
-  ],
+  ]
 }
