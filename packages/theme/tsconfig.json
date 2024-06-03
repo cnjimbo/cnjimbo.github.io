@@ -4,23 +4,14 @@
   ],
   "compilerOptions": {
     // "baseUrl": "./",
-    "typeRoots": [
-      "./dist"
-    ],
-    "outDir": "./dist/",
-    "paths": {
-      "@sugarat/theme/node": [
-        "./packages/theme/src/node.ts"
-      ],
-      "@sugarat/theme": [
-        "./packages/theme/src/index.ts"
-      ]
-    },
+    // "typeRoots": [
+    //   "./dist"
+    // ],
+    "outDir": "./dist/"
   },
-  "files": [
-    "./src/node.ts"
-  ],
+
   "include": [
-    "src/**/*.ts"
-  ],
+    "./src/index.ts",
+    "./src/node.ts"
+  ]
 }
