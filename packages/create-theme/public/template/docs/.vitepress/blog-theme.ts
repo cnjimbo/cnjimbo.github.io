@@ -6,10 +6,10 @@ import { getThemeConfig } from '@sugarat/theme/node'
 
 // const baseUrl = 'https://www.dmsrs.org'
 // const RSS: Theme.RSSOptions = {
-//   title: '代碼收容',
+//   title: '代碼收容所',
 //   baseUrl,
-//   copyright: 'Copyright (c) 2018-present, 代碼收容',
-//   description: '你的指尖,拥有改变世界的力量（大前端相关技术分享）',
+//   copyright: 'Copyright (c) 2018-present, 代碼收容所',
+//   description: '天道酬勤，恒以致遠（大前端相关技术分享）',
 //   language: 'zh-cn',
 //   image: 'https://img.cdn.sugarat.top/mdImg/MTY3NDk5NTE2NzAzMA==674995167030',
 //   favicon: 'https://www.dmsrs.org/favicon.ico',
@@ -29,7 +29,7 @@ const blogTheme = getThemeConfig({
   footer: {
     // message 字段支持配置为HTML内容，配置多条可以配置为数组
     // message: '下面 的内容和图标都是可以修改的噢（当然本条内容也是可以隐藏的）',
-    copyright: 'MIT License | 代碼收容',
+    copyright: 'MIT License | 代碼收容所',
     // icpRecord: {
     //   name: '蜀ICP备19011724号',
     //   link: 'https://beian.miit.gov.cn/'
@@ -44,13 +44,13 @@ const blogTheme = getThemeConfig({
   themeColor: 'el-blue',
 
   // 文章默认作者
-  author: '代碼收容',
+  author: '代碼收容所',
 
   // 友链
   friend: [
     {
-      nickname: '代碼收容',
-      des: '你的指尖用于改变世界的力量',
+      nickname: '代碼收容所',
+      des: '天道酬勤，恒以致遠',
       avatar:
         'https://img.cdn.sugarat.top/mdImg/MTY3NDk5NTE2NzAzMA==674995167030',
       url: 'https://www.dmsrs.org',

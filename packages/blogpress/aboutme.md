@@ -11,34 +11,41 @@ tags:
 
 ---
 
-99年出生，标准的理工男一枚,毕业于([西南石油大学](https://www.swpu.edu.cn/)),热爱开源与知识分享
+40岁码农大叔,热爱开源与知识分享
 
-目前就职于 🛵**美团**🛵
+目前就职于 `宇宙大药厂`
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYwNDcyMTQ4NTMyOA==604721485328)
+![图片](./digital_pharmaceutical.jpg)
 
 ## :sparkles:在做什么
 ### 公司
-* 2023.11 - ing：[低代码](https://lowcode-engine.cn/)
-* 2022.11 - 2023.10：[大前端 DevOps](https://tech.meituan.com/2023/12/29/the-evolution-of-terminals-from-standardization-to-digitalization.html)
-* 2021.07 - 2022.11：[研发框架：Rome](https://tech.meituan.com/2023/08/03/meituan-rome-practice.html)
-* 2021.07 - 2022.11：[业务产品：开店宝](https://ecom.meituan.com)
+* 2014 - ing：[项目管理](https://www.dmsrs.org/)
+* 2012 - 2014：[创业，热计量与收费](https://www.dmsrs.org)
+* 2008 - 2010：[低代码平台](https://www.dmsrs.org)
+* 2006 - 2008：[联网煤矿安全监控](https://www.dmsrs.org)
+
+### 技术
+* .Net Framework & dotnet
+* Java
+* Html、Css、Javascript
+* Delphi
+* Python
 
 ### 开源
-* 2023.01 - ing：VitePress 博客主题：[@sugarat/theme主题](https://theme.sugarat.top/)
-* 2019.0 - ing：Web应用：[EasyPicker](https://ep2.sugarat.top/)
+*
+*
 * 。。。
 
 ## :rocket:当下
 沉淀技术，广度与深度3/7分，打磨自己做的一些小应用，确定自己最终深挖的领域。
 
 ## :pencil:座右铭
-你的指尖,拥有改变世界的力量:smile:
+天道酬勤，恒以致遠:smile:
 
 ## :phone:联系我
-**邮箱**：engineerzjl@foxmail.com
+**邮箱**：happycoder@foxmail.com
 
 **微信**：
 
-<img src="https://img.cdn.sugarat.top/mdImg/MTYxMzIwMTA0NzIyNg==wx.jpg" style="width:200px;">
+
 
