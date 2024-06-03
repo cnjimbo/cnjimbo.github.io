@@ -260,7 +260,7 @@ export default defineConfig({
   lang: 'zh-cn',
   title: '代碼收容',
   description:
-    '代碼收容的个人博客，记录随笔与学习笔记，大前端相关的知识，高频面试题，个人面经等',
+    '代碼收容所的个人博客，记录随笔与学习笔记，大前端相关的知识，高频面试题，个人面经等',
   head: [
     // <meta name="baidu-site-verification" content="codeva-b08avp82Uj" />
     ['meta', { name: 'baidu-site-verification', content: 'codeva-b08avp82Uj' }],

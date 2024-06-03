@@ -182,7 +182,7 @@ const blogTheme = getThemeConfig({
 const blogTheme = getThemeConfig({
   home: {
     name: '@sugarat/theme',
-    motto: '代碼收容的博客主题',
+    motto: '代碼收容所的博客主题',
     inspiring: '基于 Vitepress 定制的主题🎨',
     pageSize: 2
   }
@@ -1051,7 +1051,7 @@ const blogTheme = getThemeConfig({
       // 省略其他配置项
       avatar: {
         // 单独设置 alt
-        alt: '代碼收容23',
+        alt: '代碼收容所23',
         src:
           'https://img.cdn.sugarat.top/mdImg/MTY3NDk5NTI2NzY1Ng==674995267656'
       }
