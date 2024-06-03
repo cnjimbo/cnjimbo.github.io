@@ -13,9 +13,5 @@
   "include": [
     "./src/index.ts",
     "./src/node.ts"
-  ],
-  "include": [
-    "src/**/*",
-    "types/**/*"
-  ],
+  ]
 }
