@@ -1,4 +1,4 @@
-name: deploy-gitee-pages
+name: sync-to-gitee
 
 on:
   # 推送时执行
@@ -21,7 +21,9 @@ on:
   #   - cron: 30 17 * * *
   # 可手动执行
   workflow_dispatch:
-
+concurrency:
+  group: gitee-sync
+  cancel-in-progress: true
 jobs:
 
   # 任务2: 部署 Gitee Pages
