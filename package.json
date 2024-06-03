@@ -42,7 +42,7 @@
     "@antfu/eslint-config": "2.19.0",
     "@changesets/cli": "^2.27.3",
     "@types/bun": "^1.1.3",
-    "@types/node": "^20.12.12",
+    "@types/node": "^20.14.0",
     "@typescript-eslint/parser": "^7.11.0",
     "@vue/runtime-core": "^3.4.27",
     "@vue/runtime-dom": "^3.4.27",
