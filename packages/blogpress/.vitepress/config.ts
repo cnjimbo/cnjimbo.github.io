@@ -318,7 +318,7 @@ export default defineConfig({
     // },
     lastUpdatedText: '上次更新于',
     // logo: 'https://sugarat.s3.bitiful.net/avatar/blog/zlyst-avatar.jpeg!style:avatar',
-    logo: 'logo.png',
+    logo: '/logo.png',
     editLink: {
       pattern:
         'https://github.com/cnjimbo/cnjimbo.github.io/tree/master/packages/blogpress/:path',
