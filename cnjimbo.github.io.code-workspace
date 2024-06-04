@@ -1,27 +1,27 @@
 {
 	"folders": [
 		{
-			"name": "🌱  sugar-wiki-monorepo",
+			"name": "✨ sugar-wiki-monorepo",
 			"path": "."
 		},
 		{
-			"name": "🍀  blogpress",
+			"name": "📦 blogpress",
 			"path": "packages/blogpress"
 		},
 		{
-			"name": "🍀  @sugarat/create-theme",
+			"name": "📦 @sugarat/create-theme",
 			"path": "packages/create-theme"
 		},
 		{
-			"name": "🍀  @sugarat/theme",
+			"name": "📦 @sugarat/theme",
 			"path": "packages/theme"
 		},
 		{
-			"name": "🍀  vitepress-plugin-pagefind",
+			"name": "📦 vitepress-plugin-pagefind",
 			"path": "packages/vitepress-plugin-pagefind"
 		},
 		{
-			"name": "🍀  vitepress-plugin-rss",
+			"name": "📦 vitepress-plugin-rss",
 			"path": "packages/vitepress-plugin-rss"
 		}
 	],
