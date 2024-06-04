@@ -6,7 +6,7 @@ import { getThemeConfig } from '@sugarat/theme/node'
 
 // const baseUrl = 'https://www.dmsrs.org'
 // const RSS: Theme.RSSOptions = {
-//   title: '代碼收容所',
+//   title: '代碼收容',
 //   baseUrl,
 //   copyright: 'Copyright (c) 2018-present, 代碼收容所',
 //   description: '天道酬勤，恒以致遠（大前端相关技术分享）',
@@ -29,7 +29,7 @@ const blogTheme = getThemeConfig({
   footer: {
     // message 字段支持配置为HTML内容，配置多条可以配置为数组
     // message: '下面 的内容和图标都是可以修改的噢（当然本条内容也是可以隐藏的）',
-    copyright: 'MIT License | 代碼收容所',
+    copyright: 'MIT License | 代碼收容',
     // icpRecord: {
     //   name: '蜀ICP备19011724号',
     //   link: 'https://beian.miit.gov.cn/'
@@ -44,7 +44,7 @@ const blogTheme = getThemeConfig({
   themeColor: 'el-blue',
 
   // 文章默认作者
-  author: '代碼收容所',
+  author: '代碼收容',
 
   // 友链
   friend: [

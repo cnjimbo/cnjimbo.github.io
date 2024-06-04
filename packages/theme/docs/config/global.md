@@ -575,7 +575,7 @@ const blogTheme = getThemeConfig({
   comment: {
     type: 'artalk',
     options: {
-      site: '代碼收容所',
+      site: '代碼收容',
       server: '/artalk',
     },
   },
@@ -1104,7 +1104,7 @@ const blogTheme = getThemeConfig({
 const blogTheme = getThemeConfig({
   authorList: [
     {
-      nickname: '代碼收容所',
+      nickname: '代碼收容',
       url: 'https://www.dmsrs.org/aboutme.html',
       des: '天道酬勤，恒以致遠'
     }
@@ -1179,7 +1179,7 @@ const baseUrl = 'https://theme.sugarat.top'
 const RSS: Theme.RSSOptions = {
   title: '@sugarat/theme',
   baseUrl,
-  copyright: 'Copyright (c) 2023-present, 代碼收容所',
+  copyright: 'Copyright (c) 2023-present, 代碼收容',
 }
 
 const blogTheme = getThemeConfig({
@@ -1198,7 +1198,7 @@ const RSS: Theme.RSSOptions = {
   language: 'zh-cn',
   image: 'https://img.cdn.sugarat.top/mdImg/MTY3NDk5NTE2NzAzMA==674995167030',
   favicon: 'https://theme.sugarat.top/favicon.ico',
-  copyright: 'Copyright (c) 2023-present, 代碼收容所',
+  copyright: 'Copyright (c) 2023-present, 代碼收容',
   url: `${baseUrl}/feed.rss`
 }
 
@@ -1405,7 +1405,7 @@ buttonAfterArticle:
 const blogTheme = getThemeConfig({
   footer: {
     version: true,
-    copyright: 'MIT License | 代碼收容所'
+    copyright: 'MIT License | 代碼收容'
   }
 })
 ```
@@ -1471,7 +1471,7 @@ interface Footer {
 const blogTheme = getThemeConfig({
   footer: {
     message: '下面 的内容和图标都是可以修改的噢（当然本条内容也是可以隐藏的，也可以配置为HTML）',
-    copyright: 'MIT License | 代碼收容所',
+    copyright: 'MIT License | 代碼收容',
     icpRecord: {
       name: '蜀ICP备19011724号',
       link: 'https://beian.miit.gov.cn/'
@@ -1525,10 +1525,10 @@ footer（ message 字段也支持） 支持配置为数组，可以用于灵活�
 const blogTheme = getThemeConfig({
   footer: [{
     message: '下面 的内容和图标都是可以修改的噢（当然本条内容也是可以隐藏的）',
-    copyright: 'MIT License | 代碼收容所',
+    copyright: 'MIT License | 代碼收容',
   }, {
     message: ['自定义多条内容', '自定义多条内容'],
-    copyright: 'MIT License | 代碼收容所',
+    copyright: 'MIT License | 代碼收容',
     version: true
   }, {
     version: false,

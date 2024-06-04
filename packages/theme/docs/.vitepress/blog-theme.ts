@@ -7,7 +7,7 @@ const baseUrl = 'https://theme.sugarat.top'
 const RSS: Theme.RSSOptions = {
   title: '@sugarat/theme',
   baseUrl,
-  copyright: 'Copyright (c) 2023-present, 代碼收容所',
+  copyright: 'Copyright (c) 2023-present, 代碼收容',
   description: '基于 vitepress 实现的简约博客主题'
 }
 
@@ -42,7 +42,7 @@ export const blogTheme = getThemeConfig({
   RSS,
   authorList: [
     {
-      nickname: '代碼收容所',
+      nickname: '代碼收容',
       url: 'https://www.dmsrs.org/aboutme.html',
       des: '天道酬勤，恒以致遠'
     }
@@ -69,7 +69,7 @@ export const blogTheme = getThemeConfig({
     }
   ],
   // 文章默认作者
-  author: '代碼收容所',
+  author: '代碼收容',
   // 评论
   comment: {
     type: 'giscus',
@@ -122,7 +122,7 @@ export const blogTheme = getThemeConfig({
   },
   works: workConfig,
   footer: {
-    copyright: 'MIT License | 代碼收容所',
+    copyright: 'MIT License | 代碼收容',
   }
 })
 
