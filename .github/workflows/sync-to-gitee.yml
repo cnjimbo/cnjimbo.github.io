@@ -1,4 +1,4 @@
-name: sync-to-gitee
+name: Sync to Gitee
 
 on:
   # 推送时执行

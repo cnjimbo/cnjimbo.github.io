@@ -27,51 +27,8 @@
 	],
 	"settings": {
 		"conventionalCommits.scopes": [
-			"pkg upgrade"
-		],
-		"ColorfulMonorepo.workspaces.collection": [
-			{
-				"path": "c:\\AppData\\code-vPress\\cnjimbo.github.io",
-				"packageName": "sugar-wiki-monorepo",
-				"label": "🌱  sugar-wiki-monorepo",
-				"foreground": "#ffffff",
-				"background": "#9c643b"
-			},
-			{
-				"path": "c:\\AppData\\code-vPress\\cnjimbo.github.io\\packages\\blogpress",
-				"packageName": "blogpress",
-				"label": "🍀  blogpress",
-				"foreground": "#ffffff",
-				"background": "#269c9a"
-			},
-			{
-				"path": "c:\\AppData\\code-vPress\\cnjimbo.github.io\\packages\\create-theme",
-				"packageName": "@sugarat/create-theme",
-				"label": "🍀  @sugarat/create-theme",
-				"foreground": "#ffffff",
-				"background": "#d6256e"
-			},
-			{
-				"path": "c:\\AppData\\code-vPress\\cnjimbo.github.io\\packages\\theme",
-				"packageName": "@sugarat/theme",
-				"label": "🍀  @sugarat/theme",
-				"foreground": "#000000",
-				"background": "#13b37d"
-			},
-			{
-				"path": "c:\\AppData\\code-vPress\\cnjimbo.github.io\\packages\\vitepress-plugin-pagefind",
-				"packageName": "vitepress-plugin-pagefind",
-				"label": "🍀  vitepress-plugin-pagefind",
-				"foreground": "#000000",
-				"background": "#6fc708"
-			},
-			{
-				"path": "c:\\AppData\\code-vPress\\cnjimbo.github.io\\packages\\vitepress-plugin-rss",
-				"packageName": "vitepress-plugin-rss",
-				"label": "🍀  vitepress-plugin-rss",
-				"foreground": "#ffffff",
-				"background": "#08194e"
-			}
+			"pkg upgrade",
+			"actions"
 		],
 		"workbench.colorCustomizations": {
 			"statusBar.background": "#9c643b",
