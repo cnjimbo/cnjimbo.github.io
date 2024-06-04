@@ -2,7 +2,7 @@
 sidebar: false
 title: 关于自己
 date: 2021-12-11
-cover: https://www.dmsrs.org/mp-code.png
+cover: /mp-code.png
 tags:
  - 其它
 ---
@@ -46,6 +46,3 @@ tags:
 **邮箱**：happycoder@foxmail.com
 
 **微信**：
-
-
-
