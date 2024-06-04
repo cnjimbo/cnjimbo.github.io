@@ -9,5 +9,3 @@ packages/theme/node.d.ts
 packages/theme/node.js
 _pagefind
 **/.history
-*.code-workspace
-cnjimbo.github.io.code-workspace
