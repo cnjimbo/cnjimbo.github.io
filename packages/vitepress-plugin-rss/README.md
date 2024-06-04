@@ -2,7 +2,6 @@
 
 English | [简体中文](https://github.com/cnjimbo/cnjimbo.github.io/blob/master/packages/vitepress-plugin-rss/README-zh.md)
 
-
 ## Usage
 install plugin via `pnpm/npm/yarn`
 ```sh

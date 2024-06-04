@@ -239,19 +239,19 @@ const blogTheme = getThemeConfig({
 
 ```ts [type]
 type SearchConfig =
-    | boolean
-    | 'pagefind'
-    | {
-      btnPlaceholder?: string
-      placeholder?: string
-      emptyText?: string
-      /**
-       * @example
-       * 'Total: {{searchResult}} search results.'
-       */
-      heading?: string
-      mode?: boolean | 'pagefind'
-    }
+  | boolean
+  | 'pagefind'
+  | {
+    btnPlaceholder?: string
+    placeholder?: string
+    emptyText?: string
+    /**
+     * @example
+     * 'Total: {{searchResult}} search results.'
+     */
+    heading?: string
+    mode?: boolean | 'pagefind'
+  }
 ```
 
 :::
@@ -975,7 +975,6 @@ const blogTheme = getThemeConfig({
 
 也支持根据不同路由自定义展示策略，详见`onRouteChanged` 方法。
 
-
 ## friend
 
 用于设置首页展示的友链信息
@@ -1008,8 +1007,8 @@ const blogTheme = getThemeConfig({
 ```ts [type]
 type ThemeableImage =
   | string
-  | { src: string; alt?: string }
-  | { light: string; dark: string; alt?: string }
+  | { src: string, alt?: string }
+  | { light: string, dark: string, alt?: string }
 
 interface FriendLink {
   nickname: string
@@ -1671,7 +1670,6 @@ const blogTheme = getThemeConfig({
 })
 ```
 ![深色模式过渡动画](https://vitepress.dev/appearance-toggle-transition.webp)
-
 
 ## imageStyle
 设置图片处理样式（图片资源路径调整），比如图片路径替换，添加图片压缩参数等，可以根据自己的需求进行配置。

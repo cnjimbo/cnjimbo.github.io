@@ -63,7 +63,6 @@ layout: home
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTY3MzE4MDM5ODQ3MQ==673180398471)
 
-
 ### blog
 设置首页的博客样式文案
 ::: code-group
@@ -467,7 +466,6 @@ recommend: ['Node.js', 'css', 'html', 1]
 | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
 | ![](https://img.cdn.sugarat.top/mdImg/MTY3NzI0NTYyNDEyOA==677245624128) | ![](https://img.cdn.sugarat.top/mdImg/MTY3NzI0NjQ2NzIyNA==677246467224) | ![](https://img.cdn.sugarat.top/mdImg/sugar/21db9f87e7b64958dad2c24ed94e40d3) |
 
-
 ### publish
 * type: `false`
 
@@ -485,7 +483,6 @@ hidden: true
 recommend: false
 ---
 ```
-
 
 比如设置在`changelog.md`里，首页将不会展示此项
 

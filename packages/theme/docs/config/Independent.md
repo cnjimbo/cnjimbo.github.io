@@ -56,7 +56,6 @@ export default BlogTheme
 
 ![](https://img.cdn.sugarat.top/mdImg/MTY5NTk5NjYzMDU5MQ==695996630591)
 
-
 ## 只使用部分能力
 可能主题内置的一些功能并不是你想要的，或者首页你不喜欢，你就想用图片预览，公告栏等能力，这时候就可以只使用部分能力
 
