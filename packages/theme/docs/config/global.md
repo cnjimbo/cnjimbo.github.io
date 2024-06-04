@@ -239,19 +239,19 @@ const blogTheme = getThemeConfig({
 
 ```ts [type]
 type SearchConfig =
-    | boolean
-    | 'pagefind'
-    | {
-      btnPlaceholder?: string
-      placeholder?: string
-      emptyText?: string
-      /**
-       * @example
-       * 'Total: {{searchResult}} search results.'
-       */
-      heading?: string
-      mode?: boolean | 'pagefind'
-    }
+  | boolean
+  | 'pagefind'
+  | {
+    btnPlaceholder?: string
+    placeholder?: string
+    emptyText?: string
+    /**
+     * @example
+     * 'Total: {{searchResult}} search results.'
+     */
+    heading?: string
+    mode?: boolean | 'pagefind'
+  }
 ```
 
 :::
@@ -575,7 +575,7 @@ const blogTheme = getThemeConfig({
   comment: {
     type: 'artalk',
     options: {
-      site: '代碼收容',
+      site: '代碼收容所',
       server: '/artalk',
     },
   },
@@ -975,7 +975,6 @@ const blogTheme = getThemeConfig({
 
 也支持根据不同路由自定义展示策略，详见`onRouteChanged` 方法。
 
-
 ## friend
 
 用于设置首页展示的友链信息
@@ -1008,8 +1007,8 @@ const blogTheme = getThemeConfig({
 ```ts [type]
 type ThemeableImage =
   | string
-  | { src: string; alt?: string }
-  | { light: string; dark: string; alt?: string }
+  | { src: string, alt?: string }
+  | { light: string, dark: string, alt?: string }
 
 interface FriendLink {
   nickname: string
@@ -1104,7 +1103,7 @@ const blogTheme = getThemeConfig({
 const blogTheme = getThemeConfig({
   authorList: [
     {
-      nickname: '代碼收容',
+      nickname: '代碼收容所',
       url: 'https://www.dmsrs.org/aboutme.html',
       des: '天道酬勤，恒以致遠'
     }
@@ -1179,7 +1178,7 @@ const baseUrl = 'https://theme.sugarat.top'
 const RSS: Theme.RSSOptions = {
   title: '@sugarat/theme',
   baseUrl,
-  copyright: 'Copyright (c) 2023-present, 代碼收容',
+  copyright: 'Copyright (c) 2023-present, 代碼收容所',
 }
 
 const blogTheme = getThemeConfig({
@@ -1198,7 +1197,7 @@ const RSS: Theme.RSSOptions = {
   language: 'zh-cn',
   image: 'https://img.cdn.sugarat.top/mdImg/MTY3NDk5NTE2NzAzMA==674995167030',
   favicon: 'https://theme.sugarat.top/favicon.ico',
-  copyright: 'Copyright (c) 2023-present, 代碼收容',
+  copyright: 'Copyright (c) 2023-present, 代碼收容所',
   url: `${baseUrl}/feed.rss`
 }
 
@@ -1405,7 +1404,7 @@ buttonAfterArticle:
 const blogTheme = getThemeConfig({
   footer: {
     version: true,
-    copyright: 'MIT License | 代碼收容'
+    copyright: 'MIT License | 代碼收容所'
   }
 })
 ```
@@ -1471,7 +1470,7 @@ interface Footer {
 const blogTheme = getThemeConfig({
   footer: {
     message: '下面 的内容和图标都是可以修改的噢（当然本条内容也是可以隐藏的，也可以配置为HTML）',
-    copyright: 'MIT License | 代碼收容',
+    copyright: 'MIT License | 代碼收容所',
     icpRecord: {
       name: '蜀ICP备19011724号',
       link: 'https://beian.miit.gov.cn/'
@@ -1525,10 +1524,10 @@ footer（ message 字段也支持） 支持配置为数组，可以用于灵活�
 const blogTheme = getThemeConfig({
   footer: [{
     message: '下面 的内容和图标都是可以修改的噢（当然本条内容也是可以隐藏的）',
-    copyright: 'MIT License | 代碼收容',
+    copyright: 'MIT License | 代碼收容所',
   }, {
     message: ['自定义多条内容', '自定义多条内容'],
-    copyright: 'MIT License | 代碼收容',
+    copyright: 'MIT License | 代碼收容所',
     version: true
   }, {
     version: false,
@@ -1671,7 +1670,6 @@ const blogTheme = getThemeConfig({
 })
 ```
 ![深色模式过渡动画](https://vitepress.dev/appearance-toggle-transition.webp)
-
 
 ## imageStyle
 设置图片处理样式（图片资源路径调整），比如图片路径替换，添加图片压缩参数等，可以根据自己的需求进行配置。
