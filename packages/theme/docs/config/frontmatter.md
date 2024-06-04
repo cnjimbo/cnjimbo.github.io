@@ -63,7 +63,6 @@ layout: home
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTY3MzE4MDM5ODQ3MQ==673180398471)
 
-
 ### blog
 设置首页的博客样式文案
 ::: code-group
@@ -74,7 +73,7 @@ layout: home
 blog:
  # 设置首页的 banner 信息
  name: '@sugarat/theme'
- motto: 代碼收容的博客主题
+ motto: 代碼收容所的博客主题
  inspiring: 基于 Vitepress 定制的主题🎨
  # 设置首页列表每页展示数量
  pageSize: 2
@@ -124,7 +123,7 @@ interface HomeBlog {
 # 省略其它配置
 blog:
  name: '@sugarat/theme'
- motto: 代碼收容的博客主题
+ motto: 代碼收容所的博客主题
  inspiring:
   - 基于 Vitepress 定制的主题🎨
   - 千万不要因为走得太久，而忘记了我们为什么出发
@@ -313,7 +312,7 @@ hidden: true
 
 ```md
 ---
-author: 代碼收容
+author: 代碼收容所
 ---
 ```
 
@@ -467,7 +466,6 @@ recommend: ['Node.js', 'css', 'html', 1]
 | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
 | ![](https://img.cdn.sugarat.top/mdImg/MTY3NzI0NTYyNDEyOA==677245624128) | ![](https://img.cdn.sugarat.top/mdImg/MTY3NzI0NjQ2NzIyNA==677246467224) | ![](https://img.cdn.sugarat.top/mdImg/sugar/21db9f87e7b64958dad2c24ed94e40d3) |
 
-
 ### publish
 * type: `false`
 
@@ -485,7 +483,6 @@ hidden: true
 recommend: false
 ---
 ```
-
 
 比如设置在`changelog.md`里，首页将不会展示此项
 
