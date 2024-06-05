@@ -5,9 +5,9 @@ import antfu from '@antfu/eslint-config'
 export default antfu({
 }, {
   ignores: [
-    'packages/theme/*.js',
+    'packages/theme/dist/*.js',
     '**/node_modules/**',
-    '**/*.md',
+    // '**/*.md',
     '**/*.yml'
   ],
   rules: {

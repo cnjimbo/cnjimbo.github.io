@@ -45,6 +45,15 @@
 			"**/Thumbs.db": true,
 			"**/node_modules": true
 		},
-		"explorerExclude.backup": {}
+		"explorerExclude.backup": {},
+		"autoRestart.fileGlobForESLint": "**/.{eslintrc,eslint*.*}.{js,cjs,yaml,yml,json,mjs,ts,mts}",
+		"autoRestart.fileGlobForTypescript": "**/{tsconfig,tsconfig.base,base.tsconfig}.{json,app.json,app.js,js,ts}",
+		"autoRestart.monitorFilesForESLint": true,
+		"autoRestart.showRestartNotificationForESLint": true
+	},
+	"extensions": {
+		"recommendations": [
+			"neotan.vscode-auto-restart-typescript-eslint-servers"
+		]
 	}
 }
