@@ -97,6 +97,7 @@
     "*.d.ts",
     "**/node_modules/**/*",
     "**/*.mjs",
-    "dist"
+    "dist",
+    ".pnpm"
   ]
 }
