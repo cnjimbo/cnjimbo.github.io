@@ -179,12 +179,7 @@ const extraHead: any
      [
         'script',
         {},
-        '!(function(c,i,e,b){
-  var h=i.createElement("script");
-  var f=i.getElementsByTagName("script")[0];
-  h.type="text/javascript";
-  h.crossorigin=true;
-  h.onload=function(){new c[b]["Monitor"]().init({id:"3IeDjeHzDHEi0y90",sendSuspicious:true});};f.parentNode.insertBefore(h,f);h.src=e;})(window,document,"https://sdk.51.la/perf/js-sdk-perf.min.js","LingQue");
+        '!(function(c,i,e,b){var h=i.createElement("script");var f=i.getElementsByTagName("script")[0];h.type="text/javascript";h.crossorigin=true;h.onload=function(){new c[b]["Monitor"]().init({id:"3IeDjeHzDHEi0y90",sendSuspicious:true});};f.parentNode.insertBefore(h,f);h.src=e;})(window,document,"https://sdk.51.la/perf/js-sdk-perf.min.js","LingQue");
 ',
       ],
       // [
