@@ -95,7 +95,7 @@
     "**/dist/**",
     "*.d.ts",
     "**/node_modules/**/*",
-    "./*.mjs",
+    "**/*.mjs",
     "dist"
   ]
 }
