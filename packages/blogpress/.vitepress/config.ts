@@ -327,10 +327,10 @@ export default defineConfig({
         text: '手撕代码',
         items: [
 
-          { text: 'javascript', link: '/coding/js/' },
-          { text: 'css', link: '/coding/css/' },
+          // { text: 'javascript', link: '/coding/js/' },
+          // { text: 'css', link: '/coding/css/' },
           { text: '问解', link: '/interview/problem/' },
-          { text: 'javascript', link: '/interview/js/' },
+          // { text: 'javascript', link: '/interview/js/' },
 
           { text: '手撕代码', link: '/interview/code/' },
           { text: '性能优化', link: '/interview/performance/' },
