@@ -117,74 +117,7 @@ const blogTheme = getThemeConfig({
           'https://sugarat.s3.bitiful.net/avatar/blog/mqyqingfeng.png',
         url: 'https://github.com/mqyqingfeng/Blog',
       },
-      {
-        nickname: 'Linbudu',
-        des: '未来的不可知，是前进的原动力',
-        avatar:
-          'https://sugarat.s3.bitiful.net/avatar/blog/linbudu.jfif',
-        url: 'https://linbudu.top/',
-      },
-      {
-        nickname: '小九',
-        des: '日益努力，而后风生水起',
-        avatar: 'https://sugarat.s3.bitiful.net/avatar/blog/jiangly.png',
-        url: 'https://jiangly.com/',
-      },
-      {
-        nickname: '花喵电台      ',
-        des: '曹豪侠和余湾湾还有两只猫的生活记录~',
-        avatar:
-          'https://sugarat.s3.bitiful.net/avatar/blog/fmcat.jpeg',
-        url: 'https://www.fmcat.top',
-      },
-      {
-        nickname: '张成威的网络日志',
-        des: '知不足而奋进，望远山而前行',
-        avatar: 'https://sugarat.s3.bitiful.net/avatar/blog/zhangchengwei.png',
-        url: 'https://www.zhangchengwei.work',
-      },
-      {
-        url: 'https://leelaa.cn',
-        avatar: 'https://sugarat.s3.bitiful.net/avatar/blog/leelaa.png',
-        des: '肯了个德的博客',
-        nickname: 'LEEDAISEN',
-      },
-      {
-        url: 'https://next.blackcell.fun/',
-        avatar: 'https://sugarat.s3.bitiful.net/avatar/blog/blackcell.jpeg',
-        des: '物以类聚 人以群分',
-        nickname: 'BlackCell',
-      },
-      {
-        url: 'https://blog.cuuxx.com',
-        avatar: 'https://sugarat.s3.bitiful.net/avatar/blog/tenyon.webp',
-        des: '工夫为艺，笃志成技',
-        nickname: 'Yovvis\'s Blog',
-      },
-      {
-        nickname: '强少来了',
-        des: '互联网产品经理',
-        avatar: 'https://sugarat.s3.bitiful.net/avatar/blog/fengxiaoqiang.png',
-        url: 'https://fengxiaoqiang.com/',
-      },
-      {
-        nickname: '博友圈',
-        des: '独立博客人的专属朋友圈！',
-        avatar: 'https://cdn.upyun.sugarat.top/mdImg/sugar/bdee5d11a1e036ca3634943d34469f59',
-        url: 'https://www.boyouquan.com/home',
-      },
-      {
-        nickname: 'Simon He',
-        des: '除了coding，我什么都不会',
-        avatar: 'https://sugarat.s3.bitiful.net/avatar/blog/simonme.png',
-        url: 'https://simonme.netlify.app/',
-      },
-      {
-        nickname: 'laiky',
-        des: '一名全栈开发工程师，.NET全栈经验',
-        avatar: 'https://sugarat.s3.bitiful.net/avatar/blog/llxz.png',
-        url: 'http://llxz.top/',
-      },
+
     ].map((v) => {
       if (v.avatar.includes('//sugarat.s3.bitiful.net')) {
         v.avatar = `${v.avatar}?w=50&h=50&fmt=webp&mode=crop`
@@ -208,7 +141,7 @@ const blogTheme = getThemeConfig({
     },
   ],
   footer: {
-    copyright: `代碼收容所 2018 - ${new Date().getFullYear()}`,
+    copyright: `代碼收容所 2006 - ${new Date().getFullYear()}`,
     icpRecord: {
       name: '京ICP备14018270号',
       link: 'https://beian.miit.gov.cn/',
@@ -260,7 +193,7 @@ export default defineConfig({
   lang: 'zh-cn',
   title: '代碼收容所',
   description:
-    '代碼收容所的个人博客，记录随笔与学习笔记，大前端相关的知识，高频面试题，个人面经等',
+    '代碼收容所的个人博客，记录随笔与学习笔记，大前端相关的知识，项目管理，经济等',
   head: [
     // <meta name="baidu-site-verification" content="codeva-b08avp82Uj" />
     ['meta', { name: 'baidu-site-verification', content: 'codeva-b08avp82Uj' }],
@@ -378,7 +311,7 @@ export default defineConfig({
       //   items: [
       //     { text: '问解', link: '/interview/problem/' },
       //     { text: 'javascript', link: '/interview/js/' },
-      //     { text: 'css', link: '/interview/css/' },
+      //
       //     { text: '手撕代码', link: '/interview/code/' },
       //     { text: '性能优化', link: '/interview/performance/' },
       //     // { text: "网络", link: "/interview/internet/" },
@@ -393,12 +326,12 @@ export default defineConfig({
       {
         text: '手撕代码',
         items: [
-          { text: '数据结构与算法', link: '/coding/algorithm/' },
+
           { text: 'javascript', link: '/coding/js/' },
           { text: 'css', link: '/coding/css/' },
           { text: '问解', link: '/interview/problem/' },
           { text: 'javascript', link: '/interview/js/' },
-          { text: 'css', link: '/interview/css/' },
+
           { text: '手撕代码', link: '/interview/code/' },
           { text: '性能优化', link: '/interview/performance/' },
           // { text: "网络", link: "/interview/internet/" },
