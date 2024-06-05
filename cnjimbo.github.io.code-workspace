@@ -35,6 +35,16 @@
 			"statusBar.foreground": "#ffffff",
 			"tab.activeBorder": "#9c643b",
 			"sideBarTitle.foreground": "#9c643b"
-		}
+		},
+		"files.exclude": {
+			"**/.git": true,
+			"**/.svn": true,
+			"**/.hg": true,
+			"**/CVS": true,
+			"**/.DS_Store": true,
+			"**/Thumbs.db": true,
+			"**/node_modules": true
+		},
+		"explorerExclude.backup": {}
 	}
 }
