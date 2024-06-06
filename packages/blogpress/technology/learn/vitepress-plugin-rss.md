@@ -34,9 +34,9 @@ pnpm add vitepress-plugin-rss
 import { RSSOptions, RssPlugin } from 'vitepress-plugin-rss'
 const baseUrl = 'https://www.dmsrs.org'
 const RSS: RSSOptions = {
-  title: '代碼收容所',
+  title: '代码收容所',
   baseUrl,
-  copyright: 'Copyright (c) 2018-present, 代碼收容所',
+  copyright: 'Copyright (c) 2018-present, 代码收容所',
 }
 
 export default defineConfig({
