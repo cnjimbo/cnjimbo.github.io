@@ -11,7 +11,7 @@ export default defineConfig({
   cleanUrls: false,
   lang: 'zh-cn',
   title: '@sugarat/theme',
-  description: '代碼收容所的博客主题，基于 vitepress 实现',
+  description: '代码收容所的博客主题，基于 vitepress 实现',
   head: [...extraHead],
   vite: {
     resolve: {
