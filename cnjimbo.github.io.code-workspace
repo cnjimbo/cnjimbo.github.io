@@ -64,6 +64,7 @@
 		"Lingma.localMachineModel": false,
 		"Lingma.methodQuickOperation": false,
 		"Lingma.cloudModelEnable": false,
+		"typescript.tsdk": "✨ sugar-wiki-monorepo\\node_modules\\typescript\\lib",
 	},
 	"extensions": {
 		"recommendations": [
