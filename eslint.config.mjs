@@ -8,7 +8,8 @@ export default antfu({
     'packages/theme/dist/*.js',
     '**/node_modules/**',
     // '**/*.md',
-    '**/*.yml'
+    '**/*.yml',
+    '**/.history/**'
   ],
   rules: {
     'style/comma-dangle': 'off',
