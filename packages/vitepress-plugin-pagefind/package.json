@@ -40,7 +40,7 @@
     "pagefind": "^1.1.0"
   },
   "dependencies": {
-    "@vueuse/core": "^10.10.0",
+    "@vueuse/core": "^10.11.0",
     "cross-spawn": "^7.0.3",
     "fast-glob": "^3.3.2",
     "gray-matter": "^4.0.3",
