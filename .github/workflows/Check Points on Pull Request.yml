@@ -1,16 +1,11 @@
 # Simple workflow for deploying static content to GitHub Pages
-name: Deploy Pages via Github Actions
+name: Check Points on Pull Request
 
 on:
   # Runs on pushes targeting the default branch
-  push:
-    branches:
-      - main
-      - master
+
   pull_request:
     branches: [main, master]
-    types: [closed]
-
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -74,16 +69,3 @@ jobs:
         run: pnpm buildlib
       - name: Build
         run: pnpm build
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          # Upload entire repository
-          path: packages/blogpress/.vitepress/dist
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
