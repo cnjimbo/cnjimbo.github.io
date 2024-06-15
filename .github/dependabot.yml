@@ -5,7 +5,45 @@
 
 version: 2
 updates:
-  - package-ecosystem: npm # See documentation for possible values
-    directory: / # Location of package manifests
+  - package-ecosystem: npm
+    directory: /
     schedule:
       interval: daily
+      time: '04:00'
+    open-pull-requests-limit: 20
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: daily
+      time: '04:00'
+    open-pull-requests-limit: 20
+  - package-ecosystem: npm
+    directory: /packages/blogpress
+    schedule:
+      interval: daily
+      time: '04:00'
+    open-pull-requests-limit: 20
+  - package-ecosystem: npm
+    directory: /packages/create-theme
+    schedule:
+      interval: daily
+      time: '04:00'
+    open-pull-requests-limit: 20
+  - package-ecosystem: npm
+    directory: /packages/theme
+    schedule:
+      interval: daily
+      time: '04:00'
+    open-pull-requests-limit: 20
+  - package-ecosystem: npm
+    directory: /packages/vitepress-plugin-pagefind
+    schedule:
+      interval: daily
+      time: '04:00'
+    open-pull-requests-limit: 20
+  - package-ecosystem: npm
+    directory: /packages/vitepress-plugin-rss
+    schedule:
+      interval: daily
+      time: '04:00'
+    open-pull-requests-limit: 20

@@ -3,7 +3,7 @@ name: Create Release Tag
 on:
   push:
     tags:
-      - '@sugarat/theme*' # Push events to matching @sugarat/theme*
+      - 'v*' # Push events to matching @sugarat/theme*
 
 jobs:
   build:
