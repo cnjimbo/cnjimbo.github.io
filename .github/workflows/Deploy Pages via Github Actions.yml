@@ -54,7 +54,7 @@ jobs:
 
       - name: Setup Node
         # 4、安装 Node 环境
-        uses: actions/setup-node@v4.0.1
+        uses: actions/setup-node@v4.0.2
         with:
           node-version: 20
           registry-url: https://registry.npmjs.org
