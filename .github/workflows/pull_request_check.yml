@@ -22,7 +22,7 @@ permissions:
 #   cancel-in-progress: true
 
 jobs:
-  buildTest:
+  try-build:
 
     runs-on: ubuntu-latest
     steps:
