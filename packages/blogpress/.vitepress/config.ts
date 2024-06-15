@@ -19,14 +19,14 @@ const RSSWeekly: RSSOptions = {
   },
   image: 'https://img.cdn.sugarat.top/mdImg/MTcwNTIwMDEzNjM5Mw==705200136393',
   favicon: 'https://www.dmsrs.org/favicon.ico',
-  copyright: 'Copyright (c) 2018-present, 代碼收容所',
+  copyright: 'Copyright (c) 2018-present, 代码收容所',
   url: `${baseUrl}/weekly.rss`,
-  icon: '<svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5155" width="200" height="200"><title>视野修炼周刊 RSS 订阅</title><path d="M831.8 128l-640 0c-35.3 0-64 28.7-64 64l0 640c0 35.3 28.7 64 64 64l640 0c35.3 0 64-28.7 64-64L895.8 192C895.8 156.7 867.1 128 831.8 128zM707.4 193l0 185.8L673 344.3c-6.4-6.4-14.9-9.5-23.3-9.4-8.4-0.2-16.9 2.9-23.3 9.4L592 378.8 592 193 707.4 193zM831.8 833.1l-640 0L191.8 193 528 193l0 263c0 0.5 0 1.1 0 1.6 0 0.3 0 0.5 0.1 0.7 0 0.3 0 0.5 0.1 0.8 0 0.3 0.1 0.6 0.1 0.9 0 0.2 0 0.4 0.1 0.6 0 0.3 0.1 0.7 0.2 1 0 0.2 0.1 0.3 0.1 0.5 0.1 0.3 0.1 0.7 0.2 1 0 0.2 0.1 0.3 0.1 0.5 0.1 0.3 0.2 0.7 0.3 1 0.1 0.2 0.1 0.4 0.2 0.5 0.1 0.3 0.2 0.6 0.3 0.9 0.1 0.2 0.1 0.4 0.2 0.6 0.1 0.3 0.2 0.5 0.3 0.8 0.1 0.2 0.2 0.5 0.3 0.7 0.1 0.2 0.2 0.5 0.3 0.7 0.1 0.3 0.2 0.5 0.3 0.8 0.1 0.2 0.2 0.4 0.3 0.6 0.1 0.3 0.3 0.6 0.4 0.8 0.1 0.2 0.2 0.3 0.3 0.5 0.2 0.3 0.3 0.6 0.5 0.9 0.1 0.2 0.2 0.3 0.3 0.4 0.2 0.3 0.4 0.6 0.6 0.9 0.1 0.1 0.2 0.3 0.3 0.4 0.2 0.3 0.4 0.6 0.6 0.8 0.1 0.2 0.2 0.3 0.4 0.5 0.2 0.2 0.4 0.5 0.6 0.7 0.2 0.2 0.4 0.4 0.5 0.6 0.2 0.2 0.3 0.4 0.5 0.6 0.7 0.8 1.5 1.5 2.2 2.2 0.2 0.2 0.4 0.3 0.6 0.5 0.2 0.2 0.4 0.4 0.6 0.5 0.2 0.2 0.5 0.4 0.7 0.6 0.2 0.1 0.3 0.3 0.5 0.4 0.3 0.2 0.6 0.4 0.8 0.6 0.1 0.1 0.3 0.2 0.4 0.3 0.3 0.2 0.6 0.4 0.9 0.6 0.1 0.1 0.3 0.2 0.4 0.3 0.3 0.2 0.6 0.3 0.9 0.5 0.2 0.1 0.3 0.2 0.5 0.3 0.3 0.1 0.6 0.3 0.8 0.4 0.2 0.1 0.4 0.2 0.6 0.3 0.3 0.1 0.5 0.2 0.8 0.3 0.2 0.1 0.5 0.2 0.7 0.3 0.2 0.1 0.5 0.2 0.7 0.3 0.3 0.1 0.5 0.2 0.8 0.3 0.2 0.1 0.4 0.1 0.6 0.2 0.3 0.1 0.6 0.2 0.9 0.3 0.2 0.1 0.4 0.1 0.5 0.2 0.3 0.1 0.6 0.2 1 0.3 0.2 0 0.3 0.1 0.5 0.1 0.3 0.1 0.7 0.2 1 0.2 0.2 0 0.4 0.1 0.5 0.1 0.3 0.1 0.7 0.1 1 0.2 0.2 0 0.4 0.1 0.6 0.1 0.3 0 0.6 0.1 0.9 0.1 0.3 0 0.5 0 0.8 0.1 0.2 0 0.5 0 0.7 0.1 0.5 0 1.1 0 1.6 0 0 0 0 0 0 0l0 0c0.5 0 1.1 0 1.6 0 0.3 0 0.5 0 0.7-0.1 0.3 0 0.5 0 0.8-0.1 0.3 0 0.6-0.1 0.9-0.1 0.2 0 0.4 0 0.6-0.1 0.3 0 0.7-0.1 1-0.2 0.2 0 0.4-0.1 0.5-0.1 0.3-0.1 0.7-0.1 1-0.2 0.2 0 0.3-0.1 0.5-0.1 0.3-0.1 0.6-0.2 1-0.3 0.2-0.1 0.4-0.1 0.5-0.2 0.3-0.1 0.6-0.2 0.9-0.3 0.2-0.1 0.4-0.1 0.6-0.2 0.3-0.1 0.5-0.2 0.8-0.3 0.2-0.1 0.5-0.2 0.7-0.3 0.2-0.1 0.5-0.2 0.7-0.3 0.3-0.1 0.5-0.2 0.8-0.4 0.2-0.1 0.4-0.2 0.6-0.3 0.3-0.1 0.6-0.3 0.8-0.4 0.2-0.1 0.3-0.2 0.5-0.3 0.3-0.2 0.6-0.3 0.9-0.5 0.1-0.1 0.3-0.2 0.4-0.3 0.3-0.2 0.6-0.4 0.9-0.6 0.1-0.1 0.3-0.2 0.4-0.3 0.3-0.2 0.6-0.4 0.8-0.6 0.2-0.1 0.3-0.2 0.5-0.4 0.2-0.2 0.5-0.4 0.7-0.6 0.2-0.2 0.4-0.3 0.6-0.5 0.2-0.2 0.4-0.3 0.6-0.5 0.4-0.4 0.8-0.7 1.1-1.1l67.1-67.1 67.1 67.1c0 0 0 0 0 0 0.4 0.4 0.7 0.7 1.1 1.1 0.2 0.2 0.4 0.3 0.6 0.5 0.2 0.2 0.4 0.4 0.6 0.5 0.2 0.2 0.5 0.4 0.7 0.6 0.2 0.1 0.3 0.3 0.5 0.4 0.3 0.2 0.6 0.4 0.8 0.6 0.1 0.1 0.3 0.2 0.4 0.3 0.3 0.2 0.6 0.4 0.9 0.6 0.1 0.1 0.3 0.2 0.4 0.3 0.3 0.2 0.6 0.3 0.9 0.5 0.2 0.1 0.3 0.2 0.5 0.3 0.3 0.1 0.6 0.3 0.8 0.4 0.2 0.1 0.4 0.2 0.6 0.3 0.3 0.1 0.5 0.2 0.8 0.3 0.2 0.1 0.5 0.2 0.7 0.3 0.2 0.1 0.5 0.2 0.7 0.3 0.3 0.1 0.5 0.2 0.8 0.3 0.2 0.1 0.4 0.1 0.6 0.2 0.3 0.1 0.6 0.2 0.9 0.3 0.2 0.1 0.4 0.1 0.5 0.2 0.3 0.1 0.6 0.2 1 0.3 0.2 0 0.3 0.1 0.5 0.1 0.3 0.1 0.7 0.2 1 0.2 0.2 0 0.4 0.1 0.5 0.1 0.3 0.1 0.7 0.1 1 0.2 0.2 0 0.4 0.1 0.6 0.1 0.3 0 0.6 0.1 0.9 0.1 0.3 0 0.5 0 0.8 0.1 0.2 0 0.5 0 0.7 0.1 1.1 0.1 2.1 0.1 3.2 0 0.3 0 0.5 0 0.7-0.1 0.3 0 0.5 0 0.8-0.1 0.3 0 0.6-0.1 0.9-0.1 0.2 0 0.4 0 0.6-0.1 0.3 0 0.7-0.1 1-0.2 0.2 0 0.4-0.1 0.5-0.1 0.3-0.1 0.7-0.1 1-0.2 0.2 0 0.3-0.1 0.5-0.1 0.3-0.1 0.6-0.2 1-0.3 0.2-0.1 0.4-0.1 0.5-0.2 0.3-0.1 0.6-0.2 0.9-0.3 0.2-0.1 0.4-0.1 0.6-0.2 0.3-0.1 0.5-0.2 0.8-0.3 0.2-0.1 0.5-0.2 0.7-0.3 0.2-0.1 0.5-0.2 0.7-0.3 0.3-0.1 0.5-0.2 0.8-0.3 0.2-0.1 0.4-0.2 0.6-0.3 0.3-0.1 0.6-0.3 0.8-0.4 0.2-0.1 0.3-0.2 0.5-0.3 0.3-0.2 0.6-0.3 0.9-0.5 0.1-0.1 0.3-0.2 0.4-0.3 0.3-0.2 0.6-0.4 0.9-0.6 0.1-0.1 0.3-0.2 0.4-0.3 0.3-0.2 0.6-0.4 0.8-0.6 0.2-0.1 0.3-0.2 0.5-0.4 0.2-0.2 0.5-0.4 0.7-0.6 0.2-0.2 0.4-0.3 0.6-0.5 0.2-0.2 0.4-0.3 0.6-0.5 0.8-0.7 1.5-1.5 2.2-2.2 0.2-0.2 0.3-0.4 0.5-0.6 0.2-0.2 0.4-0.4 0.5-0.6 0.2-0.2 0.4-0.5 0.6-0.7 0.1-0.2 0.2-0.3 0.4-0.5 0.2-0.3 0.4-0.6 0.6-0.8 0.1-0.1 0.2-0.3 0.3-0.4 0.2-0.3 0.4-0.6 0.6-0.9 0.1-0.1 0.2-0.3 0.3-0.4 0.2-0.3 0.3-0.6 0.5-0.9 0.1-0.2 0.2-0.3 0.3-0.5 0.1-0.3 0.3-0.6 0.4-0.8 0.1-0.2 0.2-0.4 0.3-0.6 0.1-0.3 0.2-0.5 0.4-0.8 0.1-0.2 0.2-0.5 0.3-0.7 0.1-0.2 0.2-0.5 0.3-0.7 0.1-0.3 0.2-0.5 0.3-0.8 0.1-0.2 0.1-0.4 0.2-0.6 0.1-0.3 0.2-0.6 0.3-0.9 0.1-0.2 0.1-0.4 0.2-0.5 0.1-0.3 0.2-0.6 0.3-1 0-0.2 0.1-0.3 0.1-0.5 0.1-0.3 0.2-0.7 0.2-1 0-0.2 0.1-0.4 0.1-0.5 0.1-0.3 0.1-0.7 0.2-1 0-0.2 0.1-0.4 0.1-0.6 0-0.3 0.1-0.6 0.1-0.9 0-0.3 0-0.5 0.1-0.8 0-0.2 0-0.5 0.1-0.7 0-0.5 0-1.1 0-1.6L771.1 193l60.3 0L831.4 833.1z" p-id="5156"></path><path d="M468.7 416c0 17.7-14.3 32-32 32l-148 0c-17.7 0-32-14.3-32-32l0 0c0-17.7 14.3-32 32-32l148 0C454.4 384 468.7 398.3 468.7 416L468.7 416z" p-id="5157"></path><path d="M772.3 565c0 17.7-14.3 32-32 32L291.3 597c-17.7 0-32-14.3-32-32l0 0c0-17.7 14.3-32 32-32l449.1 0C758 533 772.3 547.3 772.3 565L772.3 565z" p-id="5158"></path><path d="M771.4 702c0 17.7-14.3 32-32 32L291.3 734c-17.7 0-32-14.3-32-32l0 0c0-17.7 14.3-32 32-32l448.2 0C757.1 670 771.4 684.4 771.4 702L771.4 702z" p-id="5159"></path></svg>',
-  ariaLabel: '视野修炼周刊RSS订阅',
+  icon: '<svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5155" width="200" height="200"><title>收容报告 RSS 订阅</title><path d="M831.8 128l-640 0c-35.3 0-64 28.7-64 64l0 640c0 35.3 28.7 64 64 64l640 0c35.3 0 64-28.7 64-64L895.8 192C895.8 156.7 867.1 128 831.8 128zM707.4 193l0 185.8L673 344.3c-6.4-6.4-14.9-9.5-23.3-9.4-8.4-0.2-16.9 2.9-23.3 9.4L592 378.8 592 193 707.4 193zM831.8 833.1l-640 0L191.8 193 528 193l0 263c0 0.5 0 1.1 0 1.6 0 0.3 0 0.5 0.1 0.7 0 0.3 0 0.5 0.1 0.8 0 0.3 0.1 0.6 0.1 0.9 0 0.2 0 0.4 0.1 0.6 0 0.3 0.1 0.7 0.2 1 0 0.2 0.1 0.3 0.1 0.5 0.1 0.3 0.1 0.7 0.2 1 0 0.2 0.1 0.3 0.1 0.5 0.1 0.3 0.2 0.7 0.3 1 0.1 0.2 0.1 0.4 0.2 0.5 0.1 0.3 0.2 0.6 0.3 0.9 0.1 0.2 0.1 0.4 0.2 0.6 0.1 0.3 0.2 0.5 0.3 0.8 0.1 0.2 0.2 0.5 0.3 0.7 0.1 0.2 0.2 0.5 0.3 0.7 0.1 0.3 0.2 0.5 0.3 0.8 0.1 0.2 0.2 0.4 0.3 0.6 0.1 0.3 0.3 0.6 0.4 0.8 0.1 0.2 0.2 0.3 0.3 0.5 0.2 0.3 0.3 0.6 0.5 0.9 0.1 0.2 0.2 0.3 0.3 0.4 0.2 0.3 0.4 0.6 0.6 0.9 0.1 0.1 0.2 0.3 0.3 0.4 0.2 0.3 0.4 0.6 0.6 0.8 0.1 0.2 0.2 0.3 0.4 0.5 0.2 0.2 0.4 0.5 0.6 0.7 0.2 0.2 0.4 0.4 0.5 0.6 0.2 0.2 0.3 0.4 0.5 0.6 0.7 0.8 1.5 1.5 2.2 2.2 0.2 0.2 0.4 0.3 0.6 0.5 0.2 0.2 0.4 0.4 0.6 0.5 0.2 0.2 0.5 0.4 0.7 0.6 0.2 0.1 0.3 0.3 0.5 0.4 0.3 0.2 0.6 0.4 0.8 0.6 0.1 0.1 0.3 0.2 0.4 0.3 0.3 0.2 0.6 0.4 0.9 0.6 0.1 0.1 0.3 0.2 0.4 0.3 0.3 0.2 0.6 0.3 0.9 0.5 0.2 0.1 0.3 0.2 0.5 0.3 0.3 0.1 0.6 0.3 0.8 0.4 0.2 0.1 0.4 0.2 0.6 0.3 0.3 0.1 0.5 0.2 0.8 0.3 0.2 0.1 0.5 0.2 0.7 0.3 0.2 0.1 0.5 0.2 0.7 0.3 0.3 0.1 0.5 0.2 0.8 0.3 0.2 0.1 0.4 0.1 0.6 0.2 0.3 0.1 0.6 0.2 0.9 0.3 0.2 0.1 0.4 0.1 0.5 0.2 0.3 0.1 0.6 0.2 1 0.3 0.2 0 0.3 0.1 0.5 0.1 0.3 0.1 0.7 0.2 1 0.2 0.2 0 0.4 0.1 0.5 0.1 0.3 0.1 0.7 0.1 1 0.2 0.2 0 0.4 0.1 0.6 0.1 0.3 0 0.6 0.1 0.9 0.1 0.3 0 0.5 0 0.8 0.1 0.2 0 0.5 0 0.7 0.1 0.5 0 1.1 0 1.6 0 0 0 0 0 0 0l0 0c0.5 0 1.1 0 1.6 0 0.3 0 0.5 0 0.7-0.1 0.3 0 0.5 0 0.8-0.1 0.3 0 0.6-0.1 0.9-0.1 0.2 0 0.4 0 0.6-0.1 0.3 0 0.7-0.1 1-0.2 0.2 0 0.4-0.1 0.5-0.1 0.3-0.1 0.7-0.1 1-0.2 0.2 0 0.3-0.1 0.5-0.1 0.3-0.1 0.6-0.2 1-0.3 0.2-0.1 0.4-0.1 0.5-0.2 0.3-0.1 0.6-0.2 0.9-0.3 0.2-0.1 0.4-0.1 0.6-0.2 0.3-0.1 0.5-0.2 0.8-0.3 0.2-0.1 0.5-0.2 0.7-0.3 0.2-0.1 0.5-0.2 0.7-0.3 0.3-0.1 0.5-0.2 0.8-0.4 0.2-0.1 0.4-0.2 0.6-0.3 0.3-0.1 0.6-0.3 0.8-0.4 0.2-0.1 0.3-0.2 0.5-0.3 0.3-0.2 0.6-0.3 0.9-0.5 0.1-0.1 0.3-0.2 0.4-0.3 0.3-0.2 0.6-0.4 0.9-0.6 0.1-0.1 0.3-0.2 0.4-0.3 0.3-0.2 0.6-0.4 0.8-0.6 0.2-0.1 0.3-0.2 0.5-0.4 0.2-0.2 0.5-0.4 0.7-0.6 0.2-0.2 0.4-0.3 0.6-0.5 0.2-0.2 0.4-0.3 0.6-0.5 0.4-0.4 0.8-0.7 1.1-1.1l67.1-67.1 67.1 67.1c0 0 0 0 0 0 0.4 0.4 0.7 0.7 1.1 1.1 0.2 0.2 0.4 0.3 0.6 0.5 0.2 0.2 0.4 0.4 0.6 0.5 0.2 0.2 0.5 0.4 0.7 0.6 0.2 0.1 0.3 0.3 0.5 0.4 0.3 0.2 0.6 0.4 0.8 0.6 0.1 0.1 0.3 0.2 0.4 0.3 0.3 0.2 0.6 0.4 0.9 0.6 0.1 0.1 0.3 0.2 0.4 0.3 0.3 0.2 0.6 0.3 0.9 0.5 0.2 0.1 0.3 0.2 0.5 0.3 0.3 0.1 0.6 0.3 0.8 0.4 0.2 0.1 0.4 0.2 0.6 0.3 0.3 0.1 0.5 0.2 0.8 0.3 0.2 0.1 0.5 0.2 0.7 0.3 0.2 0.1 0.5 0.2 0.7 0.3 0.3 0.1 0.5 0.2 0.8 0.3 0.2 0.1 0.4 0.1 0.6 0.2 0.3 0.1 0.6 0.2 0.9 0.3 0.2 0.1 0.4 0.1 0.5 0.2 0.3 0.1 0.6 0.2 1 0.3 0.2 0 0.3 0.1 0.5 0.1 0.3 0.1 0.7 0.2 1 0.2 0.2 0 0.4 0.1 0.5 0.1 0.3 0.1 0.7 0.1 1 0.2 0.2 0 0.4 0.1 0.6 0.1 0.3 0 0.6 0.1 0.9 0.1 0.3 0 0.5 0 0.8 0.1 0.2 0 0.5 0 0.7 0.1 1.1 0.1 2.1 0.1 3.2 0 0.3 0 0.5 0 0.7-0.1 0.3 0 0.5 0 0.8-0.1 0.3 0 0.6-0.1 0.9-0.1 0.2 0 0.4 0 0.6-0.1 0.3 0 0.7-0.1 1-0.2 0.2 0 0.4-0.1 0.5-0.1 0.3-0.1 0.7-0.1 1-0.2 0.2 0 0.3-0.1 0.5-0.1 0.3-0.1 0.6-0.2 1-0.3 0.2-0.1 0.4-0.1 0.5-0.2 0.3-0.1 0.6-0.2 0.9-0.3 0.2-0.1 0.4-0.1 0.6-0.2 0.3-0.1 0.5-0.2 0.8-0.3 0.2-0.1 0.5-0.2 0.7-0.3 0.2-0.1 0.5-0.2 0.7-0.3 0.3-0.1 0.5-0.2 0.8-0.3 0.2-0.1 0.4-0.2 0.6-0.3 0.3-0.1 0.6-0.3 0.8-0.4 0.2-0.1 0.3-0.2 0.5-0.3 0.3-0.2 0.6-0.3 0.9-0.5 0.1-0.1 0.3-0.2 0.4-0.3 0.3-0.2 0.6-0.4 0.9-0.6 0.1-0.1 0.3-0.2 0.4-0.3 0.3-0.2 0.6-0.4 0.8-0.6 0.2-0.1 0.3-0.2 0.5-0.4 0.2-0.2 0.5-0.4 0.7-0.6 0.2-0.2 0.4-0.3 0.6-0.5 0.2-0.2 0.4-0.3 0.6-0.5 0.8-0.7 1.5-1.5 2.2-2.2 0.2-0.2 0.3-0.4 0.5-0.6 0.2-0.2 0.4-0.4 0.5-0.6 0.2-0.2 0.4-0.5 0.6-0.7 0.1-0.2 0.2-0.3 0.4-0.5 0.2-0.3 0.4-0.6 0.6-0.8 0.1-0.1 0.2-0.3 0.3-0.4 0.2-0.3 0.4-0.6 0.6-0.9 0.1-0.1 0.2-0.3 0.3-0.4 0.2-0.3 0.3-0.6 0.5-0.9 0.1-0.2 0.2-0.3 0.3-0.5 0.1-0.3 0.3-0.6 0.4-0.8 0.1-0.2 0.2-0.4 0.3-0.6 0.1-0.3 0.2-0.5 0.4-0.8 0.1-0.2 0.2-0.5 0.3-0.7 0.1-0.2 0.2-0.5 0.3-0.7 0.1-0.3 0.2-0.5 0.3-0.8 0.1-0.2 0.1-0.4 0.2-0.6 0.1-0.3 0.2-0.6 0.3-0.9 0.1-0.2 0.1-0.4 0.2-0.5 0.1-0.3 0.2-0.6 0.3-1 0-0.2 0.1-0.3 0.1-0.5 0.1-0.3 0.2-0.7 0.2-1 0-0.2 0.1-0.4 0.1-0.5 0.1-0.3 0.1-0.7 0.2-1 0-0.2 0.1-0.4 0.1-0.6 0-0.3 0.1-0.6 0.1-0.9 0-0.3 0-0.5 0.1-0.8 0-0.2 0-0.5 0.1-0.7 0-0.5 0-1.1 0-1.6L771.1 193l60.3 0L831.4 833.1z" p-id="5156"></path><path d="M468.7 416c0 17.7-14.3 32-32 32l-148 0c-17.7 0-32-14.3-32-32l0 0c0-17.7 14.3-32 32-32l148 0C454.4 384 468.7 398.3 468.7 416L468.7 416z" p-id="5157"></path><path d="M772.3 565c0 17.7-14.3 32-32 32L291.3 597c-17.7 0-32-14.3-32-32l0 0c0-17.7 14.3-32 32-32l449.1 0C758 533 772.3 547.3 772.3 565L772.3 565z" p-id="5158"></path><path d="M771.4 702c0 17.7-14.3 32-32 32L291.3 734c-17.7 0-32-14.3-32-32l0 0c0-17.7 14.3-32 32-32l448.2 0C757.1 670 771.4 684.4 771.4 702L771.4 702z" p-id="5159"></path></svg>',
+  ariaLabel: '收容报告RSS订阅',
   filename: 'weekly.rss',
 }
 const RSS: Theme.RSSOptions = {
-  title: '代碼收容所',
+  title: '代码收容所',
   baseUrl,
   description: '天道酬勤，恒以致遠（大前端相关技术分享）',
   id: baseUrl,
@@ -34,7 +34,7 @@ const RSS: Theme.RSSOptions = {
   language: 'zh-cn',
   image: 'https://img.cdn.sugarat.top/mdImg/MTY3NDk5NTE2NzAzMA==674995167030',
   favicon: 'https://www.dmsrs.org/favicon.ico',
-  copyright: 'Copyright (c) 2018-present, 代碼收容所',
+  copyright: 'Copyright (c) 2018-present, 代码收容所',
   url: `${baseUrl}/feed.rss`,
   /**
    * 最近100篇，避免太大影响解析
@@ -59,7 +59,7 @@ const blogTheme = getThemeConfig({
   },
   themeColor: 'el-blue',
   RSS,
-  author: '代碼收容所',
+  author: '代码收容所',
   comment: {
     repo: 'cnjimbo/cnjimbo.github.io',
     repoId: 'R_kgDOLK_y4A',
@@ -71,13 +71,11 @@ const blogTheme = getThemeConfig({
     mobileDisplay: true,
     models: [
       {
-        path: 'https://sugarat.s3.bitiful.net/npm/oml2d-model/models/Senko_Normals/senko.model3.json',
+        path: 'https://model.oml2d.com/Senko_Normals/senko.model3.json',
       },
     ],
     libraryUrls: {
-      complete: 'https://sugarat.s3.bitiful.net/npm/oh-my-live2d/latest/lib/complete.js',
-      cubism2: 'https://sugarat.s3.bitiful.net/npm/oh-my-live2d/latest/lib/cubism2.js',
-      cubism5: 'https://sugarat.s3.bitiful.net/npm/oh-my-live2d/latest/lib/cubism5.js',
+      complete: 'https://unpkg.com/oh-my-live2d@latest',
     },
   },
   popover: {
@@ -86,7 +84,7 @@ const blogTheme = getThemeConfig({
       { type: 'text', content: '👇公众号👇---👇 微信 👇' },
       {
         type: 'image',
-        src: 'https://img.cdn.sugarat.top/mdImg/MTYxNTAxODc2NTIxMA==615018765210~fmt.webp',
+        src: '/mp-code2.png',
       },
       {
         type: 'text',
@@ -111,80 +109,13 @@ const blogTheme = getThemeConfig({
   friend: {
     list: [
       {
-        nickname: '冴羽',
-        des: '冴羽的JavaScript博客',
+        nickname: '一叶浮萍',
+        des: '幽谷清风 深潭碧波 寂清静宁',
         avatar:
-          'https://sugarat.s3.bitiful.net/avatar/blog/mqyqingfeng.png',
-        url: 'https://github.com/mqyqingfeng/Blog',
+          '/avatar/logo-white.png',
+        url: 'https://www.cnblogs.com/68681395',
       },
-      {
-        nickname: 'Linbudu',
-        des: '未来的不可知，是前进的原动力',
-        avatar:
-          'https://sugarat.s3.bitiful.net/avatar/blog/linbudu.jfif',
-        url: 'https://linbudu.top/',
-      },
-      {
-        nickname: '小九',
-        des: '日益努力，而后风生水起',
-        avatar: 'https://sugarat.s3.bitiful.net/avatar/blog/jiangly.png',
-        url: 'https://jiangly.com/',
-      },
-      {
-        nickname: '花喵电台      ',
-        des: '曹豪侠和余湾湾还有两只猫的生活记录~',
-        avatar:
-          'https://sugarat.s3.bitiful.net/avatar/blog/fmcat.jpeg',
-        url: 'https://www.fmcat.top',
-      },
-      {
-        nickname: '张成威的网络日志',
-        des: '知不足而奋进，望远山而前行',
-        avatar: 'https://sugarat.s3.bitiful.net/avatar/blog/zhangchengwei.png',
-        url: 'https://www.zhangchengwei.work',
-      },
-      {
-        url: 'https://leelaa.cn',
-        avatar: 'https://sugarat.s3.bitiful.net/avatar/blog/leelaa.png',
-        des: '肯了个德的博客',
-        nickname: 'LEEDAISEN',
-      },
-      {
-        url: 'https://next.blackcell.fun/',
-        avatar: 'https://sugarat.s3.bitiful.net/avatar/blog/blackcell.jpeg',
-        des: '物以类聚 人以群分',
-        nickname: 'BlackCell',
-      },
-      {
-        url: 'https://blog.cuuxx.com',
-        avatar: 'https://sugarat.s3.bitiful.net/avatar/blog/tenyon.webp',
-        des: '工夫为艺，笃志成技',
-        nickname: 'Yovvis\'s Blog',
-      },
-      {
-        nickname: '强少来了',
-        des: '互联网产品经理',
-        avatar: 'https://sugarat.s3.bitiful.net/avatar/blog/fengxiaoqiang.png',
-        url: 'https://fengxiaoqiang.com/',
-      },
-      {
-        nickname: '博友圈',
-        des: '独立博客人的专属朋友圈！',
-        avatar: 'https://cdn.upyun.sugarat.top/mdImg/sugar/bdee5d11a1e036ca3634943d34469f59',
-        url: 'https://www.boyouquan.com/home',
-      },
-      {
-        nickname: 'Simon He',
-        des: '除了coding，我什么都不会',
-        avatar: 'https://sugarat.s3.bitiful.net/avatar/blog/simonme.png',
-        url: 'https://simonme.netlify.app/',
-      },
-      {
-        nickname: 'laiky',
-        des: '一名全栈开发工程师，.NET全栈经验',
-        avatar: 'https://sugarat.s3.bitiful.net/avatar/blog/llxz.png',
-        url: 'http://llxz.top/',
-      },
+
     ].map((v) => {
       if (v.avatar.includes('//sugarat.s3.bitiful.net')) {
         v.avatar = `${v.avatar}?w=50&h=50&fmt=webp&mode=crop`
@@ -202,18 +133,18 @@ const blogTheme = getThemeConfig({
   },
   authorList: [
     {
-      nickname: '代碼收容所',
+      nickname: '代码收容所',
       url: 'https://www.dmsrs.org/aboutme.html',
       des: '天道酬勤，恒以致遠',
     },
   ],
   footer: {
-    copyright: `代碼收容所 2018 - ${new Date().getFullYear()}`,
+    copyright: `代码收容所 2006 - ${new Date().getFullYear()}`,
     icpRecord: {
-      name: '蜀ICP备19011724号',
+      name: '京ICP备14018270号',
       link: 'https://beian.miit.gov.cn/',
     },
-    message: '<a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank" style="display:flex;align-items:center;justify-content:center;">本网站由 <img src="https://sugarat.s3.bitiful.net/logo/upyun.png?w=56&h=24&fmt=webp" style="width:56px;height:24px;" alt="又拍云"> 提供CDN加速/云存储服务</a>',
+    message: '',
   },
   hotArticle: {
     pageSize: 12,
@@ -233,16 +164,35 @@ const extraHead: any
           'script',
           {
             charset: 'UTF-8',
-            id: 'LA_COLLECT',
+            id: 'BAIDU_TONGJI',
             defer: true,
-            src: '//sugarat.s3.bitiful.net/npm/51la-analysis-sdk/js-sdk-pro.min.js',
+            src: 'https://hm.baidu.com/hm.js?b48d57d263dacefaa9070edcdf045a6b',
           },
         ],
         [
           'script',
           {},
-          'document.addEventListener(\'DOMContentLoaded\', function() {typeof LA !==\'undefined\' && LA.init({id: "Jgmg5avjAUvoyePS",ck: "Jgmg5avjAUvoyePS",hashMode: true})});',
+          '!function(p){"use strict";!function(t){var s=window,e=document,i=p,c="".concat("https:"===e.location.protocol?"https://":"http://","sdk.51.la/js-sdk-pro.min.js"),n=e.createElement("script"),r=e.getElementsByTagName("script")[0];n.type="text/javascript",n.setAttribute("charset","UTF-8"),n.async=!0,n.src=c,n.id="LA_COLLECT",i.d=n;var o=function(){s.LA.ids.push(i)};s.LA?s.LA.ids&&o():(s.LA=p,s.LA.ids=[],o()),r.parentNode.insertBefore(n,r)}()}({id:"3IeB5Nny4fc4uQvw",ck:"3IeB5Nny4fc4uQvw",autoTrack:true,hashMode:true,screenRecord:true});',
         ],
+        [
+          'script',
+          {},
+          '!(function(c,i,e,b){var h=i.createElement("script");var f=i.getElementsByTagName("script")[0];h.type="text/javascript";h.crossorigin=true;h.onload=function(){new c[b]["Monitor"]().init({id:"3IeDjeHzDHEi0y90",sendSuspicious:true});};f.parentNode.insertBefore(h,f);h.src=e;})(window,document,"https://sdk.51.la/perf/js-sdk-perf.min.js","LingQue");',
+        ],
+      // [
+      //   'script',
+      //   {
+      //     charset: 'UTF-8',
+      //     id: 'LA_COLLECT',
+      //     defer: false,
+      //     src: 'https://sdk.51.la/js-sdk-pro.min.js',
+      //   },
+      // ],
+      // [
+      //   'script',
+      //   {},
+      //   'LA.init({id:"3IeB5Nny4fc4uQvw",ck:"3IeB5Nny4fc4uQvw"})',
+      // ],
       ]
     : []
 
@@ -258,9 +208,9 @@ export default defineConfig({
     hostname: 'https://www.dmsrs.org',
   },
   lang: 'zh-cn',
-  title: '代碼收容所',
+  title: '代码收容所',
   description:
-    '代碼收容所的个人博客，记录随笔与学习笔记，大前端相关的知识，高频面试题，个人面经等',
+    '代码收容所的个人博客，记录随笔与学习笔记，大前端相关的知识，项目管理，经济等',
   head: [
     // <meta name="baidu-site-verification" content="codeva-b08avp82Uj" />
     ['meta', { name: 'baidu-site-verification', content: 'codeva-b08avp82Uj' }],
@@ -275,7 +225,7 @@ export default defineConfig({
         sizes: '16x16',
       },
     ],
-    ['meta', { name: 'author', content: '代碼收容所' }],
+    ['meta', { name: 'author', content: '代码收容所' }],
     ['link', { rel: 'mask-icon', href: '/favicon.ico', color: '#ffffff' }],
     [
       'link',
@@ -330,10 +280,10 @@ export default defineConfig({
         link: '/aboutme',
       },
       {
-        text: '备战春秋',
+        text: '六位代码',
         items: [
-          { text: '心得总结', link: '/offer/experience/' },
-          // { text: '校招考点汇总', link: '/offer/campus/' },
+          { text: '精准爆头', link: '/stocks/PrecisionHeadshot/' },
+          { text: '情绪核心', link: '/stocks/SentimentCore/' },
           // { text: '面经汇总', link: '/offer/sum-interview/' },
           // { text: '复习自查', link: '/offer/review/' },
         ],
@@ -373,16 +323,32 @@ export default defineConfig({
           { text: 'node', link: '/bigWeb/node/' },
         ],
       },
+      // {
+      //   text: '面试',
+      //   items: [
+      //     { text: '问解', link: '/interview/problem/' },
+      //     { text: 'javascript', link: '/interview/js/' },
+      //
+      //     { text: '手撕代码', link: '/interview/code/' },
+      //     { text: '性能优化', link: '/interview/performance/' },
+      //     // { text: "网络", link: "/interview/internet/" },
+      //     // { text: '操作系统', link: '/interview/os/' },
+      //     // { text: '设计模式', link: '/interview/design/' },
+      //     { text: '综合问题', link: '/interview/other/' },
+      //     // { text: '面经汇总', link: '/offer/sum-interview/' },
+      //     { text: '小程序', link: '/interview/mini/' },
+      //     // { text: '面经', link: '/interview/experience/' }
+      //   ],
+      // },
       {
-        text: '面试',
+        text: '手撕代码',
         items: [
-          { text: '心得总结', link: '/offer/experience/' },
-          // { text: '校招考点汇总', link: '/offer/campus/' },
-          // { text: '面经汇总', link: '/offer/sum-interview/' },
-          // { text: '复习自查', link: '/offer/review/' },
+
+          // { text: 'javascript', link: '/coding/js/' },
+          // { text: 'css', link: '/coding/css/' },
           { text: '问解', link: '/interview/problem/' },
-          { text: 'javascript', link: '/interview/js/' },
-          { text: 'css', link: '/interview/css/' },
+          // { text: 'javascript', link: '/interview/js/' },
+
           { text: '手撕代码', link: '/interview/code/' },
           { text: '性能优化', link: '/interview/performance/' },
           // { text: "网络", link: "/interview/internet/" },
@@ -391,15 +357,6 @@ export default defineConfig({
           { text: '综合问题', link: '/interview/other/' },
           // { text: '面经汇总', link: '/offer/sum-interview/' },
           { text: '小程序', link: '/interview/mini/' },
-          // { text: '面经', link: '/interview/experience/' }
-        ],
-      },
-      {
-        text: '手撕代码',
-        items: [
-          { text: '数据结构与算法', link: '/coding/algorithm/' },
-          { text: 'javascript', link: '/coding/js/' },
-          { text: 'css', link: '/coding/css/' },
         ],
       },
       // {
@@ -433,33 +390,23 @@ export default defineConfig({
         text: '线上作品',
         items: [
           {
-            text: '轻取(文件收集)',
-            link: 'https://ep2.sugarat.top',
+            text: 'POCO Mapper Tool(dotnet)',
+            link: 'https://github.com/netniubility/EmitMapper',
           },
-          {
-            text: '个人图床',
-            link: 'https://imgbed.sugarat.top',
-          },
-          {
-            text: '考勤小程序',
-            link: 'https://hdkq.sugarat.top/',
-          },
-          {
-            text: '时光恋人',
-            link: 'https://lover.sugarat.top',
-          },
-          {
-            text: '在线简历生成',
-            link: 'https://resume.sugarat.top/',
-          },
+
         ],
+      },
+      {
+        text: '周刊',
+        link: '/weekly',
+
       },
     ],
     socialLinks: [
       { icon: 'github', link: 'https://github.com/cnjimbo/cnjimbo.github.io' },
       {
         icon: 'x',
-        link: 'https://x.com/Mr_XiaoZou',
+        link: 'https://x.com/cnJimbo',
       },
     ],
   },

@@ -1,83 +1,73 @@
 {
 	"folders": [
 		{
-			"name": "🌱  sugar-wiki-monorepo",
+			"name": "✨ sugar-wiki-monorepo",
 			"path": "."
 		},
 		{
-			"name": "🍀  blogpress",
+			"name": "📦 blogpress",
 			"path": "packages/blogpress"
 		},
 		{
-			"name": "🍀  @sugarat/create-theme",
+			"name": "📦 @sugarat/create-theme",
 			"path": "packages/create-theme"
 		},
 		{
-			"name": "🍀  @sugarat/theme",
+			"name": "📦 @sugarat/theme",
 			"path": "packages/theme"
 		},
 		{
-			"name": "🍀  vitepress-plugin-pagefind",
+			"name": "📦 vitepress-plugin-pagefind",
 			"path": "packages/vitepress-plugin-pagefind"
 		},
 		{
-			"name": "🍀  vitepress-plugin-rss",
+			"name": "📦 vitepress-plugin-rss",
 			"path": "packages/vitepress-plugin-rss"
 		}
 	],
 	"settings": {
 		"conventionalCommits.scopes": [
-			"pkg upgrade"
-		],
-		"ColorfulMonorepo.workspaces.collection": [
-			{
-				"path": "c:\\AppData\\code-vPress\\cnjimbo.github.io",
-				"packageName": "sugar-wiki-monorepo",
-				"label": "🌱  sugar-wiki-monorepo",
-				"foreground": "#ffffff",
-				"background": "#9c643b"
-			},
-			{
-				"path": "c:\\AppData\\code-vPress\\cnjimbo.github.io\\packages\\blogpress",
-				"packageName": "blogpress",
-				"label": "🍀  blogpress",
-				"foreground": "#ffffff",
-				"background": "#269c9a"
-			},
-			{
-				"path": "c:\\AppData\\code-vPress\\cnjimbo.github.io\\packages\\create-theme",
-				"packageName": "@sugarat/create-theme",
-				"label": "🍀  @sugarat/create-theme",
-				"foreground": "#ffffff",
-				"background": "#d6256e"
-			},
-			{
-				"path": "c:\\AppData\\code-vPress\\cnjimbo.github.io\\packages\\theme",
-				"packageName": "@sugarat/theme",
-				"label": "🍀  @sugarat/theme",
-				"foreground": "#000000",
-				"background": "#13b37d"
-			},
-			{
-				"path": "c:\\AppData\\code-vPress\\cnjimbo.github.io\\packages\\vitepress-plugin-pagefind",
-				"packageName": "vitepress-plugin-pagefind",
-				"label": "🍀  vitepress-plugin-pagefind",
-				"foreground": "#000000",
-				"background": "#6fc708"
-			},
-			{
-				"path": "c:\\AppData\\code-vPress\\cnjimbo.github.io\\packages\\vitepress-plugin-rss",
-				"packageName": "vitepress-plugin-rss",
-				"label": "🍀  vitepress-plugin-rss",
-				"foreground": "#ffffff",
-				"background": "#08194e"
-			}
+			"pkg upgrade",
+			"actions",
+			"scaffold"
 		],
 		"workbench.colorCustomizations": {
 			"statusBar.background": "#9c643b",
 			"statusBar.foreground": "#ffffff",
 			"tab.activeBorder": "#9c643b",
 			"sideBarTitle.foreground": "#9c643b"
-		}
+		},
+		"files.exclude": {
+			"**/.git": true,
+			"**/.svn": true,
+			"**/.hg": true,
+			"**/CVS": true,
+			"**/.DS_Store": true,
+			"**/Thumbs.db": true,
+			"**/node_modules": true
+		},
+		"explorerExclude.backup": {},
+		"autoRestart.fileGlobForESLint": "**/{.eslintrc,eslint.config}.{js,cjs,yaml,yml,json,mjs,ts,mts}",
+		"autoRestart.fileGlobForTypescript": "**/{tsconfig,tsconfig.base,base.tsconfig}.{json,app.json,app.js,js,ts}",
+		"autoRestart.monitorFilesForESLint": true,
+		"autoRestart.showRestartNotificationForESLint": true,
+		"files.trimTrailingWhitespaceInRegexAndStrings": false,
+		"editor.trimAutoWhitespace": false,
+		"code-runner.executorMap": {
+			"typescript": "node --es-module-specifier-resolution=node --loader ts-node/esm $fullFileName",
+			"ts": "node --es-module-specifier-resolution=node --loader ts-node/esm $fullFileName",
+			"javascript": "node  --es-module-specifier-resolution=node  $fullFileName",
+		},
+		"gitlens.showWelcomeOnInstall": false,
+		"gitlens.currentLine.enabled": false,
+		"gitlens.currentLine.pullRequests.enabled": false,
+		"Lingma.localMachineModel": false,
+		"Lingma.methodQuickOperation": false,
+		"Lingma.cloudModelEnable": false,
+		"typescript.tsdk": "✨ sugar-wiki-monorepo\\node_modules\\typescript\\lib",
+		"workbench.editor.alwaysShowEditorActions": true,
+	},
+	"extensions": {
+		"recommendations":["aaron-bond.better-comments","adam-bender.commit-message-editor","alefragnani.project-manager","alibaba-cloud.tongyi-lingma","amodio.toggle-excluded-files","antfu.iconify","aprilandjan.vscode-node-debug-process-picker","bierner.docs-view","bradlc.vscode-tailwindcss","chakrounanas.turbo-console-log","christian-kohler.path-intellisense","codeandstuff.package-json-upgrade","dbaeumer.vscode-eslint","eamodio.gitlens","editorconfig.editorconfig","edwinkofler.vscode-assorted-languages","eliostruyf.vscode-hide-comments","endverbraucher.pack-javascript","evondev.indent-rainbow-palettes","folke.vscode-monorepo-workspace","formulahendry.auto-rename-tag","formulahendry.code-runner","gabrielgod1.indent-rainbow-blocks","github.remotehub","github.vscode-github-actions","github.vscode-pull-request-github","gregorbiswanger.json2ts","gruntfuggly.todo-tree","harrydowning.swap-tsconfig","humao.rest-client","huntertran.auto-markdown-toc","ibm.output-colorizer","ionutvmi.path-autocomplete","jabacchetta.vscode-essentials","jock.svg","johnsoncodehk.vscode-tsconfig-helper","kennylong.kubernetes-yaml-formatter","kisstkondoros.vscode-codemetrics","lacroixdavid1.vscode-format-context-menu","larrykiniu.vscode-fav","lettucegoblin.vue-vscode-snippets-scripts-first","lmcarreiro.vscode-smart-column-indenter","loiane.ts-extension-pack","lxspandora.vscode-styled-components-snippets","maggie.eslint-rules-zh-plugin","mechatroner.rainbow-csv","metaseed.metago","metaseed.metajump","metaseed.metaword","mhutchie.git-graph","mike-co.import-sorter","mintlify.document","mohd-akram.vscode-html-format","ms-edgedevtools.vscode-edge-devtools","ms-vscode-remote.remote-wsl-recommender","ms-vscode.live-server","ms-vscode.powershell","ms-vscode.remote-repositories","ms-vscode.vscode-typescript-next","mulu-github.jsflowchart","mxsdev.typescript-explorer","neotan.vscode-auto-restart-typescript-eslint-servers","nodesource.vscode-for-node-js-development-pack","oderwat.indent-rainbow","oouo-diogo-perdigao.docthis","peterschmalfeldt.explorer-exclude","pmneo.tsimporter","pnp.polacode","redhat.vscode-yaml","richie5um2.vscode-sort-json","serhioromano.vscode-gitflow","shd101wyy.markdown-preview-enhanced","sirtori.indenticator","sketchbuch.vsc-workspace-sidebar","steoates.autoimport","stkb.rewrap","stringham.move-ts","stylelint.vscode-stylelint","tal7aouy.indent-colorizer","tombonnike.vscode-status-bar-format-toggle","tomoki1207.pdf","usernamehw.errorlens","vivaxy.vscode-conventional-commits","vue.volar","wmaurer.change-case","xyz.local-history","yoavbls.pretty-ts-errors","ypresto.vscode-intelli-refactor","yzhang.markdown-all-in-one","zhoucheng0431.vitepress-snippets"]
 	}
 }

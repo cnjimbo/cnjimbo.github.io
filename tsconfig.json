@@ -20,15 +20,16 @@
       "ESNext",
       "DOM"
     ],
-    "module": "esnext",
-    "moduleResolution": "Node",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "resolveJsonModule": true,
     "allowJs": true,
     "strict": false,
     "noUnusedLocals": false,
     "removeComments": true,
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "importHelpers": true /* 从 'tslib' 导入发射助手。 */
     /// -----------
     /* 访问 https://aka.ms/tsconfig.json 以阅读有关此文件的更多信息 */
     /* 基本选项 */
@@ -50,7 +51,7 @@
     // "removeComments": true, /* 不要向输出发出注释（删除除代码注释）。 */
     // "noEmit": true, /* 不发出输出（不生成编译后的文件）。 */
     // "noEmitOnError": true, /* 在输出js代码时，如果有错将不编译文件。 */
-    // "importHelpers": true, /* 从 'tslib' 导入发射助手。 */
+    // "importHelpers": true /* 从 'tslib' 导入发射助手。 */
     // "downlevelIteration": true, /* 以“ES5”或“ES3”为目标时，为“for-of”、展开和解构中的迭代提供全面支持。 */
     // "isolatedModules": true, /* 将每个文件转换为一个单独的模块（类似于 'ts.transpileModule'）。 */
     // /* 严格的类型检查选项 */
@@ -95,7 +96,8 @@
     "**/dist/**",
     "*.d.ts",
     "**/node_modules/**/*",
-    "./*.mjs",
-    "dist"
+    "**/*.mjs",
+    "dist",
+    ".pnpm"
   ]
 }

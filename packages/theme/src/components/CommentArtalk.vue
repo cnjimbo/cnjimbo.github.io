@@ -24,8 +24,8 @@ const commentConfig = computed(() => {
 onMounted(() => {
   // CDN 异步加载，有优化空间
   const observer = new MutationObserver((mutationsList, observer) => {
-    if (window.Artalk && commentConfig.value && el.value) {
-      artalk.value = window.Artalk.init({
+    if ((window as any).Artalk && commentConfig.value && el.value) {
+      artalk.value = (window as any).Artalk.init({
         el: el.value,
         darkMode: isDark.value,
         pageKey: route.path,
