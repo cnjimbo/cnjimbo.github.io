@@ -1,4 +1,4 @@
-name: Deploy Pages via brunch
+name: Deploy Pages via branch
 
 on:
   # 推送时执行
