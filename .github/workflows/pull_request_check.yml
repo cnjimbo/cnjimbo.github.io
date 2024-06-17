@@ -75,7 +75,7 @@ jobs:
 
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          preview-branch: master
+          preview-branch: gh-pages
           source-dir: packages/blogpress/.vitepress/dist
           umbrella-dir: pr-preview
           action: auto
