@@ -69,13 +69,13 @@ jobs:
 
           pnpm buildlib
           pnpm build
-        # 7 部署到预览
-      - name: Deploy preview
-        uses: rossjrw/pr-preview-action@v1.4.7
+      #   # 7 部署到预览
+      # - name: Deploy preview
+      #   uses: rossjrw/pr-preview-action@v1.4.7
 
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          preview-branch: gh-pages
-          source-dir: packages/blogpress/.vitepress/dist
-          umbrella-dir: pr-preview
-          action: auto
+      #   with:
+      #     # token: ${{ secrets.GITHUB_TOKEN }}
+      #     preview-branch: gh-pages
+      #     source-dir: packages/blogpress/.vitepress/dist
+      #     umbrella-dir: pr-preview
+      #     action: auto

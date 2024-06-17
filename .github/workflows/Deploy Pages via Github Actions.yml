@@ -68,13 +68,9 @@ jobs:
           #   pnpm install --frozen-lockfile
           # else
           #   pnpm install
-          # fi
-
-      - name: Buildlib
-        # 6、打包
-        run: pnpm buildlib
-      - name: Build
-        run: pnpm build
+          # fi 
+          pnpm buildlib   
+          pnpm build
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
