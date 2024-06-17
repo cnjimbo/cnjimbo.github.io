@@ -66,8 +66,209 @@
 		"Lingma.cloudModelEnable": false,
 		"typescript.tsdk": "✨ sugar-wiki-monorepo\\node_modules\\typescript\\lib",
 		"workbench.editor.alwaysShowEditorActions": true,
+		"commit-message-editor.staticTemplate": [
+			"feat: Short description",
+			"",
+			"Message body",
+			"",
+			"Message footer"
+		],
+		"commit-message-editor.dynamicTemplate": [
+			"{type}{scope}: {description}",
+			"",
+			"{body}",
+			"",
+			"{breaking_change}{footer}"
+		],
+		"commit-message-editor.tokens": [
+			{
+				"label": "Type",
+				"name": "type",
+				"type": "enum",
+				"options": [
+					{
+						"label": "---",
+						"value": ""
+					},
+					{
+						"label": "build",
+						"description": "Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)"
+					},
+					{
+						"label": "chore",
+						"description": "Updating grunt tasks etc; no production code change"
+					},
+					{
+						"label": "ci",
+						"description": "Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)"
+					},
+					{
+						"label": "docs",
+						"description": "Documentation only changes"
+					},
+					{
+						"label": "feat",
+						"description": "A new feature"
+					},
+					{
+						"label": "fix",
+						"description": "A bug fix"
+					},
+					{
+						"label": "perf",
+						"description": "A code change that improves performance"
+					},
+					{
+						"label": "refactor",
+						"description": "A code change that neither fixes a bug nor adds a feature"
+					},
+					{
+						"label": "revert"
+					},
+					{
+						"label": "style",
+						"description": "Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)"
+					},
+					{
+						"label": "test",
+						"description": "Adding missing tests or correcting existing tests"
+					}
+				],
+				"description": "Type of changes"
+			},
+			{
+				"label": "Scope",
+				"name": "scope",
+				"description": "A scope may be provided to a commit’s type, to provide additional contextual information and is contained within parenthesis, e.g., \"feat(parser): add ability to parse arrays\".",
+				"type": "text",
+				"multiline": false,
+				"prefix": "(",
+				"suffix": ")"
+			},
+			{
+				"label": "Short description",
+				"name": "description",
+				"description": "Short description in the subject line.",
+				"type": "text",
+				"multiline": false
+			},
+			{
+				"label": "Body",
+				"name": "body",
+				"description": "Optional body",
+				"type": "text",
+				"multiline": true,
+				"lines": 5,
+				"maxLines": 10
+			},
+			{
+				"label": "Breaking change",
+				"name": "breaking_change",
+				"type": "boolean",
+				"value": "BREAKING CHANGE: ",
+				"default": false
+			},
+			{
+				"label": "Footer",
+				"name": "footer",
+				"description": "Optional footer",
+				"type": "text",
+				"multiline": true
+			}
+		],
 	},
 	"extensions": {
-		"recommendations":["aaron-bond.better-comments","adam-bender.commit-message-editor","alefragnani.project-manager","alibaba-cloud.tongyi-lingma","amodio.toggle-excluded-files","antfu.iconify","aprilandjan.vscode-node-debug-process-picker","bierner.docs-view","bradlc.vscode-tailwindcss","chakrounanas.turbo-console-log","christian-kohler.path-intellisense","codeandstuff.package-json-upgrade","dbaeumer.vscode-eslint","eamodio.gitlens","editorconfig.editorconfig","edwinkofler.vscode-assorted-languages","eliostruyf.vscode-hide-comments","endverbraucher.pack-javascript","evondev.indent-rainbow-palettes","folke.vscode-monorepo-workspace","formulahendry.auto-rename-tag","formulahendry.code-runner","gabrielgod1.indent-rainbow-blocks","github.remotehub","github.vscode-github-actions","github.vscode-pull-request-github","gregorbiswanger.json2ts","gruntfuggly.todo-tree","harrydowning.swap-tsconfig","humao.rest-client","huntertran.auto-markdown-toc","ibm.output-colorizer","ionutvmi.path-autocomplete","jabacchetta.vscode-essentials","jock.svg","johnsoncodehk.vscode-tsconfig-helper","kennylong.kubernetes-yaml-formatter","kisstkondoros.vscode-codemetrics","lacroixdavid1.vscode-format-context-menu","larrykiniu.vscode-fav","lettucegoblin.vue-vscode-snippets-scripts-first","lmcarreiro.vscode-smart-column-indenter","loiane.ts-extension-pack","lxspandora.vscode-styled-components-snippets","maggie.eslint-rules-zh-plugin","mechatroner.rainbow-csv","metaseed.metago","metaseed.metajump","metaseed.metaword","mhutchie.git-graph","mike-co.import-sorter","mintlify.document","mohd-akram.vscode-html-format","ms-edgedevtools.vscode-edge-devtools","ms-vscode-remote.remote-wsl-recommender","ms-vscode.live-server","ms-vscode.powershell","ms-vscode.remote-repositories","ms-vscode.vscode-typescript-next","mulu-github.jsflowchart","mxsdev.typescript-explorer","neotan.vscode-auto-restart-typescript-eslint-servers","nodesource.vscode-for-node-js-development-pack","oderwat.indent-rainbow","oouo-diogo-perdigao.docthis","peterschmalfeldt.explorer-exclude","pmneo.tsimporter","pnp.polacode","redhat.vscode-yaml","richie5um2.vscode-sort-json","serhioromano.vscode-gitflow","shd101wyy.markdown-preview-enhanced","sirtori.indenticator","sketchbuch.vsc-workspace-sidebar","steoates.autoimport","stkb.rewrap","stringham.move-ts","stylelint.vscode-stylelint","tal7aouy.indent-colorizer","tombonnike.vscode-status-bar-format-toggle","tomoki1207.pdf","usernamehw.errorlens","vivaxy.vscode-conventional-commits","vue.volar","wmaurer.change-case","xyz.local-history","yoavbls.pretty-ts-errors","ypresto.vscode-intelli-refactor","yzhang.markdown-all-in-one","zhoucheng0431.vitepress-snippets"]
+		"recommendations": [
+			"aaron-bond.better-comments",
+			"adam-bender.commit-message-editor",
+			"alefragnani.project-manager",
+			"alibaba-cloud.tongyi-lingma",
+			"amodio.toggle-excluded-files",
+			"antfu.iconify",
+			"aprilandjan.vscode-node-debug-process-picker",
+			"bierner.docs-view",
+			"bradlc.vscode-tailwindcss",
+			"chakrounanas.turbo-console-log",
+			"christian-kohler.path-intellisense",
+			"codeandstuff.package-json-upgrade",
+			"dbaeumer.vscode-eslint",
+			"eamodio.gitlens",
+			"editorconfig.editorconfig",
+			"edwinkofler.vscode-assorted-languages",
+			"eliostruyf.vscode-hide-comments",
+			"endverbraucher.pack-javascript",
+			"evondev.indent-rainbow-palettes",
+			"folke.vscode-monorepo-workspace",
+			"formulahendry.auto-rename-tag",
+			"formulahendry.code-runner",
+			"gabrielgod1.indent-rainbow-blocks",
+			"github.remotehub",
+			"github.vscode-github-actions",
+			"github.vscode-pull-request-github",
+			"gregorbiswanger.json2ts",
+			"gruntfuggly.todo-tree",
+			"harrydowning.swap-tsconfig",
+			"humao.rest-client",
+			"huntertran.auto-markdown-toc",
+			"ibm.output-colorizer",
+			"ionutvmi.path-autocomplete",
+			"jabacchetta.vscode-essentials",
+			"jock.svg",
+			"johnsoncodehk.vscode-tsconfig-helper",
+			"kennylong.kubernetes-yaml-formatter",
+			"kisstkondoros.vscode-codemetrics",
+			"lacroixdavid1.vscode-format-context-menu",
+			"larrykiniu.vscode-fav",
+			"lettucegoblin.vue-vscode-snippets-scripts-first",
+			"lmcarreiro.vscode-smart-column-indenter",
+			"loiane.ts-extension-pack",
+			"lxspandora.vscode-styled-components-snippets",
+			"maggie.eslint-rules-zh-plugin",
+			"mechatroner.rainbow-csv",
+			"metaseed.metago",
+			"metaseed.metajump",
+			"metaseed.metaword",
+			"mhutchie.git-graph",
+			"mike-co.import-sorter",
+			"mintlify.document",
+			"mohd-akram.vscode-html-format",
+			"ms-edgedevtools.vscode-edge-devtools",
+			"ms-vscode-remote.remote-wsl-recommender",
+			"ms-vscode.live-server",
+			"ms-vscode.powershell",
+			"ms-vscode.remote-repositories",
+			"ms-vscode.vscode-typescript-next",
+			"mulu-github.jsflowchart",
+			"mxsdev.typescript-explorer",
+			"neotan.vscode-auto-restart-typescript-eslint-servers",
+			"nodesource.vscode-for-node-js-development-pack",
+			"oderwat.indent-rainbow",
+			"oouo-diogo-perdigao.docthis",
+			"peterschmalfeldt.explorer-exclude",
+			"pmneo.tsimporter",
+			"pnp.polacode",
+			"redhat.vscode-yaml",
+			"richie5um2.vscode-sort-json",
+			"serhioromano.vscode-gitflow",
+			"shd101wyy.markdown-preview-enhanced",
+			"sirtori.indenticator",
+			"sketchbuch.vsc-workspace-sidebar",
+			"steoates.autoimport",
+			"stkb.rewrap",
+			"stringham.move-ts",
+			"stylelint.vscode-stylelint",
+			"tal7aouy.indent-colorizer",
+			"tombonnike.vscode-status-bar-format-toggle",
+			"tomoki1207.pdf",
+			"usernamehw.errorlens",
+			"vivaxy.vscode-conventional-commits",
+			"vue.volar",
+			"wmaurer.change-case",
+			"xyz.local-history",
+			"yoavbls.pretty-ts-errors",
+			"ypresto.vscode-intelli-refactor",
+			"yzhang.markdown-all-in-one",
+			"zhoucheng0431.vitepress-snippets"
+		]
 	}
 }

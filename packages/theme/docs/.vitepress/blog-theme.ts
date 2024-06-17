@@ -43,7 +43,7 @@ export const blogTheme = getThemeConfig({
   authorList: [
     {
       nickname: '代码收容所',
-      url: 'https://www.dmsrs.org/aboutme.html',
+      url: `${baseUrl}/aboutme.html`,
       des: '天道酬勤，恒以致遠'
     }
   ],
@@ -59,7 +59,7 @@ export const blogTheme = getThemeConfig({
       des: '天道酬勤，恒以致遠',
       avatar:
         'https://img.cdn.sugarat.top/mdImg/MTY3NDk5NTE2NzAzMA==674995167030',
-      url: 'https://www.dmsrs.org'
+      url: `${baseUrl}`
     },
     {
       nickname: 'Vitepress',
@@ -107,7 +107,7 @@ export const blogTheme = getThemeConfig({
       {
         type: 'button',
         content: '作者博客',
-        link: 'https://www.dmsrs.org'
+        link: `${baseUrl}`
       },
       {
         type: 'button',

@@ -67,7 +67,7 @@ const workConfig: Theme.UserWorks = {
         start: '2020/02/18'
       },
       github: 'https://github.com/cnjimbo/cnjimbo.github.io',
-      url: 'https://www.dmsrs.org',
+      url: 'https://cnjimbo.github.io',
       tags: ['Vitepress', 'Vue'],
       cover:
             'https://img.cdn.sugarat.top/mdImg/MTY3MzE3MDUxOTMwMw==673170519303',
