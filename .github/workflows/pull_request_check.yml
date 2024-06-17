@@ -74,7 +74,7 @@ jobs:
         uses: rossjrw/pr-preview-action@v1.4.7
 
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          # token: ${{ secrets.GITHUB_TOKEN }}
           preview-branch: gh-pages
           source-dir: packages/blogpress/.vitepress/dist
           umbrella-dir: pr-preview
