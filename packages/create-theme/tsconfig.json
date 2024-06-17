@@ -2,8 +2,9 @@
   "extends": [
     "./../../tsconfig.json"
   ],
-  "files": [
-    "./src/index.ts"
+  "include": [
+    "src",
+    "types"
   ],
   "exclude": [
     "public",
