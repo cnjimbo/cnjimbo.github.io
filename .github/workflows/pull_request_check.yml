@@ -4,13 +4,13 @@ name: pull_request_check.yml
 on:
   # Runs on pushes targeting the default branch
 
-  pull_request:
-    branches: [main, master]
-    types:
-      - opened
-      - reopened
-      - synchronize
-      - closed
+  # pull_request:
+  #   branches: [main, master]
+  #   types:
+  #     - opened
+  #     - reopened
+  #     - synchronize
+  #     - closed
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 

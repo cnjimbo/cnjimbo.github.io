@@ -3,7 +3,7 @@ import type { Theme } from '@sugarat/theme'
 import { getThemeConfig } from '@sugarat/theme/node'
 import workConfig from './works'
 
-const baseUrl = 'https://theme.sugarat.top'
+const baseUrl = process.env.PUBLIC_URL??'https://theme.sugarat.top'
 const RSS: Theme.RSSOptions = {
   title: '@sugarat/theme',
   baseUrl,

@@ -1,0 +1,152 @@
+# -------------------------------------------------------------------------------------------------
+# This workflow is meant to be copied to the source repo, in order to to build the website
+# trigger the deployment.
+# Remember to edit the placeholder commands and env variables below to best suit your needs.
+# You should also create a PREVIEW_TOKEN secret following the action's README.
+# -------------------------------------------------------------------------------------------------
+
+name: Deploy
+on:
+  push:
+    branches:
+      - 'main'
+  delete:
+  pull_request_target:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - closed
+
+concurrency:
+  group: preview-${{ github.event_name }}-${{ github.event.number || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  dev:
+    name: Development
+    runs-on: ubuntu-latest
+    env:
+      PREVIEW_REPO: cnjimbo/preview
+      PAGES_BASE: https://www.dmsrs.org/preview
+
+    steps:
+      - name: Checkout branch
+        if: ${{ !startsWith(github.event_name, 'pull_request') }}
+        uses: actions/checkout@v4
+        with:
+          # 默认只拉取分支最近一次的 commit，可能会导致一些文章的 GitInfo 变量无法获取，设为 0 代表拉取所有分支所有提交
+          fetch-depth: 0
+      - name: Checkout PR head
+        if: ${{ startsWith(github.event_name, 'pull_request') && github.event.action != 'closed' }}
+        uses: actions/checkout@v4
+        with:
+          ref: refs/pull/${{ github.event.pull_request.number }}/merge
+          # 默认只拉取分支最近一次的 commit，可能会导致一些文章的 GitInfo 变量无法获取，设为 0 代表拉取所有分支所有提交
+          fetch-depth: 0
+
+      - name: Setup PNPM
+        # 3、安装 PNPM
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      # Assuming you're using Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4.0.2
+        if: ${{ github.event.action != 'closed' }} # Skipping these steps if the PR has been closed
+        with:
+          node-version: 20
+          # registry-url: https://registry.npmjs.org
+          cache: pnpm
+
+      - name: Install dependencies
+        if: ${{ github.event.action != 'closed' }}
+        run: pnpm install --ignore-scripts
+
+      # This will calculate the base URL for the website, based on the event that triggered the workflow.
+      # Leave this step as it is, unless you know what you're doing.
+      - name: Determine base URL
+        if: ${{ github.event.action != 'closed' }}
+        id: baseurl
+        run: |
+          if [ "${{ github.event_name }}" == "pull_request_target" ]; then
+            full="${{ env.PAGES_BASE }}/${{ github.repository }}/pr/${{ github.event.number }}"
+          else
+            full="${{ env.PAGES_BASE }}/${{ github.repository }}/branch/${{ github.ref_name }}"
+          fi
+
+          relative=/$(echo "$full" | cut -d/ -f4-)
+
+          echo "full=$full" >> "$GITHUB_OUTPUT"
+          echo "relative=$relative" >> "$GITHUB_OUTPUT"
+        shell: bash
+
+      # Run your usual build command, but make sure to use the correct base URL
+      # This example assumes you're using React, and that you're using the PUBLIC_URL env variable
+      - name: Build
+        if: ${{ github.event.action != 'closed' }}
+        run: |
+          pnpm buildlib
+          pnpm build
+        env:
+          PUBLIC_URL: ${{ steps.baseurl.outputs.relative }}
+
+      # This will trigger the action. Make sure to change the build_dir input to the correct directory
+      - uses: EndBug/pages-preview@v1
+        with:
+          build_dir: packages/blogpress/.vitepress/dist # Change this!
+          preview_base_url: ${{ env.PAGES_BASE }}
+          preview_repo: ${{ env.PREVIEW_REPO }}
+          preview_token: ${{ secrets.PREVIEW_TOKEN }}
+
+      # - uses: EndBug/pages-preview@v1
+      #   with:
+      #     # The directory in which the website has been built, in the a/b/c format
+      #     build_dir: packages/blogpress/.vitepress/dist
+
+      #     # The GitHub Pages base URL of the preview repo
+      #     preview_base_url: https://cnjimbo.github.io/preview
+
+      #     # The repository to push previews to, in the Owner/Name format
+      #     preview_repo: cnjimbo/preview
+
+      #     # The token to access the preview repo, that you created during setup
+      #     preview_token: ${{ secrets.PREVIEW_TOKEN }}
+
+      #     # --- OPTIONAL ---
+      #     # The name of the environment to use for the deployment
+      #     # Default: 'preview'
+      #     deployment_env: 'development'
+
+      #     # Whether to use the deployments API
+      #     # Default: 'true'
+      #     deployments: false
+
+      #     # The name of the author of the resulting commit
+      #     # Default: the GitHub Actor
+      #     git_author_name: cnjimbo
+
+      #     # The email of the author of the resulting commit
+      #     # Default: the GitHub Actor's
+      #     git_author_email: cnjimbo@users.noreply.github.com
+
+      #     # The committer of the resulting commit
+      #     # Default: copies git_author_name
+      #     git_committer_name: GitHub Actions
+
+      #     # The email of the committer of the resulting commit
+      #     # Default: copies git_author_email
+      #     git_committer_email: 41898282+github-actions[bot]@users.noreply.github.com
+
+      #     # Whether to comment on PRs
+      #     # Default: 'true'
+      #     pr_comment: 'false'
+
+      #     # The name of the branch that hosts the previews
+      #     # Default: gh-pages
+      #     preview_branch: gh-pages
+
+      #     # The name of the workflow file that contains the comment workflow in the preview repo
+      #     # Default: preview.yml
+      #     preview_workflow_file_name: preview.yml
