@@ -195,7 +195,7 @@
 		"gitlens.blame.format": "${message|50?} ${agoOrDate|14-}",
 		"gitlens.views.commitDetails.autolinks.enabled": true,
 		"[typescript]": {
-			"editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+			"editor.defaultFormatter": "vscode.typescript-language-features"
 		},
 		"eslint.useFlatConfig": true,
 	},
