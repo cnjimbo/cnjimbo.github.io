@@ -5,7 +5,7 @@ import type { RSSOptions } from 'vitepress-plugin-rss'
 import { RssPlugin } from 'vitepress-plugin-rss'
 import { defineConfig } from 'vitepress'
 
-const baseUrl = process.env.PUBLIC_URL??'https://www.dmsrs.org'
+const baseUrl = process.env.FULL_URL??'https://www.dmsrs.org'
 const weekly = `${baseUrl}/weekly`
 const RSSWeekly: RSSOptions = {
   title: '视野修炼 - 技术周刊',
