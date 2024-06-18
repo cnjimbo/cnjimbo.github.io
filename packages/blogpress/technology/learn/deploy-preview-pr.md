@@ -4,17 +4,17 @@ date: 2024-06-18
 tags:
  - 技术笔记
  - 技术教程
+ - github
+ - actions
+ - deploy
+ - preview
 categories:
  - github
  - actions
  - deploy
  - preview
 created: 2024-06-18T20:04:04 (UTC +08:00)
-tags:
- - github
- - actions
- - deploy
- - preview
+
 source:
 author: EndBug
 ---
