@@ -68,8 +68,8 @@ jobs:
           #   pnpm install --frozen-lockfile
           # else
           #   pnpm install
-          # fi 
-          pnpm buildlib   
+          # fi
+          pnpm buildlib
           pnpm build
 
       - name: Setup Pages
