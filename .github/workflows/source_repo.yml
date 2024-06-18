@@ -29,7 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PREVIEW_REPO: cnjimbo/preview
-      PAGES_BASE: https://www.dmsrs.org/preview
+      PAGES_BASE: https://www.dmsrs.org
 
     steps:
       - name: Checkout branch
