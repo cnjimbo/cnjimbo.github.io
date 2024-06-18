@@ -12,8 +12,8 @@ categories:
 ---
 
 
-A lot of third-party services allow you create preview deployments of branches and pull requests, so that you can use them to review and test your changes. This action allows you to do the same thing, but directly with GitHub Pages.
+许多第三方服务允许您创建分支和拉取请求的预览部署，以便您可以使用它们来审查和测试您的更改。此操作使您能够做同样的事情，但直接使用GitHub Pages。
 
-In particular, this action deploys your website to a different repo, which will contain the previews of all the repos you choose to use this on.
+特别是，此操作将您的网站部署到一个不同的仓库中，该仓库将包含您选择使用此操作的所有仓库的预览。
 
-If you're interested in the logic behind this action, you can check out the flow diagram.
+如果您对这个操作背后的逻辑感兴趣，您可以查看流程图。
