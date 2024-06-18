@@ -26,6 +26,13 @@
 		}
 	],
 	"settings": {
+		"editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+		"editor.formatOnType": false, // required
+		"editor.formatOnPaste": false, // optional
+		"editor.formatOnSave": false, // optional
+		"editor.formatOnSaveMode": "file", // required to format on save
+		"files.autoSave": "onFocusChange", // optional but recommended
+		"vs-code-prettier-eslint.prettierLast": false, // set as "true" to run 'prettier' last not first
 		"conventionalCommits.scopes": [
 			"pkg upgrade",
 			"actions",
@@ -176,6 +183,20 @@
 				"multiline": true
 			}
 		],
+		"[markdown]": {
+			"editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+		},
+		"gitlens.hovers.currentLine.over": "line",
+		"gitlens.codeLens.enabled": false,
+		"gitlens.statusBar.enabled": true,
+		"gitlens.statusBar.pullRequests.enabled": true,
+		"gitlens.hovers.enabled": false,
+		"gitlens.blame.toggleMode": "file",
+		"gitlens.blame.format": "${message|50?} ${agoOrDate|14-}",
+		"gitlens.views.commitDetails.autolinks.enabled": true,
+		"[typescript]": {
+			"editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+		},
 	},
 	"extensions": {
 		"recommendations": [

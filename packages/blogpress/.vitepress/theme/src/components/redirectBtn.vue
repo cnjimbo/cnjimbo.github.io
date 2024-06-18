@@ -1,15 +1,17 @@
 <script setup lang="ts">
-import { ElButton } from 'element-plus'
+import { ElButton } from "element-plus";
 
 const props = defineProps<{
-  href: string
-  text?: string
-}>()
+  href: string;
+  text?: string;
+}>();
 </script>
 
 <template>
   <p class="action">
-    <a :href="href"><ElButton type="success" round size="large">戳我 {{ text }}</ElButton></a>
+    <a :href="href">
+      <ElButton type="success" round size="large">戳我 {{ text }}</ElButton>
+    </a>
   </p>
 </template>
 

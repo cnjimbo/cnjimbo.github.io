@@ -10,11 +10,12 @@
       ]
     },
     "target": "esnext",
-    // "types": [
-    //   "vue",
-    //   "@vue/runtime-core",
-    //   "@vue/runtime-dom"
-    // ],
+    "types": [
+      "vue",
+      "@vue/runtime-core",
+      "@vue/runtime-dom",
+      "typescript-eslint"
+    ],
     "jsx": "preserve",
     "lib": [
       "ESNext",
@@ -29,7 +30,8 @@
     "removeComments": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "importHelpers": true /* 从 'tslib' 导入发射助手。 */
+    "importHelpers": true, /* 从 'tslib' 导入发射助手。 */
+    "forceConsistentCasingInFileNames": true ,/* 禁止对同一文件的大小写不一致的引用。 */
     /// -----------
     /* 访问 https://aka.ms/tsconfig.json 以阅读有关此文件的更多信息 */
     /* 基本选项 */
@@ -89,7 +91,6 @@
     // "emitDecoratorMetadata": true, /* 为装饰器的发射类型元数据启用实验性支持。 */
     // /* 高级选项 */
     // "skipLibCheck": true, /* 跳过声明文件的类型检查。 */
-    // "forceConsistentCasingInFileNames": true /* 禁止对同一文件的大小写不一致的引用。 */
   },
   "exclude": [
     "node_modules",
