@@ -119,7 +119,7 @@ All done! You're now ready to use the action 🎉
     # --- OPTIONAL ---
     # The name of the environment to use for the deployment
     # Default: 'preview'
-    deployment_env: 'development'
+    deployment_env: development
 
     # Whether to use the deployments API
     # Default: 'true'
@@ -131,7 +131,7 @@ All done! You're now ready to use the action 🎉
 
     # The email of the author of the resulting commit
     # Default: the GitHub Actor's
-    git_committer_name: mona@users.noreply.github.com
+    git_author_email: mona@users.noreply.github.com
 
     # The committer of the resulting commit
     # Default: copies git_author_name
