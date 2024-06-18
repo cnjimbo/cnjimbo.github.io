@@ -63,7 +63,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          pnpm install
+          pnpm install -wr  --ignore-scripts
           # if [ -f pnpm-lock.yaml ]; then
           #   pnpm install --frozen-lockfile
           # else
