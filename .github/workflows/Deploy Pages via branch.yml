@@ -57,7 +57,7 @@ jobs:
           cache: pnpm
       - name: Install Dependencies
         run: |
-          pnpm install -wr
+          pnpm install -wr --no-frozen-lockfile
           # if [ -f pnpm-lock.yaml ]; then
           #   pnpm install --frozen-lockfile
           # else
