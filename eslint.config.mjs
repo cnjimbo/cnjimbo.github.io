@@ -1,6 +1,6 @@
 // eslint.config.js
 import antfu from "@antfu/eslint-config"
-import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
+// import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 import tseslint from 'typescript-eslint'
 import vuePlugin from 'eslint-plugin-vue'
 import vueParser from 'vue-eslint-parser'
@@ -48,7 +48,7 @@ export default antfu(
     }
   },
 
-  eslintPluginPrettierRecommended,
+  // eslintPluginPrettierRecommended,
   {
     rules: {
       "style/comma-dangle": "off",
@@ -57,15 +57,15 @@ export default antfu(
       "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/explicit-module-boundary-types": "off",
       "import/extensions": "off",
-      quotes: ["warn", "single"],
-      semi: ["warn", "never"],
+
+      "semi": ["warn", "never"],
       "import/no-unresolved": "off",
       "import/prefer-default-export": "off",
       "no-param-reassign": "off",
       "import/no-extraneous-dependencies": "off",
       "no-restricted-syntax": "off",
       "no-bitwise": "off",
-      camelcase: "off",
+      "camelcase": "off",
       "no-case-declarations": "off",
       "@typescript-eslint/no-namespace": "off",
       "no-undef": "off",
@@ -82,7 +82,7 @@ export default antfu(
       "consistent-return": "off",
       "no-console": "off",
       "ts/comma-dangle": "off",
-      curly: "off",
+      "curly": "off",
       "unicorn/prefer-node-protocol": "off",
       "ts/no-var-requires": "off",
       "ts/no-require-imports": "off",
@@ -92,8 +92,8 @@ export default antfu(
       "no-template-curly-in-string": "off",
       // ----new test -----
       "no-var": "warn",
-      "style/quotes": "warn",
-
+      "style/quotes": ['off', 'single'],
+      "quotes": "off"
     },
   },
 )
