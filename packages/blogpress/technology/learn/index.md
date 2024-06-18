@@ -7,6 +7,7 @@ hidden: true
 记录一些开发实践
 
 ## 目录
+* [在提交pr请求后自动部署preview github pages](./deploy-preview-pr.md)
 * [实践：利用ArrayBuffer实现预览指定目录下的所有文件的内容](./array-buffer.md)
 * [在linux-deepin上使用deepin-wine5完美运行腾讯会议/QQ/微信等此类应用](./deepin-wemeet.md)
 * [eslint插件开发教程](./eslint-plugin.md)
