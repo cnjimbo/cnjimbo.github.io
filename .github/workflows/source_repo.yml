@@ -9,7 +9,8 @@ name: Deploy
 on:
   push:
     branches:
-      - 'main'
+      - main
+      - master
   delete:
   pull_request_target:
     types:
