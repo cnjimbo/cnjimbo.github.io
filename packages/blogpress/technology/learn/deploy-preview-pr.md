@@ -18,15 +18,10 @@ created: 2024-06-18T20:04:04 (UTC +08:00)
 source:
 author: EndBug
 ---
-
-
-
 # 在提交pr请求后自动部署preview github pages
 
 > ## Excerpt
 > :octocat: 一个GitHub Action，用于为拉取请求（PR）和分支创建GitHub Pages预览 —— EndBug/pages-preview
-
-# Pages Preview
 
 ## Table of contents
 

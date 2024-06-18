@@ -197,6 +197,7 @@
 		"[typescript]": {
 			"editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
 		},
+		"eslint.useFlatConfig": true,
 	},
 	"extensions": {
 		"recommendations": [
