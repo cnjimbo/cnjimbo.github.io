@@ -1,12 +1,16 @@
 import path from 'node:path'
+import process from 'node:process'
 import { defineConfig } from 'vitepress'
 import packageJSON from '../../package.json'
 import { blogTheme, extraHead } from './blog-theme'
 
+const baseUrl = process.env.PAGES_BASE ?? 'https://theme.sugarat.top'
+const relativeUrl = process.env.PUBLIC_URL ?? "/"
 export default defineConfig({
+  base: relativeUrl,
   extends: blogTheme,
   sitemap: {
-    hostname: 'https://theme.sugarat.top',
+    hostname: `${baseUrl}`,
   },
   cleanUrls: false,
   lang: 'zh-cn',
