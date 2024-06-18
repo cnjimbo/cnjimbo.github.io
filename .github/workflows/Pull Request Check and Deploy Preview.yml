@@ -63,7 +63,8 @@ jobs:
 
       - name: Install dependencies
         if: ${{ github.event.action != 'closed' }}
-        run: pnpm install --ignore-scripts
+        # run: pnpm install --ignore-scripts
+        run: pnpm install
 
       # This will calculate the base URL for the website, based on the event that triggered the workflow.
       # Leave this step as it is, unless you know what you're doing.
