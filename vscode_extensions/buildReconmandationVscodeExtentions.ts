@@ -9,6 +9,7 @@
   },
 
   */
+// 最后将输出内容复制到code-workspace的对应位置
 
 import data from './tswindows.json' assert{type: 'json'}
 
