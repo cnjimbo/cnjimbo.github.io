@@ -35,7 +35,8 @@
 		"conventionalCommits.scopes": [
 			"pkg upgrade",
 			"actions",
-			"scaffold"
+			"scaffold",
+			"theme"
 		],
 		"workbench.colorCustomizations": {
 			"statusBar.background": "#9c643b",
@@ -198,7 +199,6 @@
 			"editor.defaultFormatter": "vscode.typescript-language-features"
 		},
 		"eslint.useFlatConfig": true,
-		"gitdoc.enabled": true,
 	},
 	"extensions": {
 		"recommendations": [
