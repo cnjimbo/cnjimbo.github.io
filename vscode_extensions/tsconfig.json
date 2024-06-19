@@ -1,3 +1,4 @@
+// tsconfig.json
 {
   "compilerOptions": {
     "target": "esnext", // 或你希望的目标版本
@@ -9,9 +10,10 @@
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
-    "baseUrl": "."
+    "baseUrl": "./../"
   },
   "allowTsInNodeModules": true,
+
   "include": [
     "**/*.*"
   ], // 指定要编译的源文件目录

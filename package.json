@@ -48,13 +48,13 @@
     "@typescript-eslint/parser": "^7.13.1",
     "@vue/runtime-core": "^3.4.29",
     "@vue/runtime-dom": "^3.4.29",
-    "bao-json": "1.0.0-beta.7",
     "eslint": "^9.5.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-todo-ddl": "^1.1.1",
     "eslint-plugin-vue": "^9.26.0",
     "globals": "^15.6.0",
+    "json5": "^2.2.3",
     "lint-staged": "^15.2.7",
     "prettier": "^3.3.2",
     "prettier-eslint": "16.3.0",
@@ -81,5 +81,8 @@
   },
   "lint-staged": {
     "*": "eslint --fix"
+  },
+  "volta": {
+    "node": "21.7.3"
   }
 }
