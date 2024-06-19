@@ -13,18 +13,10 @@
 
 import * as fs from 'fs';
 
-
-export interface RootObject {
-  name: string;
-  icon: string;
-  settings: string;
-  extensions: string;
-  globalState: string;
-}
 // 定义一个异步函数来读取文件并解析为JSON
 async function readFileToJson(filePath: string): Promise<any> {
   try {
-    // 读取文件内容
+    console.log('x')
     const fileContent = await fs.promises.readFile(filePath, 'utf8');
 
     // 将文件内容解析为JSON对象
