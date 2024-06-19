@@ -30,18 +30,34 @@ async function readFileToJson(filePath: string): Promise<any> {
     throw error;
   }
 }
+// 定义一个异步函数来写入文件
+async function writeJsonToFile(filePath: string, content: string): Promise<void> {
+  try {
+    // 将JSON字符串写入文件
+    await fs.promises.writeFile(filePath, content, 'utf8');
+    console.log(`JSON data has been successfully written to ${filePath}`);
+  } catch (error) {
+    // 处理写入文件时的错误
+    console.error(`Error writing JSON to file: ${error}`);
+    throw error;
+  }
+}
+async function findInstalledExtensions(data): Promise<string[]> {
 
+  return []
+}
 // 使用示例
 (async () => {
   try {
     const filePath = './data.json'; // 假设data.json是你要读取的文件路径
-    const jsonData = await readFileToJson(filePath);
-    console.log(jsonData);
+    await readFileToJson(filePath);
+
   } catch (error) {
     // 这里可以进一步处理错误
   }
 })();
 // const workspace_path = './../cnjimbo.github.io.code-workspace'
+
 const extensions = JSON.parse(data.extensions)
 
 const ids = []
