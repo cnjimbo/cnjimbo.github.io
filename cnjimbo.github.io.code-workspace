@@ -198,6 +198,7 @@
 			"editor.defaultFormatter": "vscode.typescript-language-features"
 		},
 		"eslint.useFlatConfig": true,
+		"gitdoc.enabled": true,
 	},
 	"extensions": {
 		"recommendations": [
