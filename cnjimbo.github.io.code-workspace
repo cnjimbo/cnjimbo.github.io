@@ -61,6 +61,7 @@
 		"files.trimTrailingWhitespaceInRegexAndStrings": false,
 		"editor.trimAutoWhitespace": false,
 		"code-runner.executorMap": {
+
 			"typescript": "node --es-module-specifier-resolution=node --loader ts-node/esm $fullFileName",
 			"ts": "node --es-module-specifier-resolution=node --loader ts-node/esm $fullFileName",
 			"javascript": "node  --es-module-specifier-resolution=node  $fullFileName",
