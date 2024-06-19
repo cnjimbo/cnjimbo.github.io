@@ -15,11 +15,11 @@ import * as fs from 'fs';
 
 
 export interface RootObject {
-	name: string;
-	icon: string;
-	settings: string;
-	extensions: string;
-	globalState: string;
+  name: string;
+  icon: string;
+  settings: string;
+  extensions: string;
+  globalState: string;
 }
 // 定义一个异步函数来读取文件并解析为JSON
 async function readFileToJson(filePath: string): Promise<any> {
@@ -50,30 +50,20 @@ async function writeJsonToFile(filePath: string, content: string): Promise<void>
   }
 }
 async function findInstalledExtensions(data): Promise<string[]> {
+  const extensions = JSON.parse(data.extensions)
 
-  return []
-}
-// 使用示例
-(async () => {
-  try {
-    const filePath = './data.json'; // 假设data.json是你要读取的文件路径
-    await readFileToJson(filePath);
-
-  } catch (error) {
-    // 这里可以进一步处理错误
+  const ids = []
+  for (const m of extensions) {
+    if (!m.disabled) {
+      ids.push(m.identifier.id)
+    }
   }
-})();
-// const workspace_path = './../cnjimbo.github.io.code-workspace'
-
-import data from './tswindows.json' assert{type: 'json'}
-const extensions = JSON.parse(data.extensions)
-
-const ids = []
-for (const m of extensions) {
-  if (!m.disabled) {
-    ids.push(m.identifier.id)
-  }
+  return ids
 }
-console.log('')
-console.log('')
-console.log(`["${ids.join('","')}"]`)
+const codeProfile = './tswindows.code-profile';
+const codeWorkspace = './../cnjimbo.github.io.code-workspace'
+readFileToJson(codeProfile)
+  .then(data => findInstalledExtensions(data))
+  .then(ids => {
+    console.log(ids)
+  })
