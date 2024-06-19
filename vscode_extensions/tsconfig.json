@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "./../tsconfig.base.json"
+  ],
+  "compilerOptions": {
+    "moduleResolution": "NodeNext",
+    "module": "ESNext"
+  },
+  "include": [
+    "buildReconmandationVscodeExtentions.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/cache/**",
+    "**/dist/**/*"
+  ]
+}

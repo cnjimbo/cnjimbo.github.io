@@ -72,7 +72,7 @@
 		"Lingma.localMachineModel": false,
 		"Lingma.methodQuickOperation": false,
 		"Lingma.cloudModelEnable": false,
-		"typescript.tsdk": "✨ sugar-wiki-monorepo\\node_modules\\typescript\\lib",
+		// "typescript.tsdk": "✨ sugar-wiki-monorepo\\node_modules\\typescript\\lib",
 		"workbench.editor.alwaysShowEditorActions": true,
 		"commit-message-editor.staticTemplate": [
 			"feat: Short description",

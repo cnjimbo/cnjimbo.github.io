@@ -10,12 +10,9 @@
 
   */
 // 最后将输出内容复制到code-workspace的对应位置
+import * as fs from 'node:fs'
 
-import * as fs from 'fs'
-
-// 定义一个异步函数来读取文件并解析为JSON
 async function readFileToJson(filePath: string): Promise<any> {
-  console.log('x')
   const fileContent = await fs.promises.readFile(filePath, 'utf8')
 
   // 将文件内容解析为JSON对象
