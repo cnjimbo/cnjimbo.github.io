@@ -58,7 +58,7 @@ export default antfu(
       "@typescript-eslint/explicit-module-boundary-types": "off",
       "import/extensions": "off",
 
-      "semi": ["warn", "never"],
+      "semi": 0,
       "import/no-unresolved": "off",
       "import/prefer-default-export": "off",
       "no-param-reassign": "off",
