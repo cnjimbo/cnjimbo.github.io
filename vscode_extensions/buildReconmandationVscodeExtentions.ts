@@ -13,7 +13,6 @@
 
 import * as fs from 'fs';
 
-import data from './tswindows.json' assert{type: 'json'}
 
 export interface RootObject {
 	name: string;
@@ -66,6 +65,7 @@ async function findInstalledExtensions(data): Promise<string[]> {
 })();
 // const workspace_path = './../cnjimbo.github.io.code-workspace'
 
+import data from './tswindows.json' assert{type: 'json'}
 const extensions = JSON.parse(data.extensions)
 
 const ids = []
