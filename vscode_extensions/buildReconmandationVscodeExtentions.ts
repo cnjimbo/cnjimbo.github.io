@@ -51,7 +51,7 @@ async function writeJsonToFile(filePath: string, content: string): Promise<void>
 }
 async function findInstalledExtensions(data): Promise<string[]> {
   const extensions = JSON.parse(data.extensions)
-
+  console.log("xxxx", extensions)
   const ids = []
   for (const m of extensions) {
     if (!m.disabled) {
