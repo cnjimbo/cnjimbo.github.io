@@ -199,6 +199,9 @@
 			"editor.defaultFormatter": "vscode.typescript-language-features"
 		},
 		"eslint.useFlatConfig": true,
+		"gitdoc.timeZone": "CN",
+		"gitdoc.pushMode": "push",
+		"gitdoc.filePattern": "**/*.md",
 	},
 	"extensions": {
 		"recommendations": [
