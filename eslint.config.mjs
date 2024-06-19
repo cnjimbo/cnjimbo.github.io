@@ -26,7 +26,15 @@ export default antfu(
       '@typescript-eslint/no-unused-vars': 'warn',
       '@typescript-eslint/no-var-requires': 'warn',
       'no-shadow': 'off',
-      '@typescript-eslint/no-shadow': 'error'
+      '@typescript-eslint/no-shadow': 'error',
+      "@stylistic/indent": ["off", 2],
+      "@stylistic/indent-binary-ops": ["off", 2],
+      "@stylistic/*": 0,
+      "style/member-delimiter-style": 0,
+      "semi": 0,
+      "style/semi": 0,
+      "astro/semi": 0,
+
     }
   },
 
@@ -58,7 +66,7 @@ export default antfu(
       "@typescript-eslint/explicit-module-boundary-types": "off",
       "import/extensions": "off",
 
-      "semi": ["warn", "never"],
+      "semi": 0,
       "import/no-unresolved": "off",
       "import/prefer-default-export": "off",
       "no-param-reassign": "off",

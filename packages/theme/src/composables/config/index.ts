@@ -1,12 +1,11 @@
-/* eslint-disable ts/no-namespace */
 import type { ElButton } from 'element-plus'
 import type { DefaultTheme, Route } from 'vitepress'
-import type { RSSOptions } from 'vitepress-plugin-rss'
+import type { RSSOptions as _RSSOptions } from 'vitepress-plugin-rss'
 import type { Mapping, Repo } from '@giscus/vue'
 import type { Options as Oml2dOptions } from 'oh-my-live2d'
 import type { Ref } from 'vue'
 
-type RSSPluginOptions = RSSOptions
+type RSSPluginOptions = _RSSOptions
 
 // TODO: 重构 lint 问题
 export declare namespace BlogPopover {
@@ -41,8 +40,15 @@ export declare namespace BlogPopover {
 
 export type ThemeableImage =
   | string
-  | { src: string; alt?: string }
-  | { light: string; dark: string; alt?: string }
+  | {
+    src: string;
+    alt?: string
+  }
+  | {
+    light: string
+    dark: string
+    alt?: string
+  }
 
 export namespace Theme {
   export interface PageMeta {
