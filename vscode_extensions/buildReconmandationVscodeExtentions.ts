@@ -14,6 +14,14 @@
 import * as fs from 'fs';
 
 import data from './tswindows.json' assert{type: 'json'}
+
+export interface RootObject {
+	name: string;
+	icon: string;
+	settings: string;
+	extensions: string;
+	globalState: string;
+}
 // 定义一个异步函数来读取文件并解析为JSON
 async function readFileToJson(filePath: string): Promise<any> {
   try {
