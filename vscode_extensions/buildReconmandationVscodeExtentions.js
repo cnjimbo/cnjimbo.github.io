@@ -57,7 +57,9 @@ function readFileToJson(filePath) {
             switch (_a.label) {
                 case 0:
                     console.log('x');
-                    return [4 /*yield*/, fs.promises.readFile(filePath, 'utf8')];
+                    return [4 /*yield*/, fs.promises.readFile(filePath, 'utf8')
+                        // 将文件内容解析为JSON对象
+                    ];
                 case 1:
                     fileContent = _a.sent();
                     jsonObject = JSON.parse(fileContent);
@@ -104,6 +106,19 @@ readFileToJson(codeProfile)
     console.log('x');
     return findInstalledExtensions(data);
 })
-    .then(function (ids) {
-    console.log(ids);
+    .then(function (ids) { return __awaiter(void 0, void 0, void 0, function () {
+    var target;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, readFileToJson(codeWorkspace)];
+            case 1:
+                target = _a.sent();
+                return [2 /*return*/, { ids: ids, target: target }];
+        }
+    });
+}); })
+    .then(function (_a) {
+    var ids = _a.ids, target = _a.target;
+    target.extensions.recommendations = ids;
+    writeJsonToFile(codeWorkspace, JSON.stringify(target));
 });

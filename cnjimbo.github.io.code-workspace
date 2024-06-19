@@ -26,7 +26,6 @@
 		}
 	],
 	"settings": {
-		"editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
 		"editor.formatOnType": false, // required
 		"editor.formatOnPaste": false, // optional
 		"editor.formatOnSave": false, // optional
@@ -61,9 +60,9 @@
 		"files.trimTrailingWhitespaceInRegexAndStrings": false,
 		"editor.trimAutoWhitespace": false,
 		"code-runner.executorMap": {
-			"typescript": "tsc $fileName && node $fileNameWithoutExt.js",
-			// "typescript": "node --es-module-specifier-resolution=node --loader ts-node/esm $fullFileName",
-			"ts": "node --es-module-specifier-resolution=node --loader ts-node/esm $fullFileName",
+			// "typescript": "tsc $fileName && node $fileNameWithoutExt.js",
+			"typescript": "node --es-module-specifier-resolution=node --loader ts-node/esm $fullFileName",
+			// "ts": "node --es-module-specifier-resolution=node --loader ts-node/esm $fullFileName",
 			"javascript": "node  --es-module-specifier-resolution=node  $fullFileName",
 		},
 		"gitlens.showWelcomeOnInstall": false,
