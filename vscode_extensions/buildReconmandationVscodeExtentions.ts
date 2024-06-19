@@ -15,31 +15,22 @@ import * as fs from 'fs';
 
 // 定义一个异步函数来读取文件并解析为JSON
 async function readFileToJson(filePath: string): Promise<any> {
-  try {
-    console.log('x')
-    const fileContent = await fs.promises.readFile(filePath, 'utf8');
 
-    // 将文件内容解析为JSON对象
-    const jsonObject = JSON.parse(fileContent);
+  console.log('x')
+  const fileContent = await fs.promises.readFile(filePath, 'utf8');
 
-    return jsonObject;
-  } catch (error) {
-    // 处理读取文件或解析JSON时的错误
-    console.error(`Error reading or parsing JSON from file: ${error}`);
-    throw error;
-  }
+  // 将文件内容解析为JSON对象
+  const jsonObject = JSON.parse(fileContent);
+
+  return jsonObject;
+
 }
 // 定义一个异步函数来写入文件
 async function writeJsonToFile(filePath: string, content: string): Promise<void> {
-  try {
-    // 将JSON字符串写入文件
-    await fs.promises.writeFile(filePath, content, 'utf8');
-    console.log(`JSON data has been successfully written to ${filePath}`);
-  } catch (error) {
-    // 处理写入文件时的错误
-    console.error(`Error writing JSON to file: ${error}`);
-    throw error;
-  }
+
+  await fs.promises.writeFile(filePath, content, 'utf8');
+  console.log(`JSON data has been successfully written to ${filePath}`);
+
 }
 async function findInstalledExtensions(data): Promise<string[]> {
   const extensions = JSON.parse(data.extensions)
@@ -55,7 +46,10 @@ async function findInstalledExtensions(data): Promise<string[]> {
 const codeProfile = './tswindows.code-profile';
 const codeWorkspace = './../cnjimbo.github.io.code-workspace'
 readFileToJson(codeProfile)
-  .then(data => findInstalledExtensions(data))
+  .then(data => {
+    console.log('x')
+    return findInstalledExtensions(data)
+  })
   .then(ids => {
     console.log(ids)
   })
