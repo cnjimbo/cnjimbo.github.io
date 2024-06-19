@@ -1,17 +1,28 @@
 {
-  "extends": [
-    "./../tsconfig.base.json"
-  ],
   "compilerOptions": {
-    "moduleResolution": "NodeNext",
-    "module": "ESNext"
+    "target": "esnext", // 或你希望的目标版本
+    "module": "esnext",
+    "sourceMap": true, // 生成对应的.map文件以支持源码映射调试
+    "outDir": "./dist",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "baseUrl": "."
   },
+  "allowTsInNodeModules": true,
   "include": [
-    "buildReconmandationVscodeExtentions.ts"
-  ],
+    "**/*.*"
+  ], // 指定要编译的源文件目录
   "exclude": [
     "node_modules",
-    "**/cache/**",
-    "**/dist/**/*"
-  ]
+    "build",
+    "ai",
+    "dist",
+    "**/*.spec.ts"
+  ],
+  "ts-node": {
+    "allowTsInNodeModules": true
+  }
 }

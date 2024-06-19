@@ -48,6 +48,7 @@
     "@typescript-eslint/parser": "^7.13.1",
     "@vue/runtime-core": "^3.4.29",
     "@vue/runtime-dom": "^3.4.29",
+    "bao-json": "1.0.0-beta.7",
     "eslint": "^9.5.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",

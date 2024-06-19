@@ -35,6 +35,9 @@ importers:
       '@vue/runtime-dom':
         specifier: ^3.4.29
         version: 3.4.29
+      bao-json:
+        specifier: 1.0.0-beta.7
+        version: 1.0.0-beta.7
       eslint:
         specifier: ^9.5.0
         version: 9.5.0
@@ -1391,6 +1394,9 @@ packages:
 
   balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
+
+  bao-json@1.0.0-beta.7:
+    resolution: {integrity: sha512-Gv2D58juVMtH9Mhqu/07rB+0csqvLImeUiPbUbl7OW4SAowaHMiktYCuw8MiZ4plDO4KQYC7jsuPwEEcCpnz7w==}
 
   better-path-resolve@1.0.0:
     resolution: {integrity: sha512-pbnl5XzGBdrFU/wT4jqmJVPn2B6UHPBOhzMQkY/SPUPB6QtUXtmBHBIwCbXJol93mOpGMnQyP/+BB19q04xj7g==}
@@ -5393,6 +5399,8 @@ snapshots:
       - debug
 
   balanced-match@1.0.2: {}
+
+  bao-json@1.0.0-beta.7: {}
 
   better-path-resolve@1.0.0:
     dependencies:

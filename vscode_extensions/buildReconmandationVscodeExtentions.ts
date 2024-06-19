@@ -11,12 +11,26 @@
   */
 // 最后将输出内容复制到code-workspace的对应位置
 import * as fs from 'node:fs'
+import { parse, ParseContext } from "bao-json"
+
+function parseJsonWithComments(jsonString) {
+
+  const parseContext: ParseContext = parse(jsonString)
+
+  try {
+    return parseContext
+  }
+  catch (e) {
+    console.error("解析错误:", e)
+    return null
+  }
+}
 
 async function readFileToJson(filePath: string): Promise<any> {
   const fileContent = await fs.promises.readFile(filePath, 'utf8')
 
   // 将文件内容解析为JSON对象
-  const jsonObject = JSON.parse(fileContent)
+  const jsonObject = parseJsonWithComments(fileContent)
 
   return jsonObject
 }
@@ -26,10 +40,10 @@ async function writeJsonToFile(filePath: string, content: string): Promise<void>
   console.log(`JSON data has been successfully written to ${filePath}`)
 }
 async function findInstalledExtensions(data): Promise<string[]> {
-  const extensions = JSON.parse(data.extensions)
-  console.log("xxxx", extensions)
+  const extensions = parseJsonWithComments(data.extensions) as Array<any>
   const ids = []
-  for (const m of extensions) {
+  for (let i = 0, n = extensions.length; i < n; i++) {
+    const m = extensions[i]
     if (!m.disabled) {
       ids.push(m.identifier.id)
     }
@@ -40,7 +54,6 @@ const codeProfile = './tswindows.code-profile'
 const codeWorkspace = './../cnjimbo.github.io.code-workspace'
 readFileToJson(codeProfile)
   .then((data) => {
-    console.log('x')
     return findInstalledExtensions(data)
   })
   .then(async (ids) => {
@@ -48,6 +61,7 @@ readFileToJson(codeProfile)
     return { ids, target }
   })
   .then(({ ids, target }) => {
+    console.log("ids", ids)
     target.extensions.recommendations = ids
-    writeJsonToFile(codeWorkspace, JSON.stringify(target))
+    // writeJsonToFile(codeWorkspace, JSON.stringify(target))
   })
