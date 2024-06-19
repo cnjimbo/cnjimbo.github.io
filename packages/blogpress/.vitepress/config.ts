@@ -197,7 +197,7 @@ export default defineConfig({
   lang: 'zh-cn',
   title: '代码收容所',
   description:
-    '代码收容所的个人博客，记录随笔与学习笔记，大前端相关的知识，项目管理，经济等',
+    '代码收容所的个人博客，记录随笔与学习笔记，大前端相关的知识，项目管理，股票等',
   head: [
     // <meta name="baidu-site-verification" content="codeva-b08avp82Uj" />
     ['meta', { name: 'baidu-site-verification', content: 'codeva-b08avp82Uj' }],
@@ -276,7 +276,7 @@ export default defineConfig({
         ],
       },
       {
-        text: '技术笔记',
+        text: '笔记',
         items: [
           { text: '技术教程', link: '/technology/learn/' },
           { text: '模板工程', link: '/technology/tpl/' },
@@ -293,8 +293,8 @@ export default defineConfig({
           { text: '操作系统', link: '/computerBase/os/' },
           { text: '计算机网络', link: '/computerBase/Internet/' },
           { text: '设计模式', link: '/computerBase/design/' },
-          { text: '剑指offer', link: '/computerBase/offer/' },
-          // { text: '力扣', link: '/computerBase/leetcode/' }
+
+          { text: '力扣', link: '/computerBase/leetcode/' }
         ],
       },
       {
@@ -328,12 +328,12 @@ export default defineConfig({
       //   ],
       // },
       {
-        text: '手撕代码',
+        text: '面试',
         items: [
 
           // { text: 'javascript', link: '/coding/js/' },
           // { text: 'css', link: '/coding/css/' },
-          { text: '问解', link: '/interview/problem/' },
+          // { text: '问解', link: '/interview/problem/' },
           // { text: 'javascript', link: '/interview/js/' },
 
           { text: '手撕代码', link: '/interview/code/' },
@@ -342,6 +342,7 @@ export default defineConfig({
           // { text: '操作系统', link: '/interview/os/' },
           // { text: '设计模式', link: '/interview/design/' },
           { text: '综合问题', link: '/interview/other/' },
+          { text: '剑指offer', link: '/interview/offer/' },
           // { text: '面经汇总', link: '/offer/sum-interview/' },
           { text: '小程序', link: '/interview/mini/' },
         ],
@@ -377,7 +378,7 @@ export default defineConfig({
         text: '线上作品',
         items: [
           {
-            text: 'POCO Mapper Tool(dotnet)',
+            text: 'POCO Mapper(dotnet)',
             link: 'https://github.com/netniubility/EmitMapper',
           },
 

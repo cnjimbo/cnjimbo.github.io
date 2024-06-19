@@ -185,7 +185,7 @@
 			}
 		],
 		"[markdown]": {
-			"editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+			"editor.defaultFormatter": "dbaeumer.vscode-eslint"
 		},
 		"gitlens.hovers.currentLine.over": "line",
 		"gitlens.codeLens.enabled": false,
@@ -199,6 +199,9 @@
 			"editor.defaultFormatter": "vscode.typescript-language-features"
 		},
 		"eslint.useFlatConfig": true,
+		"gitdoc.timeZone": "CN",
+		"gitdoc.pushMode": "push",
+		"gitdoc.filePattern": "**/*.md",
 	},
 	"extensions": {
 		"recommendations": [
