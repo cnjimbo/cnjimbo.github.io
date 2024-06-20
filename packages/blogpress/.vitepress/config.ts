@@ -310,23 +310,13 @@ export default defineConfig({
           { text: 'node', link: '/bigWeb/node/' },
         ],
       },
-      // {
-      //   text: '面试',
-      //   items: [
-      //     { text: '问解', link: '/interview/problem/' },
-      //     { text: 'javascript', link: '/interview/js/' },
-      //
-      //     { text: '手撕代码', link: '/interview/code/' },
-      //     { text: '性能优化', link: '/interview/performance/' },
-      //     // { text: "网络", link: "/interview/internet/" },
-      //     // { text: '操作系统', link: '/interview/os/' },
-      //     // { text: '设计模式', link: '/interview/design/' },
-      //     { text: '综合问题', link: '/interview/other/' },
-      //     // { text: '面经汇总', link: '/offer/sum-interview/' },
-      //     { text: '小程序', link: '/interview/mini/' },
-      //     // { text: '面经', link: '/interview/experience/' }
-      //   ],
-      // },
+      {
+        text: '不专业代码',
+        items: [
+
+          { text: 'javascript', link: '/coding/github/' },
+        ],
+      },
       {
         text: '面试',
         items: [
