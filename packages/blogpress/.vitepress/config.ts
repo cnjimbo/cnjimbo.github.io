@@ -314,7 +314,7 @@ export default defineConfig({
         text: '不专业代码',
         items: [
 
-          { text: 'javascript', link: '/coding/github/' },
+          { text: 'github', link: '/coding/github/' },
         ],
       },
       {
