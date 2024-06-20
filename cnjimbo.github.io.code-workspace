@@ -183,7 +183,7 @@
 			}
 		],
 		"[markdown]": {
-			"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+			"editor.defaultFormatter": "yzhang.markdown-all-in-one"
 		},
 		"gitlens.hovers.currentLine.over": "line",
 		"gitlens.codeLens.enabled": false,
