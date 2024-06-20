@@ -24,7 +24,7 @@ importers:
         specifier: ^11.0.4
         version: 11.0.4
       '@types/node':
-        specifier: ^20.14.5
+        specifier: ^20.14.6
         version: 20.14.6
       '@typescript-eslint/parser':
         specifier: ^7.13.1
