@@ -1,12 +1,12 @@
 {
 	"folders": [
 		{
-			"name": "✨ sugar-wiki-monorepo",
-			"path": "."
-		},
-		{
 			"name": "📦 blogpress",
 			"path": "packages/blogpress"
+		},
+		{
+			"name": "✨ sugar-wiki-monorepo",
+			"path": "."
 		},
 		{
 			"name": "📦 @sugarat/create-theme",
