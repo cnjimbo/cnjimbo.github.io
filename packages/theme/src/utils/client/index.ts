@@ -21,22 +21,21 @@ export function formatDate(d: any, fmt = 'yyyy-MM-dd hh:mm:ss') {
     'q+': Math.floor((d.getMonth() + 3) / 3), // 季度
     'S': d.getMilliseconds() // 毫秒
   }
-  // 处理年份的格式化
-  fmt = fmt.replace(/(y+)/g, (matched, p1) => {
-    const yearStr = `${d.getFullYear()}`;
-    return yearStr.substr(4 - p1.length) + p1.replace(/\d/g, '0');
-  });
-
-  // 处理其他时间格式
-  for (const k in o) {
-    if (new RegExp(`(${k})`).test(fmt)) {
-      fmt = fmt.replace(new RegExp(`(${k})`, 'g'), (matched, p1) => {
-        const value = o[k];
-        return p1.length === 1 ? value : `00${value}`.substr(-p1.length);
-      });
-    }
+  if (/(y+)/.test(fmt)) {
+    fmt = fmt.replace(
+      RegExp.$1,
+      `${d.getFullYear()}`.substr(4 - RegExp.$1.length)
+    )
   }
-  return fmt;
+  // eslint-disable-next-line no-restricted-syntax
+  for (const k in o) {
+    if (new RegExp(`(${k})`).test(fmt))
+      fmt = fmt.replace(
+        RegExp.$1,
+        RegExp.$1.length === 1 ? o[k] : `00${o[k]}`.substr(`${o[k]}`.length)
+      )
+  }
+  return fmt
 }
 
 export function isCurrentWeek(date: Date, target?: Date) {
@@ -75,7 +74,7 @@ export function formatShowDate(date: Date | string) {
 }
 
 const pattern
-  = /[\w\u0392-\u03C9\u00C0-\u00FF\u0600-\u06FF\u0400-\u04FF]+|[\u4E00-\u9FFF\u3400-\u4DBF\uF900-\uFAFF\u3040-\u309F\uAC00-\uD7AF]+/g
+  = /[a-zA-Z0-9_\u0392-\u03C9\u00C0-\u00FF\u0600-\u06FF\u0400-\u04FF]+|[\u4E00-\u9FFF\u3400-\u4DBF\uF900-\uFAFF\u3040-\u309F\uAC00-\uD7AF]+/g
 
 // copy from https://github.com/youngjuning/vscode-juejin-wordcount/blob/main/count-word.ts
 export default function countWord(data: string) {
@@ -105,7 +104,7 @@ export function chineseSearchOptimize(input: string) {
 /**
  * 根据Github地址跨域获取最后更新时间
  * @param url
- * @returns update time
+ * @returns
  */
 export function getGithubUpdateTime(url: string) {
   // 提取Github url中的用户名和仓库名

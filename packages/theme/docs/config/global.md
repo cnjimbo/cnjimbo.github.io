@@ -74,7 +74,7 @@ export default defineConfig({
 
 ![](https://img.cdn.sugarat.top/mdImg/MTY3OTEyMjg5Nzc1Mg==679122897752)
 
-下面开始详细介绍 [Theme.BlogConfig](https://github.com/cnjimbo/cnjimbo.github.io/blob/255c4b1e6a85a529be3a72c88e365077e067ecba/packages/theme/src/composables/config/index.ts#L69-L137)
+下面开始详细介绍 [Theme.BlogConfig](https://github.com/ATQQ/sugar-blog/blob/255c4b1e6a85a529be3a72c88e365077e067ecba/packages/theme/src/composables/config/index.ts#L69-L137)
 
 ## author
 
@@ -105,6 +105,17 @@ const blogTheme = getThemeConfig({
     nextText: '换一组',
     pageSize: 9,
     empty: '暂无精选内容'
+  }
+})
+```
+
+```ts [使用 SVG 图标]
+// 可以上 iconfont 直接复制 SVG 图标
+// 也可以是 emoji 表情 😝
+const svgIconStr = '<svg>省略内部代码</svg>'
+const blogTheme = getThemeConfig({
+  hotArticle: {
+    title: `${svgIconStr} 精选文章`
   }
 })
 ```
@@ -148,9 +159,13 @@ const blogTheme = getThemeConfig({
 })
 ```
 
+自定义 SVG 图标标题
+
+![](https://cdn.upyun.sugarat.top/mdImg/sugar/ae3edb8de7b5f574f9cdaeb08ac042b2)
+
 ## homeTags
 
-* Type: `boolean`
+* Type: `boolean` | `HomeTagsConfig`
 
 用于控制首页右侧的标签内容
 
@@ -161,6 +176,21 @@ const blogTheme = getThemeConfig({
   homeTags: false
 })
 ```
+
+可自定义 标题 和 图标。
+
+```ts
+// 可以上 iconfont 直接复制 SVG 图标
+// 也可以是 emoji 表情 😝
+const svgIconStr = '<svg>省略内部代码</svg>'
+const blogTheme = getThemeConfig({
+  homeTags: {
+    title: `${svgIconStr} 标签`
+  }
+})
+```
+
+![](https://cdn.upyun.sugarat.top/mdImg/sugar/aaf374bfeec13dba4014448ce6a16e7b)
 
 ## home
 
@@ -182,9 +212,21 @@ const blogTheme = getThemeConfig({
 const blogTheme = getThemeConfig({
   home: {
     name: '@sugarat/theme',
-    motto: '代码收容所的博客主题',
+    motto: '粥里有勺糖的博客主题',
     inspiring: '基于 Vitepress 定制的主题🎨',
     pageSize: 2
+  }
+})
+```
+
+```ts [数据分析卡片标题]
+const blogTheme = getThemeConfig({
+  home: {
+    analysis: {
+      articles: {
+        title: ['博客文章', '月更新', '周更新']
+      }
+    }
   }
 })
 ```
@@ -201,6 +243,10 @@ interface HomeBlog {
    * @default 'card'
    */
   avatarMode?: 'card' | 'split'
+  /**
+   * 首页数据分析卡片
+   */
+  analysis?: HomeAnalysis
 }
 ```
 
@@ -211,6 +257,8 @@ interface HomeBlog {
 ![图片](https://img.cdn.sugarat.top/mdImg/MTY3NDkyMDIwMzE5MQ==674920203192)
 
 ![](https://img.cdn.sugarat.top/mdImg/MTY5NjE1NTk3MjkxMQ==696155972911)
+
+![](https://cdn.upyun.sugarat.top/mdImg/sugar/8128001649cb35413a0575b2749b8099)
 
 ## search
 
@@ -239,19 +287,19 @@ const blogTheme = getThemeConfig({
 
 ```ts [type]
 type SearchConfig =
-  | boolean
-  | 'pagefind'
-  | {
-    btnPlaceholder?: string
-    placeholder?: string
-    emptyText?: string
-    /**
-     * @example
-     * 'Total: {{searchResult}} search results.'
-     */
-    heading?: string
-    mode?: boolean | 'pagefind'
-  }
+    | boolean
+    | 'pagefind'
+    | {
+      btnPlaceholder?: string
+      placeholder?: string
+      emptyText?: string
+      /**
+       * @example
+       * 'Total: {{searchResult}} search results.'
+       */
+      heading?: string
+      mode?: boolean | 'pagefind'
+    }
 ```
 
 :::
@@ -284,20 +332,19 @@ export default defineConfig({
 
 ### 全文搜索 - pagefind
 
-开启全文搜索（基于 [pagefind](https://pagefind.app/) 实现）
+开启全文搜索（基于 [pagefind](https://pagefind.app/) 实现），主题默认开启
 
 :::code-group
 
-```ts [demo1]
+```ts [① 关闭]
 const blogTheme = getThemeConfig({
-  search: 'pagefind'
+  search: false
 })
 ```
 
-```ts [demo2]
+```ts [② 进一步配置]
 const blogTheme = getThemeConfig({
   search: {
-    mode: 'pagefind',
     btnPlaceholder: 'Search',
     placeholder: 'Search Docs',
     emptyText: 'No results found',
@@ -306,6 +353,111 @@ const blogTheme = getThemeConfig({
 })
 ```
 
+```ts [type]
+type PagefindConfig = PagefindOption & SearchConfig
+
+type SearchConfig =
+    | false
+    | PagefindConfig
+
+interface SearchConfig {
+  /**
+   * @default
+   * 'Search'
+   */
+  btnPlaceholder?: string
+  /**
+   * @default
+   * 'Search Docs'
+   */
+  placeholder?: string
+  /**
+   * @default
+   * 'No results found.'
+   */
+  emptyText?: string
+  /**
+   * @default
+   * 'Total: {{searchResult}} search results.'
+   */
+  heading?: string
+
+  /**
+   * Automatically reloads the page when the page language changes.
+   *
+   * The purpose is to reload the index file for the target language.
+   * @default true
+   */
+  langReload?: boolean
+  /**
+   * For some special languages.
+   * Customize the conversion of user input
+   * @see https://pagefind.app/docs/multilingual/#specialized-languages
+   */
+  customSearchQuery?: (input: string) => string
+  /**
+   * @default false
+   * @deprecated
+   */
+  resultOptimization?: boolean
+  /**
+   * Customize the filtering schema
+   */
+  filter?: (searchItem: SearchItem, idx: number, array: SearchItem[]) => boolean
+  /**
+   * Search result Displays the date the document was last modified
+   * @default false
+   */
+  showDate?: boolean
+  /**
+   * Set the time zone for parsing date in frontmatter
+   * @deprecated
+   */
+  timeZone?: number
+  /**
+   * i18n
+   */
+  locales?: Record<string, Omit<SearchConfig, 'locales'>>
+  /**
+   * ignore publish frontmatter
+   * @default false
+   */
+  ignorePublish?: boolean
+
+  /**
+   * Manually control index generation instructions and resource loading scripts
+   * @see README.md Example7
+   * @default false
+   */
+  manual?: boolean
+}
+
+interface PagefindOption {
+  /**
+   * Pass extra element selectors that Pagefind should ignore when indexing
+   * @see https://pagefind.app/docs/config-options/#exclude-selectors
+   * @default
+   * ['div.aside' ,'a.header-anchor']
+   */
+  excludeSelector?: string[]
+  /**
+   * Ignores any detected languages and creates a single index for the entire site as the provided language.
+   * Expects an ISO 639-1 code, such as en or zh.
+   * @see https://pagefind.app/docs/config-options/#force-language
+   */
+  forceLanguage?: string
+  /**
+   * You can customize the instructions to generate the index, which is useful when you customize your version of pagefind
+   * @see https://pagefind.app/docs/config-options/
+   */
+  indexingCommand?: string
+}
+
+interface SearchItem {
+  route: string
+  meta: Record<string, any>
+}
+```
 :::
 
 :::tip
@@ -319,42 +471,7 @@ const blogTheme = getThemeConfig({
 
 ![](https://img.cdn.sugarat.top/mdImg/MTY3OTEyMzQ0NDAwOA==679123444008)
 
-如果需要自定义更多的内容可以使用独立的插件 [vitepress-plugin-pagefind](https://github.com/cnjimbo/cnjimbo.github.io/blob/master/packages/vitepress-plugin-pagefind/README-zh.md)
-
-:::code-group
-
-```sh [①: 安装插件]
-pnpm add vitepress-plugin-pagefind
-```
-
-```ts [②: 引入插件]
-// 在 `.vitepress/config.ts` 引入
-import { defineConfig } from 'vitepress'
-import { chineseSearchOptimize, pagefindPlugin } from 'vitepress-plugin-pagefind'
-import { getThemeConfig } from '@sugarat/theme/node'
-
-const blogTheme = getThemeConfig({
-  // 关闭主题内置
-  search: false
-})
-
-export default defineConfig({
-  extends: blogTheme,
-  lang: 'zh-cn',
-  vite: {
-    // 使用插件加载
-    plugins: [pagefindPlugin({
-      customSearchQuery: chineseSearchOptimize,
-      btnPlaceholder: '搜索',
-      placeholder: '搜索文档',
-      emptyText: '空空如也',
-      heading: '共: {{searchResult}} 条结果'
-    })],
-  },
-})
-```
-
-:::
+详细配置和使用方法可以见插件文档：[vitepress-plugin-pagefind](https://github.com/ATQQ/sugar-blog/blob/master/packages/vitepress-plugin-pagefind/README-zh.md)
 
 ### 全文搜索 - algolia
 
@@ -575,7 +692,7 @@ const blogTheme = getThemeConfig({
   comment: {
     type: 'artalk',
     options: {
-      site: '代码收容所',
+      site: '粥里有勺糖',
       server: '/artalk',
     },
   },
@@ -863,7 +980,7 @@ const blogTheme = getThemeConfig({
       },
       {
         type: 'button',
-        link: 'https://www.dmsrs.org',
+        link: 'https://sugarat.top',
         content: '作者博客',
         props: {
           round: true
@@ -975,6 +1092,7 @@ const blogTheme = getThemeConfig({
 
 也支持根据不同路由自定义展示策略，详见`onRouteChanged` 方法。
 
+
 ## friend
 
 用于设置首页展示的友链信息
@@ -987,11 +1105,11 @@ const blogTheme = getThemeConfig({
 const blogTheme = getThemeConfig({
   friend: [
     {
-      nickname: '代码收容所',
-      des: '天道酬勤，恒以致遠',
+      nickname: '粥里有勺糖',
+      des: '你的指尖用于改变世界的力量',
       avatar:
         'https://img.cdn.sugarat.top/mdImg/MTY3NDk5NTE2NzAzMA==674995167030',
-      url: 'https://www.dmsrs.org'
+      url: 'https://sugarat.top'
     },
     {
       nickname: 'Vitepress',
@@ -1007,8 +1125,8 @@ const blogTheme = getThemeConfig({
 ```ts [type]
 type ThemeableImage =
   | string
-  | { src: string, alt?: string }
-  | { light: string, dark: string, alt?: string }
+  | { src: string; alt?: string }
+  | { light: string; dark: string; alt?: string }
 
 interface FriendLink {
   nickname: string
@@ -1050,7 +1168,7 @@ const blogTheme = getThemeConfig({
       // 省略其他配置项
       avatar: {
         // 单独设置 alt
-        alt: '代码收容所23',
+        alt: '粥里有勺糖23',
         src:
           'https://img.cdn.sugarat.top/mdImg/MTY3NDk5NTI2NzY1Ng==674995267656'
       }
@@ -1089,6 +1207,22 @@ const blogTheme = getThemeConfig({
 })
 ```
 
+可自定义 标题 和 图标，
+
+```ts [使用 SVG 图标]
+// 可以上 iconfont 直接复制 SVG 图标
+// 也可以是 emoji 表情 😝
+const svgIconStr = '<svg>省略内部代码</svg>'
+const blogTheme = getThemeConfig({
+  friend: {
+    title: `${svgIconStr} 友链`,
+    list: [
+      /* 友链数据 */
+    ]
+  }
+})
+```
+
 ## authorList
 
 用于设置文章页作者信息跳转相关信息，默认情况下`author`仅做展示
@@ -1103,9 +1237,9 @@ const blogTheme = getThemeConfig({
 const blogTheme = getThemeConfig({
   authorList: [
     {
-      nickname: '代码收容所',
-      url: 'https://www.dmsrs.org/aboutme.html',
-      des: '天道酬勤，恒以致遠'
+      nickname: '粥里有勺糖',
+      url: 'https://sugarat.top/aboutme.html',
+      des: '你的指尖,拥有改变世界的力量'
     }
   ]
 })
@@ -1178,7 +1312,7 @@ const baseUrl = 'https://theme.sugarat.top'
 const RSS: Theme.RSSOptions = {
   title: '@sugarat/theme',
   baseUrl,
-  copyright: 'Copyright (c) 2023-present, 代码收容所',
+  copyright: 'Copyright (c) 2023-present, 粥里有勺糖',
 }
 
 const blogTheme = getThemeConfig({
@@ -1197,7 +1331,7 @@ const RSS: Theme.RSSOptions = {
   language: 'zh-cn',
   image: 'https://img.cdn.sugarat.top/mdImg/MTY3NDk5NTE2NzAzMA==674995167030',
   favicon: 'https://theme.sugarat.top/favicon.ico',
-  copyright: 'Copyright (c) 2023-present, 代码收容所',
+  copyright: 'Copyright (c) 2023-present, 粥里有勺糖',
   url: `${baseUrl}/feed.rss`
 }
 
@@ -1211,7 +1345,7 @@ type RSSOptions = Omit<FeedOptions, 'id'> & {
   id?: string
   /**
    * 你的站点地址
-   * @example 'https://www.dmsrs.org'
+   * @example 'https://sugarat.top'
    */
   baseUrl: string
   /**
@@ -1404,7 +1538,7 @@ buttonAfterArticle:
 const blogTheme = getThemeConfig({
   footer: {
     version: true,
-    copyright: 'MIT License | 代码收容所'
+    copyright: 'MIT License | 粥里有勺糖'
   }
 })
 ```
@@ -1470,7 +1604,7 @@ interface Footer {
 const blogTheme = getThemeConfig({
   footer: {
     message: '下面 的内容和图标都是可以修改的噢（当然本条内容也是可以隐藏的，也可以配置为HTML）',
-    copyright: 'MIT License | 代码收容所',
+    copyright: 'MIT License | 粥里有勺糖',
     icpRecord: {
       name: '蜀ICP备19011724号',
       link: 'https://beian.miit.gov.cn/'
@@ -1524,10 +1658,10 @@ footer（ message 字段也支持） 支持配置为数组，可以用于灵活�
 const blogTheme = getThemeConfig({
   footer: [{
     message: '下面 的内容和图标都是可以修改的噢（当然本条内容也是可以隐藏的）',
-    copyright: 'MIT License | 代码收容所',
+    copyright: 'MIT License | 粥里有勺糖',
   }, {
     message: ['自定义多条内容', '自定义多条内容'],
-    copyright: 'MIT License | 代码收容所',
+    copyright: 'MIT License | 粥里有勺糖',
     version: true
   }, {
     version: false,
@@ -1670,6 +1804,7 @@ const blogTheme = getThemeConfig({
 })
 ```
 ![深色模式过渡动画](https://vitepress.dev/appearance-toggle-transition.webp)
+
 
 ## imageStyle
 设置图片处理样式（图片资源路径调整），比如图片路径替换，添加图片压缩参数等，可以根据自己的需求进行配置。

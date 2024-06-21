@@ -14,11 +14,11 @@ pnpm add vitepress-plugin-rss
 ```ts
 import { RSSOptions, RssPlugin } from 'vitepress-plugin-rss'
 
-const baseUrl = 'https://www.dmsrs.org'
+const baseUrl = 'https://sugarat.top'
 const RSS: RSSOptions = {
-  title: '代码收容所',
+  title: '粥里有勺糖',
   baseUrl,
-  copyright: 'Copyright (c) 2018-present, 代码收容所',
+  copyright: 'Copyright (c) 2018-present, 粥里有勺糖',
 }
 
 export default defineConfig({
@@ -56,24 +56,24 @@ publish: false
 ```ts
 const RSS: RSSOptions = {
   // necessary（必选参数）
-  title: '代码收容所',
+  title: '粥里有勺糖',
   baseUrl,
-  copyright: 'Copyright (c) 2018-present, 代码收容所',
+  copyright: 'Copyright (c) 2018-present, 粥里有勺糖',
 
   // optional（可选参数）
   description: '大前端相关技术分享',
   language: 'zh-cn',
   author: {
-    name: '代码收容所',
+    name: '粥里有勺糖',
     email: 'engineerzjl@foxmail.com',
-    link: 'https://www.dmsrs.org'
+    link: 'https://sugarat.top'
   },
   icon: true,
   authors: [
     {
-      name: '代码收容所',
+      name: '粥里有勺糖',
       email: 'engineerzjl@foxmail.com',
-      link: 'https://www.dmsrs.org'
+      link: 'https://sugarat.top'
     },
     {
       name: 'sugar',
@@ -108,7 +108,7 @@ export type RSSOptions = Omit<FeedOptions, 'id'> & {
   filter?: (value: PostInfo, index: number, array: PostInfo[]) => boolean
   /**
    * 你的站点地址
-   * @example 'https://www.dmsrs.org'
+   * @example 'https://sugarat.top'
    */
   baseUrl: string
   /**

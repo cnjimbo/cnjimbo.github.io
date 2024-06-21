@@ -1,11 +1,13 @@
+/* eslint-disable ts/no-namespace */
 import type { ElButton } from 'element-plus'
 import type { DefaultTheme, Route } from 'vitepress'
-import type { RSSOptions as _RSSOptions } from 'vitepress-plugin-rss'
+import type { RSSOptions } from 'vitepress-plugin-rss'
 import type { Mapping, Repo } from '@giscus/vue'
 import type { Options as Oml2dOptions } from 'oh-my-live2d'
 import type { Ref } from 'vue'
+import type { PagefindConfig } from 'vitepress-plugin-pagefind'
 
-type RSSPluginOptions = _RSSOptions
+type RSSPluginOptions = RSSOptions
 
 // TODO: 重构 lint 问题
 export declare namespace BlogPopover {
@@ -40,15 +42,8 @@ export declare namespace BlogPopover {
 
 export type ThemeableImage =
   | string
-  | {
-    src: string;
-    alt?: string
-  }
-  | {
-    light: string
-    dark: string
-    alt?: string
-  }
+  | { src: string; alt?: string }
+  | { light: string; dark: string; alt?: string }
 
 export namespace Theme {
   export interface PageMeta {
@@ -152,6 +147,10 @@ export namespace Theme {
   }
 
   export interface HotArticle {
+    /**
+     * 自定义标题，支持SVG + 文字
+     * @default '🔥 精选文章'
+     */
     title?: string
     pageSize?: number
     nextText?: string
@@ -187,6 +186,12 @@ export namespace Theme {
     style?: 'card' | 'sidebar'
   }
 
+  export interface HomeAnalysis {
+    articles?: {
+      title?: string[]
+    }
+  }
+
   export interface HomeBlog {
     name?: string
     motto?: string
@@ -199,6 +204,10 @@ export namespace Theme {
      * @default 'card'
      */
     avatarMode?: 'card' | 'split'
+    /**
+     * 首页数据分析卡片
+     */
+    analysis?: HomeAnalysis
   }
 
   export interface ArticleConfig {
@@ -294,6 +303,11 @@ export namespace Theme {
      * @default "动态计算"
      */
     scrollSpeed?: number
+    /**
+     * 自定义展示标题，支持SVG + 文字
+     * @default '🤝 友情链接'
+     */
+    title?: string
   }
 
   export interface UserWork {
@@ -334,19 +348,8 @@ export namespace Theme {
     top?: number
   }
   export type SearchConfig =
-    | boolean
-    | 'pagefind'
-    | {
-      btnPlaceholder?: string
-      placeholder?: string
-      emptyText?: string
-      /**
-       * @example
-       * 'Total: {{searchResult}} search results.'
-       */
-      heading?: string
-      mode?: boolean | 'pagefind'
-    }
+    | false
+    | PagefindConfig
 
   export interface UserWorks {
     title: string
@@ -368,7 +371,7 @@ export namespace Theme {
     /**
      * 内置一些主题色
      * @default 'vp-default'
-     * 也可以自定义颜色，详见 TODO：文档
+     * 也可以自定义颜色，详见 https://theme.sugarat.top/config/style.html#%E4%B8%BB%E9%A2%98%E8%89%B2
      */
     themeColor?: ThemeColor
     pagesData: PageData[]
@@ -414,13 +417,14 @@ export namespace Theme {
     mermaid?: any
     /**
      * 设置解析 frontmatter 里 date 的时区
-     * @default 8 => 'UTC+8'
+     * @default new Date().getTimezoneOffset() / -60
+     * @example 8 => 'UTC+8'
      */
     timeZone?: number
     /**
      * 启用RSS配置
      */
-    RSS?: RSSOptions
+    RSS?: RSSOptions | RSSOptions[]
     /**
      * 首页页脚
      */
@@ -458,7 +462,7 @@ export namespace Theme {
      * 详见 https://oml2d.com/options/Options.html
      */
     oml2d?: Oml2dOptions
-    homeTags?: boolean
+    homeTags?: boolean | HomeTagsConfig
     buttonAfterArticle?: ButtonAfterArticleConfig | false
     /**
      * 是否开启深色模式过渡动画
@@ -591,5 +595,13 @@ export namespace Theme {
      * 首页封面预览图
      */
     coverPreview?: ReplaceRule | ReplaceRule[]
+  }
+
+  export interface HomeTagsConfig {
+    /**
+     * 自定义标题，支持SVG + 文字
+     * @default '🏷 标签'
+     */
+    title?: string
   }
 }

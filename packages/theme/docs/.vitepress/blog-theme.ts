@@ -3,15 +3,17 @@ import type { Theme } from '@sugarat/theme'
 import { getThemeConfig } from '@sugarat/theme/node'
 import workConfig from './works'
 
-const baseUrl = process.env.PUBLIC_URL??'https://theme.sugarat.top'
+const baseUrl = 'https://theme.sugarat.top'
 const RSS: Theme.RSSOptions = {
   title: '@sugarat/theme',
   baseUrl,
-  copyright: 'Copyright (c) 2023-present, 代码收容所',
+  copyright: 'Copyright (c) 2023-present, 粥里有勺糖',
   description: '基于 vitepress 实现的简约博客主题'
 }
 
 export const blogTheme = getThemeConfig({
+  // 图表支持
+  mermaid: true,
   imageStyle: {
     coverPreview: [
       // 七牛云
@@ -30,21 +32,21 @@ export const blogTheme = getThemeConfig({
     mobileDisplay: true,
     models: [
       {
-        path: 'https://sugarat.s3.bitiful.net/npm/oml2d-model/models/Senko_Normals/senko.model3.json',
+        path: 'https://cdn.bitiful.sugarat.top/npm/oml2d-model/models/Senko_Normals/senko.model3.json',
       }
     ],
     libraryUrls: {
-      complete: 'https://sugarat.s3.bitiful.net/npm/oh-my-live2d/latest/lib/complete.js',
-      cubism2: 'https://sugarat.s3.bitiful.net/npm/oh-my-live2d/latest/lib/cubism2.js',
-      cubism5: 'https://sugarat.s3.bitiful.net/npm/oh-my-live2d/latest/lib/cubism5.js'
+      complete: 'https://cdn.bitiful.sugarat.top/npm/oh-my-live2d/latest/lib/complete.js',
+      cubism2: 'https://cdn.bitiful.sugarat.top/npm/oh-my-live2d/latest/lib/cubism2.js',
+      cubism5: 'https://cdn.bitiful.sugarat.top/npm/oh-my-live2d/latest/lib/cubism5.js'
     }
   },
   RSS,
   authorList: [
     {
-      nickname: '代码收容所',
-      url: `${baseUrl}/aboutme.html`,
-      des: '天道酬勤，恒以致遠'
+      nickname: '粥里有勺糖',
+      url: 'https://sugarat.top/aboutme.html',
+      des: '你的指尖,拥有改变世界的力量'
     }
   ],
   recommend: {
@@ -55,11 +57,11 @@ export const blogTheme = getThemeConfig({
   },
   friend: [
     {
-      nickname: '代码收容所',
-      des: '天道酬勤，恒以致遠',
+      nickname: '粥里有勺糖',
+      des: '你的指尖,拥有改变世界的力量',
       avatar:
         'https://img.cdn.sugarat.top/mdImg/MTY3NDk5NTE2NzAzMA==674995167030',
-      url: `${baseUrl}`
+      url: 'https://sugarat.top'
     },
     {
       nickname: 'Vitepress',
@@ -69,7 +71,7 @@ export const blogTheme = getThemeConfig({
     }
   ],
   // 文章默认作者
-  author: '代码收容所',
+  author: '粥里有勺糖',
   // 评论
   comment: {
     type: 'giscus',
@@ -107,7 +109,7 @@ export const blogTheme = getThemeConfig({
       {
         type: 'button',
         content: '作者博客',
-        link: `${baseUrl}`
+        link: 'https://sugarat.top'
       },
       {
         type: 'button',
@@ -122,7 +124,7 @@ export const blogTheme = getThemeConfig({
   },
   works: workConfig,
   footer: {
-    copyright: 'MIT License | 代码收容所',
+    copyright: 'MIT License | 粥里有勺糖',
   }
 })
 

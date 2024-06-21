@@ -1,7 +1,7 @@
 ---
 title: 更新日志
-description: 最近更新（v0.3.6） ⏰ 2024/05/26：依赖优化，首页优化，搜索优化，公告优化。
-author: 代码收容所
+description: 最近更新（v0.4.5） ⏰ 2024/06/18：构建优化，显著减少使用主题后增加的耗时，支持自定义友链,标签,数据卡片标题，一系列问题修复。
+author: 粥里有勺糖
 top: 2
 tag: 日志
 ---
@@ -26,6 +26,57 @@ bun update @sugarat/theme
 bun install vitepress@latest
 ```
 :::
+
+## 0.4.5 (2024/06/18)
+
+### Patch Changes
+
+- fix: 自定义主题色，防止展示时页面颜色闪烁
+
+## 0.4.4 (2024/06/16)
+
+### Patch Changes
+
+- feat: RSS 生成支持配置多个
+- feat: pagefind 配置复用插件配置
+- chore: 分离 shared 方法库
+- chore：date 获取添加缓存
+- Updated dependencies
+  - vitepress-plugin-pagefind@0.4.2
+  - vitepress-plugin-rss@0.2.7
+
+## 0.4.3 (2024/06/09)
+
+### Patch Changes
+
+- fix: 新建文件时间获取失败显示 NaN
+- feat: 文章页 hover 时完整展示缩略的时间
+
+## 0.4.2 (2024/06/09)
+
+### Patch Changes
+
+- feat: 支持设置数据卡片的标题
+
+## 0.4.1 (2024/06/08)
+
+### Patch Changes
+
+- fix: mermaid build error
+
+## 0.4.0 (2024/06/08)
+
+### Minor Changes
+
+- feat: 友链&标签支持自定义标题
+- fix: README 文档拼写错误
+- fix: 空标签首页展示冗余问题
+- chore: 构建优化，显著减少使用主题后增加的耗时
+  - break change: markdown 图表能力默认关闭，需手动打开（对构建耗时影响较大，即便不使用）
+- Updated dependencies
+  - vitepress-plugin-pagefind@0.4.1
+  - vitepress@1.2.3
+
 
 ## 0.3.6 (2024/05/26)
 
@@ -69,7 +120,7 @@ bun install vitepress@latest
 ### Patch Changes
 
 - feat：支持首页 cover 图添加 image style
-- chore：导航 logo 样式优化
+- chore：导航 logo 样式优化 
 - chore: reduce element css size
 - chore: 依赖升级，无用依赖移除，peerDeps 调整
 
@@ -170,6 +221,7 @@ cover: /abc.png
 # 标题
 
 <img src="./abc.png" style="display: none;"/>
+
 ```
 
 ## 0.2.22 (2024/02/18)
@@ -273,7 +325,7 @@ cover: /abc.png
 ### Patch Changes
 
 - feat: 友链支持随机顺序和滚动
-- fix: tag error ([#154](https://github.com/cnjimbo/cnjimbo.github.io/pull/154)) ([@itcatplayit](https://github.com/itcatplayit))
+- fix: tag error ([#154](https://github.com/ATQQ/sugar-blog/pull/154)) ([@itcatplayit](https://github.com/itcatplayit))
 - chore: update rc31
 - chore: devtool warn fix
 
@@ -355,7 +407,7 @@ cover: /abc.png
 
 ### Patch Changes
 
-- fix: setActiveLink [#138](https://github.com/cnjimbo/cnjimbo.github.io/issues/138)
+- fix: setActiveLink [#138](https://github.com/ATQQ/sugar-blog/issues/138)
 - Updated dependencies
   - vitepress-plugin-pagefind@0.2.10
 
@@ -469,7 +521,7 @@ cover: /abc.png
 
 ### Patch Changes
 
-- feat: 新的项目创建方式使用 [@sugarat/create-theme](https://github.com/cnjimbo/cnjimbo.github.io/tree/master/packages/create-theme) 快速创建模板项目
+- feat: 新的项目创建方式使用 [@sugarat/create-theme](https://github.com/ATQQ/sugar-blog/tree/master/packages/create-theme) 快速创建模板项目
 - feat: 支持使用自定义的HTML内容设置文章在首页卡片列表里展示的 `描述信息`
 - feat: 支持使用 `cover:false` 隐藏首页展示的封面
 
@@ -576,7 +628,7 @@ cover: /abc.png
 - feat: 内置 pagefind 搜索针对中文优化
 - fix: 内置 pagefind 在自定义 base 后无效
 - chore: 没有 git 仓库时，打印 Not 日志
-- chore: pagefind 引导使用独立的插件 [vitepress-plugin-pagefind](https://github.com/cnjimbo/cnjimbo.github.io/blob/master/packages/vitepress-plugin-pagefind/README-zh.md)
+- chore: pagefind 引导使用独立的插件 [vitepress-plugin-pagefind](https://github.com/ATQQ/sugar-blog/blob/master/packages/vitepress-plugin-pagefind/README-zh.md)
 
 ## 0.1.19 (2023/04/02)
 
@@ -603,7 +655,7 @@ cover: /abc.png
 
 ## 0.1.15 (2023/03/26)
 
-- feat: 分离可独立使用的的 搜索插件[pagefind](https://github.com/cnjimbo/cnjimbo.github.io/tree/master/packages/vitepress-plugin-pagefind)
+- feat: 分离可独立使用的的 搜索插件[pagefind](https://github.com/ATQQ/sugar-blog/tree/master/packages/vitepress-plugin-pagefind)
 - feat: 搜索框展示 UI 优化，支持定制文案，展示适配移动端
 - fix: 搜索结果未全部展示
 - fix: 中文文件名文章时间显示 NaN

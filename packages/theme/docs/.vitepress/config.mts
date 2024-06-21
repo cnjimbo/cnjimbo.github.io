@@ -1,21 +1,18 @@
 import path from 'node:path'
-import process from 'node:process'
 import { defineConfig } from 'vitepress'
 import packageJSON from '../../package.json'
 import { blogTheme, extraHead } from './blog-theme'
 
-const baseUrl = process.env.PAGES_BASE ?? 'https://theme.sugarat.top'
-const relativeUrl = process.env.PUBLIC_URL ?? "/"
 export default defineConfig({
-  base: relativeUrl,
   extends: blogTheme,
+  metaChunk: true,
   sitemap: {
-    hostname: `${baseUrl}`,
+    hostname: 'https://theme.sugarat.top',
   },
   cleanUrls: false,
   lang: 'zh-cn',
   title: '@sugarat/theme',
-  description: '代码收容所的博客主题，基于 vitepress 实现',
+  description: '粥里有勺糖的博客主题，基于 vitepress 实现',
   head: [...extraHead],
   vite: {
     resolve: {
@@ -68,7 +65,7 @@ export default defineConfig({
     socialLinks: [
       {
         icon: 'github',
-        link: 'https://github.com/cnjimbo/cnjimbo.github.io/tree/master/packages/theme'
+        link: 'https://github.com/ATQQ/sugar-blog/tree/master/packages/theme'
       },
       {
         icon: 'x',
@@ -77,7 +74,7 @@ export default defineConfig({
     ],
     editLink: {
       pattern:
-        'https://github.com/cnjimbo/cnjimbo.github.io/tree/master/packages/theme/docs/:path',
+        'https://github.com/ATQQ/sugar-blog/tree/master/packages/theme/docs/:path',
       text: '去 GitHub 上编辑内容'
     },
     lastUpdatedText: '上次更新于',

@@ -111,18 +111,18 @@ export default withMermaid({
 
 ![](https://img.cdn.sugarat.top/mdImg/sugar/9238f8f2ddebc56daba7c45819b88974)
 
-#### [vitepress-plugin-rss](https://github.com/cnjimbo/cnjimbo.github.io/tree/master/packages/vitepress-plugin-rss)
+#### [vitepress-plugin-rss](https://github.com/ATQQ/sugar-blog/tree/master/packages/vitepress-plugin-rss)
 
 给 vitepress 提供 RSS 订阅源链接生成支持。
 
 ```ts
 import { RSSOptions, RssPlugin } from 'vitepress-plugin-rss'
 
-const baseUrl = 'https://www.dmsrs.org'
+const baseUrl = 'https://sugarat.top'
 const RSS: RSSOptions = {
-  title: '代码收容所',
+  title: '粥里有勺糖',
   baseUrl,
-  copyright: 'Copyright (c) 2018-present, 代码收容所',
+  copyright: 'Copyright (c) 2018-present, 粥里有勺糖',
 }
 
 export default defineConfig({
@@ -159,7 +159,7 @@ export default defineConfig({
   vite: { plugins: [SearchPlugin(options)] }
 })
 ```
-#### [vitepress-plugin-pagefind](https://github.com/cnjimbo/cnjimbo.github.io/tree/master/packages/vitepress-plugin-pagefind)
+#### [vitepress-plugin-pagefind](https://github.com/ATQQ/sugar-blog/tree/master/packages/vitepress-plugin-pagefind)
 
 基于 [pagefind](https://github.com/cloudcannon/pagefind) 实现的离线全文搜索插件。
 

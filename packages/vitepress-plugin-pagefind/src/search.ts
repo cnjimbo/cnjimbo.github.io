@@ -39,9 +39,24 @@ interface Meta {
   image_alt: string
   title: string
   image: string
+  base64: string
 }
 
 interface Filters {
+}
+
+function decodeBase64AndDeserialize(base64String: string) {
+  if (!base64String) {
+    return {}
+  }
+  try {
+    const serialized = decodeURIComponent(atob(base64String))
+    const obj = JSON.parse(serialized)
+    return obj
+  }
+  catch {
+    return {}
+  }
 }
 
 export function formatPagefindResult(result: PagefindResult) {
@@ -113,13 +128,17 @@ export function formatPagefindResult(result: PagefindResult) {
     return prev
   }, [] as Anchor[])
   // 构造完整的 title 层级 信息
-  const title = filteredAnchors.length ? filteredAnchors.map(t => t.text).join(' > ') : result.meta.title
+  const title = filteredAnchors.length ? filteredAnchors.map(t => t.text.trim()).filter(v => !!v).join(' > ') : result.meta.title
 
+  const { base64, ...otherMeta } = result.meta
   return {
     route,
     meta: {
+      ...decodeBase64AndDeserialize(base64),
+      ...otherMeta,
       title,
       description,
-    }
+    },
+    result
   }
 }

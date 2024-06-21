@@ -1,6 +1,7 @@
 # vitepress-plugin-rss
 
-English | [简体中文](https://github.com/cnjimbo/cnjimbo.github.io/blob/master/packages/vitepress-plugin-rss/README-zh.md)
+English | [简体中文](https://github.com/ATQQ/sugar-blog/blob/master/packages/vitepress-plugin-rss/README-zh.md)
+
 
 ## Usage
 install plugin via `pnpm/npm/yarn`
@@ -14,11 +15,11 @@ add basic config
 ```ts
 import { RSSOptions, RssPlugin } from 'vitepress-plugin-rss'
 
-const baseUrl = 'https://www.dmsrs.org'
+const baseUrl = 'https://sugarat.top'
 const RSS: RSSOptions = {
-  title: '代码收容所',
+  title: '粥里有勺糖',
   baseUrl,
-  copyright: 'Copyright (c) 2018-present, 代码收容所',
+  copyright: 'Copyright (c) 2018-present, 粥里有勺糖',
 }
 
 export default defineConfig({
@@ -56,24 +57,24 @@ publish: false
 ```ts
 const RSS: RSSOptions = {
   // necessary（必选参数）
-  title: '代码收容所',
+  title: '粥里有勺糖',
   baseUrl,
-  copyright: 'Copyright (c) 2018-present, 代码收容所',
+  copyright: 'Copyright (c) 2018-present, 粥里有勺糖',
 
   // optional（可选参数）
   description: '大前端相关技术分享',
   language: 'zh-cn',
   author: {
-    name: '代码收容所',
+    name: '粥里有勺糖',
     email: 'engineerzjl@foxmail.com',
-    link: 'https://www.dmsrs.org'
+    link: 'https://sugarat.top'
   },
   icon: true,
   authors: [
     {
-      name: '代码收容所',
+      name: '粥里有勺糖',
       email: 'engineerzjl@foxmail.com',
-      link: 'https://www.dmsrs.org'
+      link: 'https://sugarat.top'
     },
     {
       name: 'sugar',
@@ -91,7 +92,7 @@ const RSS: RSSOptions = {
 }
 ```
 ### Options
-support all [feed Options](https://www.npmjs.com/package/feed)
+support all [feed Options](https://www.npmjs.com/package/feed) 
 
 plugin also defines some
 
@@ -108,7 +109,7 @@ export type RSSOptions = Omit<FeedOptions, 'id'> & {
   filter?: (value: PostInfo, index: number, array: PostInfo[]) => boolean
   /**
    * your site address
-   * @example 'https://www.dmsrs.org'
+   * @example 'https://sugarat.top'
    */
   baseUrl: string
   /**

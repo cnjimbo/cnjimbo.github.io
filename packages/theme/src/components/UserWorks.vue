@@ -113,7 +113,7 @@ watch(
       }
       prev[year].push(data)
       return prev
-    }, {} as Record<string, (Theme.UserWork & { year?: string, startTime: string })[]>)
+    }, {} as Record<string, (Theme.UserWork & { year?: string; startTime: string })[]>)
     workList.push(...topDate, ...Object.values(groupDate).reverse().flat())
   },
   { immediate: true }

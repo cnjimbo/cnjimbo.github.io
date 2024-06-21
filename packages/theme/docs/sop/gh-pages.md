@@ -61,20 +61,20 @@ jobs:
     steps:
       # 拉取代码
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
         with:
           # 保留 Git 信息
           fetch-depth: 0
 
       # 设置使用 Node.js 版本
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
 
       # 使用 最新的 PNPM
       # 你也可以指定为具体的版本
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v2
         name: Install pnpm
         with:
           version: latest
@@ -119,6 +119,8 @@ jobs:
 示例项目已包含，可以直接进行下一步
 
 ③ 修改 `docs/.vitepress/config.mts` 里的构建配置
+
+**如果项目名已经为 name.github.io 域名，则不需要修改，保持默认值 `/` 即可**
 
 `base` 改为 `"/仓库名/"` 即可
 
