@@ -1,13 +1,12 @@
+import { Buffer } from 'node:buffer'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import process from 'node:process'
 import type { PluginOption } from 'vite'
-import type { SiteConfig } from 'vitepress'
+import type { HeadConfig, SiteConfig } from 'vitepress'
 import { stringify } from 'javascript-stringify'
-import { getPagesData, pluginSiteConfig } from './node'
+import { getFileLastModifyTime, grayMatter } from '@sugarat/theme-shared'
+import { buildEnd, getPagefindHead } from './node'
 import type { PagefindOption, SearchConfig } from './type'
-
-// const okMark = '\x1B[32m✓\x1B[0m'
 
 function isESM() {
   return typeof __filename === 'undefined' || typeof __dirname === 'undefined'
@@ -18,6 +17,10 @@ function getDirname() {
 
 const aliasSearchVueFile = `${getDirname()}/../src/Search.vue`
 
+function meta2string(frontmatter: Record<string, any>) {
+  return `base64:${Buffer.from(encodeURIComponent(JSON.stringify(frontmatter))).toString('base64')}`
+}
+
 export function pagefindPlugin(
   searchConfig: SearchConfig & PagefindOption = {}
 ): any {
@@ -25,12 +28,10 @@ export function pagefindPlugin(
   const resolvedVirtualModuleId = `\0${virtualModuleId}`
 
   let resolveConfig: any
-  let runCommand: 'build' | 'serve'
   const pluginOps: PluginOption = {
     name: 'vitepress-plugin-pagefind',
     enforce: 'pre',
-    config: (_, { command }) => {
-      runCommand = command
+    config: () => {
       return {
         resolve: {
           alias: {
@@ -40,6 +41,9 @@ export function pagefindPlugin(
       }
     },
     configResolved(config: any) {
+      if (searchConfig.manual) {
+        return
+      }
       if (resolveConfig) {
         return
       }
@@ -50,24 +54,21 @@ export function pagefindPlugin(
         return
       }
 
-      // 添加 自定义 vitepress 的钩子
-
+      // 添加生成索引的方法
       const selfBuildEnd = vitepressConfig.buildEnd
-      vitepressConfig.buildEnd = (siteConfig: any) => {
+      vitepressConfig.buildEnd = async (siteConfig: any) => {
         // 调用自己的
-        selfBuildEnd?.(siteConfig)
-        siteConfig = Object.assign(siteConfig || {}, {
-          PagefindOption: searchConfig
-        })
-        pluginSiteConfig?.buildEnd?.(siteConfig)
+        await selfBuildEnd?.(siteConfig)
+        await buildEnd(searchConfig)
+        const okMark = '\x1B[32m✓\x1B[0m'
+        console.log(`${okMark} generating pagefind Indexing...`)
       }
 
+      // 通过 head 添加额外的脚本注入
       const selfTransformHead = vitepressConfig.transformHead
       vitepressConfig.transformHead = async (ctx) => {
         const selfHead = (await Promise.resolve(selfTransformHead?.(ctx))) || []
-        const pluginHead
-          = (await Promise.resolve(pluginSiteConfig?.transformHead?.(ctx))) || []
-        return selfHead.concat(pluginHead)
+        return selfHead.concat(getPagefindHead(ctx.siteData.base) as HeadConfig[])
       }
     },
     resolveId(id: string) {
@@ -75,37 +76,29 @@ export function pagefindPlugin(
         return resolvedVirtualModuleId
       }
     },
-    // 文章数据
-    async load(this, id) {
+    load(this, id) {
       if (id !== resolvedVirtualModuleId)
         return
-      const srcDir
-        = resolveConfig.vitepress.srcDir
-          .replace(resolveConfig.vitepress.root, '')
-          .replace(/^\//, '')
-        || process.argv.slice(2)?.[1]
-        || '.'
 
-      let docsData: any[] = []
-      if (runCommand === 'build') {
-        docsData = await getPagesData(
-          srcDir,
-          resolveConfig.vitepress,
-          searchConfig
-        )
-      }
-
+      // 动态模块处理
       return `
       import { ref } from 'vue'
-      export const docs = ref(${JSON.stringify(docsData)})
       export const searchConfig = ${stringify(searchConfig)}
       `
     },
     // 添加检索的内容标识
-    transform(code, id) {
+    async transform(code, id) {
       // 只检索文章内容
       if (id.endsWith('theme-default/Layout.vue')) {
         return code.replace('<VPContent>', '<VPContent data-pagefind-body>')
+      }
+      // 添加 frontmatter 元数据
+      if (id.endsWith('.md') && !searchConfig.manual) {
+        const { data: frontmatter } = grayMatter(code, {
+          excerpt: true
+        })
+        frontmatter.date = +new Date(frontmatter.date || await getFileLastModifyTime(id))
+        return `${code}\n\n<div style="display:none" data-pagefind-meta="${meta2string(frontmatter)}"></div>`
       }
       return code
     }
@@ -116,3 +109,4 @@ export function pagefindPlugin(
 export * from './type'
 
 export { chineseSearchOptimize } from './node'
+export { formatShowDate } from './utils/index'

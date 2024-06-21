@@ -1,14 +1,17 @@
 <script lang="ts" setup>
-// @ts-nocheck
-import { title } from 'process'
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
+
+// @ts-expect-error
 import { Command } from 'vue-command-palette'
 import { useData, useRoute, useRouter, withBase } from 'vitepress'
 import { useLocalStorage, useMagicKeys } from '@vueuse/core'
-import { searchConfig as _searchConfig, docs } from 'virtual:pagefind'
+
+// @ts-expect-error
+import { searchConfig as _searchConfig } from 'virtual:pagefind'
 import LogoPagefind from './LogoPagefind.vue'
 import type { SearchConfig } from './type'
 import { formatPagefindResult } from './search'
+import { formatShowDate } from './utils'
 
 // 搜索结果
 const searchResult = ref<{ route: string; meta: Record<string, any> }[]>([])
@@ -28,14 +31,16 @@ const finalSearchConfig = computed<SearchConfig>(() => ({
 const ignorePublish = computed(() => finalSearchConfig.value?.ignorePublish ?? false)
 
 // 展示日期信息
-const showDateInfo = computed(() => finalSearchConfig.value?.showDate ?? true)
+const showDateInfo = computed(() => finalSearchConfig.value?.showDate ?? false)
+
+const formatShowDateFn = computed(() => typeof finalSearchConfig.value.showDate === 'function' ? finalSearchConfig.value.showDate : formatShowDate)
 
 // 搜索条数展示
 const headingText = computed(() => {
   return finalSearchConfig.value?.heading
     ? finalSearchConfig.value.heading.replace(
       /\{\{searchResult\}\}/,
-      searchResult.value.length
+      `${searchResult.value.length}`
     )
     : `Total: ${searchResult.value.length} search results.`
 })
@@ -102,11 +107,6 @@ function inlineSearch() {
   }]
 }
 
-// 默认只展示docs里存在的
-const searchOptimization = computed(
-  () => finalSearchConfig.value?.resultOptimization ?? true
-)
-
 const chineseRegex = /[\u4E00-\u9FA5]/g
 function chineseSearchOptimize(input: string) {
   return input
@@ -119,6 +119,7 @@ watch(
   () => searchWords.value,
   async () => {
     // dev-server兜底
+    // @ts-expect-error
     if (!window?.__pagefind__?.search) {
       inlineSearch()
       return
@@ -130,7 +131,7 @@ watch(
         ? finalSearchConfig.value.customSearchQuery(searchWords.value)
         // 判断有中文，默认启用优化
         : (chineseRegex.test(searchWords.value) ? chineseSearchOptimize(searchWords.value) : searchWords.value)
-
+    // @ts-expect-error
     await window?.__pagefind__
       ?.search?.(searchText)
       .then(async (pagefindSearchResult: any) => {
@@ -148,29 +149,14 @@ watch(
               : withBase(result.route)
             return result
           })
-          // 补充 frontmatter => meta
-          .map((v) => {
-            const origin = docs.value.find(d => v.route.includes(d.route))
-            return {
-              ...v,
-              meta: {
-                ...origin?.meta,
-                ...v.meta,
-              }
-            }
-          })
-          // 过滤掉不在docs里的
-          .filter((v) => {
-            return (
-              !searchOptimization.value
-              || docs.value.some(d => v.route.includes(d.route))
-            )
-          })
           // 过滤掉未发布的
           .filter((v) => {
             return ignorePublish.value || v.meta.publish !== false
           })
 
+        if (finalSearchConfig.value.sort) {
+          formattedResults.sort(finalSearchConfig.value.sort)
+        }
         // 调用自定义过滤
         searchResult.value = formattedResults.filter(
           finalSearchConfig.value.filter ?? (() => true)
@@ -250,6 +236,9 @@ const searchInput = ref<HTMLInputElement>()
 function handleClearSearch() {
   searchWords.value = ''
   nextTick(() => {
+    if (!searchInput.value)
+      return
+    // @ts-expect-error
     searchInput.value.$el.value = ''
   })
 }
@@ -319,9 +308,9 @@ function handleToggleDetail() {
                 >
                   <div class="link">
                     <div class="title">
-                      <span><i v-if="item.meta.title" class="prefix"># </i>{{ item.meta.title }}</span>
+                      <span class="headings"><i v-if="item.meta.title" class="prefix"># </i>{{ item.meta.title }}</span>
                       <span v-if="showDateInfo && item.meta.date" class="date">
-                        {{ item.meta.date }}</span>
+                        {{ formatShowDateFn(item.meta.date, lang) }}</span>
                     </div>
                     <div class="des" v-html="item.meta.description" />
                   </div>

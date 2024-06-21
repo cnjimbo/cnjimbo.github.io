@@ -56,6 +56,7 @@ export default BlogTheme
 
 ![](https://img.cdn.sugarat.top/mdImg/MTY5NTk5NjYzMDU5MQ==695996630591)
 
+
 ## 只使用部分能力
 可能主题内置的一些功能并不是你想要的，或者首页你不喜欢，你就想用图片预览，公告栏等能力，这时候就可以只使用部分能力
 
@@ -82,7 +83,7 @@ getThemeConfig({
   // 页脚
   footer: {
     // message: '下面 的内容和图标都是可以修改的噢（当然本条内容也是可以隐藏的）',
-    copyright: 'MIT License | 代码收容所',
+    copyright: 'MIT License | 粥里有勺糖',
     // icpRecord: {
     //   name: '蜀ICP备19011724号',
     //   link: 'https://beian.miit.gov.cn/'
@@ -114,7 +115,7 @@ getThemeConfig({
       {
         type: 'button',
         content: '作者博客',
-        link: 'https://www.dmsrs.org'
+        link: 'https://sugarat.top'
       },
       {
         type: 'button',

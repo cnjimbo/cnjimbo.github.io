@@ -1,5 +1,35 @@
 # @sugarat/create-theme
 
+## 0.0.68
+
+### Patch Changes
+
+- chore: update deps
+
+## 0.0.67
+
+### Patch Changes
+
+- chore: update deps
+
+## 0.0.66
+
+### Patch Changes
+
+- fix: deadlink error
+
+## 0.0.65
+
+### Patch Changes
+
+- fix: 新建文件时间获取失败显示 NaN
+
+## 0.0.64
+
+### Patch Changes
+
+- chore: update deps
+
 ## 0.0.61
 
 ### Patch Changes

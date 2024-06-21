@@ -6,13 +6,13 @@
   "description": "个人博客&知识&文档站集",
   "author": "sugar",
   "license": "MIT",
-  "homepage": "https://github.com/cnjimbo/cnjimbo.github.io#readme",
+  "homepage": "https://github.com/ATQQ/sugar-blog#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cnjimbo/cnjimbo.github.io.git"
+    "url": "git+https://github.com/ATQQ/sugar-blog.git"
   },
   "bugs": {
-    "url": "https://github.com/cnjimbo/cnjimbo.github.io/issues"
+    "url": "https://github.com/ATQQ/sugar-blog/issues"
   },
   "keywords": [],
   "scripts": {
@@ -21,8 +21,9 @@
     "build": "pnpm --filter blogpress build",
     "buildTheme": "pnpm --filter @sugarat/theme build",
     "buildlib": "pnpm run /^build:.*/",
-    "build:pagefind": "pnpm --filter vitepress-plugin-pagefind build",
-    "build:rss": "pnpm --filter vitepress-plugin-rss build",
+    "build:shared": "pnpm --filter @sugarat/theme-shared build",
+    "build:pagefind": "wait-on packages/shared/dist && pnpm --filter vitepress-plugin-pagefind build",
+    "build:rss": "wait-on packages/shared/dist && pnpm --filter vitepress-plugin-rss build",
     "build:create": "pnpm --filter @sugarat/create-theme build",
     "build:theme-only": "wait-on packages/vitepress-plugin-rss/dist packages/vitepress-plugin-pagefind/dist && pnpm --filter @sugarat/theme build:node",
     "serve": "pnpm --filter blogpress serve",
@@ -39,34 +40,20 @@
     "preinstall": "npx only-allow pnpm"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "2.21.1",
-    "@changesets/cli": "^2.27.5",
-    "@eslint/js": "^9.5.0",
-    "@types/bun": "^1.1.5",
-    "@types/fs-extra": "^11.0.4",
-    "@types/node": "^20.14.6",
-    "@typescript-eslint/parser": "^7.13.1",
-    "@vue/runtime-core": "^3.4.29",
-    "@vue/runtime-dom": "^3.4.29",
-    "eslint": "^9.5.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.1.3",
+    "@antfu/eslint-config": "^2.21.1",
+    "@changesets/cli": "^2.26.2",
+    "@types/bun": "^1.0.4",
+    "@types/node": "^20.6.3",
+    "eslint": "^8.50.0",
     "eslint-plugin-todo-ddl": "^1.1.1",
-    "eslint-plugin-vue": "^9.26.0",
-    "globals": "^15.6.0",
-    "json5": "^2.2.3",
-    "lint-staged": "^15.2.7",
-    "prettier": "^3.3.2",
-    "prettier-eslint": "16.3.0",
-    "simple-git-hooks": "^2.11.1",
-    "ts-node": "^10.9.2",
-    "tsup": "8.1.0",
-    "typescript": "5.4.5",
+    "lint-staged": "^14.0.1",
+    "prettier": "^3.0.3",
+    "simple-git-hooks": "^2.9.0",
+    "tsup": " ^7.2.0",
+    "typescript": "5.1.6",
     "typescript-eslint": "^7.13.1",
-    "vue": "^3.4.29",
-    "vue-eslint-parser": "9.4.3",
-    "wait-on": "^7.2.0",
-    "zx": "^8.1.3"
+    "wait-on": "^7.0.1",
+    "zx": "^5.3.0"
   },
   "pnpm": {
     "peerDependencyRules": {
@@ -81,8 +68,5 @@
   },
   "lint-staged": {
     "*": "eslint --fix"
-  },
-  "volta": {
-    "node": "21.7.3"
   }
 }

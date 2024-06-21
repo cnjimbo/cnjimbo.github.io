@@ -10,7 +10,7 @@ recommend: 1
 ---
 
 # 主题配置
-这里将配置分成了2块
+这里将配置分成了2块 
 * `home`：首页的独立配置
 * `Article`：单篇文章独立配置
 
@@ -63,6 +63,7 @@ layout: home
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTY3MzE4MDM5ODQ3MQ==673180398471)
 
+
 ### blog
 设置首页的博客样式文案
 ::: code-group
@@ -73,7 +74,7 @@ layout: home
 blog:
  # 设置首页的 banner 信息
  name: '@sugarat/theme'
- motto: 代码收容所的博客主题
+ motto: 粥里有勺糖的博客主题
  inspiring: 基于 Vitepress 定制的主题🎨
  # 设置首页列表每页展示数量
  pageSize: 2
@@ -103,6 +104,15 @@ interface HomeBlog {
    * @default true
    */
   minScreenAvatar?: boolean
+  /**
+   * 首页数据分析卡片
+   */
+  analysis?: HomeAnalysis
+}
+interface HomeAnalysis {
+  articles?: {
+    title?: string[]
+  }
 }
 ```
 
@@ -123,7 +133,7 @@ interface HomeBlog {
 # 省略其它配置
 blog:
  name: '@sugarat/theme'
- motto: 代码收容所的博客主题
+ motto: 粥里有勺糖的博客主题
  inspiring:
   - 基于 Vitepress 定制的主题🎨
   - 千万不要因为走得太久，而忘记了我们为什么出发
@@ -194,6 +204,20 @@ blog:
 |                      minScreenAvatar: true (默认)                       |                         minScreenAvatar: false                          |
 | :---------------------------------------------------------------------: | :---------------------------------------------------------------------: |
 | ![](https://img.cdn.sugarat.top/mdImg/MTY5NjE2MjE0MTI5Mw==696162141293) | ![](https://img.cdn.sugarat.top/mdImg/MTY5NjE2MjE4NjM3MQ==696162186371) |
+
+文章数据卡片标题修改
+```md
+---
+layout: home
+blog:
+ # 文章数据分析卡片标题定义
+ analysis: 
+  articles: 
+    title: ['博客文章', '月更新', '周更新']
+---
+```
+
+![](https://cdn.upyun.sugarat.top/mdImg/sugar/8128001649cb35413a0575b2749b8099)
 
 ## Article
 ### title
@@ -286,7 +310,7 @@ cover: false
 `hiddenCover` 控制是否展示当前文章的封面，全局配置开关见 [article.hiddenCover](./global.md#article)
 ```md
 ---
-hiddenCover: true
+hiddenCover: true 
 cover: url
 ---
 ```
@@ -312,7 +336,7 @@ hidden: true
 
 ```md
 ---
-author: 代码收容所
+author: 粥里有勺糖
 ---
 ```
 
@@ -368,7 +392,7 @@ date: 2023-01-08 20:00:00
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTY3MzE4MzIxNzEwOQ==673183217109)
 
-展示规则，实现代码见：[packages/theme/src/utils/index.ts](https://github.com/cnjimbo/cnjimbo.github.io/blob/1758bffebd8529dbec860f531de126410a422795/packages/theme/src/utils/index.ts#L41-L64)
+展示规则，实现代码见：[packages/theme/src/utils/index.ts](https://github.com/ATQQ/sugar-blog/blob/1758bffebd8529dbec860f531de126410a422795/packages/theme/src/utils/index.ts#L41-L64)
 * 小于1分钟：xx秒前
 * 小于1小时：xx分钟前
 * 小于1天：xx小时前
@@ -466,6 +490,7 @@ recommend: ['Node.js', 'css', 'html', 1]
 | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
 | ![](https://img.cdn.sugarat.top/mdImg/MTY3NzI0NTYyNDEyOA==677245624128) | ![](https://img.cdn.sugarat.top/mdImg/MTY3NzI0NjQ2NzIyNA==677246467224) | ![](https://img.cdn.sugarat.top/mdImg/sugar/21db9f87e7b64958dad2c24ed94e40d3) |
 
+
 ### publish
 * type: `false`
 
@@ -483,6 +508,7 @@ hidden: true
 recommend: false
 ---
 ```
+
 
 比如设置在`changelog.md`里，首页将不会展示此项
 

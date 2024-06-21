@@ -1,5 +1,34 @@
 # vitepress-plugin-pagefind
 
+## 0.4.2
+
+### Patch Changes
+
+- feat: support sort function
+- chore: Built-in `zh-cn` and `en-us` date formatting display
+- chore: meta include file last update time(date)
+- Updated dependencies
+  - @sugarat/theme-shared@0.0.1
+- remove unused dependencies
+
+## 0.4.1
+
+### Patch Changes
+
+- feat: add manual attr
+
+## 0.4.0
+
+### Minor Changes
+
+The build speed has been significantly improved.
+
+- style: search text title overflow
+- style: empty title space
+- chore: meta build inject page
+- chore: showDate option default false
+- chore: remove resultOptimization option
+
 ## 0.3.3
 
 ### Patch Changes
@@ -139,4 +168,4 @@
 
 ### Minor Changes
 
-- feat: 从 [@sugarat/theme](https://github.com/cnjimbo/cnjimbo.github.io/tree/master/packages/theme) 主题分离独立的 pagefind 插件
+- feat: 从 [@sugarat/theme](https://github.com/ATQQ/sugar-blog/tree/master/packages/theme) 主题分离独立的 pagefind 插件

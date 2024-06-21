@@ -1,6 +1,6 @@
 # vitepress-plugin-pagefind
 
-English | [简体中文](https://github.com/cnjimbo/cnjimbo.github.io/blob/master/packages/vitepress-plugin-pagefind/README-zh.md)
+English | [简体中文](https://github.com/ATQQ/sugar-blog/blob/master/packages/vitepress-plugin-pagefind/README-zh.md)
 
 Offline full-text search based on [pagefind](https://github.com/cloudcannon/pagefind) implementation.
 
@@ -14,7 +14,7 @@ Offline full-text search based on [pagefind](https://github.com/cloudcannon/page
 
 ## Usage
 
-step1: install plugin
+step1: Install plugin and dependencies
 ```sh
 pnpm add vitepress-plugin-pagefind pagefind
 # or
@@ -49,7 +49,8 @@ export default defineConfig({
 })
 ```
 
-**(optional)** step3: customSearchQuery
+<details>
+<summary>step3: Chinese search optimization</summary>
 
 if your docs language（`lang`） is Chinese (`zh-`)
 
@@ -69,6 +70,8 @@ export default defineConfig({
 })
 ```
 see Example4 below for details
+</details>
+
 
 ## Advanced Usage
 
@@ -91,8 +94,8 @@ pagefindPlugin({
 })
 ```
 
-### Example 3：Setting the force language option when indexing
-Different languages have different strategies for generating content index，more detail see [pagefind：multilingual](https://pagefind.app/docs/multilingual/#language-support)
+### Example 3：Setting the force language option when indexing 
+Different languages have different strategies for generating content index，more detail see [pagefind：multilingual](https://pagefind.app/docs/multilingual/#language-support) 
 
 ```ts
 pagefindPlugin({
@@ -144,13 +147,11 @@ pagefindPlugin({
 
 If you have a better implementation, welcome to share
 
-#### 4.2 Search result optimization
-You can turn off the built-in search results optimization
+#### 4.2 Search result filter
+Use the `filter` method to customize the filtering behavior.
 
-Implement it yourself using the `filter` method
 ```js
 pagefindPlugin({
-  resultOptimization: false,
   filter(searchItem, idx, originArray) {
     console.log(searchItem)
     return !searchItem.route.includes('404')
@@ -220,7 +221,67 @@ pagefindPlugin({
 })
 ```
 
-See options below for more details
+### Example 7: Custom indexing location
+
+*If the plugin cannot execute normally in the buildEnd stage, or custom indexing file location.*
+
+```js
+pagefindPlugin({
+  manual: true
+})
+```
+
+① modify script
+
+add pagefind indexing generation script
+
+CLI Options See： https://pagefind.app/docs/config-options/
+
+```json
+{
+  "scripts": {
+    "docs:build": "vitepress build docs && npx pagefind --site docs/.vitepress/dist --exclude-selectors div.aside,a.header-anchor"
+  }
+}
+```
+
+② add head script
+```ts
+import { defineConfig } from 'vitepress'
+import { pagefindPlugin } from 'vitepress-plugin-pagefind'
+
+export default defineConfig({
+  head: [
+    // add script，manually specify the location of the import index file
+    [
+      'script',
+      {},
+      `import('/pagefind/pagefind.js')
+        .then((module) => {
+          window.__pagefind__ = module
+          module.init()
+        })
+        .catch(() => {
+          // console.log('not load /pagefind/pagefind.js')
+        })`
+    ]
+  ],
+  vite: {
+    plugins: [pagefindPlugin({
+      manual: true
+    })]
+  },
+  lastUpdated: true
+})
+```
+
+### Others
+For more configurable options please see the full configuration below
+* Filtering of search results
+* Sort search results
+* Display the last modified date of the article
+* Display the last modified date of the article. etc.
+
 ## Options
 TS DTS see [src/type.ts](./src/type.ts)
 
@@ -285,7 +346,8 @@ interface SearchConfig {
      */
     customSearchQuery?: (input: string) => string
     /**
-     * @default true
+     * @default false
+     * @deprecated
      */
     resultOptimization?: boolean
     /**
@@ -293,10 +355,16 @@ interface SearchConfig {
      */
     filter?: (searchItem: SearchItem, idx: number, array: SearchItem[]) => boolean
     /**
-     * Search result Displays the date the document was last modified
-     * @default true
+     * Sorts search results array.
+     *
+     * like array.sort()
      */
-    showDate?: boolean
+    sort?: (a: SearchItem, b: SearchItem) => number
+    /**
+     * Search result Displays the date the document was last modified
+     * @default false
+     */
+    showDate?: boolean | ((date: number, lang: string) => string)
     /**
      * i18n
      */
@@ -306,6 +374,12 @@ interface SearchConfig {
      * @default false
      */
     ignorePublish?: boolean
+    /**
+     * Manually control index generation instructions and resource loading scripts
+     * @see README.md Example7
+     * @default false
+     */
+    manual?: boolean
 }
 ```
 </details>
@@ -319,4 +393,4 @@ Thanks to the following libraries for inspiration.
 * [pagefind](https://github.com/cloudcannon/pagefind)
 * [vitepress-plugin-search](https://github.com/emersonbottero/vitepress-plugin-search)
 * [vue-command-palette](https://github.com/xiaoluoboding/vue-command-palette)
-* [@sugarat/theme](https://github.com/cnjimbo/cnjimbo.github.io/tree/master/packages/theme)
+* [@sugarat/theme](https://github.com/ATQQ/sugar-blog/tree/master/packages/theme)

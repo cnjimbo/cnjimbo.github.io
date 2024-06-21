@@ -1,5 +1,54 @@
 # @sugarat/theme
 
+## 0.4.5
+
+### Patch Changes
+
+- fix: 自定义主题色，防止展示时页面颜色闪烁
+
+## 0.4.4
+
+### Patch Changes
+
+- feat: RSS 生成支持配置多个
+- feat: pagefind 配置复用插件配置
+- chore: 分离 shared 方法库
+- Updated dependencies
+  - vitepress-plugin-pagefind@0.4.2
+  - vitepress-plugin-rss@0.2.7
+
+## 0.4.3
+
+### Patch Changes
+
+- fix: 新建文件时间获取失败显示 NaN
+- feat: 文章页 hover 时完整展示缩略的时间
+
+## 0.4.2
+
+### Patch Changes
+
+- feat: 支持设置数据卡片的标题
+
+## 0.4.1
+
+### Patch Changes
+
+- fix: mermaid build error
+
+## 0.4.0
+
+### Minor Changes
+
+- feat: support diy friend & tags title
+- fix: readme spelling error.
+- fix: Empty label home page display redundant problem
+- chore: build speed up
+  - break change: mermaid default value change to false
+- Updated dependencies
+  - vitepress-plugin-pagefind@0.4.1
+  - vitepress@1.2.3
+
 ## 0.3.6
 
 ### Patch Changes
@@ -243,7 +292,7 @@ cover: /abc.png
 ### Patch Changes
 
 - feat: 友链支持随机顺序和滚动
-- fix: tag error ([#154](https://github.com/cnjimbo/cnjimbo.github.io/pull/154)) ([@itcatplayit](https://github.com/itcatplayit))
+- fix: tag error ([#154](https://github.com/ATQQ/sugar-blog/pull/154)) ([@itcatplayit](https://github.com/itcatplayit))
 - chore: update rc31
 - chore: devtool warn fix
 
@@ -325,7 +374,7 @@ cover: /abc.png
 
 ### Patch Changes
 
-- fix: setActiveLink [#138](https://github.com/cnjimbo/cnjimbo.github.io/issues/138)
+- fix: setActiveLink [#138](https://github.com/ATQQ/sugar-blog/issues/138)
 - Updated dependencies
   - vitepress-plugin-pagefind@0.2.10
 
@@ -590,7 +639,7 @@ cover: /abc.png
 
 ### Patch Changes
 
-- feat: 分离可独立使用的的 搜索插件[pagefind](https://github.com/cnjimbo/cnjimbo.github.io/tree/master/packages/vitepress-plugin-pagefind)
+- feat: 分离可独立使用的的 搜索插件[pagefind](https://github.com/ATQQ/sugar-blog/tree/master/packages/vitepress-plugin-pagefind)
 - feat: 搜索框展示 UI 优化，支持定制文案，展示适配移动端
 - fix: 搜索结果未全部展示
 - fix: 中文文件名文章时间显示 NaN
