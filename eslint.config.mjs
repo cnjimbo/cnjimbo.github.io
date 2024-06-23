@@ -59,6 +59,7 @@ export default antfu(
   // eslintPluginPrettierRecommended,
   {
     rules: {
+      "ts/no-shadow": 0,
       "style/comma-dangle": "off",
       "jsonc/sort-keys": "off",
       "@typescript-eslint/ban-types": "off",

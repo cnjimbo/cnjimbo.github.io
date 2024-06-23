@@ -44,6 +44,8 @@
     "@changesets/cli": "^2.26.2",
     "@types/bun": "^1.0.4",
     "@types/node": "^20.6.3",
+    "@vue/runtime-core": "^3.4.29",
+    "@vue/runtime-dom": "^3.4.29",
     "eslint": "^8.50.0",
     "eslint-plugin-todo-ddl": "^1.1.1",
     "lint-staged": "^14.0.1",
@@ -52,6 +54,7 @@
     "tsup": " ^7.2.0",
     "typescript": "5.5.2",
     "typescript-eslint": "^7.13.1",
+    "vue": "^3.4.29",
     "wait-on": "^7.0.1",
     "zx": "^5.3.0"
   },
