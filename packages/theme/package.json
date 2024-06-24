@@ -46,7 +46,7 @@
     "element-plus": "^2.7"
   },
   "dependencies": {
-    "@giscus/vue": "^2.4.0",
+    "@giscus/vue": "^3.0.0",
     "@mdit-vue/shared": "^0.12.1",
     "@mermaid-js/mermaid-mindmap": "^9.3.0",
     "@sugarat/theme-shared": "workspace:*",
