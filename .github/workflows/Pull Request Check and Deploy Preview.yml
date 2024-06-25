@@ -11,7 +11,7 @@ on:
     branches:
       - main
       - master
-  delete:
+  # delete:
   pull_request_target:
     types:
       # - assigned
