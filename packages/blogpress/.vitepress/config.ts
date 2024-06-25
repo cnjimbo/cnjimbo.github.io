@@ -3,8 +3,8 @@ import { getThemeConfig } from '@sugarat/theme/node'
 import type { Theme } from '@sugarat/theme'
 import { defineConfig } from 'vitepress'
 
-const baseUrl = process.env.PAGES_BASE ?? 'https://www.dmsrs.org'
-const relativeUrl = process.env.PUBLIC_URL ?? "/"
+const baseUrl = process.env.FULL_URL ?? 'https://www.dmsrs.org'
+const relativeUrl = process.env.PUBLIC_URL ?? ""
 const weekly = `${baseUrl}/weekly`
 const RSSWeekly: Theme.RSSOptions = {
   title: '视野修炼 - 技术周刊',
@@ -16,7 +16,7 @@ const RSSWeekly: Theme.RSSOptions = {
   filter(value) {
     return value.url.startsWith('/weekly/') && !value.url.endsWith('/weekly/')
   },
-  image: 'https://img.cdn.sugarat.top/mdImg/MTcwNTIwMDEzNjM5Mw==705200136393',
+  image: `${relativeUrl}/assert/weelylogo.png`,
   favicon: `${baseUrl}/favicon.ico`,
   copyright: 'Copyright (c) 2018-present, 代码收容所',
   url: `${baseUrl}/weekly.rss`,
@@ -31,7 +31,7 @@ const RSS: Theme.RSSOptions = {
   id: baseUrl,
   link: baseUrl,
   language: 'zh-cn',
-  image: 'https://img.cdn.sugarat.top/mdImg/MTY3NDk5NTE2NzAzMA==674995167030',
+  image: `${relativeUrl}/assert/sitelogo.png`,
   favicon: `${baseUrl}/favicon.ico`,
   copyright: 'Copyright (c) 2018-present, 代码收容所',
   url: `${baseUrl}/feed.rss`,
@@ -111,16 +111,11 @@ const blogTheme = getThemeConfig({
         nickname: '一叶浮萍',
         des: '幽谷清风 深潭碧波 寂清静宁',
         avatar:
-          '/avatar/logo-white.png',
+          `${relativeUrl}/assert/avatar/logo-white.png`,
         url: 'https://www.cnblogs.com/68681395',
       },
 
-    ].map((v) => {
-      if (v.avatar.includes('//sugarat.s3.bitiful.net')) {
-        v.avatar = `${v.avatar}?w=50&h=50&fmt=webp&mode=crop`
-      }
-      return v
-    }),
+    ],
     random: true,
     limit: 6,
   },
