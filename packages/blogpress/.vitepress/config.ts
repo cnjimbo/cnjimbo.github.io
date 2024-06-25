@@ -4,7 +4,7 @@ import type { Theme } from '@sugarat/theme'
 import { defineConfig } from 'vitepress'
 
 const baseUrl = process.env.FULL_URL ?? 'https://www.dmsrs.org'
-const relativeUrl = process.env.PUBLIC_URL ?? "/"
+const relativeUrl = process.env.PUBLIC_URL ?? ""
 const weekly = `${baseUrl}/weekly`
 const RSSWeekly: Theme.RSSOptions = {
   title: '视野修炼 - 技术周刊',
@@ -16,7 +16,7 @@ const RSSWeekly: Theme.RSSOptions = {
   filter(value) {
     return value.url.startsWith('/weekly/') && !value.url.endsWith('/weekly/')
   },
-  image: 'https://img.cdn.sugarat.top/mdImg/MTcwNTIwMDEzNjM5Mw==705200136393',
+  image: `${relativeUrl}/assert/weelylogo.png`,
   favicon: `${baseUrl}/favicon.ico`,
   copyright: 'Copyright (c) 2018-present, 代码收容所',
   url: `${baseUrl}/weekly.rss`,
@@ -31,7 +31,7 @@ const RSS: Theme.RSSOptions = {
   id: baseUrl,
   link: baseUrl,
   language: 'zh-cn',
-  image: 'https://img.cdn.sugarat.top/mdImg/MTY3NDk5NTE2NzAzMA==674995167030',
+  image: `${relativeUrl}/assert/sitelogo.png`,
   favicon: `${baseUrl}/favicon.ico`,
   copyright: 'Copyright (c) 2018-present, 代码收容所',
   url: `${baseUrl}/feed.rss`,
