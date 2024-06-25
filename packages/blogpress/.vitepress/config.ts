@@ -3,7 +3,7 @@ import { getThemeConfig } from '@sugarat/theme/node'
 import type { Theme } from '@sugarat/theme'
 import { defineConfig } from 'vitepress'
 
-const baseUrl = process.env.PAGES_BASE ?? 'https://www.dmsrs.org'
+const baseUrl = process.env.FULL_URL ?? 'https://www.dmsrs.org'
 const relativeUrl = process.env.PUBLIC_URL ?? "/"
 const weekly = `${baseUrl}/weekly`
 const RSSWeekly: Theme.RSSOptions = {
