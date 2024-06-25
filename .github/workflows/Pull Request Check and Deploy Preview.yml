@@ -14,10 +14,23 @@ on:
   delete:
   pull_request_target:
     types:
+      - assigned
+      - unassigned
+      - labeled
+      - unlabeled
       - opened
-      - synchronize
+      - edited
+      # - closed
       - reopened
-      - closed
+      - synchronize
+      - converted_to_draft
+      - ready_for_review
+      - locked
+      - unlocked
+      - review_requested
+      - review_request_removed
+      - auto_merge_enabled
+      - auto_merge_disabled
 
 concurrency:
   # 针对远程部署库，无法同时部署多个preview 添加并行限制
