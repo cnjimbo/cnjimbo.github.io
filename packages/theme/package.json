@@ -58,7 +58,7 @@
     "oh-my-live2d": "^0.19.3",
     "swiper": "^11.1.4",
     "vitepress-markdown-timeline": "^1.2.1",
-    "vitepress-plugin-mermaid": "2.0.14",
+    "vitepress-plugin-mermaid": "2.0.16",
     "vitepress-plugin-pagefind": "workspace:*",
     "vitepress-plugin-rss": "workspace:*",
     "vitepress-plugin-tabs": "0.5.0"
