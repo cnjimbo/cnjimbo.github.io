@@ -135,8 +135,8 @@ importers:
         specifier: ^3.4.26
         version: 3.4.30
       '@vueuse/core':
-        specifier: ^9.13.0
-        version: 9.13.0(vue@3.4.30)
+        specifier: ^10.11.0
+        version: 10.11.0(vue@3.4.30)
       fast-glob:
         specifier: ^3.3.2
         version: 3.3.2
@@ -214,8 +214,8 @@ importers:
         specifier: ^3
         version: 3.4.30(typescript@5.5.2)
       vue-command-palette:
-        specifier: 0.1.4
-        version: 0.1.4
+        specifier: 0.2.3
+        version: 0.2.3
     devDependencies:
       '@types/cross-spawn':
         specifier: ^6.0.6
@@ -7051,8 +7051,8 @@ packages:
       - typescript
       - universal-cookie
 
-  /vue-command-palette@0.1.4:
-    resolution: {integrity: sha512-v9wGV5RG/Qe/GLLP3dJGYEvBOHQAH1kTdfzv7/uDj4v51g9uB0J3dQSaREgsrAvAT7tSj/cSbVrGpaalr8z7tg==}
+  /vue-command-palette@0.2.3:
+    resolution: {integrity: sha512-5ibmwN0BPscAhPPZLDD5KbbxfuNgdR9E/tkjGnw3JDwMGkL1dBcCqVC3rGrcWgK4QanLq6/Xh0a/RtdsZyU+Hg==}
     dependencies:
       fuse.js: 6.6.2
       mitt: 3.0.1
