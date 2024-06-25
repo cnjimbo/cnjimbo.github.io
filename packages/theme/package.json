@@ -50,7 +50,7 @@
     "@mdit-vue/shared": "^0.12.1",
     "@mermaid-js/mermaid-mindmap": "^9.3.0",
     "@sugarat/theme-shared": "workspace:*",
-    "@vue/shared": "^3.4.26",
+    "@vue/shared": "^3.4.30",
     "@vueuse/core": "^10.11.0",
     "fast-glob": "^3.3.2",
     "markdown-it-task-checkbox": "^1.0.6",
