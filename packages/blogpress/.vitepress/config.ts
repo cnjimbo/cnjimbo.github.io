@@ -111,16 +111,11 @@ const blogTheme = getThemeConfig({
         nickname: '一叶浮萍',
         des: '幽谷清风 深潭碧波 寂清静宁',
         avatar:
-          '/avatar/logo-white.png',
+          `${relativeUrl}/assert/avatar/logo-white.png`,
         url: 'https://www.cnblogs.com/68681395',
       },
 
-    ].map((v) => {
-      if (v.avatar.includes('//sugarat.s3.bitiful.net')) {
-        v.avatar = `${v.avatar}?w=50&h=50&fmt=webp&mode=crop`
-      }
-      return v
-    }),
+    ],
     random: true,
     limit: 6,
   },
