@@ -7,10 +7,10 @@
 
 name: Pull Request Check and Deploy Preview
 on:
-  push:
-    branches:
-      - main
-      - master
+  # push:
+  #   branches:
+  #     - main
+  #     - master
   # delete:
   pull_request_target:
     types:
