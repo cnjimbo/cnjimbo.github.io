@@ -57,7 +57,7 @@ const blogTheme = getThemeConfig({
     ],
   },
   themeColor: 'el-blue',
-  RSS,
+  RSS: [RSS, RSSWeekly],
   author: '代码收容所',
   comment: {
     repo: 'cnjimbo/cnjimbo.github.io',
