@@ -1,0 +1,15 @@
+docs/.vuepress/dist
+.vitepress/dist/
+.vitepress/cache/
+.vitepress/node_modules/
+*.temp.*
+*.hot-update.*
+node_modules
+dist
+cache
+.temp
+blog.tar.gz
+.DS_Store
+_pagefind
+**/.history
+*.timestamp-*
