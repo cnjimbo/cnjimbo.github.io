@@ -61,7 +61,7 @@
     "vitepress-plugin-mermaid": "2.0.13",
     "vitepress-plugin-pagefind": "workspace:*",
     "vitepress-plugin-rss": "workspace:*",
-    "vitepress-plugin-tabs": "0.2.0"
+    "vitepress-plugin-tabs": "0.5.0"
   },
   "devDependencies": {
     "@element-plus/icons-vue": "^2.3.1",

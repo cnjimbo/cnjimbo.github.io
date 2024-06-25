@@ -135,8 +135,8 @@ importers:
         specifier: ^3.4.26
         version: 3.4.30
       '@vueuse/core':
-        specifier: ^9.13.0
-        version: 9.13.0(vue@3.4.30)
+        specifier: ^10.11.0
+        version: 10.11.0(vue@3.4.30)
       fast-glob:
         specifier: ^3.3.2
         version: 3.3.2
@@ -165,8 +165,8 @@ importers:
         specifier: workspace:*
         version: link:../vitepress-plugin-rss
       vitepress-plugin-tabs:
-        specifier: 0.2.0
-        version: 0.2.0(vitepress@1.2.3)(vue@3.4.30)
+        specifier: 0.5.0
+        version: 0.5.0(vitepress@1.2.3)(vue@3.4.30)
     devDependencies:
       '@element-plus/icons-vue':
         specifier: ^2.3.1
@@ -6931,11 +6931,11 @@ packages:
       '@mermaid-js/mermaid-mindmap': 9.3.0
     dev: false
 
-  /vitepress-plugin-tabs@0.2.0(vitepress@1.2.3)(vue@3.4.30):
-    resolution: {integrity: sha512-jTdtz4Z5fHllzcDAJaJK/bxE/2PhJSqetFUFgiB7xzw23O4yI+ntJrN+D3oP8XH/0559QUbrYd0K3YLoRaHbAA==}
+  /vitepress-plugin-tabs@0.5.0(vitepress@1.2.3)(vue@3.4.30):
+    resolution: {integrity: sha512-SIhFWwGsUkTByfc2b279ray/E0Jt8vDTsM1LiHxmCOBAEMmvzIBZSuYYT1DpdDTiS3SuJieBheJkYnwCq/yD9A==}
     peerDependencies:
-      vitepress: ^1.0.0-alpha.29
-      vue: ^3.2.45
+      vitepress: ^1.0.0-rc.27
+      vue: ^3.3.8
     dependencies:
       vitepress: 1.2.3(@types/node@20.14.8)(sass@1.77.6)(typescript@5.5.2)
       vue: 3.4.30(typescript@5.5.2)
