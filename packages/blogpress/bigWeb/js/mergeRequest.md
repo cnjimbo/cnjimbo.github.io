@@ -199,7 +199,7 @@ setTimeout(() => {
 
 打印结果
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYxNTAxNjc1ODk0Mw==615016758943)
+![图片](mergeRequest\MTYxNTAxNjc1ODk0Mw==615016758943)
 
 ## 总结
 1. 考察知识点 **event loop**,**防抖**,**Promise**

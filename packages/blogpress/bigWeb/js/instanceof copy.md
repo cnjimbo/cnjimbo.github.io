@@ -18,7 +18,7 @@ categories:
 
 ## 原型链
 
-![](https://img.cdn.sugarat.top/mdImg/MTU4NDM2MzA5ODkyOA==584363098928)
+![](instanceof copy\MTU4NDM2MzA5ODkyOA==584363098928)
 
 ## instanceOf实现
 

@@ -354,7 +354,7 @@ console.log(new MyObjectId().toHexString());
 
 结果如下，符合预期
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyMzMzOTU1NjIyNw==623339556227)
+![图片](objectId\MTYyMzMzOTU1NjIyNw==623339556227)
 
 ## 总结
 * 网上的部分翻译资料确实有些过时了

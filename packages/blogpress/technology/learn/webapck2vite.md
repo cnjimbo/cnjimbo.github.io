@@ -109,11 +109,11 @@ Tips：大部分框架都有自己的CLI工具，没有CLI工具也可以CLI工�
 #### 3.2.1 script module
 浏览器原生支持的JS的模块能力，遵循ES Module规范，从 [caniuse](https://caniuse.com/?search=script%20module) 上的数据来看，大约95%的浏览器都支持
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYzODYwMjk4NDc1Mg==638602984752)
+![图片](webapck2vite\MTYzODYwMjk4NDc1Mg==638602984752)
 
 使用示例
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYzODYwMzAwMDc5Nw==638603000797)
+![图片](webapck2vite\MTYzODYwMzAwMDc5Nw==638603000797)
 
 #### 3.2.2 Vite快的原因
 
@@ -127,13 +127,13 @@ Tips：大部分框架都有自己的CLI工具，没有CLI工具也可以CLI工�
 #### 3.2.3 实现mini Vite开发服务器
 Vite基本原理就是通过Node启动一个HttpServer，拦截浏览器的ES Module请求，根据资源/模块请求路径，在工作目录中查找到对应的文件，再转换成ES Module的形式返回给浏览器。
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYzODYwMzY4OTYxNQ==vite-mini.png)
+![图片](webapck2vite\MTYzODYwMzY4OTYxNQ==vite-mini.png)
 
 包含 scss/css/ts 的资源处理的一个demo。[在线体验地址（包含源码）](https://stackblitz.com/edit/node-qt2m2e?file=README.md)
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYzODYwMzczNDA3Mw==638603734073)
+![图片](webapck2vite\MTYzODYwMzczNDA3Mw==638603734073)
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYzODYwMzc0NjE2Mg==638603746163)
+![图片](webapck2vite\MTYzODYwMzc0NjE2Mg==638603746163)
 
 demo的目录结构如下
 ```sh
@@ -298,7 +298,7 @@ module.exports = {
 ### 3.3 Vite插件系统简介
 Vite 插件扩展了设计出色的 Rollup 接口，带有一些 Vite 独有的配置项。
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYzODYwNDI5OTQwOQ==vite-plugin.png)
+![图片](webapck2vite\MTYzODYwNDI5OTQwOQ==vite-plugin.png)
 
 ### 3.4 方案概述
 #### 3.4.1 要解决的问题
@@ -308,7 +308,7 @@ Vite 插件扩展了设计出色的 Rollup 接口，带有一些 Vite 独有的�
 
 #### 3.4.2 CLI结构
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYzODYwNTMyOTExNg==638605329116)
+![图片](webapck2vite\MTYzODYwNTMyOTExNg==638605329116)
 
 * 通过Plugin拓展Vite的能力，将常用插件全部内置
   * 内置框架相关的Plugin
@@ -321,7 +321,7 @@ Vite 插件扩展了设计出色的 Rollup 接口，带有一些 Vite 独有的�
 能力优先通过VIte插件提供，然后将实现的插件进行内置。
 ### 4.1 Dev-HTML模板处理
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYzODYwNTQzODg3Mg==638605438872)
+![图片](webapck2vite\MTYzODYwNTQzODg3Mg==638605438872)
 
 Vite默认是将启动目录下的 index.html的文件，作为启动入口，而在传统的webpack项目中，这个模板文件是在 public/index.html或者src/pages/pageName下
 
@@ -527,7 +527,7 @@ export function getPageName(reqUrl:string) {
 
 ### 4.2 Production-Build
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYzODYwNjI2NTQyMA==638606265420)
+![图片](webapck2vite\MTYzODYwNjI2NTQyMA==638606265420)
 
 vite构建的入口也是 html，通过 build.rollup.input 属性设置
 ```ts
@@ -777,7 +777,7 @@ export default function UserConfigPlugin(): PluginOption {
 
 目前社区已经有一个CLI工具，[wp2vite](https://github.com/tnfe/wp2vite) 支持常规Vue/React项目的[webpack配置](https://www.webpackjs.com/configuration/)的自动转换到[vite配置](https://cn.vitejs.dev/config/)
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYzODYwNzE1ODI2OA==638607158268)
+![图片](webapck2vite\MTYzODYwNzE1ODI2OA==638607158268)
 
 ```sh
 npm install -g wp2vite
@@ -795,7 +795,7 @@ Vite支持在启动命令中指定配置文件的路径，这为CLI内置Vite能
 vite -c configFilePath
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYzODYwNzU3MDIwMQ==638607570201)
+![图片](webapck2vite\MTYzODYwNzU3MDIwMQ==638607570201)
 
 CLI内部可以通过 spawn 创建子进程启动，也可使用vite对外暴露的`createServer`方法
 
@@ -827,10 +827,10 @@ const viteService = spawn('vite', params, {
 ## 5 效果 - 接入Vite前后对比
 启动提速≈70% - 80% HMR速度碾压
 ### 5.1 Vue SPA
-![图片](https://img.cdn.sugarat.top/mdImg/MTYzNTE2OTU0MzgyMA==vue.gif)
+![图片](webapck2vite\MTYzNTE2OTU0MzgyMA==vue.gif)
 
 ### 5.2 React SPA
-![图片](https://img.cdn.sugarat.top/mdImg/MTYzNTA3MDM3NDkyMQ==react-demo2.gif)
+![图片](webapck2vite\MTYzNTA3MDM3NDkyMQ==react-demo2.gif)
 
 ## 6 总结与展望
 

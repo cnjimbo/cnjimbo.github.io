@@ -63,19 +63,19 @@ flex布局是css3中的新布局模块,为盒模型提供了最大的灵活性,�
 ```
 * row
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzA3Mzc0MjY4Nw==583073742687)
+![图片](flex\MTU4MzA3Mzc0MjY4Nw==583073742687)
 
 * row-reverse
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzA3MzgwNzE2Nw==583073807167)
+![图片](flex\MTU4MzA3MzgwNzE2Nw==583073807167)
 
 * column
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzA3Mzg1ODQ5Mg==583073858492)
+![图片](flex\MTU4MzA3Mzg1ODQ5Mg==583073858492)
 
 * column-reverse
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzA3Mzg4NDQzMw==583073884433)
+![图片](flex\MTU4MzA3Mzg4NDQzMw==583073884433)
 
 ### flex-wrap
 设置子元素的换行方式
@@ -93,15 +93,15 @@ flex布局是css3中的新布局模块,为盒模型提供了最大的灵活性,�
 
 * nowrap
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzA3NDIwMDM3NQ==583074200375)
+![图片](flex\MTU4MzA3NDIwMDM3NQ==583074200375)
 
 * wrap
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzA3NDIyOTkxNQ==583074229915)
+![图片](flex\MTU4MzA3NDIyOTkxNQ==583074229915)
 
 * wrap-reverse
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzA3NDI2ODI3Mg==583074268272)
+![图片](flex\MTU4MzA3NDI2ODI3Mg==583074268272)
 
 ### flex-flow
 其为 flex-direction 与flex-wrap的简写
@@ -142,19 +142,19 @@ flex-flow:flex-direction flex-wrap
 ```
 * ``flex-start``
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzA3NTM1MDAwNQ==583075350005)
+![图片](flex\MTU4MzA3NTM1MDAwNQ==583075350005)
 * flex-end
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzA3NTM3MDk1NA==583075370954)
+![图片](flex\MTU4MzA3NTM3MDk1NA==583075370954)
 * center
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzA3NTM5NzI0NQ==583075397245)
+![图片](flex\MTU4MzA3NTM5NzI0NQ==583075397245)
 * space-between
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzA3NTQxMjYzNA==583075412634)
+![图片](flex\MTU4MzA3NTQxMjYzNA==583075412634)
 * space-around
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzA3NTQzMDQ3OA==583075430478)
+![图片](flex\MTU4MzA3NTQzMDQ3OA==583075430478)
 
 ### align-items
 子元素在交叉轴上的对齐方式
@@ -176,15 +176,15 @@ flex-flow:flex-direction flex-wrap
 ```
 * flex-start
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzA3NjE2OTQ3NQ==583076169475)
+![图片](flex\MTU4MzA3NjE2OTQ3NQ==583076169475)
 
 * flex-end
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzA3NjE5MTgyNw==583076191827)
+![图片](flex\MTU4MzA3NjE5MTgyNw==583076191827)
 
 * center
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzA3NjIyMTY4Ng==583076221686)
+![图片](flex\MTU4MzA3NjIyMTY4Ng==583076221686)
 
 * baseline
 ```css
@@ -204,7 +204,7 @@ flex-flow:flex-direction flex-wrap
     <li class='child4 child' style="padding: 70px;">4<br>666</li>
 </ul>
 ```
-![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzA3NzAyMjU5MQ==583077022591)
+![图片](flex\MTU4MzA3NzAyMjU5MQ==583077022591)
 
 * stretch
 
@@ -214,7 +214,7 @@ flex-flow:flex-direction flex-wrap
     /* height:50px */
 }
 ```
-![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzA3NjU2OTQwNQ==583076569405)
+![图片](flex\MTU4MzA3NjU2OTQwNQ==583076569405)
 
 ### align-content
 多行情况下的对齐方式,类似justify-content的对齐方式
@@ -284,11 +284,11 @@ flex-flow:flex-direction flex-wrap
 ```
 加之前
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzExNTUzMzQ5MA==583115533490)
+![图片](flex\MTU4MzExNTUzMzQ5MA==583115533490)
 
 加之后
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzExNTU2MjUyMA==583115562520)
+![图片](flex\MTU4MzExNTU2MjUyMA==583115562520)
 ### flex-grow
 子元素放大比例,**剩余空间不足则不会放大**,默认0
 
@@ -303,7 +303,7 @@ flex-flow:flex-direction flex-wrap
 }
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzExNjUwMTE1Mw==583116501153)
+![图片](flex\MTU4MzExNjUwMTE1Mw==583116501153)
 
 改动第三个
 ```css
@@ -313,7 +313,7 @@ flex-flow:flex-direction flex-wrap
 ```
 块3就是其它块的两倍宽度
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzExNjY0ODU0MA==583116648540)
+![图片](flex\MTU4MzExNjY0ODU0MA==583116648540)
 
 ### flex-shrink
 规定子元素的缩小比例,默认1,**空间不足则会缩小**
@@ -331,7 +331,7 @@ flex-flow:flex-direction flex-wrap
     flex-shrink:3;
 }
 ```
-![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzExNzE3NjUxMg==583117176512)
+![图片](flex\MTU4MzExNzE3NjUxMg==583117176512)
 
 ### flex-basis
 修改子元素占据主轴空间的大小,默认``auto``为子元素的实际宽度
@@ -372,7 +372,7 @@ flex-flow:flex-direction flex-wrap
     <li class='child4 child'>4</li>
 </ul>
 ```
-![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzExODUwNDQ0NQ==583118504445)
+![图片](flex\MTU4MzExODUwNDQ0NQ==583118504445)
 
 设置flex-basis为100px时
 ```css
@@ -382,11 +382,11 @@ flex-flow:flex-direction flex-wrap
 ```
 空间充足
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzExODU2MzUzNg==583118563536)
+![图片](flex\MTU4MzExODU2MzUzNg==583118563536)
 
 空间不足
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzExODYwNDkxOA==583118604918)
+![图片](flex\MTU4MzExODYwNDkxOA==583118604918)
 
 即当不设置width宽度时就以设置的flex-basis属性作为子元素在主轴上的宽度
 
@@ -438,7 +438,7 @@ flex:flex-grow flex-shrink flex-basis
     background-color: blueviolet;
 }
 ```
-![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzExOTI4OTQ4MQ==583119289481)
+![图片](flex\MTU4MzExOTI4OTQ4MQ==583119289481)
 
 让第二个左对齐
 ```css
@@ -446,7 +446,7 @@ flex:flex-grow flex-shrink flex-basis
     align-self: flex-start;
 }
 ```
-![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzExOTM3MzMyOQ==583119373330)
+![图片](flex\MTU4MzExOTM3MzMyOQ==583119373330)
 
 接着让第四个右对齐
 
@@ -455,4 +455,4 @@ flex:flex-grow flex-shrink flex-basis
     align-self:flex-end;
 }
 ```
-![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzExOTQ3MzkxOA==583119473918)
+![图片](flex\MTU4MzExOTQ3MzkxOA==583119473918)

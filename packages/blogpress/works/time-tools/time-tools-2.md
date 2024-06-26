@@ -163,7 +163,7 @@ commander.parse(process.argv)
 添加完成后执行`timec --help`查看添加的指令如下
 
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyODAwMTc1NDY4OQ==628001754689)
+![图片](time-tools-2\MTYyODAwMTc1NDY4OQ==628001754689)
 
 对应执行指令为
 ```sh

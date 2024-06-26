@@ -27,7 +27,7 @@ tags:
 
 ## 本期效果
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyODM0OTA5MTk2NQ==Kapture%202021-08-07%20at%2023.10.56.gif)
+![图片](time-tools-6\MTYyODM0OTA5MTk2NQ==Kapture%202021-08-07%20at%2023.10.56.gif)
 ## 功能开发
 >本部分将会省略五官代码(前几篇文章已出现过)
 
@@ -238,7 +238,7 @@ TODO：后续优化
 ### 小结
 到目前为止已经支持如下指令：
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyODM0NzIwOTYxMw==628347209613)
+![图片](time-tools-6\MTYyODM0NzIwOTYxMw==628347209613)
 
 这些指令都还不是最终版本，由于时间太紧凑，设计时间也较短，后期会不断完善
 

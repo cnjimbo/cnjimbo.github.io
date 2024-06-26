@@ -44,7 +44,7 @@ curl -L http://mtw.so/6647Rc >码上掘金logo.image
 npx efst http://mtw.so/66eO7c
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTY2ODkyMDg3NDEwNg==668920874106)
+![图片](fs-cli\MTY2ODkyMDg3NDEwNg==668920874106)
 
 ## url资源下载
 先是纯 **url资源下载** 的场景，本小节将详细展开相关小功能的实现。
@@ -70,7 +70,7 @@ function downloadByUrl(url: string, filename?: string) {
 downloadByUrl(sourceUrl,'test.image')
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTY2ODI2MjI2ODMxNQ==668262268315)
+![图片](fs-cli\MTY2ODI2MjI2ODMxNQ==668262268315)
 
 [示例代码1](https://github.com/ATQQ/tools/blob/main/packages/cli/efst/__test__/download/1.ts)
 
@@ -144,7 +144,7 @@ downloadByUrl(sourceUrl, 'test.image')
     console.log('file save:', filepath)
   })
 ```
-![图片](https://img.cdn.sugarat.top/mdImg/MTY2ODI2MzA2OTAyMQ==668263069021)
+![图片](fs-cli\MTY2ODI2MzA2OTAyMQ==668263069021)
 
 [示例代码2](https://github.com/ATQQ/tools/blob/main/packages/cli/efst/__test__/download/2.ts)
 
@@ -190,7 +190,7 @@ _http.get(
 )
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTY2ODI2NjY3NjE0MA==668266676140)
+![图片](fs-cli\MTY2ODI2NjY3NjE0MA==668266676140)
 
 [示例代码3](https://github.com/ATQQ/tools/blob/main/packages/cli/efst/__test__/download/3.ts)
 
@@ -248,7 +248,7 @@ request.on('timeout', () => {
 ```
 下面是请求 google logo 失败示例
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTY2ODMyOTcwMTAwMA==668329701000)
+![图片](fs-cli\MTY2ODMyOTcwMTAwMA==668329701000)
 
 [示例代码5](https://github.com/ATQQ/tools/blob/main/packages/cli/efst/__test__/download/5.ts)
 
@@ -294,7 +294,7 @@ const request = _http.get(url, {
 
 下面是使用代理成功请求的示例
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTY2ODYwNTcyODQ3NA==668605728474)
+![图片](fs-cli\MTY2ODYwNTcyODQ3NA==668605728474)
 
 [示例代码6](https://github.com/ATQQ/tools/blob/main/packages/cli/efst/__test__/download/6.ts)
 
@@ -309,7 +309,7 @@ const request = _http.get(url, {
 new URL(sourceUrl)
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTY2ODY5MzA0OTM4Mg==668693049382)
+![图片](fs-cli\MTY2ODY5MzA0OTM4Mg==668693049382)
 
 文件名就可以取`pathname`最后一截，通过`path.basename`即可获取
 
@@ -354,7 +354,7 @@ function nameParse(filename: string, suffix = '') {
 ```
 下面是运行示例
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTY2ODY5NzM4MDAzNw==668697380037)
+![图片](fs-cli\MTY2ODY5NzM4MDAzNw==668697380037)
 
 到此完成了`name`和`ext`的分离
 
@@ -420,7 +420,7 @@ const writeStream = fs.createWriteStream(filepath)
 
 测试案例运行结果如下
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTY2ODc4Njc0NzcwMg==668786747702)
+![图片](fs-cli\MTY2ODc4Njc0NzcwMg==668786747702)
 
 [示例代码7](https://github.com/ATQQ/tools/blob/main/packages/cli/efst/__test__/download/7.ts)
 
@@ -467,7 +467,7 @@ try {
 
 下面是示例代码及运行结果
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTY2ODg0NjEwNDEwMQ==668846104101)
+![图片](fs-cli\MTY2ODg0NjEwNDEwMQ==668846104101)
 
 [示例代码8](https://github.com/ATQQ/tools/blob/main/packages/cli/efst/__test__/download/8.ts)
 
@@ -489,7 +489,7 @@ program
   .action(defaultCommand)
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTY2ODg0ODAxNzkxOQ==668848017919)
+![图片](fs-cli\MTY2ODg0ODAxNzkxOQ==668848017919)
 
 ### 参数转换传递
 
@@ -519,7 +519,7 @@ export default function defaultCommand(url: string, options: CLIOptions) {
 
 下面是使用演示
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTY2ODg1MDU4NzY1OQ==668850587659)
+![图片](fs-cli\MTY2ODg1MDU4NzY1OQ==668850587659)
 
 ### 下载进度展示
 小文件还能无感等待，大文件咱就得整个进度条来显示了，方遍了解进度。
@@ -549,7 +549,7 @@ downloadByUrl(url)
     }
   })
 ```
-![图片](https://img.cdn.sugarat.top/mdImg/MTY2ODg2NDk4NjA2OA==668864986068)
+![图片](fs-cli\MTY2ODg2NDk4NjA2OA==668864986068)
 
 展示内容过于简单，可以自定义一下显示，展示文件大小和下载速度，[参考文档](https://www.npmjs.com/package/cli-progress)，结合内置的一些值设定初始化如下
 
@@ -646,14 +646,14 @@ setTimeout(() => {
 
 优化后的下载效果如下
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTY2ODg2ODI5MjgxNg==668868292816)
+![图片](fs-cli\MTY2ODg2ODI5MjgxNg==668868292816)
 
 ### 持久化配置存储
 像`proxy`，`timeout`参数不希望每次都设置，就需要将这些配置存起来，下次直接读取。
 
 通常的CLI工具都会在`/Users/$username/.xxx`目录中存放自己的配置文件，即`HOME`目录下。
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTY2ODg2ODgwOTU3Mw==668868809573)
+![图片](fs-cli\MTY2ODg2ODgwOTU3Mw==668868809573)
 
 同理我们可以开辟一个文件存放`.efstrc`，`process.env.HOME`即可获取到`HOME`目录,`process.env.USERPROFILE`用于兼容`win32`平台。
 ```ts
@@ -709,7 +709,7 @@ setCLIConfig('github.name', 'ATQQ')
 setCLIConfig('github.info.url', 'https://github.com/ATQQ')
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTY2ODg2OTk1MzUyNA==668869953524)
+![图片](fs-cli\MTY2ODg2OTk1MzUyNA==668869953524)
 
 再添加一个移除配置的方法，与设置的的方法类似只是使用`delete`操作符删除相关的`key`
 ```ts
@@ -734,7 +734,7 @@ delCLIConfig('github.info.name')
 delCLIConfig('github.name')
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTY2ODg3MDYzODk1NA==668870638954)
+![图片](fs-cli\MTY2ODg3MDYzODk1NA==668870638954)
 
 有了这3个方法支撑就可以封装成一个`config`指令用于配置的`CRUD`
 
@@ -748,7 +748,7 @@ program
   .action(configCommand)
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTY2ODg3MjMzMzkzNQ==668872333935)
+![图片](fs-cli\MTY2ODg3MjMzMzkzNQ==668872333935)
 
 `configCommand`封装实现，将上述实现的方法按场景放入即可
 ```ts
@@ -772,7 +772,7 @@ function defaultCommand(
 ```
 使用演示如下
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTY2ODg3MzQyNzc2Nw==668873427767)
+![图片](fs-cli\MTY2ODg3MzQyNzc2Nw==668873427767)
 
 config 指令这部分逻辑完全可以分离成一个通用的 `commander` 模块，在需要的CLI里直接注册即可，简化后大概如下
 

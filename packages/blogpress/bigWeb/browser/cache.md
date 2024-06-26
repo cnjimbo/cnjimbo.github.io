@@ -131,19 +131,19 @@ self.addEventListener('fetch', (e) => {
 ```
 显示效果
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzI5MzY2MjYwOQ==583293662609)
+![图片](cache\MTU4MzI5MzY2MjYwOQ==583293662609)
 
 第一次运行输出
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzI5MzYzMDg4Nw==583293630887)
+![图片](cache\MTU4MzI5MzYzMDg4Nw==583293630887)
 
 查看Service Worker(生效)
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzI5Mzc0MDM4Nw==583293740387)
+![图片](cache\MTU4MzI5Mzc0MDM4Nw==583293740387)
 
 查看cache(里面有我们缓存的文件)
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzI5NDM0ODk2Nw==583294348967)
+![图片](cache\MTU4MzI5NDM0ODk2Nw==583294348967)
 
 我们改动index.css,然后保存
 
@@ -154,15 +154,15 @@ h1{
 ```
 显示效果(不发生改变,说明是 我们设置的service Worker生效了)
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzI5MzY2MjYwOQ==583293662609)
+![图片](cache\MTU4MzI5MzY2MjYwOQ==583293662609)
 
 查看控制台中的network
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzI5NDgzMzE2NA==583294833164)
+![图片](cache\MTU4MzI5NDgzMzE2NA==583294833164)
 
 查看控制台(打印了``fetch source``,说明是从service worker中取的)
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzI5NDAwODM1MA==583294008350)
+![图片](cache\MTU4MzI5NDAwODM1MA==583294008350)
 
 以上就是ServiceWorker的使用方式
 
@@ -182,7 +182,7 @@ Memory Cache 也就是内存中的缓存，读取内存中的数据比磁盘快
 
 随便打开一个网页看看
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzI5NDkzNTYxOQ==583294935619)
+![图片](cache\MTU4MzI5NDkzNTYxOQ==583294935619)
 
 **浏览器会把哪些文件放入内存:question:**
 * 浏览器会把解析完成的js与css放入内存中
@@ -285,7 +285,7 @@ Cache-Control 生于 HTTP/1.1，**优先级高于** Expires 。
 |    max-stale=30     |    30s内,即使缓存过期也使用该缓存     |
 |    min-fresh=30     |        希望30s内获取最新的响应        |
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYwNDc0MDczMDcyMQ==604740730721)
+![图片](cache\MTYwNDc0MDczMDcyMQ==604740730721)
 
 **特点** 优先级高于Expires，指令可以组合
 
@@ -295,11 +295,11 @@ Cache-Control 生于 HTTP/1.1，**优先级高于** Expires 。
 
 当浏览器发起请求验证资源时，如果资源没有做改变，那么服务端就会返回 304 状态码，并且更新浏览器现有缓存有效期
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYwNDc0MjYxODY2Nw==604742618667)
+![图片](cache\MTYwNDc0MjYxODY2Nw==604742618667)
 
 当资源失效时，返回 200 状态码和最新的资源
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYwNDc0Mjc1NjE5MA==604742756190)
+![图片](cache\MTYwNDc0Mjc1NjE5MA==604742756190)
 
 协商缓存可以通过设置两种 HTTP Header实现
 * Last-Modified
@@ -329,7 +329,7 @@ Etag是服务器在响应请求时，返回的当前资源文件一个唯一标�
 * 一致，响应状态码为304
 * 不一致，响应状态码为200，并返回新的资源
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYwNDc1MjM0MjkwMg==604752342902)
+![图片](cache\MTYwNDc1MjM0MjkwMg==604752342902)
 
 **特点：**
 * ETag 优先级比 Last-Modified 高
@@ -353,7 +353,7 @@ Etag是服务器在响应请求时，返回的当前资源文件一个唯一标�
    * 若协商缓存失效，那么代表该请求的缓存失效，响应200，返回新的资源和缓存标识，并存入浏览器缓存中
    * 生效则响应304，表示继续使用现有缓存
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYwNDc1MzgyODAyMg==604753828022)
+![图片](cache\MTYwNDc1MzgyODAyMg==604753828022)
 
 **如果什么缓存策略都没设置，那么浏览器会怎么处理:question:**
 

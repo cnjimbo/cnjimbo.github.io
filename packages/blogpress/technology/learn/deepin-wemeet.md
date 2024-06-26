@@ -14,7 +14,7 @@ categories:
 
 咱先上效果免得说骗人
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyMTUyNDAxNTE2NA==621524015164)
+![图片](deepin-wemeet\MTYyMTUyNDAxNTE2NA==621524015164)
 
 * 腾讯会议:支持屏幕共享、语音、录屏等等
 * QQ/微信:常用功能均可用
@@ -23,7 +23,7 @@ categories:
 
 如果是deepin用户，先看看是否有deepin-wine5环境
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyMTUyNDI0Mzk1NA==621524243954)
+![图片](deepin-wemeet\MTYyMTUyNDI0Mzk1NA==621524243954)
 
 
 没试用过其它发行版，各位如不是deepin，不妨也可试试看
@@ -40,7 +40,7 @@ sudo vim /etc/apt/sources.list
 deb [by-hash=force] https://community-packages.deepin.com/deepin/ apricot main contrib non-free
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyMTUyNDQyODMyMA==621524428320)
+![图片](deepin-wemeet\MTYyMTUyNDQyODMyMA==621524428320)
 
 更新源
 ```sh
@@ -95,7 +95,7 @@ sudo apt-get install com.tencent.meeting.deepin
 deepin-wine5 wemeetapp.exe
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyMTUyNTEzNTA3OA==621525135078)
+![图片](deepin-wemeet\MTYyMTUyNTEzNTA3OA==621525135078)
 
 
 如果过程中遇到问题的老哥，欢迎评论区交流

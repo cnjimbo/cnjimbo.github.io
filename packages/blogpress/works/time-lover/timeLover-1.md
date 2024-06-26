@@ -61,7 +61,7 @@ categories:
 * 前端：[腾讯云开发-静态资源托管](https://console.cloud.tencent.com/tcb/env/index?rid=4)，这部分教程[戳此查看](https://juejin.cn/post/6964015528662794254)
 
 ### 概览
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyMzY0MjU5MjE3Mg==%E6%97%B6%E5%85%89%E6%81%8B%E4%BA%BA.png)
+![图片](timeLover-1\MTYyMzY0MjU5MjE3Mg==%E6%97%B6%E5%85%89%E6%81%8B%E4%BA%BA.png)
 
 ## 开发准备
 
@@ -69,7 +69,7 @@ categories:
 直接使用搭建的[ATQQ/vite-vue3-template](https://github.com/atqq/vite-vue3-template)模板[初始化项目](https://github.com/ATQQ/vite-vue3-template/generate)
 
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyMzY0MzEwNDkzNw==623643104937)
+![图片](timeLover-1\MTYyMzY0MzEwNDkzNw==623643104937)
 
 ### 引入Vant UI
 **添加依赖**
@@ -290,7 +290,7 @@ const loginColor = 'linear-gradient(to right, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%
 
 效果如下，包含`icon`，`输入区域`，`输入提示`，`注意提示`4部分内容
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyMzY0ODM3MTkwNA==623648371904)
+![图片](timeLover-1\MTYyMzY0ODM3MTkwNA==623648371904)
 
 * [组件的完整源码](https://github.com/ATQQ/timeLover/blob/main/src/components/UnderInput.vue)
 
@@ -328,7 +328,7 @@ export const rCode = /\d{4}/
 
 卡片组件主要包含**功能介绍**与**彩色图标**两部分，效果如下
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyMzY0ODc3MDM3Mw==623648770373)
+![图片](timeLover-1\MTYyMzY0ODc3MDM3Mw==623648770373)
 
 Dom结构如下：
 ```vue
@@ -367,7 +367,7 @@ Dom结构如下：
 <span class="icon-lockclosed iconfont"> </span>
 ```
 ## 本期效果
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyMzY1MDcwODQ5NA==179e683a-47e7-4008-ab25-59f31f3b2a3a.png)
+![图片](timeLover-1\MTYyMzY1MDcwODQ5NA==179e683a-47e7-4008-ab25-59f31f3b2a3a.png)
 
 * 线上[预览地址](https://lover.sugarat.top)
 

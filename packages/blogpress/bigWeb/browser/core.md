@@ -37,11 +37,11 @@ categories:
 
 **发展时间线**
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYwMzYxMjcwNTI2MQ==603612705261)
+![图片](core\MTYwMzYxMjcwNTI2MQ==603612705261)
 
 **内核之间的关系**
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYwNzc4MTYxNDEzMw==607781614133)
+![图片](core\MTYwNzc4MTYxNDEzMw==607781614133)
 ## 浏览器内核构成
 >最开始渲染引擎和JS引擎并没有明确区分，随着不断的迭代，JS引擎越来越独立，内核更就倾向于只指渲染引擎
 

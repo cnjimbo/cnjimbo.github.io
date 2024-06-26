@@ -41,7 +41,7 @@ emm...，检索了一圈记忆中除了 `VsCode` 好像还真没有这种东西�
 
 |                                富文本编辑器                                 |                                  块编辑器                                   |
 | :-------------------------------------------------------------------------: | :-------------------------------------------------------------------------: |
-| ![图片](https://img.cdn.sugarat.top/mdImg/MTY2MTY5ODE0NTY2OQ==661698145669) | ![图片](https://img.cdn.sugarat.top/mdImg/MTY2MTY5ODIyNjk3NQ==661698226975) |
+| ![图片](codeNote\MTY2MTY5ODE0NTY2OQ==661698145669) | ![图片](codeNote\MTY2MTY5ODIyNjk3NQ==661698226975) |
 
 前者是比较传统的编辑器，后者从社区反应来看像是`下一代趋势`，但国内好像还没看到使用此方案的成熟产品（可能是我孤陋寡闻了，读者有推荐的可以评论区补充）
 
@@ -65,7 +65,7 @@ emm...，检索了一圈记忆中除了 `VsCode` 好像还真没有这种东西�
 ### 项目搭建
 粗糙的原型图如下
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTY2MTY5OTkyOTE2OQ==661699929169)
+![图片](codeNote\MTY2MTY5OTkyOTE2OQ==661699929169)
 
 布局也比较简单
 ```html
@@ -378,6 +378,6 @@ export function formatCSS(css: string) {
 
 成签约作者了，后面几个月输出可能会稍微频繁一点了，到时候就打扰了，大家不要吝啬3连
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTY2MjE3MTI4OTg5OA==662171289898)
+![图片](codeNote\MTY2MjE3MTI4OTg5OA==662171289898)
 
 

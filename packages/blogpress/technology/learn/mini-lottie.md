@@ -28,29 +28,29 @@ description: 记录分享在小程序中使用 lottie 播放AE动画的方法，
 
 ① window 中选择 Bodymovie
 
-![](https://img.cdn.sugarat.top/mdImg/sugar/e887b3af9200905af6a3484300de1d3b)
+![](mini-lottie\e887b3af9200905af6a3484300de1d3b)
 
 ② 选择需要导出的动画资源
 
-![](https://img.cdn.sugarat.top/mdImg/sugar/ddb3ce4d7c88df65ee50cca915817fa7)
+![](mini-lottie\ddb3ce4d7c88df65ee50cca915817fa7)
 
 ③ 导出配置（小程序相关）
 
 点击对应动画的设置
 
-![](https://cdn.upyun.sugarat.top/mdImg/sugar/e8a6dfc08dd521ccf65cf2c003c00aac)
+![](mini-lottie\e8a6dfc08dd521ccf65cf2c003c00aac)
 
 勾选 `Glyphs` 将用到的文字+字体导出为图形。
 
 小程序里渲染不支持加载外部字体。
 
-![](https://cdn.upyun.sugarat.top/mdImg/sugar/fab7f7d9ca8aafd9f7935afdb0d91b74)
+![](mini-lottie\fab7f7d9ca8aafd9f7935afdb0d91b74)
 
 *这个就会有 tree shake的效果，如果动画里没有用到的文字，做动态替换的时候就会不显示，后面会详细介绍到*。
 
 勾选 `Convert expressions to keyframes` 将表达式转为关键帧，因为小程序里不支持使用 `eval` 等动态执行脚本的能力。
 
-![](https://cdn.upyun.sugarat.top/mdImg/sugar/ca9d49f12f786b36cb1699958a56421e)
+![](mini-lottie\ca9d49f12f786b36cb1699958a56421e)
 
 修改完成后点击`Save`保存配置。
 
@@ -58,11 +58,11 @@ description: 记录分享在小程序中使用 lottie 播放AE动画的方法，
 
 最后点击 Render 按钮，导出 JSON 文件。
 
-![](https://cdn.upyun.sugarat.top/mdImg/sugar/e4e147a1d4a9a79b8d19f09bfc402bc0)
+![](mini-lottie\e4e147a1d4a9a79b8d19f09bfc402bc0)
 
 导出文件如下，data.json 文件就是我们需要的 JSON 文件，images 里存储的就是播放要用到的图片文件。
 
-![](https://cdn.upyun.sugarat.top/mdImg/sugar/58abc6bc9d72ed6d4ff078b58ab2dbaf)
+![](mini-lottie\58abc6bc9d72ed6d4ff078b58ab2dbaf)
 
 ## 小程序中使用
 
@@ -124,7 +124,7 @@ Page({
 
 我这个 demo 的效果（网上找的动画素材）如下。
 
-![](https://img.cdn.sugarat.top/mdImg/sugar/fe89db8f5a79940b2c2167062f1b321f)
+![](mini-lottie\fe89db8f5a79940b2c2167062f1b321f)
 
 ## 问题&解决
 下面介绍在实际业务接入使用中遇到的一些问题和解决办法。
@@ -132,15 +132,15 @@ Page({
 ### expression 表达式
 报错信息如下，这是遇到的第一个问题（也是上面导出配置中有特别说明的）。
 
-![](https://img.cdn.sugarat.top/mdImg/sugar/63b1e8a0370b0ffdd017de7ceb918465)
+![](mini-lottie\63b1e8a0370b0ffdd017de7ceb918465)
 
 细看了一下文档，有特别说明，expression 表达式特性是不支持的，因此需要再导出 JSON 文件时禁用相关特性。
 
-![](https://img.cdn.sugarat.top/mdImg/sugar/c8f32eb3368a511c84cf1e7803687d5c)
+![](mini-lottie\c8f32eb3368a511c84cf1e7803687d5c)
 
 解决办法：导出JSON文件时，禁用掉表达式特性即可。
 
-![](https://img.cdn.sugarat.top/mdImg/sugar/60104c2927d61dcb75be50fbd363f45d)
+![](mini-lottie\60104c2927d61dcb75be50fbd363f45d)
 
 当然禁用后，JSON 文件大小会有所增加。
 
@@ -188,7 +188,7 @@ const { windowWidth, windowHeight, pixelRatio } = wx.getSystemInfoSync()
 canvas.width = windowWidth * pixelRatio
 canvas.height = windowHeight * pixelRatio
 ```
-![](https://img.cdn.sugarat.top/mdImg/sugar/3dd8a0483aba8a07d9a85692197e5ce5)
+![](mini-lottie\3dd8a0483aba8a07d9a85692197e5ce5)
 
 
 ### 动态文案
@@ -210,7 +210,7 @@ get('sourceUrl').then((res) => {
 * 需要展示的文本里放入 `${num}` 用于替换匹配
 * 在添加一个文本藏在看不见的地方,里面写入替换后需要用到的文字（确保和上面的文本为同一种字体）
 
-![](https://cdn.upyun.sugarat.top/test/sugar/f2bd93aa21e7cd2328c987948d4557a7)
+![](mini-lottie\f2bd93aa21e7cd2328c987948d4557a7)
 
 接着导出 JSON 文件。
 
@@ -245,7 +245,7 @@ lottie.loadAnimation({
 
 效果如下
 
-![](https://cdn.upyun.sugarat.top/mdImg/sugar/290fee264246526131c5048c67125711)
+![](mini-lottie\290fee264246526131c5048c67125711)
 
 
 ### style 引发的渲染错误
@@ -256,7 +256,7 @@ lottie.loadAnimation({
 <canvas style="display:{{show?'block':'none'}}" id="c1" type="2d"></canvas>
 ```
 
-![](https://cdn.upyun.sugarat.top/mdImg/sugar/cedddb72f45046ca974cb594be964eeb)
+![](mini-lottie\cedddb72f45046ca974cb594be964eeb)
 
 解决办法，给套了一层 `view`，用`wx:if`控制咯。
 ```html
@@ -311,7 +311,7 @@ window.requestAnimationFrame = function requestAnimationFrame(cb) {
 ```
 在翻看一下小程序文档里 [canvas.requestAnimationFrame](https://developers.weixin.qq.com/miniprogram/dev/api/canvas/Canvas.requestAnimationFrame.html) 文档说明。
 
-![](https://cdn.upyun.sugarat.top/mdImg/sugar/36b0cfb5ce7dca2c6916caf71aeff2ff)
+![](mini-lottie\36b0cfb5ce7dca2c6916caf71aeff2ff)
 
 有点悟了上面的 `setTimeout` 代码，应该是为了兼容低版本的小程序，里面还有 `called` 变量控制，不重复执行。
 
@@ -341,12 +341,12 @@ canvas.requestAnimationFrame((timeStamp) => {
 
 vconsole 打印结果如下：
 
-![](https://cdn.upyun.sugarat.top/mdImg/sugar/8ee7e4cf3535cb2e4caba929abfe205c)
+![](mini-lottie\8ee7e4cf3535cb2e4caba929abfe205c)
 
 *一点补充，针对 `canvas.requestAnimationFrame` 回到函数的入参，小程序文档里虽没有详细介绍，但可以对标 Web 的
  [Window：requestAnimationFrame() 方法](https://developer.mozilla.org/zh-CN/docs/Web/API/window/requestAnimationFrame) 看一下 MDN 上的解释。*
 
-![](https://cdn.upyun.sugarat.top/mdImg/sugar/2d307758e0873a89aa4fb33602547ed7)
+![](mini-lottie\2d307758e0873a89aa4fb33602547ed7)
 
 从上面的 `console` 日志看，原因确实是执行 setTimeout 里面的逻辑导致的动画结束。
 
@@ -358,7 +358,7 @@ vconsole 打印结果如下：
 
 *也不清楚小程序里 canvas.requestAnimationFrame 实现机制。*
 
-![](https://cdn.upyun.sugarat.top/mdImg/sugar/5c5a97df02d19c6b7248b1c983b5a639)
+![](mini-lottie\5c5a97df02d19c6b7248b1c983b5a639)
 
 大胆揣测一下原因：
 
@@ -366,7 +366,7 @@ vconsole 打印结果如下：
 
 解决办法：
 
-![](https://cdn.upyun.sugarat.top/mdImg/sugar/182858ba4f246bf28417cda3fb029b8f)
+![](mini-lottie\182858ba4f246bf28417cda3fb029b8f)
 
 **既然是兼容实现，就判断一下是否存在 `requestAnimationFrame` 方法，存在就不执行 `setTimeout` 相关逻辑。**
 
@@ -379,4 +379,4 @@ vconsole 打印结果如下：
 
 `demo` 完整源码见 [GitHub：lottie-demo](https://github.com/ATQQ/demos/tree/main/miniprogram/lottie-demo)
 
-![](https://img.cdn.sugarat.top/mdImg/sugar/c5a59914529f4b50a969ec7f1caadc36)
+![](mini-lottie\c5a59914529f4b50a969ec7f1caadc36)

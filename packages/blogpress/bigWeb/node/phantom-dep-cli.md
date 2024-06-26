@@ -24,7 +24,7 @@ categories:
 
 |                                     npm                                     |                                    yarn                                     |                                    pnpm                                     |
 | :-------------------------------------------------------------------------: | :-------------------------------------------------------------------------: | :-------------------------------------------------------------------------: |
-| ![图片](https://img.cdn.sugarat.top/mdImg/MTY1MjYyNDkxNDc0OQ==652624914749) | ![图片](https://img.cdn.sugarat.top/mdImg/MTY1MjYwNDEyMzUwMQ==652604123501) | ![图片](https://img.cdn.sugarat.top/mdImg/MTY1MjYwNDIxODMwMA==652604218300) |
+| ![图片](phantom-dep-cli\MTY1MjYyNDkxNDc0OQ==652624914749) | ![图片](phantom-dep-cli\MTY1MjYwNDEyMzUwMQ==652604123501) | ![图片](phantom-dep-cli\MTY1MjYwNDIxODMwMA==652604218300) |
 
 由于依赖的`扁平化`，可以看到前两者会使 `node_modules` 中多出一些其它的东西
 
@@ -56,7 +56,7 @@ categories:
 ## 原理介绍
 一图胜千言
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTY1MjYwODIzODM1NA==652608238354)
+![图片](phantom-dep-cli\MTY1MjYwODIzODM1NA==652608238354)
 
 总结下就是4步
 1. 扫文件
@@ -167,7 +167,7 @@ ast.find('require($_$)').each(callback)
 ### CSS资源引入路径提取
 针对css，只考虑`@import`场景的情况下，使用正则 `/^@import\s+['"](.*)?['"]/`即可实现提取
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTY1MjYxMDQwMjUxNw==652610402517)
+![图片](phantom-dep-cli\MTY1MjYxMDQwMjUxNw==652610402517)
 
 ```ts
 function getCssFileImportSource(fileText: string) {
@@ -208,7 +208,7 @@ function getVueFileImportSource(fileText: string) {
 ### 第三方依赖判断
 资源路径提取出来后，就只需要判断路径是否是node_modules下的资源即可了，流程如下
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTY1MjYyNDQ2ODAyNw==652624468027)
+![图片](phantom-dep-cli\MTY1MjYyNDQ2ODAyNw==652624468027)
 
 ```ts
 import path, { parse } from 'path'

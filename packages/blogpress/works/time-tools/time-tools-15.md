@@ -92,7 +92,7 @@ const play = require('play/lib/play');
 play.sound('filepath.wav');
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyOTczMTE1Mjk1MA==629731152950)
+![图片](time-tools-15\MTYyOTczMTE1Mjk1MA==629731152950)
 
 其次是`audio-play`,需要配合`audio-loader`使用
 ```js

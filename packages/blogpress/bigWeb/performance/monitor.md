@@ -40,7 +40,7 @@ categories:
 
 通过时间节点之间的差值,得出某个过程所花费的时间
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzgxMjk2MzI3Ng==583812963276)
+![图片](monitor\MTU4MzgxMjk2MzI3Ng==583812963276)
 
 |          名称          |               计算                |
 | :--------------------: | :-------------------------------: |

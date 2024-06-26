@@ -12,7 +12,7 @@ categories:
 ## 背景
 不希望应用发送的数据能在 Devtools 中被看到，避免接口被“同行”扒下来，然后被恶意使用
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyMzE1MDI4Njk4MA==623150286980)
+![图片](jsencrypt\MTYyMzE1MDI4Njk4MA==623150286980)
 
 要避免此问题，首先想到的就是对传输的数据进行一次加密，让后端自行解密然后处理
 
@@ -20,7 +20,7 @@ categories:
 
 期望加密后的样子传输的内容如下
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyMzE1MDY3ODE4Mw==623150678183)
+![图片](jsencrypt\MTYyMzE1MDY3ODE4Mw==623150678183)
 
 ## 加密方案简述
 ### 对称加密
@@ -323,16 +323,16 @@ function updateReceive(data){
 ## 运行结果
 **页面**
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyMzE2NTk4MTIzNw==623165981237)
+![图片](jsencrypt\MTYyMzE2NTk4MTIzNw==623165981237)
 
 **发送网络请求**
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyMzE2NjEyMTMwNQ==623166121305)
+![图片](jsencrypt\MTYyMzE2NjEyMTMwNQ==623166121305)
 
 
 **请求响应内容**
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyMzE2NjE0Njk0MQ==623166146941)
+![图片](jsencrypt\MTYyMzE2NjE0Njk0MQ==623166146941)
 
 大工告成,接入十分简单
 

@@ -89,7 +89,7 @@ ts-node first.ts
 ```
 
 ## 源码目录
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyNDcxMjM5NTAzMQ==624712395031)
+![图片](core-decorators-1\MTYyNDcxMjM5NTAzMQ==624712395031)
 
 简单数了一下大概有`17`个，咱一个个的挨着学，细细品
 
@@ -119,7 +119,7 @@ t.sayHello()
 
 ### 执行效果
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyNDcxOTI4NjkxNQ==624719286915)
+![图片](core-decorators-1\MTYyNDcxOTI4NjkxNQ==624719286915)
 
 
 ### console.time实现

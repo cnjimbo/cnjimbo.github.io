@@ -42,7 +42,7 @@ yarn eslint:init
 ```
 根据提示，按照个人喜好选择一些特性
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyNDQxNjI4MjM4Mg==624416282382)
+![图片](uni-vue3-cli_2\MTYyNDQxNjI4MjM4Mg==624416282382)
 
 静静等待一会儿就安装好所有依赖，然后会自动在根目录下生成`eslintrc.js`配置文件
 
@@ -238,7 +238,7 @@ export default defineComponent({
 ```
 
 ### 效果
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyNDQzMDYzMDE0Nw==vuex4.gif)
+![图片](uni-vue3-cli_2\MTYyNDQzMDYzMDE0Nw==vuex4.gif)
 
 
 ## Axios

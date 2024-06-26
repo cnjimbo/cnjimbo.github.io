@@ -86,7 +86,7 @@ nodeList = document.getElementsByTagNameNS(namespace, name)
 
 ## 元素之间的继承关系
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTU5OTM2MTM2NDk5NA==599361364994)
+![图片](getElement\MTU5OTM2MTM2NDk5NA==599361364994)
 
 每个元素都有对应的类，因此每个类都提供了一些方法来操作元素本身
 

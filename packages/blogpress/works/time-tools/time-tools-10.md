@@ -75,7 +75,7 @@ output('1970-01-01','2970-01-01')
 timec report
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyODY4ODMwNjgyNg==628688306826)
+![图片](time-tools-10\MTYyODY4ODMwNjgyNg==628688306826)
 
 
 导出某天
@@ -155,12 +155,12 @@ option可以组合使用
 timec output -mj ./file1 ./file2
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyODY4OTE3MzkxMg==628689173912)
+![图片](time-tools-10\MTYyODY4OTE3MzkxMg==628689173912)
 
 ## 小结
 目前的指令如下`timec --help`
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyODY4OTY0MDQzMA==628689640430)
+![图片](time-tools-10\MTYyODY4OTY0MDQzMA==628689640430)
 
 现在的代码就像shi⛰，下一期和大家一起优化一下
 

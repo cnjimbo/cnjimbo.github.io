@@ -18,32 +18,32 @@ categories:
 
 **$1** 是对上一次我们选择的节点的引用， **$2** 是对在那之前选择的节点的引用以此类推,直到 **$4**
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzc5OTMzNTA4MQ==617799335081)
+![图片](chrome-debug2\MTYxNzc5OTMzNTA4MQ==617799335081)
 
 ### \$与$$
 * **$** 等价于 document.querySelector()
 * **$$** 等价于 document.querySelectorAll()
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzc5OTUxNzIwNw==617799517207)
+![图片](chrome-debug2\MTYxNzc5OTUxNzIwNw==617799517207)
 
 ### $_
 上次打印结果的引用
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzc5OTc2NjQ4Ng==617799766486)
+![图片](chrome-debug2\MTYxNzc5OTc2NjQ4Ng==617799766486)
 
 ## 直接await
 大多数异步API 都会返回Promise,需要.then才能拿到结果
 
 在console面板中可以直接await 不需要 async 包裹
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzgwMDUyOTY0Mw==617800529643)
+![图片](chrome-debug2\MTYxNzgwMDUyOTY0Mw==617800529643)
 
 ## 条件断点
 TODO: 添加一个合适的示例
 
 source面板中选择文件,右击行号，选择 Add conditional breakpoint 添加代码
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzgwMTgyMjU4Mw==617801822583)
+![图片](chrome-debug2\MTYxNzgwMTgyMjU4Mw==617801822583)
 
 ## Custom Formatter
 自定义输出对象的函数
@@ -63,7 +63,7 @@ function sum(a,b){
 }
 monitor(sum)
 ```
-![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzgwMjIyNjk5Mg==617802226992)
+![图片](chrome-debug2\MTYxNzgwMjIyNjk5Mg==617802226992)
 
 
 ## monitorEvents
@@ -74,11 +74,11 @@ monitor(sum)
 monitorEvents(window,['click','resize'])
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzgwMjQxNTc4MQ==617802415781)
+![图片](chrome-debug2\MTYxNzgwMjQxNTc4MQ==617802415781)
 
 ## window.console
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzgwMjUzMzIzNA==617802533234)
+![图片](chrome-debug2\MTYxNzgwMjUzMzIzNA==617802533234)
 
 除了常用的console.log外其它实用的方法
 
@@ -90,7 +90,7 @@ console.assert(100==='100','no equal')
 console.assert(100=='100','yes')
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzgwMjY5MTU2MA==617802691560)
+![图片](chrome-debug2\MTYxNzgwMjY5MTU2MA==617802691560)
 
 ### table
 
@@ -104,9 +104,9 @@ console.table(document.querySelectorAll('a'),['textContent','href'])
 console.table(location)
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzgwMzA2OTUwMQ==617803069501)
+![图片](chrome-debug2\MTYxNzgwMzA2OTUwMQ==617803069501)
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzgwMzEwODc4Mg==617803108782)
+![图片](chrome-debug2\MTYxNzgwMzEwODc4Mg==617803108782)
 
 ### time与timeEnd
 
@@ -116,7 +116,7 @@ console.table(location)
 console.time('a')
 setTimeout(console.timeEnd,1000,'a')
 ```
-![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzgwMzI0NDMyNA==617803244324)
+![图片](chrome-debug2\MTYxNzgwMzI0NDMyNA==617803244324)
 
 ### dir
 可以用于查看某个dom的属性
@@ -126,7 +126,7 @@ console.log(document.body)
 console.dir(document.body)
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzgwMzM5MzIyMw==617803393223)
+![图片](chrome-debug2\MTYxNzgwMzM5MzIyMw==617803393223)
 
 ### log添加样式
 
@@ -139,12 +139,12 @@ console.log("%cred","color:red;")
 console.log("%cred%cblue","color:red;","color:blue")
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzgwMzUwODYyMA==617803508620)
+![图片](chrome-debug2\MTYxNzgwMzUwODYyMA==617803508620)
 
 ## 实时表达式
-![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzgwNDAzODE3Nw==617804038177)
+![图片](chrome-debug2\MTYxNzgwNDAzODE3Nw==617804038177)
 
-![](https://wingman-1300536089.file.myqcloud.com//chrome/C03/live-expression.gif)
+![](chrome-debug2\live-expression.gif)
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzgwNDAwMjcyMg==617804002722)
+![图片](chrome-debug2\MTYxNzgwNDAwMjcyMg==617804002722)
 

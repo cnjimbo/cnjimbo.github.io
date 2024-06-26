@@ -249,7 +249,7 @@ npm run build:dev
 ### 产物说明
 构建产物如下
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYzMzUzMjA5MTQ4MQ==633532091481)
+![图片](web-sdk-tpl\MTYzMzUzMjA5MTQ4MQ==633532091481)
 
 * *.cjs.js：构建工具引用
 * *.es.js：支持ESM的构建工具使用
@@ -327,19 +327,19 @@ export default {
 ```sh
 npm link
 ```
-![图片](https://img.cdn.sugarat.top/mdImg/MTYzMzUwMzk3NDAzOA==633503974038)
+![图片](web-sdk-tpl\MTYzMzUwMzk3NDAzOA==633503974038)
 
 在要测试的项目中引用
 ```sh
 npm link pkgName
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYzMzUwNDM0NDkwMQ==633504344901)
+![图片](web-sdk-tpl\MTYzMzUwNDM0NDkwMQ==633504344901)
 
 
 运行示例
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYzMzUwNDYyMDY3Mg==633504620672)
+![图片](web-sdk-tpl\MTYzMzUwNDYyMDY3Mg==633504620672)
 ### CDN
 本地在./dist目录下起一个Server服务，推荐使用`http-server`
 
@@ -350,7 +350,7 @@ npm i -g http-server
 
 在 dist目录下执行`http-server`
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYzMzUwNDkzMDA5Nw==633504930097)
+![图片](web-sdk-tpl\MTYzMzUwNDkzMDA5Nw==633504930097)
 
 测试页面中引入
 ```html
@@ -359,7 +359,7 @@ npm i -g http-server
   new LibName('test').sayHello()
 </script>
 ```
-![图片](https://img.cdn.sugarat.top/mdImg/MTYzMzUzMjk5MTk0MA==633532991940)
+![图片](web-sdk-tpl\MTYzMzUzMjk5MTk0MA==633532991940)
 
 ### Vite
 vite本身就是一个支持ESM的Server，在项目中测试使用完全没问题他
@@ -443,7 +443,7 @@ addStyleDom(document.documentElement, style);
 
 于是此种方式会将css内容写入到js代码中，在运行时自动通过style节点插入到文档节点中
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYzMzc1NzUzNDYzNg==633757534636)
+![图片](web-sdk-tpl\MTYzMzc1NzUzNDYzNg==633757534636)
 
 ### scss/less支持
 Vite内置对这两个预处理语言的支持，只需要安装相应的依赖就行
@@ -476,14 +476,14 @@ npm run build
 npm version patch
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYzMzc1ODgzNzI3OA==633758837278)
+![图片](web-sdk-tpl\MTYzMzc1ODgzNzI3OA==633758837278)
 
 发布
 ```sh
 npm publish
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYzMzg0NTE0MDEzMQ==633845140131)
+![图片](web-sdk-tpl\MTYzMzg0NTE0MDEzMQ==633845140131)
 
 ### CDN资源
 简单一点就使用[UNPKG](https://unpkg.com/),可以读取发布到npm上的静态资源
@@ -498,7 +498,7 @@ npm publish
 ### 效果
 会向你的页面中心位置添加一个`tag`
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYzMzg1NDMyNjkzNw==633854326937)
+![图片](web-sdk-tpl\MTYzMzg1NDMyNjkzNw==633854326937)
 ### npm
 ```sh
 # npm
