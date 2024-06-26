@@ -57,7 +57,7 @@ def download(file_path, currentDir):
         image_url = content[1]
         if not (image_url.startswith('http') and image_url.endswith(
             ('.png', '.jpg', '.jpeg', '.gif',
-             '.bmp'))) and not image_url.startswith(img_url_starts):
+             '.bmp','.svg','.image','.WEBP'))) and not image_url.startswith(img_url_starts):
             continue
 
         try:
