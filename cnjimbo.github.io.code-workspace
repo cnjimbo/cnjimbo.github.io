@@ -82,16 +82,20 @@
     },
     "folders": [
         {
-            "name": "📦 blogpress",
-            "path": "packages/blogpress"
-        },
-        {
             "name": "✨ sugar-wiki-monorepo",
             "path": "."
         },
         {
+            "name": "📦 blogpress",
+            "path": "packages/blogpress"
+        },
+        {
             "name": "📦 @sugarat/create-theme",
             "path": "packages/create-theme"
+        },
+        {
+            "name": "📦 @sugarat/theme-shared",
+            "path": "packages/shared"
         },
         {
             "name": "📦 @sugarat/theme",
