@@ -375,6 +375,9 @@
             "statusBar.foreground": "#ffffff",
             "tab.activeBorder": "#9c643b"
         },
-        "workbench.editor.alwaysShowEditorActions": true
+        "workbench.editor.alwaysShowEditorActions": true,
+        "[vue]": {
+            "editor.defaultFormatter": "Vue.volar"
+        }
     }
 }
