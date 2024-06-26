@@ -88,6 +88,10 @@ export default antfu(
       'ts/no-shadow': 0,
       'style/comma-dangle': 'off',
       'jsonc/sort-keys': 'off',
+      'vue/html-indent': 'off',
+      'style/*': 'off',
+      'vue/first-attribute-linebreak': 'off',
+      'vue/html-closing-bracket-newline': 'off',
     },
   },
 )

@@ -123,6 +123,9 @@
         "[typescript]": {
             "editor.defaultFormatter": "vscode.typescript-language-features"
         },
+        "[vue]": {
+            "editor.defaultFormatter": "Vue.volar"
+        },
         "accessibility.signalOptions": {
             "debouncePositionChanges": false,
             "experimental.delays": {
@@ -322,13 +325,31 @@
             "scaffold",
             "theme"
         ],
+        "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": "explicit",
+            "source.organizeImports": "never"
+        },
         "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
         "editor.formatOnPaste": false,
         "editor.formatOnSave": false,
         "editor.formatOnSaveMode": "file",
         "editor.formatOnType": false,
         "editor.trimAutoWhitespace": false,
+        "eslint.format.enable": true,
+        "eslint.ignoreUntitled": true,
         "eslint.useFlatConfig": true,
+        "eslint.validate": [
+            "javascript",
+            "javascriptreact",
+            "typescript",
+            "typescriptreact",
+            "vue",
+            "html",
+            "markdown",
+            "json",
+            "jsonc",
+            "yaml"
+        ],
         "explorerExclude.backup": {},
         "files.autoSave": "onFocusChange",
         "files.exclude": {
@@ -366,6 +387,7 @@
         "markdown-preview-enhanced.alwaysShowBacklinksInPreview": true,
         "markdown-preview-enhanced.automaticallyShowPreviewOfMarkdownBeingEdited": true,
         "markdown.extension.completion.enabled": true,
+        "prettier.enable": false,
         "redhat.telemetry.enabled": true,
         "typescript.tsdk": "✨ sugar-wiki-monorepo\\node_modules\\typescript\\lib",
         "vs-code-prettier-eslint.prettierLast": false,
@@ -375,9 +397,6 @@
             "statusBar.foreground": "#ffffff",
             "tab.activeBorder": "#9c643b"
         },
-        "workbench.editor.alwaysShowEditorActions": true,
-        "[vue]": {
-            "editor.defaultFormatter": "Vue.volar"
-        }
+        "workbench.editor.alwaysShowEditorActions": true
     }
 }
