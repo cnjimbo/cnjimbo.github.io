@@ -118,7 +118,7 @@ emm...，检索了一圈记忆中除了 `VsCode` 好像还真没有这种东西�
               return {
                 success: 1,
                 file: {
-                  url: 'https://img.cdn.sugarat.top/online-editor/6302403434e52962875fbf3e/1661169105550/pupza3m486'
+                  url: './codeNote/pupza3m486.png?s1=https%3A//img.cdn.sugarat.top/online-editor/6302403434e52962875fbf3e/1661169105550/pupza3m486'
                 }
               }
             }

@@ -102,7 +102,7 @@ function download(url, name) {
 
 ```js
 document.getElementById('btn').addEventListener('click', function () {
-  const url = 'https://img.cdn.sugarat.top/mdImg/MTU3OTM2ODc3OTM4Nw==579368779387'
+  const url = './file-saver-source/MTU3OTM2ODc3OTM4Nw==579368779387.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTU3OTM2ODc3OTM4Nw%3D%3D579368779387'
   download(url)
 })
 ```
@@ -148,7 +148,7 @@ function download(url, name) {
 找了一个稍微大一点的图片进行测试，可以发现在网速慢的时候还是需要一定的时间才能完成下载
 
 ```js
-download('https://img.cdn.sugarat.top/mdImg/MTYyMzA3NjA4NDQ4NA==desktop.jpg')
+download('./file-saver-source/MTYyMzA3NjA4NDQ4NA==desktop.jpg?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyMzA3NjA4NDQ4NA%3D%3Ddesktop.jpg')
 ```
 
 ## 总结
