@@ -20,7 +20,7 @@ categories:
 ## 查看详细Chrome版本信息
 浏览器中输入[chrome://version/](chrome://version/)查看
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyMTI0MDM4NTEyMw==621240385123)
+![图片](./chrome-devtools-study/MTYyMTI0MDM4NTEyMw==621240385123.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyMTI0MDM4NTEyMw%3D%3D621240385123)
 
 ## 预设代码块
 可以将一些高频使用的`工具脚本`代码块保存下来，下次使用可以直接调用
@@ -33,30 +33,30 @@ categories:
 }
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyMTI0MjcyNjA4Mw==621242726083)
+![图片](./chrome-devtools-study/MTYyMTI0MjcyNjA4Mw==621242726083.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyMTI0MjcyNjA4Mw%3D%3D621242726083)
 
 接下来复用这个代码块,在Source面板的 snippets中新建一个Snippet并将代码块写入
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzc5ODI4Mzc2Nw==617798283767)
+![图片](./chrome-devtools-study/MTYxNzc5ODI4Mzc2Nw==617798283767.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNzc5ODI4Mzc2Nw%3D%3D617798283767)
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyMTI0Mjk1MzAzMw==621242953033)
+![图片](./chrome-devtools-study/MTYyMTI0Mjk1MzAzMw==621242953033.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyMTI0Mjk1MzAzMw%3D%3D621242953033)
 
 从今以后就可以直接command运行，通过指令运行 `!scriptName`即可执行脚本
 
 tips: 默认打开Command会有一个 `>` 记得先删除
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyMTI0MzAyODY3Mg==621243028672)
+![图片](./chrome-devtools-study/MTYyMTI0MzAyODY3Mg==621243028672.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyMTI0MzAyODY3Mg%3D%3D621243028672)
 
 ## Command面板
 快捷键 Ctrl + Shift + P
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyMTI0MTgxODMyMw==621241818324)
+![图片](./chrome-devtools-study/MTYyMTI0MTgxODMyMw==621241818324.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyMTI0MTgxODMyMw%3D%3D621241818324)
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyMTI0MTg0NzMxNA==621241847314)
+![图片](./chrome-devtools-study/MTYyMTI0MTg0NzMxNA==621241847314.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyMTI0MTg0NzMxNA%3D%3D621241847314)
 
 ### 截图
 
-![](https://img.cdn.sugarat.top/mdImg/MTYxNzc5NzM3MzkzMg==617797373932)
+![](./chrome-devtools-study/MTYxNzc5NzM3MzkzMg==617797373932.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNzc5NzM3MzkzMg%3D%3D617797373932)
 
 * 页面截图: Capture full size screenshot
 * 指定区域: Capture area screenshot
@@ -65,16 +65,16 @@ tips: 默认打开Command会有一个 `>` 记得先删除
 
 ### 显示console时间戳
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyMTI0MjAxMzgwNQ==621242013805)
+![图片](./chrome-devtools-study/MTYyMTI0MjAxMzgwNQ==621242013805.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyMTI0MjAxMzgwNQ%3D%3D621242013805)
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyMTI0MjA0NDg0MA==621242044840)
+![图片](./chrome-devtools-study/MTYyMTI0MjA0NDg0MA==621242044840.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyMTI0MjA0NDg0MA%3D%3D621242044840)
 
 ## Console面板相关
 
 ### copy方法
 有一个全局的`copy`方法，可以在console面板中**复制任何能够拿到的资源到剪贴板中**
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyMTI0MDc2NjkzMQ==621240766931)
+![图片](./chrome-devtools-study/MTYyMTI0MDc2NjkzMQ==621240766931.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyMTI0MDc2NjkzMQ%3D%3D621240766931)
 
 ### $符号
 #### $number
@@ -82,18 +82,18 @@ $0 是对我们当前在 Element面板 中选中的 html 节点的引用
 
 $1 是对上一次我们选择的节点的引用， $2 是对在那之前选择的节点的引用以此类推,直到 $4
 
-![](https://img.cdn.sugarat.top/mdImg/MTYxNzc5OTMzNTA4MQ==617799335081)
+![](./chrome-devtools-study/MTYxNzc5OTMzNTA4MQ==617799335081.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNzc5OTMzNTA4MQ%3D%3D617799335081)
 
 #### $与$$
 * $ 等价于 document.querySelector()
 * \$$ 等价于 document.querySelectorAll()
 
-![](https://img.cdn.sugarat.top/mdImg/MTYxNzc5OTUxNzIwNw==617799517207)
+![](./chrome-devtools-study/MTYxNzc5OTUxNzIwNw==617799517207.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNzc5OTUxNzIwNw%3D%3D617799517207)
 
 #### $_
 上次打印结果的引用
 
-![](https://img.cdn.sugarat.top/mdImg/MTYxNzc5OTc2NjQ4Ng==617799766486)
+![](./chrome-devtools-study/MTYxNzc5OTc2NjQ4Ng==617799766486.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNzc5OTc2NjQ4Ng%3D%3D617799766486)
 
 ### console.table
 
@@ -103,14 +103,14 @@ $1 是对上一次我们选择的节点的引用， $2 是对在那之前选择�
 
 第二个参数指定要展示的列
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyMTI0MTQzNzg0NQ==621241437845)
+![图片](./chrome-devtools-study/MTYyMTI0MTQzNzg0NQ==621241437845.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyMTI0MTQzNzg0NQ%3D%3D621241437845)
 
 ### time与timeEnd
 `console.time`与`console.timeEnd`，两个方法配合计算并打印时间戳
 
 通常用于测试方法的执行时间
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyMTI0MTY3NDgxNg==621241674816)
+![图片](./chrome-devtools-study/MTYyMTI0MTY3NDgxNg==621241674816.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyMTI0MTY3NDgxNg%3D%3D621241674816)
 
 ## Network面板
 
@@ -118,33 +118,33 @@ $1 是对上一次我们选择的节点的引用， $2 是对在那之前选择�
 
 用于过滤请求
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzgwNDk3NzgyNg==617804977826)
+![图片](./chrome-devtools-study/MTYxNzgwNDk3NzgyNg==617804977826.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNzgwNDk3NzgyNg%3D%3D617804977826)
 
 通过 `-` 查看所有筛选条件
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzgwNTA3MDc3Ng==617805070776)
+![图片](./chrome-devtools-study/MTYxNzgwNTA3MDc3Ng==617805070776.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNzgwNTA3MDc3Ng%3D%3D617805070776)
 
 ### 自定义请求表中展示的项
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyMTIxODY5Mzc4Mw==621218693783)
+![图片](./chrome-devtools-study/MTYyMTIxODY5Mzc4Mw==621218693783.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyMTIxODY5Mzc4Mw%3D%3D621218693783)
 
 ### 重新发送请求
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyMTIxODc3NTE2MQ==621218775161)
+![图片](./chrome-devtools-study/MTYyMTIxODc3NTE2MQ==621218775161.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyMTIxODc3NTE2MQ%3D%3D621218775161)
 
 ## Drawer
 
 `ESC`控制打开/关闭Drawer
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyMTIyMDg1NTk2NQ==621220855965)
+![图片](./chrome-devtools-study/MTYyMTIyMDg1NTk2NQ==621220855965.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyMTIyMDg1NTk2NQ%3D%3D621220855965)
 
 所有的功能选项
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyMTIyMDk3MDc4NQ==621220970786)
+![图片](./chrome-devtools-study/MTYyMTIyMDk3MDc4NQ==621220970786.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyMTIyMDk3MDc4NQ%3D%3D621220970786)
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyMTIyMDkxOTIxNg==621220919216)
+![图片](./chrome-devtools-study/MTYyMTIyMDkxOTIxNg==621220919216.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyMTIyMDkxOTIxNg%3D%3D621220919216)
 
 ### 查看更改Change
 在Element面板中更改元素的样式可以在这直接查看
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyMTIyNDQxMjE4OQ==621224412189)
+![图片](./chrome-devtools-study/MTYyMTIyNDQxMjE4OQ==621224412189.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyMTIyNDQxMjE4OQ%3D%3D621224412189)

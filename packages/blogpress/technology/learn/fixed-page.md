@@ -194,11 +194,11 @@ const touchHandle = function(e) {
 本文介绍了`4种常见`解决方法，与`1种"谜之操作"`
 
 ## demo演示
-![图片](https://img.cdn.sugarat.top/mdImg/MTY0MjkzODA2NTUyNA==642938065524)
+![图片](./fixed-page/MTY0MjkzODA2NTUyNA==642938065524.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY0MjkzODA2NTUyNA%3D%3D642938065524)
 
 * [demo地址](https://test-demo-6gd4lnn3e3ca39f5-1256505457.tcloudbaseapp.com/dialog-h5-fixed-case/)
 * PC扫码体验
-  * ![图片](https://img.cdn.sugarat.top/mdImg/MTY0MjkzODExOTA1MQ==642938119051)
+  * ![图片](./fixed-page/MTY0MjkzODExOTA1MQ==642938119051.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY0MjkzODExOTA1MQ%3D%3D642938119051)
 * [demo源码地址](https://stackblitz.com/edit/vitejs-vite-xgqbt6?file=src%2Fmain.ts&terminal=dev)
 
  

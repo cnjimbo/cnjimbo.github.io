@@ -18,7 +18,7 @@ categories:
 
 报错截图如下
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYzNDAxNjYxMzEyNg==634016613126)
+![图片](./vite-react-js/MTYzNDAxNjYxMzEyNg==634016613126.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYzNDAxNjYxMzEyNg%3D%3D634016613126)
 
 ## 复现问题
 
@@ -53,25 +53,25 @@ yarn create vite my-react-app --template react-ts
 ```sh
 npm run dev
 ```
-![图片](https://img.cdn.sugarat.top/mdImg/MTYzNDAxNTk3NjAwNQ==634015976005)
+![图片](./vite-react-js/MTYzNDAxNTk3NjAwNQ==634015976005.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYzNDAxNTk3NjAwNQ%3D%3D634015976005)
 
 页面正常，接下来将`App.tsx`修改为`App.js`
 
 将会得到上述的报错
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYzNDAxNjA0ODYwMw==634016048603)
+![图片](./vite-react-js/MTYzNDAxNjA0ODYwMw==634016048603.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYzNDAxNjA0ODYwMw%3D%3D634016048603)
 
 ## 原因
 1. Vite在启动时会做[依赖的预构建](https://cn.vitejs.dev/guide/dep-pre-bundling.html#the-why)
 2. `预构建`，`运行时`默认都只会对`jsx`与`tsx`做语法转换。不会对js做jsx的语法转换。
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYzNDAxNjg3ODYwMg==634016878602)
+![图片](./vite-react-js/MTYzNDAxNjg3ODYwMg==634016878602.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYzNDAxNjg3ODYwMg%3D%3D634016878602)
 
 ## 解决方案
 1. 修改依赖预构建的配置
 2. 使用babel插件`@babel/plugin-transform-react-jsx`，让Vite在运行时对js文件转换
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYzNDAxNzQyNDM2Mg==634017424362)
+![图片](./vite-react-js/MTYzNDAxNzQyNDM2Mg==634017424362.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYzNDAxNzQyNDM2Mg%3D%3D634017424362)
 
 按照文档描述在配置文件添加一点配置
 ```js
@@ -110,7 +110,7 @@ export default defineConfig({
 
 再次启动验证,发现一个报错
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYzNDAxNzg4NjY4OQ==634017886689)
+![图片](./vite-react-js/MTYzNDAxNzg4NjY4OQ==634017886689.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYzNDAxNzg4NjY4OQ%3D%3D634017886689)
 
 原因是没有在App.js中引入`React`,咱们引入一下
 ```js
@@ -118,7 +118,7 @@ import React,{ useState } from 'react'
 ```
 大功告成
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYzNDAxODAxNTMxMw==634018015313)
+![图片](./vite-react-js/MTYzNDAxODAxNTMxMw==634018015313.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYzNDAxODAxNTMxMw%3D%3D634018015313)
 
 
 ## 总结

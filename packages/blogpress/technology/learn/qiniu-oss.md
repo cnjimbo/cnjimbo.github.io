@@ -350,7 +350,7 @@ function checkFopTaskStatus(persistentId){
         throw err
       }
       if (respInfo.statusCode == 200) {
-        // 结构 ![图片](https://img.cdn.sugarat.top/mdImg/MTYxMjg0MTQyODQ1Mg==612841428452)
+        // 结构 ![图片](./qiniu-oss/MTYxMjg0MTQyODQ1Mg==612841428452.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxMjg0MTQyODQ1Mg%3D%3D612841428452)
         const item = respBody.items[0]
         const { code, key } = item
         res({ code, key })

@@ -21,27 +21,27 @@ cover: https://img.cdn.sugarat.top/mdImg/MTY4ODMwOTEzMzUzNA==688309133534
 
 我这里使用安装包傻瓜式的一键安装，从官网下载 [python 3.16.0](https://www.python.org/downloads/release/python-3106/) 安装包
 
-![](https://img.cdn.sugarat.top/mdImg/MTY4ODMwMDc3OTM2Mg==688300779362)
+![](./mac-install/MTY4ODMwMDc3OTM2Mg==688300779362.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY4ODMwMDc3OTM2Mg%3D%3D688300779362)
 
 打开下载好的安装包，无脑选择下一步即可
 
-![](https://img.cdn.sugarat.top/mdImg/MTY4ODMwMDgyMDQyMw==688300820423)
+![](./mac-install/MTY4ODMwMDgyMDQyMw==688300820423.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY4ODMwMDgyMDQyMw%3D%3D688300820423)
 
 安装完后打开终端输入，[查看 python 版本](https://app.warp.dev/block/s9LVoqUBc12tgLXmwl1sQO)
 ```sh
 python3 --version
 ```
 
-![](https://img.cdn.sugarat.top/mdImg/MTY4ODMwMTAyODI2Nw==688301028267)
+![](./mac-install/MTY4ODMwMTAyODI2Nw==688301028267.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY4ODMwMTAyODI2Nw%3D%3D688301028267)
 
 这里可以在`~/.zshrc`中设置一个别名`python`，方便后续使用
 ```sh
 alias python=python3
 ```
 
-![](https://img.cdn.sugarat.top/mdImg/MTY4ODMwMTEwMTgzNw==688301101837)
+![](./mac-install/MTY4ODMwMTEwMTgzNw==688301101837.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY4ODMwMTEwMTgzNw%3D%3D688301101837)
 
-![](https://img.cdn.sugarat.top/mdImg/MTY4ODMwMTEzMjgzNQ==688301132835)
+![](./mac-install/MTY4ODMwMTEzMjgzNQ==688301132835.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY4ODMwMTEzMjgzNQ%3D%3D688301132835)
 
 ### 安装 stable-diffusion-webui
 
@@ -64,11 +64,11 @@ pip install -r requirements.txt
 ./webui.sh
 ```
 
-![](https://img.cdn.sugarat.top/mdImg/MTY4ODMwMTU4NTA0Mw==688301585043)
+![](./mac-install/MTY4ODMwMTU4NTA0Mw==688301585043.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY4ODMwMTU4NTA0Mw%3D%3D688301585043)
 
 访问 `http://127.0.0.1:7860/` 即可应用的内容
 
-![](https://img.cdn.sugarat.top/mdImg/MTY4ODMwMTY2MTk5MA==688301661990)
+![](./mac-install/MTY4ODMwMTY2MTk5MA==688301661990.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY4ODMwMTY2MTk5MA%3D%3D688301661990)
 
 ## 配置 stable-diffusion-webui
 ### 汉化
@@ -78,21 +78,21 @@ pip install -r requirements.txt
 
 安装操作路径: `Extensions` => `URL for extension's git repository` => `Install`
 
-![](https://img.cdn.sugarat.top/mdImg/MTY4ODMwMTc1ODg0MQ==688301758841)
+![](./mac-install/MTY4ODMwMTc1ODg0MQ==688301758841.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY4ODMwMTc1ODg0MQ%3D%3D688301758841)
 
 输入插件地址：`https://github.com/VinsonLaro/stable-diffusion-webui-chinese`,点击`Install`即可
 
 紧接着应用插件：`Installed` => `Apply and restart UI`
 
-![](https://img.cdn.sugarat.top/mdImg/MTY4ODMwMTk0NTg4Nw==688301945887)
+![](./mac-install/MTY4ODMwMTk0NTg4Nw==688301945887.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY4ODMwMTk0NTg4Nw%3D%3D688301945887)
 
 设置汉化：`Settings` => `User Interface` => `Localization` => `Apply Settings` => `Reload UI`
 
-![](https://img.cdn.sugarat.top/mdImg/MTY4ODMwMjA5NjAwMQ==688302096001)
+![](./mac-install/MTY4ODMwMjA5NjAwMQ==688302096001.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY4ODMwMjA5NjAwMQ%3D%3D688302096001)
 
 推荐使用中英对照，方便观看部分英文教程
 
-![](https://img.cdn.sugarat.top/mdImg/MTY4ODMwMjM3MTAwNw==688302371007)
+![](./mac-install/MTY4ODMwMjM3MTAwNw==688302371007.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY4ODMwMjM3MTAwNw%3D%3D688302371007)
 
 再次访问即可看到英文汉化的内容
 
@@ -100,7 +100,7 @@ pip install -r requirements.txt
 
 由于网络问题可能会出现访问失败的情况，如下图所示
 
-![](https://img.cdn.sugarat.top/mdImg/MTY4ODMwMjQ0NDUwNg==688302444506)
+![](./mac-install/MTY4ODMwMjQ0NDUwNg==688302444506.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY4ODMwMjQ0NDUwNg%3D%3D688302444506)
 
 这里可以使用笔者的CV下来的配置`https://script.sugarat.top/json/sd.json`
 
@@ -110,46 +110,46 @@ pip install -r requirements.txt
 npx http-server
 ```
 
-![](https://img.cdn.sugarat.top/mdImg/MTY4ODMwMjc3ODEzNg==688302778136)
+![](./mac-install/MTY4ODMwMjc3ODEzNg==688302778136.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY4ODMwMjc3ODEzNg%3D%3D688302778136)
 
 url设置为`http://127.0.0.1:8080/sd.json`即可，点击 加载 即可看到插件列表
 
-![](https://img.cdn.sugarat.top/mdImg/MTY4ODMwMzI4NTY5Mg==688303285692)
+![](./mac-install/MTY4ODMwMzI4NTY5Mg==688303285692.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY4ODMwMzI4NTY5Mg%3D%3D688303285692)
 
 例如 安装 `sd-webui-controlnet` 和 `3D Openpose Editor`
 
 搜索`controlnet`，找到相应的插件，点击 `Installed` 即可
 
-![](https://img.cdn.sugarat.top/mdImg/MTY4ODMwNTU2NjA0Mw==688305566043)
+![](./mac-install/MTY4ODMwNTU2NjA0Mw==688305566043.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY4ODMwNTU2NjA0Mw%3D%3D688305566043)
 
 在已安装列表即可看到安装的插件
 
-![](https://img.cdn.sugarat.top/mdImg/MTY4ODMwNjIyOTMxNg==688306229316)
+![](./mac-install/MTY4ODMwNjIyOTMxNg==688306229316.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY4ODMwNjIyOTMxNg%3D%3D688306229316)
 
 重启后即可看到刚安装的插件生效了
 
-![](https://img.cdn.sugarat.top/mdImg/MTY4ODMwNjc4MzcxMg==688306783712)
+![](./mac-install/MTY4ODMwNjc4MzcxMg==688306783712.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY4ODMwNjc4MzcxMg%3D%3D688306783712)
 
 ## 安装模型
 > 从 [C 站](https://civitai.com/)：https://civitai.com/ 下载（需要科学上网工具才能访问）
 
-![](https://img.cdn.sugarat.top/mdImg/MTY4ODMwOTEzMzUzNA==688309133534)
+![](./mac-install/MTY4ODMwOTEzMzUzNA==688309133534.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY4ODMwOTEzMzUzNA%3D%3D688309133534)
 
 比如 [ChilloutMix](https://civitai.com/models/6424?modelVersionId=11745) 模型
 
 点击下载
 
-![](https://img.cdn.sugarat.top/mdImg/MTY4ODMwOTI2NTU3Mg==688309265572)
+![](./mac-install/MTY4ODMwOTI2NTU3Mg==688309265572.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY4ODMwOTI2NTU3Mg%3D%3D688309265572)
 
 导入下载的模型到目录 `models/Stable-diffusion`
 
-![](https://img.cdn.sugarat.top/mdImg/MTY4ODMwOTUyMDk4MA==688309520980)
+![](./mac-install/MTY4ODMwOTUyMDk4MA==688309520980.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY4ODMwOTUyMDk4MA%3D%3D688309520980)
 
 然后重启服务或者点击刷新
 
-![](https://img.cdn.sugarat.top/mdImg/MTY4ODU3MDA2NDczNA==688570064734)
+![](./mac-install/MTY4ODU3MDA2NDczNA==688570064734.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY4ODU3MDA2NDczNA%3D%3D688570064734)
 
-![](https://img.cdn.sugarat.top/mdImg/MTY4ODMwOTYxMDkyOA==688309610928)
+![](./mac-install/MTY4ODMwOTYxMDkyOA==688309610928.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY4ODMwOTYxMDkyOA%3D%3D688309610928)
 
 ## 简单使用
 
@@ -159,11 +159,11 @@ url设置为`http://127.0.0.1:8080/sd.json`即可，点击 加载 即可看到�
 
 查看大图时滑到右下角
 
-![](https://img.cdn.sugarat.top/mdImg/MTY4ODMwOTg3ODUxOA==688309878518)
+![](./mac-install/MTY4ODMwOTg3ODUxOA==688309878518.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY4ODMwOTg3ODUxOA%3D%3D688309878518)
 
 或者缩略图右下角的 “i”
 
-![](https://img.cdn.sugarat.top/mdImg/MTY4ODMwOTkwMzgwOA==688309903808)
+![](./mac-install/MTY4ODMwOTkwMzgwOA==688309903808.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY4ODMwOTkwMzgwOA%3D%3D688309903808)
 
 下面实操使用一下上面的提示词
 
@@ -193,6 +193,6 @@ DPM++ SDE Karras
 
 最后效果如下
 
-![](https://img.cdn.sugarat.top/mdImg/MTY4ODMxMTAyMTY2Ng==688311021666)
+![](./mac-install/MTY4ODMxMTAyMTY2Ng==688311021666.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY4ODMxMTAyMTY2Ng%3D%3D688311021666)
 
-![](https://img.cdn.sugarat.top/mdImg/MTY4ODMxMTI1MTEzNw==688311251137)
+![](./mac-install/MTY4ODMxMTI1MTEzNw==688311251137.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY4ODMxMTI1MTEzNw%3D%3D688311251137)

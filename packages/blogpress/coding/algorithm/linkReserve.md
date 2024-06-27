@@ -32,7 +32,7 @@ ListNode
 ```
 ## 迭代法
 
-![](https://pic.leetcode-cn.com/9ce26a709147ad9ce6152d604efc1cc19a33dc5d467ed2aae5bc68463fdd2888.gif)
+![](./linkReserve/9ce26a709147ad9ce6152d604efc1cc19a33dc5d467ed2aae5bc68463fdd2888.gif?s1=https%3A//pic.leetcode-cn.com/9ce26a709147ad9ce6152d604efc1cc19a33dc5d467ed2aae5bc68463fdd2888.gif)
 ```js
 /**
  * @param {ListNode} head
@@ -54,7 +54,7 @@ var reverseList = function(head) {
 
 ## 递归法-1
 
-![](https://pic.leetcode-cn.com/8951bc3b8b7eb4da2a46063c1bb96932e7a69910c0a93d973bd8aa5517e59fc8.gif)
+![](./linkReserve/8951bc3b8b7eb4da2a46063c1bb96932e7a69910c0a93d973bd8aa5517e59fc8.gif?s1=https%3A//pic.leetcode-cn.com/8951bc3b8b7eb4da2a46063c1bb96932e7a69910c0a93d973bd8aa5517e59fc8.gif)
 ```js
 /**
  * @param {ListNode} head

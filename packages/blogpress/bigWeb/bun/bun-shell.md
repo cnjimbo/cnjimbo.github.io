@@ -50,19 +50,19 @@ ls *.js
 
 [rimraf](https://www.npmjs.com/package/rimraf) 是 `rm -rf` 指令的跨平台实现，每周下载 6000 万次：
 
-![](https://img.cdn.sugarat.top/mdImg/sugar/4be77f54128dc01fe235bf46be65dfd0)
+![](./bun-shell/4be77f54128dc01fe235bf46be65dfd0.png?s1=https%3A//img.cdn.sugarat.top/mdImg/sugar/4be77f54128dc01fe235bf46be65dfd0)
 
 ### `FOO=bar <script>` 设置环境变量在 Windows 上不生效
 
 不同平台上设置环境变量的方式略有不同。如果不使用 `FOO=bar` 这种方式，那就是使用 [cross-env](https://www.npmjs.com/package/cross-env)
 
-![](https://img.cdn.sugarat.top/mdImg/sugar/654ccf7364bc395e6699f33dbe05bc8c)
+![](./bun-shell/654ccf7364bc395e6699f33dbe05bc8c.png?s1=https%3A//img.cdn.sugarat.top/mdImg/sugar/654ccf7364bc395e6699f33dbe05bc8c)
 
 ### which 在 Windows 上是 where
 
 于是另一个周下载量 6000w 的包诞生了：
 
-![](https://img.cdn.sugarat.top/mdImg/sugar/ba91ab9eb9713c5484c09a6bd62f96a5)
+![](./bun-shell/ba91ab9eb9713c5484c09a6bd62f96a5.png?s1=https%3A//img.cdn.sugarat.top/mdImg/sugar/ba91ab9eb9713c5484c09a6bd62f96a5)
 
 ## shell 启动时间也有一点长
 创建一个 `shell` 执行需要多久？
@@ -225,4 +225,4 @@ bun test.ts
 
 [运行结果](https://app.warp.dev/block/VLbnk6T4x6rCSVZT2uwWs7) 如下
 
-![](https://img.cdn.sugarat.top/mdImg/sugar/1ad4e2f3727b32803ee4ce3b458ee21f)
+![](./bun-shell/1ad4e2f3727b32803ee4ce3b458ee21f.png?s1=https%3A//img.cdn.sugarat.top/mdImg/sugar/1ad4e2f3727b32803ee4ce3b458ee21f)
