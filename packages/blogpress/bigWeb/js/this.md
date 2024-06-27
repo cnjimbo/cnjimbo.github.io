@@ -98,7 +98,7 @@ fn8 = fn8.bind({p8:8}).bind({p8:88}).bind({p8:888})
 fn8() // 8
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTU4MzgyNjg3NzI4Mw==583826877283)
+![图片](./this/MTU4MzgyNjg3NzI4Mw==583826877283.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTU4MzgyNjg3NzI4Mw%3D%3D583826877283)
 
 
 

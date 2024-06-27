@@ -135,7 +135,7 @@ module.exports = {
 
 渲染结果如下
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyNDQ0NDIzMjQyMg==624444232422)
+![图片](./uni-vue3-cli_3/MTYyNDQ0NDIzMjQyMg==624444232422.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyNDQ0NDIzMjQyMg%3D%3D624444232422)
 
 ## 最后
 到这一个包含了常见特性的uni-app 开发小程序的工程化模板就算结束了，如果还要有推荐的特性欢迎评论交流

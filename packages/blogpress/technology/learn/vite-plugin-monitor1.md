@@ -33,7 +33,7 @@ categories:
 ```sh
 npm run dev
 ```
-![图片](https://img.cdn.sugarat.top/mdImg/MTYzMjcyMjY1NzQxMQ==632722657411)
+![图片](./vite-plugin-monitor1/MTYzMjcyMjY1NzQxMQ==632722657411.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYzMjcyMjY1NzQxMQ%3D%3D632722657411)
 
 为此只能通过一些hack的手段获取这些指标了，下面将展开详细的介绍
 
@@ -165,7 +165,7 @@ export default defineConfig({
 ```
 接着通过配置的指令启动`vite`，就能看到我们插件的打印的配置文件内容了
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYzMjc1NTgxNDM4Nw==632755814387)
+![图片](./vite-plugin-monitor1/MTYzMjc1NTgxNDM4Nw==632755814387.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYzMjc1NTgxNDM4Nw%3D%3D632755814387)
 
 由于是通过软连接的方式引入的插件，那么在插件工程里的任意更改都会实时生效，也就避免了频繁的执行`yarn add file:localProjectDir`
 

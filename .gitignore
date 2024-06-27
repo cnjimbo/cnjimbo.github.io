@@ -6,7 +6,7 @@ docs/.vuepress/dist
 *.hot-update.*
 node_modules
 dist
-cache
+# cache
 .temp
 blog.tar.gz
 .DS_Store

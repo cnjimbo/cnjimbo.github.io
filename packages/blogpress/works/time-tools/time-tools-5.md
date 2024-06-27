@@ -18,7 +18,7 @@ tags:
 期望效果的指令为：`timec -or --range <startTime>_<endTime> <filename1> <filename1> .....`
 
 ## 本期效果
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyODI2NDU4MDE2Ng==time-control5.gif)
+![图片](./time-tools-5/MTYyODI2NDU4MDE2Ng==time-control5.gif?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyODI2NDU4MDE2Ng%3D%3Dtime-control5.gif)
 
 ## 功能开发
 

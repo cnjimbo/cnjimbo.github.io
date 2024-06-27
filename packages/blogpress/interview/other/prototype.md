@@ -23,7 +23,7 @@ categories:
 * 函数的 prototype 是一个对象
 * 对象的 ``__proto__`` 属性指向原型， ``__proto__`` 将对象和原型连接起来组成了原型链
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTU4Mzg0NDg5ODg5Mg==583844898892)
+![图片](./prototype/MTU4Mzg0NDg5ODg5Mg==583844898892.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTU4Mzg0NDg5ODg5Mg%3D%3D583844898892)
 
 :::tip 参考
 [冴羽:JavaScript深入之从原型到原型链](https://github.com/mqyqingfeng/Blog/issues/2)<br/>

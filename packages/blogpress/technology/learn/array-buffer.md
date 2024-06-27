@@ -12,7 +12,7 @@ categories:
 ## 效果
 先上效果图，非常朴素，**没有用代码高亮插件**，**无样式表**
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyMzIzNTEyNzAzNw==623235127037)
+![图片](./array-buffer/MTYyMzIzNTEyNzAzNw==623235127037.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyMzIzNTEyNzAzNw%3D%3D623235127037)
 
 * [完整实例源码](https://github.com/ATQQ/demos/blob/main/arraybuffer/README.md)
 
@@ -248,7 +248,7 @@ $lists.addEventListener('click', function (e) {
 
 到此的生成目录效果如下:
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyMzI0MzcyMzA5Nw==623243723097)
+![图片](./array-buffer/MTYyMzI0MzcyMzA5Nw==623243723097.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyMzI0MzcyMzA5Nw%3D%3D623243723097)
 
 
 ## 最后

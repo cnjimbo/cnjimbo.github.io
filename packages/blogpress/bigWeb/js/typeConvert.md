@@ -14,9 +14,9 @@ categories:
 # JavaScript中的类型转换规则
 先上两张有趣的网图:
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyMzU5NTA3MzMwMA==623595073300)
+![图片](./typeConvert/MTYyMzU5NTA3MzMwMA==623595073300.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyMzU5NTA3MzMwMA%3D%3D623595073300)
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyMzU5NTExMzY2MQ==623595113661)
+![图片](./typeConvert/MTYyMzU5NTExMzY2MQ==623595113661.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyMzU5NTExMzY2MQ%3D%3D623595113661)
 
 可以看出，JavaScript的隐式类型转换是很有意思的（让人摸不着头脑）
 
@@ -294,7 +294,7 @@ console.log(demo4 + 1); // 报错
 
 >来源于参考资料中的网图
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTU5OTQ2OTY5MzkzMQ==599469693931)
+![图片](./typeConvert/MTU5OTQ2OTY5MzkzMQ==599469693931.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTU5OTQ2OTY5MzkzMQ%3D%3D599469693931)
 
 <details>
 <summary>

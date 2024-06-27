@@ -32,7 +32,7 @@ npx cnnc
 
 [示例结果](https://app.warp.dev/block/wrTUBqnxdg65BqCTgtSgD5) 如下
 
-![](https://img.cdn.sugarat.top/mdImg/MTY5NDI0OTI5MjYwMg==694249292602)
+![](./cnnc/MTY5NDI0OTI5MjYwMg==694249292602.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY5NDI0OTI5MjYwMg%3D%3D694249292602)
 
 当然也同样支持手动传入要更新的包
 
@@ -44,7 +44,7 @@ npx cncc vue react
 
 这样可以直接通过`cnnc`或`cs`命令调用
 
-![](https://img.cdn.sugarat.top/mdImg/MTY5NDI1NDAxNTM0Nw==694254015347)
+![](./cnnc/MTY5NDI1NDAxNTM0Nw==694254015347.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY5NDI1NDAxNTM0Nw%3D%3D694254015347)
 
 ## 实现原理
 核心代码不到20行，下面详细的拆解一下，便于学习与理解

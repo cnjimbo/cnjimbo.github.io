@@ -16,7 +16,7 @@ tags:
 ## 本期效果预览
 >指令有些多，演示可能有些啰嗦
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyOTAzMzQyMjQ0OQ==timec12.gif)
+![图片](./time-tools-12/MTYyOTAzMzQyMjQ0OQ==timec12.gif?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyOTAzMzQyMjQ0OQ%3D%3Dtimec12.gif)
 
 ## 功能开发
 ### 彩色日志
@@ -36,7 +36,7 @@ const chalk = require('chalk')
 // 打印
 console.log(chalk.yellow('hello'),chalk.red('world'))
 ```
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyOTAzMzYyNTg5NQ==629033625895)
+![图片](./time-tools-12/MTYyOTAzMzYyNTg5NQ==629033625895.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyOTAzMzYyNTg5NQ%3D%3D629033625895)
 
 项目中进行简单的封装:
 * 项目中不直接使用 `console.log`
@@ -73,7 +73,7 @@ print.success('成功文案');
 print.fail('失败提示');
 print.advice('建议文案');
 ```
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyOTAzMzkyMDI0Mg==629033920242)
+![图片](./time-tools-12/MTYyOTAzMzkyMDI0Mg==629033920242.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyOTAzMzkyMDI0Mg%3D%3D629033920242)
 
 利用封装的这三个方法，配合chalk的一些默认方法便完成了打印日志的改造
 
@@ -162,7 +162,7 @@ Commands:
 ```
 咱们直接第一个参数指定文件所在目录即可，加上`--host` option后将会提供一个局域网的地址访问，像下面这样
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyOTAzNjc5Nzg4OA==629036797888)
+![图片](./time-tools-12/MTYyOTAzNjc5Nzg4OA==629036797888.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyOTAzNjc5Nzg4OA%3D%3D629036797888)
 
 同一局域网的其它设备也可通过这个地址访问这个页面的信息
 

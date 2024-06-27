@@ -166,7 +166,7 @@ node index.js /home/sugar/Documents/VueProject/my-blog-vuepress
 ```sh
 ok 309 个文件
 ```
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyMjYwODQ0MjI5OQ==622608442299)
+![图片](./mergefile/MTYyMjYwODQ0MjI5OQ==622608442299.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyMjYwODQ0MjI5OQ%3D%3D622608442299)
 
 好家伙，敲了3w多行了
 

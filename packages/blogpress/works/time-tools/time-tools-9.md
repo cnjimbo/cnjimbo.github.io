@@ -28,7 +28,7 @@ npm config set registry https://registry.npmjs.org/
 npm install -g time-control
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyODYwNTM4NTM2Mg==628605385362)
+![图片](./time-tools-9/MTYyODYwNTM4NTM2Mg==628605385362.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyODYwNTM4NTM2Mg%3D%3D628605385362)
 
 ### 查看支持的指令
 
@@ -40,7 +40,7 @@ npm install -g time-control
 timec --help
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyODYwNTY3NDEyOA==628605674128)
+![图片](./time-tools-9/MTYyODYwNTY3NDEyOA==628605674128.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyODYwNTY3NDEyOA%3D%3D628605674128)
 
 ### 项目初始化
 创建一个用于记录的项目
@@ -48,14 +48,14 @@ timec --help
 timec init timeLog
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyODYwNjAzNjY5OQ==628606036700)
+![图片](./time-tools-9/MTYyODYwNjAzNjY5OQ==628606036700.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyODYwNjAzNjY5OQ%3D%3D628606036700)
 
 ### 创建文件
 创建一个用于自动写入内容的文件
 ```sh
 timec create auto.md
 ```
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyODYwNjE1MTM1OQ==628606151359)
+![图片](./time-tools-9/MTYyODYwNjE1MTM1OQ==628606151359.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyODYwNjE1MTM1OQ%3D%3D628606151359)
 
 创建的模板文件会有一些内容，可以手动清除一下
 
@@ -64,7 +64,7 @@ timec create auto.md
 ```sh
 timec upPath ./auto.md 
 ```
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyODYwNjM0MDE3Mw==628606340173)
+![图片](./time-tools-9/MTYyODYwNjM0MDE3Mw==628606340173.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyODYwNjM0MDE3Mw%3D%3D628606340173)
 
 
 ### 任务管理
@@ -91,7 +91,7 @@ timec task <name>
 timec task -d <name>
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyODYwNjUzOTc3NA==628606539774)
+![图片](./time-tools-9/MTYyODYwNjUzOTc3NA==628606539774.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyODYwNjUzOTc3NA%3D%3D628606539774)
 
 ### 事务管理
 
@@ -105,7 +105,7 @@ timec thing <name>
 timec thing
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyODYwNjg0MDEzMQ==628606840131)
+![图片](./time-tools-9/MTYyODYwNjg0MDEzMQ==628606840131.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyODYwNjg0MDEzMQ%3D%3D628606840131)
 
 
 结束当前事务
@@ -115,7 +115,7 @@ timec thing
 timec thing -s
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyODYwNzAyMDIxNg==628607020216)
+![图片](./time-tools-9/MTYyODYwNzAyMDIxNg==628607020216.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyODYwNzAyMDIxNg%3D%3D628607020216)
 
 不切换事务，直接开始新的事务
 * 将进行中的直接结束，然后将结果写入文件中
@@ -124,7 +124,7 @@ timec thing -s
 timec thing <name>
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyODYwNzIyMjE2Nw==628607222167)
+![图片](./time-tools-9/MTYyODYwNzIyMjE2Nw==628607222167.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyODYwNzIyMjE2Nw%3D%3D628607222167)
 
 注：事务记录的数字是，事务的耗时，单位是小时（hours）保留5位小数
 
@@ -142,7 +142,7 @@ timec thing <name>
 timec -oj <filepath>
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyODYwNzQ0ODc3Mg==628607448772)
+![图片](./time-tools-9/MTYyODYwNzQ0ODc3Mg==628607448772.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyODYwNzQ0ODc3Mg%3D%3D628607448772)
 
 #### 导出Markdown
 
@@ -151,7 +151,7 @@ timec -oj <filepath>
 timec -omt <filepath>
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyODYwNzU2MzYzMQ==628607563631)
+![图片](./time-tools-9/MTYyODYwNzU2MzYzMQ==628607563631.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyODYwNzU2MzYzMQ%3D%3D628607563631)
 
 #### 生成日报
 指定要查看的日期和分析的文件即可：
@@ -160,7 +160,7 @@ timec -omt <filepath>
 timec -or -D <date> <filepath>
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyODYwNzczNjE2Nw==628607736167)
+![图片](./time-tools-9/MTYyODYwNzczNjE2Nw==628607736167.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyODYwNzczNjE2Nw%3D%3D628607736167)
 
 #### 生成月报
 通过`-M`指定要查看的月份即可
@@ -168,7 +168,7 @@ timec -or -D <date> <filepath>
 timec -or -M <month> <filepath>
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyODYwNzg5NzAxNA==628607897014)
+![图片](./time-tools-9/MTYyODYwNzg5NzAxNA==628607897014.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyODYwNzg5NzAxNA%3D%3D628607897014)
 
 #### 一段时间的报告
 可以用这个生成周报，任意时间范围的报告
@@ -177,7 +177,7 @@ timec -or -M <month> <filepath>
 timec -or -R <startTime_endTime> <filepath>
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyODYwODAxNjQ2Ng==628608016466)
+![图片](./time-tools-9/MTYyODYwODAxNjQ2Ng==628608016466.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyODYwODAxNjQ2Ng%3D%3D628608016466)
 
 ## 小结
 核心的功能基本都详细介绍完毕，演示过程中发现了一些bug，留到下期进行优化

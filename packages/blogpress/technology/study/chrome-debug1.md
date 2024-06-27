@@ -18,7 +18,7 @@ todo: 摘抄一小段有意思的内容
 ## [Chrome Devtools](https://developer.chrome.com/docs/devtools/)
 TODO: 开一个专题,详细介绍各个面板的使用方法与场景
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzc3OTczNTY1NQ==617779735655)
+![图片](./chrome-debug1/MTYxNzc3OTczNTY1NQ==617779735655.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNzc3OTczNTY1NQ%3D%3D617779735655)
 
 开发调试前端应用必备
 
@@ -109,28 +109,28 @@ TODO: 开一个专题,详细介绍各个面板的使用方法与场景
 * **chrome://help**
 * **chrome://version**: 更加详细的查看
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzc4MzYzNTA5MQ==617783635091)
+![图片](./chrome-debug1/MTYxNzc4MzYzNTA5MQ==617783635091.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNzc4MzYzNTA5MQ%3D%3D617783635091)
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzc4MzU5Mzk1MQ==617783593951)
+![图片](./chrome-debug1/MTYxNzc4MzU5Mzk1MQ==617783593951.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNzc4MzU5Mzk1MQ%3D%3D617783593951)
 
 ## 有趣的功能地址
 ### dino 小游戏
 **chrome://dino/**
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzc4NDIyNTE5Mw==617784225193)
+![图片](./chrome-debug1/MTYxNzc4NDIyNTE5Mw==617784225193.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNzc4NDIyNTE5Mw%3D%3D617784225193)
 
 ### 查看实验中的功能
 **chrome://flags/**
 
 这里有很多正在试验中的功能,可以通过这个面板来选择启动/禁用相对应的功能
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzc4NDMxNjI0Mg==617784316242)
+![图片](./chrome-debug1/MTYxNzc4NDMxNjI0Mg==617784316242.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNzc4NDMxNjI0Mg%3D%3D617784316242)
 
 ### 查看所有功能
 
 **chrome://chrome-urls/**
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzc4NDQyMzM0NQ==617784423345)
+![图片](./chrome-debug1/MTYxNzc4NDQyMzM0NQ==617784423345.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNzc4NDQyMzM0NQ%3D%3D617784423345)
 
 
 ## 全局方法 copy(...)
@@ -147,7 +147,7 @@ copy(document.querySelector(selector).innerHTML)
 ```
 
 ## Store as global
-![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzc4NTAyODUwMA==617785028500)
+![图片](./chrome-debug1/MTYxNzc4NTAyODUwMA==617785028500.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNzc4NTAyODUwMA%3D%3D617785028500)
 
 可以将目标变量存储为一个全局变量 tempX
 
@@ -155,7 +155,7 @@ copy(document.querySelector(selector).innerHTML)
 
 ## 保存堆栈信息
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzc4NTIzODczNQ==617785238735)
+![图片](./chrome-debug1/MTYxNzc4NTIzODczNQ==617785238735.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNzc4NTIzODczNQ%3D%3D617785238735)
 
 右键错误信息,即可将其存储为日志文件
 
@@ -168,26 +168,26 @@ copy(document.querySelector(selector).innerHTML)
 第3组快捷键默认是禁用状态。需要手动打开:
 :::
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzc4NjAwMDMwOA==617786000308)
+![图片](./chrome-debug1/MTYxNzc4NjAwMDMwOA==617786000308.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNzc4NjAwMDMwOA%3D%3D617786000308)
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzc4NjAyMTIyNw==617786021227)
+![图片](./chrome-debug1/MTYxNzc4NjAyMTIyNw==617786021227.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNzc4NjAyMTIyNw%3D%3D617786021227)
 
 
 其余所有快捷键
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzc4NzU5OTQ0Mg==617787599442)
+![图片](./chrome-debug1/MTYxNzc4NzU5OTQ0Mg==617787599442.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNzc4NzU5OTQ0Mg%3D%3D617787599442)
 
 
 ## Command Menu
 快捷键 Ctrl + Shift + P
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzc5NzE0NzA3Nw==617797147077)
+![图片](./chrome-debug1/MTYxNzc5NzE0NzA3Nw==617797147077.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNzc5NzE0NzA3Nw%3D%3D617797147077)
 
 提供了很多实用功能
 
 ### 截图
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzc5NzM3MzkzMg==617797373932)
+![图片](./chrome-debug1/MTYxNzc5NzM3MzkzMg==617797373932.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNzc5NzM3MzkzMg%3D%3D617797373932)
 * 页面截图: Capture full size screenshot
 * 指定区域: Capture area screenshot
 * 指定DOM节点: Capture node screenshot
@@ -195,7 +195,7 @@ copy(document.querySelector(selector).innerHTML)
 
 ### 主题切换
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzc5Nzc2MjYwOA==617797762608)
+![图片](./chrome-debug1/MTYxNzc5Nzc2MjYwOA==617797762608.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNzc5Nzc2MjYwOA%3D%3D617797762608)
 
 ## 预设代码块
 通过预设脚本,将在console面板中高频使用的代码块保存下来
@@ -206,19 +206,19 @@ copy(document.querySelector(selector).innerHTML)
 console.log(document.body.textContent.replace(/[^\u4e00-\u9fa5]/g,'').length)
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzc5ODIxNzkxMQ==617798217911)
+![图片](./chrome-debug1/MTYxNzc5ODIxNzkxMQ==617798217911.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNzc5ODIxNzkxMQ%3D%3D617798217911)
 
 接下来复用这个代码块,在Source面板的 snippets中新建一个Snippet并将代码块写入
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzc5ODI4Mzc2Nw==617798283767)
+![图片](./chrome-debug1/MTYxNzc5ODI4Mzc2Nw==617798283767.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNzc5ODI4Mzc2Nw%3D%3D617798283767)
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzc5ODM3NjczMg==617798376732)
+![图片](./chrome-debug1/MTYxNzc5ODM3NjczMg==617798376732.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNzc5ODM3NjczMg%3D%3D617798376732)
 
 接下来通过指令运行 `!scriptName`即可执行脚本
 
 tips: 默认打开Command会有一个 `>` 记得先删除
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYxNzc5ODUyMzQ3Ng==617798523476)
+![图片](./chrome-debug1/MTYxNzc5ODUyMzQ3Ng==617798523476.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNzc5ODUyMzQ3Ng%3D%3D617798523476)
 
 这个用来写 **一键评教** 脚本贼方便
 

@@ -155,7 +155,7 @@ function createTemplateFIle(cwd, filename) {
 ```
 
 ### 本期效果
-![图片](https://img.cdn.sugarat.top/mdImg/MTYyODE3NDI1NTI1Mg==timec4.gif)
+![图片](./time-tools-4/MTYyODE3NDI1NTI1Mg==timec4.gif?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyODE3NDI1NTI1Mg%3D%3Dtimec4.gif)
 
 ## 其它
 **下一期根据已有的功能整个周报生成**(鸽了一期)

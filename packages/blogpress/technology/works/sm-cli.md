@@ -36,7 +36,7 @@ categories:
 npm i -g @sugarat/source-map-cli
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTY2NzY2NTE1NzQwOQ==667665157409)
+![图片](./sm-cli/MTY2NzY2NTE1NzQwOQ==667665157409.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY2NzY2NTE1NzQwOQ%3D%3D667665157409)
 ## source-map库的简介
 npm地址：[source-map](https://www.npmjs.com/package/source-map)
 
@@ -331,7 +331,7 @@ getErrorSourceResult(
 ```
 示例打印结果如下
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTY2NzYzNTkxODE1OQ==667635918159)
+![图片](./sm-cli/MTY2NzYzNTkxODE1OQ==667635918159.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY2NzYzNTkxODE1OQ%3D%3D667635918159)
 
 方法实现如下(详细释义见注释)
 
@@ -375,7 +375,7 @@ export function printResult(result: SourceResult, showMaxLine = 5) {
 ```
 打印彩色的场景有限，这里直接将需要的效果颜色对应的`ANSI Escape code`从`chalk`库中截取出来
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTY2NzYzNDUwMzk2Ng==667634503966)
+![图片](./sm-cli/MTY2NzYzNDUwMzk2Ng==667634503966.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY2NzYzNDUwMzk2Ng%3D%3D667634503966)
 
 ```ts
 const underlineStr = (v: any) => `\x1B[4m${v}\x1B[24m`
@@ -439,7 +439,7 @@ getRemoteSource(
 })
 ```
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTY2NzYzOTU5NTgwOA==667639595808)
+![图片](./sm-cli/MTY2NzYzOTU5NTgwOA==667639595808.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY2NzYzOTU5NTgwOA%3D%3D667639595808)
 
 本小节[示例代码](https://github.com/ATQQ/tools/blob/9cee3f881157199c365b0a41ababe31d2f5b6fdf/packages/cli/source-map/__test__/util.ts#L30-L36)
 
@@ -496,7 +496,7 @@ const column = c || options.column
 
 效果如下
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTY2NzY1NzIwMDI4OQ==667657200289)
+![图片](./sm-cli/MTY2NzY1NzIwMDI4OQ==667657200289.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY2NzY1NzIwMDI4OQ%3D%3D667657200289)
 
 本小节[源码](https://github.com/ATQQ/tools/blob/main/packages/cli/source-map/src/command/parse.ts)
 ### sources指令
@@ -513,7 +513,7 @@ program
 
 效果如下
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTY2NzY2MDI1Mjg4MA==667660252880)
+![图片](./sm-cli/MTY2NzY2MDI1Mjg4MA==667660252880.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY2NzY2MDI1Mjg4MA%3D%3D667660252880)
 
 本小节[源码](https://github.com/ATQQ/tools/blob/main/packages/cli/source-map/src/command/sources.ts)
 

@@ -18,11 +18,11 @@ categories:
 ### 获取启动耗时
 项目启动后会在终端中输出`ready in xxms`
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYzMjkyMjIxNzI0Nw==632922217247)
+![图片](./vite-plugin-monitor2/MTYzMjkyMjIxNzI0Nw==632922217247.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYzMjkyMjIxNzI0Nw%3D%3D632922217247)
 
 为此咱们使用Vs Code在[源码](https://github1s.com/vitejs/vite)中搜一下这个关键字
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYzMjkyMjU5MDI2Mg==632922590262)
+![图片](./vite-plugin-monitor2/MTYzMjkyMjU5MDI2Mg==632922590262.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYzMjkyMjU5MDI2Mg%3D%3D632922590262)
 
 可以看到此部分代码在源码中如下
 
@@ -67,13 +67,13 @@ export default function Monitor(): Plugin {
 ```
 
 启动一个项目看看效果，成了。
-![图片](https://img.cdn.sugarat.top/mdImg/MTYzMjkyMzY1MjAzMg==632923652032)
+![图片](./vite-plugin-monitor2/MTYzMjkyMzY1MjAzMg==632923652032.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYzMjkyMzY1MjAzMg%3D%3D632923652032)
 
 
 ### HMR时间获取
 热更新时，终端中会出现下面的日志
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYzMjkyNDA0MzU2OQ==632924043569)
+![图片](./vite-plugin-monitor2/MTYzMjkyNDA0MzU2OQ==632924043569.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYzMjkyNDA0MzU2OQ%3D%3D632924043569)
 
 同理源码里搜一搜，能够定位出如下内容
 ```ts
@@ -125,7 +125,7 @@ server.middlewares.use(async (req, res, next) => {
 
 事实上通过`--debug`启动服务，能看到在HMR时会打印4个时间
 
-![图片](https://img.cdn.sugarat.top/mdImg/MTYzMjkyNTQzMzEwNw==632925433107)
+![图片](./vite-plugin-monitor2/MTYzMjkyNTQzMzEwNw==632925433107.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYzMjkyNTQzMzEwNw%3D%3D632925433107)
 
 目前方法仅仅得到了`vite:hmr`部分的时间，与实际耗时还有一丝丝差异
 

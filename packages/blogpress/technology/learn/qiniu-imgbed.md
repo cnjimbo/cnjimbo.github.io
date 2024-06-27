@@ -14,7 +14,7 @@ categories:
 
 支持**复制粘贴**，**截图**，**手动选择**，**拖拽**等四种常见的上传方案
 
-![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2fbcf37d23694a0a9a3b4a515a61a921~tplv-k3u1fbpfcp-zoom-1.image)
+![图片](./qiniu-imgbed/2fbcf37d23694a0a9a3b4a515a61a921~tplv-k3u1fbpfcp-zoom-1.image.png?s1=https%3A//p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2fbcf37d23694a0a9a3b4a515a61a921~tplv-k3u1fbpfcp-zoom-1.image)
 ## 线上预览
 * [线上demo](https://imgbed.sugarat.top/)
 * [在线编码](https://stackblitz.com/edit/github-2scsen?file=README.md)
@@ -52,23 +52,23 @@ QINIU_DOMAIN=domain # 图床域名(包含协议https/http)
 <details>
 <summary>查看 bucket</summary>
 
-![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0b906243abb94329a8efdfaba5e66a58~tplv-k3u1fbpfcp-zoom-1.image)
+![](./qiniu-imgbed/0b906243abb94329a8efdfaba5e66a58~tplv-k3u1fbpfcp-zoom-1.image.png?s1=https%3A//p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0b906243abb94329a8efdfaba5e66a58~tplv-k3u1fbpfcp-zoom-1.image)
 
 </details> 
 
 <details>
 <summary>查看 Access Key和Secret Key</summary>
 
-![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c60966aa203a41f49ba0cffdaad80141~tplv-k3u1fbpfcp-zoom-1.image)
+![](./qiniu-imgbed/c60966aa203a41f49ba0cffdaad80141~tplv-k3u1fbpfcp-zoom-1.image.png?s1=https%3A//p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c60966aa203a41f49ba0cffdaad80141~tplv-k3u1fbpfcp-zoom-1.image)
 
-![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/36299d27ec07496ebeb58021fc49ade7~tplv-k3u1fbpfcp-zoom-1.image)
+![](./qiniu-imgbed/36299d27ec07496ebeb58021fc49ade7~tplv-k3u1fbpfcp-zoom-1.image.png?s1=https%3A//p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/36299d27ec07496ebeb58021fc49ade7~tplv-k3u1fbpfcp-zoom-1.image)
 
 </details> 
 
 <details>
 <summary>查看域名</summary>
 
-![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e678a09cee3c4ec4b087bba565d8bb8a~tplv-k3u1fbpfcp-zoom-1.image)
+![图片](./qiniu-imgbed/e678a09cee3c4ec4b087bba565d8bb8a~tplv-k3u1fbpfcp-zoom-1.image.png?s1=https%3A//p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e678a09cee3c4ec4b087bba565d8bb8a~tplv-k3u1fbpfcp-zoom-1.image)
 
 </details> 
 
