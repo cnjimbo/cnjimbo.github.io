@@ -45,7 +45,7 @@
     "@types/bun": "^1.1.5",
     "@types/node": "^20.14.9",
     "@vue/runtime-core": "^3.4.30",
-    "@vue/runtime-dom": "^3.4.30",
+    "@vue/runtime-dom": "^3.4.31",
     "eslint": "^9.5.0",
     "eslint-plugin-todo-ddl": "^1.1.1",
     "json5": "^2.2.3",
