@@ -142,7 +142,6 @@
 		"autoRestart.showRestartNotificationForESLint": true,
 		"code-runner.clearPreviousOutput": true,
 		"code-runner.executorMap": {
-
 			"ahk": "autohotkey",
 			"applescript": "osascript",
 			"autoit": "autoit3",
