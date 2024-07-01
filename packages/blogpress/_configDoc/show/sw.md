@@ -13,7 +13,7 @@ categories:
 
 当你访问站点时，如发现页面右下角有这个小窗时，请记得点一下
 <div>
-    <img width="400px;" src ="https://img.cdn.sugarat.top/mdImg/MTYwNjU0NzUyMDQwNg==606547520406" alt="示例"/>
+    <img width="400px;" src ="./sw/MTYwNjU0NzUyMDQwNg==606547520406.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYwNjU0NzUyMDQwNg%3D%3D606547520406" alt="示例"/>
 </div>
 
 ## 为什么🤔

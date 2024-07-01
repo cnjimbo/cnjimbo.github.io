@@ -14,7 +14,7 @@ categories:
 
 | H5                                                                                             | PC                                                                                             |
 | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| <img src="https://img.cdn.sugarat.top/mdImg/MTY0OTA4NDk4MDg4Nw==ewuit-h5.gif" width="200px" /> | <img src="https://img.cdn.sugarat.top/mdImg/MTY0OTA4MzcwNTUzNQ==ewuit-pc.gif" width="300px" /> |
+| <img src="./ewuit/MTY0OTA4NDk4MDg4Nw==ewuit-h5.gif?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY0OTA4NDk4MDg4Nw%3D%3Dewuit-h5.gif" width="200px" /> | <img src="./ewuit/MTY0OTA4MzcwNTUzNQ==ewuit-pc.gif?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY0OTA4MzcwNTUzNQ%3D%3Dewuit-pc.gif" width="300px" /> |
 
 ## 快速体验
 ### 方式1

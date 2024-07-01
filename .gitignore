@@ -1,15 +1,14 @@
-docs/.vuepress/dist
-.vitepress/dist/
-.vitepress/cache/
-.vitepress/node_modules/
+**/docs/.vuepress/dist
+**/.vitepress/dist/
+**/.vitepress/cache/deps/
 *.temp.*
 *.hot-update.*
 node_modules
-dist
+**/dist
 # cache
-.temp
+**/.temp
 blog.tar.gz
 .DS_Store
-_pagefind
+**/_pagefind
 **/.history
 *.timestamp-*

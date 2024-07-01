@@ -28,7 +28,7 @@ emmmmm...动图时间较长，需要等一会儿效果才出来
 在devtools中运行下面这段神秘代码即可，实现源码见[此处](https://github.com/ATQQ/demos/blob/main/yuebingCursor/index.js)
 ```js
 const script = document.createElement('script')
-script.src = 'https://img.cdn.sugarat.top/demo/js-sdk/zq-rabbit/0.0.2/index.js'
+script.src = './mid-autumn-festival/index.js?s1=https%3A//img.cdn.sugarat.top/demo/js-sdk/zq-rabbit/0.0.2/index.js'
 document.body.append(script)
 ```
 将此部分代码加入到目标页面中即可
@@ -74,7 +74,7 @@ function createCursor() {
 
     addStyles(cursor, `
     #cursor{
-        background-image:url(https://img.cdn.sugarat.top/mdImg/MTYzMTMyNDYwNTgzMQ==631324605831);
+        background-image:url(./mid-autumn-festival/MTYzMTMyNDYwNTgzMQ==631324605831.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYzMTMyNDYwNTgzMQ%3D%3D631324605831);
         width:${size};
         height:${size};
         background-size:${size} ${size};
@@ -163,7 +163,7 @@ window.addEventListener('mousemove', function (e) {
 const orbitSize = '40px'
 addStyles(document.body, `
     .orbit{
-        background-image:url(https://img.cdn.sugarat.top/mdImg/MTYzMTMyNDMwODg2Nw==631324308867);
+        background-image:url(./mid-autumn-festival/MTYzMTMyNDMwODg2Nw==631324308867.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYzMTMyNDMwODg2Nw%3D%3D631324308867);
         width:${orbitSize};
         height:${orbitSize};
         background-size:${orbitSize} ${orbitSize};

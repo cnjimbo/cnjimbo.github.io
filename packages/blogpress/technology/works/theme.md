@@ -1,5 +1,5 @@
 ---
-cover: https://img.cdn.sugarat.top/mdImg/MTY3MzE3MDUxOTMwMw==673170519303
+cover: ./theme/MTY3MzE3MDUxOTMwMw==673170519303.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY3MzE3MDUxOTMwMw%3D%3D673170519303
 description: 简约风的vitepress博客主题介绍
 date: 2023-02-5 14:00:00
 sticky: 800

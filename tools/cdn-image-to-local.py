@@ -9,8 +9,11 @@ root = 'G:/vPress/cnjimbo.github.io/packages/blogpress'
 img_ext_supportted = ('.png', '.jpg', '.jpeg', '.gif', '.bmp', '.svg')
 # 对每个文件中的链接分别进行下载和替换链接处理
 img_url_starts = ('https://img.cdn', 'https://cdn.upyun', 'https://pic',
-                  'https://p3-juejin', 'https://wingman-1300536089.file')
-param_name='s1'
+                  'https://p3-juejin', 'https://wingman-1300536089.file',
+                  'https://img.cdn.sugarat.top')
+
+param_name = 's1'
+
 
 def main():
 
@@ -52,6 +55,57 @@ def download(file_path, currentDir):
     # regex  .*? this is special regular expression for non-greedy match
     result = re.findall(r'!\[(.*?)\]\((.*?)\)', text)
 
+    download_md_img(file_path, currentDir, dir_name, text, result)
+
+    pattern = r'(http[s]?://img\.cdn\.sugarat\.top[^\s\'\"\)]+)'
+    srcResult = re.findall(pattern, text)
+
+    download_md_src(file_path, currentDir, dir_name, text, srcResult)
+
+
+def download_md_src(file_path, currentDir, dir_name, text, result):
+    for i, content in enumerate(result):
+        src_url = content
+        print(" ")
+        print(" ")
+        print("==> :", file_path)
+        print("---Imageurl:", src_url)
+        try:
+            # download img
+            src_data = requests.get(src_url).content
+            # img name spell
+            src_name = src_url.strip("/").split("/")[-1]
+
+            src_folder = os.path.join(currentDir, dir_name)
+            if not os.path.exists(src_folder):
+                os.mkdir(src_folder)
+
+            name_with_ext, ext = os.path.splitext(unquote(src_name))
+            if len(ext) == 0:
+                name_with_ext = f"{name_with_ext}.png"
+            else:
+                name_with_ext = f"{name_with_ext}{ext}"
+
+            # print(name_with_ext)
+            src_relative = f"./{dir_name}/{name_with_ext}?{param_name}={quote(src_url)}"
+            print('   Relative:', src_relative)
+            src_path = os.path.join(currentDir, dir_name, name_with_ext)
+            print("   Diskpath:", src_path)
+
+            # write to file
+            with open(src_path, 'wb') as handler:
+                handler.write(src_data)
+
+            text = text.replace(f"{src_url}", f"{src_relative}")
+
+            with codecs.open(file_path, mode="w+", encoding="UTF-8") as f:
+                f.write(text)
+        except:
+            print('errrrrrrrrrrrr')
+            continue
+
+
+def download_md_img(file_path, currentDir, dir_name, text, result):
     for i, content in enumerate(result):
         image_quote = content[0]
         image_url = content[1]

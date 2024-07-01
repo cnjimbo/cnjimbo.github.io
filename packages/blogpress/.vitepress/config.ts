@@ -4,7 +4,7 @@ import type { Theme } from '@sugarat/theme'
 import { defineConfig } from 'vitepress'
 
 const baseUrl = process.env.FULL_URL ?? 'https://www.dmsrs.org'
-const relativeUrl = process.env.PUBLIC_URL ?? ""
+const relativeUrl = process.env.PUBLIC_URL ?? ''
 const weekly = `${baseUrl}/weekly`
 const RSSWeekly: Theme.RSSOptions = {
   title: '视野修炼 - 技术周刊',
@@ -43,18 +43,18 @@ const RSS: Theme.RSSOptions = {
 
 const blogTheme = getThemeConfig({
   imageStyle: {
-    coverPreview: [
-      // 七牛云
-      {
-        rule: '//img.cdn.sugarat.top',
-        suffix: '~cover.webp',
-      },
-      // 又拍云CDN
-      {
-        rule: '//cdn.upyun.sugarat.top',
-        suffix: '-cover',
-      },
-    ],
+    // coverPreview: [
+    //   // 七牛云
+    //   {
+    //     rule: '//img.cdn.sugarat.top',
+    //     suffix: '~cover.webp',
+    //   },
+    //   // 又拍云CDN
+    //   {
+    //     rule: '//cdn.upyun.sugarat.top',
+    //     suffix: '-cover',
+    //   },
+    // ],
   },
   themeColor: 'el-blue',
   RSS: [RSS, RSSWeekly],

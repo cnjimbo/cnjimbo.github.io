@@ -341,8 +341,8 @@ export function setSchema(data, key = '') {
 这里采用cdn的方式引入jsoneditor
 
 ```html
-<link rel="stylesheet" href="https://img.cdn.sugarat.top/css/jsoneditor.min.css">
-<script src="https://img.cdn.sugarat.top/js/jsoneditor.min.js"></script>
+<link rel="stylesheet" href="./online-resume/jsoneditor.min.css?s1=https%3A//img.cdn.sugarat.top/css/jsoneditor.min.css">
+<script src="./online-resume/jsoneditor.min.js?s1=https%3A//img.cdn.sugarat.top/js/jsoneditor.min.js"></script>
 ```
 
 初始化

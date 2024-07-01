@@ -112,7 +112,7 @@ w2 start
 ![图片](./yanglegeyang/MTY2MzU2OTczNTA0Mg==663569735042.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY2MzU2OTczNTA0Mg%3D%3D663569735042)
 
 下面是演示录屏
-<video controls style="width:100%;" src="https://img.cdn.sugarat.top/mdImg/MTY2MzU4MTkxODU3Mw==羊了个羊.mp4"></video>
+<video controls style="width:100%;" src="./yanglegeyang/MTY2MzU4MTkxODU3Mw==羊了个羊.mp4?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY2MzU4MTkxODU3Mw%3D%3D%E7%BE%8A%E4%BA%86%E4%B8%AA%E7%BE%8A.mp4"></video>
 
 ## 方案2：直接调用成功接口
 * ~~接口1：`https://cat-match.easygame2021.com/sheep/v1/game/game_over?rank_score=1&rank_state=1&rank_time=40&rank_role=1&skin=1`~~ 过了一天换接口了

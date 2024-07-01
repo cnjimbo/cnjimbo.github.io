@@ -17,6 +17,8 @@ function parseJsonWithComments(jsonString: string) {
 }
 
 async function readFileToJson(filePath: string): Promise<any> {
+  if (!fs.existsSync(filePath))
+    return {}
   const fileContent = await fs.promises.readFile(filePath, 'utf8')
   const jsonObject = parseJsonWithComments(fileContent)
   return jsonObject
@@ -41,15 +43,25 @@ async function findInstalledExtensions(data): Promise<string[]> {
 console.log('-----------------------------', 'start', '-----------------------------')
 const codeProfile = './tswindows.code-profile'
 const codeWorkspace = './../cnjimbo.github.io.code-workspace'
+const extensionWorkspace = './../.vscode/extensions.json'
+
 readFileToJson(codeProfile)
   .then((data) => {
     return findInstalledExtensions(data)
   })
   .then(async (ids) => {
-    const target = await readFileToJson(codeWorkspace)
-    return { ids, target }
+    if (fs.existsSync(codeWorkspace)) {
+      const target = await readFileToJson(codeWorkspace)
+      target.extensions.recommendations = ids
+      writeJsonToFile(codeWorkspace, JSON.stringify(target, null, '\t'))
+    }
+    return ids
   })
-  .then(({ ids, target }) => {
-    target.extensions.recommendations = ids
-    writeJsonToFile(codeWorkspace, JSON.stringify(target, null, "\t"))
+  .then(async (ids) => {
+    if (!fs.existsSync(extensionWorkspace))
+      fs.writeFileSync(extensionWorkspace, '{}')
+    const target = await readFileToJson(extensionWorkspace)
+    target.recommendations = ids
+    writeJsonToFile(extensionWorkspace, JSON.stringify(target, null, '\t'))
+    return { ids, target }
   })
