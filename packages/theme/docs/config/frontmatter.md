@@ -10,7 +10,7 @@ recommend: 1
 ---
 
 # 主题配置
-这里将配置分成了2块
+这里将配置分成了2块 
 * `home`：首页的独立配置
 * `Article`：单篇文章独立配置
 
@@ -62,6 +62,7 @@ layout: home
 配完这个之后，首页样式就有了，如下图所示
 
 ![图片](https://img.cdn.sugarat.top/mdImg/MTY3MzE4MDM5ODQ3MQ==673180398471)
+
 
 ### blog
 设置首页的博客样式文案
@@ -210,8 +211,8 @@ blog:
 layout: home
 blog:
  # 文章数据分析卡片标题定义
- analysis:
-  articles:
+ analysis: 
+  articles: 
     title: ['博客文章', '月更新', '周更新']
 ---
 ```
@@ -309,7 +310,7 @@ cover: false
 `hiddenCover` 控制是否展示当前文章的封面，全局配置开关见 [article.hiddenCover](./global.md#article)
 ```md
 ---
-hiddenCover: true
+hiddenCover: true 
 cover: url
 ---
 ```
@@ -489,6 +490,7 @@ recommend: ['Node.js', 'css', 'html', 1]
 | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
 | ![](https://img.cdn.sugarat.top/mdImg/MTY3NzI0NTYyNDEyOA==677245624128) | ![](https://img.cdn.sugarat.top/mdImg/MTY3NzI0NjQ2NzIyNA==677246467224) | ![](https://img.cdn.sugarat.top/mdImg/sugar/21db9f87e7b64958dad2c24ed94e40d3) |
 
+
 ### publish
 * type: `false`
 
@@ -506,6 +508,7 @@ hidden: true
 recommend: false
 ---
 ```
+
 
 比如设置在`changelog.md`里，首页将不会展示此项
 
