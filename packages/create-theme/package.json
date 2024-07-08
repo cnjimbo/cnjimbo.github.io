@@ -23,7 +23,7 @@
   ],
   "scripts": {
     "dev": "tsup --watch --publicDir",
-    "build": "rimraf dist && tsup --minify --publicDir --silent"
+    "build": "pnpm rimraf dist && tsup --minify --publicDir --silent"
   },
   "dependencies": {
     "fs-extra": "^11.2.0"
