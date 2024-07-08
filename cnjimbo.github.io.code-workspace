@@ -1,397 +1,398 @@
 {
-	"extensions": {
-		"recommendations": [
-			"aaron-bond.better-comments",
-			"adam-bender.commit-message-editor",
-			"alefragnani.project-manager",
-			"alibaba-cloud.tongyi-lingma",
-			"amodio.toggle-excluded-files",
-			"atishay-jain.all-autocomplete",
-			"bierner.docs-view",
-			"bierner.markdown-emoji",
-			"bierner.markdown-mermaid",
-			"bradlc.vscode-tailwindcss",
-			"chakrounanas.turbo-console-log",
-			"christian-kohler.npm-intellisense",
-			"christian-kohler.path-intellisense",
-			"codezombiech.gitignore",
-			"dbaeumer.vscode-eslint",
-			"eamodio.gitlens",
-			"editorconfig.editorconfig",
-			"edwinkofler.vscode-assorted-languages",
-			"eliostruyf.vscode-hide-comments",
-			"esbenp.prettier-vscode",
-			"folke.vscode-monorepo-workspace",
-			"formulahendry.auto-rename-tag",
-			"formulahendry.code-runner",
-			"github.remotehub",
-			"github.vscode-github-actions",
-			"gregorbiswanger.json2ts",
-			"harrydowning.swap-tsconfig",
-			"ibm.output-colorizer",
-			"ionutvmi.path-autocomplete",
-			"jock.svg",
-			"johnsoncodehk.vscode-tsconfig-helper",
-			"kennylong.kubernetes-yaml-formatter",
-			"lacroixdavid1.vscode-format-context-menu",
-			"lettucegoblin.vue-vscode-snippets-scripts-first",
-			"lmcarreiro.vscode-smart-column-indenter",
-			"maggie.eslint-rules-zh-plugin",
-			"mechatroner.rainbow-csv",
-			"metaseed.metago",
-			"metaseed.metajump",
-			"metaseed.metaword",
-			"mhutchie.git-graph",
-			"mike-co.import-sorter",
-			"mikestead.dotenv",
-			"mintlify.document",
-			"ms-vscode-remote.remote-wsl-recommender",
-			"ms-vscode.live-server",
-			"ms-vscode.powershell",
-			"ms-vscode.remote-repositories",
-			"ms-vscode.vscode-typescript-next",
-			"mulu-github.jsflowchart",
-			"mxsdev.typescript-explorer",
-			"neotan.vscode-auto-restart-typescript-eslint-servers",
-			"oouo-diogo-perdigao.docthis",
-			"peterschmalfeldt.explorer-exclude",
-			"pflannery.vscode-versionlens",
-			"pmneo.tsimporter",
-			"redhat.vscode-yaml",
-			"richie5um2.vscode-sort-json",
-			"shd101wyy.markdown-preview-enhanced",
-			"sirtori.indenticator",
-			"steoates.autoimport",
-			"stringham.move-ts",
-			"tombonnike.vscode-status-bar-format-toggle",
-			"usernamehw.errorlens",
-			"vivaxy.vscode-conventional-commits",
-			"vue.volar",
-			"wix.vscode-import-cost",
-			"wmaurer.change-case",
-			"yoavbls.pretty-ts-errors",
-			"ypresto.vscode-intelli-refactor",
-			"yzhang.markdown-all-in-one",
-			"zhoucheng0431.vitepress-snippets"
-		]
-	},
-	"folders": [
-		{
-			"name": "✨ sugar-wiki-monorepo",
-			"path": "."
-		},
-		{
-			"name": "📦 blogpress",
-			"path": "packages/blogpress"
-		},
-		{
-			"name": "📦 @sugarat/create-theme",
-			"path": "packages/create-theme"
-		},
-		{
-			"name": "📦 @sugarat/theme-shared",
-			"path": "packages/shared"
-		},
-		{
-			"name": "📦 @sugarat/theme",
-			"path": "packages/theme"
-		},
-		{
-			"name": "📦 vitepress-plugin-pagefind",
-			"path": "packages/vitepress-plugin-pagefind"
-		},
-		{
-			"name": "📦 vitepress-plugin-rss",
-			"path": "packages/vitepress-plugin-rss"
-		}
-	],
-	"settings": {
-		"[javascript]": {
-			"editor.defaultFormatter": "vscode.typescript-language-features"
-		},
-		"[jsonc]": {
-			"editor.defaultFormatter": "vscode.json-language-features"
-		},
-		"[markdown]": {
-			"editor.defaultFormatter": "yzhang.markdown-all-in-one"
-		},
-		"[typescript]": {
-			"editor.defaultFormatter": "vscode.typescript-language-features"
-		},
-		"[vue]": {
-			"editor.defaultFormatter": "Vue.volar"
-		},
-		"accessibility.signalOptions": {
-			"debouncePositionChanges": false,
-			"experimental.delays": {
-				"errorAtPosition": {
-					"announcement": 3000,
-					"sound": 1000
-				},
-				"general": {
-					"announcement": 3000,
-					"sound": 400
-				},
-				"warningAtPosition": {
-					"announcement": 3000,
-					"sound": 1000
-				}
-			},
-			"volume": 70
-		},
-		"autoRestart.fileGlobForESLint": "**/{.eslintrc,eslint.config}.{js,cjs,yaml,yml,json,mjs,ts,mts}",
-		"autoRestart.fileGlobForTypescript": "**/{tsconfig,tsconfig.base,base.tsconfig}.{json,app.json,app.js,js,ts}",
-		"autoRestart.monitorFilesForESLint": true,
-		"autoRestart.showRestartNotificationForESLint": true,
-		"code-runner.clearPreviousOutput": true,
-		"code-runner.executorMap": {
-			"ahk": "autohotkey",
-			"applescript": "osascript",
-			"autoit": "autoit3",
-			"bat": "cmd /c",
-			"c": "cd $dir && gcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
-			"clojure": "lein exec",
-			"coffeescript": "coffee",
-			"cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
-			"crystal": "crystal",
-			"csharp": "scriptcs",
-			"d": "cd $dir && dmd $fileName && $dir$fileNameWithoutExt",
-			"dart": "dart",
-			"erlang": "escript",
-			"fortran": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
-			"fortran_fixed-form": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
-			"fortran-modern": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
-			"FortranFreeForm": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
-			"fsharp": "fsi",
-			"gleam": "gleam run -m $fileNameWithoutExt",
-			"go": "go run",
-			"groovy": "groovy",
-			"haskell": "runghc",
-			"haxe": "haxe --cwd $dirWithoutTrailingSlash --run $fileNameWithoutExt",
-			"java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
-			"javascript": "cd $dir && node  --es-module-specifier-resolution=node  $fullFileName",
-			"julia": "julia",
-			"kit": "kitc --run",
-			"less": "cd $dir && lessc $fileName $fileNameWithoutExt.css",
-			"lisp": "sbcl --script",
-			"lua": "lua",
-			"mojo": "mojo run",
-			"nim": "nim compile --verbosity:0 --hints:off --run",
-			"objective-c": "cd $dir && gcc -framework Cocoa $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
-			"ocaml": "ocaml",
-			"pascal": "cd $dir && fpc $fileName && $dir$fileNameWithoutExt",
-			"perl": "perl",
-			"perl6": "perl6",
-			"php": "php",
-			"pkl": "cd $dir && pkl eval -f yaml $fileName -o $fileNameWithoutExt.yaml",
-			"powershell": "powershell -ExecutionPolicy ByPass -File",
-			"python": "python -u",
-			"r": "Rscript",
-			"racket": "racket",
-			"ruby": "ruby",
-			"rust": "cd $dir && rustc $fileName && $dir$fileNameWithoutExt",
-			"sass": "sass --style expanded",
-			"scala": "scala",
-			"scheme": "csi -script",
-			"scss": "scss --style expanded",
-			"shellscript": "bash",
-			"sml": "cd $dir && sml $fileName",
-			"spwn": "spwn build",
-			"swift": "swift",
-			"typescript": "cd $dir && node --es-module-specifier-resolution=node --loader ts-node/esm $fullFileName",
-			"v": "v run",
-			"vbscript": "cscript //Nologo",
-			"zig": "zig run"
-		},
-		"ColorfulMonorepo.workspaces.collection": [],
-		"commit-message-editor.dynamicTemplate": [
-			"{type}{scope}: {description}",
-			"",
-			"{body}",
-			"",
-			"{breaking_change}{footer}"
-		],
-		"commit-message-editor.staticTemplate": [
-			"feat: Short description",
-			"",
-			"Message body",
-			"",
-			"Message footer"
-		],
-		"commit-message-editor.tokens": [
-			{
-				"description": "Type of changes",
-				"label": "Type",
-				"name": "type",
-				"options": [
-					{
-						"label": "---",
-						"value": ""
-					},
-					{
-						"description": "Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)",
-						"label": "build"
-					},
-					{
-						"description": "Updating grunt tasks etc; no production code change",
-						"label": "chore"
-					},
-					{
-						"description": "Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)",
-						"label": "ci"
-					},
-					{
-						"description": "Documentation only changes",
-						"label": "docs"
-					},
-					{
-						"description": "A new feature",
-						"label": "feat"
-					},
-					{
-						"description": "A bug fix",
-						"label": "fix"
-					},
-					{
-						"description": "A code change that improves performance",
-						"label": "perf"
-					},
-					{
-						"description": "A code change that neither fixes a bug nor adds a feature",
-						"label": "refactor"
-					},
-					{
-						"label": "revert"
-					},
-					{
-						"description": "Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)",
-						"label": "style"
-					},
-					{
-						"description": "Adding missing tests or correcting existing tests",
-						"label": "test"
-					}
-				],
-				"type": "enum"
-			},
-			{
-				"description": "A scope may be provided to a commit’s type, to provide additional contextual information and is contained within parenthesis, e.g., \"feat(parser): add ability to parse arrays\".",
-				"label": "Scope",
-				"multiline": false,
-				"name": "scope",
-				"prefix": "(",
-				"suffix": ")",
-				"type": "text"
-			},
-			{
-				"description": "Short description in the subject line.",
-				"label": "Short description",
-				"multiline": false,
-				"name": "description",
-				"type": "text"
-			},
-			{
-				"description": "Optional body",
-				"label": "Body",
-				"lines": 5,
-				"maxLines": 10,
-				"multiline": true,
-				"name": "body",
-				"type": "text"
-			},
-			{
-				"default": false,
-				"label": "Breaking change",
-				"name": "breaking_change",
-				"type": "boolean",
-				"value": "BREAKING CHANGE: "
-			},
-			{
-				"description": "Optional footer",
-				"label": "Footer",
-				"multiline": true,
-				"name": "footer",
-				"type": "text"
-			}
-		],
-		"conventionalCommits.scopes": [
-			"pkg upgrade",
-			"actions",
-			"scaffold",
-			"theme"
-		],
-		"editor.codeActionsOnSave": {
-			"source.fixAll.eslint": "explicit",
-			"source.organizeImports": "never"
-		},
-		"editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
-		"editor.formatOnPaste": false,
-		"editor.formatOnSave": false,
-		"editor.formatOnSaveMode": "file",
-		"editor.formatOnType": false,
-		"editor.trimAutoWhitespace": false,
-		"eslint.format.enable": true,
-		"eslint.ignoreUntitled": true,
-		"eslint.useFlatConfig": true,
-		"eslint.validate": [
-			"javascript",
-			"javascriptreact",
-			"typescript",
-			"typescriptreact",
-			"vue",
-			"html",
-			"markdown",
-			"json",
-			"jsonc",
-			"yaml"
-		],
-		"explorerExclude.backup": {},
-		"files.autoSave": "onFocusChange",
-		"files.exclude": {
-			"**/.DS_Store": true,
-			"**/.git": true,
-			"**/.hg": true,
-			"**/.svn": true,
-			"**/CVS": true,
-			"**/node_modules": true,
-			"**/Thumbs.db": true
-		},
-		"files.trimTrailingWhitespaceInRegexAndStrings": false,
-		"git.autofetch": true,
-		"git.confirmSync": false,
-		"git.enableSmartCommit": true,
-		"gitdoc.filePattern": "**/*.md",
-		"gitdoc.pushMode": "push",
-		"gitdoc.timeZone": "CN",
-		"githubPullRequests.createOnPublishBranch": "never",
-		"gitlens.blame.format": "${message|50?} ${agoOrDate|14-}",
-		"gitlens.blame.toggleMode": "file",
-		"gitlens.codeLens.enabled": false,
-		"gitlens.currentLine.enabled": false,
-		"gitlens.currentLine.pullRequests.enabled": false,
-		"gitlens.hovers.currentLine.over": "line",
-		"gitlens.hovers.enabled": false,
-		"gitlens.showWelcomeOnInstall": false,
-		"gitlens.statusBar.enabled": true,
-		"gitlens.statusBar.pullRequests.enabled": true,
-		"gitlens.views.branches.branches.layout": "list",
-		"gitlens.views.commitDetails.autolinks.enabled": true,
-		"Lingma.cloudModelEnable": false,
-		"Lingma.localMachineModel": false,
-		"Lingma.methodQuickOperation": false,
-		"markdown-preview-enhanced.alwaysShowBacklinksInPreview": true,
-		"markdown-preview-enhanced.automaticallyShowPreviewOfMarkdownBeingEdited": true,
-		"markdown.extension.completion.enabled": true,
-		"prettier.enable": false,
-		"redhat.telemetry.enabled": true,
-		"typescript.tsdk": "✨ sugar-wiki-monorepo\\node_modules\\typescript\\lib",
-		"vs-code-prettier-eslint.prettierLast": false,
-		"workbench.colorCustomizations": {
-			"sideBarTitle.foreground": "#9c643b",
-			"statusBar.background": "#9c643b",
-			"statusBar.foreground": "#ffffff",
-			"tab.activeBorder": "#9c643b"
-		},
-		"workbench.editor.alwaysShowEditorActions": true
-	}
+    "extensions": {
+        "recommendations": [
+            "adam-bender.commit-message-editor",
+            "alefragnani.project-manager",
+            "alexdima.copy-relative-path",
+            "alibaba-cloud.tongyi-lingma",
+            "amodio.toggle-excluded-files",
+            "atishay-jain.all-autocomplete",
+            "bierner.markdown-emoji",
+            "bierner.markdown-mermaid",
+            "bradlc.vscode-tailwindcss",
+            "chakrounanas.turbo-console-log",
+            "christian-kohler.npm-intellisense",
+            "christian-kohler.path-intellisense",
+            "codezombiech.gitignore",
+            "dbaeumer.vscode-eslint",
+            "eamodio.gitlens",
+            "editorconfig.editorconfig",
+            "edwinkofler.vscode-assorted-languages",
+            "eliostruyf.vscode-hide-comments",
+            "folke.vscode-monorepo-workspace",
+            "formulahendry.auto-rename-tag",
+            "formulahendry.code-runner",
+            "github.remotehub",
+            "github.vscode-github-actions",
+            "gregorbiswanger.json2ts",
+            "hancel.markdown-image",
+            "harrydowning.swap-tsconfig",
+            "ibm.output-colorizer",
+            "ionutvmi.path-autocomplete",
+            "jock.svg",
+            "johnsoncodehk.vscode-tsconfig-helper",
+            "kennylong.kubernetes-yaml-formatter",
+            "kricsleo.vscode-package-json-inspector",
+            "lacroixdavid1.vscode-format-context-menu",
+            "lettucegoblin.vue-vscode-snippets-scripts-first",
+            "lmcarreiro.vscode-smart-column-indenter",
+            "maggie.eslint-rules-zh-plugin",
+            "mainawycliffe.view-package-on-npm",
+            "metaseed.metago",
+            "metaseed.metajump",
+            "metaseed.metaword",
+            "mhutchie.git-graph",
+            "mike-co.import-sorter",
+            "mikestead.dotenv",
+            "mintlify.document",
+            "ms-vscode-remote.remote-wsl-recommender",
+            "ms-vscode.live-server",
+            "ms-vscode.powershell",
+            "ms-vscode.remote-repositories",
+            "ms-vscode.vscode-typescript-next",
+            "mulu-github.jsflowchart",
+            "mxsdev.typescript-explorer",
+            "neotan.vscode-auto-restart-typescript-eslint-servers",
+            "oouo-diogo-perdigao.docthis",
+            "peterschmalfeldt.explorer-exclude",
+            "pflannery.vscode-versionlens",
+            "pmneo.tsimporter",
+            "redhat.vscode-yaml",
+            "richie5um2.vscode-sort-json",
+            "sirtori.indenticator",
+            "stringham.move-ts",
+            "tombonnike.vscode-status-bar-format-toggle",
+            "usernamehw.errorlens",
+            "vivaxy.vscode-conventional-commits",
+            "vue.volar",
+            "wix.vscode-import-cost",
+            "wmaurer.change-case",
+            "yoavbls.pretty-ts-errors",
+            "ypresto.vscode-intelli-refactor",
+            "zhoucheng0431.vitepress-snippets"
+        ]
+    },
+    "folders": [
+        {
+            "name": "✨ sugar-wiki-monorepo",
+            "path": "."
+        },
+        {
+            "name": "📦 blogpress",
+            "path": "packages/blogpress"
+        },
+        {
+            "name": "📦 @sugarat/create-theme",
+            "path": "packages/create-theme"
+        },
+        {
+            "name": "📦 @sugarat/theme-shared",
+            "path": "packages/shared"
+        },
+        {
+            "name": "📦 @sugarat/theme",
+            "path": "packages/theme"
+        },
+        {
+            "name": "📦 vitepress-plugin-pagefind",
+            "path": "packages/vitepress-plugin-pagefind"
+        },
+        {
+            "name": "📦 vitepress-plugin-rss",
+            "path": "packages/vitepress-plugin-rss"
+        }
+    ],
+    "settings": {
+        "[javascript]": {
+            "editor.defaultFormatter": "vscode.typescript-language-features"
+        },
+        "[jsonc]": {
+            "editor.defaultFormatter": "vscode.json-language-features"
+        },
+        "[markdown]": {
+            "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+        },
+        "[typescript]": {
+            "editor.defaultFormatter": "vscode.typescript-language-features"
+        },
+        "[vue]": {
+            "editor.defaultFormatter": "Vue.volar"
+        },
+        "accessibility.signalOptions": {
+            "debouncePositionChanges": false,
+            "experimental.delays": {
+                "errorAtPosition": {
+                    "announcement": 3000,
+                    "sound": 1000
+                },
+                "general": {
+                    "announcement": 3000,
+                    "sound": 400
+                },
+                "warningAtPosition": {
+                    "announcement": 3000,
+                    "sound": 1000
+                }
+            },
+            "volume": 70
+        },
+        "autoRestart.fileGlobForESLint": "**/{.eslintrc,eslint.config}.{js,cjs,yaml,yml,json,mjs,ts,mts}",
+        "autoRestart.fileGlobForTypescript": "**/{tsconfig,tsconfig.base,base.tsconfig}.{json,app.json,app.js,js,ts}",
+        "autoRestart.monitorFilesForESLint": true,
+        "autoRestart.showRestartNotificationForESLint": true,
+        "code-runner.clearPreviousOutput": true,
+        "code-runner.executorMap": {
+            "ahk": "autohotkey",
+            "applescript": "osascript",
+            "autoit": "autoit3",
+            "bat": "cmd /c",
+            "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+            "clojure": "lein exec",
+            "coffeescript": "coffee",
+            "cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+            "crystal": "crystal",
+            "csharp": "scriptcs",
+            "d": "cd $dir && dmd $fileName && $dir$fileNameWithoutExt",
+            "dart": "dart",
+            "erlang": "escript",
+            "fortran": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+            "fortran_fixed-form": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+            "fortran-modern": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+            "FortranFreeForm": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+            "fsharp": "fsi",
+            "gleam": "gleam run -m $fileNameWithoutExt",
+            "go": "go run",
+            "groovy": "groovy",
+            "haskell": "runghc",
+            "haxe": "haxe --cwd $dirWithoutTrailingSlash --run $fileNameWithoutExt",
+            "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
+            "javascript": "cd $dir && node  --es-module-specifier-resolution=node  $fullFileName",
+            "julia": "julia",
+            "kit": "kitc --run",
+            "less": "cd $dir && lessc $fileName $fileNameWithoutExt.css",
+            "lisp": "sbcl --script",
+            "lua": "lua",
+            "mojo": "mojo run",
+            "nim": "nim compile --verbosity:0 --hints:off --run",
+            "objective-c": "cd $dir && gcc -framework Cocoa $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+            "ocaml": "ocaml",
+            "pascal": "cd $dir && fpc $fileName && $dir$fileNameWithoutExt",
+            "perl": "perl",
+            "perl6": "perl6",
+            "php": "php",
+            "pkl": "cd $dir && pkl eval -f yaml $fileName -o $fileNameWithoutExt.yaml",
+            "powershell": "powershell -ExecutionPolicy ByPass -File",
+            "python": "python -u",
+            "r": "Rscript",
+            "racket": "racket",
+            "ruby": "ruby",
+            "rust": "cd $dir && rustc $fileName && $dir$fileNameWithoutExt",
+            "sass": "sass --style expanded",
+            "scala": "scala",
+            "scheme": "csi -script",
+            "scss": "scss --style expanded",
+            "shellscript": "bash",
+            "sml": "cd $dir && sml $fileName",
+            "spwn": "spwn build",
+            "swift": "swift",
+            "typescript": "cd $dir && node --es-module-specifier-resolution=node --loader ts-node/esm $fullFileName",
+            "v": "v run",
+            "vbscript": "cscript //Nologo",
+            "zig": "zig run"
+        },
+        "code-runner.executorMapByFileExtension": {},
+        "ColorfulMonorepo.workspaces.collection": [],
+        "commit-message-editor.dynamicTemplate": [
+            "{type}{scope}: {description}",
+            "",
+            "{body}",
+            "",
+            "{breaking_change}{footer}"
+        ],
+        "commit-message-editor.staticTemplate": [
+            "feat: Short description",
+            "",
+            "Message body",
+            "",
+            "Message footer"
+        ],
+        "commit-message-editor.tokens": [
+            {
+                "description": "Type of changes",
+                "label": "Type",
+                "name": "type",
+                "options": [
+                    {
+                        "label": "---",
+                        "value": ""
+                    },
+                    {
+                        "description": "Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)",
+                        "label": "build"
+                    },
+                    {
+                        "description": "Updating grunt tasks etc; no production code change",
+                        "label": "chore"
+                    },
+                    {
+                        "description": "Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)",
+                        "label": "ci"
+                    },
+                    {
+                        "description": "Documentation only changes",
+                        "label": "docs"
+                    },
+                    {
+                        "description": "A new feature",
+                        "label": "feat"
+                    },
+                    {
+                        "description": "A bug fix",
+                        "label": "fix"
+                    },
+                    {
+                        "description": "A code change that improves performance",
+                        "label": "perf"
+                    },
+                    {
+                        "description": "A code change that neither fixes a bug nor adds a feature",
+                        "label": "refactor"
+                    },
+                    {
+                        "label": "revert"
+                    },
+                    {
+                        "description": "Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)",
+                        "label": "style"
+                    },
+                    {
+                        "description": "Adding missing tests or correcting existing tests",
+                        "label": "test"
+                    }
+                ],
+                "type": "enum"
+            },
+            {
+                "description": "A scope may be provided to a commit’s type, to provide additional contextual information and is contained within parenthesis, e.g., \"feat(parser): add ability to parse arrays\".",
+                "label": "Scope",
+                "multiline": false,
+                "name": "scope",
+                "prefix": "(",
+                "suffix": ")",
+                "type": "text"
+            },
+            {
+                "description": "Short description in the subject line.",
+                "label": "Short description",
+                "multiline": false,
+                "name": "description",
+                "type": "text"
+            },
+            {
+                "description": "Optional body",
+                "label": "Body",
+                "lines": 5,
+                "maxLines": 10,
+                "multiline": true,
+                "name": "body",
+                "type": "text"
+            },
+            {
+                "default": false,
+                "label": "Breaking change",
+                "name": "breaking_change",
+                "type": "boolean",
+                "value": "BREAKING CHANGE: "
+            },
+            {
+                "description": "Optional footer",
+                "label": "Footer",
+                "multiline": true,
+                "name": "footer",
+                "type": "text"
+            }
+        ],
+        "conventionalCommits.scopes": [
+            "pkg upgrade",
+            "actions",
+            "scaffold",
+            "theme"
+        ],
+        "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": "explicit",
+            "source.organizeImports": "never"
+        },
+        "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+        "editor.formatOnPaste": false,
+        "editor.formatOnSave": false,
+        "editor.formatOnSaveMode": "file",
+        "editor.formatOnType": false,
+        "editor.minimap.enabled": false,
+        "editor.trimAutoWhitespace": false,
+        "eslint.format.enable": true,
+        "eslint.ignoreUntitled": true,
+        "eslint.useFlatConfig": true,
+        "eslint.validate": [
+            "javascript",
+            "javascriptreact",
+            "typescript",
+            "typescriptreact",
+            "vue",
+            "html",
+            "markdown",
+            "json",
+            "jsonc",
+            "yaml"
+        ],
+        "explorerExclude.backup": {},
+        "files.autoSave": "onFocusChange",
+        "files.exclude": {
+            "**/.DS_Store": true,
+            "**/.git": true,
+            "**/.hg": true,
+            "**/.svn": true,
+            "**/CVS": true,
+            "**/node_modules": true,
+            "**/Thumbs.db": true
+        },
+        "files.trimTrailingWhitespaceInRegexAndStrings": false,
+        "git.autofetch": true,
+        "git.confirmSync": false,
+        "git.enableSmartCommit": true,
+        "gitdoc.filePattern": "**/*.md",
+        "gitdoc.pushMode": "push",
+        "gitdoc.timeZone": "CN",
+        "githubPullRequests.createOnPublishBranch": "never",
+        "gitlens.blame.format": "${message|50?} ${agoOrDate|14-}",
+        "gitlens.blame.toggleMode": "file",
+        "gitlens.codeLens.enabled": false,
+        "gitlens.currentLine.enabled": false,
+        "gitlens.currentLine.pullRequests.enabled": false,
+        "gitlens.hovers.currentLine.over": "line",
+        "gitlens.hovers.enabled": false,
+        "gitlens.showWelcomeOnInstall": false,
+        "gitlens.statusBar.enabled": true,
+        "gitlens.statusBar.pullRequests.enabled": true,
+        "gitlens.views.branches.branches.layout": "list",
+        "gitlens.views.commitDetails.autolinks.enabled": true,
+        "javascript.experimental.updateImportsOnPaste": true,
+        "javascript.format.insertSpaceAfterConstructor": true,
+        "Lingma.cloudModelEnable": false,
+        "Lingma.localMachineModel": false,
+        "Lingma.methodQuickOperation": false,
+        "markdown-preview-enhanced.alwaysShowBacklinksInPreview": true,
+        "markdown-preview-enhanced.automaticallyShowPreviewOfMarkdownBeingEdited": true,
+        "markdown.extension.completion.enabled": true,
+        "prettier.enable": false,
+        "redhat.telemetry.enabled": true,
+        "typescript.tsdk": "✨ sugar-wiki-monorepo\\node_modules\\typescript\\lib",
+        "vs-code-prettier-eslint.prettierLast": false,
+        "workbench.colorCustomizations": {
+            "sideBarTitle.foreground": "#9c643b",
+            "statusBar.background": "#9c643b",
+            "statusBar.foreground": "#ffffff",
+            "tab.activeBorder": "#9c643b"
+        },
+        "workbench.editor.alwaysShowEditorActions": true
+    }
 }

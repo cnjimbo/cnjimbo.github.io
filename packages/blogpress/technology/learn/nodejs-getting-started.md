@@ -1,5 +1,5 @@
 ---
-cover: https://img.cdn.sugarat.top/mdImg/MTY4NTIwMTQwMTAzNg==685201401036
+cover: ./nodejs-getting-started/MTY4NTIwMTQwMTAzNg==685201401036.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY4NTIwMTQwMTAzNg%3D%3D685201401036
 top: 1
 sticky: 1000
 ---

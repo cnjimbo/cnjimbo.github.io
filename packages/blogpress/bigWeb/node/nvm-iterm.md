@@ -1,6 +1,6 @@
 ---
 description: 终端启动时总会卡顿一下，没去探究原因，看到咲奈的分享才知道是nvm在作祟
-cover: https://img.cdn.sugarat.top/mdImg/MTY3NjE4NTM2MDkyOQ==676185360929
+cover: ./nvm-iterm/MTY3NjE4NTM2MDkyOQ==676185360929.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY3NjE4NTM2MDkyOQ%3D%3D676185360929
 tag:
  - 技术笔记
 ---

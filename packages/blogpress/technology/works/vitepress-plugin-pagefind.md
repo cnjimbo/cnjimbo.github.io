@@ -1,5 +1,5 @@
 ---
-cover: https://img.cdn.sugarat.top/mdImg/MTY3OTgzOTgxMjU3NQ==679839812575
+cover: ./vitepress-plugin-pagefind/MTY3OTgzOTgxMjU3NQ==679839812575.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY3OTgzOTgxMjU3NQ%3D%3D679839812575
 description: Pagefind是基于Rust实现的离线搜索库，检索生成后的HTML页面内容，然后自动构建索引文件，提供搜索使用的API和组件
 outline: [2,3]
 ---

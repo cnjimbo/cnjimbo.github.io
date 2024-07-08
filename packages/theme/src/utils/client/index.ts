@@ -27,14 +27,13 @@ export function formatDate(d: any, fmt = 'yyyy-MM-dd hh:mm:ss') {
       `${d.getFullYear()}`.substr(4 - RegExp.$1.length)
     )
   }
-
+  // eslint-disable-next-line no-restricted-syntax
   for (const k in o) {
-    if (new RegExp(`(${k})`).test(fmt)) {
+    if (new RegExp(`(${k})`).test(fmt))
       fmt = fmt.replace(
         RegExp.$1,
         RegExp.$1.length === 1 ? o[k] : `00${o[k]}`.substr(`${o[k]}`.length)
       )
-}
   }
   return fmt
 }
@@ -75,7 +74,7 @@ export function formatShowDate(date: Date | string) {
 }
 
 const pattern
-  = /[\w\u0392-\u03C9\u00C0-\u00FF\u0600-\u06FF\u0400-\u04FF]+|[\u4E00-\u9FFF\u3400-\u4DBF\uF900-\uFAFF\u3040-\u309F\uAC00-\uD7AF]+/g
+  = /[a-zA-Z0-9_\u0392-\u03C9\u00C0-\u00FF\u0600-\u06FF\u0400-\u04FF]+|[\u4E00-\u9FFF\u3400-\u4DBF\uF900-\uFAFF\u3040-\u309F\uAC00-\uD7AF]+/g
 
 // copy from https://github.com/youngjuning/vscode-juejin-wordcount/blob/main/count-word.ts
 export default function countWord(data: string) {
