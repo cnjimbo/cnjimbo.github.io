@@ -1,5 +1,17 @@
 # @sugarat/create-theme
 
+## 0.0.71
+
+### Patch Changes
+
+- pnpm install --no-frozen-lockfile
+
+## 0.0.70
+
+### Patch Changes
+
+- chore: update yaml config
+
 ## 0.0.69
 
 ### Patch Changes

@@ -32,14 +32,12 @@ export const blogTheme = getThemeConfig({
     mobileDisplay: true,
     models: [
       {
-        path: 'https://cdn.bitiful.sugarat.top/npm/oml2d-model/models/Senko_Normals/senko.model3.json',
+        path: 'https://model.oml2d.com/Senko_Normals/senko.model3.json',
+        // path: 'https://jsd.onmicrosoft.cn/npm/oml2d-models/models/Senko_Normals/senko.model3.json',
+        // path: 'https://npm.onmicrosoft.cn/oml2d-models@latest/models/Senko_Normals/senko.model3.json',
+        // path: 'https://cdn.bitiful.sugarat.top/npm/oml2d-model/models/Senko_Normals/senko.model3.json',
       }
     ],
-    libraryUrls: {
-      complete: 'https://cdn.bitiful.sugarat.top/npm/oh-my-live2d/latest/lib/complete.js',
-      cubism2: 'https://cdn.bitiful.sugarat.top/npm/oh-my-live2d/latest/lib/cubism2.js',
-      cubism5: 'https://cdn.bitiful.sugarat.top/npm/oh-my-live2d/latest/lib/cubism5.js'
-    }
   },
   RSS,
   authorList: [
