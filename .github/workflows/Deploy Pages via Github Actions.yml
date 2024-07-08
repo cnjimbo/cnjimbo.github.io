@@ -57,13 +57,13 @@ jobs:
         # 4、安装 Node 环境
         uses: actions/setup-node@v4.0.2
         with:
-          node-version: 20
+          node-version: 21
           registry-url: https://registry.npmjs.org
           cache: pnpm
 
       - name: Install Dependencies
         run: |
-          pnpm install -wr  --ignore-scripts --no-frozen-lockfile
+          pnpm install
           # if [ -f pnpm-lock.yaml ]; then
           #   pnpm install --frozen-lockfile
           # else
