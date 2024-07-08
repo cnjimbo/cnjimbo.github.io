@@ -72,7 +72,7 @@ jobs:
         uses: actions/setup-node@v4.0.2
         if: ${{ github.event.action != 'closed' }} # Skipping these steps if the PR has been closed
         with:
-          node-version: 20
+          node-version: 21
           # registry-url: https://registry.npmjs.org
           cache: pnpm
 
@@ -80,8 +80,8 @@ jobs:
         if: ${{ github.event.action != 'closed' }}
         # run: pnpm install --ignore-scripts
         run: |
-          npm install rimraf -g
-          pnpm install -wr --ignore-scripts --no-frozen-lockfile
+          pnpm install
+          # pnpm install -w -r --no-frozen-lockfile #不知何故，突然无法正确安装，去掉所有参数后可以正常安装pkg 20240708
 
       # This will calculate the base URL for the website, based on the event that triggered the workflow.
       # Leave this step as it is, unless you know what you're doing.
