@@ -57,7 +57,7 @@ jobs:
         # 4、安装 Node 环境
         uses: actions/setup-node@v4.0.2
         with:
-          node-version: 20
+          node-version: 21
           registry-url: https://registry.npmjs.org
           cache: pnpm
 
