@@ -80,7 +80,7 @@ jobs:
         if: ${{ github.event.action != 'closed' }}
         # run: pnpm install --ignore-scripts
         run: |
-          pnpm install rimraf
+          pnpm install rimraf -w
           pnpm install -wr --ignore-scripts --no-frozen-lockfile
 
       # This will calculate the base URL for the website, based on the event that triggered the workflow.

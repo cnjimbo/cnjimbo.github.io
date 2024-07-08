@@ -63,7 +63,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          pnpm install rimraf
+          pnpm install rimraf -w
           pnpm install -wr --ignore-scripts --no-frozen-lockfile          
           # if [ -f pnpm-lock.yaml ]; then
           #   pnpm install --frozen-lockfile
