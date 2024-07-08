@@ -39,6 +39,6 @@
   },
   "devDependencies": {
     "@types/cross-spawn": "^6.0.6",
-    "p-limit": "^5.0.0"
+    "p-limit": "4"
   }
 }

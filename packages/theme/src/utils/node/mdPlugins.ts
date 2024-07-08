@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 import { createRequire } from 'module'
 import { tabsMarkdownPlugin } from 'vitepress-plugin-tabs'
 import type { UserConfig } from 'vitepress'

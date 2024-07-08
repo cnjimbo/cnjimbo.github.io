@@ -2,6 +2,7 @@
 
 English | [简体中文](https://github.com/ATQQ/sugar-blog/blob/master/packages/vitepress-plugin-rss/README-zh.md)
 
+
 ## Usage
 install plugin via `pnpm/npm/yarn`
 ```sh
@@ -91,7 +92,7 @@ const RSS: RSSOptions = {
 }
 ```
 ### Options
-support all [feed Options](https://www.npmjs.com/package/feed)
+support all [feed Options](https://www.npmjs.com/package/feed) 
 
 plugin also defines some
 

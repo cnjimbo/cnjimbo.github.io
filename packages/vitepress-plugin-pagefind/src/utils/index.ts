@@ -17,14 +17,13 @@ export function formatDate(d: any, fmt = 'yyyy-MM-dd hh:mm:ss') {
       `${d.getFullYear()}`.substr(4 - RegExp.$1.length)
     )
   }
-
+  // eslint-disable-next-line no-restricted-syntax
   for (const k in o) {
-    if (new RegExp(`(${k})`).test(fmt)) {
+    if (new RegExp(`(${k})`).test(fmt))
       fmt = fmt.replace(
         RegExp.$1,
         RegExp.$1.length === 1 ? o[k] : `00${o[k]}`.substr(`${o[k]}`.length)
       )
-}
   }
   return fmt
 }

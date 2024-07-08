@@ -26,9 +26,9 @@
     "build": "rimraf dist && tsup --minify --publicDir --silent"
   },
   "dependencies": {
-    "fs-extra": "^11.2.0"
+    "fs-extra": "^11.1.1"
   },
   "devDependencies": {
-    "rimraf": "^5.0.7"
+    "rimraf": "^5.0.1"
   }
 }
