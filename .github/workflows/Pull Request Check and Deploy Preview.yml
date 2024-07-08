@@ -79,7 +79,9 @@ jobs:
       - name: Install dependencies
         if: ${{ github.event.action != 'closed' }}
         # run: pnpm install --ignore-scripts
-        run: pnpm install -w -r --no-frozen-lockfile
+        run: |
+          pnpm install
+          # pnpm install -w -r --no-frozen-lockfile #不知何故，突然无法正确安装，去掉所有参数后可以正常安装pkg 20240708
 
       # This will calculate the base URL for the website, based on the event that triggered the workflow.
       # Leave this step as it is, unless you know what you're doing.
