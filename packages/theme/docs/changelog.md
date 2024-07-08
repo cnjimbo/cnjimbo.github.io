@@ -86,6 +86,7 @@ bun install vitepress@latest
   - vitepress-plugin-pagefind@0.4.1
   - vitepress@1.2.3
 
+
 ## 0.3.6 (2024/05/26)
 
 ### Patch Changes
@@ -128,7 +129,7 @@ bun install vitepress@latest
 ### Patch Changes
 
 - feat：支持首页 cover 图添加 image style
-- chore：导航 logo 样式优化
+- chore：导航 logo 样式优化 
 - chore: reduce element css size
 - chore: 依赖升级，无用依赖移除，peerDeps 调整
 
@@ -229,6 +230,7 @@ cover: /abc.png
 # 标题
 
 <img src="./abc.png" style="display: none;"/>
+
 ```
 
 ## 0.2.22 (2024/02/18)

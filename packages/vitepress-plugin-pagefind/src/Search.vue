@@ -14,7 +14,7 @@ import { formatPagefindResult } from './search'
 import { formatShowDate } from './utils'
 
 // 搜索结果
-const searchResult = ref<{ route: string, meta: Record<string, any> }[]>([])
+const searchResult = ref<{ route: string; meta: Record<string, any> }[]>([])
 // 配置获取
 const searchConfig: SearchConfig = _searchConfig
 
@@ -72,7 +72,7 @@ const keys = useMagicKeys({
 
 const CmdK = keys['Meta+K']
 const CtrlK = keys['Ctrl+K']
-// eslint-disable-next-line dot-notation
+// eslint-disable-next-line dot-notation, prefer-destructuring
 const Escape = keys['Escape']
 
 watch(CmdK, (v) => {

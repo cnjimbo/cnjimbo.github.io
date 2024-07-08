@@ -52,7 +52,7 @@ export async function getPostsData(
 
     // 获取摘要信息
     frontmatter.description
-
+      // eslint-disable-next-line no-await-in-loop
       = (await ops?.renderExpect?.(content, { ...frontmatter }))
       ?? (frontmatter.description || excerpt || getTextSummary(content, 100))
 
@@ -135,6 +135,7 @@ export async function genFeed(config: SiteConfig, rssOptions: RSSOptions) {
 
   const { baseUrl, filename } = rssOptions
 
+  // eslint-disable-next-line unused-imports/no-unused-vars
   const { renderHTML, ...restOps } = rssOptions
   const feed = new Feed({
     id: rssOptions.baseUrl,

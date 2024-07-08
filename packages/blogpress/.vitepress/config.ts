@@ -180,6 +180,7 @@ const extraHead: any
 export default defineConfig({
   base: relativeUrl,
   extends: blogTheme,
+  metaChunk: true,
   markdown: {
     image: {
       lazyLoading: true,
