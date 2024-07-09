@@ -51,7 +51,7 @@
     "@mermaid-js/mermaid-mindmap": "^9.3.0",
     "@sugarat/theme-shared": "workspace:*",
     "@vue/shared": "^3.4.26",
-    "@vueuse/core": "^9.13.0",
+    "@vueuse/core": "^10.11.0",
     "fast-glob": "^3.3.2",
     "markdown-it-task-checkbox": "^1.0.6",
     "mermaid": "^10.9.0",
