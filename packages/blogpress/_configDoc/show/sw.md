@@ -13,7 +13,7 @@ categories:
 
 当你访问站点时，如发现页面右下角有这个小窗时，请记得点一下
 <div>
-    <img width="400px;" src ="./sw/MTYwNjU0NzUyMDQwNg==606547520406.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYwNjU0NzUyMDQwNg%3D%3D606547520406" alt="示例"/>
+    <img width="400px;" src ="./sw/MTYwNjU0NzUyMDQwNg==606547520406.png" alt="示例"/>
 </div>
 
 ## 为什么🤔
@@ -28,7 +28,7 @@ categories:
 
 2. 可在DevTools(开发者调试工具) 中的 Application 面板的 ServiceWorkers的侧边栏中 看到如下内容
 
-![图片](./sw/MTYwNjU0OTYzNDg5NQ==606549634895.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYwNjU0OTYzNDg5NQ%3D%3D606549634895)
+![图片](./sw/MTYwNjU0OTYzNDg5NQ==606549634895.png)
 
 * 绿色的表示是目前正在使用的sw.js(缓存控制文件)版本
 * 橙色表示已经就绪的新版本内容，等待被载入使用

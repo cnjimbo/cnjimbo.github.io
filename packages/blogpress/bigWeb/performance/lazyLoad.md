@@ -29,7 +29,7 @@ categories:
 ```js
 let doc = document.createDocumentFragment()
 
-// 屏幕可见高度 
+// 屏幕可见高度
 const screenHeight = window.innerHeight || document.documentElement.clientHeight
 /**
 * 节流函数
@@ -68,8 +68,8 @@ function init() {
     let i = 100
     while (i--) {
         let img = document.createElement('img')
-        img.src = './lazyLoad/MTU4MzM5NzA0NzA5OA==583397047098.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTU4MzM5NzA0NzA5OA%3D%3D583397047098'
-        img.setAttribute('lazy', './lazyLoad/MTU4MzM5NzEyNTYzOA==583397125638.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTU4MzM5NzEyNTYzOA%3D%3D583397125638')
+        img.src = './lazyLoad/MTU4MzM5NzA0NzA5OA==583397047098.png'
+        img.setAttribute('lazy', './lazyLoad/MTU4MzM5NzEyNTYzOA==583397125638.png')
         doc.appendChild(img)
     }
     document.body.append(doc)

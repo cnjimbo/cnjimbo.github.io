@@ -1,5 +1,5 @@
 ---
-cover: ./nodejs-getting-started/MTY4NTIwMTQwMTAzNg==685201401036.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY4NTIwMTQwMTAzNg%3D%3D685201401036
+cover: ./nodejs-getting-started/MTY4NTIwMTQwMTAzNg==685201401036.png
 top: 1
 sticky: 1000
 ---
@@ -8,7 +8,7 @@ sticky: 1000
 
 **这是一本完全免费的小册**，内容涵盖了软件的安装，环境配置，基础知识介绍，进阶知识介绍，多场景的开发实践。
 
-![](./nodejs-getting-started/MTcwMjgwNzI2MjUwNg==702807262506.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTcwMjgwNzI2MjUwNg%3D%3D702807262506)
+![](./nodejs-getting-started/MTcwMjgwNzI2MjUwNg==702807262506.png)
 
 ## Node.js 的优势
 
@@ -28,7 +28,7 @@ sticky: 1000
 
 当然还有很多很多，等着你去探索……
 
-![](./nodejs-getting-started/MTY4NTIwMTQwMTAzNg==685201401036.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY4NTIwMTQwMTAzNg%3D%3D685201401036)
+![](./nodejs-getting-started/MTY4NTIwMTQwMTAzNg==685201401036.png)
 
 本教程主要包含7个章节，涵盖了`软件的安装`、`环境配置`、`基础知识介绍`、`进阶知识介绍`、`多场景的开发实践` ღ( ´･ᴗ･\` )。
 

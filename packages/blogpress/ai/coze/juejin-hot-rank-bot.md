@@ -3,17 +3,17 @@
 ## 前言
 [掘金热榜](https://juejin.cn/hot/collected-articles)想必大家会偶尔扫一扫，看看感兴趣的进行进一步阅读。
 
-![](./juejin-hot-rank-bot/e873781d6738026921ae38111f8a4019.png?s1=https%3A//img.cdn.sugarat.top/mdImg/sugar/e873781d6738026921ae38111f8a4019)
+![](./juejin-hot-rank-bot/e873781d6738026921ae38111f8a4019.png)
 
 文章相关的榜单主要就是`掘金文章榜`，`文章收藏榜`这两个。
 
 >[扣子（coze.cn）](https://www.coze.cn/)是一款用来开发新一代 AI Chat Bot 的应用编辑平台。
 
-![](./juejin-hot-rank-bot/6c959d43f030a07fb0dfaca615052cfb.png?s1=https%3A//img.cdn.sugarat.top/mdImg/sugar/6c959d43f030a07fb0dfaca615052cfb)
+![](./juejin-hot-rank-bot/6c959d43f030a07fb0dfaca615052cfb.png)
 
 可以理解是 `对话机器人` 定制工厂。
 
-![](./juejin-hot-rank-bot/f380f324533336c360e8fb25b595a430.png?s1=https%3A//img.cdn.sugarat.top/mdImg/sugar/f380f324533336c360e8fb25b595a430)
+![](./juejin-hot-rank-bot/f380f324533336c360e8fb25b595a430.png)
 
 `Coze` 上开放的定制能力主要有 4 个`Bots`，`插件`，`工作流`，`知识库`。
 
@@ -25,17 +25,17 @@
 
 |                                     页面                                      |                                     效果                                      |
 | :---------------------------------------------------------------------------: | :---------------------------------------------------------------------------: |
-| ![](./juejin-hot-rank-bot/1bd1e494dd695ac020eb46ef555696e5.png?s1=https%3A//img.cdn.sugarat.top/mdImg/sugar/1bd1e494dd695ac020eb46ef555696e5) | ![](./juejin-hot-rank-bot/1d5ee81c4478932399eeb7bcad204a7e.png?s1=https%3A//img.cdn.sugarat.top/mdImg/sugar/1d5ee81c4478932399eeb7bcad204a7e) |
+| ![](./juejin-hot-rank-bot/1bd1e494dd695ac020eb46ef555696e5.png) | ![](./juejin-hot-rank-bot/1d5ee81c4478932399eeb7bcad204a7e.png) |
 
 ## 开发插件
 ### 创建插件
 切换到 `个人空间` -> `插件` 目录下，点击创建插件。
 
-![](./juejin-hot-rank-bot/ef51089c3a2486fdd34151f39a47cf74.png?s1=https%3A//img.cdn.sugarat.top/mdImg/sugar/ef51089c3a2486fdd34151f39a47cf74)
+![](./juejin-hot-rank-bot/ef51089c3a2486fdd34151f39a47cf74.png)
 
 录入 API 信息
 
-![](./juejin-hot-rank-bot/679de7e34a46396ea04777eb55e1c9ba.png?s1=https%3A//img.cdn.sugarat.top/mdImg/sugar/679de7e34a46396ea04777eb55e1c9ba)
+![](./juejin-hot-rank-bot/679de7e34a46396ea04777eb55e1c9ba.png)
 
 从填的`插件URL`，`Header 列表`，`授权方式`这几项配置我相信大家就能看出 "插件" 本质是什么了。
 
@@ -45,7 +45,7 @@
 
 由此咱们可以把一些开放的公共查询接口都可以录入到插件中，比如 [API Hub](https://apifox.com/apihub/) 上收集的公共API。
 
-![](./juejin-hot-rank-bot/73fc2cc273c1f5c22d358f0d02232029.png?s1=https%3A//img.cdn.sugarat.top/mdImg/sugar/73fc2cc273c1f5c22d358f0d02232029)
+![](./juejin-hot-rank-bot/73fc2cc273c1f5c22d358f0d02232029.png)
 
 这里的 `api.juejin.cn` 就是我在 devTools 中看到（ba）的🤭。
 
@@ -53,28 +53,28 @@
 
 进入创建的插件后，就可以创建工具了。
 
-![](./juejin-hot-rank-bot/a2265ab81ab50cc5f921fb266080d666.png?s1=https%3A//img.cdn.sugarat.top/mdImg/sugar/a2265ab81ab50cc5f921fb266080d666)
+![](./juejin-hot-rank-bot/a2265ab81ab50cc5f921fb266080d666.png)
 
 *乍一看怎么又有一个新概念，“工具”？打开配置窗口一看就悟了！*
 
-![](./juejin-hot-rank-bot/4dba81d401be69b5fda62c5603daf8e7.png?s1=https%3A//img.cdn.sugarat.top/mdImg/sugar/4dba81d401be69b5fda62c5603daf8e7)
+![](./juejin-hot-rank-bot/4dba81d401be69b5fda62c5603daf8e7.png)
 
 哦😯，这个**工具就是录入具体的功能API，配置一下具体API的`请求路径，方法，参数`**
 
 下面是配置过程截图
 |                                   输入参数                                    |                           输出参数（支持自动解析）                            |                                   调试校验                                    |
 | :---------------------------------------------------------------------------: | :---------------------------------------------------------------------------: | :---------------------------------------------------------------------------: |
-| ![](./juejin-hot-rank-bot/83ca062018f61c26201b5be01d9e8d29.png?s1=https%3A//img.cdn.sugarat.top/mdImg/sugar/83ca062018f61c26201b5be01d9e8d29) | ![](./juejin-hot-rank-bot/031e3432096d19c9f1f8e903991e16cd.png?s1=https%3A//img.cdn.sugarat.top/mdImg/sugar/031e3432096d19c9f1f8e903991e16cd) | ![](./juejin-hot-rank-bot/6c0c2526984304d8aa66714691768345.png?s1=https%3A//img.cdn.sugarat.top/mdImg/sugar/6c0c2526984304d8aa66714691768345) |
+| ![](./juejin-hot-rank-bot/83ca062018f61c26201b5be01d9e8d29.png) | ![](./juejin-hot-rank-bot/031e3432096d19c9f1f8e903991e16cd.png) | ![](./juejin-hot-rank-bot/6c0c2526984304d8aa66714691768345.png) |
 
 ### 发布
 
 先发布工具
 
-![](./juejin-hot-rank-bot/a90fa856a60df0cb64a80d5395a3591a.png?s1=https%3A//img.cdn.sugarat.top/mdImg/sugar/a90fa856a60df0cb64a80d5395a3591a)
+![](./juejin-hot-rank-bot/a90fa856a60df0cb64a80d5395a3591a.png)
 
 再上架插件，就大工告成了，过程中填写的表单都可以AI自动生成辅助填写（美滋滋）。
 
-![](./juejin-hot-rank-bot/01f487c484c8d6e316e7a479a81640fe.png?s1=https%3A//img.cdn.sugarat.top/mdImg/sugar/01f487c484c8d6e316e7a479a81640fe)
+![](./juejin-hot-rank-bot/01f487c484c8d6e316e7a479a81640fe.png)
 
 插件上架后，大家就可以公开使用咯，使用的机器人也能公开。
 
@@ -84,18 +84,18 @@
 
 在创建入口，填写一下机器人的 `名字` 和 `介绍` 即可，`logo` 直接用自动生成。
 
-![](./juejin-hot-rank-bot/8099d2f705be95b1e20c737cd94599ad.png?s1=https%3A//img.cdn.sugarat.top/mdImg/sugar/8099d2f705be95b1e20c737cd94599ad)
+![](./juejin-hot-rank-bot/8099d2f705be95b1e20c737cd94599ad.png)
 
 ### 编辑bot
 
 编辑页面长下面这样子，咱们这里主要关注`人设`与`插件`部分即可。
 
-![](./juejin-hot-rank-bot/e260c84cb2c6180072c9866a4fc55c20.png?s1=https%3A//img.cdn.sugarat.top/mdImg/sugar/e260c84cb2c6180072c9866a4fc55c20)
+![](./juejin-hot-rank-bot/e260c84cb2c6180072c9866a4fc55c20.png)
 
 可以先添加插件，直接搜索咱们开发的插件名即可。
 
 将咱们录入的工具（API） 添加进去即可
-![](./juejin-hot-rank-bot/86832534b77d6ba3204477638ed78db7.png?s1=https%3A//img.cdn.sugarat.top/mdImg/sugar/86832534b77d6ba3204477638ed78db7)
+![](./juejin-hot-rank-bot/86832534b77d6ba3204477638ed78db7.png)
 
 接下来就是写“咒语”，比如我只简单写了下面这一句话：
 ```txt
@@ -104,7 +104,7 @@
 
 然后用`AI优化`功能，就给我扩展完善了。
 
-![](./juejin-hot-rank-bot/e24f2f6488dbf4038a45b13ef802bb70.png?s1=https%3A//img.cdn.sugarat.top/mdImg/sugar/e24f2f6488dbf4038a45b13ef802bb70)
+![](./juejin-hot-rank-bot/e24f2f6488dbf4038a45b13ef802bb70.png)
 
 ```txt
 # 角色
@@ -121,9 +121,9 @@
 ```
 至此核心部分就完成了，下面可以简单测试一下。
 
-![](./juejin-hot-rank-bot/524097eb12ea5438b7f8b98b334b61d3.png?s1=https%3A//img.cdn.sugarat.top/mdImg/sugar/524097eb12ea5438b7f8b98b334b61d3)
+![](./juejin-hot-rank-bot/524097eb12ea5438b7f8b98b334b61d3.png)
 
-![](./juejin-hot-rank-bot/c55b1b104e4e5341cbae7cc2df01b0d1.png?s1=https%3A//img.cdn.sugarat.top/mdImg/sugar/c55b1b104e4e5341cbae7cc2df01b0d1)
+![](./juejin-hot-rank-bot/c55b1b104e4e5341cbae7cc2df01b0d1.png)
 
 ## 优化
 ### 提示词优化

@@ -39,15 +39,15 @@ Serverless 架构即“⽆服务器”架构，它是一种全新的架构方式
 ## 传统开发
 ### 开发流程
 
-![图片](./serverless/MTYwNTI1OTM2NTgyNw==605259365827.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYwNTI1OTM2NTgyNw%3D%3D605259365827)
+![图片](./serverless/MTYwNTI1OTM2NTgyNw==605259365827.png)
 
 ### 开发之外的问题
 对开发团队的要求越来越高
 
-![图片](./serverless/MTYwNTI1OTgwMzM3OA==605259803378.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYwNTI1OTgwMzM3OA%3D%3D605259803378)
+![图片](./serverless/MTYwNTI1OTgwMzM3OA==605259803378.png)
 
 ### 上线后
-![图片](./serverless/MTYwNTI1OTkzMDY1MQ==605259930651.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYwNTI1OTkzMDY1MQ%3D%3D605259930651)
+![图片](./serverless/MTYwNTI1OTkzMDY1MQ==605259930651.png)
 * 运维复杂
 * 测试复杂
 * 扩展复杂
@@ -57,7 +57,7 @@ Serverless 架构即“⽆服务器”架构，它是一种全新的架构方式
 
 ## 技术变革,思想先行👏
 
-![图片](./serverless/MTYwNTI2MDQzNjQ3Mg==605260436472.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYwNTI2MDQzNjQ3Mg%3D%3D605260436472)
+![图片](./serverless/MTYwNTI2MDQzNjQ3Mg==605260436472.png)
 
 名词解释（云计算中的一些概念）：
 * On-Premise: 本地部署
@@ -84,7 +84,7 @@ Serverless 架构即“⽆服务器”架构，它是一种全新的架构方式
 ## 云的未来 - Serverless
 追求更低的心理成本，就是能力闭环
 
-![图片](./serverless/MTYwNTI2MzIwNzg4MA==605263207880.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYwNTI2MzIwNzg4MA%3D%3D605263207880)
+![图片](./serverless/MTYwNTI2MzIwNzg4MA==605263207880.png)
 
 Serverless 可能是目前资源抽象最高级别，为能力闭环带来了可能性
 
@@ -107,7 +107,7 @@ Serverless是一种思想，不一定是所谓的 FaaS + BaaS（后端即服务�
 ### 1. 为什么Serverless这么火
 >在中国，能算清账的公司已经打败了99%的公司
 
-现代软件开发成本非常的高，主要就在于 “成本意识” 
+现代软件开发成本非常的高，主要就在于 “成本意识”
 
 函数即服务（FaaS）作为 Serverless 时代重要的发展⽅向，能够从⼯程效率、可靠性、性能、成本等⽅方⾯给开发者（企业）带来巨大的价值，尤其是能够极大地提升研发效率。
 

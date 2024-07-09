@@ -39,13 +39,13 @@ tsc --init
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
 
-    "target": "es5",                              
-    "lib": ["ESNext","DOM"], 
+    "target": "es5",
+    "lib": ["ESNext","DOM"],
     /* Strict Type-Checking Options */
     "strict": true,                                 /* Enable all strict type-checking options. */
-    "noImplicitAny": false,                       
+    "noImplicitAny": false,
     "noImplicitThis": false,                      /* Raise error on 'this' expressions with an implied 'any' type. */
-    "esModuleInterop": true,                        /* Enables emit interoperability between CommonJS and ES Modules via 
+    "esModuleInterop": true,                        /* Enables emit interoperability between CommonJS and ES Modules via
     /* Experimental Options */
     "experimentalDecorators": true,              /* Enables experimental support for ES7 decorators. */
     /* Advanced Options */
@@ -89,7 +89,7 @@ ts-node first.ts
 ```
 
 ## 源码目录
-![图片](./core-decorators-1/MTYyNDcxMjM5NTAzMQ==624712395031.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyNDcxMjM5NTAzMQ%3D%3D624712395031)
+![图片](./core-decorators-1/MTYyNDcxMjM5NTAzMQ==624712395031.png)
 
 简单数了一下大概有`17`个，咱一个个的挨着学，细细品
 
@@ -119,7 +119,7 @@ t.sayHello()
 
 ### 执行效果
 
-![图片](./core-decorators-1/MTYyNDcxOTI4NjkxNQ==624719286915.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyNDcxOTI4NjkxNQ%3D%3D624719286915)
+![图片](./core-decorators-1/MTYyNDcxOTI4NjkxNQ==624719286915.png)
 
 
 ### console.time实现
@@ -127,7 +127,7 @@ t.sayHello()
 
 ```ts
 console.time('label')
-// ...code 
+// ...code
 console.timeEnd('label') // 即可打印出执行耗时
 ```
 
@@ -170,7 +170,7 @@ let count = 0
 
 export default function time(prefix: null | string = null, console = defaultConsole) {
     return function (target, key, descriptor) {
-        
+
     }
 }
 ```

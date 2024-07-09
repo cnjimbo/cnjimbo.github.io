@@ -29,7 +29,7 @@ categories:
 * 多个工厂 --> 多核CPU
 * 车间 --> 进程  : 同一个时间只能有一个进程运行
 * 工人 --> 线程 : 多个线程可以协同完成一个任务
-* 车间(进程)中的房间 --> 内存 
+* 车间(进程)中的房间 --> 内存
 
 本质上讲,两个名词都是 CPU 工作时间片的一个描述
 * 进程:运行指令及加载和保存上下文所需要的时间
@@ -123,7 +123,7 @@ console.log('script end')
 ```
 新的浏览器中不是如上打印的，因为 await 变快了
 ```js
-// script start --> async2 end --> Promise --> script end --> async1 end 
+// script start --> async2 end --> Promise --> script end --> async1 end
 //  promise1 --> promise2 --> setTimeout
 ```
 1. 当我们调用 async1 函数时，会马上输出 async2 end，并且函数返回一个 Promise
@@ -157,7 +157,7 @@ console.log('script end')
 * 宏队列macrotask一次只从队列中取一个任务执行，执行完后就去执行微任务队列中的任务
 * 微任务队列中所有的任务都会被依次取出来执行，直到microtask queue为空；
 * 只要执行UI rendering，它的节点是在执行完所有的microtask之后，下一个macrotask之前，紧跟着执行UI render。
-![图片](./eventloop/MTU4MzE0NTA5MTE0Mg==583145091142.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTU4MzE0NTA5MTE0Mg%3D%3D583145091142)
+![图片](./eventloop/MTU4MzE0NTA5MTE0Mg==583145091142.png)
 
 ### 微任务
 * promise
@@ -203,7 +203,7 @@ console.log(7)
 <details>
   <summary><mark><font color=darkred>点击查看答案</font></mark></summary>
   <p> 输出结果</p>
-  <pre><code>  
+  <pre><code>
   // 1 4 7 5 2 3 6
   </code></pre>
 </details>
@@ -224,12 +224,12 @@ new Promise((resolve, reject) => {
   resolve(5)
 }).then((data) => {
   console.log(data);
-  
+
   Promise.resolve().then(() => {
     console.log(6)
   }).then(() => {
     console.log(7)
-    
+
     setTimeout(() => {
       console.log(8)
     }, 0);
@@ -245,7 +245,7 @@ console.log(10);
 <details>
   <summary><mark><font color=darkred>点击查看答案</font></mark></summary>
   <p> 输出结果</p>
-  <pre><code>  
+  <pre><code>
   // 1 4 10 5 6 7 2 3 9 8
   </code></pre>
 </details>
@@ -255,7 +255,7 @@ Node 与 浏览器中的 Event Loop 完全不同
 
 Node的Event Loop分为**6个阶段**,会按照**顺序**反复执行,每当进入某一个阶段的时候,都会从对应的回调队列中取出函数去执行
 
-![图片](./eventloop/MTU4NDMzOTU2ODEwMw==584339568103.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTU4NDMzOTU2ODEwMw%3D%3D584339568103)
+![图片](./eventloop/MTU4NDMzOTU2ODEwMw==584339568103.png)
 
 ## timers
 执行 ``setTimeout`` 与 ``setInterval``回调,由poll阶段控制

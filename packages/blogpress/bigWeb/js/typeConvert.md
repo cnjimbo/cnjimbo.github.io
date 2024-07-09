@@ -14,9 +14,9 @@ categories:
 # JavaScript中的类型转换规则
 先上两张有趣的网图:
 
-![图片](./typeConvert/MTYyMzU5NTA3MzMwMA==623595073300.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyMzU5NTA3MzMwMA%3D%3D623595073300)
+![图片](./typeConvert/MTYyMzU5NTA3MzMwMA==623595073300.png)
 
-![图片](./typeConvert/MTYyMzU5NTExMzY2MQ==623595113661.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyMzU5NTExMzY2MQ%3D%3D623595113661)
+![图片](./typeConvert/MTYyMzU5NTExMzY2MQ==623595113661.png)
 
 可以看出，JavaScript的隐式类型转换是很有意思的（让人摸不着头脑）
 
@@ -55,7 +55,7 @@ console.log(!!undefined);
 console.log(!!null);
 console.log(!!NaN);
 console.log(Boolean(''));
-console.log(Boolean(0)); 
+console.log(Boolean(0));
 ```
 </details>
 
@@ -85,8 +85,8 @@ console.log(Boolean('123'));
 
 #### 数组转数字
 Array => Number
-* 空数组转为0: `[]` --> <font color="#3eaf7c">0</font>  
-* 含有一个元素且为`数字`或`数字字符串`则转换为数字：`[1]`或`['1']` --> <font color="#3eaf7c">1</font> 
+* 空数组转为0: `[]` --> <font color="#3eaf7c">0</font>
+* 含有一个元素且为`数字`或`数字字符串`则转换为数字：`[1]`或`['1']` --> <font color="#3eaf7c">1</font>
 * 其余情况转为`NaN`
 
 <details>
@@ -108,9 +108,9 @@ console.log(Number(['1',2])); // NaN
 * `'123'` --> <font color="#3eaf7c">123</font>: 纯数字构成的字符串直接转换为应的数字
 * `true` --> <font color="#3eaf7c">1</font>
 * `false` --> <font color="#3eaf7c">0</font>
-* `'124a'` --> <font color="red">NaN</font> 
-* `undefined` --> <font color="red">NaN</font> 
-* `Symbol` --> <font color="orange">**抛出错误**</font> 
+* `'124a'` --> <font color="red">NaN</font>
+* `undefined` --> <font color="red">NaN</font>
+* `Symbol` --> <font color="orange">**抛出错误**</font>
 
 <details>
 <summary>
@@ -150,10 +150,10 @@ console.log(+ /\d/); // NaN
 
 #### 值类型转字符串
 * 数字直接转
-  * `666` --> <font color="#3eaf7c">'666'</font>: 
+  * `666` --> <font color="#3eaf7c">'666'</font>:
 * 布尔值直接转换
-  * `true` --> <font color="#3eaf7c">'true'</font> 
-  * `false` --> <font color="#3eaf7c">'false'</font> 
+  * `true` --> <font color="#3eaf7c">'true'</font>
+  * `false` --> <font color="#3eaf7c">'false'</font>
 
 <details>
 <summary>
@@ -172,8 +172,8 @@ console.log(String(666)); // '666'
   * `[]` --> <font color="#3eaf7c">''</font> ：空数组转为空串
   * `[2,'3']` --> <font color="#3eaf7c">'2,3'</font> ：非空数组的每一项转为字符串再用`,`分割
 * 对象:
-  * {} --> <font color="red">[object Object]</font> 
-  * {a:1} --> <font color="red">[object Object]</font> 
+  * {} --> <font color="red">[object Object]</font>
+  * {a:1} --> <font color="red">[object Object]</font>
 
 <details>
 <summary>
@@ -287,14 +287,14 @@ console.log(demo4 + 1); // 报错
 1. `NaN`不等于任何其它类型
 2. `Boolean` 与其它类型进行比较,`Boolean`转换为`Number`
 3. `String` 与 `Number`进行比较,`String` 转化为`Number`
-4. `null` 与 `undefined`进行比较结果为<font color="#3eaf7c">true</font> 
-5. `null`,`undefined`与其它任何类型进行比较结果都为<font color="red">false</font> 
+4. `null` 与 `undefined`进行比较结果为<font color="#3eaf7c">true</font>
+5. `null`,`undefined`与其它任何类型进行比较结果都为<font color="red">false</font>
 6. `引用类型`与`值类型`进行比较,引用类型先转换为`值类型`(调用[ToPrimitive])
 7. `引用类型`与`引用类型`，直接判断是否指向同一对象
 
 >来源于参考资料中的网图
 
-![图片](./typeConvert/MTU5OTQ2OTY5MzkzMQ==599469693931.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTU5OTQ2OTY5MzkzMQ%3D%3D599469693931)
+![图片](./typeConvert/MTU5OTQ2OTY5MzkzMQ==599469693931.png)
 
 <details>
 <summary>
@@ -318,45 +318,45 @@ console.log(demo4 + 1); // 报错
 </summary>
 
 ```js
-if ([]) console.log(1);             
-if ({}) console.log(2);             
-if ([] == false) console.log(3);    
-if ({} == false) console.log(4);    
-if ([] == ![]) console.log(5);      
-if ({} == !{}) console.log(6);      
-if ('' == false) console.log(7);    
-if (false == 0) console.log(8);     
-if (1 == true) console.log(9);      
-if ('' == 0) console.log(10);       
-if (NaN == NaN) console.log(11);    
-if ([] == !true) console.log(12);   
-if ([] == false) console.log(13);   
-if ([] == 0) console.log(14);       
-if (+0 == -0) console.log(15);      
-if (NaN == false) console.log(16);  
+if ([]) console.log(1);
+if ({}) console.log(2);
+if ([] == false) console.log(3);
+if ({} == false) console.log(4);
+if ([] == ![]) console.log(5);
+if ({} == !{}) console.log(6);
+if ('' == false) console.log(7);
+if (false == 0) console.log(8);
+if (1 == true) console.log(9);
+if ('' == 0) console.log(10);
+if (NaN == NaN) console.log(11);
+if ([] == !true) console.log(12);
+if ([] == false) console.log(13);
+if ([] == 0) console.log(14);
+if (+0 == -0) console.log(15);
+if (NaN == false) console.log(16);
 ```
 
 ```js
-{ } +1              
-1 + {}              
-[] + 1              
-1 + []              
-[1, 2, 3] + 0       
-[1, 2, 3] + '0'     
-1 + '0'             
-1 + 0               
-1 + true            
-1 + false           
-'1' + true          
-'1' + false         
-![] + []            
-1 - true            
-'0' - 0             
-0 - '1'             
-false - true        
-{ } -[]             
-[] - {}             
-false - []          
+{ } +1
+1 + {}
+[] + 1
+1 + []
+[1, 2, 3] + 0
+[1, 2, 3] + '0'
+1 + '0'
+1 + 0
+1 + true
+1 + false
+'1' + true
+'1' + false
+![] + []
+1 - true
+'0' - 0
+0 - '1'
+false - true
+{ } -[]
+[] - {}
+false - []
 ```
 </details>
 

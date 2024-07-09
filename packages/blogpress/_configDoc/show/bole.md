@@ -24,7 +24,7 @@ TODO
 
 扫描内推码投递
 
-<img src="./bole/MTYzMzMzOTI3NzE0NA==633339277144.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYzMzMzOTI3NzE0NA%3D%3D633339277144" style="max-width:320px;">
+<img src="./bole/MTYzMzMzOTI3NzE0NA==633339277144.png" style="max-width:320px;">
 
 ## 社招
 

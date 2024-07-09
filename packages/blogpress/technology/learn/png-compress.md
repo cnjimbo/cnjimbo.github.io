@@ -11,7 +11,7 @@ description: 最近在迭代应用的时候用到了 UPNG.js 压缩 PNG 图片�
 
 想着给咱图床也加个压缩的功能，这样上传/访问也能省点 💰。
 
-![](./png-compress/d666613614e04da1e6e135c982cfc42e.png?s1=https%3A//img.cdn.sugarat.top/mdImg/sugar/d666613614e04da1e6e135c982cfc42e)
+![](./png-compress/d666613614e04da1e6e135c982cfc42e.png)
 
 图片类型众多，常用的主要就是`PNG/JPG/GIF`。
 
@@ -28,7 +28,7 @@ description: 最近在迭代应用的时候用到了 UPNG.js 压缩 PNG 图片�
 
 我们可以拿工具看一下，我这里用 VS Code 插件 [Hex Editor](https://marketplace.visualstudio.com/items?itemName=ms-vscode.hexeditor) 查看一个 PNG 图片的 16 进制表示信息。
 
-![](./png-compress/a10803276d251362424af66453c301ba.png?s1=https%3A//img.cdn.sugarat.top/mdImg/sugar/a10803276d251362424af66453c301ba)
+![](./png-compress/a10803276d251362424af66453c301ba.png)
 
 可以看到前八个字节和上面表示的一样。
 
@@ -184,7 +184,7 @@ UPNG.encode
 
 大概界面如下：
 
-![](./png-compress/5d461c425ea18f501262017bdeca8a9a.png?s1=https%3A//img.cdn.sugarat.top/mdImg/sugar/5d461c425ea18f501262017bdeca8a9a)
+![](./png-compress/5d461c425ea18f501262017bdeca8a9a.png)
 
 *纯血 HTML/CSS/JS，复制粘贴就能运行。*
 

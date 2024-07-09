@@ -41,7 +41,7 @@ emm...，检索了一圈记忆中除了 `VsCode` 好像还真没有这种东西�
 
 |                                富文本编辑器                                 |                                  块编辑器                                   |
 | :-------------------------------------------------------------------------: | :-------------------------------------------------------------------------: |
-| ![图片](./codeNote/MTY2MTY5ODE0NTY2OQ==661698145669.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY2MTY5ODE0NTY2OQ%3D%3D661698145669) | ![图片](./codeNote/MTY2MTY5ODIyNjk3NQ==661698226975.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY2MTY5ODIyNjk3NQ%3D%3D661698226975) |
+| ![图片](./codeNote/MTY2MTY5ODE0NTY2OQ==661698145669.png) | ![图片](./codeNote/MTY2MTY5ODIyNjk3NQ==661698226975.png) |
 
 前者是比较传统的编辑器，后者从社区反应来看像是`下一代趋势`，但国内好像还没看到使用此方案的成熟产品（可能是我孤陋寡闻了，读者有推荐的可以评论区补充）
 
@@ -65,12 +65,12 @@ emm...，检索了一圈记忆中除了 `VsCode` 好像还真没有这种东西�
 ### 项目搭建
 粗糙的原型图如下
 
-![图片](./codeNote/MTY2MTY5OTkyOTE2OQ==661699929169.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY2MTY5OTkyOTE2OQ%3D%3D661699929169)
+![图片](./codeNote/MTY2MTY5OTkyOTE2OQ==661699929169.png)
 
 布局也比较简单
 ```html
 <header>工具条...</header>
-<!-- 主体内容 --> 
+<!-- 主体内容 -->
 <main>
     <Note />
     <Code />
@@ -113,12 +113,12 @@ emm...，检索了一圈记忆中除了 `VsCode` 好像还真没有这种东西�
         config: {
           uploader: {
             uploadByFile(file: File) {
-              // 需要自己处理图片上传逻辑 
+              // 需要自己处理图片上传逻辑
               // 按结构进行返回即可
               return {
                 success: 1,
                 file: {
-                  url: './codeNote/pupza3m486.png?s1=https%3A//img.cdn.sugarat.top/online-editor/6302403434e52962875fbf3e/1661169105550/pupza3m486'
+                  url: './codeNote/pupza3m486.png'
                 }
               }
             }
@@ -166,7 +166,7 @@ htmlEditor.onDidChangeModelContent(() => {
 
 当然笔者这里用的Vite + Vue3，**这里还有几个坑**
 
-导入worker，参考[尤大给的示例](https://github.com/vitejs/vite/discussions/1791#discussioncomment-321046) 
+导入worker，参考[尤大给的示例](https://github.com/vitejs/vite/discussions/1791#discussioncomment-321046)
 >
 ```ts
 // main.ts
@@ -378,6 +378,6 @@ export function formatCSS(css: string) {
 
 成签约作者了，后面几个月输出可能会稍微频繁一点了，到时候就打扰了，大家不要吝啬3连
 
-![图片](./codeNote/MTY2MjE3MTI4OTg5OA==662171289898.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY2MjE3MTI4OTg5OA%3D%3D662171289898)
+![图片](./codeNote/MTY2MjE3MTI4OTg5OA==662171289898.png)
 
 

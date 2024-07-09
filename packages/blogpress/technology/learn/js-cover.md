@@ -19,7 +19,7 @@ categories:
 
 最终效果如下:
 
-![图片](./js-cover/MTYyNzQ4NDc4NzUzMA==627484787530.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyNzQ4NDc4NzUzMA%3D%3D627484787530)
+![图片](./js-cover/MTYyNzQ4NDc4NzUzMA==627484787530.png)
 
 ## 注入js
 向第三方页面注入js的方法有很多
@@ -87,7 +87,7 @@ window.document.head.append(a)
     }
 ```
 
-![图片](./js-cover/MTYyNzU2OTg1NDM3NA==627569854374.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyNzU2OTg1NDM3NA%3D%3D627569854374)
+![图片](./js-cover/MTYyNzU2OTg1NDM3NA==627569854374.png)
 
 ### 情况二
 **思路：** 由于是背景图片，可直接为其添加一个子元素`<div>`作为蒙层即可

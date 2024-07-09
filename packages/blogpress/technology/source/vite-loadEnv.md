@@ -38,7 +38,7 @@ export function loadEnv(
 * `envDir`：环境变量配置文件所在目录
 * `prefix`：接受的环境变量前缀，默认为 **VITE_**，这就应证了文档中提到的内容
 
-![图片](./vite-loadEnv/MTYyNDI4MzYwNTYwMA==624283605600.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyNDI4MzYwNTYwMA%3D%3D624283605600)
+![图片](./vite-loadEnv/MTYyNDI4MzYwNTYwMA==624283605600.png)
 
 ### 返回值
 一个键与值都是`string`类型的对象
@@ -91,7 +91,7 @@ export function loadEnv(
   envDir: string,
   prefix = 'VITE_'
 ): Record<string, string> {
-  // 如果设置的模式是 local 就抛出错误 
+  // 如果设置的模式是 local 就抛出错误
   // 即避免与.loacl 后缀文件冲突
   if (mode === 'local') {
     throw new Error(
@@ -124,10 +124,10 @@ export function loadEnv(
       env[key] = process.env[key] as string
     }
   }
-  
+
   // 遍历环境遍历配置文件
   for (const file of envFiles) {
-    // 判断配置文件是否存在，lookupFile源码后文贴出  
+    // 判断配置文件是否存在，lookupFile源码后文贴出
     const path = lookupFile(envDir, [file], true)
     // 如果文件存在
     if (path) {

@@ -38,7 +38,7 @@ categories:
 
 但可能由于阅读量不高，目前下载体验的朋友也不多
 
-![图片](./snippets/MTYyNDEwODI4NzY0MQ==624108287641.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyNDEwODI4NzY0MQ%3D%3D624108287641)
+![图片](./snippets/MTYyNDEwODI4NzY0MQ==624108287641.png)
 
 ### 简介
 支持通过npm的形式分享你的代码块
@@ -55,11 +55,11 @@ categories:
 
 当然是先装上插件
 
-![图片](./snippets/MTYyNDEwOTA4NDYxNg==624109084616.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyNDEwOTA4NDYxNg%3D%3D624109084616)
+![图片](./snippets/MTYyNDEwOTA4NDYxNg==624109084616.png)
 
 tips：编写完新的代码块，如需立即生效，需手动执行 SP Refresh 命令
 
-![图片](./snippets/MTYyNDEwOTE2NDE2OQ==624109164169.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyNDEwOTE2NDE2OQ%3D%3D624109164169)
+![图片](./snippets/MTYyNDEwOTE2NDE2OQ==624109164169.png)
 
 下面是编写配置文件的演示，插件提供了快速生成配置文件内容的代码块:
 

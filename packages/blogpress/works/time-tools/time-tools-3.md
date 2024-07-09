@@ -36,14 +36,14 @@ const fs = require('fs')
 
 /**
  * 获取文件内容
- * @param {string} filepath 
+ * @param {string} filepath
  */
 function getFileContent(filepath) {
     return fs.readFileSync(filepath, { encoding: 'utf-8' })
 }
 /**
  * 获取多个文件的内容
- * @param {string[]} files 
+ * @param {string[]} files
  */
 function getFilesContent(files) {
     return files.reduce((pre, now) => {
@@ -72,8 +72,8 @@ function outputJson(content) {
 
 /**
  * 创建一个新文件
- * @param {string} path 
- * @param {string} content 
+ * @param {string} path
+ * @param {string} content
  * @param {boolean} judgeRepeat
  */
 function createFile(path, content, judgeRepeat = true) {
@@ -100,7 +100,7 @@ function createFile(path, content, judgeRepeat = true) {
 ```js
 /**
  * 获取与原文件不重复的一个文件路经
- * @param {string} originPath 
+ * @param {string} originPath
  */
 function getNoRepeatFilePath(originPath) {
     let num = 1
@@ -200,7 +200,7 @@ function getEverydayData(timeDesc, withTime = false) {
 
 #### 指令效果
 
-![图片](./time-tools-3/MTYyODA4ODA3Mzk5Mg==628088073992.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyODA4ODA3Mzk5Mg%3D%3D628088073992)
+![图片](./time-tools-3/MTYyODA4ODA3Mzk5Mg==628088073992.png)
 
 ## 其它
 **下一期根据已有的功能整个周报生成**

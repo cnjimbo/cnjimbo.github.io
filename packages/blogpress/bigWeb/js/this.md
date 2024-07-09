@@ -98,7 +98,7 @@ fn8 = fn8.bind({p8:8}).bind({p8:88}).bind({p8:888})
 fn8() // 8
 ```
 
-![图片](./this/MTU4MzgyNjg3NzI4Mw==583826877283.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTU4MzgyNjg3NzI4Mw%3D%3D583826877283)
+![图片](./this/MTU4MzgyNjg3NzI4Mw==583826877283.png)
 
 
 
@@ -147,7 +147,7 @@ const obj = {
 
 let a = obj.say1
 let b = obj.obj1.say2
-a() 
+a()
 b()
 obj.say1()
 obj.obj1.say2()
@@ -172,7 +172,7 @@ obj2
 
 **题解**
 
-1. 
+1.
 ```js
 let a = obj.say1
 a()
@@ -187,7 +187,7 @@ let a = function () {
 // 结果为
 undefined
 ```
-2. 
+2.
 ```js
 let b = obj.obj1.say2
 b()
@@ -199,7 +199,7 @@ let b = function () {
 // 结果为
 undefined
 ```
-3. 
+3.
 ```js
 obj.say1()
 // 对于对象来说,谁调用函数谁就是this
@@ -208,7 +208,7 @@ obj.say1()
 // 结果为
 'obj'
 ```
-4. 
+4.
 ```js
 obj.obj1.say2()
 // 与上一个同理
@@ -217,7 +217,7 @@ obj.obj1.say2()
 // 结果为
 'obj1'
 ```
-5. 
+5.
 ```js
 obj.say3()
 // 函数内部有个箭头函数
@@ -236,7 +236,7 @@ obj = {
 // 结果为
 'obj'
 ```
-6. 
+6.
 ```js
 obj.say4()
 // 函数内部为普通函数
@@ -246,7 +246,7 @@ obj.say4()
 // 结果为
 undefined
 ```
-7. 
+7.
 ```js
 obj.say5()
 // 其内部为箭头函数

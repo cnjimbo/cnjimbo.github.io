@@ -58,7 +58,7 @@ wvs build [options]
 
 vite配置通过官方的`vite.config.[tj]s`配置文件拓展即可
 ### 效果
-![图片](./webapck2vite2/MTYzNjg3MzM4NzQzMQ==636873387431.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYzNjg3MzM4NzQzMQ%3D%3D636873387431)
+![图片](./webapck2vite2/MTYzNjg3MzM4NzQzMQ==636873387431.png)
 
 在线体验demo地址：已创建[stackblitz](https://stackblitz.com/edit/atqq-webpack-vite-serve-mstatq?devtoolsheight=33&file=README.md)
 
@@ -174,7 +174,7 @@ export default function BuildPlugin(): PluginOption {
     },
     // 插件配置处理
     config() {
-      
+
     },
     resolveId(id) {
 
@@ -184,7 +184,7 @@ export default function BuildPlugin(): PluginOption {
     },
     // 构建完成后
     closeBundle() {
-      
+
     },
   };
 }

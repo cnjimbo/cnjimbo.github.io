@@ -28,24 +28,24 @@ HbuilderX没有Linux版本（不含wine），但有大神移植了linux版本下
 ```sh
 npm install -g @vue/cli
 ```
-### 初始化vue3工程 
+### 初始化vue3工程
 ```sh
 vue create -p dcloudio/uni-preset-vue#vue3 uni-vue3-ts-template
 ```
 
 赖心等待一会儿，即会出现如下选择
 
-![图片](./uni-vue3-cli_1/MTYyNDM2NTIzMjc2MA==624365232760.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyNDM2NTIzMjc2MA%3D%3D624365232760)
+![图片](./uni-vue3-cli_1/MTYyNDM2NTIzMjc2MA==624365232760.png)
 
 这里选择TS版本
 
 此时还会出现一个选择`@dcloudio/uni-mp-360`的选项，选择第一个（最新的版本）即可
 
-![图片](./uni-vue3-cli_1/MTYyNDM2NTM3MDMwMQ==624365370301.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyNDM2NTM3MDMwMQ%3D%3D624365370301)
+![图片](./uni-vue3-cli_1/MTYyNDM2NTM3MDMwMQ==624365370301.png)
 
 等待一会儿就初始化完毕了，目录结构如下
 
-![图片](./uni-vue3-cli_1/MTYyNDM2NjE1MDY4MA==624366150680.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyNDM2NjE1MDY4MA%3D%3D624366150680)
+![图片](./uni-vue3-cli_1/MTYyNDM2NjE1MDY4MA==624366150680.png)
 
 ### 基础模板
 包含`jest`，`babel`，`postcss`，`typescript`等基本配置文件
@@ -65,13 +65,13 @@ yarn dev:mp-weixin
 yarn build:mp-weixin
 ```
 
-![图片](./uni-vue3-cli_1/MTYyNDM2NjcxODY5MQ==624366718691.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyNDM2NjcxODY5MQ%3D%3D624366718691)
+![图片](./uni-vue3-cli_1/MTYyNDM2NjcxODY5MQ==624366718691.png)
 
 开发启动速度比使用HbuilderX启动项目要快不少
 
 然后将编译结果`dist/dev/mp-weixin`导入微信开发者工具即可运行
 
-![图片](./uni-vue3-cli_1/MTYyNDM3MDAwMjk4NQ==624370002985.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyNDM3MDAwMjk4NQ%3D%3D624370002985)
+![图片](./uni-vue3-cli_1/MTYyNDM3MDAwMjk4NQ==624370002985.png)
 
 
 ## Sass支持
@@ -95,7 +95,7 @@ yarn add @vant/weapp
 
 拷贝`node_modules/@vant` 到 wxcomponents中
 
-![图片](./uni-vue3-cli_1/MTYyNDM3NjI0ODcyMg==624376248723.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyNDM3NjI0ODcyMg%3D%3D624376248723)
+![图片](./uni-vue3-cli_1/MTYyNDM3NjI0ODcyMg==624376248723.png)
 
 `src/App.vue`中引入样式文件
 ```html
@@ -125,7 +125,7 @@ yarn add @vant/weapp
 
 效果
 
-![图片](./uni-vue3-cli_1/MTYyNDM3NjU4NTkwNg==624376585906.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyNDM3NjU4NTkwNg%3D%3D624376585906)
+![图片](./uni-vue3-cli_1/MTYyNDM3NjU4NTkwNg==624376585906.png)
 
 ## 未完待续
 * eslint

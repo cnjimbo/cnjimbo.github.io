@@ -15,7 +15,7 @@ categories:
 
 在文章中也立下了一个Flag
 
-![图片](./online-resume/MTYxNDUwMTIwOTAzMQ==614501209031.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNDUwMTIwOTAzMQ%3D%3D614501209031)
+![图片](./online-resume/MTYxNDUwMTIwOTAzMQ==614501209031.png)
 
 看了一下Github的 [commit记录](https://github.com/ATQQ/resume/commits/main)，截止目前大概花了一周的时间，把心中所设想的方案做了出来，也许不完美，但我想应该也能帮助到部分同学
 
@@ -33,7 +33,7 @@ categories:
 ## 项目设计
 ### 布局
 
-![图片](./online-resume/MTYxNDUwNzM0ODgzNw==614507348837.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNDUwNzM0ODgzNw%3D%3D614507348837)
+![图片](./online-resume/MTYxNDUwNzM0ODgzNw==614507348837.png)
 
 整个应用的基本页面结构
 ```html
@@ -61,7 +61,7 @@ categories:
 
 ### 技术选型
 
-![图片](./online-resume/MTYxNDUwODgzNzIxMA==614508837210.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNDUwODgzNzIxMA%3D%3D614508837210)
+![图片](./online-resume/MTYxNDUwODgzNzIxMA==614508837210.png)
 
 > Vanilla JS——世界上最轻量的JavaScript框架（没有之一） ---- **原生js**
 
@@ -72,7 +72,7 @@ categories:
 
 ### 通信
 
-![图片](./online-resume/MTYxNDUwOTM4NDkwOQ==614509384909.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNDUwOTM4NDkwOQ%3D%3D614509384909)
+![图片](./online-resume/MTYxNDUwOTM4NDkwOQ==614509384909.png)
 
 * 通过导航栏切换各种简历模板
 * 简历上的改动自动同步到控制区域中的页面描述信息
@@ -80,13 +80,13 @@ categories:
 
 ### 描述简历
 
-![图片](./online-resume/MTYxNDUxMDA2Nzk0MA==614510067940.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNDUxMDA2Nzk0MA%3D%3D614510067940)
+![图片](./online-resume/MTYxNDUxMDA2Nzk0MA==614510067940.png)
 
 * 使用json 对简历的结构与内容进行描述
 * 一个模板对应一个json
 
 ### 页面描述信息展示
-![图片](./online-resume/MTYxNDUxMTMxNTQyMg==614511315422.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNDUxMTMxNTQyMg%3D%3D614511315422)
+![图片](./online-resume/MTYxNDUxMTMxNTQyMg==614511315422.png)
 
 * 使用JSON描述简历上的各种信息
 * 提供一个JSON编辑器
@@ -94,16 +94,16 @@ categories:
 
 ### 数据存取
 
-![图片](./online-resume/MTYxNDUxMDU2Njg0NQ==614510566845.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNDUxMDU2Njg0NQ%3D%3D614510566845)
+![图片](./online-resume/MTYxNDUxMDU2Njg0NQ==614510566845.png)
 
 * 整个数据流是单向的，外部负责更新，内部（简历展示部分）只负责读取
 * 数据存放在本地，因此不担心个人信息泄露
 * 这里采用 `localStorage`
 
 ### 第一版效果
-![图片](./online-resume/MTYxNDUxMTcxNzAwNQ==614511717005.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNDUxMTcxNzAwNQ%3D%3D614511717005)
+![图片](./online-resume/MTYxNDUxMTcxNzAwNQ==614511717005.png)
 
-![图片](./online-resume/MTYxNDUxODIzOTU1OQ==614518239559.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNDUxODIzOTU1OQ%3D%3D614518239559)
+![图片](./online-resume/MTYxNDUxODIzOTU1OQ==614518239559.png)
 
 
 下面就介绍项目实现的关键部分内容
@@ -118,7 +118,7 @@ categories:
 ├── webpack.config.js           -- 引用的配置文件
 │
 ./public            公共静态资源
-├── css   
+├── css
 │   └── print.css  打印时用的样式
 │
 ./src       核心代码
@@ -126,7 +126,7 @@ categories:
 ├── constants       常量
 │   ├── index.js    存放导航的名称映射信息
 │   ├── schema      存放每个简历模板的默认JSON数据,与pages中的模板一一对应
-│   └────── demo1.js   
+│   └────── demo1.js
 ├── pages           简历模板目录
 │   └── demo1       -- 其中的一个模板
 │
@@ -145,7 +145,7 @@ categories:
 例如
 ```
 ./src
-├── pages          
+├── pages
 │   └── xxx
 │   └───── index.html
 │   └───── index.scss
@@ -156,16 +156,16 @@ categories:
 
 自动生成的结果如下
 
-![图片](./online-resume/MTYxNDUxNDA2NTU5MQ==614514065591.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNDUxNDA2NTU5MQ%3D%3D614514065591)
+![图片](./online-resume/MTYxNDUxNDA2NTU5MQ==614514065591.png)
 
 每个HTMLWebpackPlugin的内容格式如下
 
-![图片](./online-resume/MTYxNDUxNDI3ODI5NQ==614514278295.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNDUxNDI3ODI5NQ%3D%3D614514278295)
+![图片](./online-resume/MTYxNDUxNDI3ODI5NQ==614514278295.png)
 
 ### 自动生成导航栏
 首页顶部有一个导航栏用于切换简历模板的路由
 
-![图片](./online-resume/MTYxNDUxNDU5Mzc1MA==614514593750.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNDUxNDU5Mzc1MA%3D%3D614514593750)
+![图片](./online-resume/MTYxNDUxNDU5Mzc1MA==614514593750.png)
 
 这部分的链接内容如果手动填写是很无趣的，**如何实现自动生成的呢**？
 
@@ -245,12 +245,12 @@ initNav()
 **目录**
 ```
 ./src
-├── constants      
+├── constants
 │   ├── index.js
 │   ├── schema.js
-│   ├── schema    
-│   ├────── demo1.js  
-│   ├────── react1.js  
+│   ├── schema
+│   ├────── demo1.js
+│   ├────── react1.js
 │   └────── vue1.js
 ```
 
@@ -349,7 +349,7 @@ export function setSchema(data, key = '') {
 ```js
 /**
  * 初始化JSON编辑器
- * @param {string} id 
+ * @param {string} id
  */
 function initEditor(id) {
     let timer = null
@@ -372,7 +372,7 @@ const editor = initEditor('jsonEditor')
 
 展示效果
 
-![图片](./online-resume/MTYxNDUxODc2MDE5Ng==614518760196.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNDUxODc2MDE5Ng%3D%3D614518760196)
+![图片](./online-resume/MTYxNDUxODc2MDE5Ng==614518760196.png)
 
 json数据展示/更新时机
 * 因为每次切换路由都会触发iframe的onload事件
@@ -397,7 +397,7 @@ document.getElementById('page').onload = function (e) {
 
 **期望的效果**
 
-![图片](./online-resume/MTYxNDQ4MDYyMjQ1Ng==614480622456.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNDQ4MDYyMjQ1Ng%3D%3D614480622456)
+![图片](./online-resume/MTYxNDQ4MDYyMjQ1Ng==614480622456.png)
 
 **描述文件**
 
@@ -406,7 +406,7 @@ document.getElementById('page').onload = function (e) {
 ./src
 ├── constants
 │   └── schema
-│   └────── abc.js  
+│   └────── abc.js
 ```
 
 abc.js
@@ -578,7 +578,7 @@ header {
 
 ```
 ./src
-├── pages          
+├── pages
 │   └── abc
 │   └───── index.html
 │   └───── index.scss
@@ -639,7 +639,7 @@ window.onload = function () {
 **目录结构**
 ```
 ./src
-├── pages          
+├── pages
 │   └── abc
 │   └───── index.html
 │   └───── index.scss
@@ -709,7 +709,7 @@ export default {
 **目录结构**
 ```
 ./src
-├── pages          
+├── pages
 │   └── abc
 │   └───── index.html
 │   └───── index.scss
@@ -771,7 +771,7 @@ export default function App() {
 **目录结构**
 ```
 ./src
-├── pages          
+├── pages
 │   └── abc
 │   └───── index.html
 │   └───── index.scss
@@ -829,7 +829,7 @@ window.onload = function () {
 
 ```
 ./src
-├── constants    
+├── constants
 │   ├── index.js    存放路径与中文title的映射
 ```
 
@@ -840,7 +840,7 @@ export const navTitle = {
 }
 ```
 
-![图片](./online-resume/MTYxNDQ5MDMyMDA3Nw==614490320077.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNDQ5MDMyMDA3Nw%3D%3D614490320077)
+![图片](./online-resume/MTYxNDQ5MDMyMDA3Nw==614490320077.png)
 
 ### 子页面更新
 前面在实例化editor的时候有一个 `updatePage` 方法
@@ -870,7 +870,7 @@ function updatePage(data) {
 
 /**
  * 初始化JSON编辑器
- * @param {string} id 
+ * @param {string} id
  */
 function initEditor(id) {
     let timer = null
@@ -922,7 +922,7 @@ const editor = initEditor('jsonEditor')
 
 只需要在打印样式中将无关内容进行隐藏即可
 
-![图片](./online-resume/MTYxNDU2NjIzMjYyNQ==614566232625.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNDU2NjIzMjYyNQ%3D%3D614566232625)
+![图片](./online-resume/MTYxNDU2NjIzMjYyNQ==614566232625.png)
 
 基本能做到1比1的还原
 
@@ -1003,7 +1003,7 @@ function initObserver() {
     // 监听子页面的body
     observer.observe(document.getElementById('page').contentDocument.body, config);
     // 因为 MutationObserver 是微任务，微任务后面紧接着就是页面渲染
-    
+
     // 停止观察变动
     // 这里使用宏任务，确保此轮Event loop结束
     setTimeout(() => {
@@ -1121,7 +1121,7 @@ document.getElementById('page').contentDocument.body.addEventListener('click', f
 
     // 将点击内容显示在textarea中
     $textarea.value = clickText
-    
+
     // 自动聚焦输入框
     if (document.getElementById('focus').checked) {
         $textarea.focus()
