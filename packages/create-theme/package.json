@@ -29,6 +29,6 @@
     "fs-extra": "^11.2.0"
   },
   "devDependencies": {
-    "rimraf": "^5.0.1"
+    "rimraf": "^6.0.0"
   }
 }
