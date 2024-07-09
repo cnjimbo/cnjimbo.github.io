@@ -108,8 +108,8 @@ importers:
   packages/theme:
     dependencies:
       '@giscus/vue':
-        specifier: ^2.4.0
-        version: 2.4.0(vue@3.4.26(typescript@5.4.5))
+        specifier: ^3.0.0
+        version: 3.0.0(vue@3.4.26(typescript@5.4.5))
       '@mdit-vue/shared':
         specifier: ^0.12.1
         version: 0.12.1
@@ -867,8 +867,8 @@ packages:
   '@floating-ui/dom@1.4.5':
     resolution: {integrity: sha512-96KnRWkRnuBSSFbj0sFGwwOUd8EkiecINVl0O9wiZlZ64EkpyAOG3Xc2vKKNJmru0Z7RqWNymA+6b8OZqjgyyw==}
 
-  '@giscus/vue@2.4.0':
-    resolution: {integrity: sha512-QOxKHgsMT91myyQagP2v20YYAei1ByZuc3qcaYxbHx4AwOeyVrybDIuRFwG9YDv6OraC86jYnU4Ixd37ddC/0A==}
+  '@giscus/vue@3.0.0':
+    resolution: {integrity: sha512-ZoSUmlc3ee2a+kdumCaXFDZaB4h9b1BYWzsmmRP7zoGEQKYopdAnzGvJK7RdvrYGAzNqZtGUxI0NnBl8/UA6bQ==}
     peerDependencies:
       vue: '>=3.2.0'
 
@@ -4632,7 +4632,7 @@ snapshots:
     dependencies:
       '@floating-ui/core': 1.3.1
 
-  '@giscus/vue@2.4.0(vue@3.4.26(typescript@5.4.5))':
+  '@giscus/vue@3.0.0(vue@3.4.26(typescript@5.4.5))':
     dependencies:
       giscus: 1.5.0
       vue: 3.4.26(typescript@5.4.5)
