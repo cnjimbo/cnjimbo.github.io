@@ -20,7 +20,7 @@ categories:
 
 **百闻不如[一见](https://github.com/ATQQ/eslint-plugin-todo-ddl)**,先带大家看看[插件](https://github.com/ATQQ/eslint-plugin-todo-ddl)效果
 
-![图片](./eslint-plugin-todo-ddl/MTYxNTgxMTk1MjM4MA==615811952380.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYxNTgxMTk1MjM4MA%3D%3D615811952380)
+![图片](./eslint-plugin-todo-ddl/MTYxNTgxMTk1MjM4MA==615811952380.png)
 
 
 因为在工作中临时会插入许多其它的事,或者有些代码,接口是有时效性的需要手动下线
@@ -115,7 +115,7 @@ create(context) {
 注释节点有两种
 ```js
 // 注释
-/** 
+/**
  * Block
  **/
 ```
@@ -183,7 +183,7 @@ const rDate = [{
  * @param {String} value 待操作字符串
  * @param {String[]} ddlSymbol 截止时间标识符
  * @param {STring} todoSymbol
- * @return {Object} 
+ * @return {Object}
  */
 function getDDLAndText(value, ddlSymbol, todoSymbol) {
     let text = value.slice(value.indexOf(ddlSymbol) + ddlSymbol.length),

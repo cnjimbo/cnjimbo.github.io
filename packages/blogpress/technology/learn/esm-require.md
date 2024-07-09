@@ -17,7 +17,7 @@ const pkg = require('vitepress/package.json')
 
 下来翻了翻文档发现这个Node v12.2.0 就有了
 
-![](./esm-require/MTcwMDY2MTUwNDg1Mg==700661504852.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTcwMDY2MTUwNDg1Mg%3D%3D700661504852)
+![](./esm-require/MTcwMDY2MTUwNDg1Mg==700661504852.png)
 
 结合最近开发 VitePress 主题需要ESM中获取 `__dirname` 的经验，这里就顺便记录一下。
 

@@ -21,7 +21,7 @@ description: 在迭代图床应用时，需要用到图片压缩，在之前分�
 
 下图是 VS Code 插件 [Hex Editor](https://marketplace.visualstudio.com/items?itemName=ms-vscode.hexeditor) 查看一个 JPG 图片的 16 进制表示信息。
 
-![](./jpg-compress/bcba46c1cd96ae55e93d5306796cd98c.png?s1=https%3A//img.cdn.sugarat.top/mdImg/sugar/bcba46c1cd96ae55e93d5306796cd98c)
+![](./jpg-compress/bcba46c1cd96ae55e93d5306796cd98c.png)
 
 于是可以根据这个特性判断，于是就有如下的判断代码。
 
@@ -43,7 +43,7 @@ function isJPG(file) {
 
 当然社区也有现成的 [is-jpg](https://github.com/sindresorhus/is-jpg) 库可以使用。
 
-![](./jpg-compress/522312911d91522d3217c11765363f85.png?s1=https%3A//img.cdn.sugarat.top/mdImg/sugar/522312911d91522d3217c11765363f85)
+![](./jpg-compress/522312911d91522d3217c11765363f85.png)
 
 *可看判断代码还是很简单的。*
 
@@ -56,7 +56,7 @@ function isJPG(file) {
 
 官方示例站点：[Compressor.js PlayGround](https://fengyuanchen.github.io/compressorjs/)
 
-![](./jpg-compress/582a9d9e73a1274fa8e7aae2d7022aa3.png?s1=https%3A//img.cdn.sugarat.top/mdImg/sugar/582a9d9e73a1274fa8e7aae2d7022aa3)
+![](./jpg-compress/582a9d9e73a1274fa8e7aae2d7022aa3.png)
 
 ### 使用
 支持 `npm` 和 `cdn` 两种引入方式。
@@ -133,7 +133,7 @@ function compressJPGByCompressor(file, ops) {
 
 官方示例站点：[compression PlayGround](https://donaldcwl.github.io/browser-image-compression/example/basic.html)
 
-![](./jpg-compress/3619ac65a3399e4b8e1928bb4e2c28a2.png?s1=https%3A//img.cdn.sugarat.top/mdImg/sugar/3619ac65a3399e4b8e1928bb4e2c28a2)
+![](./jpg-compress/3619ac65a3399e4b8e1928bb4e2c28a2.png)
 
 其中多线程压缩使用 [OffscreenCanvas](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas#browser_compatibility): 一个可以脱离屏幕渲染的 canvas 对象。在 `web worker` 环境也可工作。
 
@@ -356,7 +356,7 @@ function dataURItoFile(dataURI, fileName) {
 
 大概界面如下（可修改配置切换压缩方案，对比效果）：
 
-![](./jpg-compress/736ac7e7771d2a948845e1fe0d0fa40f.png?s1=https%3A//img.cdn.sugarat.top/mdImg/sugar/736ac7e7771d2a948845e1fe0d0fa40f)
+![](./jpg-compress/736ac7e7771d2a948845e1fe0d0fa40f.png)
 
 *纯血 HTML/CSS/JS，复制粘贴就能运行。*
 

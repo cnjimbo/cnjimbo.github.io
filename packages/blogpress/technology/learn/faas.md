@@ -35,7 +35,7 @@ FaaS(Function as a Service - 函数即服务) 是在无状态容器中运行的�
 
 就像这样的：[点我体验](https://service-rixme52n-1256505457.cd.apigw.tencentcs.com/release/checkWeather?cityId=3)
 
-参数：cityId [地区参照表](https://www.weiyun.com/office?fid=1c8be5bf-7ee0-451d-ba19-0cd31371d7a2&pid=2d1ebb3d8cd9f0ef71a8cf4cb1f75120&ppid=2d1ebb3d07e603741f4015313cc3cd2b&size=908800&share_key=5lgsGhw) 
+参数：cityId [地区参照表](https://www.weiyun.com/office?fid=1c8be5bf-7ee0-451d-ba19-0cd31371d7a2&pid=2d1ebb3d8cd9f0ef71a8cf4cb1f75120&ppid=2d1ebb3d07e603741f4015313cc3cd2b&size=908800&share_key=5lgsGhw)
 
 ## 所使用到的技术与平台
 * Node.js (云函数选用JavaScript语言)
@@ -55,38 +55,38 @@ FaaS(Function as a Service - 函数即服务) 是在无状态容器中运行的�
 
 点击右上角进入控制台
 
-![图片](./faas/MTYwNjA1OTA0OTA5MA==606059049090.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYwNjA1OTA0OTA5MA%3D%3D606059049090)
+![图片](./faas/MTYwNjA1OTA0OTA5MA==606059049090.png)
 
 ### 3. 云函数-函数服务
 
 左上角选择云产品，输入云函数，选择 云函数-函数服务
 
-![图片](./faas/MTYwNjA1OTEwOTg4NQ==606059109885.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYwNjA1OTEwOTg4NQ%3D%3D606059109885)
+![图片](./faas/MTYwNjA1OTEwOTg4NQ==606059109885.png)
 
 ### 4. 新建云函数
 
 新建一个云函数
 
-![图片](./faas/MTYwNjA1OTE5MDY3NA==606059190674.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYwNjA1OTE5MDY3NA%3D%3D606059190674)
+![图片](./faas/MTYwNjA1OTE5MDY3NA==606059190674.png)
 
 ### 5. 录入基本信息
 * 符合规范的函数名称
 * 环境选择一个Node.js的环境
 * 选择空白函数
 * 然后下一步
-![图片](./faas/MTYwNjA1OTI2MDczNA==606059260734.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYwNjA1OTI2MDczNA%3D%3D606059260734)
+![图片](./faas/MTYwNjA1OTI2MDczNA==606059260734.png)
 
 ### 6. 完成创建
 
 直接点击完成，什么都不更改
 
-![图片](./faas/MTYwNjA1OTUwNjc4NQ==606059506785.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYwNjA1OTUwNjc4NQ%3D%3D606059506785)
+![图片](./faas/MTYwNjA1OTUwNjc4NQ==606059506785.png)
 
 ### 7. 触发器
 
 然后来到这个界面，点击触发管理
 
-![图片](./faas/MTYwNjA1OTU5ODY4MQ==606059598681.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYwNjA1OTU5ODY4MQ%3D%3D606059598681)
+![图片](./faas/MTYwNjA1OTU5ODY4MQ==606059598681.png)
 
 ### 8. 创建触发器
 
@@ -96,13 +96,13 @@ FaaS(Function as a Service - 函数即服务) 是在无状态容器中运行的�
 * 请求方法-GET
 * 鉴权方法-免鉴权
 
-![图片](./faas/MTYwNjA1OTcwMDk3NA==606059700974.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYwNjA1OTcwMDk3NA%3D%3D606059700974)
+![图片](./faas/MTYwNjA1OTcwMDk3NA==606059700974.png)
 
 ### 9. 大功告成
 
 体验一下生成的触发器[链接](https://service-36n2x31h-1256505457.cd.apigw.tencentcs.com/release/demoAPi?param1=中文&param2=123)
 
-![图片](./faas/MTYwNjA1OTgxOTU3NQ==606059819575.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYwNjA1OTgxOTU3NQ%3D%3D606059819575)
+![图片](./faas/MTYwNjA1OTgxOTU3NQ==606059819575.png)
 
 ### 10. 观察接口
 
@@ -110,11 +110,11 @@ FaaS(Function as a Service - 函数即服务) 是在无状态容器中运行的�
 
 **响应结果**
 
-![图片](./faas/MTYwNjA2MDAyMTk0Mg==606060021942.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYwNjA2MDAyMTk0Mg%3D%3D606060021942)
+![图片](./faas/MTYwNjA2MDAyMTk0Mg==606060021942.png)
 
 **我们的云函数代码**
 
-![图片](./faas/MTYwNjA2MDEwMjU0NA==606060102544.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYwNjA2MDEwMjU0NA%3D%3D606060102544)
+![图片](./faas/MTYwNjA2MDEwMjU0NA==606060102544.png)
 
 关注红色框中的内容
 * 执行方法：index.main_handler
@@ -139,7 +139,7 @@ context的内容（console.log的内容）在哪里看?
 
 ### 11. 日志查询
 
-![图片](./faas/MTYwNjA2MDQ5NDAwOA==606060494008.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYwNjA2MDQ5NDAwOA%3D%3D606060494008)
+![图片](./faas/MTYwNjA2MDQ5NDAwOA==606060494008.png)
 
 在日志查询面板可以查询到我们接口的调用信息，响应状态与log的内容
 
@@ -152,7 +152,7 @@ context的内容（console.log的内容）在哪里看?
 ```sh
 npm init -y
 ```
-![图片](./faas/MTYwNjA2MDcyOTQyMg==606060729422.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYwNjA2MDcyOTQyMg%3D%3D606060729422)
+![图片](./faas/MTYwNjA2MDcyOTQyMg==606060729422.png)
 
 package.json
 ```json
@@ -199,17 +199,17 @@ npm i axios
 
 在平台上创建一个 package.json文件,并把上述内容粘贴进去,`ctrl/command + S` 保存修改的内容
 
-![图片](./faas/MTYwNjA2MDk5Mzc5NA==606060993794.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYwNjA2MDk5Mzc5NA%3D%3D606060993794)
+![图片](./faas/MTYwNjA2MDk5Mzc5NA==606060993794.png)
 
-![图片](./faas/MTYwNjA2MTA0MTkzNg==606061041936.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYwNjA2MTA0MTkzNg%3D%3D606061041936)
+![图片](./faas/MTYwNjA2MTA0MTkzNg==606061041936.png)
 
 选择在线安装依赖，然后点击保存
 
-![图片](./faas/MTYwNjA2MTEzNjU5NA==606061136594.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYwNjA2MTEzNjU5NA%3D%3D606061136594)
+![图片](./faas/MTYwNjA2MTEzNjU5NA==606061136594.png)
 
 安装完成后 会出现 node_modules目录
 
-![图片](./faas/MTYwNjA2MTU3NjI5Ng==606061576296.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYwNjA2MTU3NjI5Ng%3D%3D606061576296)
+![图片](./faas/MTYwNjA2MTU3NjI5Ng==606061576296.png)
 
 JS云函数创建相关流程，差不都陈述完毕
 
@@ -266,7 +266,7 @@ function getNowWeather(cityId = 3) {
         'Authorization': `APPCODE ${appcode}`,
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
     }
-    
+
     // 发送请求
     return http.post(nowStatusURL, data, {
         headers
@@ -279,7 +279,7 @@ function getNowWeather(cityId = 3) {
 
 [控制台](https://apigateway.console.aliyun.com/?spm=5176.12818093.products-recent.dapigateway.718e16d05FzxRX#/cn-beijing/purchasedApis/list)->API网关->华北2（北京）
 
-![图片](./faas/MTYwNjA2MzU3MTA1OA==606063571058.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYwNjA2MzU3MTA1OA%3D%3D606063571058)
+![图片](./faas/MTYwNjA2MzU3MTA1OA==606063571058.png)
 
 为了节约查找token与appcode的时间，下面列一下步骤（吐槽，阿里云的文档太拦了，不方便信息定位）
 
@@ -289,13 +289,13 @@ function getNowWeather(cityId = 3) {
 1. token: 应用管理->选择一个应用->已授权API列表->选择自己要查看的API->点击调试API->调试面板的token参数即是所需参数
 2. appcode: 应用管理->选择一个应用->AppCode面板
 
-![图片](./faas/MTYwNjA2Mzk4NTYyOQ==606063985629.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYwNjA2Mzk4NTYyOQ%3D%3D606063985629)
+![图片](./faas/MTYwNjA2Mzk4NTYyOQ==606063985629.png)
 
-![图片](./faas/MTYwNjA2NDE0NzU2Mg==606064147562.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYwNjA2NDE0NzU2Mg%3D%3D606064147562)
+![图片](./faas/MTYwNjA2NDE0NzU2Mg==606064147562.png)
 
 ## 最终代码
 
-![图片](./faas/MTYwNjA2NDY3MDM4MQ==606064670381.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYwNjA2NDY3MDM4MQ%3D%3D606064670381)
+![图片](./faas/MTYwNjA2NDY3MDM4MQ==606064670381.png)
 
 index.js
 ```js
@@ -311,7 +311,7 @@ function getNowWeather(cityId = 3) {
         'Authorization': `APPCODE ${appcode}`,
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
     }
-    
+
     // 发送请求
     return http.post(nowStatusURL, data, {
         headers
@@ -323,7 +323,7 @@ exports.main_handler = async (event, context) => {
     return await getNowWeather(cityId)
 };
 ```
-触发器[链接](https://service-36n2x31h-1256505457.cd.apigw.tencentcs.com/release/demoAPi?cityId=4) 
+触发器[链接](https://service-36n2x31h-1256505457.cd.apigw.tencentcs.com/release/demoAPi?cityId=4)
 
 ## 最后
 到此一个云函数就开发完毕了

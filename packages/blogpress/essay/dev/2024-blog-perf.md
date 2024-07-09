@@ -9,7 +9,7 @@ lighthouse 检测结果
 
 |                                     优化前                                      |                                     优化后                                      |
 | :-----------------------------------------------------------------------------: | :-----------------------------------------------------------------------------: |
-| ![](./2024-blog-perf/4d82e4e81e499921a65b73c80034c153.png?s1=https%3A//cdn.upyun.sugarat.top/mdImg/sugar/4d82e4e81e499921a65b73c80034c153) | ![](./2024-blog-perf/b5bae2c72f1d2aed2c09857c1b9e6b5f.png?s1=https%3A//cdn.upyun.sugarat.top/mdImg/sugar/b5bae2c72f1d2aed2c09857c1b9e6b5f) |
+| ![](./2024-blog-perf/4d82e4e81e499921a65b73c80034c153.png) | ![](./2024-blog-perf/b5bae2c72f1d2aed2c09857c1b9e6b5f.png) |
 
 性能面板检测结果
 
@@ -26,14 +26,14 @@ lighthouse 检测结果
 
 |                                    性能面板                                     |                                   lighthouse                                    |
 | :-----------------------------------------------------------------------------: | :-----------------------------------------------------------------------------: |
-| ![](./2024-blog-perf/ee2e46cd895e2773a22671fe99571bd3.png?s1=https%3A//cdn.upyun.sugarat.top/mdImg/sugar/ee2e46cd895e2773a22671fe99571bd3) | ![](./2024-blog-perf/c35d5a583f80ccbeae74544644fbc236.png?s1=https%3A//cdn.upyun.sugarat.top/mdImg/sugar/c35d5a583f80ccbeae74544644fbc236) |
+| ![](./2024-blog-perf/ee2e46cd895e2773a22671fe99571bd3.png) | ![](./2024-blog-perf/c35d5a583f80ccbeae74544644fbc236.png) |
 
 ## 发现问题
 
 ### 性能面板 | Performance
 *通过截图可以观察到每个时间的页面变化*
 
-![](./2024-blog-perf/1d59bbd832442846c5e15bd05a0fb41a.png?s1=https%3A//cdn.upyun.sugarat.top/mdImg/sugar/1d59bbd832442846c5e15bd05a0fb41a)
+![](./2024-blog-perf/1d59bbd832442846c5e15bd05a0fb41a.png)
 
 发现的问题：
 1. 文章列表渲染后，文章封面图加载缓慢
@@ -46,7 +46,7 @@ lighthouse 检测结果
 
 测试后会给到优化建议。
 
-![](./2024-blog-perf/564a5318bef5fe8f9318e205a946ed5d.png?s1=https%3A//cdn.upyun.sugarat.top/mdImg/sugar/564a5318bef5fe8f9318e205a946ed5d)
+![](./2024-blog-perf/564a5318bef5fe8f9318e205a946ed5d.png)
 
 这里挑一些后面用到的
 
@@ -75,7 +75,7 @@ lighthouse 检测结果
 
 |                                     七牛云                                      |                                     又拍云                                      |                                     缤纷云                                      |
 | :-----------------------------------------------------------------------------: | :-----------------------------------------------------------------------------: | :-----------------------------------------------------------------------------: |
-| ![](./2024-blog-perf/35a9ae4bce09253ec27336add6d5b113.png?s1=https%3A//cdn.upyun.sugarat.top/mdImg/sugar/35a9ae4bce09253ec27336add6d5b113) | ![](./2024-blog-perf/71b189c9662ae6ebf6c5cbba026bef9b.png?s1=https%3A//cdn.upyun.sugarat.top/mdImg/sugar/71b189c9662ae6ebf6c5cbba026bef9b) | ![](./2024-blog-perf/61666d5257abea7242b81f73b841366b.png?s1=https%3A//cdn.upyun.sugarat.top/mdImg/sugar/61666d5257abea7242b81f73b841366b) |
+| ![](./2024-blog-perf/35a9ae4bce09253ec27336add6d5b113.png) | ![](./2024-blog-perf/71b189c9662ae6ebf6c5cbba026bef9b.png) | ![](./2024-blog-perf/61666d5257abea7242b81f73b841366b.png) |
 
 使用：在原有的资源上添加对应的后置即可
 * 七牛云：url`~cover.webp`
@@ -85,7 +85,7 @@ lighthouse 检测结果
 代码中的体现↓
 |                                      封面                                       |                                    友链头像                                     |                                      头像                                       |
 | :-----------------------------------------------------------------------------: | :-----------------------------------------------------------------------------: | :-----------------------------------------------------------------------------: |
-| ![](./2024-blog-perf/bea00144a61781f8effd682a43d36af0.png?s1=https%3A//cdn.upyun.sugarat.top/mdImg/sugar/bea00144a61781f8effd682a43d36af0) | ![](./2024-blog-perf/aad8979fe2c73aa37c626d59cdbcb199.png?s1=https%3A//cdn.upyun.sugarat.top/mdImg/sugar/aad8979fe2c73aa37c626d59cdbcb199) | ![](./2024-blog-perf/a0bebb4818ac1c4dcd208871c977fd6b.png?s1=https%3A//cdn.upyun.sugarat.top/mdImg/sugar/a0bebb4818ac1c4dcd208871c977fd6b) |
+| ![](./2024-blog-perf/bea00144a61781f8effd682a43d36af0.png) | ![](./2024-blog-perf/aad8979fe2c73aa37c626d59cdbcb199.png) | ![](./2024-blog-perf/a0bebb4818ac1c4dcd208871c977fd6b.png) |
 
 ### oml2d模型资源优化
 博客左下角的看板娘加载优化。
@@ -94,13 +94,13 @@ lighthouse 检测结果
 
 ① 资源全部放在自己的 OSS 通过CDN加载（有gzip压缩，更快的访问速度）
 
-![](./2024-blog-perf/a54a6ad8b950bcd35881a91a766d9516.png?s1=https%3A//cdn.upyun.sugarat.top/mdImg/sugar/a54a6ad8b950bcd35881a91a766d9516)
+![](./2024-blog-perf/a54a6ad8b950bcd35881a91a766d9516.png)
 
 ② 将模型用到的PNG图片压缩
 
 使用之前做的[图片在线压缩工具](https://demos.sugarat.top/pages/png-compress/)
 
-![](./2024-blog-perf/3a71f093eb7e6a9edd7fc5a44ea5453a.png?s1=https%3A//cdn.upyun.sugarat.top/mdImg/sugar/3a71f093eb7e6a9edd7fc5a44ea5453a)
+![](./2024-blog-perf/3a71f093eb7e6a9edd7fc5a44ea5453a.png)
 
 压缩后减少了 88% 的体积，视觉上看不出变化。
 
@@ -121,12 +121,12 @@ lighthouse 检测结果
 
 |                                     七牛云                                      |                                     又拍云                                      |                                     缤纷云                                      |
 | :-----------------------------------------------------------------------------: | :-----------------------------------------------------------------------------: | :-----------------------------------------------------------------------------: |
-| ![](./2024-blog-perf/bbbd1791fb922ff5a3b93bf767da7077.png?s1=https%3A//cdn.upyun.sugarat.top/mdImg/sugar/bbbd1791fb922ff5a3b93bf767da7077) | ![](./2024-blog-perf/cef4e8d57160ce1e15f55a013fb5c48f.png?s1=https%3A//cdn.upyun.sugarat.top/mdImg/sugar/cef4e8d57160ce1e15f55a013fb5c48f) | ![](./2024-blog-perf/567b27f97e7c8c6d9872d30554ff5aac.png?s1=https%3A//cdn.upyun.sugarat.top/mdImg/sugar/567b27f97e7c8c6d9872d30554ff5aac) |
+| ![](./2024-blog-perf/bbbd1791fb922ff5a3b93bf767da7077.png) | ![](./2024-blog-perf/cef4e8d57160ce1e15f55a013fb5c48f.png) | ![](./2024-blog-perf/567b27f97e7c8c6d9872d30554ff5aac.png) |
 
 优化前后对比
 |                                     优化前                                      |                                     优化后                                      |
 | :-----------------------------------------------------------------------------: | :-----------------------------------------------------------------------------: |
-| ![](./2024-blog-perf/2589d8a0c951eb52926265296d295300.png?s1=https%3A//cdn.upyun.sugarat.top/mdImg/sugar/2589d8a0c951eb52926265296d295300) | ![](./2024-blog-perf/d2a595575fffd4894aafb90d242169ae.png?s1=https%3A//cdn.upyun.sugarat.top/mdImg/sugar/d2a595575fffd4894aafb90d242169ae) |
+| ![](./2024-blog-perf/2589d8a0c951eb52926265296d295300.png) | ![](./2024-blog-perf/d2a595575fffd4894aafb90d242169ae.png) |
 
 ### 布局优化
 *解决：3，6*
@@ -135,13 +135,13 @@ lighthouse 检测结果
 
 ① 针对图片，限定具体渲染的宽高，避免图片加载后布局发生变化
 
-![](./2024-blog-perf/ff09a4dbcd305b2b1fb1811934a1c7c2.png?s1=https%3A//cdn.upyun.sugarat.top/mdImg/sugar/ff09a4dbcd305b2b1fb1811934a1c7c2)
+![](./2024-blog-perf/ff09a4dbcd305b2b1fb1811934a1c7c2.png)
 
-![](./2024-blog-perf/67cfbd857a8a3e7e7eefa5aac53f696e.png?s1=https%3A//cdn.upyun.sugarat.top/mdImg/sugar/67cfbd857a8a3e7e7eefa5aac53f696e)
+![](./2024-blog-perf/67cfbd857a8a3e7e7eefa5aac53f696e.png)
 
 ② 针对后渲染区域，限定其容器的宽度，避免渲染后影响布局
 
-![](./2024-blog-perf/2210f6baef787ab13326a26d02e11783.png?s1=https%3A//cdn.upyun.sugarat.top/mdImg/sugar/2210f6baef787ab13326a26d02e11783)
+![](./2024-blog-perf/2210f6baef787ab13326a26d02e11783.png)
 
 ### 减少无用代码
 *解决：5*
@@ -150,14 +150,14 @@ lighthouse 检测结果
 
 大概看了一下，项目里额外依赖的 element-plus 样式文件占大头。
 
-![](./2024-blog-perf/028e0cf966f7a0b067ce1f3dc26ede32.png?s1=https%3A//cdn.upyun.sugarat.top/mdImg/sugar/028e0cf966f7a0b067ce1f3dc26ede32)
+![](./2024-blog-perf/028e0cf966f7a0b067ce1f3dc26ede32.png)
 
 将全量引入，手动调整为按需引入。
 
 ## 最终效果
 |                                    性能面板                                     |                                   lighthouse                                    |
 | :-----------------------------------------------------------------------------: | :-----------------------------------------------------------------------------: |
-| ![](./2024-blog-perf/5373e67f09e2a349074b0ab0c852d134.png?s1=https%3A//cdn.upyun.sugarat.top/mdImg/sugar/5373e67f09e2a349074b0ab0c852d134) | ![](./2024-blog-perf/b5bae2c72f1d2aed2c09857c1b9e6b5f.png?s1=https%3A//cdn.upyun.sugarat.top/mdImg/sugar/b5bae2c72f1d2aed2c09857c1b9e6b5f) |
+| ![](./2024-blog-perf/5373e67f09e2a349074b0ab0c852d134.png) | ![](./2024-blog-perf/b5bae2c72f1d2aed2c09857c1b9e6b5f.png) |
 
 优化后的性能指标
 

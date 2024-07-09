@@ -18,7 +18,7 @@ categories:
 
 ## 插件效果预览
 
-![图片](./vite-plugin-monitor3/MTYzMzA4MTY0NTkzNA==633081645934.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYzMzA4MTY0NTkzNA%3D%3D633081645934)
+![图片](./vite-plugin-monitor3/MTYzMzA4MTY0NTkzNA==633081645934.png)
 
 ## --debug做了什么
 项目启动指令
@@ -45,7 +45,7 @@ if (debugIndex > 0) {
 }
 ```
 
-可以看到如果使用了`--debug`或者`-d`参数，`process.env`上挂载`DEBUG`变量标识开启了Debug 
+可以看到如果使用了`--debug`或者`-d`参数，`process.env`上挂载`DEBUG`变量标识开启了Debug
 
 ## 定位打印日志方法
 debug下每条日志都是以`vite:label`开头，比如
@@ -88,7 +88,7 @@ export function createDebugger(
 ```
 其中`log`实例通过`debug`方法创建，但这个`debug`方法是一个第三方的库`visionmedia/debug`
 
-![图片](./vite-plugin-monitor3/MTYzMzA5MTM2MjM0Mg==633091362342.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYzMzA5MTM2MjM0Mg%3D%3D633091362342)
+![图片](./vite-plugin-monitor3/MTYzMzA5MTM2MjM0Mg==633091362342.png)
 
 这个方库虽小，能在`Vite`中被用上想必也不简单，[在线查看源码](https://github1s.com/visionmedia/debug/blob/HEAD/src/node.js)
 
@@ -162,7 +162,7 @@ interface PluginOptions {
 
 其中解析出的几个参数几个参数与原日志内容对应关系如下
 
-![图片](./vite-plugin-monitor3/MTYzMzA5MzM0NDMxNg==633093344317.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYzMzA5MzM0NDMxNg%3D%3D633093344317)
+![图片](./vite-plugin-monitor3/MTYzMzA5MzM0NDMxNg==633093344317.png)
 ```ts
 import type { Plugin } from 'vite';
 import type { PluginOptions } from './types';
@@ -217,7 +217,7 @@ export default function Monitor(ops: PluginOptions = {}): Plugin {
 ## 体验插件
 >[插件源码](https://github.com/ATQQ/vite-plugin-monitor/tree/main/#readme)
 
-安装依赖 
+安装依赖
 ```sh
 yarn add vite-plugin-monitor --dev
 ```

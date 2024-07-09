@@ -29,7 +29,7 @@ TreeNode
 ```
 ## 递归解法
 * 简洁明了，美丽大方
-* true 
+* true
   * 都为null
   * 值相等
 * false
@@ -64,7 +64,7 @@ var isSymmetric = function (root) {
 
 中序遍历规则：左根右
 
-![](./judgeSymmetryTree/06193490d03009fade5a60b927f0966b747c1366e40a4d4f97bbc37e18e09cef-image.png?s1=https%3A//pic.leetcode-cn.com/06193490d03009fade5a60b927f0966b747c1366e40a4d4f97bbc37e18e09cef-image.png)
+![](./judgeSymmetryTree/06193490d03009fade5a60b927f0966b747c1366e40a4d4f97bbc37e18e09cef-image.png)
 
 上图是一种特殊情况:其中序遍历结果[2,2,1,2,2]但不对称，此时需要对比节点所在层数,[3,2,1,3,2]，所以得出下面的代码
 

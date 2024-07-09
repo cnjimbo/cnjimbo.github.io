@@ -20,7 +20,7 @@ categories:
 
 方便的话可以[原文](https://juejin.cn/post/7006592666846625823)戳个赞
 ## 效果如下
-![图片](./mid-autumn-festival/MTYzMTM0MDYwODYyOQ==631340608629.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYzMTM0MDYwODYyOQ%3D%3D631340608629)
+![图片](./mid-autumn-festival/MTYzMTM0MDYwODYyOQ==631340608629.png)
 
 emmmmm...动图时间较长，需要等一会儿效果才出来
 
@@ -74,7 +74,7 @@ function createCursor() {
 
     addStyles(cursor, `
     #cursor{
-        background-image:url(./mid-autumn-festival/MTYzMTMyNDYwNTgzMQ==631324605831.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYzMTMyNDYwNTgzMQ%3D%3D631324605831);
+        background-image:url(./mid-autumn-festival/MTYzMTMyNDYwNTgzMQ==631324605831.png);
         width:${size};
         height:${size};
         background-size:${size} ${size};
@@ -136,7 +136,7 @@ window.addEventListener('mousemove', function (e) {
         e.target.style.cursor = 'auto'
     },500)
     weakMap.set(e.target,timer)
-    
+
     // 更新玉兔位置
     refreshCursorPos(clientX, clientY)
 })
@@ -144,7 +144,7 @@ window.addEventListener('mousemove', function (e) {
 
 到这里你以为就结束了？当然没有，此时会有一个问题，你的玉兔指针无法正常工作，如下所示
 
-![图片](./mid-autumn-festival/MTYzMTM0NDc3ODMwMQ==631344778301.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYzMTM0NDc3ODMwMQ%3D%3D631344778301)
+![图片](./mid-autumn-festival/MTYzMTM0NDc3ODMwMQ==631344778301.png)
 
 当月兔出现的时候，无法正常点击跳链，选择文字元素
 
@@ -163,7 +163,7 @@ window.addEventListener('mousemove', function (e) {
 const orbitSize = '40px'
 addStyles(document.body, `
     .orbit{
-        background-image:url(./mid-autumn-festival/MTYzMTMyNDMwODg2Nw==631324308867.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYzMTMyNDMwODg2Nw%3D%3D631324308867);
+        background-image:url(./mid-autumn-festival/MTYzMTMyNDMwODg2Nw==631324308867.png);
         width:${orbitSize};
         height:${orbitSize};
         background-size:${orbitSize} ${orbitSize};
@@ -248,7 +248,7 @@ window.addEventListener('mousemove', function (e) {
 window.addEventListener('touchmove', function (e) {
     const { clientX, clientY } = e.changedTouches[0]
     refreshCursorPos(clientX, clientY)
-    
+
     // 更新月饼轨迹
     refreshOrbit(clientX, clientY)
 })

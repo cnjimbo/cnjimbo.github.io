@@ -86,7 +86,7 @@ nodeList = document.getElementsByTagNameNS(namespace, name)
 
 ## 元素之间的继承关系
 
-![图片](./getElement/MTU5OTM2MTM2NDk5NA==599361364994.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTU5OTM2MTM2NDk5NA%3D%3D599361364994)
+![图片](./getElement/MTU5OTM2MTM2NDk5NA==599361364994.png)
 
 每个元素都有对应的类，因此每个类都提供了一些方法来操作元素本身
 
@@ -111,7 +111,7 @@ nodeList = document.getElementsByTagNameNS(namespace, name)
    * 其余查询方法均返回一个类数组`HTMLCollectio`
 
 
-:::tip 参考 
+:::tip 参考
 [简书-JS获取HTML DOM元素的8种方法](https://www.jianshu.com/p/6fefda57b51f)
 
 [MDN-Document.getElementsByTagNameNS](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/getElementsByTagNameNS)

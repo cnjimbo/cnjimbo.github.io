@@ -42,7 +42,7 @@ yarn eslint:init
 ```
 根据提示，按照个人喜好选择一些特性
 
-![图片](./uni-vue3-cli_2/MTYyNDQxNjI4MjM4Mg==624416282382.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyNDQxNjI4MjM4Mg%3D%3D624416282382)
+![图片](./uni-vue3-cli_2/MTYyNDQxNjI4MjM4Mg==624416282382.png)
 
 静静等待一会儿就安装好所有依赖，然后会自动在根目录下生成`eslintrc.js`配置文件
 

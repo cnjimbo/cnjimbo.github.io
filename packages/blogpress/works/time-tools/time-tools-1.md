@@ -129,7 +129,7 @@ timec
 
 输出结果
 
-![图片](./time-tools-1/MTYyNzkxMTcyMTM0Mg==627911721342.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyNzkxMTcyMTM0Mg%3D%3D627911721342)
+![图片](./time-tools-1/MTYyNzkxMTcyMTM0Mg==627911721342.png)
 
 
 ### 初步路径
@@ -359,7 +359,7 @@ timec
 
 输出结果
 
-![图片](./time-tools-1/MTYyNzkxMTcyMTM0Mg==627911721342.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyNzkxMTcyMTM0Mg%3D%3D627911721342)
+![图片](./time-tools-1/MTYyNzkxMTcyMTM0Mg==627911721342.png)
 
 
 ### 初步路径

@@ -82,7 +82,7 @@ if (day) {
 2. 其中月是`从0开始计算`："1-12"分别对应"0-11"
 3. 当日部分的参数传入0时，表示上月最后一天的日期
 4. 此时再调用`getDate`方法获取日期，则获取到目标月份的天数
-  
+
 例如：2021-08月的天数：
 * `new Date(2021,8,0)`
 * 标识`2021年9月`开始的前一天日期，即`2021年8月31日`
@@ -209,7 +209,7 @@ if(!name){
     if(tasks.length===0){
         console.log('no tasks, you can use command add task');
         console.log('timec task [name]');
-        return 
+        return
     }
     tasks.forEach((v,i)=>{
         let mark = '[ ]'
@@ -238,7 +238,7 @@ TODO：后续优化
 ### 小结
 到目前为止已经支持如下指令：
 
-![图片](./time-tools-6/MTYyODM0NzIwOTYxMw==628347209613.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyODM0NzIwOTYxMw%3D%3D628347209613)
+![图片](./time-tools-6/MTYyODM0NzIwOTYxMw==628347209613.png)
 
 这些指令都还不是最终版本，由于时间太紧凑，设计时间也较短，后期会不断完善
 

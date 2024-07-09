@@ -18,7 +18,7 @@ categories:
 
 ## 原型链
 
-![](./instanceof copy/MTU4NDM2MzA5ODkyOA==584363098928.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTU4NDM2MzA5ODkyOA%3D%3D584363098928)
+![](./instanceof copy/MTU4NDM2MzA5ODkyOA==584363098928.png)
 
 ## instanceOf实现
 
@@ -27,8 +27,8 @@ categories:
 ```js
 /**
  * 检测构造函数的原型是否在实例的原型链上
- * @param {object} a 
- * @param {Object} b 
+ * @param {object} a
+ * @param {Object} b
  */
 function instanceOf(a, b) {
     const prototype = b.prototype
@@ -50,8 +50,8 @@ function instanceOf(a, b) {
 ```js
 /**
  * 检测构造函数的原型是否在实例的原型链上
- * @param {object} a 
- * @param {Object} b 
+ * @param {object} a
+ * @param {Object} b
  */
 function instanceOf(a, b) {
     return a !== null && (a.__proto__ == b.prototype || instanceOf(a.__proto__, b))

@@ -1,6 +1,6 @@
 ---
 outline: [2,3]
-cover: ./copy-branch/MTY5MTMxNzA1MDQ0OA==691317050448.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY5MTMxNzA1MDQ0OA%3D%3D691317050448
+cover: ./copy-branch/MTY5MTMxNzA1MDQ0OA==691317050448.png
 description: 本文简单介绍了如何通过`Shell`和`Node.js`实现复制当前分支名到剪贴板
 tags:
  - CLI
@@ -20,7 +20,7 @@ git branch
 
 这里还有个case，分支多的话需要翻页查看，才能找到当前分支
 
-![](./copy-branch/MTY5MTI0NTYxOTQzMw==691245619433.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY5MTI0NTYxOTQzMw%3D%3D691245619433)
+![](./copy-branch/MTY5MTI0NTYxOTQzMw==691245619433.png)
 
 要准确获取需要加上`--show-current`参数
 
@@ -28,7 +28,7 @@ git branch
 git branch --show-current
 ```
 
-![](./copy-branch/MTY5MTI0NTc5MDM2OQ==691245790369.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY5MTI0NTc5MDM2OQ%3D%3D691245790369)
+![](./copy-branch/MTY5MTI0NTc5MDM2OQ==691245790369.png)
 
 **Step2 鼠标右键复制当前分支**
 
@@ -51,7 +51,7 @@ branch=$(git branch --show-current)
 echo $branch
 ```
 
-![](./copy-branch/MTY5MTMwNDE3MDkzNg==691304170936.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY5MTMwNDE3MDkzNg%3D%3D691304170936)
+![](./copy-branch/MTY5MTMwNDE3MDkzNg==691304170936.png)
 
 
 `Node.js` 里，可以通过`child_process`模块来执行命令
@@ -62,7 +62,7 @@ const branch = execSync('git branch --show-current').toString().trim();
 console.log(branch);
 ```
 
-![](./copy-branch/MTY5MTMwNDU1NTQ2Nw==691304555467.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY5MTMwNDU1NTQ2Nw%3D%3D691304555467)
+![](./copy-branch/MTY5MTMwNDU1NTQ2Nw==691304555467.png)
 
 ### 复制到剪贴板
 这一块就是调用系统指令执行了，不同操作系统的不一样
@@ -71,7 +71,7 @@ console.log(branch);
 
 大概介绍了一下各个操作系统所用的指令：MacOS(pbcopy)、Windows(clip)、Linux(xclip)
 
-![](./copy-branch/MTY5MTMwNDc4MTIwMQ==691304781201.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY5MTMwNDc4MTIwMQ%3D%3D691304781201)
+![](./copy-branch/MTY5MTMwNDc4MTIwMQ==691304781201.png)
 
 这里笔者用的是`MacOS`，所以直接用`pbcopy`指令
 
@@ -119,7 +119,7 @@ echo 'alias bcy="git branch --show-current | tr -d \"\\n\" | pbcopy"' >> ~/.zshr
 source ~/.zshrc
 ```
 
-![](./copy-branch/MTY5MTMwNzY2OTU1MA==691307669550.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY5MTMwNzY2OTU1MA%3D%3D691307669550)
+![](./copy-branch/MTY5MTMwNzY2OTU1MA==691307669550.png)
 
 当然我们也可以打印一些提示信息
 
@@ -131,9 +131,9 @@ alias bcy='branch=$(git branch --show-current); echo "当前分支：$branch"; e
 echo "alias bcy='branch=\$(git branch --show-current); echo \"当前分支：\$branch\"; echo \$branch | tr -d \"\\\\n\" | pbcopy'" >> ~/.zshrc
 ```
 
-![](./copy-branch/MTY5MTMwODMzMTk2NA==691308331964.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY5MTMwODMzMTk2NA%3D%3D691308331964)
+![](./copy-branch/MTY5MTMwODMzMTk2NA==691308331964.png)
 
-![](./copy-branch/MTY5MTMxNzA1MDQ0OA==691317050448.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY5MTMxNzA1MDQ0OA%3D%3D691317050448)
+![](./copy-branch/MTY5MTMxNzA1MDQ0OA==691317050448.png)
 ### Node CLI
 上面介绍的是`shell`里的实现，这里介绍下`Node.js`里的实现
 
@@ -154,17 +154,17 @@ const branch = execSync('git branch --show-current')
 console.log('当前分支:', branch)
 
 ncp.copy(branch)
-``` 
+```
 
 这个CLI通过npm包发布了，可以直接`npx bcy`使用
 
 或者 `npm i bcy -g` 全局安装
 
-![](./copy-branch/MTY5MTMyMTU1NjY2MQ==691321556661.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY5MTMyMTU1NjY2MQ%3D%3D691321556661)
+![](./copy-branch/MTY5MTMyMTU1NjY2MQ==691321556661.png)
 
 *包名实在是难取，简单语义化一点的都被占用了，让GPT 辅助了一下*
 
-![](./copy-branch/MTY5MTI0NTI4NDAxNQ==691245284015.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY5MTI0NTI4NDAxNQ%3D%3D691245284015)
+![](./copy-branch/MTY5MTI0NTI4NDAxNQ==691245284015.png)
 
 最后用了搜了一圈不重复的只有`bcy`
 

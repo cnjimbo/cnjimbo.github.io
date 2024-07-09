@@ -14,7 +14,7 @@ categories:
 
 支持**复制粘贴**，**截图**，**手动选择**，**拖拽**等四种常见的上传方案
 
-![图片](./qiniu-imgbed/2fbcf37d23694a0a9a3b4a515a61a921~tplv-k3u1fbpfcp-zoom-1.image.png?s1=https%3A//p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2fbcf37d23694a0a9a3b4a515a61a921~tplv-k3u1fbpfcp-zoom-1.image)
+![图片](./qiniu-imgbed/2fbcf37d23694a0a9a3b4a515a61a921~tplv-k3u1fbpfcp-zoom-1.image.png)
 ## 线上预览
 * [线上demo](https://imgbed.sugarat.top/)
 * [在线编码](https://stackblitz.com/edit/github-2scsen?file=README.md)
@@ -24,7 +24,7 @@ categories:
 
 * [七牛云](https://portal.qiniu.com/)账号一枚
 * [七牛云对象存储空间](https://portal.qiniu.com/bucket/create)(免费10G)
-* 安装[Node.js](http://nodejs.cn/) 
+* 安装[Node.js](http://nodejs.cn/)
 
 ## 快速上手
 
@@ -42,7 +42,7 @@ yarn install
 
 这4项均需自己配置
 ```sh
-QINIU_ACCESS_KEY=AccessKey 
+QINIU_ACCESS_KEY=AccessKey
 QINIU_SECRET_KEY=SecretKey
 QINIU_BUCKET=Bucket # OSS空间名
 QINIU_DOMAIN=domain # 图床域名(包含协议https/http)
@@ -52,25 +52,25 @@ QINIU_DOMAIN=domain # 图床域名(包含协议https/http)
 <details>
 <summary>查看 bucket</summary>
 
-![](./qiniu-imgbed/0b906243abb94329a8efdfaba5e66a58~tplv-k3u1fbpfcp-zoom-1.image.png?s1=https%3A//p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0b906243abb94329a8efdfaba5e66a58~tplv-k3u1fbpfcp-zoom-1.image)
+![](./qiniu-imgbed/0b906243abb94329a8efdfaba5e66a58~tplv-k3u1fbpfcp-zoom-1.image.png)
 
-</details> 
+</details>
 
 <details>
 <summary>查看 Access Key和Secret Key</summary>
 
-![](./qiniu-imgbed/c60966aa203a41f49ba0cffdaad80141~tplv-k3u1fbpfcp-zoom-1.image.png?s1=https%3A//p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c60966aa203a41f49ba0cffdaad80141~tplv-k3u1fbpfcp-zoom-1.image)
+![](./qiniu-imgbed/c60966aa203a41f49ba0cffdaad80141~tplv-k3u1fbpfcp-zoom-1.image.png)
 
-![](./qiniu-imgbed/36299d27ec07496ebeb58021fc49ade7~tplv-k3u1fbpfcp-zoom-1.image.png?s1=https%3A//p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/36299d27ec07496ebeb58021fc49ade7~tplv-k3u1fbpfcp-zoom-1.image)
+![](./qiniu-imgbed/36299d27ec07496ebeb58021fc49ade7~tplv-k3u1fbpfcp-zoom-1.image.png)
 
-</details> 
+</details>
 
 <details>
 <summary>查看域名</summary>
 
-![图片](./qiniu-imgbed/e678a09cee3c4ec4b087bba565d8bb8a~tplv-k3u1fbpfcp-zoom-1.image.png?s1=https%3A//p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e678a09cee3c4ec4b087bba565d8bb8a~tplv-k3u1fbpfcp-zoom-1.image)
+![图片](./qiniu-imgbed/e678a09cee3c4ec4b087bba565d8bb8a~tplv-k3u1fbpfcp-zoom-1.image.png)
 
-</details> 
+</details>
 
 ### 4. 启动
 开发环境预览
@@ -160,7 +160,7 @@ pastePanel.addEventListener('drop', function (e) {
 ```js
 /**
  * 将结果写入的剪贴板
- * @param {String} text 
+ * @param {String} text
  */
 function copyRes(text) {
     const input = document.createElement('input');

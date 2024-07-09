@@ -1,6 +1,6 @@
 ---
 description: 终端启动时总会卡顿一下，没去探究原因，看到咲奈的分享才知道是nvm在作祟
-cover: ./nvm-iterm/MTY3NjE4NTM2MDkyOQ==676185360929.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY3NjE4NTM2MDkyOQ%3D%3D676185360929
+cover: ./nvm-iterm/MTY3NjE4NTM2MDkyOQ==676185360929.png
 tag:
  - 技术笔记
 ---
@@ -10,12 +10,12 @@ tag:
 ## 先看安装前后对比
 安装前
 
-![](./nvm-iterm/MTY3NjE4NDI1OTY0OA==676184259648.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY3NjE4NDI1OTY0OA%3D%3D676184259648)
+![](./nvm-iterm/MTY3NjE4NDI1OTY0OA==676184259648.png)
 
 
 安装后
 
-![](./nvm-iterm/MTY3NjE4NDgwNjAzMA==676184806030.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY3NjE4NDgwNjAzMA%3D%3D676184806030)
+![](./nvm-iterm/MTY3NjE4NDgwNjAzMA==676184806030.png)
 
 可以看到有明显的卡顿
 
@@ -32,7 +32,7 @@ export NVM_DIR="$HOME/.nvm"
 
 方法来源 [咲奈的平行时空](https://public.zsxq.com/groups/28851452458181.html)
 
-![](./nvm-iterm/MTY3NjE4NTM2MDkyOQ==676185360929.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY3NjE4NTM2MDkyOQ%3D%3D676185360929)
+![](./nvm-iterm/MTY3NjE4NTM2MDkyOQ==676185360929.png)
 
 **带来的影响**
 
@@ -92,4 +92,4 @@ pnpm env use --global 16
 
 功能非常的多（比如 根据项目里Node版本要求，自动切换）
 
-![](./nvm-iterm/MTY3NjE4OTM5MTk2Mg==676189391962.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTY3NjE4OTM5MTk2Mg%3D%3D676189391962)
+![](./nvm-iterm/MTY3NjE4OTM5MTk2Mg==676189391962.png)

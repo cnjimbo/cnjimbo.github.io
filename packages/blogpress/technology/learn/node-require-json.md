@@ -53,7 +53,7 @@ console.log(require.cache);
 ```
 
 输出内容如下(这里就贴一张截图)
-![图片](./node-require-json/MTYyOTM4NTA0MDE2MQ==629385040161.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyOTM4NTA0MDE2MQ%3D%3D629385040161)
+![图片](./node-require-json/MTYyOTM4NTA0MDE2MQ==629385040161.png)
 
 ### 删除缓存
 既然`require.cache`返回内容是一个普普通通的对象，name可以通过`delete`关键字进行移除

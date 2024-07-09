@@ -61,7 +61,7 @@ function download(url, name) {
   xhr.open('GET', url)
   // 设置返回数据的类型为blob
   xhr.responseType = 'blob'
-  
+
   // 资源完成下载
   xhr.onload = function () {
     // 获取响应的blob对象
@@ -102,7 +102,7 @@ function download(url, name) {
 
 ```js
 document.getElementById('btn').addEventListener('click', function () {
-  const url = './file-saver-source/MTU3OTM2ODc3OTM4Nw==579368779387.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTU3OTM2ODc3OTM4Nw%3D%3D579368779387'
+  const url = './file-saver-source/MTU3OTM2ODc3OTM4Nw==579368779387.png'
   download(url)
 })
 ```
@@ -135,7 +135,7 @@ function download(url, name) {
     const percentage = (loaded/total).toFixed(2)
     console.log('progress:', percentage);
   }
-  
+
   xhr.onload = function () {
     // 省略...跟前面的代码一致
   }

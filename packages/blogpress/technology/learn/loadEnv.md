@@ -41,12 +41,12 @@ console.log(process.env.DB_PORT);
 
 注意.env文件需在项目的根目录中（终端执行指令的目录）
 
-![图片](./loadEnv/MTYyNDIwMTI3OTA4NA==624201279084.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyNDIwMTI3OTA4NA%3D%3D624201279084)
+![图片](./loadEnv/MTYyNDIwMTI3OTA4NA==624201279084.png)
 
 ## Vite中读取.env文件的规则
 这里直接贴图[原文档内容](https://cn.vitejs.dev/guide/env-and-mode.html#env-files)，不做过多赘述
 
-![图片](./loadEnv/MTYyNDIwMDYxNTQ3Ng==624200615476.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyNDIwMDYxNTQ3Ng%3D%3D624200615476)
+![图片](./loadEnv/MTYyNDIwMDYxNTQ3Ng==624200615476.png)
 
 很详细的叙述了Vite加载额外环境变量的规则
 
@@ -57,7 +57,7 @@ console.log(process.env.DB_PORT);
 ```js
 console.log(process.cwd())
 ```
-![图片](./loadEnv/MTYyNDIwMTU1MjY4MA==624201552680.png?s1=https%3A//img.cdn.sugarat.top/mdImg/MTYyNDIwMTU1MjY4MA%3D%3D624201552680)
+![图片](./loadEnv/MTYyNDIwMTU1MjY4MA==624201552680.png)
 
 2. `dotenv.config`的参数定义
 ```ts
