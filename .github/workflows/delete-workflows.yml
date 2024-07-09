@@ -10,7 +10,7 @@ on:
       days:
         description: Number of days.
         required: true
-        default: 1
+        default: 0
       minimum_runs:
         description: The minimum runs to keep for each workflow.
         required: true
@@ -39,7 +39,7 @@ jobs:
         with:
           token: ${{ github.token }}
           repository: ${{ github.repository }}
-          retain_days: ${{ github.event.inputs.days || 1 }}
+          retain_days: ${{ github.event.inputs.days || 0 }}
           keep_minimum_runs: ${{ github.event.inputs.minimum_runs || 1 }}
           delete_workflow_pattern: ${{ github.event.inputs.delete_workflow_pattern }}
           delete_workflow_by_state_pattern: ${{ github.event.inputs.delete_workflow_by_state_pattern }}
