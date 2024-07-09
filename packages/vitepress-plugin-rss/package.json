@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "@sugarat/theme-shared": "workspace:*",
-    "fast-glob": "^3.2.12",
+    "fast-glob": "^3.3.2",
     "feed": "^4.2.2"
   },
   "devDependencies": {
