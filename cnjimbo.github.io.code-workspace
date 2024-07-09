@@ -118,24 +118,6 @@
 		"[vue]": {
 			"editor.defaultFormatter": "Vue.volar"
 		},
-		"accessibility.signalOptions": {
-			"debouncePositionChanges": false,
-			"experimental.delays": {
-				"errorAtPosition": {
-					"announcement": 3000,
-					"sound": 1000
-				},
-				"general": {
-					"announcement": 3000,
-					"sound": 400
-				},
-				"warningAtPosition": {
-					"announcement": 3000,
-					"sound": 1000
-				}
-			},
-			"volume": 70
-		},
 		"autoRestart.fileGlobForESLint": "**/{.eslintrc,eslint.config}.{js,cjs,yaml,yml,json,mjs,ts,mts}",
 		"autoRestart.fileGlobForTypescript": "**/{tsconfig,tsconfig.base,base.tsconfig}.{json,app.json,app.js,js,ts}",
 		"autoRestart.monitorFilesForESLint": true,
@@ -393,6 +375,19 @@
 			"statusBar.foreground": "#ffffff",
 			"tab.activeBorder": "#9c643b"
 		},
-		"workbench.editor.alwaysShowEditorActions": true
+		"workbench.editor.alwaysShowEditorActions": true,
+		"accessibility.signalOptions.volume": 70,
+		"accessibility.signalOptions.experimental.delays.general": {
+			"announcement": 3000,
+			"sound": 400
+		},
+		"accessibility.signalOptions.experimental.delays.errorAtPosition": {
+			"announcement": 3000,
+			"sound": 1000
+		},
+		"accessibility.signalOptions.experimental.delays.warningAtPosition": {
+			"announcement": 3000,
+			"sound": 1000
+		}
 	}
 }
