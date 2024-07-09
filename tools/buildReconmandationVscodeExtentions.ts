@@ -10,7 +10,19 @@
   */
 // 最后将输出内容复制到code-workspace的对应位置
 import * as fs from 'node:fs'
+import { execSync } from 'child_process'
 import JSON5 from 'json5'
+
+function _getGitRoot(): string {
+  try {
+    const gitRoot = execSync('git rev-parse --show-toplevel').toString().trim()
+    return gitRoot
+  }
+  catch (error) {
+    console.error('Failed to get Git root directory. This might not be a Git repository.', error)
+    throw error
+  }
+}
 
 function parseJsonWithComments(jsonString: string) {
   return JSON5.parse(jsonString)
