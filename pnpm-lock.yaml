@@ -138,8 +138,8 @@ importers:
         specifier: ^0.19.3
         version: 0.19.3
       swiper:
-        specifier: ^11.1.4
-        version: 11.1.4
+        specifier: ^11.1.5
+        version: 11.1.5
       vitepress-markdown-timeline:
         specifier: ^1.2.1
         version: 1.2.1
@@ -3204,8 +3204,8 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
-  swiper@11.1.4:
-    resolution: {integrity: sha512-1n7kbYJB2dFEpUHRFszq7gys/ofIBrMNibwTiMvPHwneKND/t9kImnHt6CfGPScMHgI+dWMbGTycCKGMoOO1KA==}
+  swiper@11.1.5:
+    resolution: {integrity: sha512-JJQWFXdxiMGC2j6ZGTYat5Z7NN9JORJBgHp0/joX9uPod+cRj0wr5H5VnWSNIz9JeAamQvYKaG7aFrGHIF9OEg==}
     engines: {node: '>= 4.7.0'}
 
   synckit@0.6.2:
@@ -6845,7 +6845,7 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  swiper@11.1.4: {}
+  swiper@11.1.5: {}
 
   synckit@0.6.2:
     dependencies:
