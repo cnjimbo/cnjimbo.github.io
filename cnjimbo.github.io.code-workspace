@@ -395,6 +395,9 @@
 		"editor.tokenColorCustomizations": {
 			"comments": "",
 			"textMateRules": []
+		},
+		"[scss]": {
+			"editor.defaultFormatter": "vscode.css-language-features"
 		}
 	}
 }
