@@ -113,7 +113,7 @@
 			"editor.defaultFormatter": "vscode.json-language-features"
 		},
 		"[markdown]": {
-			"editor.defaultFormatter": "yzhang.markdown-all-in-one"
+			"editor.defaultFormatter": "dbaeumer.vscode-eslint"
 		},
 		"[typescript]": {
 			"editor.defaultFormatter": "vscode.typescript-language-features"
@@ -391,6 +391,10 @@
 		"accessibility.signalOptions.experimental.delays.warningAtPosition": {
 			"announcement": 3000,
 			"sound": 1000
+		},
+		"editor.tokenColorCustomizations": {
+			"comments": "",
+			"textMateRules": []
 		}
 	}
 }
