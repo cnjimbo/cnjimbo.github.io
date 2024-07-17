@@ -301,7 +301,8 @@
 			"pkg upgrade",
 			"actions",
 			"scaffold",
-			"theme"
+			"theme",
+			"workspace"
 		],
 		"editor.codeActionsOnSave": {
 			"source.fixAll.eslint": "explicit",
@@ -395,6 +396,9 @@
 		"editor.tokenColorCustomizations": {
 			"comments": "",
 			"textMateRules": []
+		},
+		"[yaml]": {
+			"editor.defaultFormatter": "dbaeumer.vscode-eslint"
 		}
 	}
 }
