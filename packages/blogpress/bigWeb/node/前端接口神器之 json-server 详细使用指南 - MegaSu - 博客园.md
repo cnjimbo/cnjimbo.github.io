@@ -17,6 +17,7 @@ author: Megasu
 ### 开源地址
 
 主页地址：[https://www.npmjs.com/package/json-server](https://www.npmjs.com/package/json-server)
+
 Github项目地址：[https://github.com/typicode/json-server](https://github.com/typicode/json-server)
 
 ## 30秒入门
