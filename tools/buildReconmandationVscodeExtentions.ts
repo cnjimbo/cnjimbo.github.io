@@ -1,12 +1,15 @@
 // 使用code code runner 运行此脚本，生成推荐插件id列表。
-// code runner需要 pnpm add -D ts-node
+// code runner需要 pnpm add -D ts-node -w
 // 并且  需要设置code runner执行环境为
 /*
     "code-runner.executorMap": {
       "typescript": "cd $dir && node --es-module-specifier-resolution=node --loader ts-node/esm $fullFileName",
       "javascript": "cd $dir && node  --es-module-specifier-resolution=node  $fullFileName"
     },
-
+    //或者使用如下 tsx包 来运行，需安装 pnpm add -D tsx -w
+    "code-runner.executorMap": {
+      "typescript": "cd $dir && npx tsx $fullFileName",
+    },
   */
 // 最后将输出内容复制到code-workspace的对应位置
 import * as fs from 'node:fs'

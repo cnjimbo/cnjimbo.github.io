@@ -9,10 +9,9 @@
 			"antfu.goto-alias",
 			"antfu.iconify",
 			"antfu.unocss",
-			"atishay-jain.all-autocomplete",
 			"bierner.markdown-emoji",
 			"bierner.markdown-mermaid",
-			"bradlc.vscode-tailwindcss",
+			"bluebrown.yamlfmt",
 			"chakrounanas.turbo-console-log",
 			"christian-kohler.npm-intellisense",
 			"christian-kohler.path-intellisense",
@@ -20,7 +19,6 @@
 			"dbaeumer.vscode-eslint",
 			"eamodio.gitlens",
 			"editorconfig.editorconfig",
-			"edwinkofler.vscode-assorted-languages",
 			"eliostruyf.vscode-hide-comments",
 			"folke.vscode-monorepo-workspace",
 			"formulahendry.auto-rename-tag",
@@ -29,8 +27,6 @@
 			"github.vscode-github-actions",
 			"gregorbiswanger.json2ts",
 			"hancel.markdown-image",
-			"harrydowning.swap-tsconfig",
-			"ibm.output-colorizer",
 			"ionutvmi.path-autocomplete",
 			"jock.svg",
 			"johnsoncodehk.vscode-tsconfig-helper",
@@ -38,7 +34,6 @@
 			"kricsleo.vscode-package-json-inspector",
 			"lacroixdavid1.vscode-format-context-menu",
 			"lettucegoblin.vue-vscode-snippets-scripts-first",
-			"lmcarreiro.vscode-smart-column-indenter",
 			"maggie.eslint-rules-zh-plugin",
 			"mainawycliffe.view-package-on-npm",
 			"metaseed.metago",
@@ -52,6 +47,7 @@
 			"ms-vscode.live-server",
 			"ms-vscode.powershell",
 			"ms-vscode.remote-repositories",
+			"ms-vscode.vscode-typescript-next",
 			"mulu-github.jsflowchart",
 			"mxsdev.typescript-explorer",
 			"neotan.vscode-auto-restart-typescript-eslint-servers",
@@ -180,7 +176,7 @@
 			"sml": "cd $dir && sml $fileName",
 			"spwn": "spwn build",
 			"swift": "swift",
-			"typescript": "cd $dir && node --es-module-specifier-resolution=node --loader ts-node/esm $fullFileName",
+			"typescript": "cd $dir && npx tsx $fullFileName",
 			"v": "v run",
 			"vbscript": "cscript //Nologo",
 			"zig": "zig run"
@@ -399,6 +395,9 @@
 		},
 		"[yaml]": {
 			"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+		},
+		"[json]": {
+			"editor.defaultFormatter": "vscode.json-language-features"
 		}
 	}
 }
