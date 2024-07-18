@@ -1,4 +1,4 @@
-name: Auto update Python dependencies
+name: Auto update npm dependencies
 on:
   schedule:
     # runs monthly At 00:01 on day-of-month 1
@@ -45,8 +45,9 @@ jobs:
           # fi
 
       - name: Run auto dependency update
-        uses: romoh/dependencies-autoupdate@v1
+        uses: romoh/dependencies-autoupdate@v1.2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           update-command: '''pnpm up -r -w && pnpm buildlib && pnpm build'''
           # update-path: "''" #optional
+          pr-branch: master
