@@ -22,7 +22,11 @@ jobs:
           git config --global core.autocrlf false
           git config --global core.safecrlf true
           git config --global core.ignorecase false
-
+      - name: Setup PNPM
+        # 3、安装 PNPM
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
       - name: Setup Node
         # 4、安装 Node 环境
         uses: actions/setup-node@v4.0.3
