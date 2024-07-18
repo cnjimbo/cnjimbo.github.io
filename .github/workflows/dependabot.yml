@@ -1,45 +1,42 @@
-name: Auto update npm dependencies
+name: Dependabatch updates
+
 on:
-  schedule:
-    # runs monthly At 00:01 on day-of-month 1
-    - cron: '1 0 1 * *'
   workflow_dispatch:
+  schedule:
+    # * is special in YAML.  This runs at 4:45 am on Sundays.
+    - cron: '45 4 * * 0'
 
 jobs:
-  auto-update:
-    runs-on: ubuntu-latest
+  update-deps:
+    name: Update dependencies
+    runs-on: [ubuntu-latest]
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          # 默认只拉取分支最近一次的 commit，可能会导致一些文章的 GitInfo 变量无法获取，设为 0 代表拉取所有分支所有提交
-          fetch-depth: 0
-      - name: Git Configuration
-        # 2、配置 Git
-        run: |
-          git config --global core.quotePath false
-          git config --global core.autocrlf false
-          git config --global core.safecrlf true
-          git config --global core.ignorecase false
-      - name: Setup PNPM
-        # 3、安装 PNPM
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
-      - name: Setup Node
-        # 4、安装 Node 环境
-        uses: actions/setup-node@v4.0.3
-        with:
-          node-version: 21
-          registry-url: https://registry.npmjs.org
-          cache: pnpm
+      # - name: Update python deps
+      #   uses: boozallen/dependency-update-action@v1
+      #   with:
+      #     dotcom_token: ${{ secrets.GITHUB_TOKEN }}
+      #     ghe_token: ${{ secrets.GHE_TOKEN }}
+      #     ghe_hostname: ${{ secrets.GHE_HOSTNAME }}
+      #     repo_name: ${{ github.repository }}
+      #     directory: "/"
+      #     package_manager: "pip"
+      #     batch_size: "20"
 
-      - name: Run auto dependency update
-        uses: romoh/dependencies-autoupdate@main
+      - name: Update JavaScript deps
+        uses: boozallen/dependency-update-action@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          update-command: pnpm up -r -L
-          on-changes-command: 'pnpm i -r && pnpm buildlib && pnpm build'
-          # update-path: "''" #optional
-          pr-branch: master
+          dotcom_token: ${{ secrets.GITHUB_TOKEN }}
+          repo_name: ${{ github.repository }}
+          directory: /
+          package_manager: npm_and_yarn
+          batch_size: '10'
+
+      - name: Update GitHub Actions
+        uses: boozallen/dependency-update-action@v1
+        with:
+          dotcom_token: ${{ secrets.GITHUB_TOKEN }}
+          repo_name: ${{ github.repository }}
+          directory: /
+          package_manager: github_actions
+          batch_size: '5'
