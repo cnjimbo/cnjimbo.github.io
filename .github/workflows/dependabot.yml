@@ -45,10 +45,10 @@ jobs:
           # fi
 
       - name: Run auto dependency update
-        uses: romoh/dependencies-autoupdate@v1.2
+        uses: romoh/dependencies-autoupdate@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          update-command: '''pnpm up -r -w'''
+          update-command: '''pnpm up -r -L'''
           on-changes-command: '''pnpm i -r && pnpm buildlib && pnpm build'''
           # update-path: "''" #optional
           pr-branch: master
