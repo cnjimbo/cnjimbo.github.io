@@ -48,6 +48,7 @@ jobs:
         uses: romoh/dependencies-autoupdate@v1.2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          update-command: '''pnpm up -r -w && pnpm buildlib && pnpm build'''
+          update-command: '''pnpm up -r -w'''
+          on-changes-command: '''pnpm i -r && pnpm buildlib && pnpm build'''
           # update-path: "''" #optional
           pr-branch: master
