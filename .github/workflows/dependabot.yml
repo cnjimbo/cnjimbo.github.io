@@ -35,20 +35,11 @@ jobs:
           registry-url: https://registry.npmjs.org
           cache: pnpm
 
-      - name: Install Dependencies
-        run: |
-          pnpm i --no-frozen-lockfile
-          # if [ -f pnpm-lock.yaml ]; then
-          #   pnpm install --frozen-lockfile
-          # else
-          #   pnpm install
-          # fi
-
       - name: Run auto dependency update
         uses: romoh/dependencies-autoupdate@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          update-command: '''pnpm up -r -L'''
-          on-changes-command: '''pnpm i -r && pnpm buildlib && pnpm build'''
+          update-command: pnpm up -r -L
+          on-changes-command: 'pnpm i -r && pnpm buildlib && pnpm build'
           # update-path: "''" #optional
           pr-branch: master
