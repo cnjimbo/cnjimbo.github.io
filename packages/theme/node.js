@@ -40,168 +40,233 @@ module.exports = __toCommonJS(node_exports);
 // src/utils/node/mdPlugins.ts
 var import_module = require("module");
 
-// ../../node_modules/.pnpm/vitepress-plugin-tabs@0.2.0_vitepress@1.2.3_@algolia+client-search@4.19.1_@types+node@20.6.3__tasys46ln23ubdv2to2chczqqi/node_modules/vitepress-plugin-tabs/dist/index.js
-var tabsMarker = "=tabs";
-var tabsMarkerLen = tabsMarker.length;
-var ruleBlockTabs = (state, startLine, endLine, silent) => {
-  if (state.sCount[startLine] - state.blkIndent >= 4) {
+// ../../node_modules/.pnpm/vitepress-plugin-tabs@0.5.0_vitepress@1.3.0_@algolia+client-search@4.24.0_@types+node@20.14.1_l2edka3dg3ibxaau4olbp5o37m/node_modules/vitepress-plugin-tabs/dist/index.js
+var __create2 = Object.create;
+var __defProp2 = Object.defineProperty;
+var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames2 = Object.getOwnPropertyNames;
+var __getProtoOf2 = Object.getPrototypeOf;
+var __hasOwnProp2 = Object.prototype.hasOwnProperty;
+var __commonJS = (cb, mod) => function __require() {
+  return mod || (0, cb[__getOwnPropNames2(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
+};
+var __copyProps2 = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames2(from))
+      if (!__hasOwnProp2.call(to, key) && key !== except)
+        __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toESM2 = (mod, isNodeMode, target) => (target = mod != null ? __create2(__getProtoOf2(mod)) : {}, __copyProps2(
+  // If the importer is in node compatibility mode or this is not an ESM
+  // file that has been converted to a CommonJS file using a Babel-
+  // compatible transform (i.e. "__esModule" has not been set), then set
+  // "default" to the CommonJS "module.exports" for node compatibility.
+  isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
+  mod
+));
+var require_markdown_it_container = __commonJS({
+  "../../node_modules/.pnpm/markdown-it-container@3.0.0/node_modules/markdown-it-container/index.js"(exports2, module2) {
+    "use strict";
+    module2.exports = function container_plugin(md, name, options) {
+      function validateDefault(params) {
+        return params.trim().split(" ", 2)[0] === name;
+      }
+      function renderDefault(tokens, idx, _options, env, slf) {
+        if (tokens[idx].nesting === 1) {
+          tokens[idx].attrJoin("class", name);
+        }
+        return slf.renderToken(tokens, idx, _options, env, slf);
+      }
+      options = options || {};
+      var min_markers = 3, marker_str = options.marker || ":", marker_char = marker_str.charCodeAt(0), marker_len = marker_str.length, validate = options.validate || validateDefault, render = options.render || renderDefault;
+      function container2(state, startLine, endLine, silent) {
+        var pos, nextLine, marker_count, markup, params, token, old_parent, old_line_max, auto_closed = false, start = state.bMarks[startLine] + state.tShift[startLine], max = state.eMarks[startLine];
+        if (marker_char !== state.src.charCodeAt(start)) {
+          return false;
+        }
+        for (pos = start + 1; pos <= max; pos++) {
+          if (marker_str[(pos - start) % marker_len] !== state.src[pos]) {
+            break;
+          }
+        }
+        marker_count = Math.floor((pos - start) / marker_len);
+        if (marker_count < min_markers) {
+          return false;
+        }
+        pos -= (pos - start) % marker_len;
+        markup = state.src.slice(start, pos);
+        params = state.src.slice(pos, max);
+        if (!validate(params, markup)) {
+          return false;
+        }
+        if (silent) {
+          return true;
+        }
+        nextLine = startLine;
+        for (; ; ) {
+          nextLine++;
+          if (nextLine >= endLine) {
+            break;
+          }
+          start = state.bMarks[nextLine] + state.tShift[nextLine];
+          max = state.eMarks[nextLine];
+          if (start < max && state.sCount[nextLine] < state.blkIndent) {
+            break;
+          }
+          if (marker_char !== state.src.charCodeAt(start)) {
+            continue;
+          }
+          if (state.sCount[nextLine] - state.blkIndent >= 4) {
+            continue;
+          }
+          for (pos = start + 1; pos <= max; pos++) {
+            if (marker_str[(pos - start) % marker_len] !== state.src[pos]) {
+              break;
+            }
+          }
+          if (Math.floor((pos - start) / marker_len) < marker_count) {
+            continue;
+          }
+          pos -= (pos - start) % marker_len;
+          pos = state.skipSpaces(pos);
+          if (pos < max) {
+            continue;
+          }
+          auto_closed = true;
+          break;
+        }
+        old_parent = state.parentType;
+        old_line_max = state.lineMax;
+        state.parentType = "container";
+        state.lineMax = nextLine;
+        token = state.push("container_" + name + "_open", "div", 1);
+        token.markup = markup;
+        token.block = true;
+        token.info = params;
+        token.map = [startLine, nextLine];
+        state.md.block.tokenize(state, startLine + 1, nextLine);
+        token = state.push("container_" + name + "_close", "div", -1);
+        token.markup = state.src.slice(start, pos);
+        token.block = true;
+        state.parentType = old_parent;
+        state.lineMax = old_line_max;
+        state.line = nextLine + (auto_closed ? 1 : 0);
+        return true;
+      }
+      md.block.ruler.before("fence", "container_" + name, container2, {
+        alt: ["paragraph", "reference", "blockquote", "list"]
+      });
+      md.renderer.rules["container_" + name + "_open"] = render;
+      md.renderer.rules["container_" + name + "_close"] = render;
+    };
+  }
+});
+var import_markdown_it_container = __toESM2(require_markdown_it_container(), 1);
+var tabMarker = "=";
+var tabMarkerCode = tabMarker.charCodeAt(0);
+var minTabMarkerLen = 2;
+var ruleBlockTab = (state, startLine, endLine, silent) => {
+  let pos = state.bMarks[startLine] + state.tShift[startLine];
+  const max = state.eMarks[startLine];
+  if (state.parentType !== "container") {
     return false;
   }
-  let pos = state.bMarks[startLine] + state.tShift[startLine];
-  let max = state.eMarks[startLine];
-  if (pos + 3 > max) {
+  if (pos + minTabMarkerLen > max) {
     return false;
   }
   const marker = state.src.charCodeAt(pos);
-  if (marker !== 58) {
+  if (marker !== tabMarkerCode) {
     return false;
   }
   const mem = pos;
-  pos = state.skipChars(pos, marker);
-  let len = pos - mem;
-  if (len < 3) {
+  pos = state.skipChars(pos + 1, marker);
+  const tabMarkerLen = pos - mem;
+  if (tabMarkerLen < minTabMarkerLen - 1) {
     return false;
   }
-  if (state.src.slice(pos, pos + tabsMarkerLen) !== tabsMarker) {
-    return false;
-  }
-  pos += tabsMarkerLen;
   if (silent) {
     return true;
   }
-  const markup = state.src.slice(mem, pos);
-  const params = state.src.slice(pos, max);
   let nextLine = startLine;
-  let haveEndMarker = false;
+  let endStart = mem;
+  let endPos = pos;
   for (; ; ) {
     nextLine++;
     if (nextLine >= endLine) {
       break;
     }
-    pos = state.bMarks[nextLine] + state.tShift[nextLine];
-    const mem2 = pos;
-    max = state.eMarks[nextLine];
-    if (pos < max && state.sCount[nextLine] < state.blkIndent) {
+    endStart = state.bMarks[nextLine] + state.tShift[nextLine];
+    const max2 = state.eMarks[nextLine];
+    if (endStart < max2 && state.sCount[nextLine] < state.blkIndent) {
       break;
     }
-    if (state.src.charCodeAt(pos) !== marker) {
+    const startCharCode = state.src.charCodeAt(endStart);
+    if (startCharCode !== tabMarkerCode) {
       continue;
     }
-    if (state.sCount[nextLine] - state.blkIndent >= 4) {
+    const p = state.skipChars(endStart + 1, marker);
+    if (p - endStart !== tabMarkerLen) {
       continue;
     }
-    pos = state.skipChars(pos, marker);
-    if (pos - mem2 < len) {
-      continue;
-    }
-    pos = state.skipSpaces(pos);
-    if (pos < max) {
-      continue;
-    }
-    haveEndMarker = true;
+    endPos = p;
     break;
   }
-  len = state.sCount[startLine];
-  state.line = nextLine + (haveEndMarker ? 1 : 0);
-  const token = state.push("tabs", "div", 0);
-  token.info = params;
-  token.content = state.getLines(startLine + 1, nextLine, len, true);
-  token.markup = markup;
-  token.map = [startLine, state.line];
+  const oldParent = state.parentType;
+  const oldLineMax = state.lineMax;
+  state.parentType = "tab";
+  state.lineMax = nextLine;
+  const startToken = state.push("tab_open", "div", 1);
+  startToken.markup = state.src.slice(mem, pos);
+  startToken.block = true;
+  startToken.info = state.src.slice(pos, max).trimStart();
+  startToken.map = [startLine, nextLine - 1];
+  state.md.block.tokenize(state, startLine + 1, nextLine);
+  const endToken = state.push("tab_close", "div", -1);
+  endToken.markup = state.src.slice(endStart, endPos);
+  endToken.block = true;
+  state.parentType = oldParent;
+  state.lineMax = oldLineMax;
+  state.line = nextLine;
   return true;
 };
-var tabBreakRE = /^\s*::(.+)$/;
-var forbiddenCharsInSlotNames = /[ '"]/;
-var parseTabBreakLine = (line) => {
-  const m = line.match(tabBreakRE);
-  if (!m)
-    return null;
-  const trimmed = m[1].trim();
-  if (forbiddenCharsInSlotNames.test(trimmed)) {
-    throw new Error(
-      `contains forbidden chars in slot names (space and quotes) (${JSON.stringify(
-        line
-      )})`
-    );
-  }
-  return trimmed;
-};
-var lastLineBreakRE = /\n$/;
-var parseTabsContent = (content) => {
-  const lines = content.replace(lastLineBreakRE, "").split("\n");
-  const tabInfos = [];
-  const tabLabels = /* @__PURE__ */ new Set();
-  let currentTab = null;
-  const createTabInfo = (label) => {
-    if (tabLabels.has(label)) {
-      throw new Error(`a tab labelled ${JSON.stringify(label)} already exists`);
-    }
-    const newTab = { label, content: [] };
-    tabInfos.push(newTab);
-    tabLabels.add(label);
-    return newTab;
-  };
-  for (const line of lines) {
-    const tabLabel = parseTabBreakLine(line);
-    if (currentTab === null) {
-      if (tabLabel === null) {
-        throw new Error(
-          `tabs should start with \`::\${tabLabel}\` (e.g. "::foo"). (received: ${JSON.stringify(
-            line
-          )})`
-        );
-      }
-      currentTab = createTabInfo(tabLabel);
-      continue;
-    }
-    if (tabLabel === null) {
-      currentTab.content.push(line);
-    } else {
-      currentTab = createTabInfo(tabLabel);
-    }
-  }
-  if (tabInfos.length < 0) {
-    throw new Error("tabs should include at least one tab");
-  }
-  return tabInfos.map((info) => ({
-    label: info.label,
-    content: info.content.join("\n").replace(lastLineBreakRE, "")
-  }));
-};
-var parseParams = (input) => {
-  if (!input.startsWith("=")) {
-    return {
-      shareStateKey: void 0
-    };
-  }
-  const splitted = input.split("=");
+var parseTabsParams = (input) => {
+  const match = input.match(/key:(\S+)/);
   return {
-    shareStateKey: splitted[1]
+    shareStateKey: match == null ? void 0 : match[1]
   };
 };
 var tabsPlugin = (md) => {
-  md.block.ruler.before("fence", "=tabs", ruleBlockTabs, {
-    alt: ["paragraph", "reference", "blockquote", "list"]
+  md.use(import_markdown_it_container.default, "tabs", {
+    render(tokens, index) {
+      const token = tokens[index];
+      if (token.nesting === 1) {
+        const params = parseTabsParams(token.info);
+        const shareStateKeyProp = params.shareStateKey ? `sharedStateKey="${md.utils.escapeHtml(params.shareStateKey)}"` : "";
+        return `<PluginTabs ${shareStateKeyProp}>
+`;
+      } else {
+        return `</PluginTabs>
+`;
+      }
+    }
   });
-  md.renderer.rules.tabs = (tokens, index, _options, env) => {
+  md.block.ruler.after("container_tabs", "tab", ruleBlockTab);
+  const renderTab = (tokens, index) => {
     const token = tokens[index];
-    const tabs = parseTabsContent(token.content);
-    const renderedTabs = tabs.map((tab) => ({
-      label: tab.label,
-      content: md.render(tab.content, env)
-    }));
-    const params = parseParams(token.info);
-    const tabLabelsProp = `:tabLabels="${md.utils.escapeHtml(
-      JSON.stringify(tabs.map((tab) => tab.label))
-    )}"`;
-    const shareStateKeyProp = params.shareStateKey ? `sharedStateKey="${md.utils.escapeHtml(params.shareStateKey)}"` : "";
-    const slots = renderedTabs.map(
-      (tab) => `<template #${tab.label}>${tab.content}</template>`
-    );
-    return `<PluginTabs ${tabLabelsProp} ${shareStateKeyProp}>${slots.join(
-      ""
-    )}</PluginTabs>`;
+    if (token.nesting === 1) {
+      const label = token.info;
+      const labelProp = `label="${md.utils.escapeHtml(label)}"`;
+      return `<PluginTabsTab ${labelProp}>
+`;
+    } else {
+      return `</PluginTabsTab>
+`;
+    }
   };
+  md.renderer.rules["tab_open"] = renderTab;
+  md.renderer.rules["tab_close"] = renderTab;
 };
 
 // src/utils/node/mdPlugins.ts
