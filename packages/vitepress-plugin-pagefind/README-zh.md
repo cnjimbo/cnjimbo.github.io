@@ -84,7 +84,11 @@ pagefindPlugin({
   btnPlaceholder: '搜索',
   placeholder: '搜索文档',
   emptyText: '空空如也',
-  heading: '共: {{searchResult}} 条结果'
+  heading: '共: {{searchResult}} 条结果',
+  // toSelect: '',
+  // toNavigate: '',
+  // toClose: '',
+  // searchBy: '',
 })
 ```
 
@@ -345,6 +349,27 @@ interface SearchConfig {
     heading?: string
 
     /**
+     * @default
+     * 'to select'
+     */
+    toSelect?: string
+    /**
+     * @default
+     * 'to navigate'
+     */
+    toNavigate?: string
+    /**
+     * @default
+     * 'to close'
+     */
+    toClose?: string
+    /**
+     * @default
+     * 'Search by'
+     */
+    searchBy?: string
+  
+    /**
      * 当页面语言改变时自动重新加载页面
      *
      * 目的是重新加载目标语言的索引文件
@@ -397,6 +422,12 @@ interface SearchConfig {
      * @default 300
      */
     delay?: number
+
+    /**
+     * 单页面展示多少条结果
+     * @default 1
+     */
+    pageResultCount?: number
 }
 ```
 </details>

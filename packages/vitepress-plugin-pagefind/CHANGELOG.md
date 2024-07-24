@@ -1,5 +1,35 @@
 # vitepress-plugin-pagefind
 
+## 0.4.9
+
+### Patch Changes
+
+- chore: search sort by location
+
+## 0.4.8
+
+### Patch Changes
+
+- docs: update readme
+
+## 0.4.7
+
+### Patch Changes
+
+- fix: windows dyatmic route error
+- fix: path contain space
+- feat: support rewrite operate text
+- feat: inline `Intl?.Segmenter` transform chinese words
+
+## 0.4.6
+
+### Patch Changes
+
+- fix: setup lang=ts build failed
+- fix: dynamic route build failed
+- chore: search input style like VitePress
+- chore: add `pageResultCount` option
+
 ## 0.4.5
 
 ### Patch Changes

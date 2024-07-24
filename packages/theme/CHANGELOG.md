@@ -1,5 +1,15 @@
 # @sugarat/theme
 
+## 0.4.8
+
+### Patch Changes
+
+- chore: support rewrite version text
+- chore: sass warning
+- Updated dependencies
+  - vitepress-plugin-pagefind@0.4.9
+  - vitepress@1.3.1
+
 ## 0.4.7
 
 ### Patch Changes
