@@ -34,8 +34,10 @@ html.dark {
     min-height: 100%;
   }
 
-  min-height: 100vh;
-  background: radial-gradient(ellipse, rgba(var(--bg-gradient-home), 1) 0%, rgba(var(--bg-gradient-home), 0) 700%);
+  & {
+    min-height: 100vh;
+    background: radial-gradient(ellipse, rgba(var(--bg-gradient-home), 1) 0%, rgba(var(--bg-gradient-home), 0) 700%);
+  }
 }
 
 // 样式重写
@@ -194,7 +196,7 @@ span.svg-icon {
   }
 }
 
-.VPImage.logo{
+.VPImage.logo {
   width: 24px;
   height: 24px;
 }

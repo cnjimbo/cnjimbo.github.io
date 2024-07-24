@@ -32,10 +32,10 @@ export const blogTheme = getThemeConfig({
     mobileDisplay: true,
     models: [
       {
-        path: 'https://model.oml2d.com/Senko_Normals/senko.model3.json',
-        // path: 'https://jsd.onmicrosoft.cn/npm/oml2d-models/models/Senko_Normals/senko.model3.json',
-        // path: 'https://npm.onmicrosoft.cn/oml2d-models@latest/models/Senko_Normals/senko.model3.json',
-        // path: 'https://cdn.bitiful.sugarat.top/npm/oml2d-model/models/Senko_Normals/senko.model3.json',
+        path: 'https://oml2d-models.sugarat.top/Senko_Normals/senko.model3.json',
+      },
+      {
+        path: 'https://oml2d-models.sugarat.top/mai/model.json',
       }
     ],
   },
