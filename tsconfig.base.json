@@ -11,9 +11,7 @@
     },
     "target": "esnext",
     "types": [
-      "vue",
-      "@vue/runtime-core",
-      "@vue/runtime-dom",
+      "@types/vue",
       "typescript-eslint"
     ],
     "jsx": "preserve",
