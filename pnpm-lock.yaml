@@ -19,12 +19,12 @@ importers:
         version: 1.1.6
       '@types/node':
         specifier: ^20.14.10
-        version: 20.14.10
+        version: 20.14.12
       '@types/vue':
         specifier: ^2.0.0
-        version: 2.0.0(typescript@5.5.3)
+        version: 2.0.0(typescript@5.5.4)
       eslint:
-        specifier: ^9.7.0
+        specifier: ^9.6.0
         version: 9.7.0
       eslint-plugin-todo-ddl:
         specifier: ^1.1.1
@@ -73,7 +73,7 @@ importers:
         version: 2.7.7(vue@3.4.33(typescript@5.5.4))
       vitepress:
         specifier: 1.3.1
-        version: 1.3.1(@algolia/client-search@4.24.0)(@types/node@20.14.12)(async-validator@4.2.5)(axios@1.7.2)(fuse.js@7.0.0)(postcss@8.4.39)(sass@1.77.8)(search-insights@2.15.0)(typescript@5.5.4)
+        version: 1.3.1(@algolia/client-search@4.24.0)(@types/node@20.14.12)(async-validator@4.2.5)(axios@1.7.2)(fuse.js@6.6.2)(postcss@8.4.39)(sass@1.77.8)(search-insights@2.15.0)(typescript@5.5.4)
       vitepress-plugin-rss:
         specifier: workspace:*
         version: link:../vitepress-plugin-rss
@@ -157,7 +157,7 @@ importers:
         version: 1.2.1
       vitepress-plugin-mermaid:
         specifier: 2.0.16
-        version: 2.0.16(mermaid@10.9.1)(vitepress@1.3.1(@algolia/client-search@4.24.0)(@types/node@20.14.12)(async-validator@4.2.5)(axios@1.7.2)(fuse.js@7.0.0)(postcss@8.4.39)(sass@1.77.8)(search-insights@2.15.0)(typescript@5.5.4))
+        version: 2.0.16(mermaid@10.9.1)(vitepress@1.3.1(@algolia/client-search@4.24.0)(@types/node@20.14.12)(async-validator@4.2.5)(axios@1.7.2)(fuse.js@6.6.2)(postcss@8.4.39)(sass@1.77.8)(search-insights@2.15.0)(typescript@5.5.4))
       vitepress-plugin-pagefind:
         specifier: workspace:*
         version: link:../vitepress-plugin-pagefind
@@ -166,7 +166,7 @@ importers:
         version: link:../vitepress-plugin-rss
       vitepress-plugin-tabs:
         specifier: 0.5.0
-        version: 0.5.0(vitepress@1.3.1(@algolia/client-search@4.24.0)(@types/node@20.14.12)(async-validator@4.2.5)(axios@1.7.2)(fuse.js@7.0.0)(postcss@8.4.39)(sass@1.77.8)(search-insights@2.15.0)(typescript@5.5.4))(vue@3.4.33(typescript@5.5.4))
+        version: 0.5.0(vitepress@1.3.1(@algolia/client-search@4.24.0)(@types/node@20.14.12)(async-validator@4.2.5)(axios@1.7.2)(fuse.js@6.6.2)(postcss@8.4.39)(sass@1.77.8)(search-insights@2.15.0)(typescript@5.5.4))(vue@3.4.33(typescript@5.5.4))
     devDependencies:
       '@element-plus/icons-vue':
         specifier: ^2.3.1
@@ -191,7 +191,7 @@ importers:
         version: 5.3.4(@types/node@20.14.12)(sass@1.77.8)
       vitepress:
         specifier: 1.3.1
-        version: 1.3.1(@algolia/client-search@4.24.0)(@types/node@20.14.12)(async-validator@4.2.5)(axios@1.7.2)(fuse.js@7.0.0)(postcss@8.4.39)(sass@1.77.8)(search-insights@2.15.0)(typescript@5.5.4)
+        version: 1.3.1(@algolia/client-search@4.24.0)(@types/node@20.14.12)(async-validator@4.2.5)(axios@1.7.2)(fuse.js@6.6.2)(postcss@8.4.39)(sass@1.77.8)(search-insights@2.15.0)(typescript@5.5.4)
       vue:
         specifier: ^3.4.33
         version: 3.4.33(typescript@5.5.4)
@@ -225,7 +225,7 @@ importers:
         version: 5.3.4(@types/node@20.14.12)(sass@1.77.8)
       vitepress:
         specifier: 1.3.1
-        version: 1.3.1(@algolia/client-search@4.24.0)(@types/node@20.14.12)(async-validator@4.2.5)(axios@1.7.2)(fuse.js@7.0.0)(postcss@8.4.39)(sass@1.77.8)(search-insights@2.15.0)(typescript@5.5.4)
+        version: 1.3.1(@algolia/client-search@4.24.0)(@types/node@20.14.12)(async-validator@4.2.5)(axios@1.7.2)(fuse.js@6.6.2)(postcss@8.4.39)(sass@1.77.8)(search-insights@2.15.0)(typescript@5.5.4)
 
   packages/vitepress-plugin-rss:
     dependencies:
@@ -244,7 +244,7 @@ importers:
         version: 5.3.4(@types/node@20.14.12)(sass@1.77.8)
       vitepress:
         specifier: 1.3.1
-        version: 1.3.1(@algolia/client-search@4.24.0)(@types/node@20.14.12)(async-validator@4.2.5)(axios@1.7.2)(fuse.js@7.0.0)(postcss@8.4.39)(sass@1.77.8)(search-insights@2.15.0)(typescript@5.5.4)
+        version: 1.3.1(@algolia/client-search@4.24.0)(@types/node@20.14.12)(async-validator@4.2.5)(axios@1.7.2)(fuse.js@6.6.2)(postcss@8.4.39)(sass@1.77.8)(search-insights@2.15.0)(typescript@5.5.4)
 
 packages:
 
@@ -2281,10 +2281,6 @@ packages:
 
   fuse.js@6.6.2:
     resolution: {integrity: sha512-cJaJkxCCxC8qIIcPBF9yGxY0W/tVZS3uEISDxhYIdtk8OL93pe+6Zj7LjCqVV4dzbqcriOZ+kQ/NE4RXZHsIGA==}
-    engines: {node: '>=10'}
-
-  fuse.js@7.0.0:
-    resolution: {integrity: sha512-14F4hBIxqKvD4Zz/XjDc3y94mNZN6pRv3U13Udo0lNLCWRBUsrMv2xwcF/y/Z5sV6+FQW+/ow68cHpm4sunt8Q==}
     engines: {node: '>=10'}
 
   get-caller-file@2.0.5:
@@ -4684,9 +4680,9 @@ snapshots:
 
   '@types/unist@3.0.2': {}
 
-  '@types/vue@2.0.0(typescript@5.5.3)':
+  '@types/vue@2.0.0(typescript@5.5.4)':
     dependencies:
-      vue: 3.4.31(typescript@5.5.3)
+      vue: 3.4.33(typescript@5.5.4)
     transitivePeerDependencies:
       - typescript
 
@@ -4952,7 +4948,7 @@ snapshots:
       - '@vue/composition-api'
       - vue
 
-  '@vueuse/integrations@10.11.0(async-validator@4.2.5)(axios@1.7.2)(focus-trap@7.5.4)(fuse.js@7.0.0)(vue@3.4.33(typescript@5.5.4))':
+  '@vueuse/integrations@10.11.0(async-validator@4.2.5)(axios@1.7.2)(focus-trap@7.5.4)(fuse.js@6.6.2)(vue@3.4.33(typescript@5.5.4))':
     dependencies:
       '@vueuse/core': 10.11.0(vue@3.4.33(typescript@5.5.4))
       '@vueuse/shared': 10.11.0(vue@3.4.33(typescript@5.5.4))
@@ -4961,7 +4957,7 @@ snapshots:
       async-validator: 4.2.5
       axios: 1.7.2
       focus-trap: 7.5.4
-      fuse.js: 7.0.0
+      fuse.js: 6.6.2
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
@@ -6030,9 +6026,6 @@ snapshots:
   function-bind@1.1.2: {}
 
   fuse.js@6.6.2: {}
-
-  fuse.js@7.0.0:
-    optional: true
 
   get-caller-file@2.0.5: {}
 
@@ -7371,19 +7364,19 @@ snapshots:
     dependencies:
       dayjs: 1.11.12
 
-  vitepress-plugin-mermaid@2.0.16(mermaid@10.9.1)(vitepress@1.3.1(@algolia/client-search@4.24.0)(@types/node@20.14.12)(async-validator@4.2.5)(axios@1.7.2)(fuse.js@7.0.0)(postcss@8.4.39)(sass@1.77.8)(search-insights@2.15.0)(typescript@5.5.4)):
+  vitepress-plugin-mermaid@2.0.16(mermaid@10.9.1)(vitepress@1.3.1(@algolia/client-search@4.24.0)(@types/node@20.14.12)(async-validator@4.2.5)(axios@1.7.2)(fuse.js@6.6.2)(postcss@8.4.39)(sass@1.77.8)(search-insights@2.15.0)(typescript@5.5.4)):
     dependencies:
       mermaid: 10.9.1
-      vitepress: 1.3.1(@algolia/client-search@4.24.0)(@types/node@20.14.12)(async-validator@4.2.5)(axios@1.7.2)(fuse.js@7.0.0)(postcss@8.4.39)(sass@1.77.8)(search-insights@2.15.0)(typescript@5.5.4)
+      vitepress: 1.3.1(@algolia/client-search@4.24.0)(@types/node@20.14.12)(async-validator@4.2.5)(axios@1.7.2)(fuse.js@6.6.2)(postcss@8.4.39)(sass@1.77.8)(search-insights@2.15.0)(typescript@5.5.4)
     optionalDependencies:
       '@mermaid-js/mermaid-mindmap': 9.3.0
 
-  vitepress-plugin-tabs@0.5.0(vitepress@1.3.1(@algolia/client-search@4.24.0)(@types/node@20.14.12)(async-validator@4.2.5)(axios@1.7.2)(fuse.js@7.0.0)(postcss@8.4.39)(sass@1.77.8)(search-insights@2.15.0)(typescript@5.5.4))(vue@3.4.33(typescript@5.5.4)):
+  vitepress-plugin-tabs@0.5.0(vitepress@1.3.1(@algolia/client-search@4.24.0)(@types/node@20.14.12)(async-validator@4.2.5)(axios@1.7.2)(fuse.js@6.6.2)(postcss@8.4.39)(sass@1.77.8)(search-insights@2.15.0)(typescript@5.5.4))(vue@3.4.33(typescript@5.5.4)):
     dependencies:
-      vitepress: 1.3.1(@algolia/client-search@4.24.0)(@types/node@20.14.12)(async-validator@4.2.5)(axios@1.7.2)(fuse.js@7.0.0)(postcss@8.4.39)(sass@1.77.8)(search-insights@2.15.0)(typescript@5.5.4)
+      vitepress: 1.3.1(@algolia/client-search@4.24.0)(@types/node@20.14.12)(async-validator@4.2.5)(axios@1.7.2)(fuse.js@6.6.2)(postcss@8.4.39)(sass@1.77.8)(search-insights@2.15.0)(typescript@5.5.4)
       vue: 3.4.33(typescript@5.5.4)
 
-  vitepress@1.3.1(@algolia/client-search@4.24.0)(@types/node@20.14.12)(async-validator@4.2.5)(axios@1.7.2)(fuse.js@7.0.0)(postcss@8.4.39)(sass@1.77.8)(search-insights@2.15.0)(typescript@5.5.4):
+  vitepress@1.3.1(@algolia/client-search@4.24.0)(@types/node@20.14.12)(async-validator@4.2.5)(axios@1.7.2)(fuse.js@6.6.2)(postcss@8.4.39)(sass@1.77.8)(search-insights@2.15.0)(typescript@5.5.4):
     dependencies:
       '@docsearch/css': 3.6.1
       '@docsearch/js': 3.6.1(@algolia/client-search@4.24.0)(search-insights@2.15.0)
@@ -7394,7 +7387,7 @@ snapshots:
       '@vue/devtools-api': 7.3.7
       '@vue/shared': 3.4.33
       '@vueuse/core': 10.11.0(vue@3.4.33(typescript@5.5.4))
-      '@vueuse/integrations': 10.11.0(async-validator@4.2.5)(axios@1.7.2)(focus-trap@7.5.4)(fuse.js@7.0.0)(vue@3.4.33(typescript@5.5.4))
+      '@vueuse/integrations': 10.11.0(async-validator@4.2.5)(axios@1.7.2)(focus-trap@7.5.4)(fuse.js@6.6.2)(vue@3.4.33(typescript@5.5.4))
       focus-trap: 7.5.4
       mark.js: 8.11.1
       minisearch: 7.1.0
