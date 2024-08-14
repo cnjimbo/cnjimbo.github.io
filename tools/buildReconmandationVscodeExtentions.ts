@@ -10,6 +10,14 @@
     "code-runner.executorMap": {
       "typescript": "cd $dir && npx tsx $fullFileName",
     },
+
+    "code-runner.executorMap": {
+    "typescript": "cd $dir && npx tsx $fullFileName"
+    }
+
+    "code-runner.executorMapByFileExtension": {
+    ".ts": "cd $dir && npx tsx $fullFileName"
+    }
   */
 // 最后将输出内容复制到code-workspace的对应位置
 import * as fs from 'node:fs'
@@ -39,7 +47,8 @@ async function readFileToJson(filePath: string): Promise<any> {
   return jsonObject
 }
 
-async function writeJsonToFile(filePath: string, content: string): Promise<void> {
+async function writeJsonToFile(filePath: string, target: object): Promise<void> {
+  const content = JSON.stringify(target, null, '  ')
   await fs.promises.writeFile(filePath, content, 'utf8')
   console.log(`JSON data has been successfully written to ${filePath}`)
 }
@@ -68,7 +77,7 @@ readFileToJson(codeProfile)
     if (fs.existsSync(codeWorkspace)) {
       const target = await readFileToJson(codeWorkspace)
       target.extensions.recommendations = ids
-      writeJsonToFile(codeWorkspace, JSON.stringify(target, null, '\t'))
+      writeJsonToFile(codeWorkspace, target)
     }
     return ids
   })
@@ -77,6 +86,8 @@ readFileToJson(codeProfile)
       fs.writeFileSync(extensionWorkspace, '{}')
     const target = await readFileToJson(extensionWorkspace)
     target.recommendations = ids
-    writeJsonToFile(extensionWorkspace, JSON.stringify(target, null, '\t'))
+    writeJsonToFile(extensionWorkspace, target)
     return { ids, target }
   })
+  .catch(err => console.error(err))
+  .then(_ => console.log('-----------------------------', 'end', '-----------------------------  '))
