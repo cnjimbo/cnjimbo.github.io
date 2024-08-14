@@ -330,7 +330,7 @@
 		"editor.formatOnSave": false,
 		"editor.formatOnSaveMode": "file",
 		"editor.formatOnType": false,
-		"editor.minimap.enabled": false,
+		"editor.minimap.enabled": true,
 		"editor.trimAutoWhitespace": false,
 		"eslint.format.enable": true,
 		"eslint.ignoreUntitled": true,
