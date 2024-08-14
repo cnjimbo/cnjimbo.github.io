@@ -93,6 +93,25 @@ export default antfu(
       'style/*': 'off',
       'vue/first-attribute-linebreak': 'off',
       'vue/html-closing-bracket-newline': 'off',
+      'no-unused-vars': ['warn', {
+        vars: 'all',
+        args: 'after-used',
+        caughtErrors: 'all',
+        ignoreRestSiblings: false,
+        reportUsedIgnorePattern: false,
+        varsIgnorePattern: '^(?:_|temp_)',
+        argsIgnorePattern: '^(?:_|temp_)'
+      }],
+      'unused-imports/no-unused-vars': ['warn', {
+        vars: 'all',
+        args: 'after-used',
+        caughtErrors: 'all',
+        ignoreRestSiblings: false,
+        reportUsedIgnorePattern: false,
+        varsIgnorePattern: '^(?:_|temp_)',
+        argsIgnorePattern: '^(?:_|temp_)'
+      }],
+      'style/eol-last': ['off', 'always']
     },
   },
 )
