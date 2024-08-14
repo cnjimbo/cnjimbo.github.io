@@ -1,5 +1,5 @@
 {
-  "recommendations": [
+ "recommendations": [
     "adam-bender.commit-message-editor",
     "alberto-varela.monorepo-focus-workspace",
     "alefragnani.project-manager",
@@ -90,4 +90,4 @@
     "yzhang.markdown-all-in-one",
     "zhoucheng0431.vitepress-snippets"
   ]
-}
+} 
