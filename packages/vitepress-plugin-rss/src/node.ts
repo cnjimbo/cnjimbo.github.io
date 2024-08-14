@@ -46,6 +46,8 @@ export async function getPostsData(
     if (!frontmatter.title) {
       frontmatter.title = getDefaultTitle(content)
     }
+    // fix: title set number case cdata.replace error
+    frontmatter.title = `${frontmatter.title}`
 
     const date = await (frontmatter.date || datePromise)
     frontmatter.date = formatDate(date)
@@ -158,7 +160,7 @@ export async function genFeed(config: SiteConfig, rssOptions: RSSOptions) {
       id: link,
       link,
       description,
-      content: htmlCache.get(post.filepath),
+      content: htmlCache.get(post.filepath)?.replaceAll('&ZeroWidthSpace;', ''),
       author: [
         {
           name: author,
