@@ -1,0 +1,28 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+    "outDir": "./dist",
+    "rootDirs": [
+      "./src"
+    ],
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    // "lib": ["esnext"], // 要包括的库文件列表
+    "paths": {
+      "@sugarat/theme/node": [
+        "./packages/theme/src/node.ts"
+      ],
+      "@sugarat/theme": [
+        "./packages/theme/src/index.ts"
+      ]
+    }
+  },
+  "include": [
+    "./**/vite.config.ts",
+    "./**/uno.config.ts",
+    "**/tools/*.ts"
+  ]
+}

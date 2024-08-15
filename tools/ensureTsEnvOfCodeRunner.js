@@ -1,158 +1,127 @@
-import path from 'path'
-import { fileURLToPath } from 'url'
-import JSON5 from 'json5'
-import { glob } from 'glob'
-import fs from 'fs-extra'
-import _ from 'lodash'
-
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
-const __parentdir = path.resolve(__dirname, '../')
-
-log('root path:', __parentdir)
-function parseJsonWithComments(jsonString) {
-  return JSON5.parse(jsonString)
-}
-
-/**
- *
- * @param {string} filePath new settings
- * @returns {object} json data
- */
-async function readFileToJson(filePath) {
-  if (!fs.existsSync(filePath)) {
-    throw new Error(`file not exist: ${filePath}`)
-  }
-  const fileContent = fs.readFileSync(filePath, 'utf8')
-  if (!fileContent || fileContent.length === 0)
-    throw new Error(`can not read any json string from file: ${filePath}`)
-  return parseJsonWithComments(fileContent)
-}
-/**
- *
- * @param {string} filePath
- * @param {object} jsonObject
- */
-async function writeJsonToFile(filePath, jsonObject) {
-  const content = JSON.stringify(jsonObject, null, '  ')
-  return fs.writeFile(filePath, content, 'utf8')
-    .then(() => {
-      log(`JSON data has been successfully written to ${filePath}`)
-      return true
-    })
-    .catch((err) => {
-      log(`error on writting to ${filePath}`, err)
-      return false
-    })
-}
-
-/**
- *
- * @param {{filepath:string,:object}} preferSettings current settings
- * @param {{filepath:string,:object}} newSettings new settings
- * @returns {{needRewrite:boolean,data:object}} merged ojbec
- */
-async function tryMerge(preferSettings, newSettings) {
-  const needRewrite = !deepEqual(preferSettings, newSettings)
-  const obj = { needRewrite }
-  if (needRewrite) {
-    obj.data = _.merge({}, newSettings, preferSettings)
-  }
-  else {
-    obj.data = preferSettings
-  }
-  return obj
-}
-
-log('-----------------------------', 'start', '-----------------------------')
-const defaultSettings = {
-  'code-runner.executorMap': {
-    typescript: 'cd $dir && npx tsx $fullFileName'
-  },
-  'code-runner.executorMapByFileExtension': {
-    '.ts': 'cd $dir && npx tsx $fullFileName'
-  }
-}
-
-async function checkCodeWorkspaceFilePath(codeWorkspaceFilePath) {
-  return await glob(codeWorkspaceFilePath, { __parentdir, absolute: true })
-    .then((files) => {
-      if (files && files.length > 0) {
-        if (files.length > 1) {
-          log('not support two or more files with .code-workspace in the project folder. selected file:', files[0])
-        }
-        return files[0]
-      }
-      log(`not find any code-workspace file with parttern: ${codeWorkspaceFilePath}`)
-      return undefined
-    })
-}
-
-function objectKeysIncludes(subObj, parentObj) {
-  if (parentObj == null)
-    throw new Error('parentObj can\'t be undefined or null')
-  if (subObj == null)
-    throw new Error('subObj can\'t be undefined or null')
-  const subKeys = Object.keys(subObj)
-  const parentKeys = Object.keys(parentObj)
-  // 检查 subObj 的所有键是否都在 parentObj 中
-  return subKeys.every(key => parentKeys.includes(key))
-}
-
-async function main() {
-  const codeWorkspaceFilePath = '*.code-workspace'
-  const vs_filepath = path.resolve(__parentdir, '.vscode/settings.json')
-
-  const cwfile = await checkCodeWorkspaceFilePath(codeWorkspaceFilePath)
-  const exist_codework_file = cwfile && fs.existsSync(cwfile)
-  const exist_vs_setting_file = fs.existsSync(vs_filepath)
-
-  if (exist_codework_file) {
-
-    const cw = await readFileToJson(cwfile)
-    const cw_setting = cw.settings
-    const config = ensureConfiged(cw_setting, defaultSettings)
-    if (config.needRewrite) {
-      cw.settings = config.data
-      await writeJsonToFile(cwfile, cw)
-      log('Configured .code-workspace:', cwfile)
-    } else {
-      log('No changed .code-workspace:', cwfile)
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
-  }
-
-  if (exist_vs_setting_file) {
-
-    let vs = await readFileToJson(vs_filepath)
-    const config = await ensureConfiged(vs, defaultSettings)
-    if (config.needRewrite) {
-      vs = config.data
-      await writeJsonToFile(vs_filepath, vs)
-      log('Configured  settings.json:', vs_filepath)
-    } else {
-      log('No changed settings.json:', cwfile)
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var path_1 = require("path");
+var url_1 = require("url");
+var fs_extra_1 = require("fs-extra");
+var util_1 = require("./util");
+var __filename = (0, url_1.fileURLToPath)(import.meta.url);
+var __dirname = path_1.default.dirname(__filename);
+var __parentdir = path_1.default.resolve(__dirname, '../');
+log('root path:', __parentdir);
+var codeWorkspace_file = '*.code-workspace';
+var settings_file = '.vscode/settings.json';
+var defaultSettings = {
+    'code-runner.executorMap': {
+        typescript: 'cd $dir && npx tsx $fullFileName'
+    },
+    'code-runner.executorMapByFileExtension': {
+        '.ts': 'cd $dir && npx tsx $fullFileName'
     }
-  }
-
-  if (!exist_vs_setting_file && !exist_codework_file) {
-    log('found neither settings.json nor *.code-workspace:')
-    log('paths:', vs_filepath, codeWorkspaceFilePath)
-    log('create settings.json with default settings', vs_filepath)
-    await writeJsonToFile(vs_filepath, defaultSettings)
-  }
+};
+function main() {
+    return __awaiter(this, void 0, void 0, function () {
+        var vs_filepath, cwfile, exist_codework_file, exist_vs_setting_file, cw, cw_setting, config, vs, config;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    log('-----------------------------', 'start', '-----------------------------');
+                    vs_filepath = path_1.default.resolve(__parentdir, settings_file);
+                    return [4 /*yield*/, (0, util_1.checkCodeWorkspaceFilePath)(__parentdir, codeWorkspace_file)];
+                case 1:
+                    cwfile = _a.sent();
+                    exist_codework_file = cwfile && fs_extra_1.default.existsSync(cwfile);
+                    exist_vs_setting_file = fs_extra_1.default.existsSync(vs_filepath);
+                    if (!exist_codework_file) return [3 /*break*/, 5];
+                    return [4 /*yield*/, (0, util_1.readFileToJson)(cwfile)];
+                case 2:
+                    cw = _a.sent();
+                    cw_setting = cw.settings;
+                    config = (0, util_1.ensureConfigured)(cw_setting, defaultSettings);
+                    if (!config.needRewrite) return [3 /*break*/, 4];
+                    cw.settings = config.data;
+                    return [4 /*yield*/, (0, util_1.writeJsonToFile)(cwfile, cw)];
+                case 3:
+                    _a.sent();
+                    log('Configured .code-workspace:', cwfile);
+                    return [3 /*break*/, 5];
+                case 4:
+                    log('No changed .code-workspace:', cwfile);
+                    _a.label = 5;
+                case 5:
+                    if (!exist_vs_setting_file) return [3 /*break*/, 10];
+                    return [4 /*yield*/, (0, util_1.readFileToJson)(vs_filepath)];
+                case 6:
+                    vs = _a.sent();
+                    return [4 /*yield*/, (0, util_1.ensureConfigured)(vs, defaultSettings)];
+                case 7:
+                    config = _a.sent();
+                    if (!config.needRewrite) return [3 /*break*/, 9];
+                    vs = config.data;
+                    return [4 /*yield*/, (0, util_1.writeJsonToFile)(vs_filepath, vs)];
+                case 8:
+                    _a.sent();
+                    log('Configured  settings.json:', vs_filepath);
+                    return [3 /*break*/, 10];
+                case 9:
+                    log('No changed settings.json:', vs_filepath);
+                    _a.label = 10;
+                case 10:
+                    if (!(!exist_vs_setting_file && !exist_codework_file)) return [3 /*break*/, 12];
+                    log('found neither settings.json nor *.code-workspace:');
+                    log('paths:', vs_filepath, codeWorkspace_file);
+                    log('create settings.json with default settings', vs_filepath);
+                    return [4 /*yield*/, (0, util_1.writeJsonToFile)(vs_filepath, defaultSettings)];
+                case 11:
+                    _a.sent();
+                    _a.label = 12;
+                case 12: return [2 /*return*/];
+            }
+        });
+    });
 }
-function log(...msg) {
-  console.log(...msg)
+function log() {
+    var msg = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        msg[_i] = arguments[_i];
+    }
+    console.log.apply(console, msg);
 }
-
-async function ensureConfiged(currentSettings, part_settings) {
-  const needRewrite = !objectKeysIncludes(part_settings, currentSettings)
-  if (needRewrite) {
-    return await tryMerge(part_settings, currentSettings)
-  }
-  return { needRewrite: false, data: currentSettings }
-}
-
 main()
-  .catch(err => log('error:', err))
-  .finally(() => log('running end, exist'))
+    .catch(function (err) { return log('error:', err); })
+    .finally(function () { return log('running end, exist'); });

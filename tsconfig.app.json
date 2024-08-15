@@ -1,0 +1,81 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./", // 工作根目录
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "composite": true,
+    "moduleResolution": "Bundler", // 模块解析策略
+    "target": "ES2020", // 编译的目标是什么版本的
+    "module": "ESNext", // 模块系统
+    "allowJs": true, // 允许编译javascript文件。
+    "allowSyntheticDefaultImports": true,
+    "allowUnreachableCode": false, // 不报告执行不到的代码错误。
+    "allowUnusedLabels": false, // 不报告未使用的标签错误
+    "alwaysStrict": false, // 以严格模式解析并为每个源文件生成 "use strict"语句
+    "declaration": true, // 是否自动创建类型声明文件
+    "declarationDir": "./types", // 类型声明文件的输出目录
+    "esModuleInterop": true,
+    "experimentalDecorators": true, // 启用实验性的ES装饰器
+    "importHelpers": true,
+    // 指定一个匹配列表（属于自动指定该路径下的所有ts相关文件）
+    "jsx": "preserve", // 在 .tsx文件里支持JSX
+    "removeComments": true, // 是否移除注释
+    "sourceMap": true, // 是否生成map文件
+    "useDefineForClassFields": true,
+    "skipLibCheck": true,
+    /* Bundler mode */
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": false,
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "resolveJsonModule": true,
+    "noImplicitAny": false, // 是否默认禁用 any
+    "lib": [
+      "es5",
+      "esnext",
+      "dom",
+      "dom.iterable"
+    ], // 编译过程中需要引入的库文件的列表
+
+    "paths": { // 指定模块的路径，和baseUrl有关联，和webpack中resolve.alias配置一样
+      "@/*": [
+        "./src/*"
+      ],
+      "@assets/*": [
+        "src/assets/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@store/*": [
+        "src/stores/*"
+      ],
+      "@views/*": [
+        "src/views/*"
+      ]
+    },
+    "types": [
+    ],
+    "typeRoots": [
+      "node_modules",
+      "node_modules/@types",
+      "./types"
+    ]
+  },
+  "include": [
+    "**/src/**/*.ts",
+    "**/src/**/*.tsx",
+    "**/src/**/*.vue"
+  ],
+  "exclude": [
+    "node_modules",
+    "src/assets/json/*.json",
+    "src/assets/css/*.scss",
+    "**/vite.config.ts",
+    "**/uno.config.ts",
+    "**/tools/*.ts"
+  ]
+}
