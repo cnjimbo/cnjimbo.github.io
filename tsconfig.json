@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": "./",
+    "outDir": "./dist",
     "target": "esnext",
     "module": "esnext",
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
@@ -35,7 +36,7 @@
     "acceptance-tests",
     "webpack",
     "example",
-    "vue.config.js"
+    "tools/*.ts"
   ],
   "references": [
     {

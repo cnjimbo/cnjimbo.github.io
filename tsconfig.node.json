@@ -20,6 +20,7 @@
       ]
     }
   },
+  "exclude": [],
   "include": [
     "./**/vite.config.ts",
     "./**/uno.config.ts",
