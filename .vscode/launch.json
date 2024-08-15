@@ -11,7 +11,7 @@
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}\\tools\\checkCodeRunnerEnvironment.js"
+      "program": "${workspaceFolder}\\tools\\ensureCodeRunner.js"
     }
   ]
 }
