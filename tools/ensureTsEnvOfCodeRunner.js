@@ -108,23 +108,29 @@ async function main() {
   const exist_vs_setting_file = fs.existsSync(vs_filepath)
 
   if (exist_codework_file) {
-    log('checking .code-workspace:', cwfile)
+
     const cw = await readFileToJson(cwfile)
     const cw_setting = cw.settings
     const config = ensureConfiged(cw_setting, defaultSettings)
     if (config.needRewrite) {
       cw.settings = config.data
       await writeJsonToFile(cwfile, cw)
+      log('Configured .code-workspace:', cwfile)
+    } else {
+      log('No changed .code-workspace:', cwfile)
     }
   }
 
   if (exist_vs_setting_file) {
-    log('checking settings.json:', vs_filepath)
+
     let vs = await readFileToJson(vs_filepath)
     const config = await ensureConfiged(vs, defaultSettings)
     if (config.needRewrite) {
       vs = config.data
       await writeJsonToFile(vs_filepath, vs)
+      log('Configured  settings.json:', vs_filepath)
+    } else {
+      log('No changed settings.json:', cwfile)
     }
   }
 
