@@ -52,8 +52,21 @@ async function writeJsonToFile(filePath: string, target: object): Promise<void> 
   await fs.promises.writeFile(filePath, content, 'utf8')
   console.log(`JSON data has been successfully written to ${filePath}`)
 }
-async function findInstalledExtensions(data): Promise<string[]> {
-  const extensions = parseJsonWithComments(data.extensions) as Array<any>
+
+export interface ObjType {
+  [key: string]: ObjType | string | Array<string> | Array<ObjType>
+}
+
+export interface CodeWorkspace {
+  extensions: ObjType
+  settings: ObjType
+}
+
+export interface CodeProfile {
+  extensions: string
+}
+async function findInstalledExtensions(data: CodeProfile): Promise<string[]> {
+  const extensions = parseJsonWithComments(data.extensions)
   const ids = []
   for (let i = 0, n = extensions.length; i < n; i++) {
     const m = extensions[i]

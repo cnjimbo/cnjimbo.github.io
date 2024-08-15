@@ -24,6 +24,9 @@
   "include": [
     "./**/vite.config.ts",
     "./**/uno.config.ts",
-    "**/tools/*.ts"
+    "**/tools/*.ts",
+    "**/package.json",
+    "**/cnjimbo.github.io.code-workspace"
+
   ]
 }
