@@ -3,7 +3,7 @@ export default {
   entry: ['tools/**/*.ts'],
   format: ['esm'],
   outDir: 'tools/dist',
-  target: 'esnext',
+  target: 'es2022',
   dts: false,
   clean: true,
   sourcemap: false,

@@ -2,7 +2,7 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import fs from 'fs-extra'
 import _ from 'lodash'
-import type { ObjType } from './util.ts'
+import type { ObjType } from './util'
 import { checkCodeWorkspaceFilePath, ensureConfigured, readFileToJson, writeJsonToFile } from './util'
 
 const __filename = fileURLToPath(import.meta.url)
