@@ -21,19 +21,7 @@
   */
 // 最后将输出内容复制到code-workspace的对应位置
 import * as fs from 'node:fs'
-import { execSync } from 'child_process'
 import JSON5 from 'json5'
-
-function _getGitRoot(): string {
-  try {
-    const gitRoot = execSync('git rev-parse --show-toplevel').toString().trim()
-    return gitRoot
-  }
-  catch (error) {
-    console.error('Failed to get Git root directory. This might not be a Git repository.', error)
-    throw error
-  }
-}
 
 function parseJsonWithComments(jsonString: string) {
   return JSON5.parse(jsonString)
@@ -79,27 +67,27 @@ async function findInstalledExtensions(data: CodeProfile): Promise<string[]> {
 
 console.log('-----------------------------', 'start', '-----------------------------')
 const codeProfile = './tswindows.code-profile'
-const codeWorkspace = './../cnjimbo.github.io.code-workspace'
-const extensionWorkspace = './../.vscode/extensions.json'
+const codeWorkspace_file = './../cnjimbo.github.io.code-workspace'
+const vsextensionfilepath = './../.vscode/extensions.json'
 
 readFileToJson(codeProfile)
   .then((data) => {
     return findInstalledExtensions(data)
   })
   .then(async (ids) => {
-    if (fs.existsSync(codeWorkspace)) {
-      const target = await readFileToJson(codeWorkspace)
+    if (fs.existsSync(codeWorkspace_file)) {
+      const target = await readFileToJson(codeWorkspace_file)
       target.extensions.recommendations = ids
-      writeJsonToFile(codeWorkspace, target)
+      await writeJsonToFile(codeWorkspace_file, target)
     }
     return ids
   })
   .then(async (ids) => {
-    if (!fs.existsSync(extensionWorkspace))
-      fs.writeFileSync(extensionWorkspace, '{}')
-    const target = await readFileToJson(extensionWorkspace)
+    if (!fs.existsSync(vsextensionfilepath))
+      fs.writeFileSync(vsextensionfilepath, '{}')
+    const target = await readFileToJson(vsextensionfilepath)
     target.recommendations = ids
-    writeJsonToFile(extensionWorkspace, target)
+    await writeJsonToFile(vsextensionfilepath, target)
     return { ids, target }
   })
   .catch(err => console.error(err))

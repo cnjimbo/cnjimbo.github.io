@@ -1,3 +1,5 @@
+import path from 'path'
+import { fileURLToPath } from 'url'
 import _ from 'lodash'
 import fs from 'fs-extra'
 import JSON5 from 'json5'
@@ -55,8 +57,10 @@ export function parseJsonWithComments(jsonString: string) {
   return JSON5.parse(jsonString)
 }
 export
-async function readFileToJson(filePath: string) {
+async function readFileToJson(filePath: string, def: ObjType | undefined = undefined) {
   if (!fs.existsSync(filePath)) {
+    if (def)
+      return def
     throw new Error(`file not exist: ${filePath}`)
   }
   const fileContent = fs.readFileSync(filePath, 'utf8')
@@ -80,7 +84,7 @@ async function writeJsonToFile(filePath: string, jsonObject: object): Promise<bo
 export function objectKeysIncludes(subObj: ObjType, parentObj: ObjType) {
   if (parentObj == null)
     throw new Error('parent object can\'t be undefined or null')
-  if (subObj == null)
+  if (subObj == null || subObj === undefined)
     return true
   const sourceKeys = Object.keys(subObj)
   const referenceKeys = Object.keys(parentObj)
@@ -99,4 +103,36 @@ export async function checkCodeWorkspaceFilePath(basedir: string, codeWorkspaceF
       console.log(`can't find any code-workspace file with parttern: ${codeWorkspaceFilePath}`)
       return undefined
     })
+}
+
+export function log(...msg: string[]) {
+  console.log(...msg)
+}
+
+export async function tryReadFile(filepath: string, defaultSettings: ObjType) {
+  let vs_filepath
+  if (path.isAbsolute(filepath)) {
+    vs_filepath = filepath
+  }
+  else {
+    const __filename = fileURLToPath(import.meta.url)
+    const __dirname = path.dirname(__filename)
+    const __currentDir = path.resolve(__dirname)
+    vs_filepath = path.resolve(__currentDir, filepath)
+  }
+  const exist_vs_setting_file = fs.existsSync(vs_filepath)
+  if (exist_vs_setting_file) {
+    let vs = await readFileToJson(vs_filepath)
+    const config = await ensureConfigured(vs, defaultSettings)
+    if (config.needRewrite) {
+      vs = config.data
+      await writeJsonToFile(vs_filepath, vs)
+      log('Configured  settings.json:', vs_filepath)
+    }
+    else {
+      log('No changed settings.json:', vs_filepath)
+    }
+    return { exist: exist_vs_setting_file, data: config.data }
+  }
+  return { exist: exist_vs_setting_file, data: undefined }
 }
