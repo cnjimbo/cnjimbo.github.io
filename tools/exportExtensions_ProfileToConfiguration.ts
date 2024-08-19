@@ -22,6 +22,7 @@
 // 最后将输出内容复制到code-workspace的对应位置
 import * as fs from 'node:fs'
 import JSON5 from 'json5'
+import { main as syncConfiguration } from './syncWorkspaceToVscode'
 
 function parseJsonWithComments(jsonString: string) {
   return JSON5.parse(jsonString)
@@ -89,6 +90,10 @@ readFileToJson(codeProfile)
     target.recommendations = ids
     await writeJsonToFile(vsextensionfilepath, target)
     return { ids, target }
+  })
+  .then(async (v) => {
+    console.log('----start sync cofiguration from .code-workspace to .vscode')
+    await syncConfiguration()
   })
   .catch(err => console.error(err))
   .then(_ => console.log('-----------------------------', 'end', '-----------------------------  '))

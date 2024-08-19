@@ -549,5 +549,14 @@
   },
   "explorer.excludeGitIgnore": true,
   "workbench.editor.sharedViewState": true,
-  "workbench.view.alwaysShowHeaderActions": true
+  "workbench.view.alwaysShowHeaderActions": true,
+  "emeraldwalk.runonsave": {
+    "commands": [
+      {
+        "match": "package.json",
+        "isAsync": true,
+        "cmd": "pnpx vscode-ext-gen"
+      }
+    ]
+  }
 }

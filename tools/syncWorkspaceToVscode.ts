@@ -18,7 +18,7 @@ log('root path:', __currentDir)
 const codeWorkspace_file = '../*.code-workspace'
 const vs_settings_folder = '../.vscode'
 
-async function main() {
+export async function main() {
   log('-----------------------------', 'start', '-----------------------------')
 
   const vs_setting_filepath = path.resolve(__currentDir, path.resolve(vs_settings_folder, 'settings.json'))
