@@ -151,7 +151,7 @@
     "workbench.preferredDarkColorTheme": "Vitesse Dark",
     "workbench.preferredLightColorTheme": "Vitesse Light",
     "workbench.productIconTheme": "icons-carbon",
-    "workbench.sideBar.location": "right",
+    "workbench.sideBar.location": "left",
     "workbench.startupEditor": "newUntitledFile",
     "workbench.tree.expandMode": "singleClick",
     "workbench.tree.indent": 10,
@@ -686,6 +686,7 @@
       "editor.defaultFormatter": "vscode.css-language-features"
     },
     "explorer.excludeGitIgnore": true,
-    "workbench.editor.sharedViewState": true
+    "workbench.editor.sharedViewState": true,
+    "workbench.view.alwaysShowHeaderActions": true
   }
 }
