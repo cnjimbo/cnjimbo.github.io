@@ -18,12 +18,12 @@
     "jsonc",
     "yaml"
   ],
+  "eslint.format.enable": true,
+  "eslint.useFlatConfig": true,
   "code-runner.executorMap": {
     "typescript": "cd $dir && npx tsx $fullFileName"
   },
   "code-runner.executorMapByFileExtension": {
     ".ts": "cd $dir && npx tsx $fullFileName"
-  },
-  "eslint.format.enable": true,
-  "eslint.useFlatConfig": true
+  }
 }

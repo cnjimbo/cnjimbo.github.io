@@ -1,18 +1,21 @@
 import path from 'path'
 import { fileURLToPath } from 'url'
 import fs from 'fs-extra'
-import _ from 'lodash'
-import type { ObjType } from './util'
-import { checkCodeWorkspaceFilePath, ensureConfigured, readFileToJson, writeJsonToFile } from './util'
+import {
+  checkCodeWorkspaceFilePath,
+  ensureConfigured,
+  readFileToJson,
+  writeJsonToFile
+} from './util.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
-const __parentdir = path.resolve(__dirname, '../')
+const __currentDir = path.resolve(__dirname)
 
-log('root path:', __parentdir)
-const codeWorkspace_file = '*.code-workspace'
-const settings_file = '.vscode/settings.json'
-const defaultSettings: ObjType = {
+log('root path:', __currentDir)
+const codeWorkspace_file = '../*.code-workspace'
+const settings_file = '../.vscode/settings.json'
+const defaultSettings = {
   'code-runner.executorMap': {
     typescript: 'cd $dir && npx tsx $fullFileName'
   },
@@ -23,8 +26,11 @@ const defaultSettings: ObjType = {
 async function main() {
   log('-----------------------------', 'start', '-----------------------------')
 
-  const vs_filepath = path.resolve(__parentdir, settings_file)
-  const cwfile = await checkCodeWorkspaceFilePath(__parentdir, codeWorkspace_file)
+  const vs_filepath = path.resolve(__currentDir, settings_file)
+  const cwfile = await checkCodeWorkspaceFilePath(
+    __currentDir,
+    codeWorkspace_file
+  )
   const exist_codework_file = cwfile && fs.existsSync(cwfile)
   const exist_vs_setting_file = fs.existsSync(vs_filepath)
 
@@ -62,7 +68,7 @@ async function main() {
     await writeJsonToFile(vs_filepath, defaultSettings)
   }
 }
-function log(...msg: string[]) {
+function log(...msg) {
   console.log(...msg)
 }
 
