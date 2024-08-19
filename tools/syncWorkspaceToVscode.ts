@@ -1,4 +1,5 @@
 import path from 'path'
+import process from 'process'
 import { fileURLToPath } from 'url'
 import fs from 'fs-extra'
 import {
@@ -19,7 +20,7 @@ const codeWorkspace_file = '../*.code-workspace'
 const vs_settings_folder = '../.vscode'
 
 export async function main() {
-  log('-----------------------------', 'start', '-----------------------------')
+  log('-----------------------------', 'start', 'sync workspace to vscode', '-----------------------------')
 
   const vs_setting_filepath = path.resolve(__currentDir, path.resolve(vs_settings_folder, 'settings.json'))
   const vs_extension_filepath = path.resolve(__currentDir, path.resolve(vs_settings_folder, 'extensions.json'))
@@ -56,6 +57,14 @@ export async function main() {
   }
 }
 
-main()
-  .catch(err => log('error:', err))
-  .finally(() => log('running end, exist'))
+function isMainScript() {
+  const scriptpath = path.resolve(__filename)
+  const firsttArg = path.resolve(process.argv[1])
+  return scriptpath === path.basename(firsttArg)
+}
+
+if (isMainScript()) {
+  main()
+    .catch(err => log('error:', err))
+    .finally(() => log('running end, exist'))
+}

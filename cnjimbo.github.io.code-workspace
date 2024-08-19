@@ -2,6 +2,7 @@
   "extensions": {
     "recommendations": [
       "adam-bender.commit-message-editor",
+      "akclown.swagger-to-typescript",
       "alberto-varela.monorepo-focus-workspace",
       "alefragnani.project-manager",
       "alexdima.copy-relative-path",
@@ -12,7 +13,6 @@
       "antfu.icons-carbon",
       "antfu.open-in-github-button",
       "antfu.slidev",
-      "antfu.smart-clicks",
       "antfu.unocss",
       "antfu.vite",
       "antfu.where-am-i",
@@ -74,7 +74,6 @@
       "ms-vscode.vscode-typescript-next",
       "mulu-github.jsflowchart",
       "mxsdev.typescript-explorer",
-      "naumovs.color-highlight",
       "neotan.vscode-auto-restart-typescript-eslint-servers",
       "oouo-diogo-perdigao.docthis",
       "owen-dev.vue3-snippets-plus",
@@ -144,11 +143,11 @@
     "workbench.colorTheme": "Vitesse Dark",
     "workbench.editor.tabActionLocation": "right",
     "workbench.fontAliasing": "antialiased",
-    "workbench.iconTheme": "catppuccin-mocha",
+    "workbench.iconTheme": "file-icons",
     "workbench.list.smoothScrolling": true,
-    "workbench.preferredDarkColorTheme": "Vitesse Dark",
+    "workbench.preferredDarkColorTheme": "Default Dark Modern",
     "workbench.preferredLightColorTheme": "Vitesse Light",
-    "workbench.productIconTheme": "icons-carbon",
+    "workbench.productIconTheme": "Default",
     "workbench.sideBar.location": "left",
     "workbench.startupEditor": "newUntitledFile",
     "workbench.tree.expandMode": "singleClick",
@@ -639,40 +638,8 @@
       "sound": 1000
     },
     "editor.tokenColorCustomizations": {
-      "comments": "#00000000",
-      "textMateRules": [
-        {
-          "scope": [
-            "hidecomments",
-            "comment",
-            "comment.block",
-            "comment.line",
-            "comment.line.double-slash",
-            "variable.other.jsdoc",
-            "storage.type.class.jsdoc",
-            "punctuation.definition.block.tag.jsdoc",
-            "punctuation.definition.bracket.curly.begin.jsdoc",
-            "punctuation.definition.bracket.curly.end.jsdoc",
-            "entity.name.type.instance.jsdoc",
-            "comment.block.documentation.ts",
-            "comment.block.documentation.js",
-            "comment.block.documentation.cs",
-            "comment.block.documentation.cs entity.other.attribute-name.localname.cs",
-            "comment.block.documentation.cs entity.other.attribute-name.cs",
-            "comment.block.documentation.cs punctuation.definition.tag.cs",
-            "comment.block.documentation.cs punctuation.definition.string.begin.cs",
-            "comment.block.documentation.cs punctuation.definition.string.end.cs",
-            "comment.block.documentation.cs punctuation.definition.bracket.curly.begin.cs",
-            "comment.block.documentation.cs punctuation.definition.bracket.curly.end.cs",
-            "comment.block.documentation.cs punctuation.definition.block.tag.cs",
-            "comment.block.documentation.cs string.quoted.double.cs",
-            "comment.block.documentation.cs entity.name.tag.localname.cs"
-          ],
-          "settings": {
-            "foreground": "#00000000"
-          }
-        }
-      ]
+      "comments": "",
+      "textMateRules": []
     },
     "[yaml]": {
       "editor.defaultFormatter": "dbaeumer.vscode-eslint"

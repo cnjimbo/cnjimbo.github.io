@@ -1,6 +1,7 @@
 {
   "recommendations": [
     "adam-bender.commit-message-editor",
+    "akclown.swagger-to-typescript",
     "alberto-varela.monorepo-focus-workspace",
     "alefragnani.project-manager",
     "alexdima.copy-relative-path",
@@ -11,7 +12,6 @@
     "antfu.icons-carbon",
     "antfu.open-in-github-button",
     "antfu.slidev",
-    "antfu.smart-clicks",
     "antfu.unocss",
     "antfu.vite",
     "antfu.where-am-i",
@@ -73,7 +73,6 @@
     "ms-vscode.vscode-typescript-next",
     "mulu-github.jsflowchart",
     "mxsdev.typescript-explorer",
-    "naumovs.color-highlight",
     "neotan.vscode-auto-restart-typescript-eslint-servers",
     "oouo-diogo-perdigao.docthis",
     "owen-dev.vue3-snippets-plus",

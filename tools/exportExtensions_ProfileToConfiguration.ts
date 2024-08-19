@@ -66,7 +66,7 @@ async function findInstalledExtensions(data: CodeProfile): Promise<string[]> {
   return ids
 }
 
-console.log('-----------------------------', 'start', '-----------------------------')
+console.log('-----------------------------', 'start', 'export extensions to configuration', '-----------------------------')
 const codeProfile = './tswindows.code-profile'
 const codeWorkspace_file = './../cnjimbo.github.io.code-workspace'
 const vsextensionfilepath = './../.vscode/extensions.json'
@@ -92,7 +92,6 @@ readFileToJson(codeProfile)
     return { ids, target }
   })
   .then(async (v) => {
-    console.log('----start sync cofiguration from .code-workspace to .vscode')
     await syncConfiguration()
   })
   .catch(err => console.error(err))

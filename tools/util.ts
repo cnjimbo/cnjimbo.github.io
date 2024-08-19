@@ -105,7 +105,7 @@ export async function checkCodeWorkspaceFilePath(basedir: string, codeWorkspaceF
     })
 }
 
-export function log(...msg: string[]) {
+export function log(...msg: any[]) {
   console.log(...msg)
 }
 
