@@ -9,6 +9,15 @@ export interface ObjType {
   [key: string]: any
 }
 
+export interface CodeWorkspace {
+  extensions: ObjType
+  settings: ObjType
+}
+
+export interface CodeProfile {
+  extensions: string
+}
+
 export function deepEqual(obj1: ObjType, obj2: ObjType): boolean {
   const keys1 = Object.keys(obj1)
   const keys2 = Object.keys(obj2)

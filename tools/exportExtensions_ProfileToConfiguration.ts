@@ -21,39 +21,21 @@
   */
 // 最后将输出内容复制到code-workspace的对应位置
 import * as fs from 'node:fs'
-import JSON5 from 'json5'
+import { fileURLToPath } from 'url'
+import path from 'node:path'
 import { main as syncConfiguration } from './syncWorkspaceToVscode'
+import {
+  checkCodeWorkspaceFilePath,
+  ensureConfigured,
+  log,
+  parseJsonWithComments,
+  readFileToJson,
+  tryMerge
+  , writeJsonToFile
+} from './util'
 
-function parseJsonWithComments(jsonString: string) {
-  return JSON5.parse(jsonString)
-}
+import type { CodeProfile } from './util'
 
-async function readFileToJson(filePath: string): Promise<any> {
-  if (!fs.existsSync(filePath))
-    return {}
-  const fileContent = await fs.promises.readFile(filePath, 'utf8')
-  const jsonObject = parseJsonWithComments(fileContent)
-  return jsonObject
-}
-
-async function writeJsonToFile(filePath: string, target: object): Promise<void> {
-  const content = JSON.stringify(target, null, '  ')
-  await fs.promises.writeFile(filePath, content, 'utf8')
-  console.log(`JSON data has been successfully written to ${filePath}`)
-}
-
-export interface ObjType {
-  [key: string]: ObjType | string | Array<string> | Array<ObjType>
-}
-
-export interface CodeWorkspace {
-  extensions: ObjType
-  settings: ObjType
-}
-
-export interface CodeProfile {
-  extensions: string
-}
 async function findInstalledExtensions(data: CodeProfile): Promise<string[]> {
   const extensions = parseJsonWithComments(data.extensions)
   const ids = []
@@ -67,28 +49,47 @@ async function findInstalledExtensions(data: CodeProfile): Promise<string[]> {
 }
 
 console.log('-----------------------------', 'start', 'export extensions to configuration', '-----------------------------')
-const codeProfile = './tswindows.code-profile'
-const codeWorkspace_file = './../cnjimbo.github.io.code-workspace'
-const vsextensionfilepath = './../.vscode/extensions.json'
 
-readFileToJson(codeProfile)
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+const __currentDir = path.resolve(__dirname)
+
+const cp_file = './tswindows.code-profile'
+const codeWorkspace_file = '../*.code-workspace'
+const vs_settings_folder = '../.vscode'
+
+const vs_extension_filepath = path.resolve(__currentDir, path.resolve(vs_settings_folder, 'extensions.json'))
+const cw_filepath = await checkCodeWorkspaceFilePath(
+  __currentDir,
+  codeWorkspace_file
+)
+
+readFileToJson(cp_file)
   .then((data) => {
     return findInstalledExtensions(data)
   })
   .then(async (ids) => {
-    if (fs.existsSync(codeWorkspace_file)) {
+    const cw_filepath = await checkCodeWorkspaceFilePath(
+      __currentDir,
+      codeWorkspace_file
+    )
+    const exist_codework_file = cw_filepath && fs.existsSync(cw_filepath)
+    if (exist_codework_file) {
       const target = await readFileToJson(codeWorkspace_file)
+      target.extensions = {}
       target.extensions.recommendations = ids
       await writeJsonToFile(codeWorkspace_file, target)
     }
     return ids
   })
   .then(async (ids) => {
-    if (!fs.existsSync(vsextensionfilepath))
-      fs.writeFileSync(vsextensionfilepath, '{}')
-    const target = await readFileToJson(vsextensionfilepath)
+    let target
+    if (!fs.existsSync(vs_extension_filepath))
+      target = {}
+    else
+      target = await readFileToJson(vs_extension_filepath)
     target.recommendations = ids
-    await writeJsonToFile(vsextensionfilepath, target)
+    await writeJsonToFile(vs_extension_filepath, target)
     return { ids, target }
   })
   .then(async (v) => {
