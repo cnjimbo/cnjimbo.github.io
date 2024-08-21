@@ -637,7 +637,6 @@
       "sound": 1000
     },
     "editor.tokenColorCustomizations": {
-      "comments": "",
       "textMateRules": []
     },
     "[yaml]": {
