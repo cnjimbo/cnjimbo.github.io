@@ -100,6 +100,8 @@
       "ypresto.vscode-intelli-refactor",
       "yrm.type-challenges",
       "yzhang.markdown-all-in-one",
+      "zhoucheng0431.vitepress-snippets",
+      "yzhang.markdown-all-in-one",
       "zhoucheng0431.vitepress-snippets"
     ]
   },
@@ -135,18 +137,15 @@
   ],
   "settings": {
     "editor.cursorSmoothCaretAnimation": "on",
-    "editor.fontFamily": "Input Mono, monospace",
     "editor.guides.bracketPairs": "active",
     "editor.lineNumbers": "interval",
-    "editor.renderWhitespace": "boundary",
+    "editor.renderWhitespace": "selection",
     "window.autoDetectColorScheme": true,
-    "workbench.colorTheme": "Vitesse Dark",
     "workbench.editor.tabActionLocation": "right",
     "workbench.fontAliasing": "antialiased",
     "workbench.iconTheme": "file-icons",
     "workbench.list.smoothScrolling": true,
     "workbench.preferredDarkColorTheme": "Default Dark Modern",
-    "workbench.preferredLightColorTheme": "Vitesse Light",
     "workbench.productIconTheme": "Default",
     "workbench.sideBar.location": "left",
     "workbench.startupEditor": "newUntitledFile",

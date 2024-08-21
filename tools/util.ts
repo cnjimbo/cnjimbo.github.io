@@ -3,7 +3,8 @@ import { fileURLToPath } from 'url'
 import _ from 'lodash'
 import fs from 'fs-extra'
 import JSON5 from 'json5'
-import { glob } from 'glob'
+import { glob, globSync } from 'glob'
+import { DateTime } from 'luxon'
 
 export interface ObjType {
   [key: string]: any
@@ -24,11 +25,9 @@ export function deepEqual(obj1: ObjType, obj2: ObjType): boolean {
 
   if (keys1.length !== keys2.length)
     return false
-
   for (const key of keys1) {
     if (!keys2.includes(key))
       return false
-
     if (typeof obj1[key] === 'object' && typeof obj2[key] === 'object') {
       if (!deepEqual(obj1[key], obj2[key]))
         return false
@@ -43,7 +42,7 @@ export function deepEqual(obj1: ObjType, obj2: ObjType): boolean {
   return true
 }
 
-export function tryMerge(preferSettings: ObjType, newSettings: ObjType) {
+export function tryMerge(newSettings: ObjType, preferSettings: ObjType) {
   const needRewrite = !deepEqual(preferSettings, newSettings)
   const obj: { needRewrite: boolean, data: object } = { needRewrite, data: preferSettings }
   if (needRewrite) {
@@ -57,7 +56,7 @@ export function tryMerge(preferSettings: ObjType, newSettings: ObjType) {
 export function ensureConfigured(currentSettings: ObjType, part_settings: ObjType) {
   const needRewrite = !objectKeysIncludes(part_settings, currentSettings)
   if (needRewrite) {
-    return tryMerge(part_settings, currentSettings)
+    return tryMerge(currentSettings, part_settings)
   }
   return { needRewrite: false, data: currentSettings }
 }
@@ -100,18 +99,16 @@ export function objectKeysIncludes(subObj: ObjType, parentObj: ObjType) {
   // 检查 subObj 的所有键是否都在 parentObj 中
   return sourceKeys.every(key => referenceKeys.includes(key))
 }
-export async function checkCodeWorkspaceFilePath(basedir: string, codeWorkspaceFilePath: string) {
-  return await glob(codeWorkspaceFilePath, { cwd: basedir, absolute: true })
-    .then((files) => {
-      if (files && files.length > 0) {
-        if (files.length > 1) {
-          console.log('only support one file with .code-workspace in the current project. selected file:', files[0])
-        }
-        return files[0]
-      }
-      console.log(`can't find any code-workspace file with parttern: ${codeWorkspaceFilePath}`)
-      return undefined
-    })
+export function checkCodeWorkspaceFilePath(basedir: string, codeWorkspaceFilePath: string) {
+  const files = globSync(codeWorkspaceFilePath, { cwd: basedir, absolute: true })
+  if (files && files.length > 0) {
+    if (files.length > 1) {
+      console.log('only support one file with .code-workspace in the current project. selected file:', files[0])
+    }
+    return files[0]
+  }
+  console.log(`can't find any code-workspace file with parttern: ${codeWorkspaceFilePath}`)
+  return undefined
 }
 
 export function log(...msg: any[]) {
@@ -144,4 +141,12 @@ export async function tryReadFile(filepath: string, defaultSettings: ObjType) {
     return { exist: exist_vs_setting_file, data: config.data }
   }
   return { exist: exist_vs_setting_file, data: undefined }
+}
+
+export function getBackupFilePath(fsPath: string) {
+  const parts = fsPath.split(path.sep)
+  const fileNameParts = parts[parts.length - 1].split('.')
+  fileNameParts[fileNameParts.length - 1] = `${DateTime.now().toFormat('yyMMddHHmmss')}.${fileNameParts[fileNameParts.length - 1]}`
+  parts[parts.length - 1] = fileNameParts.join('.')
+  return parts.join(path.sep)
 }

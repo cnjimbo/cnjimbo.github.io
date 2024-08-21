@@ -23,7 +23,7 @@
 import * as fs from 'node:fs'
 import { fileURLToPath } from 'url'
 import path from 'node:path'
-import { main as syncConfiguration } from './syncWorkspaceToVscode'
+import { syncConfigurationRetainCodeWorkspace } from './syncWorkspaceToVscode'
 import {
   checkCodeWorkspaceFilePath,
   ensureConfigured,
@@ -69,10 +69,7 @@ readFileToJson(cp_file)
     return findInstalledExtensions(data)
   })
   .then(async (ids) => {
-    const cw_filepath = await checkCodeWorkspaceFilePath(
-      __currentDir,
-      codeWorkspace_file
-    )
+    const cw_filepath = await checkCodeWorkspaceFilePath(__currentDir, codeWorkspace_file)
     const exist_codework_file = cw_filepath && fs.existsSync(cw_filepath)
     if (exist_codework_file) {
       const target = await readFileToJson(codeWorkspace_file)
@@ -93,7 +90,7 @@ readFileToJson(cp_file)
     return { ids, target }
   })
   .then(async (v) => {
-    await syncConfiguration()
+    await syncConfigurationRetainCodeWorkspace()
   })
   .catch(err => console.error(err))
   .then(_ => console.log('-----------------------------', 'end', '-----------------------------  '))
