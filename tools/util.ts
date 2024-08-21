@@ -150,3 +150,43 @@ export function getBackupFilePath(fsPath: string) {
   parts[parts.length - 1] = fileNameParts.join('.')
   return parts.join(path.sep)
 }
+
+const utilEntryFilename = fileURLToPath(import.meta.url)
+const untilEntryDir = path.resolve(path.dirname(utilEntryFilename))
+
+log('entryDir     ', untilEntryDir)
+const codeWorkspaceFile = '../*.code-workspace'
+const vsSettingsFolder = '../.vscode'
+
+const codeWorkOriginFilePath = checkCodeWorkspaceFilePath(untilEntryDir, codeWorkspaceFile)
+const vsExtensionOriginFilePath = path.resolve(untilEntryDir, vsSettingsFolder, 'extensions.json')
+const vsSettingOriginFilePath = path.resolve(untilEntryDir, vsSettingsFolder, 'settings.json')
+const codeWorkBackupFilePath = codeWorkOriginFilePath ? getBackupFilePath(codeWorkOriginFilePath) : undefined
+const vsExtensionBackupFilePath = getBackupFilePath(vsExtensionOriginFilePath)
+const vsSettingBackupFilePath = getBackupFilePath(vsSettingOriginFilePath)
+
+const existCodeWorkOriginFilePath = existFile(codeWorkOriginFilePath)
+const existVsExtensionOriginFilePath = existFile(vsExtensionOriginFilePath)
+const existVsSettingOriginFilePath = existFile(vsSettingOriginFilePath)
+
+log('entryDir     ', untilEntryDir)
+function existFile(filePath: string | undefined) {
+  const existFile = filePath && fs.existsSync(filePath)
+  if (!existFile)
+    log('No found file:', filePath)
+  return existFile
+}
+
+export const config = {
+  codeWorkOriginFilePath,
+  vsExtensionOriginFilePath,
+  vsSettingOriginFilePath,
+
+  existCodeWorkOriginFilePath,
+  existVsExtensionOriginFilePath,
+  existVsSettingOriginFilePath,
+
+  codeWorkBackupFilePath,
+  vsExtensionBackupFilePath,
+  vsSettingBackupFilePath,
+}

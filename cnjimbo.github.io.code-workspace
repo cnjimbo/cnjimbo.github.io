@@ -3,16 +3,18 @@
     "recommendations": [
       "adam-bender.commit-message-editor",
       "akclown.swagger-to-typescript",
-      "alberto-varela.monorepo-focus-workspace",
       "alefragnani.project-manager",
       "alexdima.copy-relative-path",
       "alibaba-cloud.tongyi-lingma",
       "amodio.toggle-excluded-files",
       "antfu.browse-lite",
+      "antfu.file-nesting",
       "antfu.goto-alias",
+      "antfu.iconify",
       "antfu.icons-carbon",
       "antfu.open-in-github-button",
       "antfu.slidev",
+      "antfu.smart-clicks",
       "antfu.unocss",
       "antfu.vite",
       "antfu.where-am-i",
@@ -25,7 +27,6 @@
       "christian-kohler.path-intellisense",
       "codezombiech.gitignore",
       "dbaeumer.vscode-eslint",
-      "devzstudio.emoji-snippets",
       "eamodio.gitlens",
       "ebenezerdon.npm-studio",
       "editorconfig.editorconfig",
@@ -37,12 +38,14 @@
       "folke.vscode-monorepo-workspace",
       "formulahendry.auto-rename-tag",
       "formulahendry.code-runner",
+      "github.github-vscode-theme",
       "github.remotehub",
       "github.vscode-github-actions",
       "github.vscode-pull-request-github",
       "gregorbiswanger.json2ts",
       "hancel.markdown-image",
       "harrydowning.swap-tsconfig",
+      "hunghg255.iconify-preview",
       "ibm.output-colorizer",
       "ionutvmi.path-autocomplete",
       "jock.svg",
@@ -74,11 +77,13 @@
       "ms-vscode.vscode-typescript-next",
       "mulu-github.jsflowchart",
       "mxsdev.typescript-explorer",
+      "naumovs.color-highlight",
       "neotan.vscode-auto-restart-typescript-eslint-servers",
       "oouo-diogo-perdigao.docthis",
       "owen-dev.vue3-snippets-plus",
       "peterschmalfeldt.explorer-exclude",
       "pflannery.vscode-versionlens",
+      "pkief.material-icon-theme",
       "pmneo.tsimporter",
       "redhat.vscode-yaml",
       "richie5um2.vscode-sort-json",
@@ -99,8 +104,6 @@
       "yoavbls.pretty-ts-errors",
       "ypresto.vscode-intelli-refactor",
       "yrm.type-challenges",
-      "yzhang.markdown-all-in-one",
-      "zhoucheng0431.vitepress-snippets",
       "yzhang.markdown-all-in-one",
       "zhoucheng0431.vitepress-snippets"
     ]
@@ -659,6 +662,18 @@
           "cmd": "pnpx vscode-ext-gen"
         }
       ]
-    }
+    },
+    "iconify.languageIds": [
+      "javascriptreact",
+      "typescriptreact",
+      "vue",
+      "svelte",
+      "html",
+      "pug",
+      "json",
+      "yaml",
+      "markdown",
+      "mdx"
+    ]
   }
 }

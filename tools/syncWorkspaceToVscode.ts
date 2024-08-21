@@ -4,8 +4,8 @@ import { fileURLToPath } from 'url'
 import fs from 'fs-extra'
 import {
   checkCodeWorkspaceFilePath,
+  config,
   ensureConfigured,
-  getBackupFilePath,
   log,
   readFileToJson,
   tryMerge
@@ -13,31 +13,25 @@ import {
 } from './util'
 //  pnpm add -Dw luxon @types/luxon lodash fs-extra json5 glob lodash
 
-const entryFilename = fileURLToPath(import.meta.url)
-const entryDirname = path.dirname(entryFilename)
-const entryDir = path.resolve(entryDirname)
+const {
+  codeWorkOriginFilePath,
+  vsExtensionOriginFilePath,
+  vsSettingOriginFilePath,
 
-const codeWorkspaceFile = '../*.code-workspace'
-const vsSettingsFolder = '../.vscode'
+  existCodeWorkOriginFilePath,
+  existVsExtensionOriginFilePath,
+  existVsSettingOriginFilePath,
 
-const codeWorkOriginFilePath = checkCodeWorkspaceFilePath(entryDir, codeWorkspaceFile)
-const vsExtensionOriginFilePath = path.resolve(entryDir, vsSettingsFolder, 'extensions.json')
-const vsSettingOriginFilePath = path.resolve(entryDir, vsSettingsFolder, 'settings.json')
-
-const existCodeWorkOriginFilePath = codeWorkOriginFilePath && fs.existsSync(codeWorkOriginFilePath)
-const existVsExtensionOriginFilePath = fs.existsSync(vsExtensionOriginFilePath)
-const existVsSettingOriginFilePath = fs.existsSync(vsSettingOriginFilePath)
-
-const codeWorkBackupFilePath = codeWorkOriginFilePath ? getBackupFilePath(codeWorkOriginFilePath) : undefined
-const vsExtensionBackupFilePath = getBackupFilePath(vsExtensionOriginFilePath)
-const vsSettingBackupFilePath = getBackupFilePath(vsSettingOriginFilePath)
+  codeWorkBackupFilePath,
+  vsExtensionBackupFilePath,
+  vsSettingBackupFilePath,
+} = config
 
 function saveAsBackupFile(oldPath: string, newPath: string) {
   const oldFilePath = path.resolve(oldPath)
   const newFilePath = path.resolve(newPath)
   fs.renameSync(oldFilePath, newFilePath)
   log(`backup file done:${newFilePath}`)
-  return newFilePath
 }
 
 /**
@@ -76,7 +70,7 @@ export async function syncConfigurationRetainVscode() {
 }
 
 function isMainScript() {
-  const scriptpath = path.resolve(entryFilename)
+  const scriptpath = path.resolve(fileURLToPath(import.meta.url))
   const firsttArg = path.resolve(process.argv[1])
   return scriptpath === firsttArg
 }

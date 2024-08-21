@@ -26,15 +26,27 @@ import path from 'node:path'
 import { syncConfigurationRetainCodeWorkspace } from './syncWorkspaceToVscode'
 import {
   checkCodeWorkspaceFilePath,
+  config,
   ensureConfigured,
   log,
   parseJsonWithComments,
-  readFileToJson,
-  tryMerge
+  readFileToJson
   , writeJsonToFile
 } from './util'
 
 import type { CodeProfile } from './util'
+
+const {
+  codeWorkOriginFilePath,
+  vsExtensionOriginFilePath,
+  vsSettingOriginFilePath,
+  existCodeWorkOriginFilePath,
+  existVsExtensionOriginFilePath,
+  existVsSettingOriginFilePath,
+  codeWorkBackupFilePath,
+  vsExtensionBackupFilePath,
+  vsSettingBackupFilePath,
+} = config
 
 async function findInstalledExtensions(data: CodeProfile): Promise<string[]> {
   const extensions = parseJsonWithComments(data.extensions)
@@ -50,44 +62,29 @@ async function findInstalledExtensions(data: CodeProfile): Promise<string[]> {
 
 console.log('-----------------------------', 'start', 'export extensions to configuration', '-----------------------------')
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
-const __currentDir = path.resolve(__dirname)
-
 const cp_file = './tswindows.code-profile'
-const codeWorkspace_file = '../*.code-workspace'
-const vs_settings_folder = '../.vscode'
-
-const vs_extension_filepath = path.resolve(__currentDir, path.resolve(vs_settings_folder, 'extensions.json'))
-const cw_filepath = await checkCodeWorkspaceFilePath(
-  __currentDir,
-  codeWorkspace_file
-)
+const vs_extension_filepath = vsExtensionOriginFilePath
 
 readFileToJson(cp_file)
   .then((data) => {
     return findInstalledExtensions(data)
   })
   .then(async (ids) => {
-    const cw_filepath = await checkCodeWorkspaceFilePath(__currentDir, codeWorkspace_file)
-    const exist_codework_file = cw_filepath && fs.existsSync(cw_filepath)
-    if (exist_codework_file) {
-      const target = await readFileToJson(codeWorkspace_file)
+    if (existCodeWorkOriginFilePath && codeWorkOriginFilePath) {
+      const target = await readFileToJson(codeWorkOriginFilePath)
       target.extensions = {}
       target.extensions.recommendations = ids
-      await writeJsonToFile(codeWorkspace_file, target)
+      await writeJsonToFile(codeWorkOriginFilePath, target)
     }
     return ids
   })
   .then(async (ids) => {
-    let target
-    if (!fs.existsSync(vs_extension_filepath))
-      target = {}
-    else
-      target = await readFileToJson(vs_extension_filepath)
-    target.recommendations = ids
-    await writeJsonToFile(vs_extension_filepath, target)
-    return { ids, target }
+    if (existVsExtensionOriginFilePath) {
+      const target = await readFileToJson(vs_extension_filepath)
+      target.recommendations = ids
+      await writeJsonToFile(vs_extension_filepath, target)
+    }
+    return { ids }
   })
   .then(async (v) => {
     await syncConfigurationRetainCodeWorkspace()
