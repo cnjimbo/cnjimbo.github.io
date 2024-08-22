@@ -46,9 +46,9 @@ const {
   codeWorkBackupFilePath,
   vsExtensionBackupFilePath,
   vsSettingBackupFilePath,
-} = config
+} = config()
 
-async function findInstalledExtensions(data: CodeProfile): Promise<string[]> {
+function findInstalledExtensions(data: CodeProfile): string[] {
   const extensions = parseJsonWithComments(data.extensions)
   const ids = []
   for (let i = 0, n = extensions.length; i < n; i++) {
