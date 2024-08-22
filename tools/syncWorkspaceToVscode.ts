@@ -25,7 +25,7 @@ const {
   codeWorkBackupFilePath,
   vsExtensionBackupFilePath,
   vsSettingBackupFilePath,
-} = config
+} = config()
 
 function saveAsBackupFile(oldPath: string, newPath: string) {
   const oldFilePath = path.resolve(oldPath)

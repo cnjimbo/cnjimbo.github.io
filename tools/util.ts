@@ -151,25 +151,28 @@ export function getBackupFilePath(fsPath: string) {
   return parts.join(path.sep)
 }
 
-const utilEntryFilename = fileURLToPath(import.meta.url)
-const untilEntryDir = path.resolve(path.dirname(utilEntryFilename))
+function init() {
+  const utilEntryFilename = fileURLToPath(import.meta.url)
+  const untilEntryDir = path.resolve(path.dirname(utilEntryFilename))
 
-log('entryDir     ', untilEntryDir)
-const codeWorkspaceFile = '../*.code-workspace'
-const vsSettingsFolder = '../.vscode'
+  log('entryDir     ', untilEntryDir)
+  const codeWorkspaceFile = '../*.code-workspace'
+  const vsSettingsFolder = '../.vscode'
 
-const codeWorkOriginFilePath = checkCodeWorkspaceFilePath(untilEntryDir, codeWorkspaceFile)
-const vsExtensionOriginFilePath = path.resolve(untilEntryDir, vsSettingsFolder, 'extensions.json')
-const vsSettingOriginFilePath = path.resolve(untilEntryDir, vsSettingsFolder, 'settings.json')
-const codeWorkBackupFilePath = codeWorkOriginFilePath ? getBackupFilePath(codeWorkOriginFilePath) : undefined
-const vsExtensionBackupFilePath = getBackupFilePath(vsExtensionOriginFilePath)
-const vsSettingBackupFilePath = getBackupFilePath(vsSettingOriginFilePath)
+  const codeWorkOriginFilePath = checkCodeWorkspaceFilePath(untilEntryDir, codeWorkspaceFile)
+  const vsExtensionOriginFilePath = path.resolve(untilEntryDir, vsSettingsFolder, 'extensions.json')
+  const vsSettingOriginFilePath = path.resolve(untilEntryDir, vsSettingsFolder, 'settings.json')
+  const codeWorkBackupFilePath = codeWorkOriginFilePath ? getBackupFilePath(codeWorkOriginFilePath) : undefined
+  const vsExtensionBackupFilePath = getBackupFilePath(vsExtensionOriginFilePath)
+  const vsSettingBackupFilePath = getBackupFilePath(vsSettingOriginFilePath)
 
-const existCodeWorkOriginFilePath = existFile(codeWorkOriginFilePath)
-const existVsExtensionOriginFilePath = existFile(vsExtensionOriginFilePath)
-const existVsSettingOriginFilePath = existFile(vsSettingOriginFilePath)
+  const existCodeWorkOriginFilePath = existFile(codeWorkOriginFilePath)
+  const existVsExtensionOriginFilePath = existFile(vsExtensionOriginFilePath)
+  const existVsSettingOriginFilePath = existFile(vsSettingOriginFilePath)
 
-log('entryDir     ', untilEntryDir)
+  return { utilEntryFilename, untilEntryDir, vsSettingsFolder, codeWorkOriginFilePath, vsExtensionOriginFilePath, vsSettingOriginFilePath, existCodeWorkOriginFilePath, existVsExtensionOriginFilePath, existVsSettingOriginFilePath, codeWorkBackupFilePath, vsExtensionBackupFilePath, vsSettingBackupFilePath, }
+}
+
 function existFile(filePath: string | undefined) {
   const existFile = filePath && fs.existsSync(filePath)
   if (!existFile)
@@ -177,16 +180,4 @@ function existFile(filePath: string | undefined) {
   return existFile
 }
 
-export const config = {
-  codeWorkOriginFilePath,
-  vsExtensionOriginFilePath,
-  vsSettingOriginFilePath,
-
-  existCodeWorkOriginFilePath,
-  existVsExtensionOriginFilePath,
-  existVsSettingOriginFilePath,
-
-  codeWorkBackupFilePath,
-  vsExtensionBackupFilePath,
-  vsSettingBackupFilePath,
-}
+export const config = _.once(init)

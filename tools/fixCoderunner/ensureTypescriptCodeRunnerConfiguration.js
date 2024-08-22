@@ -6,7 +6,7 @@ import {
   ensureConfigured,
   readFileToJson,
   writeJsonToFile
-} from './util.js'
+} from './util'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)

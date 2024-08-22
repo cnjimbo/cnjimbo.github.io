@@ -85,7 +85,7 @@ export default antfu(
       'no-var': 'warn',
       'style/quotes': ['off', 'single'],
       // "quotes": "off",
-      'ts/no-unused-vars': 'off',
+
       'ts/no-shadow': 0,
       'style/comma-dangle': 'off',
       'jsonc/sort-keys': 'off',
@@ -93,6 +93,16 @@ export default antfu(
       'style/*': 'off',
       'vue/first-attribute-linebreak': 'off',
       'vue/html-closing-bracket-newline': 'off',
+
+      'ts/no-unused-vars': ['warn', {
+        vars: 'all',
+        args: 'after-used',
+        caughtErrors: 'all',
+        ignoreRestSiblings: false,
+        reportUsedIgnorePattern: false,
+        varsIgnorePattern: '^(?:_|temp_)',
+        argsIgnorePattern: '^(?:_|temp_)'
+      }],
       'no-unused-vars': ['warn', {
         vars: 'all',
         args: 'after-used',
