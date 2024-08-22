@@ -36,6 +36,9 @@ import {
 
 import type { CodeProfile } from './util'
 
+const entryFileUrl = import.meta.url
+const codeWorkspaceFileRelativePath = '../*.code-workspace'
+const vsSettingsFolderRelativePath = '../.vscode'
 const {
   codeWorkOriginFilePath,
   vsExtensionOriginFilePath,
@@ -46,7 +49,7 @@ const {
   codeWorkBackupFilePath,
   vsExtensionBackupFilePath,
   vsSettingBackupFilePath,
-} = config()
+} = config(entryFileUrl, codeWorkspaceFileRelativePath, vsSettingsFolderRelativePath)
 
 function findInstalledExtensions(data: CodeProfile): string[] {
   const extensions = parseJsonWithComments(data.extensions)
