@@ -1,71 +1,139 @@
 import path from 'path'
 import { fileURLToPath } from 'url'
 import fs from 'fs-extra'
-import {
-  checkCodeWorkspaceFilePath,
-  ensureConfigured,
-  readFileToJson,
-  writeJsonToFile
-} from './util'
+import JSON5 from 'json5'
+import { globSync } from 'glob'
+import { assign, keys } from 'radash'
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
-const __currentDir = path.resolve(__dirname)
+function checkCodeWorkspaceFilePath(basedir, codeWorkspaceFilePath) {
+  const files = globSync(codeWorkspaceFilePath, {
+    cwd: basedir,
+    absolute: true
+  })
+  if (files && files.length > 0) {
+    if (files.length > 1) {
+      console.log(
+        'only support one file with .code-workspace in the current project. selected file:',
+        files[0]
+      )
+    }
+    return files[0]
+  }
+  console.log(
+    `can't find any code-workspace file with parttern: ${codeWorkspaceFilePath}`
+  )
+  return undefined
+}
+function readFileToJson(filePath, def = undefined) {
+  if (!fs.existsSync(filePath)) {
+    if (def)
+      return def
+    throw new Error(`file not exist: ${filePath}`)
+  }
+  const fileContent = fs.readFileSync(filePath, 'utf8')
+  if (!fileContent || fileContent.length === 0)
+    throw new Error(`do not read any json string from file: ${filePath}`)
+  return parseJsonWithComments(fileContent)
+}
 
-log('root path:', __currentDir)
+function parseJsonWithComments(jsonString) {
+  return JSON5.parse(jsonString)
+}
+
+function _ensureConfigured(currentSettings, preferSettings) {
+  const preferKeys = Object.keys(preferSettings)
+  const currentKeys = Object.keys(currentSettings)
+  const notExistKeys = preferKeys.filter(value => !currentKeys.includes(value))
+  const needRewrite = notExistKeys.length > 0
+  console.log(preferSettings)
+  for (const key in notExistKeys) {
+    currentSettings[key] = preferSettings[key]
+
+    console.log(currentSettings[key])
+  }
+  return { needRewrite, data: currentSettings }
+}
+
+function ensureConfigured(currentSettings, defaultSetting) {
+  const data = assign(defaultSetting, currentSettings)
+
+  const needRewrite = !keys(defaultSetting).every(val =>
+    keys(currentSettings).includes(val)
+  )
+
+  return { needRewrite, data }
+}
+
+const entryFilename = fileURLToPath(import.meta.url)
+const entryDir = path.resolve(path.dirname(entryFilename))
+
+log('root path:', entryDir)
 const codeWorkspace_file = '../../*.code-workspace'
 const settings_file = '../../.vscode/settings.json'
 const defaultSettings = {
   'code-runner.executorMap': {
-    typescript: 'cd $dir && npx tsx $fullFileName'
+    typescript: 'cd $dir && pnpx tsx $fullFileName'
   },
   'code-runner.executorMapByFileExtension': {
-    '.ts': 'cd $dir && npx tsx $fullFileName'
+    '.ts': 'cd $dir && pnpx tsx $fullFileName'
   }
 }
 async function main() {
   log('-----------------------------', 'start', '-----------------------------')
 
-  const vs_filepath = path.resolve(__currentDir, settings_file)
-  const cwfile = await checkCodeWorkspaceFilePath(
-    __currentDir,
+  const vsSettingOriginFilePath = path.resolve(entryDir, settings_file)
+  const codeWorkOriginFilePath = checkCodeWorkspaceFilePath(
+    entryDir,
     codeWorkspace_file
   )
-  const exist_codework_file = cwfile && fs.existsSync(cwfile)
-  const exist_vs_setting_file = fs.existsSync(vs_filepath)
+  const existCodeWorkOriginFilePath
+    = codeWorkOriginFilePath && fs.existsSync(codeWorkOriginFilePath)
+  const existVsSettingOriginFilePath = fs.existsSync(vsSettingOriginFilePath)
 
-  if (exist_codework_file) {
-    const cw = await readFileToJson(cwfile)
-    const cw_setting = cw.settings
+  if (existCodeWorkOriginFilePath) {
+    const cwData = await readFileToJson(codeWorkOriginFilePath)
+    const cw_setting = cwData.settings
     const config = ensureConfigured(cw_setting, defaultSettings)
     if (config.needRewrite) {
-      cw.settings = config.data
-      await writeJsonToFile(cwfile, cw)
-      log('Configured .code-workspace:', cwfile)
+      cwData.settings = config.data
+      await writeJsonToFile(codeWorkOriginFilePath, cwData)
+      log('Configured .code-workspace:', codeWorkOriginFilePath)
     }
     else {
-      log('No changed .code-workspace:', cwfile)
+      log('No changed .code-workspace:', codeWorkOriginFilePath)
     }
   }
-
-  if (exist_vs_setting_file) {
-    let vs = await readFileToJson(vs_filepath)
-    const config = await ensureConfigured(vs, defaultSettings)
+  async function writeJsonToFile(filePath, jsonObject) {
+    const content = JSON.stringify(jsonObject, null, '  ')
+    return fs
+      .writeFile(filePath, content, 'utf8')
+      .then(() => {
+        console.log(`JSON data has been successfully written to ${filePath}`)
+        return true
+      })
+      .catch((err) => {
+        console.log(`error on writting to ${filePath}`, err)
+        return false
+      })
+  }
+  if (existVsSettingOriginFilePath) {
+    let vsSettings = await readFileToJson(vsSettingOriginFilePath)
+    const config = await ensureConfigured(vsSettings, defaultSettings)
     if (config.needRewrite) {
-      vs = config.data
-      await writeJsonToFile(vs_filepath, vs)
-      log('Configured  settings.json:', vs_filepath)
+      vsSettings = config.data
+      await writeJsonToFile(vsSettingOriginFilePath, vsSettings)
+      log('Configured  settings.json:', vsSettingOriginFilePath)
     }
     else {
-      log('No changed settings.json:', vs_filepath)
+      log('No changed settings.json:', vsSettingOriginFilePath)
     }
   }
 
-  if (!exist_vs_setting_file && !exist_codework_file) {
+  if (!existVsSettingOriginFilePath && !existCodeWorkOriginFilePath) {
     log('found neither settings.json nor *.code-workspace:')
-    log('paths:', vs_filepath, codeWorkspace_file)
-    log('create settings.json with default settings', vs_filepath)
-    await writeJsonToFile(vs_filepath, defaultSettings)
+    log('paths:', vsSettingOriginFilePath, codeWorkspace_file)
+    log('create settings.json with default settings', vsSettingOriginFilePath)
+    await writeJsonToFile(vsSettingOriginFilePath, defaultSettings)
   }
 }
 function log(...msg) {
@@ -74,4 +142,4 @@ function log(...msg) {
 
 main()
   .catch(err => log('error:', err))
-  .finally(() => log('running end, exist'))
+  .finally(() => log('running end and exit'))

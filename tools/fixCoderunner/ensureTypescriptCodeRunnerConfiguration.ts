@@ -3,7 +3,7 @@ import { fileURLToPath } from 'url'
 import fs from 'fs-extra'
 import JSON5 from 'json5'
 import { glob, globSync } from 'glob'
-import { assign, isEqual } from 'radash'
+import { assign, keys } from 'radash'
 
 export interface ObjType {
   [key: string]: any
@@ -52,7 +52,7 @@ function _ensureConfigured(currentSettings: ObjType, preferSettings: ObjType) {
 function ensureConfigured(currentSettings: ObjType, defaultSetting: ObjType) {
   const data = assign(defaultSetting, currentSettings)
 
-  const needRewrite = !isEqual(currentSettings, defaultSetting)
+  const needRewrite = !keys(defaultSetting).every(val => keys(currentSettings).includes(val))
 
   return { needRewrite, data }
 }
