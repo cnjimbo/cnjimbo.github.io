@@ -1,6 +1,6 @@
 import path from 'path'
 import { fileURLToPath } from 'url'
-import _ from 'lodash'
+import * as _ from 'radash'
 import fs from 'fs-extra'
 import JSON5 from 'json5'
 import { glob, globSync } from 'glob'
@@ -20,22 +20,19 @@ export interface CodeProfile {
 }
 
 export function deepEqual(obj1: ObjType, obj2: ObjType): boolean {
-  const keys1 = Object.keys(obj1)
-  const keys2 = Object.keys(obj2)
+  const n1 = _.crush(obj1)
+  const n2 = _.crush(obj2)
+  const keys1 = _.keys(n1)
+  const keys2 = _.keys(n2)
 
   if (keys1.length !== keys2.length)
     return false
   for (const key of keys1) {
     if (!keys2.includes(key))
       return false
-    if (typeof obj1[key] === 'object' && typeof obj2[key] === 'object') {
-      if (!deepEqual(obj1[key], obj2[key]))
-        return false
-    }
-    else {
-      if (obj1[key] !== obj2[key])
-        return false
-    }
+
+    if (!_.isEqual(_.get(n1, key), _.get(n2, key)))
+      return false
   }
 
   // 所有键值对都相等
@@ -46,7 +43,7 @@ export function tryMerge(newSettings: ObjType, preferSettings: ObjType) {
   const needRewrite = !deepEqual(preferSettings, newSettings)
   const obj: { needRewrite: boolean, data: object } = { needRewrite, data: preferSettings }
   if (needRewrite) {
-    obj.data = _.merge({}, newSettings, preferSettings)
+    obj.data = _.assign(newSettings, preferSettings)
   }
   else {
     obj.data = preferSettings
@@ -94,9 +91,8 @@ export function objectKeysIncludes(subObj: ObjType, parentObj: ObjType) {
     throw new Error('parent object can\'t be undefined or null')
   if (subObj == null || subObj === undefined)
     return true
-  const sourceKeys = Object.keys(subObj)
-  const referenceKeys = Object.keys(parentObj)
-  // 检查 subObj 的所有键是否都在 parentObj 中
+  const sourceKeys = _.keys(subObj)
+  const referenceKeys = _.keys(parentObj)
   return sourceKeys.every(key => referenceKeys.includes(key))
 }
 export function checkCodeWorkspaceFilePath(basedir: string, codeWorkspaceFilePath: string) {
@@ -180,4 +176,4 @@ function existFile(filePath: string | undefined) {
   return existFile
 }
 
-export const config = _.once(init)
+export const config = _.memo(init)
