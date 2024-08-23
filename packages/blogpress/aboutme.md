@@ -43,6 +43,6 @@ tags:
 天道酬勤，恒以致遠:smile:
 
 ## :phone:联系我
-**邮箱**：happycoder@foxmail.com
+**邮箱**：cnjimbo@dmsrs.org
 
 **微信**：
