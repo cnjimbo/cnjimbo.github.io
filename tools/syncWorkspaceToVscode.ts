@@ -3,9 +3,8 @@ import process from 'process'
 import { fileURLToPath } from 'url'
 import fs from 'fs-extra'
 import {
-  checkCodeWorkspaceFilePath,
   config,
-  ensureConfigured,
+  getBackupFilePath,
   log,
   readFileToJson,
   tryMerge
@@ -23,19 +22,18 @@ const {
   existCodeWorkOriginFilePath,
   existVsExtensionOriginFilePath,
   existVsSettingOriginFilePath,
-  codeWorkBackupFilePath,
-  vsExtensionBackupFilePath,
-  vsSettingBackupFilePath,
 } = config(entryFileUrl, codeWorkspaceFileRelativePath, vsSettingsFolderRelativePath)
 
-const pauseBackup = true
-function saveAsBackupFile(oldPath: string, newPath: string) {
-  if (pauseBackup)
-    return
+let _pauseBackup = false
+function moveToBackupFile(oldPath: string, pauseBackup = undefined) {
+  _pauseBackup = pauseBackup === undefined ? _pauseBackup : pauseBackup
   const oldFilePath = path.resolve(oldPath)
-  const newFilePath = path.resolve(newPath)
+  if (_pauseBackup)
+    return oldFilePath
+  const newFilePath = path.resolve(getBackupFilePath(oldFilePath))
   fs.renameSync(oldFilePath, newFilePath)
   log(`backup file done:${newFilePath}`)
+  return newFilePath
 }
 
 /**
@@ -87,16 +85,16 @@ export async function syncConfigurationRetainCodeWorkspace() {
     const cw_extensions = cw.extensions
 
     if (existVsExtensionOriginFilePath) {
-      saveAsBackupFile(vsExtensionOriginFilePath, vsExtensionBackupFilePath)
-      const vs_extensions = await readFileToJson(vsExtensionBackupFilePath, {})
-      const merged_extension = tryMerge(vs_extensions, cw_extensions)
+      const file = moveToBackupFile(vsExtensionOriginFilePath)
+      const vs_extensions = await readFileToJson(file, {})
+      const merged_extension = tryMerge(cw_extensions, vs_extensions)
       cw.extensions = merged_extension.data
     }
 
     const cw_setting = cw.settings
     if (existVsSettingOriginFilePath) {
-      saveAsBackupFile(vsSettingOriginFilePath, vsSettingBackupFilePath)
-      const vs_settings = await readFileToJson(vsSettingBackupFilePath, {})
+      const file = moveToBackupFile(vsSettingOriginFilePath)
+      const vs_settings = await readFileToJson(file, {})
       const merged_settings = tryMerge(vs_settings, cw_setting)
       cw.settings = merged_settings.data
     }

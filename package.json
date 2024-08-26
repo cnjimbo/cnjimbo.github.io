@@ -78,5 +78,8 @@
   },
   "lint-staged": {
     "*": "eslint --fix"
+  },
+  "dependencies": {
+    "type-fest": "^4.25.0"
   }
 }

@@ -5,25 +5,23 @@ import fs from 'fs-extra'
 import JSON5 from 'json5'
 import { glob, globSync } from 'glob'
 import { DateTime } from 'luxon'
+import type { JsonObject } from 'type-fest'
 
-export
-interface ObjType {
-  [key: string]: any
+export interface ObjType extends JsonObject {
+
 }
-export
-interface CodeWorkspace {
+export interface CodeWorkspace {
   extensions: ObjType
   settings: ObjType
 }
-export
-interface CodeProfile {
+export interface CodeProfile extends JsonObject {
   extensions: string
 }
 export function deepEqual(obj1: ObjType, obj2: ObjType): boolean {
-  const n1 = _.crush(obj1)
-  const n2 = _.crush(obj2)
-  const keys1 = _.keys(n1)
-  const keys2 = _.keys(n2)
+  // const n1 = _.crush(obj1)
+  // const n2 = _.crush(obj2)
+  const keys1 = _.keys(obj1)
+  const keys2 = _.keys(obj2)
 
   if (keys1.length !== keys2.length)
     return false
@@ -31,7 +29,7 @@ export function deepEqual(obj1: ObjType, obj2: ObjType): boolean {
     if (!keys2.includes(key))
       return false
 
-    if (!_.isEqual(_.get(n1, key), _.get(n2, key)))
+    if (!_.isEqual(_.get(obj1, key), _.get(obj2, key)))
       return false
   }
 
@@ -162,15 +160,22 @@ function init(entryFileUrl: string, codeWorkspaceFileRelativePath: string, vsSet
   const codeWorkOriginFilePath = checkCodeWorkspaceFilePath(untilEntryDir, codeWorkspaceFileRelativePath)
   const vsExtensionOriginFilePath = path.resolve(untilEntryDir, vsSettingsFolderRelativePath, 'extensions.json')
   const vsSettingOriginFilePath = path.resolve(untilEntryDir, vsSettingsFolderRelativePath, 'settings.json')
-  const codeWorkBackupFilePath = codeWorkOriginFilePath ? getBackupFilePath(codeWorkOriginFilePath) : undefined
-  const vsExtensionBackupFilePath = getBackupFilePath(vsExtensionOriginFilePath)
-  const vsSettingBackupFilePath = getBackupFilePath(vsSettingOriginFilePath)
 
   const existCodeWorkOriginFilePath = existFile(codeWorkOriginFilePath)
   const existVsExtensionOriginFilePath = existFile(vsExtensionOriginFilePath)
   const existVsSettingOriginFilePath = existFile(vsSettingOriginFilePath)
 
-  return { utilEntryFilename, untilEntryDir, vsSettingsFolder: vsSettingsFolderRelativePath, codeWorkOriginFilePath, vsExtensionOriginFilePath, vsSettingOriginFilePath, existCodeWorkOriginFilePath, existVsExtensionOriginFilePath, existVsSettingOriginFilePath, codeWorkBackupFilePath, vsExtensionBackupFilePath, vsSettingBackupFilePath, }
+  return {
+    utilEntryFilename,
+    untilEntryDir,
+    vsSettingsFolderRelativePath,
+    codeWorkOriginFilePath,
+    vsExtensionOriginFilePath,
+    vsSettingOriginFilePath,
+    existCodeWorkOriginFilePath,
+    existVsExtensionOriginFilePath,
+    existVsSettingOriginFilePath,
+  }
 }
 
 function existFile(filePath: string | undefined) {

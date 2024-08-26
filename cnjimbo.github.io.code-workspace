@@ -597,6 +597,11 @@
       "yaml",
       "markdown",
       "mdx"
+    ],
+    "pnpmCatalogLens.enabled": true,
+    "pnpm-vscode-helper.extraWorkspaceScripts": [
+      "build:a",
+      "build:b"
     ]
   }
 }

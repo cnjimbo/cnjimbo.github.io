@@ -42,13 +42,8 @@ const vsSettingsFolderRelativePath = '../.vscode'
 const {
   codeWorkOriginFilePath,
   vsExtensionOriginFilePath,
-  vsSettingOriginFilePath,
   existCodeWorkOriginFilePath,
   existVsExtensionOriginFilePath,
-  existVsSettingOriginFilePath,
-  codeWorkBackupFilePath,
-  vsExtensionBackupFilePath,
-  vsSettingBackupFilePath,
 } = config(entryFileUrl, codeWorkspaceFileRelativePath, vsSettingsFolderRelativePath)
 
 function findInstalledExtensions(data: CodeProfile): string[] {
