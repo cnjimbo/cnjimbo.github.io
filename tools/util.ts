@@ -148,12 +148,10 @@ export function isEqualWithoutOrder<TType>(x: TType, y: TType): boolean {
   return true
 }
 
-function init(entryFileUrl: string, codeWorkspaceFileRelativePath: string, vsSettingsFolderRelativePath: string) {
+function init(untilEntryDir: string, codeWorkspaceFileRelativePath: string, vsSettingsFolderRelativePath: string) {
   // const entryFileUrl = import.meta.url
   // const codeWorkspaceFileRelativePath = '../*.code-workspace'
   // const vsSettingsFolderRelativePath = '../.vscode'
-  const utilEntryFilename = fileURLToPath(entryFileUrl)
-  const untilEntryDir = path.resolve(path.dirname(utilEntryFilename))
 
   log('entryDir     ', untilEntryDir)
 
@@ -166,7 +164,6 @@ function init(entryFileUrl: string, codeWorkspaceFileRelativePath: string, vsSet
   const existVsSettingOriginFilePath = existFile(vsSettingOriginFilePath)
 
   return {
-    utilEntryFilename,
     untilEntryDir,
     vsSettingsFolderRelativePath,
     codeWorkOriginFilePath,

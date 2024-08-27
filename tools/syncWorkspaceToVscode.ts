@@ -12,9 +12,10 @@ import {
 } from './util'
 //  pnpm add -Dw luxon @types/luxon lodash fs-extra json5 glob lodash
 
-const entryFileUrl = import.meta.url
 const codeWorkspaceFileRelativePath = '../*.code-workspace'
 const vsSettingsFolderRelativePath = '../.vscode'
+const utilEntryFilename = fileURLToPath(import.meta.url)
+const untilEntryDir = path.resolve(path.dirname(utilEntryFilename))
 const {
   codeWorkOriginFilePath,
   vsExtensionOriginFilePath,
@@ -22,7 +23,7 @@ const {
   existCodeWorkOriginFilePath,
   existVsExtensionOriginFilePath,
   existVsSettingOriginFilePath,
-} = config(entryFileUrl, codeWorkspaceFileRelativePath, vsSettingsFolderRelativePath)
+} = config(untilEntryDir, codeWorkspaceFileRelativePath, vsSettingsFolderRelativePath)
 
 let _pauseBackup = false
 function moveToBackupFile(oldPath: string, pauseBackup = undefined) {
