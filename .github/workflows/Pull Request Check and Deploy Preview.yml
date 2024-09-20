@@ -69,7 +69,7 @@ jobs:
 
       # Assuming you're using Node.js
       - name: Setup Node.js
-        uses: actions/setup-node@v4.0.3
+        uses: actions/setup-node@v4.0.4
         if: ${{ github.event.action != 'closed' }} # Skipping these steps if the PR has been closed
         with:
           node-version: 21
