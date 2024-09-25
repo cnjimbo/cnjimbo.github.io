@@ -1,7 +1,7 @@
-import process from 'node:process'
 import { getThemeConfig } from '@sugarat/theme/node'
 import type { Theme } from '@sugarat/theme'
 import { defineConfig } from 'vitepress'
+import { La51Plugin } from 'vitepress-plugin-51la'
 
 const baseUrl = process.env.FULL_URL ?? 'https://www.dmsrs.org'
 const relativeUrl = process.env.PUBLIC_URL ?? ''
@@ -27,7 +27,7 @@ const RSSWeekly: Theme.RSSOptions = {
 const RSS: Theme.RSSOptions = {
   title: '代码收容所',
   baseUrl,
-  description: '天道酬勤，恒以致遠（大前端相关技术分享）',
+  description: '天道酬勤，恒以致遠',
   id: baseUrl,
   link: baseUrl,
   language: 'zh-cn',
@@ -38,7 +38,7 @@ const RSS: Theme.RSSOptions = {
   /**
    * 最近100篇，避免太大影响解析
    */
-  limit: 100,
+  limit: 100
 }
 
 const blogTheme = getThemeConfig({
@@ -104,6 +104,7 @@ const blogTheme = getThemeConfig({
       },
     ],
     duration: -1,
+    twinkle: true
   },
   friend: {
     list: [
@@ -121,18 +122,19 @@ const blogTheme = getThemeConfig({
   },
   search: {
     showDate: true,
+    pageResultCount: 4,
   },
   recommend: {
     showSelf: true,
     nextText: '下一页',
-    style: 'sidebar',
+    style: 'sidebar'
   },
   authorList: [
     {
       nickname: '代码收容所',
       url: `${baseUrl}/aboutme.html`,
       des: '天道酬勤，恒以致遠',
-    },
+    }
   ],
   footer: {
     copyright: `代码收容所 2006 - ${new Date().getFullYear()}`,
@@ -165,16 +167,6 @@ const extraHead: any
         src: 'https://hm.baidu.com/hm.js?b48d57d263dacefaa9070edcdf045a6b',
       },
     ],
-    [
-      'script',
-      {},
-      '!function(p){"use strict";!function(t){var s=window,e=document,i=p,c="".concat("https:"===e.location.protocol?"https://":"http://","sdk.51.la/js-sdk-pro.min.js"),n=e.createElement("script"),r=e.getElementsByTagName("script")[0];n.type="text/javascript",n.setAttribute("charset","UTF-8"),n.async=!0,n.src=c,n.id="LA_COLLECT",i.d=n;var o=function(){s.LA.ids.push(i)};s.LA?s.LA.ids&&o():(s.LA=p,s.LA.ids=[],o()),r.parentNode.insertBefore(n,r)}()}({id:"3IeB5Nny4fc4uQvw",ck:"3IeB5Nny4fc4uQvw",autoTrack:true,hashMode:true,screenRecord:true});',
-    ],
-    [
-      'script',
-      {},
-      '!(function(c,i,e,b){var h=i.createElement("script");var f=i.getElementsByTagName("script")[0];h.type="text/javascript";h.crossorigin=true;h.onload=function(){new c[b]["Monitor"]().init({id:"3IeDjeHzDHEi0y90",sendSuspicious:true});};f.parentNode.insertBefore(h,f);h.src=e;})(window,document,"https://sdk.51.la/perf/js-sdk-perf.min.js","LingQue");',
-    ]
   ] : []
 
 export default defineConfig({
@@ -221,6 +213,13 @@ export default defineConfig({
       port: 4000,
       host: '0.0.0.0',
     },
+    plugins: [
+      La51Plugin({
+        id: '3IeB5Nny4fc4uQvw',
+        ck: '3IeB5Nny4fc4uQvw',
+        importMode: 'async'
+      })
+    ]
   },
   vue: {
     template: {

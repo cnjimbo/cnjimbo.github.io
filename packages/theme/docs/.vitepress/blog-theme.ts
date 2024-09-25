@@ -1,4 +1,3 @@
-import process from 'node:process'
 import type { Theme } from '@sugarat/theme'
 import { getThemeConfig } from '@sugarat/theme/node'
 import workConfig from './works'
@@ -12,6 +11,22 @@ const RSS: Theme.RSSOptions = {
 }
 
 export const blogTheme = getThemeConfig({
+  // article: {
+  //   analyzeTitles: {
+  //     inlineWordCount: '{{value}} word counts',
+  //     inlineReadTime: '{{value}} min read time',
+  //     wordCount: 'Total word count',
+  //     readTime: 'Total read time',
+  //     author: 'Author',
+  //     publishDate: 'Published on',
+  //     lastUpdated: 'Last updated on',
+  //     tag: 'Tags',
+  //   }
+  // },
+  // formatShowDate: {
+  //   justNow: '不久前',
+  //   minutesAgo: ' minutes ago',
+  // },
   search: {
     pageResultCount: 5
   },
@@ -120,30 +135,10 @@ export const blogTheme = getThemeConfig({
         },
         link: '/group.html',
       }
-    ],
-    duration: 0
+    ]
   },
   works: workConfig,
   footer: {
     copyright: 'MIT License | 粥里有勺糖',
   }
 })
-
-export const extraHead: any
-  = process.env.NODE_ENV === 'production'
-    ? [
-        [
-          'script',
-          {
-            charset: 'UTF-8',
-            id: 'LA_COLLECT',
-            src: '//sdk.51.la/js-sdk-pro.min.js'
-          }
-        ],
-        [
-          'script',
-          {},
-          'LA.init({id:"Jyzk2AcXA3JsYbrG",ck:"Jyzk2AcXA3JsYbrG",hashMode:true})'
-        ]
-      ]
-    : []

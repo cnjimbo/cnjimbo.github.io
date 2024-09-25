@@ -1,5 +1,34 @@
 # @sugarat/theme
 
+## 0.4.13
+
+### Patch Changes
+
+- feat: split buildin plugin [vitepress-plugin-announcement](https://www.npmjs.com/package/vitepress-plugin-announcement)
+
+## 0.4.12
+
+### Patch Changes
+
+- fix: utc -number invalid date
+
+## 0.4.11
+
+### Patch Changes
+
+- feat: 支持隐藏 recommend 部分的日期
+- feat: PC 文章列表 title 添加 span 包裹
+- chore: 新增 [vitepress-plugin-51la](https://github.com/ATQQ/sugar-blog/tree/master/packages/vitepress-plugin-51la) 插件
+
+## 0.4.10
+
+### Patch Changes
+
+- feat: support custom analyze titles
+- feat: support custom formatShowDate
+- Updated dependencies
+  - vitepress-plugin-rss@0.2.10
+
 ## 0.4.9
 
 ### Patch Changes

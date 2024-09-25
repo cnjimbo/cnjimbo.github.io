@@ -1,8 +1,8 @@
 ---
 title: 更新日志
-description: 最近更新（v0.4.9） ⏰ 2024/07/29：依赖升级，sass 警告信息优化
+description: 最近更新（v0.4.13） ⏰ 2024/09/17：分离公告插件
 author: 粥里有勺糖
-top: 2
+top: 3
 tag: 日志
 ---
 
@@ -26,6 +26,35 @@ bun update @sugarat/theme
 bun install vitepress@latest
 ```
 :::
+
+## 0.4.13 (2024/09/17)
+
+### Patch Changes
+
+- feat: split buildin plugin [vitepress-plugin-announcement](https://www.npmjs.com/package/vitepress-plugin-announcement)
+
+## 0.4.12 (2024/09/13)
+
+### Patch Changes
+
+- fix: utc -number invalid date
+
+## 0.4.11 (2024/09/08)
+
+### Patch Changes
+
+- feat: 支持隐藏 recommend 部分的日期
+- feat: PC 文章列表 title 添加 span 包裹
+- chore: 新增 [vitepress-plugin-51la](https://github.com/ATQQ/sugar-blog/tree/master/packages/vitepress-plugin-51la) 插件
+
+## 0.4.10 (2024/08/17)
+
+### Patch Changes
+
+- feat: support custom analyze titles
+- feat: support custom formatShowDate
+- Updated dependencies
+  - vitepress-plugin-rss@0.2.10
 
 ## 0.4.9 (2024/07/29)
 

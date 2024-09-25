@@ -24,8 +24,10 @@
     "build:shared": "pnpm --filter @sugarat/theme-shared build",
     "build:pagefind": "wait-on packages/shared/dist && pnpm --filter vitepress-plugin-pagefind build",
     "build:rss": "wait-on packages/shared/dist && pnpm --filter vitepress-plugin-rss build",
+    "build:51la": "pnpm --filter vitepress-plugin-51la build",
+    "build:announcement": "pnpm --filter vitepress-plugin-announcement build",
     "build:create": "pnpm --filter @sugarat/create-theme build",
-    "build:theme-only": "wait-on packages/vitepress-plugin-rss/dist packages/vitepress-plugin-pagefind/dist && pnpm --filter @sugarat/theme build:node",
+    "build:theme-only": "wait-on packages/vitepress-plugin-announcement/dist packages/vitepress-plugin-51la/dist packages/vitepress-plugin-rss/dist packages/vitepress-plugin-pagefind/dist && pnpm --filter @sugarat/theme build:node",
     "serve": "pnpm --filter blogpress serve",
     "lint": "eslint .",
     "deploy": "zx deploy.mjs",
@@ -40,30 +42,19 @@
     "preinstall": "npx only-allow pnpm"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "2.23.2",
-    "@changesets/cli": "^2.27.7",
-    "@types/bun": "^1.1.6",
-    "@types/fs-extra": "^11.0.4",
-    "@types/lodash": "^4.17.7",
-    "@types/luxon": "^3.4.2",
-    "@types/node": "^20.14.10",
-    "eslint": "^9.6.0",
+    "@antfu/eslint-config": "3.7.1",
+    "@changesets/cli": "^2.27.8",
+    "@types/bun": "^1.1.10",
+    "@types/node": "^22.7.0",
+    "eslint": "^9.11.1",
     "eslint-plugin-todo-ddl": "^1.1.1",
-    "fs-extra": "^11.2.0",
-    "glob": "^11.0.0",
-    "json5": "^2.2.3",
-    "lint-staged": "^15.2.7",
-    "lodash": "^4.17.21",
-    "luxon": "^3.5.0",
+    "lint-staged": "^15.2.10",
     "prettier": "^3.3.3",
-    "radash": "^12.1.0",
     "simple-git-hooks": "^2.11.1",
-    "ts-node": "^10.9.2",
-    "tsup": "^8.2.2",
-    "tsx": "^4.16.2",
-    "typescript": "5.5.4",
-    "wait-on": "^7.2.0",
-    "zx": "^8.1.4"
+    "tsup": "^8.3.0",
+    "typescript": "5.6.2",
+    "wait-on": "^8.0.1",
+    "zx": "^8.1.8"
   },
   "pnpm": {
     "peerDependencyRules": {
@@ -78,8 +69,5 @@
   },
   "lint-staged": {
     "*": "eslint --fix"
-  },
-  "dependencies": {
-    "type-fest": "^4.25.0"
   }
 }

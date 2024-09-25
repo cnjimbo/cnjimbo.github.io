@@ -1,6 +1,7 @@
 import { useData, useRoute, withBase } from 'vitepress'
 import type {
   Component,
+  ComputedRef,
   InjectionKey,
   Ref
 } from 'vue'
@@ -17,6 +18,7 @@ import {
 } from 'vue'
 import { useColorMode } from '@vueuse/core'
 
+import { formatDate, replaceValue } from '../../utils/client'
 import type { Theme } from './index'
 
 const configSymbol: InjectionKey<Ref<Theme.Config>> = Symbol('theme-config')
@@ -236,4 +238,105 @@ export function useImageStyle() {
 
 export function useHomeAnalysis() {
   return inject(configSymbol)?.value?.blog?.home?.analysis
+}
+
+export function useAnalyzeTitles(wordCount: Ref<number>, readTime: ComputedRef<number>) {
+  const { article } = useBlogConfig()
+
+  const topWordCount = computed(() =>
+    replaceValue(article?.analyzeTitles?.topWordCount || '字数：{{value}} 个字', wordCount.value)
+  )
+  const topReadTime = computed(() =>
+    replaceValue(article?.analyzeTitles?.topReadTime || '预计：{{value}} 分钟', readTime.value)
+  )
+  const inlineWordCount = computed(() =>
+    replaceValue(article?.analyzeTitles?.inlineWordCount || '{{value}} 个字', wordCount.value)
+  )
+  const inlineReadTime = computed(() =>
+    replaceValue(article?.analyzeTitles?.inlineReadTime || '{{value}} 分钟', readTime.value)
+  )
+
+  const wordCountTitle = computed(() =>
+    article?.analyzeTitles?.wordCount || '文章字数'
+  )
+  const readTimeTitle = computed(() =>
+    article?.analyzeTitles?.readTime || '预计阅读时间'
+  )
+
+  const authorTitle = computed(() =>
+    article?.analyzeTitles?.author || '本文作者'
+  )
+
+  const publishDateTitle = computed(() =>
+    article?.analyzeTitles?.publishDate || '发布时间'
+  )
+
+  const lastUpdatedTitle = computed(() =>
+    article?.analyzeTitles?.lastUpdated || '最近修改时间'
+  )
+
+  const tagTitle = computed(() =>
+    article?.analyzeTitles?.tag || '标签'
+  )
+
+  return {
+    topWordCount,
+    topReadTime,
+    inlineWordCount,
+    inlineReadTime,
+    wordCountTitle,
+    readTimeTitle,
+    authorTitle,
+    publishDateTitle,
+    lastUpdatedTitle,
+    tagTitle
+  }
+}
+
+export function useFormatShowDate() {
+  const blog = useBlogConfig()
+  if (typeof blog.formatShowDate === 'function') {
+    return blog.formatShowDate
+  }
+
+  function formatShowDate(date: any) {
+    const source = +new Date(date)
+    const now = +new Date()
+    const diff = now - source
+    const oneSeconds = 1000
+    const oneMinute = oneSeconds * 60
+    const oneHour = oneMinute * 60
+    const oneDay = oneHour * 24
+    const oneWeek = oneDay * 7
+
+    const langMap = {
+      justNow: '刚刚',
+      secondsAgo: '秒前',
+      minutesAgo: '分钟前',
+      hoursAgo: '小时前',
+      daysAgo: '天前',
+      weeksAgo: '周前',
+      ...blog.formatShowDate
+    }
+    const mapValue = langMap
+
+    if (diff < 10) {
+      return mapValue.justNow
+    }
+    if (diff < oneMinute) {
+      return `${Math.floor(diff / oneSeconds)}${mapValue.secondsAgo}`
+    }
+    if (diff < oneHour) {
+      return `${Math.floor(diff / oneMinute)}${mapValue.minutesAgo}`
+    }
+    if (diff < oneDay) {
+      return `${Math.floor(diff / oneHour)}${mapValue.hoursAgo}`
+    }
+    if (diff < oneWeek) {
+      return `${Math.floor(diff / oneDay)}${mapValue.daysAgo}`
+    }
+
+    return formatDate(new Date(date), 'yyyy-MM-dd')
+  }
+  return formatShowDate
 }

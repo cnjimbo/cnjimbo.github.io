@@ -117,6 +117,14 @@
       "path": "packages/theme"
     },
     {
+      "name": "📦 vitepress-plugin-51la",
+      "path": "packages/vitepress-plugin-51la"
+    },
+    {
+      "name": "📦 vitepress-plugin-announcement",
+      "path": "packages/vitepress-plugin-announcement"
+    },
+    {
       "name": "📦 vitepress-plugin-pagefind",
       "path": "packages/vitepress-plugin-pagefind"
     },
@@ -537,10 +545,7 @@
     "typescript.tsdk": "✨ sugar-wiki-monorepo\\node_modules\\typescript\\lib",
     "vs-code-prettier-eslint.prettierLast": false,
     "workbench.colorCustomizations": {
-      "sideBarTitle.foreground": "#9c643b",
-      "statusBar.background": "#9c643b",
-      "statusBar.foreground": "#ffffff",
-      "tab.activeBorder": "#9c643b"
+      "sideBarTitle.foreground": "#9c643b"
     },
     "workbench.editor.alwaysShowEditorActions": true,
     "accessibility.signalOptions.volume": 70,

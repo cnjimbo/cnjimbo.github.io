@@ -1,44 +1,12 @@
 /* eslint-disable ts/no-namespace */
-import type { ElButton } from 'element-plus'
-import type { DefaultTheme, Route } from 'vitepress'
+import type { DefaultTheme } from 'vitepress'
 import type { RSSOptions } from 'vitepress-plugin-rss'
 import type { Mapping, Repo } from '@giscus/vue'
 import type { Options as Oml2dOptions } from 'oh-my-live2d'
-import type { Ref } from 'vue'
 import type { PagefindConfig } from 'vitepress-plugin-pagefind'
+import type { AnnouncementOptions } from 'vitepress-plugin-announcement'
 
 type RSSPluginOptions = RSSOptions
-
-// TODO: 重构 lint 问题
-export declare namespace BlogPopover {
-  export interface Title {
-    type: 'title'
-    content: string
-    style?: string
-  }
-
-  export interface Text {
-    type: 'text'
-    content: string
-    style?: string
-  }
-
-  export interface Image {
-    type: 'image'
-    src: string
-    style?: string
-  }
-
-  export interface Button {
-    type: 'button'
-    link: string
-    content: string
-    style?: string
-    props?: InstanceType<typeof ElButton>['$props']
-  }
-
-  export type Value = Title | Text | Image | Button
-}
 
 export type ThemeableImage =
   | string
@@ -184,6 +152,16 @@ export namespace Theme {
      * @default 'sidebar'
      */
     style?: 'card' | 'sidebar'
+    /**
+     * 是否在左侧显示日期
+     * @default true
+     */
+    showDate?: boolean
+    /**
+     * 是否在左侧展示序号
+     * @default true
+     */
+    showNum?: boolean
   }
 
   export interface HomeAnalysis {
@@ -211,6 +189,10 @@ export namespace Theme {
   }
 
   export interface ArticleConfig {
+    /**
+     * 文章分析数据展示标题
+     */
+    analyzeTitles?: ArticleAnalyzeTitles
     readingTime?: boolean
     /**
      * 阅读时间分析展示位置
@@ -218,6 +200,49 @@ export namespace Theme {
      */
     readingTimePosition?: 'inline' | 'newLine' | 'top'
     hiddenCover?: boolean
+  }
+
+  export interface ArticleAnalyzeTitles {
+    /**
+     * 字数：{{value}} 个字
+     */
+    topWordCount?: string
+    /**
+     * 预计：{{value}} 分钟
+     */
+    topReadTime?: string
+    /**
+     * {{value}} 个字
+     */
+    inlineWordCount?: string
+    /**
+     * {{value}} 分钟
+     */
+    inlineReadTime?: string
+    /**
+     * 文章字数
+     */
+    wordCount?: string
+    /**
+     * 预计阅读时间
+     */
+    readTime?: string
+    /**
+     * 本文作者
+     */
+    author?: string
+    /**
+     * 发布时间
+     */
+    publishDate?: string
+    /**
+     * 最近修改时间
+     */
+    lastUpdated?: string
+    /**
+     * 标签
+     */
+    tag?: string
   }
   export interface Alert {
     type: 'success' | 'warning' | 'info' | 'error'
@@ -236,50 +261,6 @@ export namespace Theme {
     html?: string
   }
 
-  /**
-   * 公告
-   */
-  export interface Popover {
-    title: string
-    /**
-     * 细粒度的时间控制
-     * 默认展示时间，-1 只展示1次，其它数字为每次都展示，一定时间后自动消失，0为不自动消失
-     * 配置改变时，会重新触发展示
-     */
-    duration: number
-    /**
-     * 移动端自动最小化
-     * @default false
-     */
-    mobileMinify?: boolean
-    body?: BlogPopover.Value[]
-    footer?: BlogPopover.Value[]
-    /**
-     * 手动重新打开
-     * @default true
-     */
-    reopen?: boolean
-    /**
-     * 是否打开闪烁提示，通常需要和 reopen 搭配使用
-     * @default true
-     */
-    twinkle?: boolean
-    /**
-     * 设置展示图标，svg
-     * @recommend https://iconbuddy.app/search?q=fire
-     */
-    icon?: string
-    /**
-     * 设置关闭图标，svg
-     * @recommend https://iconbuddy.app/search?q=fire
-     */
-    closeIcon?: string
-    /**
-     * 自定义展示策略
-     * @param to 切换到的目标路由
-     */
-    onRouteChanged?: (to: Route, show: Ref<boolean>) => void
-  }
   export interface FriendLink {
     nickname: string
     des: string
@@ -369,6 +350,10 @@ export namespace Theme {
   export interface BlogConfig {
     blog?: false
     /**
+     * 展示日期格式化
+     */
+    formatShowDate?: FormatShowDate
+    /**
      * 内置一些主题色
      * @default 'vp-default'
      * 也可以自定义颜色，详见 https://theme.sugarat.top/config/style.html#%E4%B8%BB%E9%A2%98%E8%89%B2
@@ -401,7 +386,7 @@ export namespace Theme {
      * el-alert
      */
     alert?: Alert
-    popover?: Popover
+    popover?: AnnouncementOptions
     friend?: FriendLink[] | FriendConfig
     authorList?: Omit<FriendLink, 'avatar'>[]
     /**
@@ -476,6 +461,32 @@ export namespace Theme {
     imageStyle?: ImageStyleConfig
   }
 
+  export type FormatShowDate = {
+    /**
+     * 刚刚
+     */
+    justNow?: string
+    /**
+     * 秒前
+     */
+    secondsAgo?: string
+    /**
+     * 分钟前
+     */
+    minutesAgo?: string
+    /**
+     * 小时前
+     */
+    hoursAgo?: string
+    /**
+     * 天前
+     */
+    daysAgo?: string
+    /**
+     * 周前
+     */
+    weeksAgo?: string
+  } | ((date: Date | string) => string)
   export interface BackToTop {
     /**
      * 距离顶部多少距离出现

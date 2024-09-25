@@ -40,7 +40,7 @@ module.exports = __toCommonJS(node_exports);
 // src/utils/node/mdPlugins.ts
 var import_module = require("module");
 
-// ../../node_modules/.pnpm/vitepress-plugin-tabs@0.2.0_vitepress@1.2.3_@algolia+client-search@4.19.1_@types+node@20.6.3__tasys46ln23ubdv2to2chczqqi/node_modules/vitepress-plugin-tabs/dist/index.js
+// ../../node_modules/.pnpm/vitepress-plugin-tabs@0.2.0_vitepress@1.3.4_@algolia+client-search@4.19.1_@types+node@20.6.3__lhgcgud2vwo3z464a7byua3mwu/node_modules/vitepress-plugin-tabs/dist/index.js
 var tabsMarker = "=tabs";
 var tabsMarkerLen = tabsMarker.length;
 var ruleBlockTabs = (state, startLine, endLine, silent) => {
@@ -398,7 +398,8 @@ async function getArticleMeta(filepath, route, timeZone = defaultTimeZoneOffset)
   if (!meta.title) {
     meta.title = (0, import_theme_shared2.getDefaultTitle)(content);
   }
-  const date = await (meta.date && /* @__PURE__ */ new Date(`${new Date(meta.date).toUTCString()}+${timeZone}`) || (0, import_theme_shared2.getFileLastModifyTime)(filepath));
+  const utcValue = timeZone >= 0 ? `+${timeZone}` : `${timeZone}`;
+  const date = await (meta.date && /* @__PURE__ */ new Date(`${new Date(meta.date).toUTCString()}${utcValue}`) || (0, import_theme_shared2.getFileLastModifyTime)(filepath));
   meta.date = formatDate(date || /* @__PURE__ */ new Date());
   meta.categories = typeof meta.categories === "string" ? [meta.categories] : meta.categories;
   meta.tags = typeof meta.tags === "string" ? [meta.tags] : meta.tags;
@@ -444,8 +445,8 @@ function patchVPConfig(vpConfig, cfg) {
   if (cfg?.comment && "type" in cfg.comment && cfg?.comment?.type === "artalk") {
     const server = cfg.comment?.options?.server;
     if (server) {
-      vpConfig.head.push(["link", { href: `${server}/dist/Artalk.css`, rel: "stylesheet" }]);
-      vpConfig.head.push(["script", { src: `${server}/dist/Artalk.js`, id: "artalk-script" }]);
+      vpConfig.head.push(["link", { href: `${server} /dist/Artalk.css`, rel: "stylesheet" }]);
+      vpConfig.head.push(["script", { src: `${server} /dist/Artalk.js`, id: "artalk-script" }]);
     }
   }
 }
@@ -463,6 +464,7 @@ var import_node_buffer = require("buffer");
 var import_vitepress_plugin_pagefind = require("vitepress-plugin-pagefind");
 var import_vitepress_plugin_rss = require("vitepress-plugin-rss");
 var import_theme_shared3 = require("@sugarat/theme-shared");
+var import_vitepress_plugin_announcement = require("vitepress-plugin-announcement");
 
 // src/utils/node/hot-reload-plugin.ts
 function themeReloadPlugin() {
@@ -539,6 +541,9 @@ function getVitePlugins(cfg = {}) {
   if (cfg?.RSS) {
     ;
     [cfg?.RSS].flat().forEach((rssConfig) => plugins.push((0, import_vitepress_plugin_rss.RssPlugin)(rssConfig)));
+  }
+  if (cfg?.popover) {
+    plugins.push((0, import_vitepress_plugin_announcement.AnnouncementPlugin)(cfg.popover));
   }
   return plugins;
 }

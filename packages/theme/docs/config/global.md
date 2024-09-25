@@ -4,7 +4,7 @@ title: 🔧 主题配置 - 全局
 readingTime: false
 tag:
  - 配置
-top: 2
+top: 3
 recommend: 2
 outline: [2,3]
 ---
@@ -721,6 +721,7 @@ export default defineConfig({
 ::: code-group
 
 ```ts [default]
+// 默认配置如下，即默认生效配置，无需再设置
 const blogTheme = getThemeConfig({
   recommend: {
     title: '🔍 相关文章',
@@ -728,7 +729,9 @@ const blogTheme = getThemeConfig({
     pageSize: 9,
     empty: '暂无相关文章',
     style: 'sidebar',
-    sort: 'date'
+    sort: 'date',
+    showDate: true,
+    showNum: true
   }
 })
 ```
@@ -775,6 +778,16 @@ interface RecommendArticle {
    * @default 'sidebar'
    */
   style?: 'card' | 'sidebar'
+  /**
+   * 是否在左侧显示日期
+   * @default true
+   */
+  showDate?: boolean
+  /**
+   * 是否在左侧展示序号
+   * @default true
+   */
+  showNum?: boolean
 }
 ```
 
@@ -846,7 +859,20 @@ const blogTheme = getThemeConfig({
     /**
      * 阅读时间分析展示位置
      */
-    readingTimePosition: 'inline'
+    readingTimePosition: 'inline',
+    /**
+     * 自定义一系列文案标题
+     */
+    // analyzeTitles: {
+    //   inlineWordCount: '{{value}} word counts',
+    //   inlineReadTime: '{{value}} min read time',
+    //   wordCount: 'Total word count',
+    //   readTime: 'Total read time',
+    //   author: 'Author',
+    //   publishDate: 'Published on',
+    //   lastUpdated: 'Last updated on',
+    //   tag: 'Tags',
+    // }
   }
 })
 ```
@@ -860,6 +886,52 @@ interface ArticleConfig {
    */
   readingTimePosition?: 'inline' | 'newLine' | 'top'
   hiddenCover?: boolean
+  /**
+   * 文章分析数据展示标题
+   */
+  analyzeTitles?: ArticleAnalyzeTitles
+}
+interface ArticleAnalyzeTitles {
+  /**
+   * 字数：{{value}} 个字
+   */
+  topWordCount?: string
+  /**
+   * 预计：{{value}} 分钟
+   */
+  topReadTime?: string
+  /**
+   * {{value}} 个字
+   */
+  inlineWordCount?: string
+  /**
+   * {{value}} 分钟
+   */
+  inlineReadTime?: string
+  /**
+   * 文章字数
+   */
+  wordCount?: string
+  /**
+   * 预计阅读时间
+   */
+  readTime?: string
+  /**
+   * 本文作者
+   */
+  author?: string
+  /**
+   * 发布时间
+   */
+  publishDate?: string
+  /**
+   * 最近修改时间
+   */
+  lastUpdated?: string
+  /**
+   * 标签
+   */
+  tag?: string
 }
 ```
 
@@ -949,9 +1021,13 @@ interface Alert {
 
 ## popover
 
-设置一个全局的公告弹窗，支持设置图片，文字，按钮（[el-button](https://element-plus.gitee.io/zh-CN/component/button.html)）跳链
+设置一个全局的公告弹窗，支持设置图片，文字，按钮，跳链
 
 ![](https://img.cdn.sugarat.top/mdImg/MTY3NDk5NDY3Nzc5NQ==674994677795)
+
+::: tip 公共已拆分为独立插件
+详细配置和使用方法可以见插件文档：[vitepress-plugin-announcement](https://github.com/ATQQ/sugar-blog/blob/master/packages/vitepress-plugin-announcement/README.md)
+:::
 
 ::: code-group
 
@@ -992,40 +1068,68 @@ const blogTheme = getThemeConfig({
 ```
 
 ```ts [type]
-interface Popover {
+import type { Ref } from 'vue'
+import type { Route } from 'vitepress'
+
+export interface AnnouncementOptions {
+  /**
+   * 公告标题
+   */
   title: string
   /**
-   * 细粒度的时间控制
-   * 默认展示时间，-1 只展示1次，其它数字为每次都展示，一定时间后自动消失，0为不自动消失
-   * 配置改变时，会重新触发展示
+   * 公告主要内容
    */
-  duration: number
+  body?: Announcement.Value[]
+  /**
+   * 公告底部内容
+   */
+  footer?: Announcement.Value[]
+
+  /**
+   * 是否只在浏览器环境渲染组件
+   * @default false
+   * @doc https://vitepress.dev/guide/ssr-compat#clientonly
+   */
+  clientOnly?: boolean
+
+  /**
+   * 展示时机控制
+   *
+   * -1 只展示1次；>= 0 每次都展示，一定时间后自动消失，0 不自动消失
+   *
+   * 配置发生改变时，会重新触发此规则
+   * @default 0
+   */
+  duration?: number
+
   /**
    * 移动端自动最小化
    * @default false
    */
   mobileMinify?: boolean
-  body?: BlogPopover.Value[]
-  footer?: BlogPopover.Value[]
+
   /**
-   * 手动重新打开
-   */
-  reopen?: boolean
-  /**
-   * 设置展示图标，svg
-   * @recommend https://iconbuddy.app/search?q=fire
-   */
-  icon?: string
-  /**
-   * 设置关闭图标，svg
-   * @recommend https://iconbuddy.app/search?q=fire
-   */
-  closeIcon?: string
-  /**
-   * 是否打开闪烁提示，通常需要和 reopen 搭配使用
+   * 支持重新打开（右上角 icon 悬浮）
    * @default true
    */
+  reopen?: boolean
+
+  /**
+   * 是否打开闪烁提示，通常需要和 reopen 搭配使用
+   * @default false
+   */
   twinkle?: boolean
+
+  /**
+   * 设置展示图标，svg
+   */
+  icon?: string
+
+  /**
+   * 设置关闭图标，svg
+   */
+  closeIcon?: string
+
   /**
    * 自定义展示策略
    * @param to 切换到的目标路由
@@ -1033,7 +1137,7 @@ interface Popover {
   onRouteChanged?: (to: Route, show: Ref<boolean>) => void
 }
 
-export namespace BlogPopover {
+export declare namespace Announcement {
   export interface Title {
     type: 'title'
     content: string
@@ -1057,7 +1161,7 @@ export namespace BlogPopover {
     link: string
     content: string
     style?: string
-    props?: InstanceType<typeof ElButton>['$props']
+    props?: any
   }
 
   export type Value = Title | Text | Image | Button
@@ -1871,3 +1975,56 @@ interface ImageStyleConfig {
 }
 ```
 :::
+
+## formatShowDate
+* Type: `FormatShowDate`
+用于自定义日期显示。
+
+:::code-group
+```ts [example]
+const blogTheme = getThemeConfig({
+  formatShowDate(date) {
+    return new Date(date).toLocaleString()
+  }
+})
+
+const blogTheme = getThemeConfig({
+  formatShowDate: {
+    minutesAgo: ' minutes ago',
+  }
+})
+```
+
+```ts [type]
+type FormatShowDate = {
+  /**
+   * 刚刚
+   */
+  justNow?: string
+  /**
+   * 秒前
+   */
+  secondsAgo?: string
+  /**
+   * 分钟前
+   */
+  minutesAgo?: string
+  /**
+   * 小时前
+   */
+  hoursAgo?: string
+  /**
+   * 天前
+   */
+  daysAgo?: string
+  /**
+   * 周前
+   */
+  weeksAgo?: string
+} | ((date: Date) => string)
+```
+:::
+
+![](https://cdn.upyun.sugarat.top/mdImg/sugar/1954ec12b73222a210e85b75aa48f777)
+
+![](https://cdn.upyun.sugarat.top/mdImg/sugar/76a88adf6b81ed95b45fdb03c5ea2279)
