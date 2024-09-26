@@ -20,9 +20,9 @@ tags:
 ## :sparkles:在做什么
 ### 公司
 * 2014 - ing：[项目管理](https://www.dmsrs.org/)
-* 2012 - 2014：[创业，热计量与收费](https://www.dmsrs.org)
+* 2012 - 2014：[创业](https://www.dmsrs.org)
 * 2008 - 2010：[低代码平台](https://www.dmsrs.org)
-* 2006 - 2008：[联网煤矿安全监控](https://www.dmsrs.org)
+* 2006 - 2008：[联网生产安全监控](https://www.dmsrs.org)
 
 ### 技术
 * .Net Framework & dotnet
