@@ -1,0 +1,26 @@
+name: Auto Create Pull Request
+
+on:
+  push:
+    branches:
+      - 'feature/*'  # 监听以'feature/'开头的分支
+
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create Pull Request
+        id: create_pr
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'chore: auto-create-pr'
+          title: '[AutoPR]${{ github.ref_name }}'
+          body: |
+            This is an automated pull request created from a feature branch.
+            Please review and merge if ready.
+          branch: ${{ github.ref_name }}
+          base: master  # 目标分支，根据你的仓库情况可能是'main'或'master'
