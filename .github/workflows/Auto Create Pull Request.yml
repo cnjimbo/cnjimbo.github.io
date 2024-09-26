@@ -23,4 +23,4 @@ jobs:
             This is an automated pull request created from a feature branch.
             Please review and merge if ready.
           branch: ${{ github.ref_name }}
-          base: main  # 目标分支，根据你的仓库情况可能是'main'或'master'
+          base: master  # 目标分支，根据你的仓库情况可能是'main'或'master'
