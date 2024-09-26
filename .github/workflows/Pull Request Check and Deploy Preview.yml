@@ -105,9 +105,7 @@ jobs:
       # This example assumes you're using React, and that you're using the PUBLIC_URL env variable
       - name: Build
         if: ${{ github.event.action != 'closed' }}
-        run: |
-          pnpm buildlib
-          pnpm build
+        run: pnpm buildlib | pnpm build
         env:
           PUBLIC_URL: ${{ steps.baseurl.outputs.relative }}
           FULL_URL: ${{ steps.baseurl.outputs.full }}
