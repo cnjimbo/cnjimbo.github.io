@@ -103,17 +103,21 @@ jobs:
 
       # Run your usual build command, but make sure to use the correct base URL
       # This example assumes you're using React, and that you're using the PUBLIC_URL env variable
-      - name: Build
+      - name: pnpm buildlib
         if: ${{ github.event.action != 'closed' }}
-        run: |
-          pnpm buildlib
-          pnpm build
+        run: pnpm buildlib
+        env:
+          PUBLIC_URL: ${{ steps.baseurl.outputs.relative }}
+          FULL_URL: ${{ steps.baseurl.outputs.full }}
+      - name: pnpm build
+        if: ${{ github.event.action != 'closed' }}
+        run: pnpm build
         env:
           PUBLIC_URL: ${{ steps.baseurl.outputs.relative }}
           FULL_URL: ${{ steps.baseurl.outputs.full }}
 
       # This will trigger the action. Make sure to change the build_dir input to the correct directory
-      - uses: EndBug/pages-preview@v1
+      - uses: EndBug/pages-preview@v1.1.1
         with:
           build_dir: packages/blogpress/.vitepress/dist # Change this!
           preview_base_url: ${{ env.PAGES_BASE }}
