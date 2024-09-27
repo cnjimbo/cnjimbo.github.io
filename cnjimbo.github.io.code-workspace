@@ -138,8 +138,19 @@
 		"[vue]": {
 			"editor.defaultFormatter": "Vue.volar"
 		},
-		"autoRestart.fileGlobForESLint": "**/{.eslintrc,eslint.config}.{js,cjs,yaml,yml,json,mjs,ts,mts}",
-		"autoRestart.fileGlobForTypescript": "**/{tsconfig,tsconfig.base,base.tsconfig}.{json,app.json,app.js,js,ts}",
+		// Auto fix
+		"editor.formatOnPaste": false,
+		"editor.formatOnSave": false,
+		"editor.formatOnSaveMode": "file",
+		"editor.formatOnType": false,
+		"editor.minimap.enabled": false,
+		"editor.trimAutoWhitespace": false,
+		"autoRestart.fileGlobForESLint": [
+			"**/{.eslintrc,eslint.config}.{js,cjs,yaml,yml,json,mjs,ts,mts}"
+		],
+		"autoRestart.fileGlobForTypescript": [
+			"**/{tsconfig,tsconfig.base,base.tsconfig}.{json,app.json,app.js,js,ts}"
+		],
 		"autoRestart.monitorFilesForESLint": true,
 		"autoRestart.showRestartNotificationForESLint": true,
 		"code-runner.clearPreviousOutput": true,
@@ -321,32 +332,6 @@
 			"theme",
 			"workspace"
 		],
-		"editor.codeActionsOnSave": {
-			"source.fixAll.eslint": "explicit",
-			"source.organizeImports": "never"
-		},
-		"editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
-		"editor.formatOnPaste": false,
-		"editor.formatOnSave": false,
-		"editor.formatOnSaveMode": "file",
-		"editor.formatOnType": false,
-		"editor.minimap.enabled": false,
-		"editor.trimAutoWhitespace": false,
-		"eslint.format.enable": true,
-		"eslint.ignoreUntitled": true,
-		"eslint.useFlatConfig": true,
-		"eslint.validate": [
-			"javascript",
-			"javascriptreact",
-			"typescript",
-			"typescriptreact",
-			"vue",
-			"html",
-			"markdown",
-			"json",
-			"jsonc",
-			"yaml"
-		],
 		"explorerExclude.backup": {},
 		"files.autoSave": "onFocusChange",
 		"files.exclude": {
@@ -362,10 +347,6 @@
 		"git.autofetch": true,
 		"git.confirmSync": false,
 		"git.enableSmartCommit": true,
-		"gitdoc.filePattern": "**/*.md",
-		"gitdoc.pushMode": "push",
-		"gitdoc.timeZone": "CN",
-		"githubPullRequests.createOnPublishBranch": "never",
 		"gitlens.blame.format": "${message|50?} ${agoOrDate|14-}",
 		"gitlens.blame.toggleMode": "file",
 		"gitlens.codeLens.enabled": false,
@@ -391,10 +372,7 @@
 		"typescript.tsdk": "✨ sugar-wiki-monorepo\\node_modules\\typescript\\lib",
 		"vs-code-prettier-eslint.prettierLast": false,
 		"workbench.colorCustomizations": {
-			"sideBarTitle.foreground": "#9c643b",
-			"statusBar.background": "#9c643b",
-			"statusBar.foreground": "#ffffff",
-			"tab.activeBorder": "#9c643b"
+			"sideBarTitle.foreground": "#9c643b"
 		},
 		"workbench.editor.alwaysShowEditorActions": true,
 		"accessibility.signalOptions.volume": 70,
@@ -410,10 +388,6 @@
 			"announcement": 3000,
 			"sound": 1000
 		},
-		"editor.tokenColorCustomizations": {
-			"comments": "",
-			"textMateRules": []
-		},
 		"[yaml]": {
 			"editor.defaultFormatter": "dbaeumer.vscode-eslint"
 		},
@@ -423,6 +397,24 @@
 		"[scss]": {
 			"editor.defaultFormatter": "vscode.css-language-features"
 		},
-		"explorer.excludeGitIgnore": true
+		"explorer.excludeGitIgnore": true,
+		"eslint.problems.shortenToSingleLine": true,
+		"eslint.lintTask.enable": true,
+		"eslint.debug": false,
+		"eslint.run": "onSave",
+		"eslint.useESLintClass": true,
+		"eslint.enable": true,
+		// Enable the flat config support
+		"eslint.useFlatConfig": true,
+		"eslint.format.enable": true,
+		"eslint.ignoreUntitled": true,
+		"eslint.lintTask.options": ".",
+		"eslint.timeBudget.onFixes": {
+
+			"warn": 3000,
+			"error": 6000
+		},
+		"eslint.quiet": false,
+
 	}
 }
