@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - 'feature/*' # 监听以'feature/'开头的分支
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 jobs:
   create-pr:
     if: (!contains(github.ref, 'main')  && !contains(github.ref, 'master'))
