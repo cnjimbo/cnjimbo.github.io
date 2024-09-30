@@ -3,9 +3,11 @@ on:
   push:
     branches:
       - 'feature/*' # 监听以'feature/'开头的分支
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 jobs:
   create-pr:
-    if: (!contains(github.ref, 'main')  && !contains(github.ref, 'master'))
+    if: ${{ !contains(github.ref, 'master') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -21,5 +23,5 @@ jobs:
           body: |
             This is an automated pull request created from a feature branch.
             Please review and merge if ready.
-          branch: ${{ github.ref_name }}
+          branch: ${{ github.ref }}
           base: master # 目标分支，根据你的仓库情况可能是'main'或'master'
